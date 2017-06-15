@@ -48,24 +48,24 @@ class CiscoEntityFruControlMib : public Entity
         class Cefcconnectorratingtable; //type: CiscoEntityFruControlMib::Cefcconnectorratingtable
         class Cefcmodulepowerconsumptiontable; //type: CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable
 
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable> cefcchassiscoolingtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable> cefcconnectorratingtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable> cefcfancoolingcaptable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable> cefcfancoolingtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable> cefcfantraystatustable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupower> cefcfrupower;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable> cefcfrupowerstatustable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable> cefcfrupowersupplygrouptable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable> cefcfrupowersupplyvaluetable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable> cefcintellimoduletable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmibnotificationenables> cefcmibnotificationenables;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable> cefcmodulecoolingtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable> cefcmodulelocalswitchingtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable> cefcmodulepowerconsumptiontable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable> cefcmoduletable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable> cefcphysicaltable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable> cefcpowersupplyinputtable;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable> cefcpowersupplyoutputtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable> cefcchassiscoolingtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable> cefcconnectorratingtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable> cefcfancoolingcaptable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable> cefcfancoolingtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable> cefcfantraystatustable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupower> cefcfrupower_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable> cefcfrupowerstatustable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable> cefcfrupowersupplygrouptable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable> cefcfrupowersupplyvaluetable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable> cefcintellimoduletable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmibnotificationenables> cefcmibnotificationenables_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable> cefcmodulecoolingtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable> cefcmodulelocalswitchingtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable> cefcmodulepowerconsumptiontable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable> cefcmoduletable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable> cefcphysicaltable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable> cefcpowersupplyinputtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable> cefcpowersupplyoutputtable_;
         
 }; // CiscoEntityFruControlMib
 
@@ -126,7 +126,7 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable : public Entity
 
         class Cefcfrupowersupplygroupentry; //type: CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry> > cefcfrupowersupplygroupentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry> > cefcfrupowersupplygroupentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable
 
@@ -175,7 +175,7 @@ class CiscoEntityFruControlMib::Cefcfrupowerstatustable : public Entity
 
         class Cefcfrupowerstatusentry; //type: CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry> > cefcfrupowerstatusentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry> > cefcfrupowerstatusentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowerstatustable
 
@@ -221,7 +221,7 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable : public Entity
 
         class Cefcfrupowersupplyvalueentry; //type: CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry> > cefcfrupowersupplyvalueentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry> > cefcfrupowersupplyvalueentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable
 
@@ -266,7 +266,7 @@ class CiscoEntityFruControlMib::Cefcmoduletable : public Entity
 
         class Cefcmoduleentry; //type: CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry> > cefcmoduleentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry> > cefcmoduleentry_;
         
 }; // CiscoEntityFruControlMib::Cefcmoduletable
 
@@ -315,7 +315,7 @@ class CiscoEntityFruControlMib::Cefcintellimoduletable : public Entity
 
         class Cefcintellimoduleentry; //type: CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry> > cefcintellimoduleentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry> > cefcintellimoduleentry_;
         
 }; // CiscoEntityFruControlMib::Cefcintellimoduletable
 
@@ -358,7 +358,7 @@ class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable : public Entity
 
         class Cefcmodulelocalswitchingentry; //type: CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry> > cefcmodulelocalswitchingentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry> > cefcmodulelocalswitchingentry_;
         
 }; // CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable
 
@@ -401,7 +401,7 @@ class CiscoEntityFruControlMib::Cefcfantraystatustable : public Entity
 
         class Cefcfantraystatusentry; //type: CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry> > cefcfantraystatusentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry> > cefcfantraystatusentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfantraystatustable
 
@@ -444,7 +444,7 @@ class CiscoEntityFruControlMib::Cefcphysicaltable : public Entity
 
         class Cefcphysicalentry; //type: CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry> > cefcphysicalentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry> > cefcphysicalentry_;
         
 }; // CiscoEntityFruControlMib::Cefcphysicaltable
 
@@ -487,7 +487,7 @@ class CiscoEntityFruControlMib::Cefcpowersupplyinputtable : public Entity
 
         class Cefcpowersupplyinputentry; //type: CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry> > cefcpowersupplyinputentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry> > cefcpowersupplyinputentry_;
         
 }; // CiscoEntityFruControlMib::Cefcpowersupplyinputtable
 
@@ -531,7 +531,7 @@ class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable : public Entity
 
         class Cefcpowersupplyoutputentry; //type: CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry> > cefcpowersupplyoutputentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry> > cefcpowersupplyoutputentry_;
         
 }; // CiscoEntityFruControlMib::Cefcpowersupplyoutputtable
 
@@ -575,7 +575,7 @@ class CiscoEntityFruControlMib::Cefcchassiscoolingtable : public Entity
 
         class Cefcchassiscoolingentry; //type: CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry> > cefcchassiscoolingentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry> > cefcchassiscoolingentry_;
         
 }; // CiscoEntityFruControlMib::Cefcchassiscoolingtable
 
@@ -618,7 +618,7 @@ class CiscoEntityFruControlMib::Cefcfancoolingtable : public Entity
 
         class Cefcfancoolingentry; //type: CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry> > cefcfancoolingentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry> > cefcfancoolingentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfancoolingtable
 
@@ -661,7 +661,7 @@ class CiscoEntityFruControlMib::Cefcmodulecoolingtable : public Entity
 
         class Cefcmodulecoolingentry; //type: CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry> > cefcmodulecoolingentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry> > cefcmodulecoolingentry_;
         
 }; // CiscoEntityFruControlMib::Cefcmodulecoolingtable
 
@@ -704,7 +704,7 @@ class CiscoEntityFruControlMib::Cefcfancoolingcaptable : public Entity
 
         class Cefcfancoolingcapentry; //type: CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry> > cefcfancoolingcapentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry> > cefcfancoolingcapentry_;
         
 }; // CiscoEntityFruControlMib::Cefcfancoolingcaptable
 
@@ -750,7 +750,7 @@ class CiscoEntityFruControlMib::Cefcconnectorratingtable : public Entity
 
         class Cefcconnectorratingentry; //type: CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry> > cefcconnectorratingentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry> > cefcconnectorratingentry_;
         
 }; // CiscoEntityFruControlMib::Cefcconnectorratingtable
 
@@ -792,7 +792,7 @@ class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable : public Entity
 
         class Cefcmodulepowerconsumptionentry; //type: CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry> > cefcmodulepowerconsumptionentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry> > cefcmodulepowerconsumptionentry_;
         
 }; // CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable
 

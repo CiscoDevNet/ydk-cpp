@@ -11,10 +11,10 @@ namespace tailf_aaa {
 
 Aaa::Aaa()
     :
-    authentication(std::make_shared<Aaa::Authentication>())
-	,ios(nullptr) // presence node
+    authentication_(std::make_shared<Aaa::Authentication>())
+	,ios_(nullptr) // presence node
 {
-    authentication->parent = this;
+    authentication_->parent = this;
 
     yang_name = "aaa"; yang_parent_name = "tailf-aaa";
 }
@@ -25,15 +25,15 @@ Aaa::~Aaa()
 
 bool Aaa::has_data() const
 {
-    return (authentication !=  nullptr && authentication->has_data())
-	|| (ios !=  nullptr && ios->has_data());
+    return (authentication_ !=  nullptr && authentication_->has_data())
+	|| (ios_ !=  nullptr && ios_->has_data());
 }
 
 bool Aaa::has_operation() const
 {
     return is_set(operation)
-	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (ios !=  nullptr && ios->has_operation());
+	|| (authentication_ !=  nullptr && authentication_->has_operation())
+	|| (ios_ !=  nullptr && ios_->has_operation());
 }
 
 std::string Aaa::get_segment_path() const
@@ -67,20 +67,20 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
 {
     if(child_yang_name == "authentication")
     {
-        if(authentication == nullptr)
+        if(authentication_ == nullptr)
         {
-            authentication = std::make_shared<Aaa::Authentication>();
+            authentication_ = std::make_shared<Aaa::Authentication>();
         }
-        return authentication;
+        return authentication_;
     }
 
     if(child_yang_name == "ios")
     {
-        if(ios == nullptr)
+        if(ios_ == nullptr)
         {
-            ios = std::make_shared<Aaa::Ios>();
+            ios_ = std::make_shared<Aaa::Ios>();
         }
-        return ios;
+        return ios_;
     }
 
     return nullptr;
@@ -89,14 +89,14 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(authentication != nullptr)
+    if(authentication_ != nullptr)
     {
-        children["authentication"] = authentication;
+        children["authentication"] = authentication_;
     }
 
-    if(ios != nullptr)
+    if(ios_ != nullptr)
     {
-        children["ios"] = ios;
+        children["ios"] = ios_;
     }
 
     return children;
@@ -128,9 +128,9 @@ augment_capabilities_function Aaa::get_augment_capabilities_function() const
 
 Aaa::Authentication::Authentication()
     :
-    users(std::make_shared<Aaa::Authentication::Users>())
+    users_(std::make_shared<Aaa::Authentication::Users>())
 {
-    users->parent = this;
+    users_->parent = this;
 
     yang_name = "authentication"; yang_parent_name = "aaa";
 }
@@ -141,13 +141,13 @@ Aaa::Authentication::~Authentication()
 
 bool Aaa::Authentication::has_data() const
 {
-    return (users !=  nullptr && users->has_data());
+    return (users_ !=  nullptr && users_->has_data());
 }
 
 bool Aaa::Authentication::has_operation() const
 {
     return is_set(operation)
-	|| (users !=  nullptr && users->has_operation());
+	|| (users_ !=  nullptr && users_->has_operation());
 }
 
 std::string Aaa::Authentication::get_segment_path() const
@@ -184,11 +184,11 @@ std::shared_ptr<Entity> Aaa::Authentication::get_child_by_name(const std::string
 {
     if(child_yang_name == "users")
     {
-        if(users == nullptr)
+        if(users_ == nullptr)
         {
-            users = std::make_shared<Aaa::Authentication::Users>();
+            users_ = std::make_shared<Aaa::Authentication::Users>();
         }
-        return users;
+        return users_;
     }
 
     return nullptr;
@@ -197,9 +197,9 @@ std::shared_ptr<Entity> Aaa::Authentication::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(users != nullptr)
+    if(users_ != nullptr)
     {
-        children["users"] = users;
+        children["users"] = users_;
     }
 
     return children;
@@ -220,9 +220,9 @@ Aaa::Authentication::Users::~Users()
 
 bool Aaa::Authentication::Users::has_data() const
 {
-    for (std::size_t index=0; index<user.size(); index++)
+    for (std::size_t index=0; index<user_.size(); index++)
     {
-        if(user[index]->has_data())
+        if(user_[index]->has_data())
             return true;
     }
     return false;
@@ -230,9 +230,9 @@ bool Aaa::Authentication::Users::has_data() const
 
 bool Aaa::Authentication::Users::has_operation() const
 {
-    for (std::size_t index=0; index<user.size(); index++)
+    for (std::size_t index=0; index<user_.size(); index++)
     {
-        if(user[index]->has_operation())
+        if(user_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -272,7 +272,7 @@ std::shared_ptr<Entity> Aaa::Authentication::Users::get_child_by_name(const std:
 {
     if(child_yang_name == "user")
     {
-        for(auto const & c : user)
+        for(auto const & c : user_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -282,7 +282,7 @@ std::shared_ptr<Entity> Aaa::Authentication::Users::get_child_by_name(const std:
         }
         auto c = std::make_shared<Aaa::Authentication::Users::User>();
         c->parent = this;
-        user.push_back(c);
+        user_.push_back(c);
         return c;
     }
 
@@ -292,7 +292,7 @@ std::shared_ptr<Entity> Aaa::Authentication::Users::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Users::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : user)
+    for (auto const & c : user_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -427,14 +427,14 @@ Aaa::Ios::~Ios()
 
 bool Aaa::Ios::has_data() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level_.size(); index++)
     {
-        if(level[index]->has_data())
+        if(level_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<privilege.size(); index++)
+    for (std::size_t index=0; index<privilege_.size(); index++)
     {
-        if(privilege[index]->has_data())
+        if(privilege_[index]->has_data())
             return true;
     }
     return false;
@@ -442,14 +442,14 @@ bool Aaa::Ios::has_data() const
 
 bool Aaa::Ios::has_operation() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level_.size(); index++)
     {
-        if(level[index]->has_operation())
+        if(level_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<privilege.size(); index++)
+    for (std::size_t index=0; index<privilege_.size(); index++)
     {
-        if(privilege[index]->has_operation())
+        if(privilege_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -489,7 +489,7 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "level")
     {
-        for(auto const & c : level)
+        for(auto const & c : level_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -499,13 +499,13 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
         }
         auto c = std::make_shared<Aaa::Ios::Level>();
         c->parent = this;
-        level.push_back(c);
+        level_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "privilege")
     {
-        for(auto const & c : privilege)
+        for(auto const & c : privilege_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -515,7 +515,7 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
         }
         auto c = std::make_shared<Aaa::Ios::Privilege>();
         c->parent = this;
-        privilege.push_back(c);
+        privilege_.push_back(c);
         return c;
     }
 
@@ -525,12 +525,12 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : level)
+    for (auto const & c : level_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : privilege)
+    for (auto const & c : privilege_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -651,9 +651,9 @@ Aaa::Ios::Privilege::~Privilege()
 
 bool Aaa::Ios::Privilege::has_data() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level_.size(); index++)
     {
-        if(level[index]->has_data())
+        if(level_[index]->has_data())
             return true;
     }
     return mode.is_set;
@@ -661,9 +661,9 @@ bool Aaa::Ios::Privilege::has_data() const
 
 bool Aaa::Ios::Privilege::has_operation() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level_.size(); index++)
     {
-        if(level[index]->has_operation())
+        if(level_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -705,7 +705,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string
 {
     if(child_yang_name == "level")
     {
-        for(auto const & c : level)
+        for(auto const & c : level_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -715,7 +715,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string
         }
         auto c = std::make_shared<Aaa::Ios::Privilege::Level>();
         c->parent = this;
-        level.push_back(c);
+        level_.push_back(c);
         return c;
     }
 
@@ -725,7 +725,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : level)
+    for (auto const & c : level_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -754,9 +754,9 @@ Aaa::Ios::Privilege::Level::~Level()
 
 bool Aaa::Ios::Privilege::Level::has_data() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    for (std::size_t index=0; index<command_.size(); index++)
     {
-        if(command[index]->has_data())
+        if(command_[index]->has_data())
             return true;
     }
     return nr.is_set;
@@ -764,9 +764,9 @@ bool Aaa::Ios::Privilege::Level::has_data() const
 
 bool Aaa::Ios::Privilege::Level::has_operation() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    for (std::size_t index=0; index<command_.size(); index++)
     {
-        if(command[index]->has_operation())
+        if(command_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -808,7 +808,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std:
 {
     if(child_yang_name == "command")
     {
-        for(auto const & c : command)
+        for(auto const & c : command_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -818,7 +818,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std:
         }
         auto c = std::make_shared<Aaa::Ios::Privilege::Level::Command>();
         c->parent = this;
-        command.push_back(c);
+        command_.push_back(c);
         return c;
     }
 
@@ -828,7 +828,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : command)
+    for (auto const & c : command_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1179,9 +1179,9 @@ User::User()
     name{YType::str, "name"},
     description{YType::str, "description"}
     	,
-    session(std::make_shared<User::Session>())
+    session_(std::make_shared<User::Session>())
 {
-    session->parent = this;
+    session_->parent = this;
 
     yang_name = "user"; yang_parent_name = "tailf-aaa";
 }
@@ -1192,27 +1192,27 @@ User::~User()
 
 bool User::has_data() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    for (std::size_t index=0; index<alias_.size(); index++)
     {
-        if(alias[index]->has_data())
+        if(alias_[index]->has_data())
             return true;
     }
     return name.is_set
 	|| description.is_set
-	|| (session !=  nullptr && session->has_data());
+	|| (session_ !=  nullptr && session_->has_data());
 }
 
 bool User::has_operation() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    for (std::size_t index=0; index<alias_.size(); index++)
     {
-        if(alias[index]->has_operation())
+        if(alias_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(description.operation)
-	|| (session !=  nullptr && session->has_operation());
+	|| (session_ !=  nullptr && session_->has_operation());
 }
 
 std::string User::get_segment_path() const
@@ -1248,7 +1248,7 @@ std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_n
 {
     if(child_yang_name == "alias")
     {
-        for(auto const & c : alias)
+        for(auto const & c : alias_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1258,17 +1258,17 @@ std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_n
         }
         auto c = std::make_shared<User::Alias>();
         c->parent = this;
-        alias.push_back(c);
+        alias_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "session")
     {
-        if(session == nullptr)
+        if(session_ == nullptr)
         {
-            session = std::make_shared<User::Session>();
+            session_ = std::make_shared<User::Session>();
         }
-        return session;
+        return session_;
     }
 
     return nullptr;
@@ -1277,14 +1277,14 @@ std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> User::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : alias)
+    for (auto const & c : alias_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(session != nullptr)
+    if(session_ != nullptr)
     {
-        children["session"] = session;
+        children["session"] = session_;
     }
 
     return children;

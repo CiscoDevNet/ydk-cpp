@@ -11,27 +11,27 @@ namespace MPLS_VPN_MIB {
 
 MplsVpnMib::MplsVpnMib()
     :
-    mplsvpninterfaceconftable(std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>())
-	,mplsvpnscalars(std::make_shared<MplsVpnMib::Mplsvpnscalars>())
-	,mplsvpnvrfbgpnbraddrtable(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>())
-	,mplsvpnvrfbgpnbrprefixtable(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>())
-	,mplsvpnvrfroutetable(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>())
-	,mplsvpnvrfroutetargettable(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>())
-	,mplsvpnvrftable(std::make_shared<MplsVpnMib::Mplsvpnvrftable>())
+    mplsvpninterfaceconftable_(std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>())
+	,mplsvpnscalars_(std::make_shared<MplsVpnMib::Mplsvpnscalars>())
+	,mplsvpnvrfbgpnbraddrtable_(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>())
+	,mplsvpnvrfbgpnbrprefixtable_(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>())
+	,mplsvpnvrfroutetable_(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>())
+	,mplsvpnvrfroutetargettable_(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>())
+	,mplsvpnvrftable_(std::make_shared<MplsVpnMib::Mplsvpnvrftable>())
 {
-    mplsvpninterfaceconftable->parent = this;
+    mplsvpninterfaceconftable_->parent = this;
 
-    mplsvpnscalars->parent = this;
+    mplsvpnscalars_->parent = this;
 
-    mplsvpnvrfbgpnbraddrtable->parent = this;
+    mplsvpnvrfbgpnbraddrtable_->parent = this;
 
-    mplsvpnvrfbgpnbrprefixtable->parent = this;
+    mplsvpnvrfbgpnbrprefixtable_->parent = this;
 
-    mplsvpnvrfroutetable->parent = this;
+    mplsvpnvrfroutetable_->parent = this;
 
-    mplsvpnvrfroutetargettable->parent = this;
+    mplsvpnvrfroutetargettable_->parent = this;
 
-    mplsvpnvrftable->parent = this;
+    mplsvpnvrftable_->parent = this;
 
     yang_name = "MPLS-VPN-MIB"; yang_parent_name = "MPLS-VPN-MIB";
 }
@@ -42,25 +42,25 @@ MplsVpnMib::~MplsVpnMib()
 
 bool MplsVpnMib::has_data() const
 {
-    return (mplsvpninterfaceconftable !=  nullptr && mplsvpninterfaceconftable->has_data())
-	|| (mplsvpnscalars !=  nullptr && mplsvpnscalars->has_data())
-	|| (mplsvpnvrfbgpnbraddrtable !=  nullptr && mplsvpnvrfbgpnbraddrtable->has_data())
-	|| (mplsvpnvrfbgpnbrprefixtable !=  nullptr && mplsvpnvrfbgpnbrprefixtable->has_data())
-	|| (mplsvpnvrfroutetable !=  nullptr && mplsvpnvrfroutetable->has_data())
-	|| (mplsvpnvrfroutetargettable !=  nullptr && mplsvpnvrfroutetargettable->has_data())
-	|| (mplsvpnvrftable !=  nullptr && mplsvpnvrftable->has_data());
+    return (mplsvpninterfaceconftable_ !=  nullptr && mplsvpninterfaceconftable_->has_data())
+	|| (mplsvpnscalars_ !=  nullptr && mplsvpnscalars_->has_data())
+	|| (mplsvpnvrfbgpnbraddrtable_ !=  nullptr && mplsvpnvrfbgpnbraddrtable_->has_data())
+	|| (mplsvpnvrfbgpnbrprefixtable_ !=  nullptr && mplsvpnvrfbgpnbrprefixtable_->has_data())
+	|| (mplsvpnvrfroutetable_ !=  nullptr && mplsvpnvrfroutetable_->has_data())
+	|| (mplsvpnvrfroutetargettable_ !=  nullptr && mplsvpnvrfroutetargettable_->has_data())
+	|| (mplsvpnvrftable_ !=  nullptr && mplsvpnvrftable_->has_data());
 }
 
 bool MplsVpnMib::has_operation() const
 {
     return is_set(operation)
-	|| (mplsvpninterfaceconftable !=  nullptr && mplsvpninterfaceconftable->has_operation())
-	|| (mplsvpnscalars !=  nullptr && mplsvpnscalars->has_operation())
-	|| (mplsvpnvrfbgpnbraddrtable !=  nullptr && mplsvpnvrfbgpnbraddrtable->has_operation())
-	|| (mplsvpnvrfbgpnbrprefixtable !=  nullptr && mplsvpnvrfbgpnbrprefixtable->has_operation())
-	|| (mplsvpnvrfroutetable !=  nullptr && mplsvpnvrfroutetable->has_operation())
-	|| (mplsvpnvrfroutetargettable !=  nullptr && mplsvpnvrfroutetargettable->has_operation())
-	|| (mplsvpnvrftable !=  nullptr && mplsvpnvrftable->has_operation());
+	|| (mplsvpninterfaceconftable_ !=  nullptr && mplsvpninterfaceconftable_->has_operation())
+	|| (mplsvpnscalars_ !=  nullptr && mplsvpnscalars_->has_operation())
+	|| (mplsvpnvrfbgpnbraddrtable_ !=  nullptr && mplsvpnvrfbgpnbraddrtable_->has_operation())
+	|| (mplsvpnvrfbgpnbrprefixtable_ !=  nullptr && mplsvpnvrfbgpnbrprefixtable_->has_operation())
+	|| (mplsvpnvrfroutetable_ !=  nullptr && mplsvpnvrfroutetable_->has_operation())
+	|| (mplsvpnvrfroutetargettable_ !=  nullptr && mplsvpnvrfroutetargettable_->has_operation())
+	|| (mplsvpnvrftable_ !=  nullptr && mplsvpnvrftable_->has_operation());
 }
 
 std::string MplsVpnMib::get_segment_path() const
@@ -94,65 +94,65 @@ std::shared_ptr<Entity> MplsVpnMib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "mplsVpnInterfaceConfTable")
     {
-        if(mplsvpninterfaceconftable == nullptr)
+        if(mplsvpninterfaceconftable_ == nullptr)
         {
-            mplsvpninterfaceconftable = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>();
+            mplsvpninterfaceconftable_ = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>();
         }
-        return mplsvpninterfaceconftable;
+        return mplsvpninterfaceconftable_;
     }
 
     if(child_yang_name == "mplsVpnScalars")
     {
-        if(mplsvpnscalars == nullptr)
+        if(mplsvpnscalars_ == nullptr)
         {
-            mplsvpnscalars = std::make_shared<MplsVpnMib::Mplsvpnscalars>();
+            mplsvpnscalars_ = std::make_shared<MplsVpnMib::Mplsvpnscalars>();
         }
-        return mplsvpnscalars;
+        return mplsvpnscalars_;
     }
 
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrTable")
     {
-        if(mplsvpnvrfbgpnbraddrtable == nullptr)
+        if(mplsvpnvrfbgpnbraddrtable_ == nullptr)
         {
-            mplsvpnvrfbgpnbraddrtable = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>();
+            mplsvpnvrfbgpnbraddrtable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>();
         }
-        return mplsvpnvrfbgpnbraddrtable;
+        return mplsvpnvrfbgpnbraddrtable_;
     }
 
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixTable")
     {
-        if(mplsvpnvrfbgpnbrprefixtable == nullptr)
+        if(mplsvpnvrfbgpnbrprefixtable_ == nullptr)
         {
-            mplsvpnvrfbgpnbrprefixtable = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>();
+            mplsvpnvrfbgpnbrprefixtable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>();
         }
-        return mplsvpnvrfbgpnbrprefixtable;
+        return mplsvpnvrfbgpnbrprefixtable_;
     }
 
     if(child_yang_name == "mplsVpnVrfRouteTable")
     {
-        if(mplsvpnvrfroutetable == nullptr)
+        if(mplsvpnvrfroutetable_ == nullptr)
         {
-            mplsvpnvrfroutetable = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>();
+            mplsvpnvrfroutetable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>();
         }
-        return mplsvpnvrfroutetable;
+        return mplsvpnvrfroutetable_;
     }
 
     if(child_yang_name == "mplsVpnVrfRouteTargetTable")
     {
-        if(mplsvpnvrfroutetargettable == nullptr)
+        if(mplsvpnvrfroutetargettable_ == nullptr)
         {
-            mplsvpnvrfroutetargettable = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>();
+            mplsvpnvrfroutetargettable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>();
         }
-        return mplsvpnvrfroutetargettable;
+        return mplsvpnvrfroutetargettable_;
     }
 
     if(child_yang_name == "mplsVpnVrfTable")
     {
-        if(mplsvpnvrftable == nullptr)
+        if(mplsvpnvrftable_ == nullptr)
         {
-            mplsvpnvrftable = std::make_shared<MplsVpnMib::Mplsvpnvrftable>();
+            mplsvpnvrftable_ = std::make_shared<MplsVpnMib::Mplsvpnvrftable>();
         }
-        return mplsvpnvrftable;
+        return mplsvpnvrftable_;
     }
 
     return nullptr;
@@ -161,39 +161,39 @@ std::shared_ptr<Entity> MplsVpnMib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsvpninterfaceconftable != nullptr)
+    if(mplsvpninterfaceconftable_ != nullptr)
     {
-        children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable;
+        children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable_;
     }
 
-    if(mplsvpnscalars != nullptr)
+    if(mplsvpnscalars_ != nullptr)
     {
-        children["mplsVpnScalars"] = mplsvpnscalars;
+        children["mplsVpnScalars"] = mplsvpnscalars_;
     }
 
-    if(mplsvpnvrfbgpnbraddrtable != nullptr)
+    if(mplsvpnvrfbgpnbraddrtable_ != nullptr)
     {
-        children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable;
+        children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable_;
     }
 
-    if(mplsvpnvrfbgpnbrprefixtable != nullptr)
+    if(mplsvpnvrfbgpnbrprefixtable_ != nullptr)
     {
-        children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable;
+        children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable_;
     }
 
-    if(mplsvpnvrfroutetable != nullptr)
+    if(mplsvpnvrfroutetable_ != nullptr)
     {
-        children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable;
+        children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable_;
     }
 
-    if(mplsvpnvrfroutetargettable != nullptr)
+    if(mplsvpnvrfroutetargettable_ != nullptr)
     {
-        children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable;
+        children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable_;
     }
 
-    if(mplsvpnvrftable != nullptr)
+    if(mplsvpnvrftable_ != nullptr)
     {
-        children["mplsVpnVrfTable"] = mplsvpnvrftable;
+        children["mplsVpnVrfTable"] = mplsvpnvrftable_;
     }
 
     return children;
@@ -338,9 +338,9 @@ MplsVpnMib::Mplsvpninterfaceconftable::~Mplsvpninterfaceconftable()
 
 bool MplsVpnMib::Mplsvpninterfaceconftable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpninterfaceconfentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpninterfaceconfentry_.size(); index++)
     {
-        if(mplsvpninterfaceconfentry[index]->has_data())
+        if(mplsvpninterfaceconfentry_[index]->has_data())
             return true;
     }
     return false;
@@ -348,9 +348,9 @@ bool MplsVpnMib::Mplsvpninterfaceconftable::has_data() const
 
 bool MplsVpnMib::Mplsvpninterfaceconftable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpninterfaceconfentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpninterfaceconfentry_.size(); index++)
     {
-        if(mplsvpninterfaceconfentry[index]->has_operation())
+        if(mplsvpninterfaceconfentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -390,7 +390,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnInterfaceConfEntry")
     {
-        for(auto const & c : mplsvpninterfaceconfentry)
+        for(auto const & c : mplsvpninterfaceconfentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -400,7 +400,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry>();
         c->parent = this;
-        mplsvpninterfaceconfentry.push_back(c);
+        mplsvpninterfaceconfentry_.push_back(c);
         return c;
     }
 
@@ -410,7 +410,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpninterfaceconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpninterfaceconfentry)
+    for (auto const & c : mplsvpninterfaceconfentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -553,9 +553,9 @@ MplsVpnMib::Mplsvpnvrftable::~Mplsvpnvrftable()
 
 bool MplsVpnMib::Mplsvpnvrftable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfentry_.size(); index++)
     {
-        if(mplsvpnvrfentry[index]->has_data())
+        if(mplsvpnvrfentry_[index]->has_data())
             return true;
     }
     return false;
@@ -563,9 +563,9 @@ bool MplsVpnMib::Mplsvpnvrftable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrftable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfentry_.size(); index++)
     {
-        if(mplsvpnvrfentry[index]->has_operation())
+        if(mplsvpnvrfentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -605,7 +605,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
 {
     if(child_yang_name == "mplsVpnVrfEntry")
     {
-        for(auto const & c : mplsvpnvrfentry)
+        for(auto const & c : mplsvpnvrfentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -615,7 +615,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry>();
         c->parent = this;
-        mplsvpnvrfentry.push_back(c);
+        mplsvpnvrfentry_.push_back(c);
         return c;
     }
 
@@ -625,7 +625,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfentry)
+    for (auto const & c : mplsvpnvrfentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -856,9 +856,9 @@ MplsVpnMib::Mplsvpnvrfroutetargettable::~Mplsvpnvrfroutetargettable()
 
 bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry_.size(); index++)
     {
-        if(mplsvpnvrfroutetargetentry[index]->has_data())
+        if(mplsvpnvrfroutetargetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -866,9 +866,9 @@ bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry_.size(); index++)
     {
-        if(mplsvpnvrfroutetargetentry[index]->has_operation())
+        if(mplsvpnvrfroutetargetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -908,7 +908,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
 {
     if(child_yang_name == "mplsVpnVrfRouteTargetEntry")
     {
-        for(auto const & c : mplsvpnvrfroutetargetentry)
+        for(auto const & c : mplsvpnvrfroutetargetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -918,7 +918,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry>();
         c->parent = this;
-        mplsvpnvrfroutetargetentry.push_back(c);
+        mplsvpnvrfroutetargetentry_.push_back(c);
         return c;
     }
 
@@ -928,7 +928,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfroutetargetentry)
+    for (auto const & c : mplsvpnvrfroutetargetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1063,9 +1063,9 @@ MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::~Mplsvpnvrfbgpnbraddrtable()
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry_.size(); index++)
     {
-        if(mplsvpnvrfbgpnbraddrentry[index]->has_data())
+        if(mplsvpnvrfbgpnbraddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1073,9 +1073,9 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry_.size(); index++)
     {
-        if(mplsvpnvrfbgpnbraddrentry[index]->has_operation())
+        if(mplsvpnvrfbgpnbraddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1115,7 +1115,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbraddrentry)
+        for(auto const & c : mplsvpnvrfbgpnbraddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1125,7 +1125,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry>();
         c->parent = this;
-        mplsvpnvrfbgpnbraddrentry.push_back(c);
+        mplsvpnvrfbgpnbraddrentry_.push_back(c);
         return c;
     }
 
@@ -1135,7 +1135,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfbgpnbraddrentry)
+    for (auto const & c : mplsvpnvrfbgpnbraddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1286,9 +1286,9 @@ MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::~Mplsvpnvrfbgpnbrprefixtable()
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry_.size(); index++)
     {
-        if(mplsvpnvrfbgpnbrprefixentry[index]->has_data())
+        if(mplsvpnvrfbgpnbrprefixentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1296,9 +1296,9 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry_.size(); index++)
     {
-        if(mplsvpnvrfbgpnbrprefixentry[index]->has_operation())
+        if(mplsvpnvrfbgpnbrprefixentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1338,7 +1338,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbrprefixentry)
+        for(auto const & c : mplsvpnvrfbgpnbrprefixentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1348,7 +1348,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry>();
         c->parent = this;
-        mplsvpnvrfbgpnbrprefixentry.push_back(c);
+        mplsvpnvrfbgpnbrprefixentry_.push_back(c);
         return c;
     }
 
@@ -1358,7 +1358,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfbgpnbrprefixentry)
+    for (auto const & c : mplsvpnvrfbgpnbrprefixentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1565,9 +1565,9 @@ MplsVpnMib::Mplsvpnvrfroutetable::~Mplsvpnvrfroutetable()
 
 bool MplsVpnMib::Mplsvpnvrfroutetable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfrouteentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfrouteentry_.size(); index++)
     {
-        if(mplsvpnvrfrouteentry[index]->has_data())
+        if(mplsvpnvrfrouteentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1575,9 +1575,9 @@ bool MplsVpnMib::Mplsvpnvrfroutetable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfrouteentry.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfrouteentry_.size(); index++)
     {
-        if(mplsvpnvrfrouteentry[index]->has_operation())
+        if(mplsvpnvrfrouteentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1617,7 +1617,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
 {
     if(child_yang_name == "mplsVpnVrfRouteEntry")
     {
-        for(auto const & c : mplsvpnvrfrouteentry)
+        for(auto const & c : mplsvpnvrfrouteentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1627,7 +1627,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry>();
         c->parent = this;
-        mplsvpnvrfrouteentry.push_back(c);
+        mplsvpnvrfrouteentry_.push_back(c);
         return c;
     }
 
@@ -1637,7 +1637,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfrouteentry)
+    for (auto const & c : mplsvpnvrfrouteentry_)
     {
         children[c->get_segment_path()] = c;
     }

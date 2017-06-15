@@ -33,10 +33,10 @@ class CiscoEmbeddedEventMgrMib : public Entity
         class Ceemhistoryeventtable; //type: CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable
         class Ceemregisteredpolicytable; //type: CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable
 
-        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemeventmaptable> ceemeventmaptable;
-        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistory> ceemhistory;
-        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable> ceemhistoryeventtable;
-        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable> ceemregisteredpolicytable;
+        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemeventmaptable> ceemeventmaptable_;
+        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistory> ceemhistory_;
+        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable> ceemhistoryeventtable_;
+        std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable> ceemregisteredpolicytable_;
         
 }; // CiscoEmbeddedEventMgrMib
 
@@ -77,7 +77,7 @@ class CiscoEmbeddedEventMgrMib::Ceemeventmaptable : public Entity
 
         class Ceemeventmapentry; //type: CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry
 
-        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry> > ceemeventmapentry;
+        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry> > ceemeventmapentry_;
         
 }; // CiscoEmbeddedEventMgrMib::Ceemeventmaptable
 
@@ -119,7 +119,7 @@ class CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable : public Entity
 
         class Ceemhistoryevententry; //type: CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry
 
-        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry> > ceemhistoryevententry;
+        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry> > ceemhistoryevententry_;
         
 }; // CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable
 
@@ -174,7 +174,7 @@ class CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable : public Entity
 
         class Ceemregisteredpolicyentry; //type: CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry
 
-        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry> > ceemregisteredpolicyentry;
+        std::vector<std::shared_ptr<CISCO_EMBEDDED_EVENT_MGR_MIB::CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry> > ceemregisteredpolicyentry_;
         
 }; // CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable
 

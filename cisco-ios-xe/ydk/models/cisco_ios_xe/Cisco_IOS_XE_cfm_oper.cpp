@@ -11,9 +11,9 @@ namespace Cisco_IOS_XE_cfm_oper {
 
 CfmStatistics::CfmStatistics()
     :
-    cfm_meps(std::make_shared<CfmStatistics::CfmMeps>())
+    cfm_meps_(std::make_shared<CfmStatistics::CfmMeps>())
 {
-    cfm_meps->parent = this;
+    cfm_meps_->parent = this;
 
     yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper";
 }
@@ -24,13 +24,13 @@ CfmStatistics::~CfmStatistics()
 
 bool CfmStatistics::has_data() const
 {
-    return (cfm_meps !=  nullptr && cfm_meps->has_data());
+    return (cfm_meps_ !=  nullptr && cfm_meps_->has_data());
 }
 
 bool CfmStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (cfm_meps !=  nullptr && cfm_meps->has_operation());
+	|| (cfm_meps_ !=  nullptr && cfm_meps_->has_operation());
 }
 
 std::string CfmStatistics::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CfmStatistics::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "cfm-meps")
     {
-        if(cfm_meps == nullptr)
+        if(cfm_meps_ == nullptr)
         {
-            cfm_meps = std::make_shared<CfmStatistics::CfmMeps>();
+            cfm_meps_ = std::make_shared<CfmStatistics::CfmMeps>();
         }
-        return cfm_meps;
+        return cfm_meps_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CfmStatistics::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cfm_meps != nullptr)
+    if(cfm_meps_ != nullptr)
     {
-        children["cfm-meps"] = cfm_meps;
+        children["cfm-meps"] = cfm_meps_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CfmStatistics::CfmMeps::~CfmMeps()
 
 bool CfmStatistics::CfmMeps::has_data() const
 {
-    for (std::size_t index=0; index<cfm_mep.size(); index++)
+    for (std::size_t index=0; index<cfm_mep_.size(); index++)
     {
-        if(cfm_mep[index]->has_data())
+        if(cfm_mep_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CfmStatistics::CfmMeps::has_data() const
 
 bool CfmStatistics::CfmMeps::has_operation() const
 {
-    for (std::size_t index=0; index<cfm_mep.size(); index++)
+    for (std::size_t index=0; index<cfm_mep_.size(); index++)
     {
-        if(cfm_mep[index]->has_operation())
+        if(cfm_mep_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 {
     if(child_yang_name == "cfm-mep")
     {
-        for(auto const & c : cfm_mep)
+        for(auto const & c : cfm_mep_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
         }
         auto c = std::make_shared<CfmStatistics::CfmMeps::CfmMep>();
         c->parent = this;
-        cfm_mep.push_back(c);
+        cfm_mep_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cfm_mep)
+    for (auto const & c : cfm_mep_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -217,9 +217,9 @@ CfmStatistics::CfmMeps::CfmMep::CfmMep()
     lbr_transmitted{YType::uint64, "lbr-transmitted"},
     ltr_unexpected{YType::uint64, "ltr-unexpected"}
     	,
-    last_cleared(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
+    last_cleared_(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
 {
-    last_cleared->parent = this;
+    last_cleared_->parent = this;
 
     yang_name = "cfm-mep"; yang_parent_name = "cfm-meps";
 }
@@ -240,7 +240,7 @@ bool CfmStatistics::CfmMeps::CfmMep::has_data() const
 	|| lbr_seq_errors.is_set
 	|| lbr_transmitted.is_set
 	|| ltr_unexpected.is_set
-	|| (last_cleared !=  nullptr && last_cleared->has_data());
+	|| (last_cleared_ !=  nullptr && last_cleared_->has_data());
 }
 
 bool CfmStatistics::CfmMeps::CfmMep::has_operation() const
@@ -256,7 +256,7 @@ bool CfmStatistics::CfmMeps::CfmMep::has_operation() const
 	|| is_set(lbr_seq_errors.operation)
 	|| is_set(lbr_transmitted.operation)
 	|| is_set(ltr_unexpected.operation)
-	|| (last_cleared !=  nullptr && last_cleared->has_operation());
+	|| (last_cleared_ !=  nullptr && last_cleared_->has_operation());
 }
 
 std::string CfmStatistics::CfmMeps::CfmMep::get_segment_path() const
@@ -303,11 +303,11 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::get_child_by_name(const 
 {
     if(child_yang_name == "last-cleared")
     {
-        if(last_cleared == nullptr)
+        if(last_cleared_ == nullptr)
         {
-            last_cleared = std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>();
+            last_cleared_ = std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>();
         }
-        return last_cleared;
+        return last_cleared_;
     }
 
     return nullptr;
@@ -316,9 +316,9 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::CfmMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(last_cleared != nullptr)
+    if(last_cleared_ != nullptr)
     {
-        children["last-cleared"] = last_cleared;
+        children["last-cleared"] = last_cleared_;
     }
 
     return children;

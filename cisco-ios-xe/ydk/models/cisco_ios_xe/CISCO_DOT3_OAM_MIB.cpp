@@ -11,24 +11,24 @@ namespace CISCO_DOT3_OAM_MIB {
 
 CiscoDot3OamMib::CiscoDot3OamMib()
     :
-    cdot3oameventconfigtable(std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>())
-	,cdot3oameventlogtable(std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>())
-	,cdot3oamloopbacktable(std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>())
-	,cdot3oampeertable(std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>())
-	,cdot3oamstatstable(std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>())
-	,cdot3oamtable(std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>())
+    cdot3oameventconfigtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>())
+	,cdot3oameventlogtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>())
+	,cdot3oamloopbacktable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>())
+	,cdot3oampeertable_(std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>())
+	,cdot3oamstatstable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>())
+	,cdot3oamtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>())
 {
-    cdot3oameventconfigtable->parent = this;
+    cdot3oameventconfigtable_->parent = this;
 
-    cdot3oameventlogtable->parent = this;
+    cdot3oameventlogtable_->parent = this;
 
-    cdot3oamloopbacktable->parent = this;
+    cdot3oamloopbacktable_->parent = this;
 
-    cdot3oampeertable->parent = this;
+    cdot3oampeertable_->parent = this;
 
-    cdot3oamstatstable->parent = this;
+    cdot3oamstatstable_->parent = this;
 
-    cdot3oamtable->parent = this;
+    cdot3oamtable_->parent = this;
 
     yang_name = "CISCO-DOT3-OAM-MIB"; yang_parent_name = "CISCO-DOT3-OAM-MIB";
 }
@@ -39,23 +39,23 @@ CiscoDot3OamMib::~CiscoDot3OamMib()
 
 bool CiscoDot3OamMib::has_data() const
 {
-    return (cdot3oameventconfigtable !=  nullptr && cdot3oameventconfigtable->has_data())
-	|| (cdot3oameventlogtable !=  nullptr && cdot3oameventlogtable->has_data())
-	|| (cdot3oamloopbacktable !=  nullptr && cdot3oamloopbacktable->has_data())
-	|| (cdot3oampeertable !=  nullptr && cdot3oampeertable->has_data())
-	|| (cdot3oamstatstable !=  nullptr && cdot3oamstatstable->has_data())
-	|| (cdot3oamtable !=  nullptr && cdot3oamtable->has_data());
+    return (cdot3oameventconfigtable_ !=  nullptr && cdot3oameventconfigtable_->has_data())
+	|| (cdot3oameventlogtable_ !=  nullptr && cdot3oameventlogtable_->has_data())
+	|| (cdot3oamloopbacktable_ !=  nullptr && cdot3oamloopbacktable_->has_data())
+	|| (cdot3oampeertable_ !=  nullptr && cdot3oampeertable_->has_data())
+	|| (cdot3oamstatstable_ !=  nullptr && cdot3oamstatstable_->has_data())
+	|| (cdot3oamtable_ !=  nullptr && cdot3oamtable_->has_data());
 }
 
 bool CiscoDot3OamMib::has_operation() const
 {
     return is_set(operation)
-	|| (cdot3oameventconfigtable !=  nullptr && cdot3oameventconfigtable->has_operation())
-	|| (cdot3oameventlogtable !=  nullptr && cdot3oameventlogtable->has_operation())
-	|| (cdot3oamloopbacktable !=  nullptr && cdot3oamloopbacktable->has_operation())
-	|| (cdot3oampeertable !=  nullptr && cdot3oampeertable->has_operation())
-	|| (cdot3oamstatstable !=  nullptr && cdot3oamstatstable->has_operation())
-	|| (cdot3oamtable !=  nullptr && cdot3oamtable->has_operation());
+	|| (cdot3oameventconfigtable_ !=  nullptr && cdot3oameventconfigtable_->has_operation())
+	|| (cdot3oameventlogtable_ !=  nullptr && cdot3oameventlogtable_->has_operation())
+	|| (cdot3oamloopbacktable_ !=  nullptr && cdot3oamloopbacktable_->has_operation())
+	|| (cdot3oampeertable_ !=  nullptr && cdot3oampeertable_->has_operation())
+	|| (cdot3oamstatstable_ !=  nullptr && cdot3oamstatstable_->has_operation())
+	|| (cdot3oamtable_ !=  nullptr && cdot3oamtable_->has_operation());
 }
 
 std::string CiscoDot3OamMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoDot3OamMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "cdot3OamEventConfigTable")
     {
-        if(cdot3oameventconfigtable == nullptr)
+        if(cdot3oameventconfigtable_ == nullptr)
         {
-            cdot3oameventconfigtable = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>();
+            cdot3oameventconfigtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>();
         }
-        return cdot3oameventconfigtable;
+        return cdot3oameventconfigtable_;
     }
 
     if(child_yang_name == "cdot3OamEventLogTable")
     {
-        if(cdot3oameventlogtable == nullptr)
+        if(cdot3oameventlogtable_ == nullptr)
         {
-            cdot3oameventlogtable = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>();
+            cdot3oameventlogtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>();
         }
-        return cdot3oameventlogtable;
+        return cdot3oameventlogtable_;
     }
 
     if(child_yang_name == "cdot3OamLoopbackTable")
     {
-        if(cdot3oamloopbacktable == nullptr)
+        if(cdot3oamloopbacktable_ == nullptr)
         {
-            cdot3oamloopbacktable = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>();
+            cdot3oamloopbacktable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>();
         }
-        return cdot3oamloopbacktable;
+        return cdot3oamloopbacktable_;
     }
 
     if(child_yang_name == "cdot3OamPeerTable")
     {
-        if(cdot3oampeertable == nullptr)
+        if(cdot3oampeertable_ == nullptr)
         {
-            cdot3oampeertable = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>();
+            cdot3oampeertable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>();
         }
-        return cdot3oampeertable;
+        return cdot3oampeertable_;
     }
 
     if(child_yang_name == "cdot3OamStatsTable")
     {
-        if(cdot3oamstatstable == nullptr)
+        if(cdot3oamstatstable_ == nullptr)
         {
-            cdot3oamstatstable = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>();
+            cdot3oamstatstable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>();
         }
-        return cdot3oamstatstable;
+        return cdot3oamstatstable_;
     }
 
     if(child_yang_name == "cdot3OamTable")
     {
-        if(cdot3oamtable == nullptr)
+        if(cdot3oamtable_ == nullptr)
         {
-            cdot3oamtable = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>();
+            cdot3oamtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>();
         }
-        return cdot3oamtable;
+        return cdot3oamtable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoDot3OamMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdot3oameventconfigtable != nullptr)
+    if(cdot3oameventconfigtable_ != nullptr)
     {
-        children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable;
+        children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable_;
     }
 
-    if(cdot3oameventlogtable != nullptr)
+    if(cdot3oameventlogtable_ != nullptr)
     {
-        children["cdot3OamEventLogTable"] = cdot3oameventlogtable;
+        children["cdot3OamEventLogTable"] = cdot3oameventlogtable_;
     }
 
-    if(cdot3oamloopbacktable != nullptr)
+    if(cdot3oamloopbacktable_ != nullptr)
     {
-        children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable;
+        children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable_;
     }
 
-    if(cdot3oampeertable != nullptr)
+    if(cdot3oampeertable_ != nullptr)
     {
-        children["cdot3OamPeerTable"] = cdot3oampeertable;
+        children["cdot3OamPeerTable"] = cdot3oampeertable_;
     }
 
-    if(cdot3oamstatstable != nullptr)
+    if(cdot3oamstatstable_ != nullptr)
     {
-        children["cdot3OamStatsTable"] = cdot3oamstatstable;
+        children["cdot3OamStatsTable"] = cdot3oamstatstable_;
     }
 
-    if(cdot3oamtable != nullptr)
+    if(cdot3oamtable_ != nullptr)
     {
-        children["cdot3OamTable"] = cdot3oamtable;
+        children["cdot3OamTable"] = cdot3oamtable_;
     }
 
     return children;
@@ -215,9 +215,9 @@ CiscoDot3OamMib::Cdot3Oamtable::~Cdot3Oamtable()
 
 bool CiscoDot3OamMib::Cdot3Oamtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamentry_.size(); index++)
     {
-        if(cdot3oamentry[index]->has_data())
+        if(cdot3oamentry_[index]->has_data())
             return true;
     }
     return false;
@@ -225,9 +225,9 @@ bool CiscoDot3OamMib::Cdot3Oamtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamentry_.size(); index++)
     {
-        if(cdot3oamentry[index]->has_operation())
+        if(cdot3oamentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -267,7 +267,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
 {
     if(child_yang_name == "cdot3OamEntry")
     {
-        for(auto const & c : cdot3oamentry)
+        for(auto const & c : cdot3oamentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -277,7 +277,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry>();
         c->parent = this;
-        cdot3oamentry.push_back(c);
+        cdot3oamentry_.push_back(c);
         return c;
     }
 
@@ -287,7 +287,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamentry)
+    for (auto const & c : cdot3oamentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -430,9 +430,9 @@ CiscoDot3OamMib::Cdot3Oampeertable::~Cdot3Oampeertable()
 
 bool CiscoDot3OamMib::Cdot3Oampeertable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oampeerentry_.size(); index++)
     {
-        if(cdot3oampeerentry[index]->has_data())
+        if(cdot3oampeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -440,9 +440,9 @@ bool CiscoDot3OamMib::Cdot3Oampeertable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oampeertable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oampeerentry_.size(); index++)
     {
-        if(cdot3oampeerentry[index]->has_operation())
+        if(cdot3oampeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -482,7 +482,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
 {
     if(child_yang_name == "cdot3OamPeerEntry")
     {
-        for(auto const & c : cdot3oampeerentry)
+        for(auto const & c : cdot3oampeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -492,7 +492,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry>();
         c->parent = this;
-        cdot3oampeerentry.push_back(c);
+        cdot3oampeerentry_.push_back(c);
         return c;
     }
 
@@ -502,7 +502,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oampeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oampeerentry)
+    for (auto const & c : cdot3oampeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -653,9 +653,9 @@ CiscoDot3OamMib::Cdot3Oamloopbacktable::~Cdot3Oamloopbacktable()
 
 bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamloopbackentry_.size(); index++)
     {
-        if(cdot3oamloopbackentry[index]->has_data())
+        if(cdot3oamloopbackentry_[index]->has_data())
             return true;
     }
     return false;
@@ -663,9 +663,9 @@ bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamloopbackentry_.size(); index++)
     {
-        if(cdot3oamloopbackentry[index]->has_operation())
+        if(cdot3oamloopbackentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -705,7 +705,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamLoopbackEntry")
     {
-        for(auto const & c : cdot3oamloopbackentry)
+        for(auto const & c : cdot3oamloopbackentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -715,7 +715,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry>();
         c->parent = this;
-        cdot3oamloopbackentry.push_back(c);
+        cdot3oamloopbackentry_.push_back(c);
         return c;
     }
 
@@ -725,7 +725,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamloopbackentry)
+    for (auto const & c : cdot3oamloopbackentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -836,9 +836,9 @@ CiscoDot3OamMib::Cdot3Oamstatstable::~Cdot3Oamstatstable()
 
 bool CiscoDot3OamMib::Cdot3Oamstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamstatsentry_.size(); index++)
     {
-        if(cdot3oamstatsentry[index]->has_data())
+        if(cdot3oamstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -846,9 +846,9 @@ bool CiscoDot3OamMib::Cdot3Oamstatstable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamstatsentry_.size(); index++)
     {
-        if(cdot3oamstatsentry[index]->has_operation())
+        if(cdot3oamstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -888,7 +888,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
 {
     if(child_yang_name == "cdot3OamStatsEntry")
     {
-        for(auto const & c : cdot3oamstatsentry)
+        for(auto const & c : cdot3oamstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -898,7 +898,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry>();
         c->parent = this;
-        cdot3oamstatsentry.push_back(c);
+        cdot3oamstatsentry_.push_back(c);
         return c;
     }
 
@@ -908,7 +908,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamstatsentry)
+    for (auto const & c : cdot3oamstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1139,9 +1139,9 @@ CiscoDot3OamMib::Cdot3Oameventconfigtable::~Cdot3Oameventconfigtable()
 
 bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventconfigentry_.size(); index++)
     {
-        if(cdot3oameventconfigentry[index]->has_data())
+        if(cdot3oameventconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1149,9 +1149,9 @@ bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventconfigentry_.size(); index++)
     {
-        if(cdot3oameventconfigentry[index]->has_operation())
+        if(cdot3oameventconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1191,7 +1191,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
 {
     if(child_yang_name == "cdot3OamEventConfigEntry")
     {
-        for(auto const & c : cdot3oameventconfigentry)
+        for(auto const & c : cdot3oameventconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1201,7 +1201,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry>();
         c->parent = this;
-        cdot3oameventconfigentry.push_back(c);
+        cdot3oameventconfigentry_.push_back(c);
         return c;
     }
 
@@ -1211,7 +1211,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oameventconfigentry)
+    for (auto const & c : cdot3oameventconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1434,9 +1434,9 @@ CiscoDot3OamMib::Cdot3Oameventlogtable::~Cdot3Oameventlogtable()
 
 bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventlogentry_.size(); index++)
     {
-        if(cdot3oameventlogentry[index]->has_data())
+        if(cdot3oameventlogentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1444,9 +1444,9 @@ bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventlogentry_.size(); index++)
     {
-        if(cdot3oameventlogentry[index]->has_operation())
+        if(cdot3oameventlogentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1486,7 +1486,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamEventLogEntry")
     {
-        for(auto const & c : cdot3oameventlogentry)
+        for(auto const & c : cdot3oameventlogentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1496,7 +1496,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry>();
         c->parent = this;
-        cdot3oameventlogentry.push_back(c);
+        cdot3oameventlogentry_.push_back(c);
         return c;
     }
 
@@ -1506,7 +1506,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oameventlogentry)
+    for (auto const & c : cdot3oameventlogentry_)
     {
         children[c->get_segment_path()] = c;
     }

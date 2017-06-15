@@ -11,24 +11,24 @@ namespace CISCO_IP_LOCAL_POOL_MIB {
 
 CiscoIpLocalPoolMib::CiscoIpLocalPoolMib()
     :
-    ciplocalpoolalloctable(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolalloctable>())
-	,ciplocalpoolconfig(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfig>())
-	,ciplocalpoolconfigtable(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfigtable>())
-	,ciplocalpoolgroupcontainstable(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable>())
-	,ciplocalpoolgrouptable(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgrouptable>())
-	,ciplocalpoolstatstable(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolstatstable>())
+    ciplocalpoolalloctable_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolalloctable>())
+	,ciplocalpoolconfig_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfig>())
+	,ciplocalpoolconfigtable_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfigtable>())
+	,ciplocalpoolgroupcontainstable_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable>())
+	,ciplocalpoolgrouptable_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgrouptable>())
+	,ciplocalpoolstatstable_(std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolstatstable>())
 {
-    ciplocalpoolalloctable->parent = this;
+    ciplocalpoolalloctable_->parent = this;
 
-    ciplocalpoolconfig->parent = this;
+    ciplocalpoolconfig_->parent = this;
 
-    ciplocalpoolconfigtable->parent = this;
+    ciplocalpoolconfigtable_->parent = this;
 
-    ciplocalpoolgroupcontainstable->parent = this;
+    ciplocalpoolgroupcontainstable_->parent = this;
 
-    ciplocalpoolgrouptable->parent = this;
+    ciplocalpoolgrouptable_->parent = this;
 
-    ciplocalpoolstatstable->parent = this;
+    ciplocalpoolstatstable_->parent = this;
 
     yang_name = "CISCO-IP-LOCAL-POOL-MIB"; yang_parent_name = "CISCO-IP-LOCAL-POOL-MIB";
 }
@@ -39,23 +39,23 @@ CiscoIpLocalPoolMib::~CiscoIpLocalPoolMib()
 
 bool CiscoIpLocalPoolMib::has_data() const
 {
-    return (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_data())
-	|| (ciplocalpoolconfig !=  nullptr && ciplocalpoolconfig->has_data())
-	|| (ciplocalpoolconfigtable !=  nullptr && ciplocalpoolconfigtable->has_data())
-	|| (ciplocalpoolgroupcontainstable !=  nullptr && ciplocalpoolgroupcontainstable->has_data())
-	|| (ciplocalpoolgrouptable !=  nullptr && ciplocalpoolgrouptable->has_data())
-	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_data());
+    return (ciplocalpoolalloctable_ !=  nullptr && ciplocalpoolalloctable_->has_data())
+	|| (ciplocalpoolconfig_ !=  nullptr && ciplocalpoolconfig_->has_data())
+	|| (ciplocalpoolconfigtable_ !=  nullptr && ciplocalpoolconfigtable_->has_data())
+	|| (ciplocalpoolgroupcontainstable_ !=  nullptr && ciplocalpoolgroupcontainstable_->has_data())
+	|| (ciplocalpoolgrouptable_ !=  nullptr && ciplocalpoolgrouptable_->has_data())
+	|| (ciplocalpoolstatstable_ !=  nullptr && ciplocalpoolstatstable_->has_data());
 }
 
 bool CiscoIpLocalPoolMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_operation())
-	|| (ciplocalpoolconfig !=  nullptr && ciplocalpoolconfig->has_operation())
-	|| (ciplocalpoolconfigtable !=  nullptr && ciplocalpoolconfigtable->has_operation())
-	|| (ciplocalpoolgroupcontainstable !=  nullptr && ciplocalpoolgroupcontainstable->has_operation())
-	|| (ciplocalpoolgrouptable !=  nullptr && ciplocalpoolgrouptable->has_operation())
-	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_operation());
+	|| (ciplocalpoolalloctable_ !=  nullptr && ciplocalpoolalloctable_->has_operation())
+	|| (ciplocalpoolconfig_ !=  nullptr && ciplocalpoolconfig_->has_operation())
+	|| (ciplocalpoolconfigtable_ !=  nullptr && ciplocalpoolconfigtable_->has_operation())
+	|| (ciplocalpoolgroupcontainstable_ !=  nullptr && ciplocalpoolgroupcontainstable_->has_operation())
+	|| (ciplocalpoolgrouptable_ !=  nullptr && ciplocalpoolgrouptable_->has_operation())
+	|| (ciplocalpoolstatstable_ !=  nullptr && ciplocalpoolstatstable_->has_operation());
 }
 
 std::string CiscoIpLocalPoolMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::get_child_by_name(const std::string
 {
     if(child_yang_name == "cIpLocalPoolAllocTable")
     {
-        if(ciplocalpoolalloctable == nullptr)
+        if(ciplocalpoolalloctable_ == nullptr)
         {
-            ciplocalpoolalloctable = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolalloctable>();
+            ciplocalpoolalloctable_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolalloctable>();
         }
-        return ciplocalpoolalloctable;
+        return ciplocalpoolalloctable_;
     }
 
     if(child_yang_name == "cIpLocalPoolConfig")
     {
-        if(ciplocalpoolconfig == nullptr)
+        if(ciplocalpoolconfig_ == nullptr)
         {
-            ciplocalpoolconfig = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfig>();
+            ciplocalpoolconfig_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfig>();
         }
-        return ciplocalpoolconfig;
+        return ciplocalpoolconfig_;
     }
 
     if(child_yang_name == "cIpLocalPoolConfigTable")
     {
-        if(ciplocalpoolconfigtable == nullptr)
+        if(ciplocalpoolconfigtable_ == nullptr)
         {
-            ciplocalpoolconfigtable = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfigtable>();
+            ciplocalpoolconfigtable_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfigtable>();
         }
-        return ciplocalpoolconfigtable;
+        return ciplocalpoolconfigtable_;
     }
 
     if(child_yang_name == "cIpLocalPoolGroupContainsTable")
     {
-        if(ciplocalpoolgroupcontainstable == nullptr)
+        if(ciplocalpoolgroupcontainstable_ == nullptr)
         {
-            ciplocalpoolgroupcontainstable = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable>();
+            ciplocalpoolgroupcontainstable_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable>();
         }
-        return ciplocalpoolgroupcontainstable;
+        return ciplocalpoolgroupcontainstable_;
     }
 
     if(child_yang_name == "cIpLocalPoolGroupTable")
     {
-        if(ciplocalpoolgrouptable == nullptr)
+        if(ciplocalpoolgrouptable_ == nullptr)
         {
-            ciplocalpoolgrouptable = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgrouptable>();
+            ciplocalpoolgrouptable_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgrouptable>();
         }
-        return ciplocalpoolgrouptable;
+        return ciplocalpoolgrouptable_;
     }
 
     if(child_yang_name == "cIpLocalPoolStatsTable")
     {
-        if(ciplocalpoolstatstable == nullptr)
+        if(ciplocalpoolstatstable_ == nullptr)
         {
-            ciplocalpoolstatstable = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolstatstable>();
+            ciplocalpoolstatstable_ = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolstatstable>();
         }
-        return ciplocalpoolstatstable;
+        return ciplocalpoolstatstable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciplocalpoolalloctable != nullptr)
+    if(ciplocalpoolalloctable_ != nullptr)
     {
-        children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable;
+        children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable_;
     }
 
-    if(ciplocalpoolconfig != nullptr)
+    if(ciplocalpoolconfig_ != nullptr)
     {
-        children["cIpLocalPoolConfig"] = ciplocalpoolconfig;
+        children["cIpLocalPoolConfig"] = ciplocalpoolconfig_;
     }
 
-    if(ciplocalpoolconfigtable != nullptr)
+    if(ciplocalpoolconfigtable_ != nullptr)
     {
-        children["cIpLocalPoolConfigTable"] = ciplocalpoolconfigtable;
+        children["cIpLocalPoolConfigTable"] = ciplocalpoolconfigtable_;
     }
 
-    if(ciplocalpoolgroupcontainstable != nullptr)
+    if(ciplocalpoolgroupcontainstable_ != nullptr)
     {
-        children["cIpLocalPoolGroupContainsTable"] = ciplocalpoolgroupcontainstable;
+        children["cIpLocalPoolGroupContainsTable"] = ciplocalpoolgroupcontainstable_;
     }
 
-    if(ciplocalpoolgrouptable != nullptr)
+    if(ciplocalpoolgrouptable_ != nullptr)
     {
-        children["cIpLocalPoolGroupTable"] = ciplocalpoolgrouptable;
+        children["cIpLocalPoolGroupTable"] = ciplocalpoolgrouptable_;
     }
 
-    if(ciplocalpoolstatstable != nullptr)
+    if(ciplocalpoolstatstable_ != nullptr)
     {
-        children["cIpLocalPoolStatsTable"] = ciplocalpoolstatstable;
+        children["cIpLocalPoolStatsTable"] = ciplocalpoolstatstable_;
     }
 
     return children;
@@ -287,9 +287,9 @@ CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::~Ciplocalpoolconfigtable()
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<ciplocalpoolconfigentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolconfigentry_.size(); index++)
     {
-        if(ciplocalpoolconfigentry[index]->has_data())
+        if(ciplocalpoolconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -297,9 +297,9 @@ bool CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::has_data() const
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciplocalpoolconfigentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolconfigentry_.size(); index++)
     {
-        if(ciplocalpoolconfigentry[index]->has_operation())
+        if(ciplocalpoolconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -339,7 +339,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::get_child_
 {
     if(child_yang_name == "cIpLocalPoolConfigEntry")
     {
-        for(auto const & c : ciplocalpoolconfigentry)
+        for(auto const & c : ciplocalpoolconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -349,7 +349,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::get_child_
         }
         auto c = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry>();
         c->parent = this;
-        ciplocalpoolconfigentry.push_back(c);
+        ciplocalpoolconfigentry_.push_back(c);
         return c;
     }
 
@@ -359,7 +359,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolconfigentry)
+    for (auto const & c : ciplocalpoolconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -518,9 +518,9 @@ CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::~Ciplocalpoolgroupcontainst
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::has_data() const
 {
-    for (std::size_t index=0; index<ciplocalpoolgroupcontainsentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolgroupcontainsentry_.size(); index++)
     {
-        if(ciplocalpoolgroupcontainsentry[index]->has_data())
+        if(ciplocalpoolgroupcontainsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -528,9 +528,9 @@ bool CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::has_data() const
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::has_operation() const
 {
-    for (std::size_t index=0; index<ciplocalpoolgroupcontainsentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolgroupcontainsentry_.size(); index++)
     {
-        if(ciplocalpoolgroupcontainsentry[index]->has_operation())
+        if(ciplocalpoolgroupcontainsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -570,7 +570,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::get
 {
     if(child_yang_name == "cIpLocalPoolGroupContainsEntry")
     {
-        for(auto const & c : ciplocalpoolgroupcontainsentry)
+        for(auto const & c : ciplocalpoolgroupcontainsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -580,7 +580,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::get
         }
         auto c = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry>();
         c->parent = this;
-        ciplocalpoolgroupcontainsentry.push_back(c);
+        ciplocalpoolgroupcontainsentry_.push_back(c);
         return c;
     }
 
@@ -590,7 +590,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolgroupcontainsentry)
+    for (auto const & c : ciplocalpoolgroupcontainsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -693,9 +693,9 @@ CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::~Ciplocalpoolgrouptable()
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::has_data() const
 {
-    for (std::size_t index=0; index<ciplocalpoolgroupentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolgroupentry_.size(); index++)
     {
-        if(ciplocalpoolgroupentry[index]->has_data())
+        if(ciplocalpoolgroupentry_[index]->has_data())
             return true;
     }
     return false;
@@ -703,9 +703,9 @@ bool CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::has_data() const
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::has_operation() const
 {
-    for (std::size_t index=0; index<ciplocalpoolgroupentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolgroupentry_.size(); index++)
     {
-        if(ciplocalpoolgroupentry[index]->has_operation())
+        if(ciplocalpoolgroupentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -745,7 +745,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolGroupEntry")
     {
-        for(auto const & c : ciplocalpoolgroupentry)
+        for(auto const & c : ciplocalpoolgroupentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -755,7 +755,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::get_child_b
         }
         auto c = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry>();
         c->parent = this;
-        ciplocalpoolgroupentry.push_back(c);
+        ciplocalpoolgroupentry_.push_back(c);
         return c;
     }
 
@@ -765,7 +765,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolgroupentry)
+    for (auto const & c : ciplocalpoolgroupentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -876,9 +876,9 @@ CiscoIpLocalPoolMib::Ciplocalpoolstatstable::~Ciplocalpoolstatstable()
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolstatstable::has_data() const
 {
-    for (std::size_t index=0; index<ciplocalpoolstatsentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolstatsentry_.size(); index++)
     {
-        if(ciplocalpoolstatsentry[index]->has_data())
+        if(ciplocalpoolstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -886,9 +886,9 @@ bool CiscoIpLocalPoolMib::Ciplocalpoolstatstable::has_data() const
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<ciplocalpoolstatsentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolstatsentry_.size(); index++)
     {
-        if(ciplocalpoolstatsentry[index]->has_operation())
+        if(ciplocalpoolstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -928,7 +928,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolstatstable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolStatsEntry")
     {
-        for(auto const & c : ciplocalpoolstatsentry)
+        for(auto const & c : ciplocalpoolstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -938,7 +938,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolstatstable::get_child_b
         }
         auto c = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolstatstable::Ciplocalpoolstatsentry>();
         c->parent = this;
-        ciplocalpoolstatsentry.push_back(c);
+        ciplocalpoolstatsentry_.push_back(c);
         return c;
     }
 
@@ -948,7 +948,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolstatstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::Ciplocalpoolstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolstatsentry)
+    for (auto const & c : ciplocalpoolstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1099,9 +1099,9 @@ CiscoIpLocalPoolMib::Ciplocalpoolalloctable::~Ciplocalpoolalloctable()
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolalloctable::has_data() const
 {
-    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolallocentry_.size(); index++)
     {
-        if(ciplocalpoolallocentry[index]->has_data())
+        if(ciplocalpoolallocentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1109,9 +1109,9 @@ bool CiscoIpLocalPoolMib::Ciplocalpoolalloctable::has_data() const
 
 bool CiscoIpLocalPoolMib::Ciplocalpoolalloctable::has_operation() const
 {
-    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
+    for (std::size_t index=0; index<ciplocalpoolallocentry_.size(); index++)
     {
-        if(ciplocalpoolallocentry[index]->has_operation())
+        if(ciplocalpoolallocentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1151,7 +1151,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolalloctable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolAllocEntry")
     {
-        for(auto const & c : ciplocalpoolallocentry)
+        for(auto const & c : ciplocalpoolallocentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1161,7 +1161,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolalloctable::get_child_b
         }
         auto c = std::make_shared<CiscoIpLocalPoolMib::Ciplocalpoolalloctable::Ciplocalpoolallocentry>();
         c->parent = this;
-        ciplocalpoolallocentry.push_back(c);
+        ciplocalpoolallocentry_.push_back(c);
         return c;
     }
 
@@ -1171,7 +1171,7 @@ std::shared_ptr<Entity> CiscoIpLocalPoolMib::Ciplocalpoolalloctable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpLocalPoolMib::Ciplocalpoolalloctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolallocentry)
+    for (auto const & c : ciplocalpoolallocentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,15 +11,15 @@ namespace CISCO_RADIUS_EXT_MIB {
 
 CiscoRadiusExtMib::CiscoRadiusExtMib()
     :
-    creclientaccounting(std::make_shared<CiscoRadiusExtMib::Creclientaccounting>())
-	,creclientauthentication(std::make_shared<CiscoRadiusExtMib::Creclientauthentication>())
-	,creclientglobal(std::make_shared<CiscoRadiusExtMib::Creclientglobal>())
+    creclientaccounting_(std::make_shared<CiscoRadiusExtMib::Creclientaccounting>())
+	,creclientauthentication_(std::make_shared<CiscoRadiusExtMib::Creclientauthentication>())
+	,creclientglobal_(std::make_shared<CiscoRadiusExtMib::Creclientglobal>())
 {
-    creclientaccounting->parent = this;
+    creclientaccounting_->parent = this;
 
-    creclientauthentication->parent = this;
+    creclientauthentication_->parent = this;
 
-    creclientglobal->parent = this;
+    creclientglobal_->parent = this;
 
     yang_name = "CISCO-RADIUS-EXT-MIB"; yang_parent_name = "CISCO-RADIUS-EXT-MIB";
 }
@@ -30,17 +30,17 @@ CiscoRadiusExtMib::~CiscoRadiusExtMib()
 
 bool CiscoRadiusExtMib::has_data() const
 {
-    return (creclientaccounting !=  nullptr && creclientaccounting->has_data())
-	|| (creclientauthentication !=  nullptr && creclientauthentication->has_data())
-	|| (creclientglobal !=  nullptr && creclientglobal->has_data());
+    return (creclientaccounting_ !=  nullptr && creclientaccounting_->has_data())
+	|| (creclientauthentication_ !=  nullptr && creclientauthentication_->has_data())
+	|| (creclientglobal_ !=  nullptr && creclientglobal_->has_data());
 }
 
 bool CiscoRadiusExtMib::has_operation() const
 {
     return is_set(operation)
-	|| (creclientaccounting !=  nullptr && creclientaccounting->has_operation())
-	|| (creclientauthentication !=  nullptr && creclientauthentication->has_operation())
-	|| (creclientglobal !=  nullptr && creclientglobal->has_operation());
+	|| (creclientaccounting_ !=  nullptr && creclientaccounting_->has_operation())
+	|| (creclientauthentication_ !=  nullptr && creclientauthentication_->has_operation())
+	|| (creclientglobal_ !=  nullptr && creclientglobal_->has_operation());
 }
 
 std::string CiscoRadiusExtMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoRadiusExtMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "creClientAccounting")
     {
-        if(creclientaccounting == nullptr)
+        if(creclientaccounting_ == nullptr)
         {
-            creclientaccounting = std::make_shared<CiscoRadiusExtMib::Creclientaccounting>();
+            creclientaccounting_ = std::make_shared<CiscoRadiusExtMib::Creclientaccounting>();
         }
-        return creclientaccounting;
+        return creclientaccounting_;
     }
 
     if(child_yang_name == "creClientAuthentication")
     {
-        if(creclientauthentication == nullptr)
+        if(creclientauthentication_ == nullptr)
         {
-            creclientauthentication = std::make_shared<CiscoRadiusExtMib::Creclientauthentication>();
+            creclientauthentication_ = std::make_shared<CiscoRadiusExtMib::Creclientauthentication>();
         }
-        return creclientauthentication;
+        return creclientauthentication_;
     }
 
     if(child_yang_name == "creClientGlobal")
     {
-        if(creclientglobal == nullptr)
+        if(creclientglobal_ == nullptr)
         {
-            creclientglobal = std::make_shared<CiscoRadiusExtMib::Creclientglobal>();
+            creclientglobal_ = std::make_shared<CiscoRadiusExtMib::Creclientglobal>();
         }
-        return creclientglobal;
+        return creclientglobal_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoRadiusExtMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoRadiusExtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(creclientaccounting != nullptr)
+    if(creclientaccounting_ != nullptr)
     {
-        children["creClientAccounting"] = creclientaccounting;
+        children["creClientAccounting"] = creclientaccounting_;
     }
 
-    if(creclientauthentication != nullptr)
+    if(creclientauthentication_ != nullptr)
     {
-        children["creClientAuthentication"] = creclientauthentication;
+        children["creClientAuthentication"] = creclientauthentication_;
     }
 
-    if(creclientglobal != nullptr)
+    if(creclientglobal_ != nullptr)
     {
-        children["creClientGlobal"] = creclientglobal;
+        children["creClientGlobal"] = creclientglobal_;
     }
 
     return children;

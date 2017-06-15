@@ -30,7 +30,7 @@ class VirtualServices : public Entity
 
         class VirtualService; //type: VirtualServices::VirtualService
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService> > virtual_service;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService> > virtual_service_;
         
 }; // VirtualServices
 
@@ -58,13 +58,13 @@ class VirtualServices::VirtualService : public Entity
         class NetworkInterfaces; //type: VirtualServices::VirtualService::NetworkInterfaces
         class GuestRoutes; //type: VirtualServices::VirtualService::GuestRoutes
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices> attached_devices;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details> details;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes> guest_routes;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces> network_interfaces;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils> network_utils;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils> storage_utils;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization> utilization;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices> attached_devices_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details> details_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes> guest_routes_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces> network_interfaces_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils> network_utils_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils> storage_utils_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization> utilization_;
         
 }; // VirtualServices::VirtualService
 
@@ -91,10 +91,10 @@ class VirtualServices::VirtualService::Details : public Entity
         class ResourceReservation; //type: VirtualServices::VirtualService::Details::ResourceReservation
         class ResourceAdmission; //type: VirtualServices::VirtualService::Details::ResourceAdmission
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus> detailed_guest_status;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation> package_information;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceAdmission> resource_admission;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceReservation> resource_reservation;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus> detailed_guest_status_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation> package_information_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceAdmission> resource_admission_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::ResourceReservation> resource_reservation_;
         
 }; // VirtualServices::VirtualService::Details
 
@@ -119,9 +119,9 @@ class VirtualServices::VirtualService::Details::PackageInformation : public Enti
         class Signing; //type: VirtualServices::VirtualService::Details::PackageInformation::Signing
         class Licensing; //type: VirtualServices::VirtualService::Details::PackageInformation::Licensing
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Application> application;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Licensing> licensing;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Signing> signing;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Application> application_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Licensing> licensing_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::PackageInformation::Signing> signing_;
         
 }; // VirtualServices::VirtualService::Details::PackageInformation
 
@@ -203,7 +203,7 @@ class VirtualServices::VirtualService::Details::DetailedGuestStatus : public Ent
 
         class Processes; //type: VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes> processes;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes> processes_;
         
 }; // VirtualServices::VirtualService::Details::DetailedGuestStatus
 
@@ -293,8 +293,8 @@ class VirtualServices::VirtualService::Utilization : public Entity
         class CpuUtil; //type: VirtualServices::VirtualService::Utilization::CpuUtil
         class MemoryUtil; //type: VirtualServices::VirtualService::Utilization::MemoryUtil
 
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::CpuUtil> cpu_util;
-        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::MemoryUtil> memory_util;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::CpuUtil> cpu_util_;
+        std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization::MemoryUtil> memory_util_;
         
 }; // VirtualServices::VirtualService::Utilization
 
@@ -356,7 +356,7 @@ class VirtualServices::VirtualService::NetworkUtils : public Entity
 
         class NetworkUtil; //type: VirtualServices::VirtualService::NetworkUtils::NetworkUtil
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils::NetworkUtil> > network_util;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils::NetworkUtil> > network_util_;
         
 }; // VirtualServices::VirtualService::NetworkUtils
 
@@ -403,7 +403,7 @@ class VirtualServices::VirtualService::StorageUtils : public Entity
 
         class StorageUtil; //type: VirtualServices::VirtualService::StorageUtils::StorageUtil
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils::StorageUtil> > storage_util;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils::StorageUtil> > storage_util_;
         
 }; // VirtualServices::VirtualService::StorageUtils
 
@@ -453,7 +453,7 @@ class VirtualServices::VirtualService::AttachedDevices : public Entity
 
         class AttachedDevice; //type: VirtualServices::VirtualService::AttachedDevices::AttachedDevice
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices::AttachedDevice> > attached_device;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices::AttachedDevice> > attached_device_;
         
 }; // VirtualServices::VirtualService::AttachedDevices
 
@@ -495,7 +495,7 @@ class VirtualServices::VirtualService::NetworkInterfaces : public Entity
 
         class NetworkInterface; //type: VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface> > network_interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface> > network_interface_;
         
 }; // VirtualServices::VirtualService::NetworkInterfaces
 
@@ -536,7 +536,7 @@ class VirtualServices::VirtualService::GuestRoutes : public Entity
 
         class GuestRoute; //type: VirtualServices::VirtualService::GuestRoutes::GuestRoute
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes::GuestRoute> > guest_route;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes::GuestRoute> > guest_route_;
         
 }; // VirtualServices::VirtualService::GuestRoutes
 

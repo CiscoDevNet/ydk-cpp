@@ -39,7 +39,7 @@ class DiffservInterfacesState : public Entity
 
         class DiffservInterface; //type: DiffservInterfacesState::DiffservInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface> > diffserv_interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface> > diffserv_interface_;
         
 }; // DiffservInterfacesState
 
@@ -61,7 +61,7 @@ class DiffservInterfacesState::DiffservInterface : public Entity
         YLeaf name; //type: string
         class DiffservTargetEntry; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry> > diffserv_target_entry;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry> > diffserv_target_entry_;
         
 }; // DiffservInterfacesState::DiffservInterface
 
@@ -84,7 +84,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry : public E
         YLeaf policy_name; //type: string
         class DiffservTargetClassifierStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics_;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
@@ -109,9 +109,9 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         class MeterStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics
         class QueuingStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics;
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics;
+        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics_;
+        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics_;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
@@ -182,7 +182,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         YLeaf drop_bytes; //type: uint64
         class WredStats; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats
 
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats> wred_stats;
+        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats> wred_stats_;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 

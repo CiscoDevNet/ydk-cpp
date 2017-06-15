@@ -40,16 +40,16 @@ class AtmMib : public Entity
         class Atmvccrossconnecttable; //type: AtmMib::Atmvccrossconnecttable
         class Aal5Vcctable; //type: AtmMib::Aal5Vcctable
 
-        std::shared_ptr<ATM_MIB::AtmMib::Aal5Vcctable> aal5vcctable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceconftable> atminterfaceconftable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceds3Plcptable> atminterfaceds3plcptable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atminterfacetctable> atminterfacetctable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmmibobjects> atmmibobjects;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmtrafficdescrparamtable> atmtrafficdescrparamtable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmvccrossconnecttable> atmvccrossconnecttable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmvcltable> atmvcltable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmvpcrossconnecttable> atmvpcrossconnecttable;
-        std::shared_ptr<ATM_MIB::AtmMib::Atmvpltable> atmvpltable;
+        std::shared_ptr<ATM_MIB::AtmMib::Aal5Vcctable> aal5vcctable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceconftable> atminterfaceconftable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceds3Plcptable> atminterfaceds3plcptable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atminterfacetctable> atminterfacetctable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmmibobjects> atmmibobjects_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmtrafficdescrparamtable> atmtrafficdescrparamtable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmvccrossconnecttable> atmvccrossconnecttable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmvcltable> atmvcltable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmvpcrossconnecttable> atmvpcrossconnecttable_;
+        std::shared_ptr<ATM_MIB::AtmMib::Atmvpltable> atmvpltable_;
         
 }; // AtmMib
 
@@ -91,7 +91,7 @@ class AtmMib::Atminterfaceconftable : public Entity
 
         class Atminterfaceconfentry; //type: AtmMib::Atminterfaceconftable::Atminterfaceconfentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceconftable::Atminterfaceconfentry> > atminterfaceconfentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceconftable::Atminterfaceconfentry> > atminterfaceconfentry_;
         
 }; // AtmMib::Atminterfaceconftable
 
@@ -179,7 +179,7 @@ class AtmMib::Atminterfaceds3Plcptable : public Entity
 
         class Atminterfaceds3Plcpentry; //type: AtmMib::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry> > atminterfaceds3plcpentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry> > atminterfaceds3plcpentry_;
         
 }; // AtmMib::Atminterfaceds3Plcptable
 
@@ -224,7 +224,7 @@ class AtmMib::Atminterfacetctable : public Entity
 
         class Atminterfacetcentry; //type: AtmMib::Atminterfacetctable::Atminterfacetcentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfacetctable::Atminterfacetcentry> > atminterfacetcentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atminterfacetctable::Atminterfacetcentry> > atminterfacetcentry_;
         
 }; // AtmMib::Atminterfacetctable
 
@@ -268,7 +268,7 @@ class AtmMib::Atmtrafficdescrparamtable : public Entity
 
         class Atmtrafficdescrparamentry; //type: AtmMib::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry> > atmtrafficdescrparamentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry> > atmtrafficdescrparamentry_;
         
 }; // AtmMib::Atmtrafficdescrparamtable
 
@@ -318,7 +318,7 @@ class AtmMib::Atmvpltable : public Entity
 
         class Atmvplentry; //type: AtmMib::Atmvpltable::Atmvplentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvpltable::Atmvplentry> > atmvplentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvpltable::Atmvplentry> > atmvplentry_;
         
 }; // AtmMib::Atmvpltable
 
@@ -369,7 +369,7 @@ class AtmMib::Atmvcltable : public Entity
 
         class Atmvclentry; //type: AtmMib::Atmvcltable::Atmvclentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvcltable::Atmvclentry> > atmvclentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvcltable::Atmvclentry> > atmvclentry_;
         
 }; // AtmMib::Atmvcltable
 
@@ -453,7 +453,7 @@ class AtmMib::Atmvpcrossconnecttable : public Entity
 
         class Atmvpcrossconnectentry; //type: AtmMib::Atmvpcrossconnecttable::Atmvpcrossconnectentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvpcrossconnecttable::Atmvpcrossconnectentry> > atmvpcrossconnectentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvpcrossconnecttable::Atmvpcrossconnectentry> > atmvpcrossconnectentry_;
         
 }; // AtmMib::Atmvpcrossconnecttable
 
@@ -503,7 +503,7 @@ class AtmMib::Atmvccrossconnecttable : public Entity
 
         class Atmvccrossconnectentry; //type: AtmMib::Atmvccrossconnecttable::Atmvccrossconnectentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvccrossconnecttable::Atmvccrossconnectentry> > atmvccrossconnectentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Atmvccrossconnecttable::Atmvccrossconnectentry> > atmvccrossconnectentry_;
         
 }; // AtmMib::Atmvccrossconnecttable
 
@@ -555,7 +555,7 @@ class AtmMib::Aal5Vcctable : public Entity
 
         class Aal5Vccentry; //type: AtmMib::Aal5Vcctable::Aal5Vccentry
 
-        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Aal5Vcctable::Aal5Vccentry> > aal5vccentry;
+        std::vector<std::shared_ptr<ATM_MIB::AtmMib::Aal5Vcctable::Aal5Vccentry> > aal5vccentry_;
         
 }; // AtmMib::Aal5Vcctable
 

@@ -11,42 +11,42 @@ namespace MPLS_LDP_STD_MIB {
 
 MplsLdpStdMib::MplsLdpStdMib()
     :
-    mplsfecobjects(std::make_shared<MplsLdpStdMib::Mplsfecobjects>())
-	,mplsfectable(std::make_shared<MplsLdpStdMib::Mplsfectable>())
-	,mplsinsegmentldplsptable(std::make_shared<MplsLdpStdMib::Mplsinsegmentldplsptable>())
-	,mplsldpentityobjects(std::make_shared<MplsLdpStdMib::Mplsldpentityobjects>())
-	,mplsldpentitytable(std::make_shared<MplsLdpStdMib::Mplsldpentitytable>())
-	,mplsldphelloadjacencytable(std::make_shared<MplsLdpStdMib::Mplsldphelloadjacencytable>())
-	,mplsldplspfectable(std::make_shared<MplsLdpStdMib::Mplsldplspfectable>())
-	,mplsldplsrobjects(std::make_shared<MplsLdpStdMib::Mplsldplsrobjects>())
-	,mplsldppeertable(std::make_shared<MplsLdpStdMib::Mplsldppeertable>())
-	,mplsldpsessionobjects(std::make_shared<MplsLdpStdMib::Mplsldpsessionobjects>())
-	,mplsldpsessionpeeraddrtable(std::make_shared<MplsLdpStdMib::Mplsldpsessionpeeraddrtable>())
-	,mplsoutsegmentldplsptable(std::make_shared<MplsLdpStdMib::Mplsoutsegmentldplsptable>())
+    mplsfecobjects_(std::make_shared<MplsLdpStdMib::Mplsfecobjects>())
+	,mplsfectable_(std::make_shared<MplsLdpStdMib::Mplsfectable>())
+	,mplsinsegmentldplsptable_(std::make_shared<MplsLdpStdMib::Mplsinsegmentldplsptable>())
+	,mplsldpentityobjects_(std::make_shared<MplsLdpStdMib::Mplsldpentityobjects>())
+	,mplsldpentitytable_(std::make_shared<MplsLdpStdMib::Mplsldpentitytable>())
+	,mplsldphelloadjacencytable_(std::make_shared<MplsLdpStdMib::Mplsldphelloadjacencytable>())
+	,mplsldplspfectable_(std::make_shared<MplsLdpStdMib::Mplsldplspfectable>())
+	,mplsldplsrobjects_(std::make_shared<MplsLdpStdMib::Mplsldplsrobjects>())
+	,mplsldppeertable_(std::make_shared<MplsLdpStdMib::Mplsldppeertable>())
+	,mplsldpsessionobjects_(std::make_shared<MplsLdpStdMib::Mplsldpsessionobjects>())
+	,mplsldpsessionpeeraddrtable_(std::make_shared<MplsLdpStdMib::Mplsldpsessionpeeraddrtable>())
+	,mplsoutsegmentldplsptable_(std::make_shared<MplsLdpStdMib::Mplsoutsegmentldplsptable>())
 {
-    mplsfecobjects->parent = this;
+    mplsfecobjects_->parent = this;
 
-    mplsfectable->parent = this;
+    mplsfectable_->parent = this;
 
-    mplsinsegmentldplsptable->parent = this;
+    mplsinsegmentldplsptable_->parent = this;
 
-    mplsldpentityobjects->parent = this;
+    mplsldpentityobjects_->parent = this;
 
-    mplsldpentitytable->parent = this;
+    mplsldpentitytable_->parent = this;
 
-    mplsldphelloadjacencytable->parent = this;
+    mplsldphelloadjacencytable_->parent = this;
 
-    mplsldplspfectable->parent = this;
+    mplsldplspfectable_->parent = this;
 
-    mplsldplsrobjects->parent = this;
+    mplsldplsrobjects_->parent = this;
 
-    mplsldppeertable->parent = this;
+    mplsldppeertable_->parent = this;
 
-    mplsldpsessionobjects->parent = this;
+    mplsldpsessionobjects_->parent = this;
 
-    mplsldpsessionpeeraddrtable->parent = this;
+    mplsldpsessionpeeraddrtable_->parent = this;
 
-    mplsoutsegmentldplsptable->parent = this;
+    mplsoutsegmentldplsptable_->parent = this;
 
     yang_name = "MPLS-LDP-STD-MIB"; yang_parent_name = "MPLS-LDP-STD-MIB";
 }
@@ -57,35 +57,35 @@ MplsLdpStdMib::~MplsLdpStdMib()
 
 bool MplsLdpStdMib::has_data() const
 {
-    return (mplsfecobjects !=  nullptr && mplsfecobjects->has_data())
-	|| (mplsfectable !=  nullptr && mplsfectable->has_data())
-	|| (mplsinsegmentldplsptable !=  nullptr && mplsinsegmentldplsptable->has_data())
-	|| (mplsldpentityobjects !=  nullptr && mplsldpentityobjects->has_data())
-	|| (mplsldpentitytable !=  nullptr && mplsldpentitytable->has_data())
-	|| (mplsldphelloadjacencytable !=  nullptr && mplsldphelloadjacencytable->has_data())
-	|| (mplsldplspfectable !=  nullptr && mplsldplspfectable->has_data())
-	|| (mplsldplsrobjects !=  nullptr && mplsldplsrobjects->has_data())
-	|| (mplsldppeertable !=  nullptr && mplsldppeertable->has_data())
-	|| (mplsldpsessionobjects !=  nullptr && mplsldpsessionobjects->has_data())
-	|| (mplsldpsessionpeeraddrtable !=  nullptr && mplsldpsessionpeeraddrtable->has_data())
-	|| (mplsoutsegmentldplsptable !=  nullptr && mplsoutsegmentldplsptable->has_data());
+    return (mplsfecobjects_ !=  nullptr && mplsfecobjects_->has_data())
+	|| (mplsfectable_ !=  nullptr && mplsfectable_->has_data())
+	|| (mplsinsegmentldplsptable_ !=  nullptr && mplsinsegmentldplsptable_->has_data())
+	|| (mplsldpentityobjects_ !=  nullptr && mplsldpentityobjects_->has_data())
+	|| (mplsldpentitytable_ !=  nullptr && mplsldpentitytable_->has_data())
+	|| (mplsldphelloadjacencytable_ !=  nullptr && mplsldphelloadjacencytable_->has_data())
+	|| (mplsldplspfectable_ !=  nullptr && mplsldplspfectable_->has_data())
+	|| (mplsldplsrobjects_ !=  nullptr && mplsldplsrobjects_->has_data())
+	|| (mplsldppeertable_ !=  nullptr && mplsldppeertable_->has_data())
+	|| (mplsldpsessionobjects_ !=  nullptr && mplsldpsessionobjects_->has_data())
+	|| (mplsldpsessionpeeraddrtable_ !=  nullptr && mplsldpsessionpeeraddrtable_->has_data())
+	|| (mplsoutsegmentldplsptable_ !=  nullptr && mplsoutsegmentldplsptable_->has_data());
 }
 
 bool MplsLdpStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (mplsfecobjects !=  nullptr && mplsfecobjects->has_operation())
-	|| (mplsfectable !=  nullptr && mplsfectable->has_operation())
-	|| (mplsinsegmentldplsptable !=  nullptr && mplsinsegmentldplsptable->has_operation())
-	|| (mplsldpentityobjects !=  nullptr && mplsldpentityobjects->has_operation())
-	|| (mplsldpentitytable !=  nullptr && mplsldpentitytable->has_operation())
-	|| (mplsldphelloadjacencytable !=  nullptr && mplsldphelloadjacencytable->has_operation())
-	|| (mplsldplspfectable !=  nullptr && mplsldplspfectable->has_operation())
-	|| (mplsldplsrobjects !=  nullptr && mplsldplsrobjects->has_operation())
-	|| (mplsldppeertable !=  nullptr && mplsldppeertable->has_operation())
-	|| (mplsldpsessionobjects !=  nullptr && mplsldpsessionobjects->has_operation())
-	|| (mplsldpsessionpeeraddrtable !=  nullptr && mplsldpsessionpeeraddrtable->has_operation())
-	|| (mplsoutsegmentldplsptable !=  nullptr && mplsoutsegmentldplsptable->has_operation());
+	|| (mplsfecobjects_ !=  nullptr && mplsfecobjects_->has_operation())
+	|| (mplsfectable_ !=  nullptr && mplsfectable_->has_operation())
+	|| (mplsinsegmentldplsptable_ !=  nullptr && mplsinsegmentldplsptable_->has_operation())
+	|| (mplsldpentityobjects_ !=  nullptr && mplsldpentityobjects_->has_operation())
+	|| (mplsldpentitytable_ !=  nullptr && mplsldpentitytable_->has_operation())
+	|| (mplsldphelloadjacencytable_ !=  nullptr && mplsldphelloadjacencytable_->has_operation())
+	|| (mplsldplspfectable_ !=  nullptr && mplsldplspfectable_->has_operation())
+	|| (mplsldplsrobjects_ !=  nullptr && mplsldplsrobjects_->has_operation())
+	|| (mplsldppeertable_ !=  nullptr && mplsldppeertable_->has_operation())
+	|| (mplsldpsessionobjects_ !=  nullptr && mplsldpsessionobjects_->has_operation())
+	|| (mplsldpsessionpeeraddrtable_ !=  nullptr && mplsldpsessionpeeraddrtable_->has_operation())
+	|| (mplsoutsegmentldplsptable_ !=  nullptr && mplsoutsegmentldplsptable_->has_operation());
 }
 
 std::string MplsLdpStdMib::get_segment_path() const
@@ -119,110 +119,110 @@ std::shared_ptr<Entity> MplsLdpStdMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "mplsFecObjects")
     {
-        if(mplsfecobjects == nullptr)
+        if(mplsfecobjects_ == nullptr)
         {
-            mplsfecobjects = std::make_shared<MplsLdpStdMib::Mplsfecobjects>();
+            mplsfecobjects_ = std::make_shared<MplsLdpStdMib::Mplsfecobjects>();
         }
-        return mplsfecobjects;
+        return mplsfecobjects_;
     }
 
     if(child_yang_name == "mplsFecTable")
     {
-        if(mplsfectable == nullptr)
+        if(mplsfectable_ == nullptr)
         {
-            mplsfectable = std::make_shared<MplsLdpStdMib::Mplsfectable>();
+            mplsfectable_ = std::make_shared<MplsLdpStdMib::Mplsfectable>();
         }
-        return mplsfectable;
+        return mplsfectable_;
     }
 
     if(child_yang_name == "mplsInSegmentLdpLspTable")
     {
-        if(mplsinsegmentldplsptable == nullptr)
+        if(mplsinsegmentldplsptable_ == nullptr)
         {
-            mplsinsegmentldplsptable = std::make_shared<MplsLdpStdMib::Mplsinsegmentldplsptable>();
+            mplsinsegmentldplsptable_ = std::make_shared<MplsLdpStdMib::Mplsinsegmentldplsptable>();
         }
-        return mplsinsegmentldplsptable;
+        return mplsinsegmentldplsptable_;
     }
 
     if(child_yang_name == "mplsLdpEntityObjects")
     {
-        if(mplsldpentityobjects == nullptr)
+        if(mplsldpentityobjects_ == nullptr)
         {
-            mplsldpentityobjects = std::make_shared<MplsLdpStdMib::Mplsldpentityobjects>();
+            mplsldpentityobjects_ = std::make_shared<MplsLdpStdMib::Mplsldpentityobjects>();
         }
-        return mplsldpentityobjects;
+        return mplsldpentityobjects_;
     }
 
     if(child_yang_name == "mplsLdpEntityTable")
     {
-        if(mplsldpentitytable == nullptr)
+        if(mplsldpentitytable_ == nullptr)
         {
-            mplsldpentitytable = std::make_shared<MplsLdpStdMib::Mplsldpentitytable>();
+            mplsldpentitytable_ = std::make_shared<MplsLdpStdMib::Mplsldpentitytable>();
         }
-        return mplsldpentitytable;
+        return mplsldpentitytable_;
     }
 
     if(child_yang_name == "mplsLdpHelloAdjacencyTable")
     {
-        if(mplsldphelloadjacencytable == nullptr)
+        if(mplsldphelloadjacencytable_ == nullptr)
         {
-            mplsldphelloadjacencytable = std::make_shared<MplsLdpStdMib::Mplsldphelloadjacencytable>();
+            mplsldphelloadjacencytable_ = std::make_shared<MplsLdpStdMib::Mplsldphelloadjacencytable>();
         }
-        return mplsldphelloadjacencytable;
+        return mplsldphelloadjacencytable_;
     }
 
     if(child_yang_name == "mplsLdpLspFecTable")
     {
-        if(mplsldplspfectable == nullptr)
+        if(mplsldplspfectable_ == nullptr)
         {
-            mplsldplspfectable = std::make_shared<MplsLdpStdMib::Mplsldplspfectable>();
+            mplsldplspfectable_ = std::make_shared<MplsLdpStdMib::Mplsldplspfectable>();
         }
-        return mplsldplspfectable;
+        return mplsldplspfectable_;
     }
 
     if(child_yang_name == "mplsLdpLsrObjects")
     {
-        if(mplsldplsrobjects == nullptr)
+        if(mplsldplsrobjects_ == nullptr)
         {
-            mplsldplsrobjects = std::make_shared<MplsLdpStdMib::Mplsldplsrobjects>();
+            mplsldplsrobjects_ = std::make_shared<MplsLdpStdMib::Mplsldplsrobjects>();
         }
-        return mplsldplsrobjects;
+        return mplsldplsrobjects_;
     }
 
     if(child_yang_name == "mplsLdpPeerTable")
     {
-        if(mplsldppeertable == nullptr)
+        if(mplsldppeertable_ == nullptr)
         {
-            mplsldppeertable = std::make_shared<MplsLdpStdMib::Mplsldppeertable>();
+            mplsldppeertable_ = std::make_shared<MplsLdpStdMib::Mplsldppeertable>();
         }
-        return mplsldppeertable;
+        return mplsldppeertable_;
     }
 
     if(child_yang_name == "mplsLdpSessionObjects")
     {
-        if(mplsldpsessionobjects == nullptr)
+        if(mplsldpsessionobjects_ == nullptr)
         {
-            mplsldpsessionobjects = std::make_shared<MplsLdpStdMib::Mplsldpsessionobjects>();
+            mplsldpsessionobjects_ = std::make_shared<MplsLdpStdMib::Mplsldpsessionobjects>();
         }
-        return mplsldpsessionobjects;
+        return mplsldpsessionobjects_;
     }
 
     if(child_yang_name == "mplsLdpSessionPeerAddrTable")
     {
-        if(mplsldpsessionpeeraddrtable == nullptr)
+        if(mplsldpsessionpeeraddrtable_ == nullptr)
         {
-            mplsldpsessionpeeraddrtable = std::make_shared<MplsLdpStdMib::Mplsldpsessionpeeraddrtable>();
+            mplsldpsessionpeeraddrtable_ = std::make_shared<MplsLdpStdMib::Mplsldpsessionpeeraddrtable>();
         }
-        return mplsldpsessionpeeraddrtable;
+        return mplsldpsessionpeeraddrtable_;
     }
 
     if(child_yang_name == "mplsOutSegmentLdpLspTable")
     {
-        if(mplsoutsegmentldplsptable == nullptr)
+        if(mplsoutsegmentldplsptable_ == nullptr)
         {
-            mplsoutsegmentldplsptable = std::make_shared<MplsLdpStdMib::Mplsoutsegmentldplsptable>();
+            mplsoutsegmentldplsptable_ = std::make_shared<MplsLdpStdMib::Mplsoutsegmentldplsptable>();
         }
-        return mplsoutsegmentldplsptable;
+        return mplsoutsegmentldplsptable_;
     }
 
     return nullptr;
@@ -231,64 +231,64 @@ std::shared_ptr<Entity> MplsLdpStdMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsfecobjects != nullptr)
+    if(mplsfecobjects_ != nullptr)
     {
-        children["mplsFecObjects"] = mplsfecobjects;
+        children["mplsFecObjects"] = mplsfecobjects_;
     }
 
-    if(mplsfectable != nullptr)
+    if(mplsfectable_ != nullptr)
     {
-        children["mplsFecTable"] = mplsfectable;
+        children["mplsFecTable"] = mplsfectable_;
     }
 
-    if(mplsinsegmentldplsptable != nullptr)
+    if(mplsinsegmentldplsptable_ != nullptr)
     {
-        children["mplsInSegmentLdpLspTable"] = mplsinsegmentldplsptable;
+        children["mplsInSegmentLdpLspTable"] = mplsinsegmentldplsptable_;
     }
 
-    if(mplsldpentityobjects != nullptr)
+    if(mplsldpentityobjects_ != nullptr)
     {
-        children["mplsLdpEntityObjects"] = mplsldpentityobjects;
+        children["mplsLdpEntityObjects"] = mplsldpentityobjects_;
     }
 
-    if(mplsldpentitytable != nullptr)
+    if(mplsldpentitytable_ != nullptr)
     {
-        children["mplsLdpEntityTable"] = mplsldpentitytable;
+        children["mplsLdpEntityTable"] = mplsldpentitytable_;
     }
 
-    if(mplsldphelloadjacencytable != nullptr)
+    if(mplsldphelloadjacencytable_ != nullptr)
     {
-        children["mplsLdpHelloAdjacencyTable"] = mplsldphelloadjacencytable;
+        children["mplsLdpHelloAdjacencyTable"] = mplsldphelloadjacencytable_;
     }
 
-    if(mplsldplspfectable != nullptr)
+    if(mplsldplspfectable_ != nullptr)
     {
-        children["mplsLdpLspFecTable"] = mplsldplspfectable;
+        children["mplsLdpLspFecTable"] = mplsldplspfectable_;
     }
 
-    if(mplsldplsrobjects != nullptr)
+    if(mplsldplsrobjects_ != nullptr)
     {
-        children["mplsLdpLsrObjects"] = mplsldplsrobjects;
+        children["mplsLdpLsrObjects"] = mplsldplsrobjects_;
     }
 
-    if(mplsldppeertable != nullptr)
+    if(mplsldppeertable_ != nullptr)
     {
-        children["mplsLdpPeerTable"] = mplsldppeertable;
+        children["mplsLdpPeerTable"] = mplsldppeertable_;
     }
 
-    if(mplsldpsessionobjects != nullptr)
+    if(mplsldpsessionobjects_ != nullptr)
     {
-        children["mplsLdpSessionObjects"] = mplsldpsessionobjects;
+        children["mplsLdpSessionObjects"] = mplsldpsessionobjects_;
     }
 
-    if(mplsldpsessionpeeraddrtable != nullptr)
+    if(mplsldpsessionpeeraddrtable_ != nullptr)
     {
-        children["mplsLdpSessionPeerAddrTable"] = mplsldpsessionpeeraddrtable;
+        children["mplsLdpSessionPeerAddrTable"] = mplsldpsessionpeeraddrtable_;
     }
 
-    if(mplsoutsegmentldplsptable != nullptr)
+    if(mplsoutsegmentldplsptable_ != nullptr)
     {
-        children["mplsOutSegmentLdpLspTable"] = mplsoutsegmentldplsptable;
+        children["mplsOutSegmentLdpLspTable"] = mplsoutsegmentldplsptable_;
     }
 
     return children;
@@ -649,9 +649,9 @@ MplsLdpStdMib::Mplsldpentitytable::~Mplsldpentitytable()
 
 bool MplsLdpStdMib::Mplsldpentitytable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldpentityentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpentityentry_.size(); index++)
     {
-        if(mplsldpentityentry[index]->has_data())
+        if(mplsldpentityentry_[index]->has_data())
             return true;
     }
     return false;
@@ -659,9 +659,9 @@ bool MplsLdpStdMib::Mplsldpentitytable::has_data() const
 
 bool MplsLdpStdMib::Mplsldpentitytable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldpentityentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpentityentry_.size(); index++)
     {
-        if(mplsldpentityentry[index]->has_operation())
+        if(mplsldpentityentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -701,7 +701,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpentitytable::get_child_by_name(con
 {
     if(child_yang_name == "mplsLdpEntityEntry")
     {
-        for(auto const & c : mplsldpentityentry)
+        for(auto const & c : mplsldpentityentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -711,7 +711,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpentitytable::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry>();
         c->parent = this;
-        mplsldpentityentry.push_back(c);
+        mplsldpentityentry_.push_back(c);
         return c;
     }
 
@@ -721,7 +721,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpentitytable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsldpentitytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldpentityentry)
+    for (auto const & c : mplsldpentityentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1096,9 +1096,9 @@ MplsLdpStdMib::Mplsldppeertable::~Mplsldppeertable()
 
 bool MplsLdpStdMib::Mplsldppeertable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldppeerentry.size(); index++)
+    for (std::size_t index=0; index<mplsldppeerentry_.size(); index++)
     {
-        if(mplsldppeerentry[index]->has_data())
+        if(mplsldppeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1106,9 +1106,9 @@ bool MplsLdpStdMib::Mplsldppeertable::has_data() const
 
 bool MplsLdpStdMib::Mplsldppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldppeerentry.size(); index++)
+    for (std::size_t index=0; index<mplsldppeerentry_.size(); index++)
     {
-        if(mplsldppeerentry[index]->has_operation())
+        if(mplsldppeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1148,7 +1148,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldppeertable::get_child_by_name(const
 {
     if(child_yang_name == "mplsLdpPeerEntry")
     {
-        for(auto const & c : mplsldppeerentry)
+        for(auto const & c : mplsldppeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1158,7 +1158,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldppeertable::get_child_by_name(const
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsldppeertable::Mplsldppeerentry>();
         c->parent = this;
-        mplsldppeerentry.push_back(c);
+        mplsldppeerentry_.push_back(c);
         return c;
     }
 
@@ -1168,7 +1168,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldppeertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsldppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldppeerentry)
+    for (auto const & c : mplsldppeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1391,9 +1391,9 @@ MplsLdpStdMib::Mplsldphelloadjacencytable::~Mplsldphelloadjacencytable()
 
 bool MplsLdpStdMib::Mplsldphelloadjacencytable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldphelloadjacencyentry.size(); index++)
+    for (std::size_t index=0; index<mplsldphelloadjacencyentry_.size(); index++)
     {
-        if(mplsldphelloadjacencyentry[index]->has_data())
+        if(mplsldphelloadjacencyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1401,9 +1401,9 @@ bool MplsLdpStdMib::Mplsldphelloadjacencytable::has_data() const
 
 bool MplsLdpStdMib::Mplsldphelloadjacencytable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldphelloadjacencyentry.size(); index++)
+    for (std::size_t index=0; index<mplsldphelloadjacencyentry_.size(); index++)
     {
-        if(mplsldphelloadjacencyentry[index]->has_operation())
+        if(mplsldphelloadjacencyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1443,7 +1443,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldphelloadjacencytable::get_child_by_
 {
     if(child_yang_name == "mplsLdpHelloAdjacencyEntry")
     {
-        for(auto const & c : mplsldphelloadjacencyentry)
+        for(auto const & c : mplsldphelloadjacencyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1453,7 +1453,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldphelloadjacencytable::get_child_by_
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry>();
         c->parent = this;
-        mplsldphelloadjacencyentry.push_back(c);
+        mplsldphelloadjacencyentry_.push_back(c);
         return c;
     }
 
@@ -1463,7 +1463,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldphelloadjacencytable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsldphelloadjacencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldphelloadjacencyentry)
+    for (auto const & c : mplsldphelloadjacencyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1606,9 +1606,9 @@ MplsLdpStdMib::Mplsinsegmentldplsptable::~Mplsinsegmentldplsptable()
 
 bool MplsLdpStdMib::Mplsinsegmentldplsptable::has_data() const
 {
-    for (std::size_t index=0; index<mplsinsegmentldplspentry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmentldplspentry_.size(); index++)
     {
-        if(mplsinsegmentldplspentry[index]->has_data())
+        if(mplsinsegmentldplspentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1616,9 +1616,9 @@ bool MplsLdpStdMib::Mplsinsegmentldplsptable::has_data() const
 
 bool MplsLdpStdMib::Mplsinsegmentldplsptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsinsegmentldplspentry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmentldplspentry_.size(); index++)
     {
-        if(mplsinsegmentldplspentry[index]->has_operation())
+        if(mplsinsegmentldplspentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1658,7 +1658,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsinsegmentldplsptable::get_child_by_na
 {
     if(child_yang_name == "mplsInSegmentLdpLspEntry")
     {
-        for(auto const & c : mplsinsegmentldplspentry)
+        for(auto const & c : mplsinsegmentldplspentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1668,7 +1668,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsinsegmentldplsptable::get_child_by_na
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry>();
         c->parent = this;
-        mplsinsegmentldplspentry.push_back(c);
+        mplsinsegmentldplspentry_.push_back(c);
         return c;
     }
 
@@ -1678,7 +1678,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsinsegmentldplsptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsinsegmentldplsptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinsegmentldplspentry)
+    for (auto const & c : mplsinsegmentldplspentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1813,9 +1813,9 @@ MplsLdpStdMib::Mplsoutsegmentldplsptable::~Mplsoutsegmentldplsptable()
 
 bool MplsLdpStdMib::Mplsoutsegmentldplsptable::has_data() const
 {
-    for (std::size_t index=0; index<mplsoutsegmentldplspentry.size(); index++)
+    for (std::size_t index=0; index<mplsoutsegmentldplspentry_.size(); index++)
     {
-        if(mplsoutsegmentldplspentry[index]->has_data())
+        if(mplsoutsegmentldplspentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1823,9 +1823,9 @@ bool MplsLdpStdMib::Mplsoutsegmentldplsptable::has_data() const
 
 bool MplsLdpStdMib::Mplsoutsegmentldplsptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsoutsegmentldplspentry.size(); index++)
+    for (std::size_t index=0; index<mplsoutsegmentldplspentry_.size(); index++)
     {
-        if(mplsoutsegmentldplspentry[index]->has_operation())
+        if(mplsoutsegmentldplspentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1865,7 +1865,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsoutsegmentldplsptable::get_child_by_n
 {
     if(child_yang_name == "mplsOutSegmentLdpLspEntry")
     {
-        for(auto const & c : mplsoutsegmentldplspentry)
+        for(auto const & c : mplsoutsegmentldplspentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1875,7 +1875,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsoutsegmentldplsptable::get_child_by_n
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry>();
         c->parent = this;
-        mplsoutsegmentldplspentry.push_back(c);
+        mplsoutsegmentldplspentry_.push_back(c);
         return c;
     }
 
@@ -1885,7 +1885,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsoutsegmentldplsptable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsoutsegmentldplsptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsoutsegmentldplspentry)
+    for (auto const & c : mplsoutsegmentldplspentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2020,9 +2020,9 @@ MplsLdpStdMib::Mplsfectable::~Mplsfectable()
 
 bool MplsLdpStdMib::Mplsfectable::has_data() const
 {
-    for (std::size_t index=0; index<mplsfecentry.size(); index++)
+    for (std::size_t index=0; index<mplsfecentry_.size(); index++)
     {
-        if(mplsfecentry[index]->has_data())
+        if(mplsfecentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2030,9 +2030,9 @@ bool MplsLdpStdMib::Mplsfectable::has_data() const
 
 bool MplsLdpStdMib::Mplsfectable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsfecentry.size(); index++)
+    for (std::size_t index=0; index<mplsfecentry_.size(); index++)
     {
-        if(mplsfecentry[index]->has_operation())
+        if(mplsfecentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2072,7 +2072,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsfectable::get_child_by_name(const std
 {
     if(child_yang_name == "mplsFecEntry")
     {
-        for(auto const & c : mplsfecentry)
+        for(auto const & c : mplsfecentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2082,7 +2082,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsfectable::get_child_by_name(const std
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsfectable::Mplsfecentry>();
         c->parent = this;
-        mplsfecentry.push_back(c);
+        mplsfecentry_.push_back(c);
         return c;
     }
 
@@ -2092,7 +2092,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsfectable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsfectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsfecentry)
+    for (auto const & c : mplsfecentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2235,9 +2235,9 @@ MplsLdpStdMib::Mplsldplspfectable::~Mplsldplspfectable()
 
 bool MplsLdpStdMib::Mplsldplspfectable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldplspfecentry.size(); index++)
+    for (std::size_t index=0; index<mplsldplspfecentry_.size(); index++)
     {
-        if(mplsldplspfecentry[index]->has_data())
+        if(mplsldplspfecentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2245,9 +2245,9 @@ bool MplsLdpStdMib::Mplsldplspfectable::has_data() const
 
 bool MplsLdpStdMib::Mplsldplspfectable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldplspfecentry.size(); index++)
+    for (std::size_t index=0; index<mplsldplspfecentry_.size(); index++)
     {
-        if(mplsldplspfecentry[index]->has_operation())
+        if(mplsldplspfecentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2287,7 +2287,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldplspfectable::get_child_by_name(con
 {
     if(child_yang_name == "mplsLdpLspFecEntry")
     {
-        for(auto const & c : mplsldplspfecentry)
+        for(auto const & c : mplsldplspfecentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2297,7 +2297,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldplspfectable::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsldplspfectable::Mplsldplspfecentry>();
         c->parent = this;
-        mplsldplspfecentry.push_back(c);
+        mplsldplspfecentry_.push_back(c);
         return c;
     }
 
@@ -2307,7 +2307,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldplspfectable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsldplspfectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldplspfecentry)
+    for (auto const & c : mplsldplspfecentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2458,9 +2458,9 @@ MplsLdpStdMib::Mplsldpsessionpeeraddrtable::~Mplsldpsessionpeeraddrtable()
 
 bool MplsLdpStdMib::Mplsldpsessionpeeraddrtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldpsessionpeeraddrentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpsessionpeeraddrentry_.size(); index++)
     {
-        if(mplsldpsessionpeeraddrentry[index]->has_data())
+        if(mplsldpsessionpeeraddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2468,9 +2468,9 @@ bool MplsLdpStdMib::Mplsldpsessionpeeraddrtable::has_data() const
 
 bool MplsLdpStdMib::Mplsldpsessionpeeraddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldpsessionpeeraddrentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpsessionpeeraddrentry_.size(); index++)
     {
-        if(mplsldpsessionpeeraddrentry[index]->has_operation())
+        if(mplsldpsessionpeeraddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2510,7 +2510,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpsessionpeeraddrtable::get_child_by
 {
     if(child_yang_name == "mplsLdpSessionPeerAddrEntry")
     {
-        for(auto const & c : mplsldpsessionpeeraddrentry)
+        for(auto const & c : mplsldpsessionpeeraddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2520,7 +2520,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpsessionpeeraddrtable::get_child_by
         }
         auto c = std::make_shared<MplsLdpStdMib::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry>();
         c->parent = this;
-        mplsldpsessionpeeraddrentry.push_back(c);
+        mplsldpsessionpeeraddrentry_.push_back(c);
         return c;
     }
 
@@ -2530,7 +2530,7 @@ std::shared_ptr<Entity> MplsLdpStdMib::Mplsldpsessionpeeraddrtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpStdMib::Mplsldpsessionpeeraddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldpsessionpeeraddrentry)
+    for (auto const & c : mplsldpsessionpeeraddrentry_)
     {
         children[c->get_segment_path()] = c;
     }

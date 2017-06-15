@@ -30,7 +30,7 @@ class LldpEntries : public Entity
 
         class LldpEntry; //type: LldpEntries::LldpEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry> > lldp_entry;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry> > lldp_entry_;
         
 }; // LldpEntries
 
@@ -55,7 +55,7 @@ class LldpEntries::LldpEntry : public Entity
         YLeaf ttl; //type: uint32
         class Capabilities; //type: LldpEntries::LldpEntry::Capabilities
 
-        std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry::Capabilities> capabilities;
+        std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry::Capabilities> capabilities_;
         
 }; // LldpEntries::LldpEntry
 

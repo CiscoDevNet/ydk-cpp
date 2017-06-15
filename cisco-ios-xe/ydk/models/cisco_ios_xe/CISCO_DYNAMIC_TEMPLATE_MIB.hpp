@@ -40,16 +40,16 @@ class CiscoDynamicTemplateMib : public Entity
         class Cdtethernettemplatetable; //type: CiscoDynamicTemplateMib::Cdtethernettemplatetable
         class Cdtsrvtemplatetable; //type: CiscoDynamicTemplateMib::Cdtsrvtemplatetable
 
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable> cdtethernettemplatetable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable> cdtiftemplatetable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable> cdtppppeeripaddrpooltable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable> cdtppptemplatetable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable> cdtsrvtemplatetable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable> cdttemplateassociationtable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable> cdttemplatecommontable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable> cdttemplatetable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable> cdttemplatetargettable;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable> cdttemplateusagetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable> cdtethernettemplatetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable> cdtiftemplatetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable> cdtppppeeripaddrpooltable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable> cdtppptemplatetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable> cdtsrvtemplatetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable> cdttemplateassociationtable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable> cdttemplatecommontable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable> cdttemplatetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable> cdttemplatetargettable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable> cdttemplateusagetable_;
         
 }; // CiscoDynamicTemplateMib
 
@@ -70,7 +70,7 @@ class CiscoDynamicTemplateMib::Cdttemplatetable : public Entity
 
         class Cdttemplateentry; //type: CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry> > cdttemplateentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry> > cdttemplateentry_;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatetable
 
@@ -116,7 +116,7 @@ class CiscoDynamicTemplateMib::Cdttemplatetargettable : public Entity
 
         class Cdttemplatetargetentry; //type: CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry> > cdttemplatetargetentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry> > cdttemplatetargetentry_;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatetargettable
 
@@ -159,7 +159,7 @@ class CiscoDynamicTemplateMib::Cdttemplateassociationtable : public Entity
 
         class Cdttemplateassociationentry; //type: CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry> > cdttemplateassociationentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry> > cdttemplateassociationentry_;
         
 }; // CiscoDynamicTemplateMib::Cdttemplateassociationtable
 
@@ -203,7 +203,7 @@ class CiscoDynamicTemplateMib::Cdttemplateusagetable : public Entity
 
         class Cdttemplateusageentry; //type: CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry> > cdttemplateusageentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry> > cdttemplateusageentry_;
         
 }; // CiscoDynamicTemplateMib::Cdttemplateusagetable
 
@@ -246,7 +246,7 @@ class CiscoDynamicTemplateMib::Cdttemplatecommontable : public Entity
 
         class Cdttemplatecommonentry; //type: CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry> > cdttemplatecommonentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry> > cdttemplatecommonentry_;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatecommontable
 
@@ -302,7 +302,7 @@ class CiscoDynamicTemplateMib::Cdtiftemplatetable : public Entity
 
         class Cdtiftemplateentry; //type: CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry> > cdtiftemplateentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry> > cdtiftemplateentry_;
         
 }; // CiscoDynamicTemplateMib::Cdtiftemplatetable
 
@@ -375,7 +375,7 @@ class CiscoDynamicTemplateMib::Cdtppptemplatetable : public Entity
 
         class Cdtppptemplateentry; //type: CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry> > cdtppptemplateentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry> > cdtppptemplateentry_;
         
 }; // CiscoDynamicTemplateMib::Cdtppptemplatetable
 
@@ -460,7 +460,7 @@ class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable : public Entity
 
         class Cdtppppeeripaddrpoolentry; //type: CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry> > cdtppppeeripaddrpoolentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry> > cdtppppeeripaddrpoolentry_;
         
 }; // CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable
 
@@ -505,7 +505,7 @@ class CiscoDynamicTemplateMib::Cdtethernettemplatetable : public Entity
 
         class Cdtethernettemplateentry; //type: CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry> > cdtethernettemplateentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry> > cdtethernettemplateentry_;
         
 }; // CiscoDynamicTemplateMib::Cdtethernettemplatetable
 
@@ -551,7 +551,7 @@ class CiscoDynamicTemplateMib::Cdtsrvtemplatetable : public Entity
 
         class Cdtsrvtemplateentry; //type: CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry> > cdtsrvtemplateentry;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry> > cdtsrvtemplateentry_;
         
 }; // CiscoDynamicTemplateMib::Cdtsrvtemplatetable
 

@@ -50,26 +50,26 @@ class CiscoCefMib : public Entity
         class Cefstatsprefixlentable; //type: CiscoCefMib::Cefstatsprefixlentable
         class Cefswitchingstatstable; //type: CiscoCefMib::Cefswitchingstatstable
 
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjsummarytable> cefadjsummarytable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjtable> cefadjtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcc> cefcc;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefccglobaltable> cefccglobaltable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcctypetable> cefcctypetable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcfgtable> cefcfgtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffeselectiontable> ceffeselectiontable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffib> ceffib;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffibsummarytable> ceffibsummarytable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinconsistencyrecordtable> cefinconsistencyrecordtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinttable> cefinttable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceflmprefixtable> ceflmprefixtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefnotifcntl> cefnotifcntl;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpathtable> cefpathtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeerfibtable> cefpeerfibtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeertable> cefpeertable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefprefixtable> cefprefixtable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefresourcetable> cefresourcetable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefstatsprefixlentable> cefstatsprefixlentable;
-        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefswitchingstatstable> cefswitchingstatstable;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjsummarytable> cefadjsummarytable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjtable> cefadjtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcc> cefcc_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefccglobaltable> cefccglobaltable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcctypetable> cefcctypetable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcfgtable> cefcfgtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffeselectiontable> ceffeselectiontable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffib> ceffib_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffibsummarytable> ceffibsummarytable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinconsistencyrecordtable> cefinconsistencyrecordtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinttable> cefinttable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceflmprefixtable> ceflmprefixtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefnotifcntl> cefnotifcntl_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpathtable> cefpathtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeerfibtable> cefpeerfibtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeertable> cefpeertable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefprefixtable> cefprefixtable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefresourcetable> cefresourcetable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefstatsprefixlentable> cefstatsprefixlentable_;
+        std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefswitchingstatstable> cefswitchingstatstable_;
         
 }; // CiscoCefMib
 
@@ -153,7 +153,7 @@ class CiscoCefMib::Ceffibsummarytable : public Entity
 
         class Ceffibsummaryentry; //type: CiscoCefMib::Ceffibsummarytable::Ceffibsummaryentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffibsummarytable::Ceffibsummaryentry> > ceffibsummaryentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffibsummarytable::Ceffibsummaryentry> > ceffibsummaryentry_;
         
 }; // CiscoCefMib::Ceffibsummarytable
 
@@ -196,7 +196,7 @@ class CiscoCefMib::Cefprefixtable : public Entity
 
         class Cefprefixentry; //type: CiscoCefMib::Cefprefixtable::Cefprefixentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefprefixtable::Cefprefixentry> > cefprefixentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefprefixtable::Cefprefixentry> > cefprefixentry_;
         
 }; // CiscoCefMib::Cefprefixtable
 
@@ -253,7 +253,7 @@ class CiscoCefMib::Ceflmprefixtable : public Entity
 
         class Ceflmprefixentry; //type: CiscoCefMib::Ceflmprefixtable::Ceflmprefixentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceflmprefixtable::Ceflmprefixentry> > ceflmprefixentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceflmprefixtable::Ceflmprefixentry> > ceflmprefixentry_;
         
 }; // CiscoCefMib::Ceflmprefixtable
 
@@ -300,7 +300,7 @@ class CiscoCefMib::Cefpathtable : public Entity
 
         class Cefpathentry; //type: CiscoCefMib::Cefpathtable::Cefpathentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpathtable::Cefpathentry> > cefpathentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpathtable::Cefpathentry> > cefpathentry_;
         
 }; // CiscoCefMib::Cefpathtable
 
@@ -351,7 +351,7 @@ class CiscoCefMib::Cefadjsummarytable : public Entity
 
         class Cefadjsummaryentry; //type: CiscoCefMib::Cefadjsummarytable::Cefadjsummaryentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjsummarytable::Cefadjsummaryentry> > cefadjsummaryentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjsummarytable::Cefadjsummaryentry> > cefadjsummaryentry_;
         
 }; // CiscoCefMib::Cefadjsummarytable
 
@@ -397,7 +397,7 @@ class CiscoCefMib::Cefadjtable : public Entity
 
         class Cefadjentry; //type: CiscoCefMib::Cefadjtable::Cefadjentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjtable::Cefadjentry> > cefadjentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefadjtable::Cefadjentry> > cefadjentry_;
         
 }; // CiscoCefMib::Cefadjtable
 
@@ -453,7 +453,7 @@ class CiscoCefMib::Ceffeselectiontable : public Entity
 
         class Ceffeselectionentry; //type: CiscoCefMib::Ceffeselectiontable::Ceffeselectionentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffeselectiontable::Ceffeselectionentry> > ceffeselectionentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Ceffeselectiontable::Ceffeselectionentry> > ceffeselectionentry_;
         
 }; // CiscoCefMib::Ceffeselectiontable
 
@@ -505,7 +505,7 @@ class CiscoCefMib::Cefcfgtable : public Entity
 
         class Cefcfgentry; //type: CiscoCefMib::Cefcfgtable::Cefcfgentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcfgtable::Cefcfgentry> > cefcfgentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcfgtable::Cefcfgentry> > cefcfgentry_;
         
 }; // CiscoCefMib::Cefcfgtable
 
@@ -557,7 +557,7 @@ class CiscoCefMib::Cefresourcetable : public Entity
 
         class Cefresourceentry; //type: CiscoCefMib::Cefresourcetable::Cefresourceentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefresourcetable::Cefresourceentry> > cefresourceentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefresourcetable::Cefresourceentry> > cefresourceentry_;
         
 }; // CiscoCefMib::Cefresourcetable
 
@@ -600,7 +600,7 @@ class CiscoCefMib::Cefinttable : public Entity
 
         class Cefintentry; //type: CiscoCefMib::Cefinttable::Cefintentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinttable::Cefintentry> > cefintentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinttable::Cefintentry> > cefintentry_;
         
 }; // CiscoCefMib::Cefinttable
 
@@ -650,7 +650,7 @@ class CiscoCefMib::Cefpeertable : public Entity
 
         class Cefpeerentry; //type: CiscoCefMib::Cefpeertable::Cefpeerentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeertable::Cefpeerentry> > cefpeerentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeertable::Cefpeerentry> > cefpeerentry_;
         
 }; // CiscoCefMib::Cefpeertable
 
@@ -695,7 +695,7 @@ class CiscoCefMib::Cefpeerfibtable : public Entity
 
         class Cefpeerfibentry; //type: CiscoCefMib::Cefpeerfibtable::Cefpeerfibentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeerfibtable::Cefpeerfibentry> > cefpeerfibentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefpeerfibtable::Cefpeerfibentry> > cefpeerfibentry_;
         
 }; // CiscoCefMib::Cefpeerfibtable
 
@@ -741,7 +741,7 @@ class CiscoCefMib::Cefccglobaltable : public Entity
 
         class Cefccglobalentry; //type: CiscoCefMib::Cefccglobaltable::Cefccglobalentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefccglobaltable::Cefccglobalentry> > cefccglobalentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefccglobaltable::Cefccglobalentry> > cefccglobalentry_;
         
 }; // CiscoCefMib::Cefccglobaltable
 
@@ -787,7 +787,7 @@ class CiscoCefMib::Cefcctypetable : public Entity
 
         class Cefcctypeentry; //type: CiscoCefMib::Cefcctypetable::Cefcctypeentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcctypetable::Cefcctypeentry> > cefcctypeentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefcctypetable::Cefcctypeentry> > cefcctypeentry_;
         
 }; // CiscoCefMib::Cefcctypetable
 
@@ -835,7 +835,7 @@ class CiscoCefMib::Cefinconsistencyrecordtable : public Entity
 
         class Cefinconsistencyrecordentry; //type: CiscoCefMib::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry> > cefinconsistencyrecordentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry> > cefinconsistencyrecordentry_;
         
 }; // CiscoCefMib::Cefinconsistencyrecordtable
 
@@ -884,7 +884,7 @@ class CiscoCefMib::Cefstatsprefixlentable : public Entity
 
         class Cefstatsprefixlenentry; //type: CiscoCefMib::Cefstatsprefixlentable::Cefstatsprefixlenentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefstatsprefixlentable::Cefstatsprefixlenentry> > cefstatsprefixlenentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefstatsprefixlentable::Cefstatsprefixlenentry> > cefstatsprefixlenentry_;
         
 }; // CiscoCefMib::Cefstatsprefixlentable
 
@@ -935,7 +935,7 @@ class CiscoCefMib::Cefswitchingstatstable : public Entity
 
         class Cefswitchingstatsentry; //type: CiscoCefMib::Cefswitchingstatstable::Cefswitchingstatsentry
 
-        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefswitchingstatstable::Cefswitchingstatsentry> > cefswitchingstatsentry;
+        std::vector<std::shared_ptr<CISCO_CEF_MIB::CiscoCefMib::Cefswitchingstatstable::Cefswitchingstatsentry> > cefswitchingstatsentry_;
         
 }; // CiscoCefMib::Cefswitchingstatstable
 

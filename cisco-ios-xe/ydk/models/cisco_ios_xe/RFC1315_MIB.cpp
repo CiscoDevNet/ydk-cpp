@@ -11,18 +11,18 @@ namespace RFC1315_MIB {
 
 Rfc1315Mib::Rfc1315Mib()
     :
-    frame_relay_globals(std::make_shared<Rfc1315Mib::FrameRelayGlobals>())
-	,frcircuittable(std::make_shared<Rfc1315Mib::Frcircuittable>())
-	,frdlcmitable(std::make_shared<Rfc1315Mib::Frdlcmitable>())
-	,frerrtable(std::make_shared<Rfc1315Mib::Frerrtable>())
+    frame_relay_globals_(std::make_shared<Rfc1315Mib::FrameRelayGlobals>())
+	,frcircuittable_(std::make_shared<Rfc1315Mib::Frcircuittable>())
+	,frdlcmitable_(std::make_shared<Rfc1315Mib::Frdlcmitable>())
+	,frerrtable_(std::make_shared<Rfc1315Mib::Frerrtable>())
 {
-    frame_relay_globals->parent = this;
+    frame_relay_globals_->parent = this;
 
-    frcircuittable->parent = this;
+    frcircuittable_->parent = this;
 
-    frdlcmitable->parent = this;
+    frdlcmitable_->parent = this;
 
-    frerrtable->parent = this;
+    frerrtable_->parent = this;
 
     yang_name = "RFC1315-MIB"; yang_parent_name = "RFC1315-MIB";
 }
@@ -33,19 +33,19 @@ Rfc1315Mib::~Rfc1315Mib()
 
 bool Rfc1315Mib::has_data() const
 {
-    return (frame_relay_globals !=  nullptr && frame_relay_globals->has_data())
-	|| (frcircuittable !=  nullptr && frcircuittable->has_data())
-	|| (frdlcmitable !=  nullptr && frdlcmitable->has_data())
-	|| (frerrtable !=  nullptr && frerrtable->has_data());
+    return (frame_relay_globals_ !=  nullptr && frame_relay_globals_->has_data())
+	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_data())
+	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_data())
+	|| (frerrtable_ !=  nullptr && frerrtable_->has_data());
 }
 
 bool Rfc1315Mib::has_operation() const
 {
     return is_set(operation)
-	|| (frame_relay_globals !=  nullptr && frame_relay_globals->has_operation())
-	|| (frcircuittable !=  nullptr && frcircuittable->has_operation())
-	|| (frdlcmitable !=  nullptr && frdlcmitable->has_operation())
-	|| (frerrtable !=  nullptr && frerrtable->has_operation());
+	|| (frame_relay_globals_ !=  nullptr && frame_relay_globals_->has_operation())
+	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_operation())
+	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_operation())
+	|| (frerrtable_ !=  nullptr && frerrtable_->has_operation());
 }
 
 std::string Rfc1315Mib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> Rfc1315Mib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "frame-relay-globals")
     {
-        if(frame_relay_globals == nullptr)
+        if(frame_relay_globals_ == nullptr)
         {
-            frame_relay_globals = std::make_shared<Rfc1315Mib::FrameRelayGlobals>();
+            frame_relay_globals_ = std::make_shared<Rfc1315Mib::FrameRelayGlobals>();
         }
-        return frame_relay_globals;
+        return frame_relay_globals_;
     }
 
     if(child_yang_name == "frCircuitTable")
     {
-        if(frcircuittable == nullptr)
+        if(frcircuittable_ == nullptr)
         {
-            frcircuittable = std::make_shared<Rfc1315Mib::Frcircuittable>();
+            frcircuittable_ = std::make_shared<Rfc1315Mib::Frcircuittable>();
         }
-        return frcircuittable;
+        return frcircuittable_;
     }
 
     if(child_yang_name == "frDlcmiTable")
     {
-        if(frdlcmitable == nullptr)
+        if(frdlcmitable_ == nullptr)
         {
-            frdlcmitable = std::make_shared<Rfc1315Mib::Frdlcmitable>();
+            frdlcmitable_ = std::make_shared<Rfc1315Mib::Frdlcmitable>();
         }
-        return frdlcmitable;
+        return frdlcmitable_;
     }
 
     if(child_yang_name == "frErrTable")
     {
-        if(frerrtable == nullptr)
+        if(frerrtable_ == nullptr)
         {
-            frerrtable = std::make_shared<Rfc1315Mib::Frerrtable>();
+            frerrtable_ = std::make_shared<Rfc1315Mib::Frerrtable>();
         }
-        return frerrtable;
+        return frerrtable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> Rfc1315Mib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Rfc1315Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(frame_relay_globals != nullptr)
+    if(frame_relay_globals_ != nullptr)
     {
-        children["frame-relay-globals"] = frame_relay_globals;
+        children["frame-relay-globals"] = frame_relay_globals_;
     }
 
-    if(frcircuittable != nullptr)
+    if(frcircuittable_ != nullptr)
     {
-        children["frCircuitTable"] = frcircuittable;
+        children["frCircuitTable"] = frcircuittable_;
     }
 
-    if(frdlcmitable != nullptr)
+    if(frdlcmitable_ != nullptr)
     {
-        children["frDlcmiTable"] = frdlcmitable;
+        children["frDlcmiTable"] = frdlcmitable_;
     }
 
-    if(frerrtable != nullptr)
+    if(frerrtable_ != nullptr)
     {
-        children["frErrTable"] = frerrtable;
+        children["frErrTable"] = frerrtable_;
     }
 
     return children;
@@ -249,9 +249,9 @@ Rfc1315Mib::Frdlcmitable::~Frdlcmitable()
 
 bool Rfc1315Mib::Frdlcmitable::has_data() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
     {
-        if(frdlcmientry[index]->has_data())
+        if(frdlcmientry_[index]->has_data())
             return true;
     }
     return false;
@@ -259,9 +259,9 @@ bool Rfc1315Mib::Frdlcmitable::has_data() const
 
 bool Rfc1315Mib::Frdlcmitable::has_operation() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
     {
-        if(frdlcmientry[index]->has_operation())
+        if(frdlcmientry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -301,7 +301,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frdlcmitable::get_child_by_name(const std::s
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        for(auto const & c : frdlcmientry)
+        for(auto const & c : frdlcmientry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -311,7 +311,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frdlcmitable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<Rfc1315Mib::Frdlcmitable::Frdlcmientry>();
         c->parent = this;
-        frdlcmientry.push_back(c);
+        frdlcmientry_.push_back(c);
         return c;
     }
 
@@ -321,7 +321,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frdlcmitable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Rfc1315Mib::Frdlcmitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frdlcmientry)
+    for (auto const & c : frdlcmientry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -488,9 +488,9 @@ Rfc1315Mib::Frcircuittable::~Frcircuittable()
 
 bool Rfc1315Mib::Frcircuittable::has_data() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
     {
-        if(frcircuitentry[index]->has_data())
+        if(frcircuitentry_[index]->has_data())
             return true;
     }
     return false;
@@ -498,9 +498,9 @@ bool Rfc1315Mib::Frcircuittable::has_data() const
 
 bool Rfc1315Mib::Frcircuittable::has_operation() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
     {
-        if(frcircuitentry[index]->has_operation())
+        if(frcircuitentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -540,7 +540,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frcircuittable::get_child_by_name(const std:
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        for(auto const & c : frcircuitentry)
+        for(auto const & c : frcircuitentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -550,7 +550,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frcircuittable::get_child_by_name(const std:
         }
         auto c = std::make_shared<Rfc1315Mib::Frcircuittable::Frcircuitentry>();
         c->parent = this;
-        frcircuitentry.push_back(c);
+        frcircuitentry_.push_back(c);
         return c;
     }
 
@@ -560,7 +560,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frcircuittable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Rfc1315Mib::Frcircuittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frcircuitentry)
+    for (auto const & c : frcircuitentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -759,9 +759,9 @@ Rfc1315Mib::Frerrtable::~Frerrtable()
 
 bool Rfc1315Mib::Frerrtable::has_data() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    for (std::size_t index=0; index<frerrentry_.size(); index++)
     {
-        if(frerrentry[index]->has_data())
+        if(frerrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -769,9 +769,9 @@ bool Rfc1315Mib::Frerrtable::has_data() const
 
 bool Rfc1315Mib::Frerrtable::has_operation() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    for (std::size_t index=0; index<frerrentry_.size(); index++)
     {
-        if(frerrentry[index]->has_operation())
+        if(frerrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -811,7 +811,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frerrtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "frErrEntry")
     {
-        for(auto const & c : frerrentry)
+        for(auto const & c : frerrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -821,7 +821,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frerrtable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<Rfc1315Mib::Frerrtable::Frerrentry>();
         c->parent = this;
-        frerrentry.push_back(c);
+        frerrentry_.push_back(c);
         return c;
     }
 
@@ -831,7 +831,7 @@ std::shared_ptr<Entity> Rfc1315Mib::Frerrtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Rfc1315Mib::Frerrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frerrentry)
+    for (auto const & c : frerrentry_)
     {
         children[c->get_segment_path()] = c;
     }

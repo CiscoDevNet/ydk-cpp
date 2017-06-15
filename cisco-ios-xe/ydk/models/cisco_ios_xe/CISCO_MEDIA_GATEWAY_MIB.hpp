@@ -38,14 +38,14 @@ class CiscoMediaGatewayMib : public Entity
         class Cmediagwcallcontrolconfigtable; //type: CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable
         class Cmediagwrscstatstable; //type: CiscoMediaGatewayMib::Cmediagwrscstatstable
 
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable> cmediagwcallcontrolconfigtable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdnsipconfigtable> cmediagwdnsipconfigtable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable> cmediagwdomainnameconfigtable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwipconfigtable> cmediagwipconfigtable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwrscstatstable> cmediagwrscstatstable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwtable> cmediagwtable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwliftable> cmgwliftable;
-        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwsignalprotocoltable> cmgwsignalprotocoltable;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable> cmediagwcallcontrolconfigtable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdnsipconfigtable> cmediagwdnsipconfigtable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable> cmediagwdomainnameconfigtable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwipconfigtable> cmediagwipconfigtable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwrscstatstable> cmediagwrscstatstable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwtable> cmediagwtable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwliftable> cmgwliftable_;
+        std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwsignalprotocoltable> cmgwsignalprotocoltable_;
         
 }; // CiscoMediaGatewayMib
 
@@ -66,7 +66,7 @@ class CiscoMediaGatewayMib::Cmediagwtable : public Entity
 
         class Cmediagwentry; //type: CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry> > cmediagwentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry> > cmediagwentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwtable
 
@@ -116,7 +116,7 @@ class CiscoMediaGatewayMib::Cmgwsignalprotocoltable : public Entity
 
         class Cmgwsignalprotocolentry; //type: CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry> > cmgwsignalprotocolentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry> > cmgwsignalprotocolentry_;
         
 }; // CiscoMediaGatewayMib::Cmgwsignalprotocoltable
 
@@ -165,7 +165,7 @@ class CiscoMediaGatewayMib::Cmediagwipconfigtable : public Entity
 
         class Cmediagwipconfigentry; //type: CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry> > cmediagwipconfigentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry> > cmediagwipconfigentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwipconfigtable
 
@@ -216,7 +216,7 @@ class CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable : public Entity
 
         class Cmediagwdomainnameconfigentry; //type: CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry> > cmediagwdomainnameconfigentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry> > cmediagwdomainnameconfigentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable
 
@@ -262,7 +262,7 @@ class CiscoMediaGatewayMib::Cmediagwdnsipconfigtable : public Entity
 
         class Cmediagwdnsipconfigentry; //type: CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry> > cmediagwdnsipconfigentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry> > cmediagwdnsipconfigentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwdnsipconfigtable
 
@@ -308,7 +308,7 @@ class CiscoMediaGatewayMib::Cmgwliftable : public Entity
 
         class Cmgwlifentry; //type: CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry> > cmgwlifentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry> > cmgwlifentry_;
         
 }; // CiscoMediaGatewayMib::Cmgwliftable
 
@@ -352,7 +352,7 @@ class CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable : public Entity
 
         class Cmediagwcallcontrolconfigentry; //type: CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry> > cmediagwcallcontrolconfigentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry> > cmediagwcallcontrolconfigentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable
 
@@ -413,7 +413,7 @@ class CiscoMediaGatewayMib::Cmediagwrscstatstable : public Entity
 
         class Cmediagwrscstatsentry; //type: CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry
 
-        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry> > cmediagwrscstatsentry;
+        std::vector<std::shared_ptr<CISCO_MEDIA_GATEWAY_MIB::CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry> > cmediagwrscstatsentry_;
         
 }; // CiscoMediaGatewayMib::Cmediagwrscstatstable
 

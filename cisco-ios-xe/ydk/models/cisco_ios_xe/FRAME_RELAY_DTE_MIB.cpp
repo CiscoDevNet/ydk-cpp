@@ -11,18 +11,18 @@ namespace FRAME_RELAY_DTE_MIB {
 
 FrameRelayDteMib::FrameRelayDteMib()
     :
-    framerelaytrapcontrol(std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>())
-	,frcircuittable(std::make_shared<FrameRelayDteMib::Frcircuittable>())
-	,frdlcmitable(std::make_shared<FrameRelayDteMib::Frdlcmitable>())
-	,frerrtable(std::make_shared<FrameRelayDteMib::Frerrtable>())
+    framerelaytrapcontrol_(std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>())
+	,frcircuittable_(std::make_shared<FrameRelayDteMib::Frcircuittable>())
+	,frdlcmitable_(std::make_shared<FrameRelayDteMib::Frdlcmitable>())
+	,frerrtable_(std::make_shared<FrameRelayDteMib::Frerrtable>())
 {
-    framerelaytrapcontrol->parent = this;
+    framerelaytrapcontrol_->parent = this;
 
-    frcircuittable->parent = this;
+    frcircuittable_->parent = this;
 
-    frdlcmitable->parent = this;
+    frdlcmitable_->parent = this;
 
-    frerrtable->parent = this;
+    frerrtable_->parent = this;
 
     yang_name = "FRAME-RELAY-DTE-MIB"; yang_parent_name = "FRAME-RELAY-DTE-MIB";
 }
@@ -33,19 +33,19 @@ FrameRelayDteMib::~FrameRelayDteMib()
 
 bool FrameRelayDteMib::has_data() const
 {
-    return (framerelaytrapcontrol !=  nullptr && framerelaytrapcontrol->has_data())
-	|| (frcircuittable !=  nullptr && frcircuittable->has_data())
-	|| (frdlcmitable !=  nullptr && frdlcmitable->has_data())
-	|| (frerrtable !=  nullptr && frerrtable->has_data());
+    return (framerelaytrapcontrol_ !=  nullptr && framerelaytrapcontrol_->has_data())
+	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_data())
+	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_data())
+	|| (frerrtable_ !=  nullptr && frerrtable_->has_data());
 }
 
 bool FrameRelayDteMib::has_operation() const
 {
     return is_set(operation)
-	|| (framerelaytrapcontrol !=  nullptr && framerelaytrapcontrol->has_operation())
-	|| (frcircuittable !=  nullptr && frcircuittable->has_operation())
-	|| (frdlcmitable !=  nullptr && frdlcmitable->has_operation())
-	|| (frerrtable !=  nullptr && frerrtable->has_operation());
+	|| (framerelaytrapcontrol_ !=  nullptr && framerelaytrapcontrol_->has_operation())
+	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_operation())
+	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_operation())
+	|| (frerrtable_ !=  nullptr && frerrtable_->has_operation());
 }
 
 std::string FrameRelayDteMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> FrameRelayDteMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "frameRelayTrapControl")
     {
-        if(framerelaytrapcontrol == nullptr)
+        if(framerelaytrapcontrol_ == nullptr)
         {
-            framerelaytrapcontrol = std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>();
+            framerelaytrapcontrol_ = std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>();
         }
-        return framerelaytrapcontrol;
+        return framerelaytrapcontrol_;
     }
 
     if(child_yang_name == "frCircuitTable")
     {
-        if(frcircuittable == nullptr)
+        if(frcircuittable_ == nullptr)
         {
-            frcircuittable = std::make_shared<FrameRelayDteMib::Frcircuittable>();
+            frcircuittable_ = std::make_shared<FrameRelayDteMib::Frcircuittable>();
         }
-        return frcircuittable;
+        return frcircuittable_;
     }
 
     if(child_yang_name == "frDlcmiTable")
     {
-        if(frdlcmitable == nullptr)
+        if(frdlcmitable_ == nullptr)
         {
-            frdlcmitable = std::make_shared<FrameRelayDteMib::Frdlcmitable>();
+            frdlcmitable_ = std::make_shared<FrameRelayDteMib::Frdlcmitable>();
         }
-        return frdlcmitable;
+        return frdlcmitable_;
     }
 
     if(child_yang_name == "frErrTable")
     {
-        if(frerrtable == nullptr)
+        if(frerrtable_ == nullptr)
         {
-            frerrtable = std::make_shared<FrameRelayDteMib::Frerrtable>();
+            frerrtable_ = std::make_shared<FrameRelayDteMib::Frerrtable>();
         }
-        return frerrtable;
+        return frerrtable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> FrameRelayDteMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(framerelaytrapcontrol != nullptr)
+    if(framerelaytrapcontrol_ != nullptr)
     {
-        children["frameRelayTrapControl"] = framerelaytrapcontrol;
+        children["frameRelayTrapControl"] = framerelaytrapcontrol_;
     }
 
-    if(frcircuittable != nullptr)
+    if(frcircuittable_ != nullptr)
     {
-        children["frCircuitTable"] = frcircuittable;
+        children["frCircuitTable"] = frcircuittable_;
     }
 
-    if(frdlcmitable != nullptr)
+    if(frdlcmitable_ != nullptr)
     {
-        children["frDlcmiTable"] = frdlcmitable;
+        children["frDlcmiTable"] = frdlcmitable_;
     }
 
-    if(frerrtable != nullptr)
+    if(frerrtable_ != nullptr)
     {
-        children["frErrTable"] = frerrtable;
+        children["frErrTable"] = frerrtable_;
     }
 
     return children;
@@ -257,9 +257,9 @@ FrameRelayDteMib::Frdlcmitable::~Frdlcmitable()
 
 bool FrameRelayDteMib::Frdlcmitable::has_data() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
     {
-        if(frdlcmientry[index]->has_data())
+        if(frdlcmientry_[index]->has_data())
             return true;
     }
     return false;
@@ -267,9 +267,9 @@ bool FrameRelayDteMib::Frdlcmitable::has_data() const
 
 bool FrameRelayDteMib::Frdlcmitable::has_operation() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
     {
-        if(frdlcmientry[index]->has_operation())
+        if(frdlcmientry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -309,7 +309,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        for(auto const & c : frdlcmientry)
+        for(auto const & c : frdlcmientry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -319,7 +319,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
         }
         auto c = std::make_shared<FrameRelayDteMib::Frdlcmitable::Frdlcmientry>();
         c->parent = this;
-        frdlcmientry.push_back(c);
+        frdlcmientry_.push_back(c);
         return c;
     }
 
@@ -329,7 +329,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frdlcmitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frdlcmientry)
+    for (auto const & c : frdlcmientry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -512,9 +512,9 @@ FrameRelayDteMib::Frcircuittable::~Frcircuittable()
 
 bool FrameRelayDteMib::Frcircuittable::has_data() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
     {
-        if(frcircuitentry[index]->has_data())
+        if(frcircuitentry_[index]->has_data())
             return true;
     }
     return false;
@@ -522,9 +522,9 @@ bool FrameRelayDteMib::Frcircuittable::has_data() const
 
 bool FrameRelayDteMib::Frcircuittable::has_operation() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
     {
-        if(frcircuitentry[index]->has_operation())
+        if(frcircuitentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -564,7 +564,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        for(auto const & c : frcircuitentry)
+        for(auto const & c : frcircuitentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -574,7 +574,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
         }
         auto c = std::make_shared<FrameRelayDteMib::Frcircuittable::Frcircuitentry>();
         c->parent = this;
-        frcircuitentry.push_back(c);
+        frcircuitentry_.push_back(c);
         return c;
     }
 
@@ -584,7 +584,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frcircuittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frcircuitentry)
+    for (auto const & c : frcircuitentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -839,9 +839,9 @@ FrameRelayDteMib::Frerrtable::~Frerrtable()
 
 bool FrameRelayDteMib::Frerrtable::has_data() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    for (std::size_t index=0; index<frerrentry_.size(); index++)
     {
-        if(frerrentry[index]->has_data())
+        if(frerrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -849,9 +849,9 @@ bool FrameRelayDteMib::Frerrtable::has_data() const
 
 bool FrameRelayDteMib::Frerrtable::has_operation() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    for (std::size_t index=0; index<frerrentry_.size(); index++)
     {
-        if(frerrentry[index]->has_operation())
+        if(frerrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -891,7 +891,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
 {
     if(child_yang_name == "frErrEntry")
     {
-        for(auto const & c : frerrentry)
+        for(auto const & c : frerrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -901,7 +901,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
         }
         auto c = std::make_shared<FrameRelayDteMib::Frerrtable::Frerrentry>();
         c->parent = this;
-        frerrentry.push_back(c);
+        frerrentry_.push_back(c);
         return c;
     }
 
@@ -911,7 +911,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frerrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frerrentry)
+    for (auto const & c : frerrentry_)
     {
         children[c->get_segment_path()] = c;
     }

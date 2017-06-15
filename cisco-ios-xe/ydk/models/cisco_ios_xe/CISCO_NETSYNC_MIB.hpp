@@ -35,12 +35,12 @@ class CiscoNetsyncMib : public Entity
         class Cnsextoutputtable; //type: CiscoNetsyncMib::Cnsextoutputtable
         class Cnst4Clocksourcetable; //type: CiscoNetsyncMib::Cnst4Clocksourcetable
 
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cisconetsyncmibnotifcontrol> cisconetsyncmibnotifcontrol;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable> cnsclkselglobaltable;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable> cnsextoutputtable;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable> cnsinputsourcetable;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable> cnsselectedinputsourcetable;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable> cnst4clocksourcetable;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cisconetsyncmibnotifcontrol> cisconetsyncmibnotifcontrol_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable> cnsclkselglobaltable_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable> cnsextoutputtable_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable> cnsinputsourcetable_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable> cnsselectedinputsourcetable_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable> cnst4clocksourcetable_;
         
 }; // CiscoNetsyncMib
 
@@ -80,7 +80,7 @@ class CiscoNetsyncMib::Cnsclkselglobaltable : public Entity
 
         class Cnsclkselglobalentry; //type: CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry> > cnsclkselglobalentry;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry> > cnsclkselglobalentry_;
         
 }; // CiscoNetsyncMib::Cnsclkselglobaltable
 
@@ -132,7 +132,7 @@ class CiscoNetsyncMib::Cnsselectedinputsourcetable : public Entity
 
         class Cnsselectedinputsourceentry; //type: CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry_;
         
 }; // CiscoNetsyncMib::Cnsselectedinputsourcetable
 
@@ -179,7 +179,7 @@ class CiscoNetsyncMib::Cnsinputsourcetable : public Entity
 
         class Cnsinputsourceentry; //type: CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry> > cnsinputsourceentry;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry> > cnsinputsourceentry_;
         
 }; // CiscoNetsyncMib::Cnsinputsourcetable
 
@@ -237,7 +237,7 @@ class CiscoNetsyncMib::Cnsextoutputtable : public Entity
 
         class Cnsextoutputentry; //type: CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry_;
         
 }; // CiscoNetsyncMib::Cnsextoutputtable
 
@@ -285,7 +285,7 @@ class CiscoNetsyncMib::Cnst4Clocksourcetable : public Entity
 
         class Cnst4Clocksourceentry; //type: CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry> > cnst4clocksourceentry;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry> > cnst4clocksourceentry_;
         
 }; // CiscoNetsyncMib::Cnst4Clocksourcetable
 

@@ -11,12 +11,12 @@ namespace CISCO_IPMROUTE_MIB {
 
 CiscoIpmrouteMib::CiscoIpmrouteMib()
     :
-    ciscoipmroute(std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>())
-	,ciscoipmrouteheartbeattable(std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>())
+    ciscoipmroute_(std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>())
+	,ciscoipmrouteheartbeattable_(std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>())
 {
-    ciscoipmroute->parent = this;
+    ciscoipmroute_->parent = this;
 
-    ciscoipmrouteheartbeattable->parent = this;
+    ciscoipmrouteheartbeattable_->parent = this;
 
     yang_name = "CISCO-IPMROUTE-MIB"; yang_parent_name = "CISCO-IPMROUTE-MIB";
 }
@@ -27,15 +27,15 @@ CiscoIpmrouteMib::~CiscoIpmrouteMib()
 
 bool CiscoIpmrouteMib::has_data() const
 {
-    return (ciscoipmroute !=  nullptr && ciscoipmroute->has_data())
-	|| (ciscoipmrouteheartbeattable !=  nullptr && ciscoipmrouteheartbeattable->has_data());
+    return (ciscoipmroute_ !=  nullptr && ciscoipmroute_->has_data())
+	|| (ciscoipmrouteheartbeattable_ !=  nullptr && ciscoipmrouteheartbeattable_->has_data());
 }
 
 bool CiscoIpmrouteMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscoipmroute !=  nullptr && ciscoipmroute->has_operation())
-	|| (ciscoipmrouteheartbeattable !=  nullptr && ciscoipmrouteheartbeattable->has_operation());
+	|| (ciscoipmroute_ !=  nullptr && ciscoipmroute_->has_operation())
+	|| (ciscoipmrouteheartbeattable_ !=  nullptr && ciscoipmrouteheartbeattable_->has_operation());
 }
 
 std::string CiscoIpmrouteMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "ciscoIpMRoute")
     {
-        if(ciscoipmroute == nullptr)
+        if(ciscoipmroute_ == nullptr)
         {
-            ciscoipmroute = std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>();
+            ciscoipmroute_ = std::make_shared<CiscoIpmrouteMib::Ciscoipmroute>();
         }
-        return ciscoipmroute;
+        return ciscoipmroute_;
     }
 
     if(child_yang_name == "ciscoIpMRouteHeartBeatTable")
     {
-        if(ciscoipmrouteheartbeattable == nullptr)
+        if(ciscoipmrouteheartbeattable_ == nullptr)
         {
-            ciscoipmrouteheartbeattable = std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>();
+            ciscoipmrouteheartbeattable_ = std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable>();
         }
-        return ciscoipmrouteheartbeattable;
+        return ciscoipmrouteheartbeattable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoipmroute != nullptr)
+    if(ciscoipmroute_ != nullptr)
     {
-        children["ciscoIpMRoute"] = ciscoipmroute;
+        children["ciscoIpMRoute"] = ciscoipmroute_;
     }
 
-    if(ciscoipmrouteheartbeattable != nullptr)
+    if(ciscoipmrouteheartbeattable_ != nullptr)
     {
-        children["ciscoIpMRouteHeartBeatTable"] = ciscoipmrouteheartbeattable;
+        children["ciscoIpMRouteHeartBeatTable"] = ciscoipmrouteheartbeattable_;
     }
 
     return children;
@@ -211,9 +211,9 @@ CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::~Ciscoipmrouteheartbeattable()
 
 bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoipmrouteheartbeatentry.size(); index++)
+    for (std::size_t index=0; index<ciscoipmrouteheartbeatentry_.size(); index++)
     {
-        if(ciscoipmrouteheartbeatentry[index]->has_data())
+        if(ciscoipmrouteheartbeatentry_[index]->has_data())
             return true;
     }
     return false;
@@ -221,9 +221,9 @@ bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_data() const
 
 bool CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoipmrouteheartbeatentry.size(); index++)
+    for (std::size_t index=0; index<ciscoipmrouteheartbeatentry_.size(); index++)
     {
-        if(ciscoipmrouteheartbeatentry[index]->has_operation())
+        if(ciscoipmrouteheartbeatentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -263,7 +263,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child
 {
     if(child_yang_name == "ciscoIpMRouteHeartBeatEntry")
     {
-        for(auto const & c : ciscoipmrouteheartbeatentry)
+        for(auto const & c : ciscoipmrouteheartbeatentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -273,7 +273,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child
         }
         auto c = std::make_shared<CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry>();
         c->parent = this;
-        ciscoipmrouteheartbeatentry.push_back(c);
+        ciscoipmrouteheartbeatentry_.push_back(c);
         return c;
     }
 
@@ -283,7 +283,7 @@ std::shared_ptr<Entity> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoipmrouteheartbeatentry)
+    for (auto const & c : ciscoipmrouteheartbeatentry_)
     {
         children[c->get_segment_path()] = c;
     }

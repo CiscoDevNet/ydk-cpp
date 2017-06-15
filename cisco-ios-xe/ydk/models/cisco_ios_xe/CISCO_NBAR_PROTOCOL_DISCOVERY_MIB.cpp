@@ -11,30 +11,30 @@ namespace CISCO_NBAR_PROTOCOL_DISCOVERY_MIB {
 
 CiscoNbarProtocolDiscoveryMib::CiscoNbarProtocolDiscoveryMib()
     :
-    cnpdallstatstable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable>())
-	,cnpdnotificationsconfig(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig>())
-	,cnpdstatustable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdstatustable>())
-	,cnpdsupportedprotocolstable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable>())
-	,cnpdthresholdconfigtable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable>())
-	,cnpdthresholdhistorytable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable>())
-	,cnpdtopnconfigtable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable>())
-	,cnpdtopnstatstable(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable>())
+    cnpdallstatstable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable>())
+	,cnpdnotificationsconfig_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig>())
+	,cnpdstatustable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdstatustable>())
+	,cnpdsupportedprotocolstable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable>())
+	,cnpdthresholdconfigtable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable>())
+	,cnpdthresholdhistorytable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable>())
+	,cnpdtopnconfigtable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable>())
+	,cnpdtopnstatstable_(std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable>())
 {
-    cnpdallstatstable->parent = this;
+    cnpdallstatstable_->parent = this;
 
-    cnpdnotificationsconfig->parent = this;
+    cnpdnotificationsconfig_->parent = this;
 
-    cnpdstatustable->parent = this;
+    cnpdstatustable_->parent = this;
 
-    cnpdsupportedprotocolstable->parent = this;
+    cnpdsupportedprotocolstable_->parent = this;
 
-    cnpdthresholdconfigtable->parent = this;
+    cnpdthresholdconfigtable_->parent = this;
 
-    cnpdthresholdhistorytable->parent = this;
+    cnpdthresholdhistorytable_->parent = this;
 
-    cnpdtopnconfigtable->parent = this;
+    cnpdtopnconfigtable_->parent = this;
 
-    cnpdtopnstatstable->parent = this;
+    cnpdtopnstatstable_->parent = this;
 
     yang_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB";
 }
@@ -45,27 +45,27 @@ CiscoNbarProtocolDiscoveryMib::~CiscoNbarProtocolDiscoveryMib()
 
 bool CiscoNbarProtocolDiscoveryMib::has_data() const
 {
-    return (cnpdallstatstable !=  nullptr && cnpdallstatstable->has_data())
-	|| (cnpdnotificationsconfig !=  nullptr && cnpdnotificationsconfig->has_data())
-	|| (cnpdstatustable !=  nullptr && cnpdstatustable->has_data())
-	|| (cnpdsupportedprotocolstable !=  nullptr && cnpdsupportedprotocolstable->has_data())
-	|| (cnpdthresholdconfigtable !=  nullptr && cnpdthresholdconfigtable->has_data())
-	|| (cnpdthresholdhistorytable !=  nullptr && cnpdthresholdhistorytable->has_data())
-	|| (cnpdtopnconfigtable !=  nullptr && cnpdtopnconfigtable->has_data())
-	|| (cnpdtopnstatstable !=  nullptr && cnpdtopnstatstable->has_data());
+    return (cnpdallstatstable_ !=  nullptr && cnpdallstatstable_->has_data())
+	|| (cnpdnotificationsconfig_ !=  nullptr && cnpdnotificationsconfig_->has_data())
+	|| (cnpdstatustable_ !=  nullptr && cnpdstatustable_->has_data())
+	|| (cnpdsupportedprotocolstable_ !=  nullptr && cnpdsupportedprotocolstable_->has_data())
+	|| (cnpdthresholdconfigtable_ !=  nullptr && cnpdthresholdconfigtable_->has_data())
+	|| (cnpdthresholdhistorytable_ !=  nullptr && cnpdthresholdhistorytable_->has_data())
+	|| (cnpdtopnconfigtable_ !=  nullptr && cnpdtopnconfigtable_->has_data())
+	|| (cnpdtopnstatstable_ !=  nullptr && cnpdtopnstatstable_->has_data());
 }
 
 bool CiscoNbarProtocolDiscoveryMib::has_operation() const
 {
     return is_set(operation)
-	|| (cnpdallstatstable !=  nullptr && cnpdallstatstable->has_operation())
-	|| (cnpdnotificationsconfig !=  nullptr && cnpdnotificationsconfig->has_operation())
-	|| (cnpdstatustable !=  nullptr && cnpdstatustable->has_operation())
-	|| (cnpdsupportedprotocolstable !=  nullptr && cnpdsupportedprotocolstable->has_operation())
-	|| (cnpdthresholdconfigtable !=  nullptr && cnpdthresholdconfigtable->has_operation())
-	|| (cnpdthresholdhistorytable !=  nullptr && cnpdthresholdhistorytable->has_operation())
-	|| (cnpdtopnconfigtable !=  nullptr && cnpdtopnconfigtable->has_operation())
-	|| (cnpdtopnstatstable !=  nullptr && cnpdtopnstatstable->has_operation());
+	|| (cnpdallstatstable_ !=  nullptr && cnpdallstatstable_->has_operation())
+	|| (cnpdnotificationsconfig_ !=  nullptr && cnpdnotificationsconfig_->has_operation())
+	|| (cnpdstatustable_ !=  nullptr && cnpdstatustable_->has_operation())
+	|| (cnpdsupportedprotocolstable_ !=  nullptr && cnpdsupportedprotocolstable_->has_operation())
+	|| (cnpdthresholdconfigtable_ !=  nullptr && cnpdthresholdconfigtable_->has_operation())
+	|| (cnpdthresholdhistorytable_ !=  nullptr && cnpdthresholdhistorytable_->has_operation())
+	|| (cnpdtopnconfigtable_ !=  nullptr && cnpdtopnconfigtable_->has_operation())
+	|| (cnpdtopnstatstable_ !=  nullptr && cnpdtopnstatstable_->has_operation());
 }
 
 std::string CiscoNbarProtocolDiscoveryMib::get_segment_path() const
@@ -99,74 +99,74 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::get_child_by_name(const s
 {
     if(child_yang_name == "cnpdAllStatsTable")
     {
-        if(cnpdallstatstable == nullptr)
+        if(cnpdallstatstable_ == nullptr)
         {
-            cnpdallstatstable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable>();
+            cnpdallstatstable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable>();
         }
-        return cnpdallstatstable;
+        return cnpdallstatstable_;
     }
 
     if(child_yang_name == "cnpdNotificationsConfig")
     {
-        if(cnpdnotificationsconfig == nullptr)
+        if(cnpdnotificationsconfig_ == nullptr)
         {
-            cnpdnotificationsconfig = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig>();
+            cnpdnotificationsconfig_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig>();
         }
-        return cnpdnotificationsconfig;
+        return cnpdnotificationsconfig_;
     }
 
     if(child_yang_name == "cnpdStatusTable")
     {
-        if(cnpdstatustable == nullptr)
+        if(cnpdstatustable_ == nullptr)
         {
-            cnpdstatustable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdstatustable>();
+            cnpdstatustable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdstatustable>();
         }
-        return cnpdstatustable;
+        return cnpdstatustable_;
     }
 
     if(child_yang_name == "cnpdSupportedProtocolsTable")
     {
-        if(cnpdsupportedprotocolstable == nullptr)
+        if(cnpdsupportedprotocolstable_ == nullptr)
         {
-            cnpdsupportedprotocolstable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable>();
+            cnpdsupportedprotocolstable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable>();
         }
-        return cnpdsupportedprotocolstable;
+        return cnpdsupportedprotocolstable_;
     }
 
     if(child_yang_name == "cnpdThresholdConfigTable")
     {
-        if(cnpdthresholdconfigtable == nullptr)
+        if(cnpdthresholdconfigtable_ == nullptr)
         {
-            cnpdthresholdconfigtable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable>();
+            cnpdthresholdconfigtable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable>();
         }
-        return cnpdthresholdconfigtable;
+        return cnpdthresholdconfigtable_;
     }
 
     if(child_yang_name == "cnpdThresholdHistoryTable")
     {
-        if(cnpdthresholdhistorytable == nullptr)
+        if(cnpdthresholdhistorytable_ == nullptr)
         {
-            cnpdthresholdhistorytable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable>();
+            cnpdthresholdhistorytable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable>();
         }
-        return cnpdthresholdhistorytable;
+        return cnpdthresholdhistorytable_;
     }
 
     if(child_yang_name == "cnpdTopNConfigTable")
     {
-        if(cnpdtopnconfigtable == nullptr)
+        if(cnpdtopnconfigtable_ == nullptr)
         {
-            cnpdtopnconfigtable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable>();
+            cnpdtopnconfigtable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable>();
         }
-        return cnpdtopnconfigtable;
+        return cnpdtopnconfigtable_;
     }
 
     if(child_yang_name == "cnpdTopNStatsTable")
     {
-        if(cnpdtopnstatstable == nullptr)
+        if(cnpdtopnstatstable_ == nullptr)
         {
-            cnpdtopnstatstable = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable>();
+            cnpdtopnstatstable_ = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable>();
         }
-        return cnpdtopnstatstable;
+        return cnpdtopnstatstable_;
     }
 
     return nullptr;
@@ -175,44 +175,44 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cnpdallstatstable != nullptr)
+    if(cnpdallstatstable_ != nullptr)
     {
-        children["cnpdAllStatsTable"] = cnpdallstatstable;
+        children["cnpdAllStatsTable"] = cnpdallstatstable_;
     }
 
-    if(cnpdnotificationsconfig != nullptr)
+    if(cnpdnotificationsconfig_ != nullptr)
     {
-        children["cnpdNotificationsConfig"] = cnpdnotificationsconfig;
+        children["cnpdNotificationsConfig"] = cnpdnotificationsconfig_;
     }
 
-    if(cnpdstatustable != nullptr)
+    if(cnpdstatustable_ != nullptr)
     {
-        children["cnpdStatusTable"] = cnpdstatustable;
+        children["cnpdStatusTable"] = cnpdstatustable_;
     }
 
-    if(cnpdsupportedprotocolstable != nullptr)
+    if(cnpdsupportedprotocolstable_ != nullptr)
     {
-        children["cnpdSupportedProtocolsTable"] = cnpdsupportedprotocolstable;
+        children["cnpdSupportedProtocolsTable"] = cnpdsupportedprotocolstable_;
     }
 
-    if(cnpdthresholdconfigtable != nullptr)
+    if(cnpdthresholdconfigtable_ != nullptr)
     {
-        children["cnpdThresholdConfigTable"] = cnpdthresholdconfigtable;
+        children["cnpdThresholdConfigTable"] = cnpdthresholdconfigtable_;
     }
 
-    if(cnpdthresholdhistorytable != nullptr)
+    if(cnpdthresholdhistorytable_ != nullptr)
     {
-        children["cnpdThresholdHistoryTable"] = cnpdthresholdhistorytable;
+        children["cnpdThresholdHistoryTable"] = cnpdthresholdhistorytable_;
     }
 
-    if(cnpdtopnconfigtable != nullptr)
+    if(cnpdtopnconfigtable_ != nullptr)
     {
-        children["cnpdTopNConfigTable"] = cnpdtopnconfigtable;
+        children["cnpdTopNConfigTable"] = cnpdtopnconfigtable_;
     }
 
-    if(cnpdtopnstatstable != nullptr)
+    if(cnpdtopnstatstable_ != nullptr)
     {
-        children["cnpdTopNStatsTable"] = cnpdtopnstatstable;
+        children["cnpdTopNStatsTable"] = cnpdtopnstatstable_;
     }
 
     return children;
@@ -325,9 +325,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::~Cnpdstatustable()
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdstatusentry.size(); index++)
+    for (std::size_t index=0; index<cnpdstatusentry_.size(); index++)
     {
-        if(cnpdstatusentry[index]->has_data())
+        if(cnpdstatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -335,9 +335,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdstatusentry.size(); index++)
+    for (std::size_t index=0; index<cnpdstatusentry_.size(); index++)
     {
-        if(cnpdstatusentry[index]->has_operation())
+        if(cnpdstatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -377,7 +377,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::get_chil
 {
     if(child_yang_name == "cnpdStatusEntry")
     {
-        for(auto const & c : cnpdstatusentry)
+        for(auto const & c : cnpdstatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -387,7 +387,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::get_chil
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::Cnpdstatusentry>();
         c->parent = this;
-        cnpdstatusentry.push_back(c);
+        cnpdstatusentry_.push_back(c);
         return c;
     }
 
@@ -397,7 +397,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdstatusentry)
+    for (auto const & c : cnpdstatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -508,9 +508,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::~Cnpdallstatstable()
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdallstatsentry_.size(); index++)
     {
-        if(cnpdallstatsentry[index]->has_data())
+        if(cnpdallstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -518,9 +518,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdallstatsentry_.size(); index++)
     {
-        if(cnpdallstatsentry[index]->has_operation())
+        if(cnpdallstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -560,7 +560,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::get_ch
 {
     if(child_yang_name == "cnpdAllStatsEntry")
     {
-        for(auto const & c : cnpdallstatsentry)
+        for(auto const & c : cnpdallstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -570,7 +570,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::get_ch
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::Cnpdallstatsentry>();
         c->parent = this;
-        cnpdallstatsentry.push_back(c);
+        cnpdallstatsentry_.push_back(c);
         return c;
     }
 
@@ -580,7 +580,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdallstatsentry)
+    for (auto const & c : cnpdallstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -771,9 +771,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::~Cnpdtopnconfigtable()
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdtopnconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnconfigentry_.size(); index++)
     {
-        if(cnpdtopnconfigentry[index]->has_data())
+        if(cnpdtopnconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -781,9 +781,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdtopnconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnconfigentry_.size(); index++)
     {
-        if(cnpdtopnconfigentry[index]->has_operation())
+        if(cnpdtopnconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -823,7 +823,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::get_
 {
     if(child_yang_name == "cnpdTopNConfigEntry")
     {
-        for(auto const & c : cnpdtopnconfigentry)
+        for(auto const & c : cnpdtopnconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -833,7 +833,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::get_
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::Cnpdtopnconfigentry>();
         c->parent = this;
-        cnpdtopnconfigentry.push_back(c);
+        cnpdtopnconfigentry_.push_back(c);
         return c;
     }
 
@@ -843,7 +843,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdtopnconfigentry)
+    for (auto const & c : cnpdtopnconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -994,9 +994,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::~Cnpdtopnstatstable()
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdtopnstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnstatsentry_.size(); index++)
     {
-        if(cnpdtopnstatsentry[index]->has_data())
+        if(cnpdtopnstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1004,9 +1004,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdtopnstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnstatsentry_.size(); index++)
     {
-        if(cnpdtopnstatsentry[index]->has_operation())
+        if(cnpdtopnstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1046,7 +1046,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::get_c
 {
     if(child_yang_name == "cnpdTopNStatsEntry")
     {
-        for(auto const & c : cnpdtopnstatsentry)
+        for(auto const & c : cnpdtopnstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1056,7 +1056,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::get_c
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::Cnpdtopnstatsentry>();
         c->parent = this;
-        cnpdtopnstatsentry.push_back(c);
+        cnpdtopnstatsentry_.push_back(c);
         return c;
     }
 
@@ -1066,7 +1066,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdtopnstatsentry)
+    for (auto const & c : cnpdtopnstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1193,9 +1193,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::~Cnpdthresholdconfigtab
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdthresholdconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdconfigentry_.size(); index++)
     {
-        if(cnpdthresholdconfigentry[index]->has_data())
+        if(cnpdthresholdconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1203,9 +1203,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdthresholdconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdconfigentry_.size(); index++)
     {
-        if(cnpdthresholdconfigentry[index]->has_operation())
+        if(cnpdthresholdconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1245,7 +1245,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable:
 {
     if(child_yang_name == "cnpdThresholdConfigEntry")
     {
-        for(auto const & c : cnpdthresholdconfigentry)
+        for(auto const & c : cnpdthresholdconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1255,7 +1255,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable:
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry>();
         c->parent = this;
-        cnpdthresholdconfigentry.push_back(c);
+        cnpdthresholdconfigentry_.push_back(c);
         return c;
     }
 
@@ -1265,7 +1265,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdthresholdconfigentry)
+    for (auto const & c : cnpdthresholdconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1440,9 +1440,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::~Cnpdthresholdhistoryt
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdthresholdhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdhistoryentry_.size(); index++)
     {
-        if(cnpdthresholdhistoryentry[index]->has_data())
+        if(cnpdthresholdhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1450,9 +1450,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::has_data() const
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdthresholdhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdhistoryentry_.size(); index++)
     {
-        if(cnpdthresholdhistoryentry[index]->has_operation())
+        if(cnpdthresholdhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1492,7 +1492,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable
 {
     if(child_yang_name == "cnpdThresholdHistoryEntry")
     {
-        for(auto const & c : cnpdthresholdhistoryentry)
+        for(auto const & c : cnpdthresholdhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1502,7 +1502,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry>();
         c->parent = this;
-        cnpdthresholdhistoryentry.push_back(c);
+        cnpdthresholdhistoryentry_.push_back(c);
         return c;
     }
 
@@ -1512,7 +1512,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdthresholdhistoryentry)
+    for (auto const & c : cnpdthresholdhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1655,9 +1655,9 @@ CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::~Cnpdsupportedprotoc
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdsupportedprotocolsentry_.size(); index++)
     {
-        if(cnpdsupportedprotocolsentry[index]->has_data())
+        if(cnpdsupportedprotocolsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1665,9 +1665,9 @@ bool CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::has_data() cons
 
 bool CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdsupportedprotocolsentry_.size(); index++)
     {
-        if(cnpdsupportedprotocolsentry[index]->has_operation())
+        if(cnpdsupportedprotocolsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1707,7 +1707,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstab
 {
     if(child_yang_name == "cnpdSupportedProtocolsEntry")
     {
-        for(auto const & c : cnpdsupportedprotocolsentry)
+        for(auto const & c : cnpdsupportedprotocolsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1717,7 +1717,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstab
         }
         auto c = std::make_shared<CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry>();
         c->parent = this;
-        cnpdsupportedprotocolsentry.push_back(c);
+        cnpdsupportedprotocolsentry_.push_back(c);
         return c;
     }
 
@@ -1727,7 +1727,7 @@ std::shared_ptr<Entity> CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstab
 std::map<std::string, std::shared_ptr<Entity>> CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnpdsupportedprotocolsentry)
+    for (auto const & c : cnpdsupportedprotocolsentry_)
     {
         children[c->get_segment_path()] = c;
     }

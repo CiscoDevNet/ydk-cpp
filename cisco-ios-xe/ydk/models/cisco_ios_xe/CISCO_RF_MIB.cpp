@@ -11,24 +11,24 @@ namespace CISCO_RF_MIB {
 
 CiscoRfMib::CiscoRfMib()
     :
-    crfcfg(std::make_shared<CiscoRfMib::Crfcfg>())
-	,crfhistory(std::make_shared<CiscoRfMib::Crfhistory>())
-	,crfhistoryswitchovertable(std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>())
-	,crfstatus(std::make_shared<CiscoRfMib::Crfstatus>())
-	,crfstatusrfclienttable(std::make_shared<CiscoRfMib::Crfstatusrfclienttable>())
-	,crfstatusrfmodecapstable(std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>())
+    crfcfg_(std::make_shared<CiscoRfMib::Crfcfg>())
+	,crfhistory_(std::make_shared<CiscoRfMib::Crfhistory>())
+	,crfhistoryswitchovertable_(std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>())
+	,crfstatus_(std::make_shared<CiscoRfMib::Crfstatus>())
+	,crfstatusrfclienttable_(std::make_shared<CiscoRfMib::Crfstatusrfclienttable>())
+	,crfstatusrfmodecapstable_(std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>())
 {
-    crfcfg->parent = this;
+    crfcfg_->parent = this;
 
-    crfhistory->parent = this;
+    crfhistory_->parent = this;
 
-    crfhistoryswitchovertable->parent = this;
+    crfhistoryswitchovertable_->parent = this;
 
-    crfstatus->parent = this;
+    crfstatus_->parent = this;
 
-    crfstatusrfclienttable->parent = this;
+    crfstatusrfclienttable_->parent = this;
 
-    crfstatusrfmodecapstable->parent = this;
+    crfstatusrfmodecapstable_->parent = this;
 
     yang_name = "CISCO-RF-MIB"; yang_parent_name = "CISCO-RF-MIB";
 }
@@ -39,23 +39,23 @@ CiscoRfMib::~CiscoRfMib()
 
 bool CiscoRfMib::has_data() const
 {
-    return (crfcfg !=  nullptr && crfcfg->has_data())
-	|| (crfhistory !=  nullptr && crfhistory->has_data())
-	|| (crfhistoryswitchovertable !=  nullptr && crfhistoryswitchovertable->has_data())
-	|| (crfstatus !=  nullptr && crfstatus->has_data())
-	|| (crfstatusrfclienttable !=  nullptr && crfstatusrfclienttable->has_data())
-	|| (crfstatusrfmodecapstable !=  nullptr && crfstatusrfmodecapstable->has_data());
+    return (crfcfg_ !=  nullptr && crfcfg_->has_data())
+	|| (crfhistory_ !=  nullptr && crfhistory_->has_data())
+	|| (crfhistoryswitchovertable_ !=  nullptr && crfhistoryswitchovertable_->has_data())
+	|| (crfstatus_ !=  nullptr && crfstatus_->has_data())
+	|| (crfstatusrfclienttable_ !=  nullptr && crfstatusrfclienttable_->has_data())
+	|| (crfstatusrfmodecapstable_ !=  nullptr && crfstatusrfmodecapstable_->has_data());
 }
 
 bool CiscoRfMib::has_operation() const
 {
     return is_set(operation)
-	|| (crfcfg !=  nullptr && crfcfg->has_operation())
-	|| (crfhistory !=  nullptr && crfhistory->has_operation())
-	|| (crfhistoryswitchovertable !=  nullptr && crfhistoryswitchovertable->has_operation())
-	|| (crfstatus !=  nullptr && crfstatus->has_operation())
-	|| (crfstatusrfclienttable !=  nullptr && crfstatusrfclienttable->has_operation())
-	|| (crfstatusrfmodecapstable !=  nullptr && crfstatusrfmodecapstable->has_operation());
+	|| (crfcfg_ !=  nullptr && crfcfg_->has_operation())
+	|| (crfhistory_ !=  nullptr && crfhistory_->has_operation())
+	|| (crfhistoryswitchovertable_ !=  nullptr && crfhistoryswitchovertable_->has_operation())
+	|| (crfstatus_ !=  nullptr && crfstatus_->has_operation())
+	|| (crfstatusrfclienttable_ !=  nullptr && crfstatusrfclienttable_->has_operation())
+	|| (crfstatusrfmodecapstable_ !=  nullptr && crfstatusrfmodecapstable_->has_operation());
 }
 
 std::string CiscoRfMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "cRFCfg")
     {
-        if(crfcfg == nullptr)
+        if(crfcfg_ == nullptr)
         {
-            crfcfg = std::make_shared<CiscoRfMib::Crfcfg>();
+            crfcfg_ = std::make_shared<CiscoRfMib::Crfcfg>();
         }
-        return crfcfg;
+        return crfcfg_;
     }
 
     if(child_yang_name == "cRFHistory")
     {
-        if(crfhistory == nullptr)
+        if(crfhistory_ == nullptr)
         {
-            crfhistory = std::make_shared<CiscoRfMib::Crfhistory>();
+            crfhistory_ = std::make_shared<CiscoRfMib::Crfhistory>();
         }
-        return crfhistory;
+        return crfhistory_;
     }
 
     if(child_yang_name == "cRFHistorySwitchOverTable")
     {
-        if(crfhistoryswitchovertable == nullptr)
+        if(crfhistoryswitchovertable_ == nullptr)
         {
-            crfhistoryswitchovertable = std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>();
+            crfhistoryswitchovertable_ = std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>();
         }
-        return crfhistoryswitchovertable;
+        return crfhistoryswitchovertable_;
     }
 
     if(child_yang_name == "cRFStatus")
     {
-        if(crfstatus == nullptr)
+        if(crfstatus_ == nullptr)
         {
-            crfstatus = std::make_shared<CiscoRfMib::Crfstatus>();
+            crfstatus_ = std::make_shared<CiscoRfMib::Crfstatus>();
         }
-        return crfstatus;
+        return crfstatus_;
     }
 
     if(child_yang_name == "cRFStatusRFClientTable")
     {
-        if(crfstatusrfclienttable == nullptr)
+        if(crfstatusrfclienttable_ == nullptr)
         {
-            crfstatusrfclienttable = std::make_shared<CiscoRfMib::Crfstatusrfclienttable>();
+            crfstatusrfclienttable_ = std::make_shared<CiscoRfMib::Crfstatusrfclienttable>();
         }
-        return crfstatusrfclienttable;
+        return crfstatusrfclienttable_;
     }
 
     if(child_yang_name == "cRFStatusRFModeCapsTable")
     {
-        if(crfstatusrfmodecapstable == nullptr)
+        if(crfstatusrfmodecapstable_ == nullptr)
         {
-            crfstatusrfmodecapstable = std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>();
+            crfstatusrfmodecapstable_ = std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>();
         }
-        return crfstatusrfmodecapstable;
+        return crfstatusrfmodecapstable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(crfcfg != nullptr)
+    if(crfcfg_ != nullptr)
     {
-        children["cRFCfg"] = crfcfg;
+        children["cRFCfg"] = crfcfg_;
     }
 
-    if(crfhistory != nullptr)
+    if(crfhistory_ != nullptr)
     {
-        children["cRFHistory"] = crfhistory;
+        children["cRFHistory"] = crfhistory_;
     }
 
-    if(crfhistoryswitchovertable != nullptr)
+    if(crfhistoryswitchovertable_ != nullptr)
     {
-        children["cRFHistorySwitchOverTable"] = crfhistoryswitchovertable;
+        children["cRFHistorySwitchOverTable"] = crfhistoryswitchovertable_;
     }
 
-    if(crfstatus != nullptr)
+    if(crfstatus_ != nullptr)
     {
-        children["cRFStatus"] = crfstatus;
+        children["cRFStatus"] = crfstatus_;
     }
 
-    if(crfstatusrfclienttable != nullptr)
+    if(crfstatusrfclienttable_ != nullptr)
     {
-        children["cRFStatusRFClientTable"] = crfstatusrfclienttable;
+        children["cRFStatusRFClientTable"] = crfstatusrfclienttable_;
     }
 
-    if(crfstatusrfmodecapstable != nullptr)
+    if(crfstatusrfmodecapstable_ != nullptr)
     {
-        children["cRFStatusRFModeCapsTable"] = crfstatusrfmodecapstable;
+        children["cRFStatusRFModeCapsTable"] = crfstatusrfmodecapstable_;
     }
 
     return children;
@@ -671,9 +671,9 @@ CiscoRfMib::Crfstatusrfmodecapstable::~Crfstatusrfmodecapstable()
 
 bool CiscoRfMib::Crfstatusrfmodecapstable::has_data() const
 {
-    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
+    for (std::size_t index=0; index<crfstatusrfmodecapsentry_.size(); index++)
     {
-        if(crfstatusrfmodecapsentry[index]->has_data())
+        if(crfstatusrfmodecapsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -681,9 +681,9 @@ bool CiscoRfMib::Crfstatusrfmodecapstable::has_data() const
 
 bool CiscoRfMib::Crfstatusrfmodecapstable::has_operation() const
 {
-    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
+    for (std::size_t index=0; index<crfstatusrfmodecapsentry_.size(); index++)
     {
-        if(crfstatusrfmodecapsentry[index]->has_operation())
+        if(crfstatusrfmodecapsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -723,7 +723,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfmodecapstable::get_child_by_name(
 {
     if(child_yang_name == "cRFStatusRFModeCapsEntry")
     {
-        for(auto const & c : crfstatusrfmodecapsentry)
+        for(auto const & c : crfstatusrfmodecapsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -733,7 +733,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfmodecapstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry>();
         c->parent = this;
-        crfstatusrfmodecapsentry.push_back(c);
+        crfstatusrfmodecapsentry_.push_back(c);
         return c;
     }
 
@@ -743,7 +743,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfmodecapstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfmodecapstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : crfstatusrfmodecapsentry)
+    for (auto const & c : crfstatusrfmodecapsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -846,9 +846,9 @@ CiscoRfMib::Crfhistoryswitchovertable::~Crfhistoryswitchovertable()
 
 bool CiscoRfMib::Crfhistoryswitchovertable::has_data() const
 {
-    for (std::size_t index=0; index<crfhistoryswitchoverentry.size(); index++)
+    for (std::size_t index=0; index<crfhistoryswitchoverentry_.size(); index++)
     {
-        if(crfhistoryswitchoverentry[index]->has_data())
+        if(crfhistoryswitchoverentry_[index]->has_data())
             return true;
     }
     return false;
@@ -856,9 +856,9 @@ bool CiscoRfMib::Crfhistoryswitchovertable::has_data() const
 
 bool CiscoRfMib::Crfhistoryswitchovertable::has_operation() const
 {
-    for (std::size_t index=0; index<crfhistoryswitchoverentry.size(); index++)
+    for (std::size_t index=0; index<crfhistoryswitchoverentry_.size(); index++)
     {
-        if(crfhistoryswitchoverentry[index]->has_operation())
+        if(crfhistoryswitchoverentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -898,7 +898,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name
 {
     if(child_yang_name == "cRFHistorySwitchOverEntry")
     {
-        for(auto const & c : crfhistoryswitchoverentry)
+        for(auto const & c : crfhistoryswitchoverentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -908,7 +908,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name
         }
         auto c = std::make_shared<CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry>();
         c->parent = this;
-        crfhistoryswitchoverentry.push_back(c);
+        crfhistoryswitchoverentry_.push_back(c);
         return c;
     }
 
@@ -918,7 +918,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfhistoryswitchovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : crfhistoryswitchoverentry)
+    for (auto const & c : crfhistoryswitchoverentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1045,9 +1045,9 @@ CiscoRfMib::Crfstatusrfclienttable::~Crfstatusrfclienttable()
 
 bool CiscoRfMib::Crfstatusrfclienttable::has_data() const
 {
-    for (std::size_t index=0; index<crfstatusrfcliententry.size(); index++)
+    for (std::size_t index=0; index<crfstatusrfcliententry_.size(); index++)
     {
-        if(crfstatusrfcliententry[index]->has_data())
+        if(crfstatusrfcliententry_[index]->has_data())
             return true;
     }
     return false;
@@ -1055,9 +1055,9 @@ bool CiscoRfMib::Crfstatusrfclienttable::has_data() const
 
 bool CiscoRfMib::Crfstatusrfclienttable::has_operation() const
 {
-    for (std::size_t index=0; index<crfstatusrfcliententry.size(); index++)
+    for (std::size_t index=0; index<crfstatusrfcliententry_.size(); index++)
     {
-        if(crfstatusrfcliententry[index]->has_operation())
+        if(crfstatusrfcliententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1097,7 +1097,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(co
 {
     if(child_yang_name == "cRFStatusRFClientEntry")
     {
-        for(auto const & c : crfstatusrfcliententry)
+        for(auto const & c : crfstatusrfcliententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1107,7 +1107,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry>();
         c->parent = this;
-        crfstatusrfcliententry.push_back(c);
+        crfstatusrfcliententry_.push_back(c);
         return c;
     }
 
@@ -1117,7 +1117,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : crfstatusrfcliententry)
+    for (auto const & c : crfstatusrfcliententry_)
     {
         children[c->get_segment_path()] = c;
     }

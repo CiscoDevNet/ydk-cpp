@@ -11,15 +11,15 @@ namespace CISCO_IETF_PW_ENET_MIB {
 
 CiscoIetfPwEnetMib::CiscoIetfPwEnetMib()
     :
-    cpwvcenetmplsprimappingtable(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable>())
-	,cpwvcenetstatstable(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetstatstable>())
-	,cpwvcenettable(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenettable>())
+    cpwvcenetmplsprimappingtable_(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable>())
+	,cpwvcenetstatstable_(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetstatstable>())
+	,cpwvcenettable_(std::make_shared<CiscoIetfPwEnetMib::Cpwvcenettable>())
 {
-    cpwvcenetmplsprimappingtable->parent = this;
+    cpwvcenetmplsprimappingtable_->parent = this;
 
-    cpwvcenetstatstable->parent = this;
+    cpwvcenetstatstable_->parent = this;
 
-    cpwvcenettable->parent = this;
+    cpwvcenettable_->parent = this;
 
     yang_name = "CISCO-IETF-PW-ENET-MIB"; yang_parent_name = "CISCO-IETF-PW-ENET-MIB";
 }
@@ -30,17 +30,17 @@ CiscoIetfPwEnetMib::~CiscoIetfPwEnetMib()
 
 bool CiscoIetfPwEnetMib::has_data() const
 {
-    return (cpwvcenetmplsprimappingtable !=  nullptr && cpwvcenetmplsprimappingtable->has_data())
-	|| (cpwvcenetstatstable !=  nullptr && cpwvcenetstatstable->has_data())
-	|| (cpwvcenettable !=  nullptr && cpwvcenettable->has_data());
+    return (cpwvcenetmplsprimappingtable_ !=  nullptr && cpwvcenetmplsprimappingtable_->has_data())
+	|| (cpwvcenetstatstable_ !=  nullptr && cpwvcenetstatstable_->has_data())
+	|| (cpwvcenettable_ !=  nullptr && cpwvcenettable_->has_data());
 }
 
 bool CiscoIetfPwEnetMib::has_operation() const
 {
     return is_set(operation)
-	|| (cpwvcenetmplsprimappingtable !=  nullptr && cpwvcenetmplsprimappingtable->has_operation())
-	|| (cpwvcenetstatstable !=  nullptr && cpwvcenetstatstable->has_operation())
-	|| (cpwvcenettable !=  nullptr && cpwvcenettable->has_operation());
+	|| (cpwvcenetmplsprimappingtable_ !=  nullptr && cpwvcenetmplsprimappingtable_->has_operation())
+	|| (cpwvcenetstatstable_ !=  nullptr && cpwvcenetstatstable_->has_operation())
+	|| (cpwvcenettable_ !=  nullptr && cpwvcenettable_->has_operation());
 }
 
 std::string CiscoIetfPwEnetMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "cpwVcEnetMplsPriMappingTable")
     {
-        if(cpwvcenetmplsprimappingtable == nullptr)
+        if(cpwvcenetmplsprimappingtable_ == nullptr)
         {
-            cpwvcenetmplsprimappingtable = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable>();
+            cpwvcenetmplsprimappingtable_ = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable>();
         }
-        return cpwvcenetmplsprimappingtable;
+        return cpwvcenetmplsprimappingtable_;
     }
 
     if(child_yang_name == "cpwVcEnetStatsTable")
     {
-        if(cpwvcenetstatstable == nullptr)
+        if(cpwvcenetstatstable_ == nullptr)
         {
-            cpwvcenetstatstable = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetstatstable>();
+            cpwvcenetstatstable_ = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetstatstable>();
         }
-        return cpwvcenetstatstable;
+        return cpwvcenetstatstable_;
     }
 
     if(child_yang_name == "cpwVcEnetTable")
     {
-        if(cpwvcenettable == nullptr)
+        if(cpwvcenettable_ == nullptr)
         {
-            cpwvcenettable = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenettable>();
+            cpwvcenettable_ = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenettable>();
         }
-        return cpwvcenettable;
+        return cpwvcenettable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwEnetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpwvcenetmplsprimappingtable != nullptr)
+    if(cpwvcenetmplsprimappingtable_ != nullptr)
     {
-        children["cpwVcEnetMplsPriMappingTable"] = cpwvcenetmplsprimappingtable;
+        children["cpwVcEnetMplsPriMappingTable"] = cpwvcenetmplsprimappingtable_;
     }
 
-    if(cpwvcenetstatstable != nullptr)
+    if(cpwvcenetstatstable_ != nullptr)
     {
-        children["cpwVcEnetStatsTable"] = cpwvcenetstatstable;
+        children["cpwVcEnetStatsTable"] = cpwvcenetstatstable_;
     }
 
-    if(cpwvcenettable != nullptr)
+    if(cpwvcenettable_ != nullptr)
     {
-        children["cpwVcEnetTable"] = cpwvcenettable;
+        children["cpwVcEnetTable"] = cpwvcenettable_;
     }
 
     return children;
@@ -158,9 +158,9 @@ CiscoIetfPwEnetMib::Cpwvcenettable::~Cpwvcenettable()
 
 bool CiscoIetfPwEnetMib::Cpwvcenettable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcenetentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetentry_.size(); index++)
     {
-        if(cpwvcenetentry[index]->has_data())
+        if(cpwvcenetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -168,9 +168,9 @@ bool CiscoIetfPwEnetMib::Cpwvcenettable::has_data() const
 
 bool CiscoIetfPwEnetMib::Cpwvcenettable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcenetentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetentry_.size(); index++)
     {
-        if(cpwvcenetentry[index]->has_operation())
+        if(cpwvcenetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -210,7 +210,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenettable::get_child_by_name(co
 {
     if(child_yang_name == "cpwVcEnetEntry")
     {
-        for(auto const & c : cpwvcenetentry)
+        for(auto const & c : cpwvcenetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenettable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenettable::Cpwvcenetentry>();
         c->parent = this;
-        cpwvcenetentry.push_back(c);
+        cpwvcenetentry_.push_back(c);
         return c;
     }
 
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenettable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwEnetMib::Cpwvcenettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcenetentry)
+    for (auto const & c : cpwvcenetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -381,9 +381,9 @@ CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::~Cpwvcenetmplsprimappingtable(
 
 bool CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcenetmplsprimappingtableentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetmplsprimappingtableentry_.size(); index++)
     {
-        if(cpwvcenetmplsprimappingtableentry[index]->has_data())
+        if(cpwvcenetmplsprimappingtableentry_[index]->has_data())
             return true;
     }
     return false;
@@ -391,9 +391,9 @@ bool CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::has_data() const
 
 bool CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcenetmplsprimappingtableentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetmplsprimappingtableentry_.size(); index++)
     {
-        if(cpwvcenetmplsprimappingtableentry[index]->has_operation())
+        if(cpwvcenetmplsprimappingtableentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -433,7 +433,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::get_ch
 {
     if(child_yang_name == "cpwVcEnetMplsPriMappingTableEntry")
     {
-        for(auto const & c : cpwvcenetmplsprimappingtableentry)
+        for(auto const & c : cpwvcenetmplsprimappingtableentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -443,7 +443,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::get_ch
         }
         auto c = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry>();
         c->parent = this;
-        cpwvcenetmplsprimappingtableentry.push_back(c);
+        cpwvcenetmplsprimappingtableentry_.push_back(c);
         return c;
     }
 
@@ -453,7 +453,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcenetmplsprimappingtableentry)
+    for (auto const & c : cpwvcenetmplsprimappingtableentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -572,9 +572,9 @@ CiscoIetfPwEnetMib::Cpwvcenetstatstable::~Cpwvcenetstatstable()
 
 bool CiscoIetfPwEnetMib::Cpwvcenetstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcenetstatsentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetstatsentry_.size(); index++)
     {
-        if(cpwvcenetstatsentry[index]->has_data())
+        if(cpwvcenetstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -582,9 +582,9 @@ bool CiscoIetfPwEnetMib::Cpwvcenetstatstable::has_data() const
 
 bool CiscoIetfPwEnetMib::Cpwvcenetstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcenetstatsentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcenetstatsentry_.size(); index++)
     {
-        if(cpwvcenetstatsentry[index]->has_operation())
+        if(cpwvcenetstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -624,7 +624,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetstatstable::get_child_by_na
 {
     if(child_yang_name == "cpwVcEnetStatsEntry")
     {
-        for(auto const & c : cpwvcenetstatsentry)
+        for(auto const & c : cpwvcenetstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -634,7 +634,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetstatstable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIetfPwEnetMib::Cpwvcenetstatstable::Cpwvcenetstatsentry>();
         c->parent = this;
-        cpwvcenetstatsentry.push_back(c);
+        cpwvcenetstatsentry_.push_back(c);
         return c;
     }
 
@@ -644,7 +644,7 @@ std::shared_ptr<Entity> CiscoIetfPwEnetMib::Cpwvcenetstatstable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwEnetMib::Cpwvcenetstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcenetstatsentry)
+    for (auto const & c : cpwvcenetstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }

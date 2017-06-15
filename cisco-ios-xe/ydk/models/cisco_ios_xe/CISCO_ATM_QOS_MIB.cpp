@@ -11,18 +11,18 @@ namespace CISCO_ATM_QOS_MIB {
 
 CiscoAtmQosMib::CiscoAtmQosMib()
     :
-    caqqueuingparamsclasstable(std::make_shared<CiscoAtmQosMib::Caqqueuingparamsclasstable>())
-	,caqqueuingparamstable(std::make_shared<CiscoAtmQosMib::Caqqueuingparamstable>())
-	,caqvccparamstable(std::make_shared<CiscoAtmQosMib::Caqvccparamstable>())
-	,caqvpcparamstable(std::make_shared<CiscoAtmQosMib::Caqvpcparamstable>())
+    caqqueuingparamsclasstable_(std::make_shared<CiscoAtmQosMib::Caqqueuingparamsclasstable>())
+	,caqqueuingparamstable_(std::make_shared<CiscoAtmQosMib::Caqqueuingparamstable>())
+	,caqvccparamstable_(std::make_shared<CiscoAtmQosMib::Caqvccparamstable>())
+	,caqvpcparamstable_(std::make_shared<CiscoAtmQosMib::Caqvpcparamstable>())
 {
-    caqqueuingparamsclasstable->parent = this;
+    caqqueuingparamsclasstable_->parent = this;
 
-    caqqueuingparamstable->parent = this;
+    caqqueuingparamstable_->parent = this;
 
-    caqvccparamstable->parent = this;
+    caqvccparamstable_->parent = this;
 
-    caqvpcparamstable->parent = this;
+    caqvpcparamstable_->parent = this;
 
     yang_name = "CISCO-ATM-QOS-MIB"; yang_parent_name = "CISCO-ATM-QOS-MIB";
 }
@@ -33,19 +33,19 @@ CiscoAtmQosMib::~CiscoAtmQosMib()
 
 bool CiscoAtmQosMib::has_data() const
 {
-    return (caqqueuingparamsclasstable !=  nullptr && caqqueuingparamsclasstable->has_data())
-	|| (caqqueuingparamstable !=  nullptr && caqqueuingparamstable->has_data())
-	|| (caqvccparamstable !=  nullptr && caqvccparamstable->has_data())
-	|| (caqvpcparamstable !=  nullptr && caqvpcparamstable->has_data());
+    return (caqqueuingparamsclasstable_ !=  nullptr && caqqueuingparamsclasstable_->has_data())
+	|| (caqqueuingparamstable_ !=  nullptr && caqqueuingparamstable_->has_data())
+	|| (caqvccparamstable_ !=  nullptr && caqvccparamstable_->has_data())
+	|| (caqvpcparamstable_ !=  nullptr && caqvpcparamstable_->has_data());
 }
 
 bool CiscoAtmQosMib::has_operation() const
 {
     return is_set(operation)
-	|| (caqqueuingparamsclasstable !=  nullptr && caqqueuingparamsclasstable->has_operation())
-	|| (caqqueuingparamstable !=  nullptr && caqqueuingparamstable->has_operation())
-	|| (caqvccparamstable !=  nullptr && caqvccparamstable->has_operation())
-	|| (caqvpcparamstable !=  nullptr && caqvpcparamstable->has_operation());
+	|| (caqqueuingparamsclasstable_ !=  nullptr && caqqueuingparamsclasstable_->has_operation())
+	|| (caqqueuingparamstable_ !=  nullptr && caqqueuingparamstable_->has_operation())
+	|| (caqvccparamstable_ !=  nullptr && caqvccparamstable_->has_operation())
+	|| (caqvpcparamstable_ !=  nullptr && caqvpcparamstable_->has_operation());
 }
 
 std::string CiscoAtmQosMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoAtmQosMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "caqQueuingParamsClassTable")
     {
-        if(caqqueuingparamsclasstable == nullptr)
+        if(caqqueuingparamsclasstable_ == nullptr)
         {
-            caqqueuingparamsclasstable = std::make_shared<CiscoAtmQosMib::Caqqueuingparamsclasstable>();
+            caqqueuingparamsclasstable_ = std::make_shared<CiscoAtmQosMib::Caqqueuingparamsclasstable>();
         }
-        return caqqueuingparamsclasstable;
+        return caqqueuingparamsclasstable_;
     }
 
     if(child_yang_name == "caqQueuingParamsTable")
     {
-        if(caqqueuingparamstable == nullptr)
+        if(caqqueuingparamstable_ == nullptr)
         {
-            caqqueuingparamstable = std::make_shared<CiscoAtmQosMib::Caqqueuingparamstable>();
+            caqqueuingparamstable_ = std::make_shared<CiscoAtmQosMib::Caqqueuingparamstable>();
         }
-        return caqqueuingparamstable;
+        return caqqueuingparamstable_;
     }
 
     if(child_yang_name == "caqVccParamsTable")
     {
-        if(caqvccparamstable == nullptr)
+        if(caqvccparamstable_ == nullptr)
         {
-            caqvccparamstable = std::make_shared<CiscoAtmQosMib::Caqvccparamstable>();
+            caqvccparamstable_ = std::make_shared<CiscoAtmQosMib::Caqvccparamstable>();
         }
-        return caqvccparamstable;
+        return caqvccparamstable_;
     }
 
     if(child_yang_name == "caqVpcParamsTable")
     {
-        if(caqvpcparamstable == nullptr)
+        if(caqvpcparamstable_ == nullptr)
         {
-            caqvpcparamstable = std::make_shared<CiscoAtmQosMib::Caqvpcparamstable>();
+            caqvpcparamstable_ = std::make_shared<CiscoAtmQosMib::Caqvpcparamstable>();
         }
-        return caqvpcparamstable;
+        return caqvpcparamstable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoAtmQosMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmQosMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(caqqueuingparamsclasstable != nullptr)
+    if(caqqueuingparamsclasstable_ != nullptr)
     {
-        children["caqQueuingParamsClassTable"] = caqqueuingparamsclasstable;
+        children["caqQueuingParamsClassTable"] = caqqueuingparamsclasstable_;
     }
 
-    if(caqqueuingparamstable != nullptr)
+    if(caqqueuingparamstable_ != nullptr)
     {
-        children["caqQueuingParamsTable"] = caqqueuingparamstable;
+        children["caqQueuingParamsTable"] = caqqueuingparamstable_;
     }
 
-    if(caqvccparamstable != nullptr)
+    if(caqvccparamstable_ != nullptr)
     {
-        children["caqVccParamsTable"] = caqvccparamstable;
+        children["caqVccParamsTable"] = caqvccparamstable_;
     }
 
-    if(caqvpcparamstable != nullptr)
+    if(caqvpcparamstable_ != nullptr)
     {
-        children["caqVpcParamsTable"] = caqvpcparamstable;
+        children["caqVpcParamsTable"] = caqvpcparamstable_;
     }
 
     return children;
@@ -177,9 +177,9 @@ CiscoAtmQosMib::Caqvccparamstable::~Caqvccparamstable()
 
 bool CiscoAtmQosMib::Caqvccparamstable::has_data() const
 {
-    for (std::size_t index=0; index<caqvccparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvccparamsentry_.size(); index++)
     {
-        if(caqvccparamsentry[index]->has_data())
+        if(caqvccparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -187,9 +187,9 @@ bool CiscoAtmQosMib::Caqvccparamstable::has_data() const
 
 bool CiscoAtmQosMib::Caqvccparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<caqvccparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvccparamsentry_.size(); index++)
     {
-        if(caqvccparamsentry[index]->has_operation())
+        if(caqvccparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvccparamstable::get_child_by_name(con
 {
     if(child_yang_name == "caqVccParamsEntry")
     {
-        for(auto const & c : caqvccparamsentry)
+        for(auto const & c : caqvccparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvccparamstable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry>();
         c->parent = this;
-        caqvccparamsentry.push_back(c);
+        caqvccparamsentry_.push_back(c);
         return c;
     }
 
@@ -249,7 +249,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvccparamstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmQosMib::Caqvccparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : caqvccparamsentry)
+    for (auto const & c : caqvccparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -584,9 +584,9 @@ CiscoAtmQosMib::Caqvpcparamstable::~Caqvpcparamstable()
 
 bool CiscoAtmQosMib::Caqvpcparamstable::has_data() const
 {
-    for (std::size_t index=0; index<caqvpcparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvpcparamsentry_.size(); index++)
     {
-        if(caqvpcparamsentry[index]->has_data())
+        if(caqvpcparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -594,9 +594,9 @@ bool CiscoAtmQosMib::Caqvpcparamstable::has_data() const
 
 bool CiscoAtmQosMib::Caqvpcparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<caqvpcparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvpcparamsentry_.size(); index++)
     {
-        if(caqvpcparamsentry[index]->has_operation())
+        if(caqvpcparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -636,7 +636,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvpcparamstable::get_child_by_name(con
 {
     if(child_yang_name == "caqVpcParamsEntry")
     {
-        for(auto const & c : caqvpcparamsentry)
+        for(auto const & c : caqvpcparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -646,7 +646,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvpcparamstable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry>();
         c->parent = this;
-        caqvpcparamsentry.push_back(c);
+        caqvpcparamsentry_.push_back(c);
         return c;
     }
 
@@ -656,7 +656,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqvpcparamstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmQosMib::Caqvpcparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : caqvpcparamsentry)
+    for (auto const & c : caqvpcparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -839,9 +839,9 @@ CiscoAtmQosMib::Caqqueuingparamstable::~Caqqueuingparamstable()
 
 bool CiscoAtmQosMib::Caqqueuingparamstable::has_data() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsentry_.size(); index++)
     {
-        if(caqqueuingparamsentry[index]->has_data())
+        if(caqqueuingparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -849,9 +849,9 @@ bool CiscoAtmQosMib::Caqqueuingparamstable::has_data() const
 
 bool CiscoAtmQosMib::Caqqueuingparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsentry_.size(); index++)
     {
-        if(caqqueuingparamsentry[index]->has_operation())
+        if(caqqueuingparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -891,7 +891,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamstable::get_child_by_name
 {
     if(child_yang_name == "caqQueuingParamsEntry")
     {
-        for(auto const & c : caqqueuingparamsentry)
+        for(auto const & c : caqqueuingparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -901,7 +901,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamstable::get_child_by_name
         }
         auto c = std::make_shared<CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry>();
         c->parent = this;
-        caqqueuingparamsentry.push_back(c);
+        caqqueuingparamsentry_.push_back(c);
         return c;
     }
 
@@ -911,7 +911,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamstable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmQosMib::Caqqueuingparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : caqqueuingparamsentry)
+    for (auto const & c : caqqueuingparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1030,9 +1030,9 @@ CiscoAtmQosMib::Caqqueuingparamsclasstable::~Caqqueuingparamsclasstable()
 
 bool CiscoAtmQosMib::Caqqueuingparamsclasstable::has_data() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsclassentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsclassentry_.size(); index++)
     {
-        if(caqqueuingparamsclassentry[index]->has_data())
+        if(caqqueuingparamsclassentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1040,9 +1040,9 @@ bool CiscoAtmQosMib::Caqqueuingparamsclasstable::has_data() const
 
 bool CiscoAtmQosMib::Caqqueuingparamsclasstable::has_operation() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsclassentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsclassentry_.size(); index++)
     {
-        if(caqqueuingparamsclassentry[index]->has_operation())
+        if(caqqueuingparamsclassentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1082,7 +1082,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamsclasstable::get_child_by
 {
     if(child_yang_name == "caqQueuingParamsClassEntry")
     {
-        for(auto const & c : caqqueuingparamsclassentry)
+        for(auto const & c : caqqueuingparamsclassentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1092,7 +1092,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamsclasstable::get_child_by
         }
         auto c = std::make_shared<CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry>();
         c->parent = this;
-        caqqueuingparamsclassentry.push_back(c);
+        caqqueuingparamsclassentry_.push_back(c);
         return c;
     }
 
@@ -1102,7 +1102,7 @@ std::shared_ptr<Entity> CiscoAtmQosMib::Caqqueuingparamsclasstable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmQosMib::Caqqueuingparamsclasstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : caqqueuingparamsclassentry)
+    for (auto const & c : caqqueuingparamsclassentry_)
     {
         children[c->get_segment_path()] = c;
     }

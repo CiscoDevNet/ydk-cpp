@@ -11,24 +11,24 @@ namespace CISCO_TAP2_MIB {
 
 CiscoTap2Mib::CiscoTap2Mib()
     :
-    ctap2debuggroup(std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>())
-	,ctap2debugtable(std::make_shared<CiscoTap2Mib::Ctap2Debugtable>())
-	,ctap2debugusertable(std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>())
-	,ctap2mediationgroup(std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>())
-	,ctap2mediationtable(std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>())
-	,ctap2streamtable(std::make_shared<CiscoTap2Mib::Ctap2Streamtable>())
+    ctap2debuggroup_(std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>())
+	,ctap2debugtable_(std::make_shared<CiscoTap2Mib::Ctap2Debugtable>())
+	,ctap2debugusertable_(std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>())
+	,ctap2mediationgroup_(std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>())
+	,ctap2mediationtable_(std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>())
+	,ctap2streamtable_(std::make_shared<CiscoTap2Mib::Ctap2Streamtable>())
 {
-    ctap2debuggroup->parent = this;
+    ctap2debuggroup_->parent = this;
 
-    ctap2debugtable->parent = this;
+    ctap2debugtable_->parent = this;
 
-    ctap2debugusertable->parent = this;
+    ctap2debugusertable_->parent = this;
 
-    ctap2mediationgroup->parent = this;
+    ctap2mediationgroup_->parent = this;
 
-    ctap2mediationtable->parent = this;
+    ctap2mediationtable_->parent = this;
 
-    ctap2streamtable->parent = this;
+    ctap2streamtable_->parent = this;
 
     yang_name = "CISCO-TAP2-MIB"; yang_parent_name = "CISCO-TAP2-MIB";
 }
@@ -39,23 +39,23 @@ CiscoTap2Mib::~CiscoTap2Mib()
 
 bool CiscoTap2Mib::has_data() const
 {
-    return (ctap2debuggroup !=  nullptr && ctap2debuggroup->has_data())
-	|| (ctap2debugtable !=  nullptr && ctap2debugtable->has_data())
-	|| (ctap2debugusertable !=  nullptr && ctap2debugusertable->has_data())
-	|| (ctap2mediationgroup !=  nullptr && ctap2mediationgroup->has_data())
-	|| (ctap2mediationtable !=  nullptr && ctap2mediationtable->has_data())
-	|| (ctap2streamtable !=  nullptr && ctap2streamtable->has_data());
+    return (ctap2debuggroup_ !=  nullptr && ctap2debuggroup_->has_data())
+	|| (ctap2debugtable_ !=  nullptr && ctap2debugtable_->has_data())
+	|| (ctap2debugusertable_ !=  nullptr && ctap2debugusertable_->has_data())
+	|| (ctap2mediationgroup_ !=  nullptr && ctap2mediationgroup_->has_data())
+	|| (ctap2mediationtable_ !=  nullptr && ctap2mediationtable_->has_data())
+	|| (ctap2streamtable_ !=  nullptr && ctap2streamtable_->has_data());
 }
 
 bool CiscoTap2Mib::has_operation() const
 {
     return is_set(operation)
-	|| (ctap2debuggroup !=  nullptr && ctap2debuggroup->has_operation())
-	|| (ctap2debugtable !=  nullptr && ctap2debugtable->has_operation())
-	|| (ctap2debugusertable !=  nullptr && ctap2debugusertable->has_operation())
-	|| (ctap2mediationgroup !=  nullptr && ctap2mediationgroup->has_operation())
-	|| (ctap2mediationtable !=  nullptr && ctap2mediationtable->has_operation())
-	|| (ctap2streamtable !=  nullptr && ctap2streamtable->has_operation());
+	|| (ctap2debuggroup_ !=  nullptr && ctap2debuggroup_->has_operation())
+	|| (ctap2debugtable_ !=  nullptr && ctap2debugtable_->has_operation())
+	|| (ctap2debugusertable_ !=  nullptr && ctap2debugusertable_->has_operation())
+	|| (ctap2mediationgroup_ !=  nullptr && ctap2mediationgroup_->has_operation())
+	|| (ctap2mediationtable_ !=  nullptr && ctap2mediationtable_->has_operation())
+	|| (ctap2streamtable_ !=  nullptr && ctap2streamtable_->has_operation());
 }
 
 std::string CiscoTap2Mib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "cTap2DebugGroup")
     {
-        if(ctap2debuggroup == nullptr)
+        if(ctap2debuggroup_ == nullptr)
         {
-            ctap2debuggroup = std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>();
+            ctap2debuggroup_ = std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>();
         }
-        return ctap2debuggroup;
+        return ctap2debuggroup_;
     }
 
     if(child_yang_name == "cTap2DebugTable")
     {
-        if(ctap2debugtable == nullptr)
+        if(ctap2debugtable_ == nullptr)
         {
-            ctap2debugtable = std::make_shared<CiscoTap2Mib::Ctap2Debugtable>();
+            ctap2debugtable_ = std::make_shared<CiscoTap2Mib::Ctap2Debugtable>();
         }
-        return ctap2debugtable;
+        return ctap2debugtable_;
     }
 
     if(child_yang_name == "cTap2DebugUserTable")
     {
-        if(ctap2debugusertable == nullptr)
+        if(ctap2debugusertable_ == nullptr)
         {
-            ctap2debugusertable = std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>();
+            ctap2debugusertable_ = std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>();
         }
-        return ctap2debugusertable;
+        return ctap2debugusertable_;
     }
 
     if(child_yang_name == "cTap2MediationGroup")
     {
-        if(ctap2mediationgroup == nullptr)
+        if(ctap2mediationgroup_ == nullptr)
         {
-            ctap2mediationgroup = std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>();
+            ctap2mediationgroup_ = std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>();
         }
-        return ctap2mediationgroup;
+        return ctap2mediationgroup_;
     }
 
     if(child_yang_name == "cTap2MediationTable")
     {
-        if(ctap2mediationtable == nullptr)
+        if(ctap2mediationtable_ == nullptr)
         {
-            ctap2mediationtable = std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>();
+            ctap2mediationtable_ = std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>();
         }
-        return ctap2mediationtable;
+        return ctap2mediationtable_;
     }
 
     if(child_yang_name == "cTap2StreamTable")
     {
-        if(ctap2streamtable == nullptr)
+        if(ctap2streamtable_ == nullptr)
         {
-            ctap2streamtable = std::make_shared<CiscoTap2Mib::Ctap2Streamtable>();
+            ctap2streamtable_ = std::make_shared<CiscoTap2Mib::Ctap2Streamtable>();
         }
-        return ctap2streamtable;
+        return ctap2streamtable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ctap2debuggroup != nullptr)
+    if(ctap2debuggroup_ != nullptr)
     {
-        children["cTap2DebugGroup"] = ctap2debuggroup;
+        children["cTap2DebugGroup"] = ctap2debuggroup_;
     }
 
-    if(ctap2debugtable != nullptr)
+    if(ctap2debugtable_ != nullptr)
     {
-        children["cTap2DebugTable"] = ctap2debugtable;
+        children["cTap2DebugTable"] = ctap2debugtable_;
     }
 
-    if(ctap2debugusertable != nullptr)
+    if(ctap2debugusertable_ != nullptr)
     {
-        children["cTap2DebugUserTable"] = ctap2debugusertable;
+        children["cTap2DebugUserTable"] = ctap2debugusertable_;
     }
 
-    if(ctap2mediationgroup != nullptr)
+    if(ctap2mediationgroup_ != nullptr)
     {
-        children["cTap2MediationGroup"] = ctap2mediationgroup;
+        children["cTap2MediationGroup"] = ctap2mediationgroup_;
     }
 
-    if(ctap2mediationtable != nullptr)
+    if(ctap2mediationtable_ != nullptr)
     {
-        children["cTap2MediationTable"] = ctap2mediationtable;
+        children["cTap2MediationTable"] = ctap2mediationtable_;
     }
 
-    if(ctap2streamtable != nullptr)
+    if(ctap2streamtable_ != nullptr)
     {
-        children["cTap2StreamTable"] = ctap2streamtable;
+        children["cTap2StreamTable"] = ctap2streamtable_;
     }
 
     return children;
@@ -375,9 +375,9 @@ CiscoTap2Mib::Ctap2Mediationtable::~Ctap2Mediationtable()
 
 bool CiscoTap2Mib::Ctap2Mediationtable::has_data() const
 {
-    for (std::size_t index=0; index<ctap2mediationentry.size(); index++)
+    for (std::size_t index=0; index<ctap2mediationentry_.size(); index++)
     {
-        if(ctap2mediationentry[index]->has_data())
+        if(ctap2mediationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -385,9 +385,9 @@ bool CiscoTap2Mib::Ctap2Mediationtable::has_data() const
 
 bool CiscoTap2Mib::Ctap2Mediationtable::has_operation() const
 {
-    for (std::size_t index=0; index<ctap2mediationentry.size(); index++)
+    for (std::size_t index=0; index<ctap2mediationentry_.size(); index++)
     {
-        if(ctap2mediationentry[index]->has_operation())
+        if(ctap2mediationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -427,7 +427,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(con
 {
     if(child_yang_name == "cTap2MediationEntry")
     {
-        for(auto const & c : ctap2mediationentry)
+        for(auto const & c : ctap2mediationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -437,7 +437,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry>();
         c->parent = this;
-        ctap2mediationentry.push_back(c);
+        ctap2mediationentry_.push_back(c);
         return c;
     }
 
@@ -447,7 +447,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Mediationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2mediationentry)
+    for (auto const & c : ctap2mediationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -646,9 +646,9 @@ CiscoTap2Mib::Ctap2Streamtable::~Ctap2Streamtable()
 
 bool CiscoTap2Mib::Ctap2Streamtable::has_data() const
 {
-    for (std::size_t index=0; index<ctap2streamentry.size(); index++)
+    for (std::size_t index=0; index<ctap2streamentry_.size(); index++)
     {
-        if(ctap2streamentry[index]->has_data())
+        if(ctap2streamentry_[index]->has_data())
             return true;
     }
     return false;
@@ -656,9 +656,9 @@ bool CiscoTap2Mib::Ctap2Streamtable::has_data() const
 
 bool CiscoTap2Mib::Ctap2Streamtable::has_operation() const
 {
-    for (std::size_t index=0; index<ctap2streamentry.size(); index++)
+    for (std::size_t index=0; index<ctap2streamentry_.size(); index++)
     {
-        if(ctap2streamentry[index]->has_operation())
+        if(ctap2streamentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -698,7 +698,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const 
 {
     if(child_yang_name == "cTap2StreamEntry")
     {
-        for(auto const & c : ctap2streamentry)
+        for(auto const & c : ctap2streamentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -708,7 +708,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry>();
         c->parent = this;
-        ctap2streamentry.push_back(c);
+        ctap2streamentry_.push_back(c);
         return c;
     }
 
@@ -718,7 +718,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Streamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2streamentry)
+    for (auto const & c : ctap2streamentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -877,9 +877,9 @@ CiscoTap2Mib::Ctap2Debugtable::~Ctap2Debugtable()
 
 bool CiscoTap2Mib::Ctap2Debugtable::has_data() const
 {
-    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
+    for (std::size_t index=0; index<ctap2debugentry_.size(); index++)
     {
-        if(ctap2debugentry[index]->has_data())
+        if(ctap2debugentry_[index]->has_data())
             return true;
     }
     return false;
@@ -887,9 +887,9 @@ bool CiscoTap2Mib::Ctap2Debugtable::has_data() const
 
 bool CiscoTap2Mib::Ctap2Debugtable::has_operation() const
 {
-    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
+    for (std::size_t index=0; index<ctap2debugentry_.size(); index++)
     {
-        if(ctap2debugentry[index]->has_operation())
+        if(ctap2debugentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -929,7 +929,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugtable::get_child_by_name(const s
 {
     if(child_yang_name == "cTap2DebugEntry")
     {
-        for(auto const & c : ctap2debugentry)
+        for(auto const & c : ctap2debugentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -939,7 +939,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugtable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry>();
         c->parent = this;
-        ctap2debugentry.push_back(c);
+        ctap2debugentry_.push_back(c);
         return c;
     }
 
@@ -949,7 +949,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2debugentry)
+    for (auto const & c : ctap2debugentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1076,9 +1076,9 @@ CiscoTap2Mib::Ctap2Debugusertable::~Ctap2Debugusertable()
 
 bool CiscoTap2Mib::Ctap2Debugusertable::has_data() const
 {
-    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
+    for (std::size_t index=0; index<ctap2debuguserentry_.size(); index++)
     {
-        if(ctap2debuguserentry[index]->has_data())
+        if(ctap2debuguserentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1086,9 +1086,9 @@ bool CiscoTap2Mib::Ctap2Debugusertable::has_data() const
 
 bool CiscoTap2Mib::Ctap2Debugusertable::has_operation() const
 {
-    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
+    for (std::size_t index=0; index<ctap2debuguserentry_.size(); index++)
     {
-        if(ctap2debuguserentry[index]->has_operation())
+        if(ctap2debuguserentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1128,7 +1128,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugusertable::get_child_by_name(con
 {
     if(child_yang_name == "cTap2DebugUserEntry")
     {
-        for(auto const & c : ctap2debuguserentry)
+        for(auto const & c : ctap2debuguserentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1138,7 +1138,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugusertable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry>();
         c->parent = this;
-        ctap2debuguserentry.push_back(c);
+        ctap2debuguserentry_.push_back(c);
         return c;
     }
 
@@ -1148,7 +1148,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugusertable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugusertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2debuguserentry)
+    for (auto const & c : ctap2debuguserentry_)
     {
         children[c->get_segment_path()] = c;
     }

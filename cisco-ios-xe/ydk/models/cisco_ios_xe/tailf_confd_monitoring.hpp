@@ -43,15 +43,15 @@ class ConfdState : public Entity
         class Snmp; //type: ConfdState::Snmp
         class Internal; //type: ConfdState::Internal
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli> cli; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Ha> ha; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal> internal;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels> loaded_data_models;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf> netconf; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest> rest; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Smp> smp; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp> snmp; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui> webui; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli> cli_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Ha> ha_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal> internal_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels> loaded_data_models_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf> netconf_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest> rest_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Smp> smp_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp> snmp_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui> webui_; // presence node
                 class DaemonStatusEnum;
 
 }; // ConfdState
@@ -116,7 +116,7 @@ class ConfdState::LoadedDataModels : public Entity
 
         class DataModel; //type: ConfdState::LoadedDataModels::DataModel
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels::DataModel> > data_model;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels::DataModel> > data_model_;
         
 }; // ConfdState::LoadedDataModels
 
@@ -162,7 +162,7 @@ class ConfdState::Netconf : public Entity
 
         class Listen; //type: ConfdState::Netconf::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen> listen;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen> listen_;
         
 }; // ConfdState::Netconf
 
@@ -184,8 +184,8 @@ class ConfdState::Netconf::Listen : public Entity
         class Tcp; //type: ConfdState::Netconf::Listen::Tcp
         class Ssh; //type: ConfdState::Netconf::Listen::Ssh
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Ssh> > ssh;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Tcp> > tcp;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Ssh> > ssh_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Tcp> > tcp_;
         
 }; // ConfdState::Netconf::Listen
 
@@ -246,7 +246,7 @@ class ConfdState::Cli : public Entity
 
         class Listen; //type: ConfdState::Cli::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen> listen;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen> listen_;
         
 }; // ConfdState::Cli
 
@@ -267,7 +267,7 @@ class ConfdState::Cli::Listen : public Entity
 
         class Ssh; //type: ConfdState::Cli::Listen::Ssh
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen::Ssh> > ssh;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen::Ssh> > ssh_;
         
 }; // ConfdState::Cli::Listen
 
@@ -308,7 +308,7 @@ class ConfdState::Webui : public Entity
 
         class Listen; //type: ConfdState::Webui::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen> listen;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen> listen_;
         
 }; // ConfdState::Webui
 
@@ -330,8 +330,8 @@ class ConfdState::Webui::Listen : public Entity
         class Tcp; //type: ConfdState::Webui::Listen::Tcp
         class Ssl; //type: ConfdState::Webui::Listen::Ssl
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Ssl> > ssl;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Tcp> > tcp;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Ssl> > ssl_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Tcp> > tcp_;
         
 }; // ConfdState::Webui::Listen
 
@@ -392,7 +392,7 @@ class ConfdState::Rest : public Entity
 
         class Listen; //type: ConfdState::Rest::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen> listen;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen> listen_;
         
 }; // ConfdState::Rest
 
@@ -414,8 +414,8 @@ class ConfdState::Rest::Listen : public Entity
         class Tcp; //type: ConfdState::Rest::Listen::Tcp
         class Ssl; //type: ConfdState::Rest::Listen::Ssl
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Ssl> > ssl;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Tcp> > tcp;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Ssl> > ssl_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Tcp> > tcp_;
         
 }; // ConfdState::Rest::Listen
 
@@ -479,8 +479,8 @@ class ConfdState::Snmp : public Entity
         class Listen; //type: ConfdState::Snmp::Listen
         class Version; //type: ConfdState::Snmp::Version
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen> listen;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Version> version;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen> listen_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Version> version_;
         
 }; // ConfdState::Snmp
 
@@ -501,7 +501,7 @@ class ConfdState::Snmp::Listen : public Entity
 
         class Udp; //type: ConfdState::Snmp::Listen::Udp
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen::Udp> > udp;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen::Udp> > udp_;
         
 }; // ConfdState::Snmp::Listen
 
@@ -564,8 +564,8 @@ class ConfdState::Internal : public Entity
         class Callpoints; //type: ConfdState::Internal::Callpoints
         class Cdb; //type: ConfdState::Internal::Cdb
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints> callpoints;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb> cdb;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints> callpoints_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb> cdb_;
                 class DatastoreNameEnum;
 
 }; // ConfdState::Internal
@@ -596,16 +596,16 @@ class ConfdState::Internal::Callpoints : public Entity
         class AuthenticationCallback; //type: ConfdState::Internal::Callpoints::AuthenticationCallback
         class AuthorizationCallbacks; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint> > actionpoint;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback> authentication_callback; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks> authorization_callbacks; // presence node
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint> > callpoint;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback> > error_formatting_callback;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay> > notification_stream_replay;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback> > snmp_inform_callback;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription> > snmp_notification_subscription;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint> > typepoint;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint> > validationpoint;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint> > actionpoint_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback> authentication_callback_; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks> authorization_callbacks_; // presence node
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint> > callpoint_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback> > error_formatting_callback_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay> > notification_stream_replay_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback> > snmp_inform_callback_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription> > snmp_notification_subscription_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint> > typepoint_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint> > validationpoint_;
         
 }; // ConfdState::Internal::Callpoints
 
@@ -631,8 +631,8 @@ class ConfdState::Internal::Callpoints::Callpoint : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::Callpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Callpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::Callpoint
@@ -679,7 +679,7 @@ class ConfdState::Internal::Callpoints::Callpoint::Range : public Entity
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Callpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::Callpoint::Range
 
@@ -727,8 +727,8 @@ class ConfdState::Internal::Callpoints::Validationpoint : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::Validationpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Validationpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::Validationpoint
@@ -775,7 +775,7 @@ class ConfdState::Internal::Callpoints::Validationpoint::Range : public Entity
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::Validationpoint::Range
 
@@ -823,8 +823,8 @@ class ConfdState::Internal::Callpoints::Actionpoint : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::Actionpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Actionpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::Actionpoint
@@ -871,7 +871,7 @@ class ConfdState::Internal::Callpoints::Actionpoint::Range : public Entity
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::Actionpoint::Range
 
@@ -919,8 +919,8 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback
@@ -967,7 +967,7 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Range : public Entit
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback::Range
 
@@ -1015,8 +1015,8 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription : public En
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription
@@ -1063,7 +1063,7 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range : pu
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range
 
@@ -1111,8 +1111,8 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback
@@ -1159,7 +1159,7 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range : public 
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range
 
@@ -1207,8 +1207,8 @@ class ConfdState::Internal::Callpoints::Typepoint : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::Typepoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Typepoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::Typepoint
@@ -1255,7 +1255,7 @@ class ConfdState::Internal::Callpoints::Typepoint::Range : public Entity
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Typepoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::Typepoint::Range
 
@@ -1304,8 +1304,8 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range> > range_;
                 class ReplaySupportEnum;
         class ErrorEnum;
 
@@ -1353,7 +1353,7 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range : public
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::NotificationStreamReplay::Range
 
@@ -1401,8 +1401,8 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback
@@ -1449,7 +1449,7 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Range : public E
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback::Range
 
@@ -1497,8 +1497,8 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks : public Entity
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon> daemon;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range> > range;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon> daemon_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range> > range_;
                 class ErrorEnum;
 
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks
@@ -1545,7 +1545,7 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range : public E
         YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon> daemon;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon> daemon_;
         
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range
 
@@ -1589,8 +1589,8 @@ class ConfdState::Internal::Cdb : public Entity
         class Datastore; //type: ConfdState::Internal::Cdb::Datastore
         class Client; //type: ConfdState::Internal::Cdb::Client
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client> > client;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore> > datastore;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client> > client_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore> > datastore_;
         
 }; // ConfdState::Internal::Cdb
 
@@ -1622,8 +1622,8 @@ class ConfdState::Internal::Cdb::Datastore : public Entity
         class PendingSubscriptionSync; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync
         class PendingNotificationQueue; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue> > pending_notification_queue;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync> pending_subscription_sync; // presence node
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue> > pending_notification_queue_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync> pending_subscription_sync_; // presence node
         
 }; // ConfdState::Internal::Cdb::Datastore
 
@@ -1646,7 +1646,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public Ent
         YLeaf time_remaining; //type: one of uint64, enumeration
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification> > notification;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification> > notification_;
                 class TimeRemainingEnum;
 
 }; // ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync
@@ -1688,7 +1688,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue : public En
 
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification> > notification;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification> > notification_;
         
 }; // ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
@@ -1735,7 +1735,7 @@ class ConfdState::Internal::Cdb::Client : public Entity
         YLeaf lock; //type: LockEnum
         class Subscription; //type: ConfdState::Internal::Cdb::Client::Subscription
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client::Subscription> > subscription;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client::Subscription> > subscription_;
                 class TypeEnum;
         class DatastoreEnum;
         class LockEnum;

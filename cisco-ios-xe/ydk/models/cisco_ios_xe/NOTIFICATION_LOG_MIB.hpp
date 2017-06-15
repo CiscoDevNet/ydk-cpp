@@ -35,11 +35,11 @@ class NotificationLogMib : public Entity
         class Nlmlogtable; //type: NotificationLogMib::Nlmlogtable
         class Nlmlogvariabletable; //type: NotificationLogMib::Nlmlogvariabletable
 
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfig> nlmconfig;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable> nlmconfiglogtable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable> nlmlogtable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable> nlmlogvariabletable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmstats> nlmstats;
+        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfig> nlmconfig_;
+        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable> nlmconfiglogtable_;
+        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable> nlmlogtable_;
+        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable> nlmlogvariabletable_;
+        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmstats> nlmstats_;
         
 }; // NotificationLogMib
 
@@ -100,7 +100,7 @@ class NotificationLogMib::Nlmconfiglogtable : public Entity
 
         class Nlmconfiglogentry; //type: NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry> > nlmconfiglogentry;
+        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry> > nlmconfiglogentry_;
         
 }; // NotificationLogMib::Nlmconfiglogtable
 
@@ -150,7 +150,7 @@ class NotificationLogMib::Nlmlogtable : public Entity
 
         class Nlmlogentry; //type: NotificationLogMib::Nlmlogtable::Nlmlogentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable::Nlmlogentry> > nlmlogentry;
+        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable::Nlmlogentry> > nlmlogentry_;
         
 }; // NotificationLogMib::Nlmlogtable
 
@@ -200,7 +200,7 @@ class NotificationLogMib::Nlmlogvariabletable : public Entity
 
         class Nlmlogvariableentry; //type: NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry> > nlmlogvariableentry;
+        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry> > nlmlogvariableentry_;
         
 }; // NotificationLogMib::Nlmlogvariabletable
 

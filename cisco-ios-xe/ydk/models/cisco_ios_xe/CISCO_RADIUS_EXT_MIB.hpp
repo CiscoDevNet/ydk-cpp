@@ -32,9 +32,9 @@ class CiscoRadiusExtMib : public Entity
         class Creclientauthentication; //type: CiscoRadiusExtMib::Creclientauthentication
         class Creclientaccounting; //type: CiscoRadiusExtMib::Creclientaccounting
 
-        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientaccounting> creclientaccounting;
-        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientauthentication> creclientauthentication;
-        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientglobal> creclientglobal;
+        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientaccounting> creclientaccounting_;
+        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientauthentication> creclientauthentication_;
+        std::shared_ptr<CISCO_RADIUS_EXT_MIB::CiscoRadiusExtMib::Creclientglobal> creclientglobal_;
         
 }; // CiscoRadiusExtMib
 

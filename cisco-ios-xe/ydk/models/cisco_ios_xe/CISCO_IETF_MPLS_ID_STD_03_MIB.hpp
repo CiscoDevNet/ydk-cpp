@@ -30,7 +30,7 @@ class CiscoIetfMplsIdStd03Mib : public Entity
 
         class Cmplsidobjects; //type: CiscoIetfMplsIdStd03Mib::Cmplsidobjects
 
-        std::shared_ptr<CISCO_IETF_MPLS_ID_STD_03_MIB::CiscoIetfMplsIdStd03Mib::Cmplsidobjects> cmplsidobjects;
+        std::shared_ptr<CISCO_IETF_MPLS_ID_STD_03_MIB::CiscoIetfMplsIdStd03Mib::Cmplsidobjects> cmplsidobjects_;
         
 }; // CiscoIetfMplsIdStd03Mib
 

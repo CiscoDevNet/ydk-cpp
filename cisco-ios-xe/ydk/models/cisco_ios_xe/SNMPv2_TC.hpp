@@ -22,7 +22,7 @@ class StoragetypeEnum : public Enum
 {
     public:
         static const Enum::YLeaf other;
-        static const Enum::YLeaf volatile;
+        static const Enum::YLeaf volatile_;
         static const Enum::YLeaf nonVolatile;
         static const Enum::YLeaf permanent;
         static const Enum::YLeaf readOnly;

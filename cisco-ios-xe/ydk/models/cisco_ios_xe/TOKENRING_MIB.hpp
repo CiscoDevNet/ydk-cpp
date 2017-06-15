@@ -79,9 +79,9 @@ class TokenringMib : public Entity
         class Dot5Statstable; //type: TokenringMib::Dot5Statstable
         class Dot5Timertable; //type: TokenringMib::Dot5Timertable
 
-        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Statstable> dot5statstable;
-        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Table> dot5table;
-        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Timertable> dot5timertable;
+        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Statstable> dot5statstable_;
+        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Table> dot5table_;
+        std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Timertable> dot5timertable_;
         
 }; // TokenringMib
 
@@ -102,7 +102,7 @@ class TokenringMib::Dot5Table : public Entity
 
         class Dot5Entry; //type: TokenringMib::Dot5Table::Dot5Entry
 
-        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Table::Dot5Entry> > dot5entry;
+        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Table::Dot5Entry> > dot5entry_;
         
 }; // TokenringMib::Dot5Table
 
@@ -156,7 +156,7 @@ class TokenringMib::Dot5Statstable : public Entity
 
         class Dot5Statsentry; //type: TokenringMib::Dot5Statstable::Dot5Statsentry
 
-        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Statstable::Dot5Statsentry> > dot5statsentry;
+        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Statstable::Dot5Statsentry> > dot5statsentry_;
         
 }; // TokenringMib::Dot5Statstable
 
@@ -214,7 +214,7 @@ class TokenringMib::Dot5Timertable : public Entity
 
         class Dot5Timerentry; //type: TokenringMib::Dot5Timertable::Dot5Timerentry
 
-        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Timertable::Dot5Timerentry> > dot5timerentry;
+        std::vector<std::shared_ptr<TOKENRING_MIB::TokenringMib::Dot5Timertable::Dot5Timerentry> > dot5timerentry_;
         
 }; // TokenringMib::Dot5Timertable
 

@@ -11,9 +11,9 @@ namespace CISCO_IETF_PW_ATM_MIB {
 
 CiscoIetfPwAtmMib::CiscoIetfPwAtmMib()
     :
-    cpwvcatmtable(std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>())
+    cpwvcatmtable_(std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>())
 {
-    cpwvcatmtable->parent = this;
+    cpwvcatmtable_->parent = this;
 
     yang_name = "CISCO-IETF-PW-ATM-MIB"; yang_parent_name = "CISCO-IETF-PW-ATM-MIB";
 }
@@ -24,13 +24,13 @@ CiscoIetfPwAtmMib::~CiscoIetfPwAtmMib()
 
 bool CiscoIetfPwAtmMib::has_data() const
 {
-    return (cpwvcatmtable !=  nullptr && cpwvcatmtable->has_data());
+    return (cpwvcatmtable_ !=  nullptr && cpwvcatmtable_->has_data());
 }
 
 bool CiscoIetfPwAtmMib::has_operation() const
 {
     return is_set(operation)
-	|| (cpwvcatmtable !=  nullptr && cpwvcatmtable->has_operation());
+	|| (cpwvcatmtable_ !=  nullptr && cpwvcatmtable_->has_operation());
 }
 
 std::string CiscoIetfPwAtmMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "cpwVcAtmTable")
     {
-        if(cpwvcatmtable == nullptr)
+        if(cpwvcatmtable_ == nullptr)
         {
-            cpwvcatmtable = std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>();
+            cpwvcatmtable_ = std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>();
         }
-        return cpwvcatmtable;
+        return cpwvcatmtable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpwvcatmtable != nullptr)
+    if(cpwvcatmtable_ != nullptr)
     {
-        children["cpwVcAtmTable"] = cpwvcatmtable;
+        children["cpwVcAtmTable"] = cpwvcatmtable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoIetfPwAtmMib::Cpwvcatmtable::~Cpwvcatmtable()
 
 bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcatmentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcatmentry_.size(); index++)
     {
-        if(cpwvcatmentry[index]->has_data())
+        if(cpwvcatmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_data() const
 
 bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcatmentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcatmentry_.size(); index++)
     {
-        if(cpwvcatmentry[index]->has_operation())
+        if(cpwvcatmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(cons
 {
     if(child_yang_name == "cpwVcAtmEntry")
     {
-        for(auto const & c : cpwvcatmentry)
+        for(auto const & c : cpwvcatmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry>();
         c->parent = this;
-        cpwvcatmentry.push_back(c);
+        cpwvcatmentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::Cpwvcatmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcatmentry)
+    for (auto const & c : cpwvcatmentry_)
     {
         children[c->get_segment_path()] = c;
     }

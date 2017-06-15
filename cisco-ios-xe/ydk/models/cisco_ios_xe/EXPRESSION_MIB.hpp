@@ -36,12 +36,12 @@ class ExpressionMib : public Entity
         class Expobjecttable; //type: ExpressionMib::Expobjecttable
         class Expvaluetable; //type: ExpressionMib::Expvaluetable
 
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expexpressiontable> expexpressiontable;
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnames> expnames;
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnametable> expnametable;
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expobjecttable> expobjecttable;
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expresource> expresource;
-        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expvaluetable> expvaluetable;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expexpressiontable> expexpressiontable_;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnames> expnames_;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnametable> expnametable_;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expobjecttable> expobjecttable_;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expresource> expresource_;
+        std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expvaluetable> expvaluetable_;
         
 }; // ExpressionMib
 
@@ -105,7 +105,7 @@ class ExpressionMib::Expnametable : public Entity
 
         class Expnameentry; //type: ExpressionMib::Expnametable::Expnameentry
 
-        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnametable::Expnameentry> > expnameentry;
+        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expnametable::Expnameentry> > expnameentry_;
         
 }; // ExpressionMib::Expnametable
 
@@ -147,7 +147,7 @@ class ExpressionMib::Expexpressiontable : public Entity
 
         class Expexpressionentry; //type: ExpressionMib::Expexpressiontable::Expexpressionentry
 
-        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry;
+        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry_;
         
 }; // ExpressionMib::Expexpressiontable
 
@@ -202,7 +202,7 @@ class ExpressionMib::Expobjecttable : public Entity
 
         class Expobjectentry; //type: ExpressionMib::Expobjecttable::Expobjectentry
 
-        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry;
+        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry_;
         
 }; // ExpressionMib::Expobjecttable
 
@@ -255,7 +255,7 @@ class ExpressionMib::Expvaluetable : public Entity
 
         class Expvalueentry; //type: ExpressionMib::Expvaluetable::Expvalueentry
 
-        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry;
+        std::vector<std::shared_ptr<EXPRESSION_MIB::ExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry_;
         
 }; // ExpressionMib::Expvaluetable
 

@@ -31,8 +31,8 @@ class CiscoIetfAtm2PvctrapMibExtn : public Entity
         class Atmcurrentstatuschangepvcltable; //type: CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable
         class Atmstatuschangepvclrangetable; //type: CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable
 
-        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable> atmcurrentstatuschangepvcltable;
-        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable> atmstatuschangepvclrangetable;
+        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable> atmcurrentstatuschangepvcltable_;
+        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable> atmstatuschangepvclrangetable_;
         
 }; // CiscoIetfAtm2PvctrapMibExtn
 
@@ -53,7 +53,7 @@ class CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable : public Enti
 
         class Atmcurrentstatuschangepvclentry; //type: CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry> > atmcurrentstatuschangepvclentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry> > atmcurrentstatuschangepvclentry_;
         
 }; // CiscoIetfAtm2PvctrapMibExtn::Atmcurrentstatuschangepvcltable
 
@@ -101,7 +101,7 @@ class CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable : public Entity
 
         class Atmstatuschangepvclrangeentry; //type: CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry> > atmstatuschangepvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry> > atmstatuschangepvclrangeentry_;
         
 }; // CiscoIetfAtm2PvctrapMibExtn::Atmstatuschangepvclrangetable
 

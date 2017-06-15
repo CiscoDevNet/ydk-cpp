@@ -33,10 +33,10 @@ class Snmpv2Mib : public Entity
         class Snmpset; //type: Snmpv2Mib::Snmpset
         class Sysortable; //type: Snmpv2Mib::Sysortable
 
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmp> snmp;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmpset> snmpset;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable> sysortable;
-        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::System> system;
+        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmp> snmp_;
+        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Snmpset> snmpset_;
+        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable> sysortable_;
+        std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::System> system_;
         
 }; // Snmpv2Mib
 
@@ -151,7 +151,7 @@ class Snmpv2Mib::Sysortable : public Entity
 
         class Sysorentry; //type: Snmpv2Mib::Sysortable::Sysorentry
 
-        std::vector<std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable::Sysorentry> > sysorentry;
+        std::vector<std::shared_ptr<SNMPv2_MIB::Snmpv2Mib::Sysortable::Sysorentry> > sysorentry_;
         
 }; // Snmpv2Mib::Sysortable
 

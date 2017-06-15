@@ -48,25 +48,25 @@ class CiscoIpsecFlowMonitorMib : public Entity
         class Cikefailtable; //type: CiscoIpsecFlowMonitorMib::Cikefailtable
         class Cipsecfailtable; //type: CiscoIpsecFlowMonitorMib::Cipsecfailtable
 
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikefailtable> cikefailtable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikeglobalstats> cikeglobalstats;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeercorrtable> cikepeercorrtable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeertable> cikepeertable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable> cikephase1gwstatstable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunnelhisttable> ciketunnelhisttable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunneltable> ciketunneltable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpthisttable> cipsecendpthisttable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpttable> cipsecendpttable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl> cipsecfailglobalcntl;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailtable> cipsecfailtable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecglobalstats> cipsecglobalstats;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl> cipsechistglobalcntl;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipseclevels> cipseclevels;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable> cipsecphase2gwstatstable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecspitable> cipsecspitable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectrapcntl> cipsectrapcntl;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable> cipsectunnelhisttable;
-        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunneltable> cipsectunneltable;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikefailtable> cikefailtable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikeglobalstats> cikeglobalstats_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeercorrtable> cikepeercorrtable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeertable> cikepeertable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable> cikephase1gwstatstable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunnelhisttable> ciketunnelhisttable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunneltable> ciketunneltable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpthisttable> cipsecendpthisttable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpttable> cipsecendpttable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl> cipsecfailglobalcntl_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailtable> cipsecfailtable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecglobalstats> cipsecglobalstats_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl> cipsechistglobalcntl_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipseclevels> cipseclevels_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable> cipsecphase2gwstatstable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecspitable> cipsecspitable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectrapcntl> cipsectrapcntl_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable> cipsectunnelhisttable_;
+        std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunneltable> cipsectunneltable_;
         
 }; // CiscoIpsecFlowMonitorMib
 
@@ -269,7 +269,7 @@ class CiscoIpsecFlowMonitorMib::Cikepeertable : public Entity
 
         class Cikepeerentry; //type: CiscoIpsecFlowMonitorMib::Cikepeertable::Cikepeerentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeertable::Cikepeerentry> > cikepeerentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeertable::Cikepeerentry> > cikepeerentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cikepeertable
 
@@ -317,7 +317,7 @@ class CiscoIpsecFlowMonitorMib::Ciketunneltable : public Entity
 
         class Ciketunnelentry; //type: CiscoIpsecFlowMonitorMib::Ciketunneltable::Ciketunnelentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunneltable::Ciketunnelentry> > ciketunnelentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunneltable::Ciketunnelentry> > ciketunnelentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Ciketunneltable
 
@@ -391,7 +391,7 @@ class CiscoIpsecFlowMonitorMib::Cikepeercorrtable : public Entity
 
         class Cikepeercorrentry; //type: CiscoIpsecFlowMonitorMib::Cikepeercorrtable::Cikepeercorrentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeercorrtable::Cikepeercorrentry> > cikepeercorrentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikepeercorrtable::Cikepeercorrentry> > cikepeercorrentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cikepeercorrtable
 
@@ -437,7 +437,7 @@ class CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable : public Entity
 
         class Cikephase1Gwstatsentry; //type: CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::Cikephase1Gwstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::Cikephase1Gwstatsentry> > cikephase1gwstatsentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::Cikephase1Gwstatsentry> > cikephase1gwstatsentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable
 
@@ -504,7 +504,7 @@ class CiscoIpsecFlowMonitorMib::Cipsectunneltable : public Entity
 
         class Cipsectunnelentry; //type: CiscoIpsecFlowMonitorMib::Cipsectunneltable::Cipsectunnelentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunneltable::Cipsectunnelentry> > cipsectunnelentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunneltable::Cipsectunnelentry> > cipsectunnelentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsectunneltable
 
@@ -594,7 +594,7 @@ class CiscoIpsecFlowMonitorMib::Cipsecendpttable : public Entity
 
         class Cipsecendptentry; //type: CiscoIpsecFlowMonitorMib::Cipsecendpttable::Cipsecendptentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpttable::Cipsecendptentry> > cipsecendptentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpttable::Cipsecendptentry> > cipsecendptentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsecendpttable
 
@@ -648,7 +648,7 @@ class CiscoIpsecFlowMonitorMib::Cipsecspitable : public Entity
 
         class Cipsecspientry; //type: CiscoIpsecFlowMonitorMib::Cipsecspitable::Cipsecspientry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecspitable::Cipsecspientry> > cipsecspientry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecspitable::Cipsecspientry> > cipsecspientry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsecspitable
 
@@ -697,7 +697,7 @@ class CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable : public Entity
 
         class Cipsecphase2Gwstatsentry; //type: CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry> > cipsecphase2gwstatsentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry> > cipsecphase2gwstatsentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable
 
@@ -764,7 +764,7 @@ class CiscoIpsecFlowMonitorMib::Ciketunnelhisttable : public Entity
 
         class Ciketunnelhistentry; //type: CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::Ciketunnelhistentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::Ciketunnelhistentry> > ciketunnelhistentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::Ciketunnelhistentry> > ciketunnelhistentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Ciketunnelhisttable
 
@@ -842,7 +842,7 @@ class CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable : public Entity
 
         class Cipsectunnelhistentry; //type: CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::Cipsectunnelhistentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::Cipsectunnelhistentry> > cipsectunnelhistentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::Cipsectunnelhistentry> > cipsectunnelhistentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable
 
@@ -931,7 +931,7 @@ class CiscoIpsecFlowMonitorMib::Cipsecendpthisttable : public Entity
 
         class Cipsecendpthistentry; //type: CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::Cipsecendpthistentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::Cipsecendpthistentry> > cipsecendpthistentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::Cipsecendpthistentry> > cipsecendpthistentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsecendpthisttable
 
@@ -985,7 +985,7 @@ class CiscoIpsecFlowMonitorMib::Cikefailtable : public Entity
 
         class Cikefailentry; //type: CiscoIpsecFlowMonitorMib::Cikefailtable::Cikefailentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikefailtable::Cikefailentry> > cikefailentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cikefailtable::Cikefailentry> > cikefailentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cikefailtable
 
@@ -1034,7 +1034,7 @@ class CiscoIpsecFlowMonitorMib::Cipsecfailtable : public Entity
 
         class Cipsecfailentry; //type: CiscoIpsecFlowMonitorMib::Cipsecfailtable::Cipsecfailentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailtable::Cipsecfailentry> > cipsecfailentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_FLOW_MONITOR_MIB::CiscoIpsecFlowMonitorMib::Cipsecfailtable::Cipsecfailentry> > cipsecfailentry_;
         
 }; // CiscoIpsecFlowMonitorMib::Cipsecfailtable
 

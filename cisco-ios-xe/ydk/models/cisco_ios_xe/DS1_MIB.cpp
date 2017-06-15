@@ -11,33 +11,33 @@ namespace DS1_MIB {
 
 Ds1Mib::Ds1Mib()
     :
-    dsx1chanmappingtable(std::make_shared<Ds1Mib::Dsx1Chanmappingtable>())
-	,dsx1configtable(std::make_shared<Ds1Mib::Dsx1Configtable>())
-	,dsx1currenttable(std::make_shared<Ds1Mib::Dsx1Currenttable>())
-	,dsx1farendcurrenttable(std::make_shared<Ds1Mib::Dsx1Farendcurrenttable>())
-	,dsx1farendintervaltable(std::make_shared<Ds1Mib::Dsx1Farendintervaltable>())
-	,dsx1farendtotaltable(std::make_shared<Ds1Mib::Dsx1Farendtotaltable>())
-	,dsx1fractable(std::make_shared<Ds1Mib::Dsx1Fractable>())
-	,dsx1intervaltable(std::make_shared<Ds1Mib::Dsx1Intervaltable>())
-	,dsx1totaltable(std::make_shared<Ds1Mib::Dsx1Totaltable>())
+    dsx1chanmappingtable_(std::make_shared<Ds1Mib::Dsx1Chanmappingtable>())
+	,dsx1configtable_(std::make_shared<Ds1Mib::Dsx1Configtable>())
+	,dsx1currenttable_(std::make_shared<Ds1Mib::Dsx1Currenttable>())
+	,dsx1farendcurrenttable_(std::make_shared<Ds1Mib::Dsx1Farendcurrenttable>())
+	,dsx1farendintervaltable_(std::make_shared<Ds1Mib::Dsx1Farendintervaltable>())
+	,dsx1farendtotaltable_(std::make_shared<Ds1Mib::Dsx1Farendtotaltable>())
+	,dsx1fractable_(std::make_shared<Ds1Mib::Dsx1Fractable>())
+	,dsx1intervaltable_(std::make_shared<Ds1Mib::Dsx1Intervaltable>())
+	,dsx1totaltable_(std::make_shared<Ds1Mib::Dsx1Totaltable>())
 {
-    dsx1chanmappingtable->parent = this;
+    dsx1chanmappingtable_->parent = this;
 
-    dsx1configtable->parent = this;
+    dsx1configtable_->parent = this;
 
-    dsx1currenttable->parent = this;
+    dsx1currenttable_->parent = this;
 
-    dsx1farendcurrenttable->parent = this;
+    dsx1farendcurrenttable_->parent = this;
 
-    dsx1farendintervaltable->parent = this;
+    dsx1farendintervaltable_->parent = this;
 
-    dsx1farendtotaltable->parent = this;
+    dsx1farendtotaltable_->parent = this;
 
-    dsx1fractable->parent = this;
+    dsx1fractable_->parent = this;
 
-    dsx1intervaltable->parent = this;
+    dsx1intervaltable_->parent = this;
 
-    dsx1totaltable->parent = this;
+    dsx1totaltable_->parent = this;
 
     yang_name = "DS1-MIB"; yang_parent_name = "DS1-MIB";
 }
@@ -48,29 +48,29 @@ Ds1Mib::~Ds1Mib()
 
 bool Ds1Mib::has_data() const
 {
-    return (dsx1chanmappingtable !=  nullptr && dsx1chanmappingtable->has_data())
-	|| (dsx1configtable !=  nullptr && dsx1configtable->has_data())
-	|| (dsx1currenttable !=  nullptr && dsx1currenttable->has_data())
-	|| (dsx1farendcurrenttable !=  nullptr && dsx1farendcurrenttable->has_data())
-	|| (dsx1farendintervaltable !=  nullptr && dsx1farendintervaltable->has_data())
-	|| (dsx1farendtotaltable !=  nullptr && dsx1farendtotaltable->has_data())
-	|| (dsx1fractable !=  nullptr && dsx1fractable->has_data())
-	|| (dsx1intervaltable !=  nullptr && dsx1intervaltable->has_data())
-	|| (dsx1totaltable !=  nullptr && dsx1totaltable->has_data());
+    return (dsx1chanmappingtable_ !=  nullptr && dsx1chanmappingtable_->has_data())
+	|| (dsx1configtable_ !=  nullptr && dsx1configtable_->has_data())
+	|| (dsx1currenttable_ !=  nullptr && dsx1currenttable_->has_data())
+	|| (dsx1farendcurrenttable_ !=  nullptr && dsx1farendcurrenttable_->has_data())
+	|| (dsx1farendintervaltable_ !=  nullptr && dsx1farendintervaltable_->has_data())
+	|| (dsx1farendtotaltable_ !=  nullptr && dsx1farendtotaltable_->has_data())
+	|| (dsx1fractable_ !=  nullptr && dsx1fractable_->has_data())
+	|| (dsx1intervaltable_ !=  nullptr && dsx1intervaltable_->has_data())
+	|| (dsx1totaltable_ !=  nullptr && dsx1totaltable_->has_data());
 }
 
 bool Ds1Mib::has_operation() const
 {
     return is_set(operation)
-	|| (dsx1chanmappingtable !=  nullptr && dsx1chanmappingtable->has_operation())
-	|| (dsx1configtable !=  nullptr && dsx1configtable->has_operation())
-	|| (dsx1currenttable !=  nullptr && dsx1currenttable->has_operation())
-	|| (dsx1farendcurrenttable !=  nullptr && dsx1farendcurrenttable->has_operation())
-	|| (dsx1farendintervaltable !=  nullptr && dsx1farendintervaltable->has_operation())
-	|| (dsx1farendtotaltable !=  nullptr && dsx1farendtotaltable->has_operation())
-	|| (dsx1fractable !=  nullptr && dsx1fractable->has_operation())
-	|| (dsx1intervaltable !=  nullptr && dsx1intervaltable->has_operation())
-	|| (dsx1totaltable !=  nullptr && dsx1totaltable->has_operation());
+	|| (dsx1chanmappingtable_ !=  nullptr && dsx1chanmappingtable_->has_operation())
+	|| (dsx1configtable_ !=  nullptr && dsx1configtable_->has_operation())
+	|| (dsx1currenttable_ !=  nullptr && dsx1currenttable_->has_operation())
+	|| (dsx1farendcurrenttable_ !=  nullptr && dsx1farendcurrenttable_->has_operation())
+	|| (dsx1farendintervaltable_ !=  nullptr && dsx1farendintervaltable_->has_operation())
+	|| (dsx1farendtotaltable_ !=  nullptr && dsx1farendtotaltable_->has_operation())
+	|| (dsx1fractable_ !=  nullptr && dsx1fractable_->has_operation())
+	|| (dsx1intervaltable_ !=  nullptr && dsx1intervaltable_->has_operation())
+	|| (dsx1totaltable_ !=  nullptr && dsx1totaltable_->has_operation());
 }
 
 std::string Ds1Mib::get_segment_path() const
@@ -104,83 +104,83 @@ std::shared_ptr<Entity> Ds1Mib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "dsx1ChanMappingTable")
     {
-        if(dsx1chanmappingtable == nullptr)
+        if(dsx1chanmappingtable_ == nullptr)
         {
-            dsx1chanmappingtable = std::make_shared<Ds1Mib::Dsx1Chanmappingtable>();
+            dsx1chanmappingtable_ = std::make_shared<Ds1Mib::Dsx1Chanmappingtable>();
         }
-        return dsx1chanmappingtable;
+        return dsx1chanmappingtable_;
     }
 
     if(child_yang_name == "dsx1ConfigTable")
     {
-        if(dsx1configtable == nullptr)
+        if(dsx1configtable_ == nullptr)
         {
-            dsx1configtable = std::make_shared<Ds1Mib::Dsx1Configtable>();
+            dsx1configtable_ = std::make_shared<Ds1Mib::Dsx1Configtable>();
         }
-        return dsx1configtable;
+        return dsx1configtable_;
     }
 
     if(child_yang_name == "dsx1CurrentTable")
     {
-        if(dsx1currenttable == nullptr)
+        if(dsx1currenttable_ == nullptr)
         {
-            dsx1currenttable = std::make_shared<Ds1Mib::Dsx1Currenttable>();
+            dsx1currenttable_ = std::make_shared<Ds1Mib::Dsx1Currenttable>();
         }
-        return dsx1currenttable;
+        return dsx1currenttable_;
     }
 
     if(child_yang_name == "dsx1FarEndCurrentTable")
     {
-        if(dsx1farendcurrenttable == nullptr)
+        if(dsx1farendcurrenttable_ == nullptr)
         {
-            dsx1farendcurrenttable = std::make_shared<Ds1Mib::Dsx1Farendcurrenttable>();
+            dsx1farendcurrenttable_ = std::make_shared<Ds1Mib::Dsx1Farendcurrenttable>();
         }
-        return dsx1farendcurrenttable;
+        return dsx1farendcurrenttable_;
     }
 
     if(child_yang_name == "dsx1FarEndIntervalTable")
     {
-        if(dsx1farendintervaltable == nullptr)
+        if(dsx1farendintervaltable_ == nullptr)
         {
-            dsx1farendintervaltable = std::make_shared<Ds1Mib::Dsx1Farendintervaltable>();
+            dsx1farendintervaltable_ = std::make_shared<Ds1Mib::Dsx1Farendintervaltable>();
         }
-        return dsx1farendintervaltable;
+        return dsx1farendintervaltable_;
     }
 
     if(child_yang_name == "dsx1FarEndTotalTable")
     {
-        if(dsx1farendtotaltable == nullptr)
+        if(dsx1farendtotaltable_ == nullptr)
         {
-            dsx1farendtotaltable = std::make_shared<Ds1Mib::Dsx1Farendtotaltable>();
+            dsx1farendtotaltable_ = std::make_shared<Ds1Mib::Dsx1Farendtotaltable>();
         }
-        return dsx1farendtotaltable;
+        return dsx1farendtotaltable_;
     }
 
     if(child_yang_name == "dsx1FracTable")
     {
-        if(dsx1fractable == nullptr)
+        if(dsx1fractable_ == nullptr)
         {
-            dsx1fractable = std::make_shared<Ds1Mib::Dsx1Fractable>();
+            dsx1fractable_ = std::make_shared<Ds1Mib::Dsx1Fractable>();
         }
-        return dsx1fractable;
+        return dsx1fractable_;
     }
 
     if(child_yang_name == "dsx1IntervalTable")
     {
-        if(dsx1intervaltable == nullptr)
+        if(dsx1intervaltable_ == nullptr)
         {
-            dsx1intervaltable = std::make_shared<Ds1Mib::Dsx1Intervaltable>();
+            dsx1intervaltable_ = std::make_shared<Ds1Mib::Dsx1Intervaltable>();
         }
-        return dsx1intervaltable;
+        return dsx1intervaltable_;
     }
 
     if(child_yang_name == "dsx1TotalTable")
     {
-        if(dsx1totaltable == nullptr)
+        if(dsx1totaltable_ == nullptr)
         {
-            dsx1totaltable = std::make_shared<Ds1Mib::Dsx1Totaltable>();
+            dsx1totaltable_ = std::make_shared<Ds1Mib::Dsx1Totaltable>();
         }
-        return dsx1totaltable;
+        return dsx1totaltable_;
     }
 
     return nullptr;
@@ -189,49 +189,49 @@ std::shared_ptr<Entity> Ds1Mib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dsx1chanmappingtable != nullptr)
+    if(dsx1chanmappingtable_ != nullptr)
     {
-        children["dsx1ChanMappingTable"] = dsx1chanmappingtable;
+        children["dsx1ChanMappingTable"] = dsx1chanmappingtable_;
     }
 
-    if(dsx1configtable != nullptr)
+    if(dsx1configtable_ != nullptr)
     {
-        children["dsx1ConfigTable"] = dsx1configtable;
+        children["dsx1ConfigTable"] = dsx1configtable_;
     }
 
-    if(dsx1currenttable != nullptr)
+    if(dsx1currenttable_ != nullptr)
     {
-        children["dsx1CurrentTable"] = dsx1currenttable;
+        children["dsx1CurrentTable"] = dsx1currenttable_;
     }
 
-    if(dsx1farendcurrenttable != nullptr)
+    if(dsx1farendcurrenttable_ != nullptr)
     {
-        children["dsx1FarEndCurrentTable"] = dsx1farendcurrenttable;
+        children["dsx1FarEndCurrentTable"] = dsx1farendcurrenttable_;
     }
 
-    if(dsx1farendintervaltable != nullptr)
+    if(dsx1farendintervaltable_ != nullptr)
     {
-        children["dsx1FarEndIntervalTable"] = dsx1farendintervaltable;
+        children["dsx1FarEndIntervalTable"] = dsx1farendintervaltable_;
     }
 
-    if(dsx1farendtotaltable != nullptr)
+    if(dsx1farendtotaltable_ != nullptr)
     {
-        children["dsx1FarEndTotalTable"] = dsx1farendtotaltable;
+        children["dsx1FarEndTotalTable"] = dsx1farendtotaltable_;
     }
 
-    if(dsx1fractable != nullptr)
+    if(dsx1fractable_ != nullptr)
     {
-        children["dsx1FracTable"] = dsx1fractable;
+        children["dsx1FracTable"] = dsx1fractable_;
     }
 
-    if(dsx1intervaltable != nullptr)
+    if(dsx1intervaltable_ != nullptr)
     {
-        children["dsx1IntervalTable"] = dsx1intervaltable;
+        children["dsx1IntervalTable"] = dsx1intervaltable_;
     }
 
-    if(dsx1totaltable != nullptr)
+    if(dsx1totaltable_ != nullptr)
     {
-        children["dsx1TotalTable"] = dsx1totaltable;
+        children["dsx1TotalTable"] = dsx1totaltable_;
     }
 
     return children;
@@ -272,9 +272,9 @@ Ds1Mib::Dsx1Configtable::~Dsx1Configtable()
 
 bool Ds1Mib::Dsx1Configtable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1configentry.size(); index++)
+    for (std::size_t index=0; index<dsx1configentry_.size(); index++)
     {
-        if(dsx1configentry[index]->has_data())
+        if(dsx1configentry_[index]->has_data())
             return true;
     }
     return false;
@@ -282,9 +282,9 @@ bool Ds1Mib::Dsx1Configtable::has_data() const
 
 bool Ds1Mib::Dsx1Configtable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1configentry.size(); index++)
+    for (std::size_t index=0; index<dsx1configentry_.size(); index++)
     {
-        if(dsx1configentry[index]->has_operation())
+        if(dsx1configentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -324,7 +324,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Configtable::get_child_by_name(const std::st
 {
     if(child_yang_name == "dsx1ConfigEntry")
     {
-        for(auto const & c : dsx1configentry)
+        for(auto const & c : dsx1configentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -334,7 +334,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Configtable::get_child_by_name(const std::st
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Configtable::Dsx1Configentry>();
         c->parent = this;
-        dsx1configentry.push_back(c);
+        dsx1configentry_.push_back(c);
         return c;
     }
 
@@ -344,7 +344,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Configtable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Configtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1configentry)
+    for (auto const & c : dsx1configentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -591,9 +591,9 @@ Ds1Mib::Dsx1Currenttable::~Dsx1Currenttable()
 
 bool Ds1Mib::Dsx1Currenttable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1currententry.size(); index++)
+    for (std::size_t index=0; index<dsx1currententry_.size(); index++)
     {
-        if(dsx1currententry[index]->has_data())
+        if(dsx1currententry_[index]->has_data())
             return true;
     }
     return false;
@@ -601,9 +601,9 @@ bool Ds1Mib::Dsx1Currenttable::has_data() const
 
 bool Ds1Mib::Dsx1Currenttable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1currententry.size(); index++)
+    for (std::size_t index=0; index<dsx1currententry_.size(); index++)
     {
-        if(dsx1currententry[index]->has_operation())
+        if(dsx1currententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -643,7 +643,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Currenttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "dsx1CurrentEntry")
     {
-        for(auto const & c : dsx1currententry)
+        for(auto const & c : dsx1currententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -653,7 +653,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Currenttable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Currenttable::Dsx1Currententry>();
         c->parent = this;
-        dsx1currententry.push_back(c);
+        dsx1currententry_.push_back(c);
         return c;
     }
 
@@ -663,7 +663,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Currenttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Currenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1currententry)
+    for (auto const & c : dsx1currententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -838,9 +838,9 @@ Ds1Mib::Dsx1Intervaltable::~Dsx1Intervaltable()
 
 bool Ds1Mib::Dsx1Intervaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1intervalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1intervalentry_.size(); index++)
     {
-        if(dsx1intervalentry[index]->has_data())
+        if(dsx1intervalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -848,9 +848,9 @@ bool Ds1Mib::Dsx1Intervaltable::has_data() const
 
 bool Ds1Mib::Dsx1Intervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1intervalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1intervalentry_.size(); index++)
     {
-        if(dsx1intervalentry[index]->has_operation())
+        if(dsx1intervalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -890,7 +890,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Intervaltable::get_child_by_name(const std::
 {
     if(child_yang_name == "dsx1IntervalEntry")
     {
-        for(auto const & c : dsx1intervalentry)
+        for(auto const & c : dsx1intervalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -900,7 +900,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Intervaltable::get_child_by_name(const std::
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Intervaltable::Dsx1Intervalentry>();
         c->parent = this;
-        dsx1intervalentry.push_back(c);
+        dsx1intervalentry_.push_back(c);
         return c;
     }
 
@@ -910,7 +910,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Intervaltable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Intervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1intervalentry)
+    for (auto const & c : dsx1intervalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1101,9 +1101,9 @@ Ds1Mib::Dsx1Totaltable::~Dsx1Totaltable()
 
 bool Ds1Mib::Dsx1Totaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1totalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1totalentry_.size(); index++)
     {
-        if(dsx1totalentry[index]->has_data())
+        if(dsx1totalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1111,9 +1111,9 @@ bool Ds1Mib::Dsx1Totaltable::has_data() const
 
 bool Ds1Mib::Dsx1Totaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1totalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1totalentry_.size(); index++)
     {
-        if(dsx1totalentry[index]->has_operation())
+        if(dsx1totalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1153,7 +1153,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Totaltable::get_child_by_name(const std::str
 {
     if(child_yang_name == "dsx1TotalEntry")
     {
-        for(auto const & c : dsx1totalentry)
+        for(auto const & c : dsx1totalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1163,7 +1163,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Totaltable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Totaltable::Dsx1Totalentry>();
         c->parent = this;
-        dsx1totalentry.push_back(c);
+        dsx1totalentry_.push_back(c);
         return c;
     }
 
@@ -1173,7 +1173,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Totaltable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Totaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1totalentry)
+    for (auto const & c : dsx1totalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1348,9 +1348,9 @@ Ds1Mib::Dsx1Farendcurrenttable::~Dsx1Farendcurrenttable()
 
 bool Ds1Mib::Dsx1Farendcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1farendcurrententry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendcurrententry_.size(); index++)
     {
-        if(dsx1farendcurrententry[index]->has_data())
+        if(dsx1farendcurrententry_[index]->has_data())
             return true;
     }
     return false;
@@ -1358,9 +1358,9 @@ bool Ds1Mib::Dsx1Farendcurrenttable::has_data() const
 
 bool Ds1Mib::Dsx1Farendcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1farendcurrententry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendcurrententry_.size(); index++)
     {
-        if(dsx1farendcurrententry[index]->has_operation())
+        if(dsx1farendcurrententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1400,7 +1400,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendcurrenttable::get_child_by_name(const 
 {
     if(child_yang_name == "dsx1FarEndCurrentEntry")
     {
-        for(auto const & c : dsx1farendcurrententry)
+        for(auto const & c : dsx1farendcurrententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1410,7 +1410,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendcurrenttable::get_child_by_name(const 
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Farendcurrenttable::Dsx1Farendcurrententry>();
         c->parent = this;
-        dsx1farendcurrententry.push_back(c);
+        dsx1farendcurrententry_.push_back(c);
         return c;
     }
 
@@ -1420,7 +1420,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendcurrenttable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Farendcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1farendcurrententry)
+    for (auto const & c : dsx1farendcurrententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1611,9 +1611,9 @@ Ds1Mib::Dsx1Farendintervaltable::~Dsx1Farendintervaltable()
 
 bool Ds1Mib::Dsx1Farendintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1farendintervalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendintervalentry_.size(); index++)
     {
-        if(dsx1farendintervalentry[index]->has_data())
+        if(dsx1farendintervalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1621,9 +1621,9 @@ bool Ds1Mib::Dsx1Farendintervaltable::has_data() const
 
 bool Ds1Mib::Dsx1Farendintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1farendintervalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendintervalentry_.size(); index++)
     {
-        if(dsx1farendintervalentry[index]->has_operation())
+        if(dsx1farendintervalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1663,7 +1663,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendintervaltable::get_child_by_name(const
 {
     if(child_yang_name == "dsx1FarEndIntervalEntry")
     {
-        for(auto const & c : dsx1farendintervalentry)
+        for(auto const & c : dsx1farendintervalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1673,7 +1673,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendintervaltable::get_child_by_name(const
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Farendintervaltable::Dsx1Farendintervalentry>();
         c->parent = this;
-        dsx1farendintervalentry.push_back(c);
+        dsx1farendintervalentry_.push_back(c);
         return c;
     }
 
@@ -1683,7 +1683,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendintervaltable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Farendintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1farendintervalentry)
+    for (auto const & c : dsx1farendintervalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1866,9 +1866,9 @@ Ds1Mib::Dsx1Farendtotaltable::~Dsx1Farendtotaltable()
 
 bool Ds1Mib::Dsx1Farendtotaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1farendtotalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendtotalentry_.size(); index++)
     {
-        if(dsx1farendtotalentry[index]->has_data())
+        if(dsx1farendtotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1876,9 +1876,9 @@ bool Ds1Mib::Dsx1Farendtotaltable::has_data() const
 
 bool Ds1Mib::Dsx1Farendtotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1farendtotalentry.size(); index++)
+    for (std::size_t index=0; index<dsx1farendtotalentry_.size(); index++)
     {
-        if(dsx1farendtotalentry[index]->has_operation())
+        if(dsx1farendtotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1918,7 +1918,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendtotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "dsx1FarEndTotalEntry")
     {
-        for(auto const & c : dsx1farendtotalentry)
+        for(auto const & c : dsx1farendtotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1928,7 +1928,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendtotaltable::get_child_by_name(const st
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Farendtotaltable::Dsx1Farendtotalentry>();
         c->parent = this;
-        dsx1farendtotalentry.push_back(c);
+        dsx1farendtotalentry_.push_back(c);
         return c;
     }
 
@@ -1938,7 +1938,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Farendtotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Farendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1farendtotalentry)
+    for (auto const & c : dsx1farendtotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2105,9 +2105,9 @@ Ds1Mib::Dsx1Fractable::~Dsx1Fractable()
 
 bool Ds1Mib::Dsx1Fractable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1fracentry.size(); index++)
+    for (std::size_t index=0; index<dsx1fracentry_.size(); index++)
     {
-        if(dsx1fracentry[index]->has_data())
+        if(dsx1fracentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2115,9 +2115,9 @@ bool Ds1Mib::Dsx1Fractable::has_data() const
 
 bool Ds1Mib::Dsx1Fractable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1fracentry.size(); index++)
+    for (std::size_t index=0; index<dsx1fracentry_.size(); index++)
     {
-        if(dsx1fracentry[index]->has_operation())
+        if(dsx1fracentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2157,7 +2157,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Fractable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "dsx1FracEntry")
     {
-        for(auto const & c : dsx1fracentry)
+        for(auto const & c : dsx1fracentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2167,7 +2167,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Fractable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Fractable::Dsx1Fracentry>();
         c->parent = this;
-        dsx1fracentry.push_back(c);
+        dsx1fracentry_.push_back(c);
         return c;
     }
 
@@ -2177,7 +2177,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Fractable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Fractable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1fracentry)
+    for (auto const & c : dsx1fracentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2288,9 +2288,9 @@ Ds1Mib::Dsx1Chanmappingtable::~Dsx1Chanmappingtable()
 
 bool Ds1Mib::Dsx1Chanmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<dsx1chanmappingentry.size(); index++)
+    for (std::size_t index=0; index<dsx1chanmappingentry_.size(); index++)
     {
-        if(dsx1chanmappingentry[index]->has_data())
+        if(dsx1chanmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2298,9 +2298,9 @@ bool Ds1Mib::Dsx1Chanmappingtable::has_data() const
 
 bool Ds1Mib::Dsx1Chanmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx1chanmappingentry.size(); index++)
+    for (std::size_t index=0; index<dsx1chanmappingentry_.size(); index++)
     {
-        if(dsx1chanmappingentry[index]->has_operation())
+        if(dsx1chanmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2340,7 +2340,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Chanmappingtable::get_child_by_name(const st
 {
     if(child_yang_name == "dsx1ChanMappingEntry")
     {
-        for(auto const & c : dsx1chanmappingentry)
+        for(auto const & c : dsx1chanmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2350,7 +2350,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Chanmappingtable::get_child_by_name(const st
         }
         auto c = std::make_shared<Ds1Mib::Dsx1Chanmappingtable::Dsx1Chanmappingentry>();
         c->parent = this;
-        dsx1chanmappingentry.push_back(c);
+        dsx1chanmappingentry_.push_back(c);
         return c;
     }
 
@@ -2360,7 +2360,7 @@ std::shared_ptr<Entity> Ds1Mib::Dsx1Chanmappingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ds1Mib::Dsx1Chanmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx1chanmappingentry)
+    for (auto const & c : dsx1chanmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }

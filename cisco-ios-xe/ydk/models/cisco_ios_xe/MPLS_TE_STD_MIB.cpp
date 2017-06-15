@@ -11,30 +11,30 @@ namespace MPLS_TE_STD_MIB {
 
 MplsTeStdMib::MplsTeStdMib()
     :
-    mplsteobjects(std::make_shared<MplsTeStdMib::Mplsteobjects>())
-	,mplstescalars(std::make_shared<MplsTeStdMib::Mplstescalars>())
-	,mplstunnelarhoptable(std::make_shared<MplsTeStdMib::Mplstunnelarhoptable>())
-	,mplstunnelchoptable(std::make_shared<MplsTeStdMib::Mplstunnelchoptable>())
-	,mplstunnelcrldprestable(std::make_shared<MplsTeStdMib::Mplstunnelcrldprestable>())
-	,mplstunnelhoptable(std::make_shared<MplsTeStdMib::Mplstunnelhoptable>())
-	,mplstunnelresourcetable(std::make_shared<MplsTeStdMib::Mplstunnelresourcetable>())
-	,mplstunneltable(std::make_shared<MplsTeStdMib::Mplstunneltable>())
+    mplsteobjects_(std::make_shared<MplsTeStdMib::Mplsteobjects>())
+	,mplstescalars_(std::make_shared<MplsTeStdMib::Mplstescalars>())
+	,mplstunnelarhoptable_(std::make_shared<MplsTeStdMib::Mplstunnelarhoptable>())
+	,mplstunnelchoptable_(std::make_shared<MplsTeStdMib::Mplstunnelchoptable>())
+	,mplstunnelcrldprestable_(std::make_shared<MplsTeStdMib::Mplstunnelcrldprestable>())
+	,mplstunnelhoptable_(std::make_shared<MplsTeStdMib::Mplstunnelhoptable>())
+	,mplstunnelresourcetable_(std::make_shared<MplsTeStdMib::Mplstunnelresourcetable>())
+	,mplstunneltable_(std::make_shared<MplsTeStdMib::Mplstunneltable>())
 {
-    mplsteobjects->parent = this;
+    mplsteobjects_->parent = this;
 
-    mplstescalars->parent = this;
+    mplstescalars_->parent = this;
 
-    mplstunnelarhoptable->parent = this;
+    mplstunnelarhoptable_->parent = this;
 
-    mplstunnelchoptable->parent = this;
+    mplstunnelchoptable_->parent = this;
 
-    mplstunnelcrldprestable->parent = this;
+    mplstunnelcrldprestable_->parent = this;
 
-    mplstunnelhoptable->parent = this;
+    mplstunnelhoptable_->parent = this;
 
-    mplstunnelresourcetable->parent = this;
+    mplstunnelresourcetable_->parent = this;
 
-    mplstunneltable->parent = this;
+    mplstunneltable_->parent = this;
 
     yang_name = "MPLS-TE-STD-MIB"; yang_parent_name = "MPLS-TE-STD-MIB";
 }
@@ -45,27 +45,27 @@ MplsTeStdMib::~MplsTeStdMib()
 
 bool MplsTeStdMib::has_data() const
 {
-    return (mplsteobjects !=  nullptr && mplsteobjects->has_data())
-	|| (mplstescalars !=  nullptr && mplstescalars->has_data())
-	|| (mplstunnelarhoptable !=  nullptr && mplstunnelarhoptable->has_data())
-	|| (mplstunnelchoptable !=  nullptr && mplstunnelchoptable->has_data())
-	|| (mplstunnelcrldprestable !=  nullptr && mplstunnelcrldprestable->has_data())
-	|| (mplstunnelhoptable !=  nullptr && mplstunnelhoptable->has_data())
-	|| (mplstunnelresourcetable !=  nullptr && mplstunnelresourcetable->has_data())
-	|| (mplstunneltable !=  nullptr && mplstunneltable->has_data());
+    return (mplsteobjects_ !=  nullptr && mplsteobjects_->has_data())
+	|| (mplstescalars_ !=  nullptr && mplstescalars_->has_data())
+	|| (mplstunnelarhoptable_ !=  nullptr && mplstunnelarhoptable_->has_data())
+	|| (mplstunnelchoptable_ !=  nullptr && mplstunnelchoptable_->has_data())
+	|| (mplstunnelcrldprestable_ !=  nullptr && mplstunnelcrldprestable_->has_data())
+	|| (mplstunnelhoptable_ !=  nullptr && mplstunnelhoptable_->has_data())
+	|| (mplstunnelresourcetable_ !=  nullptr && mplstunnelresourcetable_->has_data())
+	|| (mplstunneltable_ !=  nullptr && mplstunneltable_->has_data());
 }
 
 bool MplsTeStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (mplsteobjects !=  nullptr && mplsteobjects->has_operation())
-	|| (mplstescalars !=  nullptr && mplstescalars->has_operation())
-	|| (mplstunnelarhoptable !=  nullptr && mplstunnelarhoptable->has_operation())
-	|| (mplstunnelchoptable !=  nullptr && mplstunnelchoptable->has_operation())
-	|| (mplstunnelcrldprestable !=  nullptr && mplstunnelcrldprestable->has_operation())
-	|| (mplstunnelhoptable !=  nullptr && mplstunnelhoptable->has_operation())
-	|| (mplstunnelresourcetable !=  nullptr && mplstunnelresourcetable->has_operation())
-	|| (mplstunneltable !=  nullptr && mplstunneltable->has_operation());
+	|| (mplsteobjects_ !=  nullptr && mplsteobjects_->has_operation())
+	|| (mplstescalars_ !=  nullptr && mplstescalars_->has_operation())
+	|| (mplstunnelarhoptable_ !=  nullptr && mplstunnelarhoptable_->has_operation())
+	|| (mplstunnelchoptable_ !=  nullptr && mplstunnelchoptable_->has_operation())
+	|| (mplstunnelcrldprestable_ !=  nullptr && mplstunnelcrldprestable_->has_operation())
+	|| (mplstunnelhoptable_ !=  nullptr && mplstunnelhoptable_->has_operation())
+	|| (mplstunnelresourcetable_ !=  nullptr && mplstunnelresourcetable_->has_operation())
+	|| (mplstunneltable_ !=  nullptr && mplstunneltable_->has_operation());
 }
 
 std::string MplsTeStdMib::get_segment_path() const
@@ -99,74 +99,74 @@ std::shared_ptr<Entity> MplsTeStdMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "mplsTeObjects")
     {
-        if(mplsteobjects == nullptr)
+        if(mplsteobjects_ == nullptr)
         {
-            mplsteobjects = std::make_shared<MplsTeStdMib::Mplsteobjects>();
+            mplsteobjects_ = std::make_shared<MplsTeStdMib::Mplsteobjects>();
         }
-        return mplsteobjects;
+        return mplsteobjects_;
     }
 
     if(child_yang_name == "mplsTeScalars")
     {
-        if(mplstescalars == nullptr)
+        if(mplstescalars_ == nullptr)
         {
-            mplstescalars = std::make_shared<MplsTeStdMib::Mplstescalars>();
+            mplstescalars_ = std::make_shared<MplsTeStdMib::Mplstescalars>();
         }
-        return mplstescalars;
+        return mplstescalars_;
     }
 
     if(child_yang_name == "mplsTunnelARHopTable")
     {
-        if(mplstunnelarhoptable == nullptr)
+        if(mplstunnelarhoptable_ == nullptr)
         {
-            mplstunnelarhoptable = std::make_shared<MplsTeStdMib::Mplstunnelarhoptable>();
+            mplstunnelarhoptable_ = std::make_shared<MplsTeStdMib::Mplstunnelarhoptable>();
         }
-        return mplstunnelarhoptable;
+        return mplstunnelarhoptable_;
     }
 
     if(child_yang_name == "mplsTunnelCHopTable")
     {
-        if(mplstunnelchoptable == nullptr)
+        if(mplstunnelchoptable_ == nullptr)
         {
-            mplstunnelchoptable = std::make_shared<MplsTeStdMib::Mplstunnelchoptable>();
+            mplstunnelchoptable_ = std::make_shared<MplsTeStdMib::Mplstunnelchoptable>();
         }
-        return mplstunnelchoptable;
+        return mplstunnelchoptable_;
     }
 
     if(child_yang_name == "mplsTunnelCRLDPResTable")
     {
-        if(mplstunnelcrldprestable == nullptr)
+        if(mplstunnelcrldprestable_ == nullptr)
         {
-            mplstunnelcrldprestable = std::make_shared<MplsTeStdMib::Mplstunnelcrldprestable>();
+            mplstunnelcrldprestable_ = std::make_shared<MplsTeStdMib::Mplstunnelcrldprestable>();
         }
-        return mplstunnelcrldprestable;
+        return mplstunnelcrldprestable_;
     }
 
     if(child_yang_name == "mplsTunnelHopTable")
     {
-        if(mplstunnelhoptable == nullptr)
+        if(mplstunnelhoptable_ == nullptr)
         {
-            mplstunnelhoptable = std::make_shared<MplsTeStdMib::Mplstunnelhoptable>();
+            mplstunnelhoptable_ = std::make_shared<MplsTeStdMib::Mplstunnelhoptable>();
         }
-        return mplstunnelhoptable;
+        return mplstunnelhoptable_;
     }
 
     if(child_yang_name == "mplsTunnelResourceTable")
     {
-        if(mplstunnelresourcetable == nullptr)
+        if(mplstunnelresourcetable_ == nullptr)
         {
-            mplstunnelresourcetable = std::make_shared<MplsTeStdMib::Mplstunnelresourcetable>();
+            mplstunnelresourcetable_ = std::make_shared<MplsTeStdMib::Mplstunnelresourcetable>();
         }
-        return mplstunnelresourcetable;
+        return mplstunnelresourcetable_;
     }
 
     if(child_yang_name == "mplsTunnelTable")
     {
-        if(mplstunneltable == nullptr)
+        if(mplstunneltable_ == nullptr)
         {
-            mplstunneltable = std::make_shared<MplsTeStdMib::Mplstunneltable>();
+            mplstunneltable_ = std::make_shared<MplsTeStdMib::Mplstunneltable>();
         }
-        return mplstunneltable;
+        return mplstunneltable_;
     }
 
     return nullptr;
@@ -175,44 +175,44 @@ std::shared_ptr<Entity> MplsTeStdMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsteobjects != nullptr)
+    if(mplsteobjects_ != nullptr)
     {
-        children["mplsTeObjects"] = mplsteobjects;
+        children["mplsTeObjects"] = mplsteobjects_;
     }
 
-    if(mplstescalars != nullptr)
+    if(mplstescalars_ != nullptr)
     {
-        children["mplsTeScalars"] = mplstescalars;
+        children["mplsTeScalars"] = mplstescalars_;
     }
 
-    if(mplstunnelarhoptable != nullptr)
+    if(mplstunnelarhoptable_ != nullptr)
     {
-        children["mplsTunnelARHopTable"] = mplstunnelarhoptable;
+        children["mplsTunnelARHopTable"] = mplstunnelarhoptable_;
     }
 
-    if(mplstunnelchoptable != nullptr)
+    if(mplstunnelchoptable_ != nullptr)
     {
-        children["mplsTunnelCHopTable"] = mplstunnelchoptable;
+        children["mplsTunnelCHopTable"] = mplstunnelchoptable_;
     }
 
-    if(mplstunnelcrldprestable != nullptr)
+    if(mplstunnelcrldprestable_ != nullptr)
     {
-        children["mplsTunnelCRLDPResTable"] = mplstunnelcrldprestable;
+        children["mplsTunnelCRLDPResTable"] = mplstunnelcrldprestable_;
     }
 
-    if(mplstunnelhoptable != nullptr)
+    if(mplstunnelhoptable_ != nullptr)
     {
-        children["mplsTunnelHopTable"] = mplstunnelhoptable;
+        children["mplsTunnelHopTable"] = mplstunnelhoptable_;
     }
 
-    if(mplstunnelresourcetable != nullptr)
+    if(mplstunnelresourcetable_ != nullptr)
     {
-        children["mplsTunnelResourceTable"] = mplstunnelresourcetable;
+        children["mplsTunnelResourceTable"] = mplstunnelresourcetable_;
     }
 
-    if(mplstunneltable != nullptr)
+    if(mplstunneltable_ != nullptr)
     {
-        children["mplsTunnelTable"] = mplstunneltable;
+        children["mplsTunnelTable"] = mplstunneltable_;
     }
 
     return children;
@@ -453,9 +453,9 @@ MplsTeStdMib::Mplstunneltable::~Mplstunneltable()
 
 bool MplsTeStdMib::Mplstunneltable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelentry_.size(); index++)
     {
-        if(mplstunnelentry[index]->has_data())
+        if(mplstunnelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -463,9 +463,9 @@ bool MplsTeStdMib::Mplstunneltable::has_data() const
 
 bool MplsTeStdMib::Mplstunneltable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelentry_.size(); index++)
     {
-        if(mplstunnelentry[index]->has_operation())
+        if(mplstunnelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -505,7 +505,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunneltable::get_child_by_name(const s
 {
     if(child_yang_name == "mplsTunnelEntry")
     {
-        for(auto const & c : mplstunnelentry)
+        for(auto const & c : mplstunnelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -515,7 +515,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunneltable::get_child_by_name(const s
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunneltable::Mplstunnelentry>();
         c->parent = this;
-        mplstunnelentry.push_back(c);
+        mplstunnelentry_.push_back(c);
         return c;
     }
 
@@ -525,7 +525,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunneltable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelentry)
+    for (auto const & c : mplstunnelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -948,9 +948,9 @@ MplsTeStdMib::Mplstunnelhoptable::~Mplstunnelhoptable()
 
 bool MplsTeStdMib::Mplstunnelhoptable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelhopentry_.size(); index++)
     {
-        if(mplstunnelhopentry[index]->has_data())
+        if(mplstunnelhopentry_[index]->has_data())
             return true;
     }
     return false;
@@ -958,9 +958,9 @@ bool MplsTeStdMib::Mplstunnelhoptable::has_data() const
 
 bool MplsTeStdMib::Mplstunnelhoptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelhopentry_.size(); index++)
     {
-        if(mplstunnelhopentry[index]->has_operation())
+        if(mplstunnelhopentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1000,7 +1000,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelhoptable::get_child_by_name(cons
 {
     if(child_yang_name == "mplsTunnelHopEntry")
     {
-        for(auto const & c : mplstunnelhopentry)
+        for(auto const & c : mplstunnelhopentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1010,7 +1010,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelhoptable::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunnelhoptable::Mplstunnelhopentry>();
         c->parent = this;
-        mplstunnelhopentry.push_back(c);
+        mplstunnelhopentry_.push_back(c);
         return c;
     }
 
@@ -1020,7 +1020,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelhoptable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunnelhoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelhopentry)
+    for (auto const & c : mplstunnelhopentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1227,9 +1227,9 @@ MplsTeStdMib::Mplstunnelresourcetable::~Mplstunnelresourcetable()
 
 bool MplsTeStdMib::Mplstunnelresourcetable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelresourceentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelresourceentry_.size(); index++)
     {
-        if(mplstunnelresourceentry[index]->has_data())
+        if(mplstunnelresourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1237,9 +1237,9 @@ bool MplsTeStdMib::Mplstunnelresourcetable::has_data() const
 
 bool MplsTeStdMib::Mplstunnelresourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelresourceentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelresourceentry_.size(); index++)
     {
-        if(mplstunnelresourceentry[index]->has_operation())
+        if(mplstunnelresourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1279,7 +1279,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelresourcetable::get_child_by_name
 {
     if(child_yang_name == "mplsTunnelResourceEntry")
     {
-        for(auto const & c : mplstunnelresourceentry)
+        for(auto const & c : mplstunnelresourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1289,7 +1289,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelresourcetable::get_child_by_name
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunnelresourcetable::Mplstunnelresourceentry>();
         c->parent = this;
-        mplstunnelresourceentry.push_back(c);
+        mplstunnelresourceentry_.push_back(c);
         return c;
     }
 
@@ -1299,7 +1299,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelresourcetable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunnelresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelresourceentry)
+    for (auto const & c : mplstunnelresourceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1466,9 +1466,9 @@ MplsTeStdMib::Mplstunnelarhoptable::~Mplstunnelarhoptable()
 
 bool MplsTeStdMib::Mplstunnelarhoptable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelarhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelarhopentry_.size(); index++)
     {
-        if(mplstunnelarhopentry[index]->has_data())
+        if(mplstunnelarhopentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1476,9 +1476,9 @@ bool MplsTeStdMib::Mplstunnelarhoptable::has_data() const
 
 bool MplsTeStdMib::Mplstunnelarhoptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelarhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelarhopentry_.size(); index++)
     {
-        if(mplstunnelarhopentry[index]->has_operation())
+        if(mplstunnelarhopentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1518,7 +1518,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelarhoptable::get_child_by_name(co
 {
     if(child_yang_name == "mplsTunnelARHopEntry")
     {
-        for(auto const & c : mplstunnelarhopentry)
+        for(auto const & c : mplstunnelarhopentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1528,7 +1528,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelarhoptable::get_child_by_name(co
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunnelarhoptable::Mplstunnelarhopentry>();
         c->parent = this;
-        mplstunnelarhopentry.push_back(c);
+        mplstunnelarhopentry_.push_back(c);
         return c;
     }
 
@@ -1538,7 +1538,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelarhoptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunnelarhoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelarhopentry)
+    for (auto const & c : mplstunnelarhopentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1673,9 +1673,9 @@ MplsTeStdMib::Mplstunnelchoptable::~Mplstunnelchoptable()
 
 bool MplsTeStdMib::Mplstunnelchoptable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelchopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelchopentry_.size(); index++)
     {
-        if(mplstunnelchopentry[index]->has_data())
+        if(mplstunnelchopentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1683,9 +1683,9 @@ bool MplsTeStdMib::Mplstunnelchoptable::has_data() const
 
 bool MplsTeStdMib::Mplstunnelchoptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelchopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelchopentry_.size(); index++)
     {
-        if(mplstunnelchopentry[index]->has_operation())
+        if(mplstunnelchopentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1725,7 +1725,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelchoptable::get_child_by_name(con
 {
     if(child_yang_name == "mplsTunnelCHopEntry")
     {
-        for(auto const & c : mplstunnelchopentry)
+        for(auto const & c : mplstunnelchopentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1735,7 +1735,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelchoptable::get_child_by_name(con
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunnelchoptable::Mplstunnelchopentry>();
         c->parent = this;
-        mplstunnelchopentry.push_back(c);
+        mplstunnelchopentry_.push_back(c);
         return c;
     }
 
@@ -1745,7 +1745,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelchoptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunnelchoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelchopentry)
+    for (auto const & c : mplstunnelchopentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1904,9 +1904,9 @@ MplsTeStdMib::Mplstunnelcrldprestable::~Mplstunnelcrldprestable()
 
 bool MplsTeStdMib::Mplstunnelcrldprestable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelcrldpresentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelcrldpresentry_.size(); index++)
     {
-        if(mplstunnelcrldpresentry[index]->has_data())
+        if(mplstunnelcrldpresentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1914,9 +1914,9 @@ bool MplsTeStdMib::Mplstunnelcrldprestable::has_data() const
 
 bool MplsTeStdMib::Mplstunnelcrldprestable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelcrldpresentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelcrldpresentry_.size(); index++)
     {
-        if(mplstunnelcrldpresentry[index]->has_operation())
+        if(mplstunnelcrldpresentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1956,7 +1956,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelcrldprestable::get_child_by_name
 {
     if(child_yang_name == "mplsTunnelCRLDPResEntry")
     {
-        for(auto const & c : mplstunnelcrldpresentry)
+        for(auto const & c : mplstunnelcrldpresentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1966,7 +1966,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelcrldprestable::get_child_by_name
         }
         auto c = std::make_shared<MplsTeStdMib::Mplstunnelcrldprestable::Mplstunnelcrldpresentry>();
         c->parent = this;
-        mplstunnelcrldpresentry.push_back(c);
+        mplstunnelcrldpresentry_.push_back(c);
         return c;
     }
 
@@ -1976,7 +1976,7 @@ std::shared_ptr<Entity> MplsTeStdMib::Mplstunnelcrldprestable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsTeStdMib::Mplstunnelcrldprestable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplstunnelcrldpresentry)
+    for (auto const & c : mplstunnelcrldpresentry_)
     {
         children[c->get_segment_path()] = c;
     }

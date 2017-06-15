@@ -11,27 +11,27 @@ namespace CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB {
 
 CiscoSessBorderCtrlrCallStatsMib::CiscoSessBorderCtrlrCallStatsMib()
     :
-    csbcallstatsinstancetable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable>())
-	,csbcallstatstable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable>())
-	,csbcurrperiodicstatstable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable>())
-	,csbh248statsrev1table(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table>())
-	,csbh248statstable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable>())
-	,csbhistorystatstable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable>())
-	,csbperflowstatstable(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable>())
+    csbcallstatsinstancetable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable>())
+	,csbcallstatstable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable>())
+	,csbcurrperiodicstatstable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable>())
+	,csbh248statsrev1table_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table>())
+	,csbh248statstable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable>())
+	,csbhistorystatstable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable>())
+	,csbperflowstatstable_(std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable>())
 {
-    csbcallstatsinstancetable->parent = this;
+    csbcallstatsinstancetable_->parent = this;
 
-    csbcallstatstable->parent = this;
+    csbcallstatstable_->parent = this;
 
-    csbcurrperiodicstatstable->parent = this;
+    csbcurrperiodicstatstable_->parent = this;
 
-    csbh248statsrev1table->parent = this;
+    csbh248statsrev1table_->parent = this;
 
-    csbh248statstable->parent = this;
+    csbh248statstable_->parent = this;
 
-    csbhistorystatstable->parent = this;
+    csbhistorystatstable_->parent = this;
 
-    csbperflowstatstable->parent = this;
+    csbperflowstatstable_->parent = this;
 
     yang_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB";
 }
@@ -42,25 +42,25 @@ CiscoSessBorderCtrlrCallStatsMib::~CiscoSessBorderCtrlrCallStatsMib()
 
 bool CiscoSessBorderCtrlrCallStatsMib::has_data() const
 {
-    return (csbcallstatsinstancetable !=  nullptr && csbcallstatsinstancetable->has_data())
-	|| (csbcallstatstable !=  nullptr && csbcallstatstable->has_data())
-	|| (csbcurrperiodicstatstable !=  nullptr && csbcurrperiodicstatstable->has_data())
-	|| (csbh248statsrev1table !=  nullptr && csbh248statsrev1table->has_data())
-	|| (csbh248statstable !=  nullptr && csbh248statstable->has_data())
-	|| (csbhistorystatstable !=  nullptr && csbhistorystatstable->has_data())
-	|| (csbperflowstatstable !=  nullptr && csbperflowstatstable->has_data());
+    return (csbcallstatsinstancetable_ !=  nullptr && csbcallstatsinstancetable_->has_data())
+	|| (csbcallstatstable_ !=  nullptr && csbcallstatstable_->has_data())
+	|| (csbcurrperiodicstatstable_ !=  nullptr && csbcurrperiodicstatstable_->has_data())
+	|| (csbh248statsrev1table_ !=  nullptr && csbh248statsrev1table_->has_data())
+	|| (csbh248statstable_ !=  nullptr && csbh248statstable_->has_data())
+	|| (csbhistorystatstable_ !=  nullptr && csbhistorystatstable_->has_data())
+	|| (csbperflowstatstable_ !=  nullptr && csbperflowstatstable_->has_data());
 }
 
 bool CiscoSessBorderCtrlrCallStatsMib::has_operation() const
 {
     return is_set(operation)
-	|| (csbcallstatsinstancetable !=  nullptr && csbcallstatsinstancetable->has_operation())
-	|| (csbcallstatstable !=  nullptr && csbcallstatstable->has_operation())
-	|| (csbcurrperiodicstatstable !=  nullptr && csbcurrperiodicstatstable->has_operation())
-	|| (csbh248statsrev1table !=  nullptr && csbh248statsrev1table->has_operation())
-	|| (csbh248statstable !=  nullptr && csbh248statstable->has_operation())
-	|| (csbhistorystatstable !=  nullptr && csbhistorystatstable->has_operation())
-	|| (csbperflowstatstable !=  nullptr && csbperflowstatstable->has_operation());
+	|| (csbcallstatsinstancetable_ !=  nullptr && csbcallstatsinstancetable_->has_operation())
+	|| (csbcallstatstable_ !=  nullptr && csbcallstatstable_->has_operation())
+	|| (csbcurrperiodicstatstable_ !=  nullptr && csbcurrperiodicstatstable_->has_operation())
+	|| (csbh248statsrev1table_ !=  nullptr && csbh248statsrev1table_->has_operation())
+	|| (csbh248statstable_ !=  nullptr && csbh248statstable_->has_operation())
+	|| (csbhistorystatstable_ !=  nullptr && csbhistorystatstable_->has_operation())
+	|| (csbperflowstatstable_ !=  nullptr && csbperflowstatstable_->has_operation());
 }
 
 std::string CiscoSessBorderCtrlrCallStatsMib::get_segment_path() const
@@ -94,65 +94,65 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::get_child_by_name(cons
 {
     if(child_yang_name == "csbCallStatsInstanceTable")
     {
-        if(csbcallstatsinstancetable == nullptr)
+        if(csbcallstatsinstancetable_ == nullptr)
         {
-            csbcallstatsinstancetable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable>();
+            csbcallstatsinstancetable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable>();
         }
-        return csbcallstatsinstancetable;
+        return csbcallstatsinstancetable_;
     }
 
     if(child_yang_name == "csbCallStatsTable")
     {
-        if(csbcallstatstable == nullptr)
+        if(csbcallstatstable_ == nullptr)
         {
-            csbcallstatstable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable>();
+            csbcallstatstable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable>();
         }
-        return csbcallstatstable;
+        return csbcallstatstable_;
     }
 
     if(child_yang_name == "csbCurrPeriodicStatsTable")
     {
-        if(csbcurrperiodicstatstable == nullptr)
+        if(csbcurrperiodicstatstable_ == nullptr)
         {
-            csbcurrperiodicstatstable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable>();
+            csbcurrperiodicstatstable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable>();
         }
-        return csbcurrperiodicstatstable;
+        return csbcurrperiodicstatstable_;
     }
 
     if(child_yang_name == "csbH248StatsRev1Table")
     {
-        if(csbh248statsrev1table == nullptr)
+        if(csbh248statsrev1table_ == nullptr)
         {
-            csbh248statsrev1table = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table>();
+            csbh248statsrev1table_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table>();
         }
-        return csbh248statsrev1table;
+        return csbh248statsrev1table_;
     }
 
     if(child_yang_name == "csbH248StatsTable")
     {
-        if(csbh248statstable == nullptr)
+        if(csbh248statstable_ == nullptr)
         {
-            csbh248statstable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable>();
+            csbh248statstable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable>();
         }
-        return csbh248statstable;
+        return csbh248statstable_;
     }
 
     if(child_yang_name == "csbHistoryStatsTable")
     {
-        if(csbhistorystatstable == nullptr)
+        if(csbhistorystatstable_ == nullptr)
         {
-            csbhistorystatstable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable>();
+            csbhistorystatstable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable>();
         }
-        return csbhistorystatstable;
+        return csbhistorystatstable_;
     }
 
     if(child_yang_name == "csbPerFlowStatsTable")
     {
-        if(csbperflowstatstable == nullptr)
+        if(csbperflowstatstable_ == nullptr)
         {
-            csbperflowstatstable = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable>();
+            csbperflowstatstable_ = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable>();
         }
-        return csbperflowstatstable;
+        return csbperflowstatstable_;
     }
 
     return nullptr;
@@ -161,39 +161,39 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(csbcallstatsinstancetable != nullptr)
+    if(csbcallstatsinstancetable_ != nullptr)
     {
-        children["csbCallStatsInstanceTable"] = csbcallstatsinstancetable;
+        children["csbCallStatsInstanceTable"] = csbcallstatsinstancetable_;
     }
 
-    if(csbcallstatstable != nullptr)
+    if(csbcallstatstable_ != nullptr)
     {
-        children["csbCallStatsTable"] = csbcallstatstable;
+        children["csbCallStatsTable"] = csbcallstatstable_;
     }
 
-    if(csbcurrperiodicstatstable != nullptr)
+    if(csbcurrperiodicstatstable_ != nullptr)
     {
-        children["csbCurrPeriodicStatsTable"] = csbcurrperiodicstatstable;
+        children["csbCurrPeriodicStatsTable"] = csbcurrperiodicstatstable_;
     }
 
-    if(csbh248statsrev1table != nullptr)
+    if(csbh248statsrev1table_ != nullptr)
     {
-        children["csbH248StatsRev1Table"] = csbh248statsrev1table;
+        children["csbH248StatsRev1Table"] = csbh248statsrev1table_;
     }
 
-    if(csbh248statstable != nullptr)
+    if(csbh248statstable_ != nullptr)
     {
-        children["csbH248StatsTable"] = csbh248statstable;
+        children["csbH248StatsTable"] = csbh248statstable_;
     }
 
-    if(csbhistorystatstable != nullptr)
+    if(csbhistorystatstable_ != nullptr)
     {
-        children["csbHistoryStatsTable"] = csbhistorystatstable;
+        children["csbHistoryStatsTable"] = csbhistorystatstable_;
     }
 
-    if(csbperflowstatstable != nullptr)
+    if(csbperflowstatstable_ != nullptr)
     {
-        children["csbPerFlowStatsTable"] = csbperflowstatstable;
+        children["csbPerFlowStatsTable"] = csbperflowstatstable_;
     }
 
     return children;
@@ -234,9 +234,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::~Csbcallstatsinstan
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::has_data() const
 {
-    for (std::size_t index=0; index<csbcallstatsinstanceentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsinstanceentry_.size(); index++)
     {
-        if(csbcallstatsinstanceentry[index]->has_data())
+        if(csbcallstatsinstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -244,9 +244,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::has_data() con
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcallstatsinstanceentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsinstanceentry_.size(); index++)
     {
-        if(csbcallstatsinstanceentry[index]->has_operation())
+        if(csbcallstatsinstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -286,7 +286,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstanceta
 {
     if(child_yang_name == "csbCallStatsInstanceEntry")
     {
-        for(auto const & c : csbcallstatsinstanceentry)
+        for(auto const & c : csbcallstatsinstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -296,7 +296,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstanceta
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::Csbcallstatsinstanceentry>();
         c->parent = this;
-        csbcallstatsinstanceentry.push_back(c);
+        csbcallstatsinstanceentry_.push_back(c);
         return c;
     }
 
@@ -306,7 +306,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstanceta
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbcallstatsinstanceentry)
+    for (auto const & c : csbcallstatsinstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -409,9 +409,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::~Csbcallstatstable()
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::has_data() const
 {
-    for (std::size_t index=0; index<csbcallstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsentry_.size(); index++)
     {
-        if(csbcallstatsentry[index]->has_data())
+        if(csbcallstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -419,9 +419,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::has_data() const
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcallstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsentry_.size(); index++)
     {
-        if(csbcallstatsentry[index]->has_operation())
+        if(csbcallstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -461,7 +461,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::get
 {
     if(child_yang_name == "csbCallStatsEntry")
     {
-        for(auto const & c : csbcallstatsentry)
+        for(auto const & c : csbcallstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -471,7 +471,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::get
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::Csbcallstatsentry>();
         c->parent = this;
-        csbcallstatsentry.push_back(c);
+        csbcallstatsentry_.push_back(c);
         return c;
     }
 
@@ -481,7 +481,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbcallstatsentry)
+    for (auto const & c : csbcallstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -784,9 +784,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::~Csbcurrperiodicsta
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::has_data() const
 {
-    for (std::size_t index=0; index<csbcurrperiodicstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcurrperiodicstatsentry_.size(); index++)
     {
-        if(csbcurrperiodicstatsentry[index]->has_data())
+        if(csbcurrperiodicstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -794,9 +794,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::has_data() con
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcurrperiodicstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcurrperiodicstatsentry_.size(); index++)
     {
-        if(csbcurrperiodicstatsentry[index]->has_operation())
+        if(csbcurrperiodicstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -836,7 +836,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatsta
 {
     if(child_yang_name == "csbCurrPeriodicStatsEntry")
     {
-        for(auto const & c : csbcurrperiodicstatsentry)
+        for(auto const & c : csbcurrperiodicstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -846,7 +846,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatsta
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry>();
         c->parent = this;
-        csbcurrperiodicstatsentry.push_back(c);
+        csbcurrperiodicstatsentry_.push_back(c);
         return c;
     }
 
@@ -856,7 +856,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatsta
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbcurrperiodicstatsentry)
+    for (auto const & c : csbcurrperiodicstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1327,9 +1327,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::~Csbhistorystatstable()
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::has_data() const
 {
-    for (std::size_t index=0; index<csbhistorystatsentry.size(); index++)
+    for (std::size_t index=0; index<csbhistorystatsentry_.size(); index++)
     {
-        if(csbhistorystatsentry[index]->has_data())
+        if(csbhistorystatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1337,9 +1337,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::has_data() const
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csbhistorystatsentry.size(); index++)
+    for (std::size_t index=0; index<csbhistorystatsentry_.size(); index++)
     {
-        if(csbhistorystatsentry[index]->has_operation())
+        if(csbhistorystatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1379,7 +1379,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::
 {
     if(child_yang_name == "csbHistoryStatsEntry")
     {
-        for(auto const & c : csbhistorystatsentry)
+        for(auto const & c : csbhistorystatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1389,7 +1389,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::Csbhistorystatsentry>();
         c->parent = this;
-        csbhistorystatsentry.push_back(c);
+        csbhistorystatsentry_.push_back(c);
         return c;
     }
 
@@ -1399,7 +1399,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbhistorystatsentry)
+    for (auto const & c : csbhistorystatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1862,9 +1862,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::~Csbperflowstatstable()
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::has_data() const
 {
-    for (std::size_t index=0; index<csbperflowstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbperflowstatsentry_.size(); index++)
     {
-        if(csbperflowstatsentry[index]->has_data())
+        if(csbperflowstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1872,9 +1872,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::has_data() const
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csbperflowstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbperflowstatsentry_.size(); index++)
     {
-        if(csbperflowstatsentry[index]->has_operation())
+        if(csbperflowstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1914,7 +1914,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::
 {
     if(child_yang_name == "csbPerFlowStatsEntry")
     {
-        for(auto const & c : csbperflowstatsentry)
+        for(auto const & c : csbperflowstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1924,7 +1924,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::Csbperflowstatsentry>();
         c->parent = this;
-        csbperflowstatsentry.push_back(c);
+        csbperflowstatsentry_.push_back(c);
         return c;
     }
 
@@ -1934,7 +1934,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbperflowstatsentry)
+    for (auto const & c : csbperflowstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2205,9 +2205,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::~Csbh248Statstable()
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::has_data() const
 {
-    for (std::size_t index=0; index<csbh248statsentry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsentry_.size(); index++)
     {
-        if(csbh248statsentry[index]->has_data())
+        if(csbh248statsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2215,9 +2215,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::has_data() const
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::has_operation() const
 {
-    for (std::size_t index=0; index<csbh248statsentry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsentry_.size(); index++)
     {
-        if(csbh248statsentry[index]->has_operation())
+        if(csbh248statsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2257,7 +2257,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::get
 {
     if(child_yang_name == "csbH248StatsEntry")
     {
-        for(auto const & c : csbh248statsentry)
+        for(auto const & c : csbh248statsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2267,7 +2267,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::get
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::Csbh248Statsentry>();
         c->parent = this;
-        csbh248statsentry.push_back(c);
+        csbh248statsentry_.push_back(c);
         return c;
     }
 
@@ -2277,7 +2277,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbh248statsentry)
+    for (auto const & c : csbh248statsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2492,9 +2492,9 @@ CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::~Csbh248Statsrev1Table(
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::has_data() const
 {
-    for (std::size_t index=0; index<csbh248statsrev1entry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsrev1entry_.size(); index++)
     {
-        if(csbh248statsrev1entry[index]->has_data())
+        if(csbh248statsrev1entry_[index]->has_data())
             return true;
     }
     return false;
@@ -2502,9 +2502,9 @@ bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::has_data() const
 
 bool CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::has_operation() const
 {
-    for (std::size_t index=0; index<csbh248statsrev1entry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsrev1entry_.size(); index++)
     {
-        if(csbh248statsrev1entry[index]->has_operation())
+        if(csbh248statsrev1entry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2544,7 +2544,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table:
 {
     if(child_yang_name == "csbH248StatsRev1Entry")
     {
-        for(auto const & c : csbh248statsrev1entry)
+        for(auto const & c : csbh248statsrev1entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2554,7 +2554,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table:
         }
         auto c = std::make_shared<CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::Csbh248Statsrev1Entry>();
         c->parent = this;
-        csbh248statsrev1entry.push_back(c);
+        csbh248statsrev1entry_.push_back(c);
         return c;
     }
 
@@ -2564,7 +2564,7 @@ std::shared_ptr<Entity> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table:
 std::map<std::string, std::shared_ptr<Entity>> CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csbh248statsrev1entry)
+    for (auto const & c : csbh248statsrev1entry_)
     {
         children[c->get_segment_path()] = c;
     }

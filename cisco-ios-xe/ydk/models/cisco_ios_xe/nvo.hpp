@@ -39,7 +39,7 @@ class NvoInstances : public Entity
 
         class NvoInstance; //type: NvoInstances::NvoInstance
 
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance> > nvo_instance;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance> > nvo_instance_;
         
 }; // NvoInstances
 
@@ -64,7 +64,7 @@ class NvoInstances::NvoInstance : public Entity
         YLeaf overlay_encapsulation; //type: OverlayEncapTypeIdentity
         class VirtualNetwork; //type: NvoInstances::NvoInstance::VirtualNetwork
 
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork> > virtual_network;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork> > virtual_network_;
         
 }; // NvoInstances::NvoInstance
 
@@ -93,8 +93,8 @@ class NvoInstances::NvoInstance::VirtualNetwork : public Entity
         class Peers; //type: NvoInstances::NvoInstance::VirtualNetwork::Peers
         class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
 
-        std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast;
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers;
+        std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast_;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers_;
                 class EndHostDiscoveryEnum;
 
 }; // NvoInstances::NvoInstance::VirtualNetwork

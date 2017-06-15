@@ -32,9 +32,9 @@ class CiscoEntitySensorMib : public Entity
         class Entsensorvaluetable; //type: CiscoEntitySensorMib::Entsensorvaluetable
         class Entsensorthresholdtable; //type: CiscoEntitySensorMib::Entsensorthresholdtable
 
-        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorglobalobjects> entsensorglobalobjects;
-        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorthresholdtable> entsensorthresholdtable;
-        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorvaluetable> entsensorvaluetable;
+        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorglobalobjects> entsensorglobalobjects_;
+        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorthresholdtable> entsensorthresholdtable_;
+        std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorvaluetable> entsensorvaluetable_;
         
 }; // CiscoEntitySensorMib
 
@@ -74,7 +74,7 @@ class CiscoEntitySensorMib::Entsensorvaluetable : public Entity
 
         class Entsensorvalueentry; //type: CiscoEntitySensorMib::Entsensorvaluetable::Entsensorvalueentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorvaluetable::Entsensorvalueentry> > entsensorvalueentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorvaluetable::Entsensorvalueentry> > entsensorvalueentry_;
         
 }; // CiscoEntitySensorMib::Entsensorvaluetable
 
@@ -123,7 +123,7 @@ class CiscoEntitySensorMib::Entsensorthresholdtable : public Entity
 
         class Entsensorthresholdentry; //type: CiscoEntitySensorMib::Entsensorthresholdtable::Entsensorthresholdentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorthresholdtable::Entsensorthresholdentry> > entsensorthresholdentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_SENSOR_MIB::CiscoEntitySensorMib::Entsensorthresholdtable::Entsensorthresholdentry> > entsensorthresholdentry_;
         
 }; // CiscoEntitySensorMib::Entsensorthresholdtable
 

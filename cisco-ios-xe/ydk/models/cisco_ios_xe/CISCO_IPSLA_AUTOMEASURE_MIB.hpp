@@ -34,10 +34,10 @@ class CiscoIpslaAutomeasureMib : public Entity
         class Cipslareacttable; //type: CiscoIpslaAutomeasureMib::Cipslareacttable
         class Cipslaautogroupschedtable; //type: CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable
 
-        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable> cipslaautogroupdesttable;
-        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable> cipslaautogroupschedtable;
-        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogrouptable> cipslaautogrouptable;
-        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslareacttable> cipslareacttable;
+        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable> cipslaautogroupdesttable_;
+        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable> cipslaautogroupschedtable_;
+        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogrouptable> cipslaautogrouptable_;
+        std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslareacttable> cipslareacttable_;
         
 }; // CiscoIpslaAutomeasureMib
 
@@ -58,7 +58,7 @@ class CiscoIpslaAutomeasureMib::Cipslaautogrouptable : public Entity
 
         class Cipslaautogroupentry; //type: CiscoIpslaAutomeasureMib::Cipslaautogrouptable::Cipslaautogroupentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogrouptable::Cipslaautogroupentry> > cipslaautogroupentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogrouptable::Cipslaautogroupentry> > cipslaautogroupentry_;
         
 }; // CiscoIpslaAutomeasureMib::Cipslaautogrouptable
 
@@ -110,7 +110,7 @@ class CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable : public Entity
 
         class Cipslaautogroupdestentry; //type: CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::Cipslaautogroupdestentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::Cipslaautogroupdestentry> > cipslaautogroupdestentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::Cipslaautogroupdestentry> > cipslaautogroupdestentry_;
         
 }; // CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable
 
@@ -155,7 +155,7 @@ class CiscoIpslaAutomeasureMib::Cipslareacttable : public Entity
 
         class Cipslareactentry; //type: CiscoIpslaAutomeasureMib::Cipslareacttable::Cipslareactentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslareacttable::Cipslareactentry> > cipslareactentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslareacttable::Cipslareactentry> > cipslareactentry_;
         
 }; // CiscoIpslaAutomeasureMib::Cipslareacttable
 
@@ -209,7 +209,7 @@ class CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable : public Entity
 
         class Cipslaautogroupschedentry; //type: CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::Cipslaautogroupschedentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::Cipslaautogroupschedentry> > cipslaautogroupschedentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_AUTOMEASURE_MIB::CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::Cipslaautogroupschedentry> > cipslaautogroupschedentry_;
         
 }; // CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable
 

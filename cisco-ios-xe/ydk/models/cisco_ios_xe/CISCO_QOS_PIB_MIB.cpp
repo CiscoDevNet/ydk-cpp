@@ -11,60 +11,60 @@ namespace CISCO_QOS_PIB_MIB {
 
 CiscoQosPibMib::CiscoQosPibMib()
     :
-    qosaggregatetable(std::make_shared<CiscoQosPibMib::Qosaggregatetable>())
-	,qoscostodscptable(std::make_shared<CiscoQosPibMib::Qoscostodscptable>())
-	,qosdeviceattributetable(std::make_shared<CiscoQosPibMib::Qosdeviceattributetable>())
-	,qosdevicepibincarnationtable(std::make_shared<CiscoQosPibMib::Qosdevicepibincarnationtable>())
-	,qosdiffservmappingtable(std::make_shared<CiscoQosPibMib::Qosdiffservmappingtable>())
-	,qosifdroppreferencetable(std::make_shared<CiscoQosPibMib::Qosifdroppreferencetable>())
-	,qosifdscpassignmenttable(std::make_shared<CiscoQosPibMib::Qosifdscpassignmenttable>())
-	,qosifredtable(std::make_shared<CiscoQosPibMib::Qosifredtable>())
-	,qosifschedulingpreferencestable(std::make_shared<CiscoQosPibMib::Qosifschedulingpreferencestable>())
-	,qosiftaildroptable(std::make_shared<CiscoQosPibMib::Qosiftaildroptable>())
-	,qosifweightstable(std::make_shared<CiscoQosPibMib::Qosifweightstable>())
-	,qosinterfacetypetable(std::make_shared<CiscoQosPibMib::Qosinterfacetypetable>())
-	,qosipacetable(std::make_shared<CiscoQosPibMib::Qosipacetable>())
-	,qosipaclactiontable(std::make_shared<CiscoQosPibMib::Qosipaclactiontable>())
-	,qosipacldefinitiontable(std::make_shared<CiscoQosPibMib::Qosipacldefinitiontable>())
-	,qosmacclassificationtable(std::make_shared<CiscoQosPibMib::Qosmacclassificationtable>())
-	,qospolicertable(std::make_shared<CiscoQosPibMib::Qospolicertable>())
-	,qosunmatchedpolicytable(std::make_shared<CiscoQosPibMib::Qosunmatchedpolicytable>())
+    qosaggregatetable_(std::make_shared<CiscoQosPibMib::Qosaggregatetable>())
+	,qoscostodscptable_(std::make_shared<CiscoQosPibMib::Qoscostodscptable>())
+	,qosdeviceattributetable_(std::make_shared<CiscoQosPibMib::Qosdeviceattributetable>())
+	,qosdevicepibincarnationtable_(std::make_shared<CiscoQosPibMib::Qosdevicepibincarnationtable>())
+	,qosdiffservmappingtable_(std::make_shared<CiscoQosPibMib::Qosdiffservmappingtable>())
+	,qosifdroppreferencetable_(std::make_shared<CiscoQosPibMib::Qosifdroppreferencetable>())
+	,qosifdscpassignmenttable_(std::make_shared<CiscoQosPibMib::Qosifdscpassignmenttable>())
+	,qosifredtable_(std::make_shared<CiscoQosPibMib::Qosifredtable>())
+	,qosifschedulingpreferencestable_(std::make_shared<CiscoQosPibMib::Qosifschedulingpreferencestable>())
+	,qosiftaildroptable_(std::make_shared<CiscoQosPibMib::Qosiftaildroptable>())
+	,qosifweightstable_(std::make_shared<CiscoQosPibMib::Qosifweightstable>())
+	,qosinterfacetypetable_(std::make_shared<CiscoQosPibMib::Qosinterfacetypetable>())
+	,qosipacetable_(std::make_shared<CiscoQosPibMib::Qosipacetable>())
+	,qosipaclactiontable_(std::make_shared<CiscoQosPibMib::Qosipaclactiontable>())
+	,qosipacldefinitiontable_(std::make_shared<CiscoQosPibMib::Qosipacldefinitiontable>())
+	,qosmacclassificationtable_(std::make_shared<CiscoQosPibMib::Qosmacclassificationtable>())
+	,qospolicertable_(std::make_shared<CiscoQosPibMib::Qospolicertable>())
+	,qosunmatchedpolicytable_(std::make_shared<CiscoQosPibMib::Qosunmatchedpolicytable>())
 {
-    qosaggregatetable->parent = this;
+    qosaggregatetable_->parent = this;
 
-    qoscostodscptable->parent = this;
+    qoscostodscptable_->parent = this;
 
-    qosdeviceattributetable->parent = this;
+    qosdeviceattributetable_->parent = this;
 
-    qosdevicepibincarnationtable->parent = this;
+    qosdevicepibincarnationtable_->parent = this;
 
-    qosdiffservmappingtable->parent = this;
+    qosdiffservmappingtable_->parent = this;
 
-    qosifdroppreferencetable->parent = this;
+    qosifdroppreferencetable_->parent = this;
 
-    qosifdscpassignmenttable->parent = this;
+    qosifdscpassignmenttable_->parent = this;
 
-    qosifredtable->parent = this;
+    qosifredtable_->parent = this;
 
-    qosifschedulingpreferencestable->parent = this;
+    qosifschedulingpreferencestable_->parent = this;
 
-    qosiftaildroptable->parent = this;
+    qosiftaildroptable_->parent = this;
 
-    qosifweightstable->parent = this;
+    qosifweightstable_->parent = this;
 
-    qosinterfacetypetable->parent = this;
+    qosinterfacetypetable_->parent = this;
 
-    qosipacetable->parent = this;
+    qosipacetable_->parent = this;
 
-    qosipaclactiontable->parent = this;
+    qosipaclactiontable_->parent = this;
 
-    qosipacldefinitiontable->parent = this;
+    qosipacldefinitiontable_->parent = this;
 
-    qosmacclassificationtable->parent = this;
+    qosmacclassificationtable_->parent = this;
 
-    qospolicertable->parent = this;
+    qospolicertable_->parent = this;
 
-    qosunmatchedpolicytable->parent = this;
+    qosunmatchedpolicytable_->parent = this;
 
     yang_name = "CISCO-QOS-PIB-MIB"; yang_parent_name = "CISCO-QOS-PIB-MIB";
 }
@@ -75,47 +75,47 @@ CiscoQosPibMib::~CiscoQosPibMib()
 
 bool CiscoQosPibMib::has_data() const
 {
-    return (qosaggregatetable !=  nullptr && qosaggregatetable->has_data())
-	|| (qoscostodscptable !=  nullptr && qoscostodscptable->has_data())
-	|| (qosdeviceattributetable !=  nullptr && qosdeviceattributetable->has_data())
-	|| (qosdevicepibincarnationtable !=  nullptr && qosdevicepibincarnationtable->has_data())
-	|| (qosdiffservmappingtable !=  nullptr && qosdiffservmappingtable->has_data())
-	|| (qosifdroppreferencetable !=  nullptr && qosifdroppreferencetable->has_data())
-	|| (qosifdscpassignmenttable !=  nullptr && qosifdscpassignmenttable->has_data())
-	|| (qosifredtable !=  nullptr && qosifredtable->has_data())
-	|| (qosifschedulingpreferencestable !=  nullptr && qosifschedulingpreferencestable->has_data())
-	|| (qosiftaildroptable !=  nullptr && qosiftaildroptable->has_data())
-	|| (qosifweightstable !=  nullptr && qosifweightstable->has_data())
-	|| (qosinterfacetypetable !=  nullptr && qosinterfacetypetable->has_data())
-	|| (qosipacetable !=  nullptr && qosipacetable->has_data())
-	|| (qosipaclactiontable !=  nullptr && qosipaclactiontable->has_data())
-	|| (qosipacldefinitiontable !=  nullptr && qosipacldefinitiontable->has_data())
-	|| (qosmacclassificationtable !=  nullptr && qosmacclassificationtable->has_data())
-	|| (qospolicertable !=  nullptr && qospolicertable->has_data())
-	|| (qosunmatchedpolicytable !=  nullptr && qosunmatchedpolicytable->has_data());
+    return (qosaggregatetable_ !=  nullptr && qosaggregatetable_->has_data())
+	|| (qoscostodscptable_ !=  nullptr && qoscostodscptable_->has_data())
+	|| (qosdeviceattributetable_ !=  nullptr && qosdeviceattributetable_->has_data())
+	|| (qosdevicepibincarnationtable_ !=  nullptr && qosdevicepibincarnationtable_->has_data())
+	|| (qosdiffservmappingtable_ !=  nullptr && qosdiffservmappingtable_->has_data())
+	|| (qosifdroppreferencetable_ !=  nullptr && qosifdroppreferencetable_->has_data())
+	|| (qosifdscpassignmenttable_ !=  nullptr && qosifdscpassignmenttable_->has_data())
+	|| (qosifredtable_ !=  nullptr && qosifredtable_->has_data())
+	|| (qosifschedulingpreferencestable_ !=  nullptr && qosifschedulingpreferencestable_->has_data())
+	|| (qosiftaildroptable_ !=  nullptr && qosiftaildroptable_->has_data())
+	|| (qosifweightstable_ !=  nullptr && qosifweightstable_->has_data())
+	|| (qosinterfacetypetable_ !=  nullptr && qosinterfacetypetable_->has_data())
+	|| (qosipacetable_ !=  nullptr && qosipacetable_->has_data())
+	|| (qosipaclactiontable_ !=  nullptr && qosipaclactiontable_->has_data())
+	|| (qosipacldefinitiontable_ !=  nullptr && qosipacldefinitiontable_->has_data())
+	|| (qosmacclassificationtable_ !=  nullptr && qosmacclassificationtable_->has_data())
+	|| (qospolicertable_ !=  nullptr && qospolicertable_->has_data())
+	|| (qosunmatchedpolicytable_ !=  nullptr && qosunmatchedpolicytable_->has_data());
 }
 
 bool CiscoQosPibMib::has_operation() const
 {
     return is_set(operation)
-	|| (qosaggregatetable !=  nullptr && qosaggregatetable->has_operation())
-	|| (qoscostodscptable !=  nullptr && qoscostodscptable->has_operation())
-	|| (qosdeviceattributetable !=  nullptr && qosdeviceattributetable->has_operation())
-	|| (qosdevicepibincarnationtable !=  nullptr && qosdevicepibincarnationtable->has_operation())
-	|| (qosdiffservmappingtable !=  nullptr && qosdiffservmappingtable->has_operation())
-	|| (qosifdroppreferencetable !=  nullptr && qosifdroppreferencetable->has_operation())
-	|| (qosifdscpassignmenttable !=  nullptr && qosifdscpassignmenttable->has_operation())
-	|| (qosifredtable !=  nullptr && qosifredtable->has_operation())
-	|| (qosifschedulingpreferencestable !=  nullptr && qosifschedulingpreferencestable->has_operation())
-	|| (qosiftaildroptable !=  nullptr && qosiftaildroptable->has_operation())
-	|| (qosifweightstable !=  nullptr && qosifweightstable->has_operation())
-	|| (qosinterfacetypetable !=  nullptr && qosinterfacetypetable->has_operation())
-	|| (qosipacetable !=  nullptr && qosipacetable->has_operation())
-	|| (qosipaclactiontable !=  nullptr && qosipaclactiontable->has_operation())
-	|| (qosipacldefinitiontable !=  nullptr && qosipacldefinitiontable->has_operation())
-	|| (qosmacclassificationtable !=  nullptr && qosmacclassificationtable->has_operation())
-	|| (qospolicertable !=  nullptr && qospolicertable->has_operation())
-	|| (qosunmatchedpolicytable !=  nullptr && qosunmatchedpolicytable->has_operation());
+	|| (qosaggregatetable_ !=  nullptr && qosaggregatetable_->has_operation())
+	|| (qoscostodscptable_ !=  nullptr && qoscostodscptable_->has_operation())
+	|| (qosdeviceattributetable_ !=  nullptr && qosdeviceattributetable_->has_operation())
+	|| (qosdevicepibincarnationtable_ !=  nullptr && qosdevicepibincarnationtable_->has_operation())
+	|| (qosdiffservmappingtable_ !=  nullptr && qosdiffservmappingtable_->has_operation())
+	|| (qosifdroppreferencetable_ !=  nullptr && qosifdroppreferencetable_->has_operation())
+	|| (qosifdscpassignmenttable_ !=  nullptr && qosifdscpassignmenttable_->has_operation())
+	|| (qosifredtable_ !=  nullptr && qosifredtable_->has_operation())
+	|| (qosifschedulingpreferencestable_ !=  nullptr && qosifschedulingpreferencestable_->has_operation())
+	|| (qosiftaildroptable_ !=  nullptr && qosiftaildroptable_->has_operation())
+	|| (qosifweightstable_ !=  nullptr && qosifweightstable_->has_operation())
+	|| (qosinterfacetypetable_ !=  nullptr && qosinterfacetypetable_->has_operation())
+	|| (qosipacetable_ !=  nullptr && qosipacetable_->has_operation())
+	|| (qosipaclactiontable_ !=  nullptr && qosipaclactiontable_->has_operation())
+	|| (qosipacldefinitiontable_ !=  nullptr && qosipacldefinitiontable_->has_operation())
+	|| (qosmacclassificationtable_ !=  nullptr && qosmacclassificationtable_->has_operation())
+	|| (qospolicertable_ !=  nullptr && qospolicertable_->has_operation())
+	|| (qosunmatchedpolicytable_ !=  nullptr && qosunmatchedpolicytable_->has_operation());
 }
 
 std::string CiscoQosPibMib::get_segment_path() const
@@ -149,164 +149,164 @@ std::shared_ptr<Entity> CiscoQosPibMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "qosAggregateTable")
     {
-        if(qosaggregatetable == nullptr)
+        if(qosaggregatetable_ == nullptr)
         {
-            qosaggregatetable = std::make_shared<CiscoQosPibMib::Qosaggregatetable>();
+            qosaggregatetable_ = std::make_shared<CiscoQosPibMib::Qosaggregatetable>();
         }
-        return qosaggregatetable;
+        return qosaggregatetable_;
     }
 
     if(child_yang_name == "qosCosToDscpTable")
     {
-        if(qoscostodscptable == nullptr)
+        if(qoscostodscptable_ == nullptr)
         {
-            qoscostodscptable = std::make_shared<CiscoQosPibMib::Qoscostodscptable>();
+            qoscostodscptable_ = std::make_shared<CiscoQosPibMib::Qoscostodscptable>();
         }
-        return qoscostodscptable;
+        return qoscostodscptable_;
     }
 
     if(child_yang_name == "qosDeviceAttributeTable")
     {
-        if(qosdeviceattributetable == nullptr)
+        if(qosdeviceattributetable_ == nullptr)
         {
-            qosdeviceattributetable = std::make_shared<CiscoQosPibMib::Qosdeviceattributetable>();
+            qosdeviceattributetable_ = std::make_shared<CiscoQosPibMib::Qosdeviceattributetable>();
         }
-        return qosdeviceattributetable;
+        return qosdeviceattributetable_;
     }
 
     if(child_yang_name == "qosDevicePibIncarnationTable")
     {
-        if(qosdevicepibincarnationtable == nullptr)
+        if(qosdevicepibincarnationtable_ == nullptr)
         {
-            qosdevicepibincarnationtable = std::make_shared<CiscoQosPibMib::Qosdevicepibincarnationtable>();
+            qosdevicepibincarnationtable_ = std::make_shared<CiscoQosPibMib::Qosdevicepibincarnationtable>();
         }
-        return qosdevicepibincarnationtable;
+        return qosdevicepibincarnationtable_;
     }
 
     if(child_yang_name == "qosDiffServMappingTable")
     {
-        if(qosdiffservmappingtable == nullptr)
+        if(qosdiffservmappingtable_ == nullptr)
         {
-            qosdiffservmappingtable = std::make_shared<CiscoQosPibMib::Qosdiffservmappingtable>();
+            qosdiffservmappingtable_ = std::make_shared<CiscoQosPibMib::Qosdiffservmappingtable>();
         }
-        return qosdiffservmappingtable;
+        return qosdiffservmappingtable_;
     }
 
     if(child_yang_name == "qosIfDropPreferenceTable")
     {
-        if(qosifdroppreferencetable == nullptr)
+        if(qosifdroppreferencetable_ == nullptr)
         {
-            qosifdroppreferencetable = std::make_shared<CiscoQosPibMib::Qosifdroppreferencetable>();
+            qosifdroppreferencetable_ = std::make_shared<CiscoQosPibMib::Qosifdroppreferencetable>();
         }
-        return qosifdroppreferencetable;
+        return qosifdroppreferencetable_;
     }
 
     if(child_yang_name == "qosIfDscpAssignmentTable")
     {
-        if(qosifdscpassignmenttable == nullptr)
+        if(qosifdscpassignmenttable_ == nullptr)
         {
-            qosifdscpassignmenttable = std::make_shared<CiscoQosPibMib::Qosifdscpassignmenttable>();
+            qosifdscpassignmenttable_ = std::make_shared<CiscoQosPibMib::Qosifdscpassignmenttable>();
         }
-        return qosifdscpassignmenttable;
+        return qosifdscpassignmenttable_;
     }
 
     if(child_yang_name == "qosIfRedTable")
     {
-        if(qosifredtable == nullptr)
+        if(qosifredtable_ == nullptr)
         {
-            qosifredtable = std::make_shared<CiscoQosPibMib::Qosifredtable>();
+            qosifredtable_ = std::make_shared<CiscoQosPibMib::Qosifredtable>();
         }
-        return qosifredtable;
+        return qosifredtable_;
     }
 
     if(child_yang_name == "qosIfSchedulingPreferencesTable")
     {
-        if(qosifschedulingpreferencestable == nullptr)
+        if(qosifschedulingpreferencestable_ == nullptr)
         {
-            qosifschedulingpreferencestable = std::make_shared<CiscoQosPibMib::Qosifschedulingpreferencestable>();
+            qosifschedulingpreferencestable_ = std::make_shared<CiscoQosPibMib::Qosifschedulingpreferencestable>();
         }
-        return qosifschedulingpreferencestable;
+        return qosifschedulingpreferencestable_;
     }
 
     if(child_yang_name == "qosIfTailDropTable")
     {
-        if(qosiftaildroptable == nullptr)
+        if(qosiftaildroptable_ == nullptr)
         {
-            qosiftaildroptable = std::make_shared<CiscoQosPibMib::Qosiftaildroptable>();
+            qosiftaildroptable_ = std::make_shared<CiscoQosPibMib::Qosiftaildroptable>();
         }
-        return qosiftaildroptable;
+        return qosiftaildroptable_;
     }
 
     if(child_yang_name == "qosIfWeightsTable")
     {
-        if(qosifweightstable == nullptr)
+        if(qosifweightstable_ == nullptr)
         {
-            qosifweightstable = std::make_shared<CiscoQosPibMib::Qosifweightstable>();
+            qosifweightstable_ = std::make_shared<CiscoQosPibMib::Qosifweightstable>();
         }
-        return qosifweightstable;
+        return qosifweightstable_;
     }
 
     if(child_yang_name == "qosInterfaceTypeTable")
     {
-        if(qosinterfacetypetable == nullptr)
+        if(qosinterfacetypetable_ == nullptr)
         {
-            qosinterfacetypetable = std::make_shared<CiscoQosPibMib::Qosinterfacetypetable>();
+            qosinterfacetypetable_ = std::make_shared<CiscoQosPibMib::Qosinterfacetypetable>();
         }
-        return qosinterfacetypetable;
+        return qosinterfacetypetable_;
     }
 
     if(child_yang_name == "qosIpAceTable")
     {
-        if(qosipacetable == nullptr)
+        if(qosipacetable_ == nullptr)
         {
-            qosipacetable = std::make_shared<CiscoQosPibMib::Qosipacetable>();
+            qosipacetable_ = std::make_shared<CiscoQosPibMib::Qosipacetable>();
         }
-        return qosipacetable;
+        return qosipacetable_;
     }
 
     if(child_yang_name == "qosIpAclActionTable")
     {
-        if(qosipaclactiontable == nullptr)
+        if(qosipaclactiontable_ == nullptr)
         {
-            qosipaclactiontable = std::make_shared<CiscoQosPibMib::Qosipaclactiontable>();
+            qosipaclactiontable_ = std::make_shared<CiscoQosPibMib::Qosipaclactiontable>();
         }
-        return qosipaclactiontable;
+        return qosipaclactiontable_;
     }
 
     if(child_yang_name == "qosIpAclDefinitionTable")
     {
-        if(qosipacldefinitiontable == nullptr)
+        if(qosipacldefinitiontable_ == nullptr)
         {
-            qosipacldefinitiontable = std::make_shared<CiscoQosPibMib::Qosipacldefinitiontable>();
+            qosipacldefinitiontable_ = std::make_shared<CiscoQosPibMib::Qosipacldefinitiontable>();
         }
-        return qosipacldefinitiontable;
+        return qosipacldefinitiontable_;
     }
 
     if(child_yang_name == "qosMacClassificationTable")
     {
-        if(qosmacclassificationtable == nullptr)
+        if(qosmacclassificationtable_ == nullptr)
         {
-            qosmacclassificationtable = std::make_shared<CiscoQosPibMib::Qosmacclassificationtable>();
+            qosmacclassificationtable_ = std::make_shared<CiscoQosPibMib::Qosmacclassificationtable>();
         }
-        return qosmacclassificationtable;
+        return qosmacclassificationtable_;
     }
 
     if(child_yang_name == "qosPolicerTable")
     {
-        if(qospolicertable == nullptr)
+        if(qospolicertable_ == nullptr)
         {
-            qospolicertable = std::make_shared<CiscoQosPibMib::Qospolicertable>();
+            qospolicertable_ = std::make_shared<CiscoQosPibMib::Qospolicertable>();
         }
-        return qospolicertable;
+        return qospolicertable_;
     }
 
     if(child_yang_name == "qosUnmatchedPolicyTable")
     {
-        if(qosunmatchedpolicytable == nullptr)
+        if(qosunmatchedpolicytable_ == nullptr)
         {
-            qosunmatchedpolicytable = std::make_shared<CiscoQosPibMib::Qosunmatchedpolicytable>();
+            qosunmatchedpolicytable_ = std::make_shared<CiscoQosPibMib::Qosunmatchedpolicytable>();
         }
-        return qosunmatchedpolicytable;
+        return qosunmatchedpolicytable_;
     }
 
     return nullptr;
@@ -315,94 +315,94 @@ std::shared_ptr<Entity> CiscoQosPibMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(qosaggregatetable != nullptr)
+    if(qosaggregatetable_ != nullptr)
     {
-        children["qosAggregateTable"] = qosaggregatetable;
+        children["qosAggregateTable"] = qosaggregatetable_;
     }
 
-    if(qoscostodscptable != nullptr)
+    if(qoscostodscptable_ != nullptr)
     {
-        children["qosCosToDscpTable"] = qoscostodscptable;
+        children["qosCosToDscpTable"] = qoscostodscptable_;
     }
 
-    if(qosdeviceattributetable != nullptr)
+    if(qosdeviceattributetable_ != nullptr)
     {
-        children["qosDeviceAttributeTable"] = qosdeviceattributetable;
+        children["qosDeviceAttributeTable"] = qosdeviceattributetable_;
     }
 
-    if(qosdevicepibincarnationtable != nullptr)
+    if(qosdevicepibincarnationtable_ != nullptr)
     {
-        children["qosDevicePibIncarnationTable"] = qosdevicepibincarnationtable;
+        children["qosDevicePibIncarnationTable"] = qosdevicepibincarnationtable_;
     }
 
-    if(qosdiffservmappingtable != nullptr)
+    if(qosdiffservmappingtable_ != nullptr)
     {
-        children["qosDiffServMappingTable"] = qosdiffservmappingtable;
+        children["qosDiffServMappingTable"] = qosdiffservmappingtable_;
     }
 
-    if(qosifdroppreferencetable != nullptr)
+    if(qosifdroppreferencetable_ != nullptr)
     {
-        children["qosIfDropPreferenceTable"] = qosifdroppreferencetable;
+        children["qosIfDropPreferenceTable"] = qosifdroppreferencetable_;
     }
 
-    if(qosifdscpassignmenttable != nullptr)
+    if(qosifdscpassignmenttable_ != nullptr)
     {
-        children["qosIfDscpAssignmentTable"] = qosifdscpassignmenttable;
+        children["qosIfDscpAssignmentTable"] = qosifdscpassignmenttable_;
     }
 
-    if(qosifredtable != nullptr)
+    if(qosifredtable_ != nullptr)
     {
-        children["qosIfRedTable"] = qosifredtable;
+        children["qosIfRedTable"] = qosifredtable_;
     }
 
-    if(qosifschedulingpreferencestable != nullptr)
+    if(qosifschedulingpreferencestable_ != nullptr)
     {
-        children["qosIfSchedulingPreferencesTable"] = qosifschedulingpreferencestable;
+        children["qosIfSchedulingPreferencesTable"] = qosifschedulingpreferencestable_;
     }
 
-    if(qosiftaildroptable != nullptr)
+    if(qosiftaildroptable_ != nullptr)
     {
-        children["qosIfTailDropTable"] = qosiftaildroptable;
+        children["qosIfTailDropTable"] = qosiftaildroptable_;
     }
 
-    if(qosifweightstable != nullptr)
+    if(qosifweightstable_ != nullptr)
     {
-        children["qosIfWeightsTable"] = qosifweightstable;
+        children["qosIfWeightsTable"] = qosifweightstable_;
     }
 
-    if(qosinterfacetypetable != nullptr)
+    if(qosinterfacetypetable_ != nullptr)
     {
-        children["qosInterfaceTypeTable"] = qosinterfacetypetable;
+        children["qosInterfaceTypeTable"] = qosinterfacetypetable_;
     }
 
-    if(qosipacetable != nullptr)
+    if(qosipacetable_ != nullptr)
     {
-        children["qosIpAceTable"] = qosipacetable;
+        children["qosIpAceTable"] = qosipacetable_;
     }
 
-    if(qosipaclactiontable != nullptr)
+    if(qosipaclactiontable_ != nullptr)
     {
-        children["qosIpAclActionTable"] = qosipaclactiontable;
+        children["qosIpAclActionTable"] = qosipaclactiontable_;
     }
 
-    if(qosipacldefinitiontable != nullptr)
+    if(qosipacldefinitiontable_ != nullptr)
     {
-        children["qosIpAclDefinitionTable"] = qosipacldefinitiontable;
+        children["qosIpAclDefinitionTable"] = qosipacldefinitiontable_;
     }
 
-    if(qosmacclassificationtable != nullptr)
+    if(qosmacclassificationtable_ != nullptr)
     {
-        children["qosMacClassificationTable"] = qosmacclassificationtable;
+        children["qosMacClassificationTable"] = qosmacclassificationtable_;
     }
 
-    if(qospolicertable != nullptr)
+    if(qospolicertable_ != nullptr)
     {
-        children["qosPolicerTable"] = qospolicertable;
+        children["qosPolicerTable"] = qospolicertable_;
     }
 
-    if(qosunmatchedpolicytable != nullptr)
+    if(qosunmatchedpolicytable_ != nullptr)
     {
-        children["qosUnmatchedPolicyTable"] = qosunmatchedpolicytable;
+        children["qosUnmatchedPolicyTable"] = qosunmatchedpolicytable_;
     }
 
     return children;
@@ -443,9 +443,9 @@ CiscoQosPibMib::Qosdevicepibincarnationtable::~Qosdevicepibincarnationtable()
 
 bool CiscoQosPibMib::Qosdevicepibincarnationtable::has_data() const
 {
-    for (std::size_t index=0; index<qosdevicepibincarnationentry.size(); index++)
+    for (std::size_t index=0; index<qosdevicepibincarnationentry_.size(); index++)
     {
-        if(qosdevicepibincarnationentry[index]->has_data())
+        if(qosdevicepibincarnationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -453,9 +453,9 @@ bool CiscoQosPibMib::Qosdevicepibincarnationtable::has_data() const
 
 bool CiscoQosPibMib::Qosdevicepibincarnationtable::has_operation() const
 {
-    for (std::size_t index=0; index<qosdevicepibincarnationentry.size(); index++)
+    for (std::size_t index=0; index<qosdevicepibincarnationentry_.size(); index++)
     {
-        if(qosdevicepibincarnationentry[index]->has_operation())
+        if(qosdevicepibincarnationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -495,7 +495,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdevicepibincarnationtable::get_child_
 {
     if(child_yang_name == "qosDevicePibIncarnationEntry")
     {
-        for(auto const & c : qosdevicepibincarnationentry)
+        for(auto const & c : qosdevicepibincarnationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -505,7 +505,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdevicepibincarnationtable::get_child_
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry>();
         c->parent = this;
-        qosdevicepibincarnationentry.push_back(c);
+        qosdevicepibincarnationentry_.push_back(c);
         return c;
     }
 
@@ -515,7 +515,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdevicepibincarnationtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosdevicepibincarnationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosdevicepibincarnationentry)
+    for (auto const & c : qosdevicepibincarnationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -634,9 +634,9 @@ CiscoQosPibMib::Qosdeviceattributetable::~Qosdeviceattributetable()
 
 bool CiscoQosPibMib::Qosdeviceattributetable::has_data() const
 {
-    for (std::size_t index=0; index<qosdeviceattributeentry.size(); index++)
+    for (std::size_t index=0; index<qosdeviceattributeentry_.size(); index++)
     {
-        if(qosdeviceattributeentry[index]->has_data())
+        if(qosdeviceattributeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -644,9 +644,9 @@ bool CiscoQosPibMib::Qosdeviceattributetable::has_data() const
 
 bool CiscoQosPibMib::Qosdeviceattributetable::has_operation() const
 {
-    for (std::size_t index=0; index<qosdeviceattributeentry.size(); index++)
+    for (std::size_t index=0; index<qosdeviceattributeentry_.size(); index++)
     {
-        if(qosdeviceattributeentry[index]->has_operation())
+        if(qosdeviceattributeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -686,7 +686,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdeviceattributetable::get_child_by_na
 {
     if(child_yang_name == "qosDeviceAttributeEntry")
     {
-        for(auto const & c : qosdeviceattributeentry)
+        for(auto const & c : qosdeviceattributeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -696,7 +696,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdeviceattributetable::get_child_by_na
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry>();
         c->parent = this;
-        qosdeviceattributeentry.push_back(c);
+        qosdeviceattributeentry_.push_back(c);
         return c;
     }
 
@@ -706,7 +706,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdeviceattributetable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosdeviceattributetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosdeviceattributeentry)
+    for (auto const & c : qosdeviceattributeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -841,9 +841,9 @@ CiscoQosPibMib::Qosinterfacetypetable::~Qosinterfacetypetable()
 
 bool CiscoQosPibMib::Qosinterfacetypetable::has_data() const
 {
-    for (std::size_t index=0; index<qosinterfacetypeentry.size(); index++)
+    for (std::size_t index=0; index<qosinterfacetypeentry_.size(); index++)
     {
-        if(qosinterfacetypeentry[index]->has_data())
+        if(qosinterfacetypeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -851,9 +851,9 @@ bool CiscoQosPibMib::Qosinterfacetypetable::has_data() const
 
 bool CiscoQosPibMib::Qosinterfacetypetable::has_operation() const
 {
-    for (std::size_t index=0; index<qosinterfacetypeentry.size(); index++)
+    for (std::size_t index=0; index<qosinterfacetypeentry_.size(); index++)
     {
-        if(qosinterfacetypeentry[index]->has_operation())
+        if(qosinterfacetypeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -893,7 +893,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosinterfacetypetable::get_child_by_name
 {
     if(child_yang_name == "qosInterfaceTypeEntry")
     {
-        for(auto const & c : qosinterfacetypeentry)
+        for(auto const & c : qosinterfacetypeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -903,7 +903,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosinterfacetypetable::get_child_by_name
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry>();
         c->parent = this;
-        qosinterfacetypeentry.push_back(c);
+        qosinterfacetypeentry_.push_back(c);
         return c;
     }
 
@@ -913,7 +913,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosinterfacetypetable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosinterfacetypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosinterfacetypeentry)
+    for (auto const & c : qosinterfacetypeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1032,9 +1032,9 @@ CiscoQosPibMib::Qosdiffservmappingtable::~Qosdiffservmappingtable()
 
 bool CiscoQosPibMib::Qosdiffservmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<qosdiffservmappingentry.size(); index++)
+    for (std::size_t index=0; index<qosdiffservmappingentry_.size(); index++)
     {
-        if(qosdiffservmappingentry[index]->has_data())
+        if(qosdiffservmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1042,9 +1042,9 @@ bool CiscoQosPibMib::Qosdiffservmappingtable::has_data() const
 
 bool CiscoQosPibMib::Qosdiffservmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<qosdiffservmappingentry.size(); index++)
+    for (std::size_t index=0; index<qosdiffservmappingentry_.size(); index++)
     {
-        if(qosdiffservmappingentry[index]->has_operation())
+        if(qosdiffservmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1084,7 +1084,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdiffservmappingtable::get_child_by_na
 {
     if(child_yang_name == "qosDiffServMappingEntry")
     {
-        for(auto const & c : qosdiffservmappingentry)
+        for(auto const & c : qosdiffservmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1094,7 +1094,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdiffservmappingtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry>();
         c->parent = this;
-        qosdiffservmappingentry.push_back(c);
+        qosdiffservmappingentry_.push_back(c);
         return c;
     }
 
@@ -1104,7 +1104,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosdiffservmappingtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosdiffservmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosdiffservmappingentry)
+    for (auto const & c : qosdiffservmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1215,9 +1215,9 @@ CiscoQosPibMib::Qoscostodscptable::~Qoscostodscptable()
 
 bool CiscoQosPibMib::Qoscostodscptable::has_data() const
 {
-    for (std::size_t index=0; index<qoscostodscpentry.size(); index++)
+    for (std::size_t index=0; index<qoscostodscpentry_.size(); index++)
     {
-        if(qoscostodscpentry[index]->has_data())
+        if(qoscostodscpentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1225,9 +1225,9 @@ bool CiscoQosPibMib::Qoscostodscptable::has_data() const
 
 bool CiscoQosPibMib::Qoscostodscptable::has_operation() const
 {
-    for (std::size_t index=0; index<qoscostodscpentry.size(); index++)
+    for (std::size_t index=0; index<qoscostodscpentry_.size(); index++)
     {
-        if(qoscostodscpentry[index]->has_operation())
+        if(qoscostodscpentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1267,7 +1267,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qoscostodscptable::get_child_by_name(con
 {
     if(child_yang_name == "qosCosToDscpEntry")
     {
-        for(auto const & c : qoscostodscpentry)
+        for(auto const & c : qoscostodscpentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1277,7 +1277,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qoscostodscptable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry>();
         c->parent = this;
-        qoscostodscpentry.push_back(c);
+        qoscostodscpentry_.push_back(c);
         return c;
     }
 
@@ -1287,7 +1287,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qoscostodscptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qoscostodscptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qoscostodscpentry)
+    for (auto const & c : qoscostodscpentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1390,9 +1390,9 @@ CiscoQosPibMib::Qosunmatchedpolicytable::~Qosunmatchedpolicytable()
 
 bool CiscoQosPibMib::Qosunmatchedpolicytable::has_data() const
 {
-    for (std::size_t index=0; index<qosunmatchedpolicyentry.size(); index++)
+    for (std::size_t index=0; index<qosunmatchedpolicyentry_.size(); index++)
     {
-        if(qosunmatchedpolicyentry[index]->has_data())
+        if(qosunmatchedpolicyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1400,9 +1400,9 @@ bool CiscoQosPibMib::Qosunmatchedpolicytable::has_data() const
 
 bool CiscoQosPibMib::Qosunmatchedpolicytable::has_operation() const
 {
-    for (std::size_t index=0; index<qosunmatchedpolicyentry.size(); index++)
+    for (std::size_t index=0; index<qosunmatchedpolicyentry_.size(); index++)
     {
-        if(qosunmatchedpolicyentry[index]->has_operation())
+        if(qosunmatchedpolicyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1442,7 +1442,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosunmatchedpolicytable::get_child_by_na
 {
     if(child_yang_name == "qosUnmatchedPolicyEntry")
     {
-        for(auto const & c : qosunmatchedpolicyentry)
+        for(auto const & c : qosunmatchedpolicyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1452,7 +1452,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosunmatchedpolicytable::get_child_by_na
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry>();
         c->parent = this;
-        qosunmatchedpolicyentry.push_back(c);
+        qosunmatchedpolicyentry_.push_back(c);
         return c;
     }
 
@@ -1462,7 +1462,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosunmatchedpolicytable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosunmatchedpolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosunmatchedpolicyentry)
+    for (auto const & c : qosunmatchedpolicyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1605,9 +1605,9 @@ CiscoQosPibMib::Qospolicertable::~Qospolicertable()
 
 bool CiscoQosPibMib::Qospolicertable::has_data() const
 {
-    for (std::size_t index=0; index<qospolicerentry.size(); index++)
+    for (std::size_t index=0; index<qospolicerentry_.size(); index++)
     {
-        if(qospolicerentry[index]->has_data())
+        if(qospolicerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1615,9 +1615,9 @@ bool CiscoQosPibMib::Qospolicertable::has_data() const
 
 bool CiscoQosPibMib::Qospolicertable::has_operation() const
 {
-    for (std::size_t index=0; index<qospolicerentry.size(); index++)
+    for (std::size_t index=0; index<qospolicerentry_.size(); index++)
     {
-        if(qospolicerentry[index]->has_operation())
+        if(qospolicerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1657,7 +1657,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qospolicertable::get_child_by_name(const
 {
     if(child_yang_name == "qosPolicerEntry")
     {
-        for(auto const & c : qospolicerentry)
+        for(auto const & c : qospolicerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1667,7 +1667,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qospolicertable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoQosPibMib::Qospolicertable::Qospolicerentry>();
         c->parent = this;
-        qospolicerentry.push_back(c);
+        qospolicerentry_.push_back(c);
         return c;
     }
 
@@ -1677,7 +1677,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qospolicertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qospolicertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qospolicerentry)
+    for (auto const & c : qospolicerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1804,9 +1804,9 @@ CiscoQosPibMib::Qosaggregatetable::~Qosaggregatetable()
 
 bool CiscoQosPibMib::Qosaggregatetable::has_data() const
 {
-    for (std::size_t index=0; index<qosaggregateentry.size(); index++)
+    for (std::size_t index=0; index<qosaggregateentry_.size(); index++)
     {
-        if(qosaggregateentry[index]->has_data())
+        if(qosaggregateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1814,9 +1814,9 @@ bool CiscoQosPibMib::Qosaggregatetable::has_data() const
 
 bool CiscoQosPibMib::Qosaggregatetable::has_operation() const
 {
-    for (std::size_t index=0; index<qosaggregateentry.size(); index++)
+    for (std::size_t index=0; index<qosaggregateentry_.size(); index++)
     {
-        if(qosaggregateentry[index]->has_operation())
+        if(qosaggregateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1856,7 +1856,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosaggregatetable::get_child_by_name(con
 {
     if(child_yang_name == "qosAggregateEntry")
     {
-        for(auto const & c : qosaggregateentry)
+        for(auto const & c : qosaggregateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1866,7 +1866,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosaggregatetable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry>();
         c->parent = this;
-        qosaggregateentry.push_back(c);
+        qosaggregateentry_.push_back(c);
         return c;
     }
 
@@ -1876,7 +1876,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosaggregatetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosaggregatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosaggregateentry)
+    for (auto const & c : qosaggregateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1979,9 +1979,9 @@ CiscoQosPibMib::Qosmacclassificationtable::~Qosmacclassificationtable()
 
 bool CiscoQosPibMib::Qosmacclassificationtable::has_data() const
 {
-    for (std::size_t index=0; index<qosmacclassificationentry.size(); index++)
+    for (std::size_t index=0; index<qosmacclassificationentry_.size(); index++)
     {
-        if(qosmacclassificationentry[index]->has_data())
+        if(qosmacclassificationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1989,9 +1989,9 @@ bool CiscoQosPibMib::Qosmacclassificationtable::has_data() const
 
 bool CiscoQosPibMib::Qosmacclassificationtable::has_operation() const
 {
-    for (std::size_t index=0; index<qosmacclassificationentry.size(); index++)
+    for (std::size_t index=0; index<qosmacclassificationentry_.size(); index++)
     {
-        if(qosmacclassificationentry[index]->has_operation())
+        if(qosmacclassificationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2031,7 +2031,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosmacclassificationtable::get_child_by_
 {
     if(child_yang_name == "qosMacClassificationEntry")
     {
-        for(auto const & c : qosmacclassificationentry)
+        for(auto const & c : qosmacclassificationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2041,7 +2041,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosmacclassificationtable::get_child_by_
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry>();
         c->parent = this;
-        qosmacclassificationentry.push_back(c);
+        qosmacclassificationentry_.push_back(c);
         return c;
     }
 
@@ -2051,7 +2051,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosmacclassificationtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosmacclassificationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosmacclassificationentry)
+    for (auto const & c : qosmacclassificationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2170,9 +2170,9 @@ CiscoQosPibMib::Qosipacetable::~Qosipacetable()
 
 bool CiscoQosPibMib::Qosipacetable::has_data() const
 {
-    for (std::size_t index=0; index<qosipaceentry.size(); index++)
+    for (std::size_t index=0; index<qosipaceentry_.size(); index++)
     {
-        if(qosipaceentry[index]->has_data())
+        if(qosipaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2180,9 +2180,9 @@ bool CiscoQosPibMib::Qosipacetable::has_data() const
 
 bool CiscoQosPibMib::Qosipacetable::has_operation() const
 {
-    for (std::size_t index=0; index<qosipaceentry.size(); index++)
+    for (std::size_t index=0; index<qosipaceentry_.size(); index++)
     {
-        if(qosipaceentry[index]->has_operation())
+        if(qosipaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2222,7 +2222,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacetable::get_child_by_name(const s
 {
     if(child_yang_name == "qosIpAceEntry")
     {
-        for(auto const & c : qosipaceentry)
+        for(auto const & c : qosipaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2232,7 +2232,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacetable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosipacetable::Qosipaceentry>();
         c->parent = this;
-        qosipaceentry.push_back(c);
+        qosipaceentry_.push_back(c);
         return c;
     }
 
@@ -2242,7 +2242,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosipacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosipaceentry)
+    for (auto const & c : qosipaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2433,9 +2433,9 @@ CiscoQosPibMib::Qosipacldefinitiontable::~Qosipacldefinitiontable()
 
 bool CiscoQosPibMib::Qosipacldefinitiontable::has_data() const
 {
-    for (std::size_t index=0; index<qosipacldefinitionentry.size(); index++)
+    for (std::size_t index=0; index<qosipacldefinitionentry_.size(); index++)
     {
-        if(qosipacldefinitionentry[index]->has_data())
+        if(qosipacldefinitionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2443,9 +2443,9 @@ bool CiscoQosPibMib::Qosipacldefinitiontable::has_data() const
 
 bool CiscoQosPibMib::Qosipacldefinitiontable::has_operation() const
 {
-    for (std::size_t index=0; index<qosipacldefinitionentry.size(); index++)
+    for (std::size_t index=0; index<qosipacldefinitionentry_.size(); index++)
     {
-        if(qosipacldefinitionentry[index]->has_operation())
+        if(qosipacldefinitionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2485,7 +2485,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacldefinitiontable::get_child_by_na
 {
     if(child_yang_name == "qosIpAclDefinitionEntry")
     {
-        for(auto const & c : qosipacldefinitionentry)
+        for(auto const & c : qosipacldefinitionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2495,7 +2495,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacldefinitiontable::get_child_by_na
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry>();
         c->parent = this;
-        qosipacldefinitionentry.push_back(c);
+        qosipacldefinitionentry_.push_back(c);
         return c;
     }
 
@@ -2505,7 +2505,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipacldefinitiontable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosipacldefinitiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosipacldefinitionentry)
+    for (auto const & c : qosipacldefinitionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2624,9 +2624,9 @@ CiscoQosPibMib::Qosipaclactiontable::~Qosipaclactiontable()
 
 bool CiscoQosPibMib::Qosipaclactiontable::has_data() const
 {
-    for (std::size_t index=0; index<qosipaclactionentry.size(); index++)
+    for (std::size_t index=0; index<qosipaclactionentry_.size(); index++)
     {
-        if(qosipaclactionentry[index]->has_data())
+        if(qosipaclactionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2634,9 +2634,9 @@ bool CiscoQosPibMib::Qosipaclactiontable::has_data() const
 
 bool CiscoQosPibMib::Qosipaclactiontable::has_operation() const
 {
-    for (std::size_t index=0; index<qosipaclactionentry.size(); index++)
+    for (std::size_t index=0; index<qosipaclactionentry_.size(); index++)
     {
-        if(qosipaclactionentry[index]->has_operation())
+        if(qosipaclactionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2676,7 +2676,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipaclactiontable::get_child_by_name(c
 {
     if(child_yang_name == "qosIpAclActionEntry")
     {
-        for(auto const & c : qosipaclactionentry)
+        for(auto const & c : qosipaclactionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2686,7 +2686,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipaclactiontable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry>();
         c->parent = this;
-        qosipaclactionentry.push_back(c);
+        qosipaclactionentry_.push_back(c);
         return c;
     }
 
@@ -2696,7 +2696,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosipaclactiontable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosipaclactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosipaclactionentry)
+    for (auto const & c : qosipaclactionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2855,9 +2855,9 @@ CiscoQosPibMib::Qosifschedulingpreferencestable::~Qosifschedulingpreferencestabl
 
 bool CiscoQosPibMib::Qosifschedulingpreferencestable::has_data() const
 {
-    for (std::size_t index=0; index<qosifschedulingpreferenceentry.size(); index++)
+    for (std::size_t index=0; index<qosifschedulingpreferenceentry_.size(); index++)
     {
-        if(qosifschedulingpreferenceentry[index]->has_data())
+        if(qosifschedulingpreferenceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2865,9 +2865,9 @@ bool CiscoQosPibMib::Qosifschedulingpreferencestable::has_data() const
 
 bool CiscoQosPibMib::Qosifschedulingpreferencestable::has_operation() const
 {
-    for (std::size_t index=0; index<qosifschedulingpreferenceentry.size(); index++)
+    for (std::size_t index=0; index<qosifschedulingpreferenceentry_.size(); index++)
     {
-        if(qosifschedulingpreferenceentry[index]->has_operation())
+        if(qosifschedulingpreferenceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2907,7 +2907,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifschedulingpreferencestable::get_chi
 {
     if(child_yang_name == "qosIfSchedulingPreferenceEntry")
     {
-        for(auto const & c : qosifschedulingpreferenceentry)
+        for(auto const & c : qosifschedulingpreferenceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2917,7 +2917,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifschedulingpreferencestable::get_chi
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry>();
         c->parent = this;
-        qosifschedulingpreferenceentry.push_back(c);
+        qosifschedulingpreferenceentry_.push_back(c);
         return c;
     }
 
@@ -2927,7 +2927,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifschedulingpreferencestable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosifschedulingpreferencestable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosifschedulingpreferenceentry)
+    for (auto const & c : qosifschedulingpreferenceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3054,9 +3054,9 @@ CiscoQosPibMib::Qosifdroppreferencetable::~Qosifdroppreferencetable()
 
 bool CiscoQosPibMib::Qosifdroppreferencetable::has_data() const
 {
-    for (std::size_t index=0; index<qosifdroppreferenceentry.size(); index++)
+    for (std::size_t index=0; index<qosifdroppreferenceentry_.size(); index++)
     {
-        if(qosifdroppreferenceentry[index]->has_data())
+        if(qosifdroppreferenceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3064,9 +3064,9 @@ bool CiscoQosPibMib::Qosifdroppreferencetable::has_data() const
 
 bool CiscoQosPibMib::Qosifdroppreferencetable::has_operation() const
 {
-    for (std::size_t index=0; index<qosifdroppreferenceentry.size(); index++)
+    for (std::size_t index=0; index<qosifdroppreferenceentry_.size(); index++)
     {
-        if(qosifdroppreferenceentry[index]->has_operation())
+        if(qosifdroppreferenceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3106,7 +3106,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdroppreferencetable::get_child_by_n
 {
     if(child_yang_name == "qosIfDropPreferenceEntry")
     {
-        for(auto const & c : qosifdroppreferenceentry)
+        for(auto const & c : qosifdroppreferenceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3116,7 +3116,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdroppreferencetable::get_child_by_n
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry>();
         c->parent = this;
-        qosifdroppreferenceentry.push_back(c);
+        qosifdroppreferenceentry_.push_back(c);
         return c;
     }
 
@@ -3126,7 +3126,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdroppreferencetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosifdroppreferencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosifdroppreferenceentry)
+    for (auto const & c : qosifdroppreferenceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3245,9 +3245,9 @@ CiscoQosPibMib::Qosifdscpassignmenttable::~Qosifdscpassignmenttable()
 
 bool CiscoQosPibMib::Qosifdscpassignmenttable::has_data() const
 {
-    for (std::size_t index=0; index<qosifdscpassignmententry.size(); index++)
+    for (std::size_t index=0; index<qosifdscpassignmententry_.size(); index++)
     {
-        if(qosifdscpassignmententry[index]->has_data())
+        if(qosifdscpassignmententry_[index]->has_data())
             return true;
     }
     return false;
@@ -3255,9 +3255,9 @@ bool CiscoQosPibMib::Qosifdscpassignmenttable::has_data() const
 
 bool CiscoQosPibMib::Qosifdscpassignmenttable::has_operation() const
 {
-    for (std::size_t index=0; index<qosifdscpassignmententry.size(); index++)
+    for (std::size_t index=0; index<qosifdscpassignmententry_.size(); index++)
     {
-        if(qosifdscpassignmententry[index]->has_operation())
+        if(qosifdscpassignmententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3297,7 +3297,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdscpassignmenttable::get_child_by_n
 {
     if(child_yang_name == "qosIfDscpAssignmentEntry")
     {
-        for(auto const & c : qosifdscpassignmententry)
+        for(auto const & c : qosifdscpassignmententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3307,7 +3307,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdscpassignmenttable::get_child_by_n
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry>();
         c->parent = this;
-        qosifdscpassignmententry.push_back(c);
+        qosifdscpassignmententry_.push_back(c);
         return c;
     }
 
@@ -3317,7 +3317,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifdscpassignmenttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosifdscpassignmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosifdscpassignmententry)
+    for (auto const & c : qosifdscpassignmententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3452,9 +3452,9 @@ CiscoQosPibMib::Qosifredtable::~Qosifredtable()
 
 bool CiscoQosPibMib::Qosifredtable::has_data() const
 {
-    for (std::size_t index=0; index<qosifredentry.size(); index++)
+    for (std::size_t index=0; index<qosifredentry_.size(); index++)
     {
-        if(qosifredentry[index]->has_data())
+        if(qosifredentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3462,9 +3462,9 @@ bool CiscoQosPibMib::Qosifredtable::has_data() const
 
 bool CiscoQosPibMib::Qosifredtable::has_operation() const
 {
-    for (std::size_t index=0; index<qosifredentry.size(); index++)
+    for (std::size_t index=0; index<qosifredentry_.size(); index++)
     {
-        if(qosifredentry[index]->has_operation())
+        if(qosifredentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3504,7 +3504,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifredtable::get_child_by_name(const s
 {
     if(child_yang_name == "qosIfRedEntry")
     {
-        for(auto const & c : qosifredentry)
+        for(auto const & c : qosifredentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3514,7 +3514,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifredtable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosifredtable::Qosifredentry>();
         c->parent = this;
-        qosifredentry.push_back(c);
+        qosifredentry_.push_back(c);
         return c;
     }
 
@@ -3524,7 +3524,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifredtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosifredtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosifredentry)
+    for (auto const & c : qosifredentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3659,9 +3659,9 @@ CiscoQosPibMib::Qosiftaildroptable::~Qosiftaildroptable()
 
 bool CiscoQosPibMib::Qosiftaildroptable::has_data() const
 {
-    for (std::size_t index=0; index<qosiftaildropentry.size(); index++)
+    for (std::size_t index=0; index<qosiftaildropentry_.size(); index++)
     {
-        if(qosiftaildropentry[index]->has_data())
+        if(qosiftaildropentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3669,9 +3669,9 @@ bool CiscoQosPibMib::Qosiftaildroptable::has_data() const
 
 bool CiscoQosPibMib::Qosiftaildroptable::has_operation() const
 {
-    for (std::size_t index=0; index<qosiftaildropentry.size(); index++)
+    for (std::size_t index=0; index<qosiftaildropentry_.size(); index++)
     {
-        if(qosiftaildropentry[index]->has_operation())
+        if(qosiftaildropentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3711,7 +3711,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosiftaildroptable::get_child_by_name(co
 {
     if(child_yang_name == "qosIfTailDropEntry")
     {
-        for(auto const & c : qosiftaildropentry)
+        for(auto const & c : qosiftaildropentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3721,7 +3721,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosiftaildroptable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry>();
         c->parent = this;
-        qosiftaildropentry.push_back(c);
+        qosiftaildropentry_.push_back(c);
         return c;
     }
 
@@ -3731,7 +3731,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosiftaildroptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosiftaildroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosiftaildropentry)
+    for (auto const & c : qosiftaildropentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3858,9 +3858,9 @@ CiscoQosPibMib::Qosifweightstable::~Qosifweightstable()
 
 bool CiscoQosPibMib::Qosifweightstable::has_data() const
 {
-    for (std::size_t index=0; index<qosifweightsentry.size(); index++)
+    for (std::size_t index=0; index<qosifweightsentry_.size(); index++)
     {
-        if(qosifweightsentry[index]->has_data())
+        if(qosifweightsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3868,9 +3868,9 @@ bool CiscoQosPibMib::Qosifweightstable::has_data() const
 
 bool CiscoQosPibMib::Qosifweightstable::has_operation() const
 {
-    for (std::size_t index=0; index<qosifweightsentry.size(); index++)
+    for (std::size_t index=0; index<qosifweightsentry_.size(); index++)
     {
-        if(qosifweightsentry[index]->has_operation())
+        if(qosifweightsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3910,7 +3910,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifweightstable::get_child_by_name(con
 {
     if(child_yang_name == "qosIfWeightsEntry")
     {
-        for(auto const & c : qosifweightsentry)
+        for(auto const & c : qosifweightsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3920,7 +3920,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifweightstable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoQosPibMib::Qosifweightstable::Qosifweightsentry>();
         c->parent = this;
-        qosifweightsentry.push_back(c);
+        qosifweightsentry_.push_back(c);
         return c;
     }
 
@@ -3930,7 +3930,7 @@ std::shared_ptr<Entity> CiscoQosPibMib::Qosifweightstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoQosPibMib::Qosifweightstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : qosifweightsentry)
+    for (auto const & c : qosifweightsentry_)
     {
         children[c->get_segment_path()] = c;
     }

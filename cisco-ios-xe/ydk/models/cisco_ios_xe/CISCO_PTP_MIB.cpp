@@ -11,51 +11,51 @@ namespace CISCO_PTP_MIB {
 
 CiscoPtpMib::CiscoPtpMib()
     :
-    ciscoptpmibsysteminfo(std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>())
-	,cptpclockcurrentdstable(std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>())
-	,cptpclockdefaultdstable(std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>())
-	,cptpclocknodetable(std::make_shared<CiscoPtpMib::Cptpclocknodetable>())
-	,cptpclockparentdstable(std::make_shared<CiscoPtpMib::Cptpclockparentdstable>())
-	,cptpclockportassociatetable(std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>())
-	,cptpclockportdstable(std::make_shared<CiscoPtpMib::Cptpclockportdstable>())
-	,cptpclockportrunningtable(std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>())
-	,cptpclockporttable(std::make_shared<CiscoPtpMib::Cptpclockporttable>())
-	,cptpclockporttransdstable(std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>())
-	,cptpclockrunningtable(std::make_shared<CiscoPtpMib::Cptpclockrunningtable>())
-	,cptpclocktimepropertiesdstable(std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>())
-	,cptpclocktransdefaultdstable(std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>())
-	,cptpsystemdomaintable(std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>())
-	,cptpsystemtable(std::make_shared<CiscoPtpMib::Cptpsystemtable>())
+    ciscoptpmibsysteminfo_(std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>())
+	,cptpclockcurrentdstable_(std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>())
+	,cptpclockdefaultdstable_(std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>())
+	,cptpclocknodetable_(std::make_shared<CiscoPtpMib::Cptpclocknodetable>())
+	,cptpclockparentdstable_(std::make_shared<CiscoPtpMib::Cptpclockparentdstable>())
+	,cptpclockportassociatetable_(std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>())
+	,cptpclockportdstable_(std::make_shared<CiscoPtpMib::Cptpclockportdstable>())
+	,cptpclockportrunningtable_(std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>())
+	,cptpclockporttable_(std::make_shared<CiscoPtpMib::Cptpclockporttable>())
+	,cptpclockporttransdstable_(std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>())
+	,cptpclockrunningtable_(std::make_shared<CiscoPtpMib::Cptpclockrunningtable>())
+	,cptpclocktimepropertiesdstable_(std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>())
+	,cptpclocktransdefaultdstable_(std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>())
+	,cptpsystemdomaintable_(std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>())
+	,cptpsystemtable_(std::make_shared<CiscoPtpMib::Cptpsystemtable>())
 {
-    ciscoptpmibsysteminfo->parent = this;
+    ciscoptpmibsysteminfo_->parent = this;
 
-    cptpclockcurrentdstable->parent = this;
+    cptpclockcurrentdstable_->parent = this;
 
-    cptpclockdefaultdstable->parent = this;
+    cptpclockdefaultdstable_->parent = this;
 
-    cptpclocknodetable->parent = this;
+    cptpclocknodetable_->parent = this;
 
-    cptpclockparentdstable->parent = this;
+    cptpclockparentdstable_->parent = this;
 
-    cptpclockportassociatetable->parent = this;
+    cptpclockportassociatetable_->parent = this;
 
-    cptpclockportdstable->parent = this;
+    cptpclockportdstable_->parent = this;
 
-    cptpclockportrunningtable->parent = this;
+    cptpclockportrunningtable_->parent = this;
 
-    cptpclockporttable->parent = this;
+    cptpclockporttable_->parent = this;
 
-    cptpclockporttransdstable->parent = this;
+    cptpclockporttransdstable_->parent = this;
 
-    cptpclockrunningtable->parent = this;
+    cptpclockrunningtable_->parent = this;
 
-    cptpclocktimepropertiesdstable->parent = this;
+    cptpclocktimepropertiesdstable_->parent = this;
 
-    cptpclocktransdefaultdstable->parent = this;
+    cptpclocktransdefaultdstable_->parent = this;
 
-    cptpsystemdomaintable->parent = this;
+    cptpsystemdomaintable_->parent = this;
 
-    cptpsystemtable->parent = this;
+    cptpsystemtable_->parent = this;
 
     yang_name = "CISCO-PTP-MIB"; yang_parent_name = "CISCO-PTP-MIB";
 }
@@ -66,41 +66,41 @@ CiscoPtpMib::~CiscoPtpMib()
 
 bool CiscoPtpMib::has_data() const
 {
-    return (ciscoptpmibsysteminfo !=  nullptr && ciscoptpmibsysteminfo->has_data())
-	|| (cptpclockcurrentdstable !=  nullptr && cptpclockcurrentdstable->has_data())
-	|| (cptpclockdefaultdstable !=  nullptr && cptpclockdefaultdstable->has_data())
-	|| (cptpclocknodetable !=  nullptr && cptpclocknodetable->has_data())
-	|| (cptpclockparentdstable !=  nullptr && cptpclockparentdstable->has_data())
-	|| (cptpclockportassociatetable !=  nullptr && cptpclockportassociatetable->has_data())
-	|| (cptpclockportdstable !=  nullptr && cptpclockportdstable->has_data())
-	|| (cptpclockportrunningtable !=  nullptr && cptpclockportrunningtable->has_data())
-	|| (cptpclockporttable !=  nullptr && cptpclockporttable->has_data())
-	|| (cptpclockporttransdstable !=  nullptr && cptpclockporttransdstable->has_data())
-	|| (cptpclockrunningtable !=  nullptr && cptpclockrunningtable->has_data())
-	|| (cptpclocktimepropertiesdstable !=  nullptr && cptpclocktimepropertiesdstable->has_data())
-	|| (cptpclocktransdefaultdstable !=  nullptr && cptpclocktransdefaultdstable->has_data())
-	|| (cptpsystemdomaintable !=  nullptr && cptpsystemdomaintable->has_data())
-	|| (cptpsystemtable !=  nullptr && cptpsystemtable->has_data());
+    return (ciscoptpmibsysteminfo_ !=  nullptr && ciscoptpmibsysteminfo_->has_data())
+	|| (cptpclockcurrentdstable_ !=  nullptr && cptpclockcurrentdstable_->has_data())
+	|| (cptpclockdefaultdstable_ !=  nullptr && cptpclockdefaultdstable_->has_data())
+	|| (cptpclocknodetable_ !=  nullptr && cptpclocknodetable_->has_data())
+	|| (cptpclockparentdstable_ !=  nullptr && cptpclockparentdstable_->has_data())
+	|| (cptpclockportassociatetable_ !=  nullptr && cptpclockportassociatetable_->has_data())
+	|| (cptpclockportdstable_ !=  nullptr && cptpclockportdstable_->has_data())
+	|| (cptpclockportrunningtable_ !=  nullptr && cptpclockportrunningtable_->has_data())
+	|| (cptpclockporttable_ !=  nullptr && cptpclockporttable_->has_data())
+	|| (cptpclockporttransdstable_ !=  nullptr && cptpclockporttransdstable_->has_data())
+	|| (cptpclockrunningtable_ !=  nullptr && cptpclockrunningtable_->has_data())
+	|| (cptpclocktimepropertiesdstable_ !=  nullptr && cptpclocktimepropertiesdstable_->has_data())
+	|| (cptpclocktransdefaultdstable_ !=  nullptr && cptpclocktransdefaultdstable_->has_data())
+	|| (cptpsystemdomaintable_ !=  nullptr && cptpsystemdomaintable_->has_data())
+	|| (cptpsystemtable_ !=  nullptr && cptpsystemtable_->has_data());
 }
 
 bool CiscoPtpMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscoptpmibsysteminfo !=  nullptr && ciscoptpmibsysteminfo->has_operation())
-	|| (cptpclockcurrentdstable !=  nullptr && cptpclockcurrentdstable->has_operation())
-	|| (cptpclockdefaultdstable !=  nullptr && cptpclockdefaultdstable->has_operation())
-	|| (cptpclocknodetable !=  nullptr && cptpclocknodetable->has_operation())
-	|| (cptpclockparentdstable !=  nullptr && cptpclockparentdstable->has_operation())
-	|| (cptpclockportassociatetable !=  nullptr && cptpclockportassociatetable->has_operation())
-	|| (cptpclockportdstable !=  nullptr && cptpclockportdstable->has_operation())
-	|| (cptpclockportrunningtable !=  nullptr && cptpclockportrunningtable->has_operation())
-	|| (cptpclockporttable !=  nullptr && cptpclockporttable->has_operation())
-	|| (cptpclockporttransdstable !=  nullptr && cptpclockporttransdstable->has_operation())
-	|| (cptpclockrunningtable !=  nullptr && cptpclockrunningtable->has_operation())
-	|| (cptpclocktimepropertiesdstable !=  nullptr && cptpclocktimepropertiesdstable->has_operation())
-	|| (cptpclocktransdefaultdstable !=  nullptr && cptpclocktransdefaultdstable->has_operation())
-	|| (cptpsystemdomaintable !=  nullptr && cptpsystemdomaintable->has_operation())
-	|| (cptpsystemtable !=  nullptr && cptpsystemtable->has_operation());
+	|| (ciscoptpmibsysteminfo_ !=  nullptr && ciscoptpmibsysteminfo_->has_operation())
+	|| (cptpclockcurrentdstable_ !=  nullptr && cptpclockcurrentdstable_->has_operation())
+	|| (cptpclockdefaultdstable_ !=  nullptr && cptpclockdefaultdstable_->has_operation())
+	|| (cptpclocknodetable_ !=  nullptr && cptpclocknodetable_->has_operation())
+	|| (cptpclockparentdstable_ !=  nullptr && cptpclockparentdstable_->has_operation())
+	|| (cptpclockportassociatetable_ !=  nullptr && cptpclockportassociatetable_->has_operation())
+	|| (cptpclockportdstable_ !=  nullptr && cptpclockportdstable_->has_operation())
+	|| (cptpclockportrunningtable_ !=  nullptr && cptpclockportrunningtable_->has_operation())
+	|| (cptpclockporttable_ !=  nullptr && cptpclockporttable_->has_operation())
+	|| (cptpclockporttransdstable_ !=  nullptr && cptpclockporttransdstable_->has_operation())
+	|| (cptpclockrunningtable_ !=  nullptr && cptpclockrunningtable_->has_operation())
+	|| (cptpclocktimepropertiesdstable_ !=  nullptr && cptpclocktimepropertiesdstable_->has_operation())
+	|| (cptpclocktransdefaultdstable_ !=  nullptr && cptpclocktransdefaultdstable_->has_operation())
+	|| (cptpsystemdomaintable_ !=  nullptr && cptpsystemdomaintable_->has_operation())
+	|| (cptpsystemtable_ !=  nullptr && cptpsystemtable_->has_operation());
 }
 
 std::string CiscoPtpMib::get_segment_path() const
@@ -134,137 +134,137 @@ std::shared_ptr<Entity> CiscoPtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ciscoPtpMIBSystemInfo")
     {
-        if(ciscoptpmibsysteminfo == nullptr)
+        if(ciscoptpmibsysteminfo_ == nullptr)
         {
-            ciscoptpmibsysteminfo = std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>();
+            ciscoptpmibsysteminfo_ = std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>();
         }
-        return ciscoptpmibsysteminfo;
+        return ciscoptpmibsysteminfo_;
     }
 
     if(child_yang_name == "cPtpClockCurrentDSTable")
     {
-        if(cptpclockcurrentdstable == nullptr)
+        if(cptpclockcurrentdstable_ == nullptr)
         {
-            cptpclockcurrentdstable = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>();
+            cptpclockcurrentdstable_ = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>();
         }
-        return cptpclockcurrentdstable;
+        return cptpclockcurrentdstable_;
     }
 
     if(child_yang_name == "cPtpClockDefaultDSTable")
     {
-        if(cptpclockdefaultdstable == nullptr)
+        if(cptpclockdefaultdstable_ == nullptr)
         {
-            cptpclockdefaultdstable = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>();
+            cptpclockdefaultdstable_ = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>();
         }
-        return cptpclockdefaultdstable;
+        return cptpclockdefaultdstable_;
     }
 
     if(child_yang_name == "cPtpClockNodeTable")
     {
-        if(cptpclocknodetable == nullptr)
+        if(cptpclocknodetable_ == nullptr)
         {
-            cptpclocknodetable = std::make_shared<CiscoPtpMib::Cptpclocknodetable>();
+            cptpclocknodetable_ = std::make_shared<CiscoPtpMib::Cptpclocknodetable>();
         }
-        return cptpclocknodetable;
+        return cptpclocknodetable_;
     }
 
     if(child_yang_name == "cPtpClockParentDSTable")
     {
-        if(cptpclockparentdstable == nullptr)
+        if(cptpclockparentdstable_ == nullptr)
         {
-            cptpclockparentdstable = std::make_shared<CiscoPtpMib::Cptpclockparentdstable>();
+            cptpclockparentdstable_ = std::make_shared<CiscoPtpMib::Cptpclockparentdstable>();
         }
-        return cptpclockparentdstable;
+        return cptpclockparentdstable_;
     }
 
     if(child_yang_name == "cPtpClockPortAssociateTable")
     {
-        if(cptpclockportassociatetable == nullptr)
+        if(cptpclockportassociatetable_ == nullptr)
         {
-            cptpclockportassociatetable = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>();
+            cptpclockportassociatetable_ = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>();
         }
-        return cptpclockportassociatetable;
+        return cptpclockportassociatetable_;
     }
 
     if(child_yang_name == "cPtpClockPortDSTable")
     {
-        if(cptpclockportdstable == nullptr)
+        if(cptpclockportdstable_ == nullptr)
         {
-            cptpclockportdstable = std::make_shared<CiscoPtpMib::Cptpclockportdstable>();
+            cptpclockportdstable_ = std::make_shared<CiscoPtpMib::Cptpclockportdstable>();
         }
-        return cptpclockportdstable;
+        return cptpclockportdstable_;
     }
 
     if(child_yang_name == "cPtpClockPortRunningTable")
     {
-        if(cptpclockportrunningtable == nullptr)
+        if(cptpclockportrunningtable_ == nullptr)
         {
-            cptpclockportrunningtable = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>();
+            cptpclockportrunningtable_ = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>();
         }
-        return cptpclockportrunningtable;
+        return cptpclockportrunningtable_;
     }
 
     if(child_yang_name == "cPtpClockPortTable")
     {
-        if(cptpclockporttable == nullptr)
+        if(cptpclockporttable_ == nullptr)
         {
-            cptpclockporttable = std::make_shared<CiscoPtpMib::Cptpclockporttable>();
+            cptpclockporttable_ = std::make_shared<CiscoPtpMib::Cptpclockporttable>();
         }
-        return cptpclockporttable;
+        return cptpclockporttable_;
     }
 
     if(child_yang_name == "cPtpClockPortTransDSTable")
     {
-        if(cptpclockporttransdstable == nullptr)
+        if(cptpclockporttransdstable_ == nullptr)
         {
-            cptpclockporttransdstable = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>();
+            cptpclockporttransdstable_ = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>();
         }
-        return cptpclockporttransdstable;
+        return cptpclockporttransdstable_;
     }
 
     if(child_yang_name == "cPtpClockRunningTable")
     {
-        if(cptpclockrunningtable == nullptr)
+        if(cptpclockrunningtable_ == nullptr)
         {
-            cptpclockrunningtable = std::make_shared<CiscoPtpMib::Cptpclockrunningtable>();
+            cptpclockrunningtable_ = std::make_shared<CiscoPtpMib::Cptpclockrunningtable>();
         }
-        return cptpclockrunningtable;
+        return cptpclockrunningtable_;
     }
 
     if(child_yang_name == "cPtpClockTimePropertiesDSTable")
     {
-        if(cptpclocktimepropertiesdstable == nullptr)
+        if(cptpclocktimepropertiesdstable_ == nullptr)
         {
-            cptpclocktimepropertiesdstable = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>();
+            cptpclocktimepropertiesdstable_ = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>();
         }
-        return cptpclocktimepropertiesdstable;
+        return cptpclocktimepropertiesdstable_;
     }
 
     if(child_yang_name == "cPtpClockTransDefaultDSTable")
     {
-        if(cptpclocktransdefaultdstable == nullptr)
+        if(cptpclocktransdefaultdstable_ == nullptr)
         {
-            cptpclocktransdefaultdstable = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>();
+            cptpclocktransdefaultdstable_ = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>();
         }
-        return cptpclocktransdefaultdstable;
+        return cptpclocktransdefaultdstable_;
     }
 
     if(child_yang_name == "cPtpSystemDomainTable")
     {
-        if(cptpsystemdomaintable == nullptr)
+        if(cptpsystemdomaintable_ == nullptr)
         {
-            cptpsystemdomaintable = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>();
+            cptpsystemdomaintable_ = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>();
         }
-        return cptpsystemdomaintable;
+        return cptpsystemdomaintable_;
     }
 
     if(child_yang_name == "cPtpSystemTable")
     {
-        if(cptpsystemtable == nullptr)
+        if(cptpsystemtable_ == nullptr)
         {
-            cptpsystemtable = std::make_shared<CiscoPtpMib::Cptpsystemtable>();
+            cptpsystemtable_ = std::make_shared<CiscoPtpMib::Cptpsystemtable>();
         }
-        return cptpsystemtable;
+        return cptpsystemtable_;
     }
 
     return nullptr;
@@ -273,79 +273,79 @@ std::shared_ptr<Entity> CiscoPtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoptpmibsysteminfo != nullptr)
+    if(ciscoptpmibsysteminfo_ != nullptr)
     {
-        children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo;
+        children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo_;
     }
 
-    if(cptpclockcurrentdstable != nullptr)
+    if(cptpclockcurrentdstable_ != nullptr)
     {
-        children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable;
+        children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable_;
     }
 
-    if(cptpclockdefaultdstable != nullptr)
+    if(cptpclockdefaultdstable_ != nullptr)
     {
-        children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable;
+        children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable_;
     }
 
-    if(cptpclocknodetable != nullptr)
+    if(cptpclocknodetable_ != nullptr)
     {
-        children["cPtpClockNodeTable"] = cptpclocknodetable;
+        children["cPtpClockNodeTable"] = cptpclocknodetable_;
     }
 
-    if(cptpclockparentdstable != nullptr)
+    if(cptpclockparentdstable_ != nullptr)
     {
-        children["cPtpClockParentDSTable"] = cptpclockparentdstable;
+        children["cPtpClockParentDSTable"] = cptpclockparentdstable_;
     }
 
-    if(cptpclockportassociatetable != nullptr)
+    if(cptpclockportassociatetable_ != nullptr)
     {
-        children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable;
+        children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable_;
     }
 
-    if(cptpclockportdstable != nullptr)
+    if(cptpclockportdstable_ != nullptr)
     {
-        children["cPtpClockPortDSTable"] = cptpclockportdstable;
+        children["cPtpClockPortDSTable"] = cptpclockportdstable_;
     }
 
-    if(cptpclockportrunningtable != nullptr)
+    if(cptpclockportrunningtable_ != nullptr)
     {
-        children["cPtpClockPortRunningTable"] = cptpclockportrunningtable;
+        children["cPtpClockPortRunningTable"] = cptpclockportrunningtable_;
     }
 
-    if(cptpclockporttable != nullptr)
+    if(cptpclockporttable_ != nullptr)
     {
-        children["cPtpClockPortTable"] = cptpclockporttable;
+        children["cPtpClockPortTable"] = cptpclockporttable_;
     }
 
-    if(cptpclockporttransdstable != nullptr)
+    if(cptpclockporttransdstable_ != nullptr)
     {
-        children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable;
+        children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable_;
     }
 
-    if(cptpclockrunningtable != nullptr)
+    if(cptpclockrunningtable_ != nullptr)
     {
-        children["cPtpClockRunningTable"] = cptpclockrunningtable;
+        children["cPtpClockRunningTable"] = cptpclockrunningtable_;
     }
 
-    if(cptpclocktimepropertiesdstable != nullptr)
+    if(cptpclocktimepropertiesdstable_ != nullptr)
     {
-        children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable;
+        children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable_;
     }
 
-    if(cptpclocktransdefaultdstable != nullptr)
+    if(cptpclocktransdefaultdstable_ != nullptr)
     {
-        children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable;
+        children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable_;
     }
 
-    if(cptpsystemdomaintable != nullptr)
+    if(cptpsystemdomaintable_ != nullptr)
     {
-        children["cPtpSystemDomainTable"] = cptpsystemdomaintable;
+        children["cPtpSystemDomainTable"] = cptpsystemdomaintable_;
     }
 
-    if(cptpsystemtable != nullptr)
+    if(cptpsystemtable_ != nullptr)
     {
-        children["cPtpSystemTable"] = cptpsystemtable;
+        children["cPtpSystemTable"] = cptpsystemtable_;
     }
 
     return children;
@@ -458,9 +458,9 @@ CiscoPtpMib::Cptpsystemtable::~Cptpsystemtable()
 
 bool CiscoPtpMib::Cptpsystemtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystementry.size(); index++)
+    for (std::size_t index=0; index<cptpsystementry_.size(); index++)
     {
-        if(cptpsystementry[index]->has_data())
+        if(cptpsystementry_[index]->has_data())
             return true;
     }
     return false;
@@ -468,9 +468,9 @@ bool CiscoPtpMib::Cptpsystemtable::has_data() const
 
 bool CiscoPtpMib::Cptpsystemtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystementry.size(); index++)
+    for (std::size_t index=0; index<cptpsystementry_.size(); index++)
     {
-        if(cptpsystementry[index]->has_operation())
+        if(cptpsystementry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -510,7 +510,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
 {
     if(child_yang_name == "cPtpSystemEntry")
     {
-        for(auto const & c : cptpsystementry)
+        for(auto const & c : cptpsystementry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -520,7 +520,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpsystemtable::Cptpsystementry>();
         c->parent = this;
-        cptpsystementry.push_back(c);
+        cptpsystementry_.push_back(c);
         return c;
     }
 
@@ -530,7 +530,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpsystementry)
+    for (auto const & c : cptpsystementry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -649,9 +649,9 @@ CiscoPtpMib::Cptpsystemdomaintable::~Cptpsystemdomaintable()
 
 bool CiscoPtpMib::Cptpsystemdomaintable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
+    for (std::size_t index=0; index<cptpsystemdomainentry_.size(); index++)
     {
-        if(cptpsystemdomainentry[index]->has_data())
+        if(cptpsystemdomainentry_[index]->has_data())
             return true;
     }
     return false;
@@ -659,9 +659,9 @@ bool CiscoPtpMib::Cptpsystemdomaintable::has_data() const
 
 bool CiscoPtpMib::Cptpsystemdomaintable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
+    for (std::size_t index=0; index<cptpsystemdomainentry_.size(); index++)
     {
-        if(cptpsystemdomainentry[index]->has_operation())
+        if(cptpsystemdomainentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -701,7 +701,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpSystemDomainEntry")
     {
-        for(auto const & c : cptpsystemdomainentry)
+        for(auto const & c : cptpsystemdomainentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -711,7 +711,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry>();
         c->parent = this;
-        cptpsystemdomainentry.push_back(c);
+        cptpsystemdomainentry_.push_back(c);
         return c;
     }
 
@@ -721,7 +721,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpsystemdomainentry)
+    for (auto const & c : cptpsystemdomainentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -824,9 +824,9 @@ CiscoPtpMib::Cptpclocknodetable::~Cptpclocknodetable()
 
 bool CiscoPtpMib::Cptpclocknodetable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocknodeentry_.size(); index++)
     {
-        if(cptpclocknodeentry[index]->has_data())
+        if(cptpclocknodeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -834,9 +834,9 @@ bool CiscoPtpMib::Cptpclocknodetable::has_data() const
 
 bool CiscoPtpMib::Cptpclocknodetable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocknodeentry_.size(); index++)
     {
-        if(cptpclocknodeentry[index]->has_operation())
+        if(cptpclocknodeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -876,7 +876,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockNodeEntry")
     {
-        for(auto const & c : cptpclocknodeentry)
+        for(auto const & c : cptpclocknodeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -886,7 +886,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry>();
         c->parent = this;
-        cptpclocknodeentry.push_back(c);
+        cptpclocknodeentry_.push_back(c);
         return c;
     }
 
@@ -896,7 +896,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocknodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocknodeentry)
+    for (auto const & c : cptpclocknodeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1087,9 +1087,9 @@ CiscoPtpMib::Cptpclockcurrentdstable::~Cptpclockcurrentdstable()
 
 bool CiscoPtpMib::Cptpclockcurrentdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockcurrentdsentry_.size(); index++)
     {
-        if(cptpclockcurrentdsentry[index]->has_data())
+        if(cptpclockcurrentdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1097,9 +1097,9 @@ bool CiscoPtpMib::Cptpclockcurrentdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockcurrentdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockcurrentdsentry_.size(); index++)
     {
-        if(cptpclockcurrentdsentry[index]->has_operation())
+        if(cptpclockcurrentdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1139,7 +1139,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockCurrentDSEntry")
     {
-        for(auto const & c : cptpclockcurrentdsentry)
+        for(auto const & c : cptpclockcurrentdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1149,7 +1149,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry>();
         c->parent = this;
-        cptpclockcurrentdsentry.push_back(c);
+        cptpclockcurrentdsentry_.push_back(c);
         return c;
     }
 
@@ -1159,7 +1159,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockcurrentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockcurrentdsentry)
+    for (auto const & c : cptpclockcurrentdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1294,9 +1294,9 @@ CiscoPtpMib::Cptpclockparentdstable::~Cptpclockparentdstable()
 
 bool CiscoPtpMib::Cptpclockparentdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockparentdsentry_.size(); index++)
     {
-        if(cptpclockparentdsentry[index]->has_data())
+        if(cptpclockparentdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1304,9 +1304,9 @@ bool CiscoPtpMib::Cptpclockparentdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockparentdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockparentdsentry_.size(); index++)
     {
-        if(cptpclockparentdsentry[index]->has_operation())
+        if(cptpclockparentdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1346,7 +1346,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
 {
     if(child_yang_name == "cPtpClockParentDSEntry")
     {
-        for(auto const & c : cptpclockparentdsentry)
+        for(auto const & c : cptpclockparentdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1356,7 +1356,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry>();
         c->parent = this;
-        cptpclockparentdsentry.push_back(c);
+        cptpclockparentdsentry_.push_back(c);
         return c;
     }
 
@@ -1366,7 +1366,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockparentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockparentdsentry)
+    for (auto const & c : cptpclockparentdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1557,9 +1557,9 @@ CiscoPtpMib::Cptpclockdefaultdstable::~Cptpclockdefaultdstable()
 
 bool CiscoPtpMib::Cptpclockdefaultdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockdefaultdsentry_.size(); index++)
     {
-        if(cptpclockdefaultdsentry[index]->has_data())
+        if(cptpclockdefaultdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1567,9 +1567,9 @@ bool CiscoPtpMib::Cptpclockdefaultdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockdefaultdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockdefaultdsentry_.size(); index++)
     {
-        if(cptpclockdefaultdsentry[index]->has_operation())
+        if(cptpclockdefaultdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1609,7 +1609,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockDefaultDSEntry")
     {
-        for(auto const & c : cptpclockdefaultdsentry)
+        for(auto const & c : cptpclockdefaultdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1619,7 +1619,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry>();
         c->parent = this;
-        cptpclockdefaultdsentry.push_back(c);
+        cptpclockdefaultdsentry_.push_back(c);
         return c;
     }
 
@@ -1629,7 +1629,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockdefaultdsentry)
+    for (auto const & c : cptpclockdefaultdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1804,9 +1804,9 @@ CiscoPtpMib::Cptpclockrunningtable::~Cptpclockrunningtable()
 
 bool CiscoPtpMib::Cptpclockrunningtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockrunningentry_.size(); index++)
     {
-        if(cptpclockrunningentry[index]->has_data())
+        if(cptpclockrunningentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1814,9 +1814,9 @@ bool CiscoPtpMib::Cptpclockrunningtable::has_data() const
 
 bool CiscoPtpMib::Cptpclockrunningtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockrunningentry_.size(); index++)
     {
-        if(cptpclockrunningentry[index]->has_operation())
+        if(cptpclockrunningentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1856,7 +1856,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpClockRunningEntry")
     {
-        for(auto const & c : cptpclockrunningentry)
+        for(auto const & c : cptpclockrunningentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1866,7 +1866,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry>();
         c->parent = this;
-        cptpclockrunningentry.push_back(c);
+        cptpclockrunningentry_.push_back(c);
         return c;
     }
 
@@ -1876,7 +1876,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockrunningentry)
+    for (auto const & c : cptpclockrunningentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2011,9 +2011,9 @@ CiscoPtpMib::Cptpclocktimepropertiesdstable::~Cptpclocktimepropertiesdstable()
 
 bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry_.size(); index++)
     {
-        if(cptpclocktimepropertiesdsentry[index]->has_data())
+        if(cptpclocktimepropertiesdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2021,9 +2021,9 @@ bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry_.size(); index++)
     {
-        if(cptpclocktimepropertiesdsentry[index]->has_operation())
+        if(cptpclocktimepropertiesdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2063,7 +2063,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
 {
     if(child_yang_name == "cPtpClockTimePropertiesDSEntry")
     {
-        for(auto const & c : cptpclocktimepropertiesdsentry)
+        for(auto const & c : cptpclocktimepropertiesdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2073,7 +2073,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry>();
         c->parent = this;
-        cptpclocktimepropertiesdsentry.push_back(c);
+        cptpclocktimepropertiesdsentry_.push_back(c);
         return c;
     }
 
@@ -2083,7 +2083,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocktimepropertiesdsentry)
+    for (auto const & c : cptpclocktimepropertiesdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2258,9 +2258,9 @@ CiscoPtpMib::Cptpclocktransdefaultdstable::~Cptpclocktransdefaultdstable()
 
 bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry_.size(); index++)
     {
-        if(cptpclocktransdefaultdsentry[index]->has_data())
+        if(cptpclocktransdefaultdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2268,9 +2268,9 @@ bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry_.size(); index++)
     {
-        if(cptpclocktransdefaultdsentry[index]->has_operation())
+        if(cptpclocktransdefaultdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2310,7 +2310,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
 {
     if(child_yang_name == "cPtpClockTransDefaultDSEntry")
     {
-        for(auto const & c : cptpclocktransdefaultdsentry)
+        for(auto const & c : cptpclocktransdefaultdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2320,7 +2320,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry>();
         c->parent = this;
-        cptpclocktransdefaultdsentry.push_back(c);
+        cptpclocktransdefaultdsentry_.push_back(c);
         return c;
     }
 
@@ -2330,7 +2330,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktransdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocktransdefaultdsentry)
+    for (auto const & c : cptpclocktransdefaultdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2465,9 +2465,9 @@ CiscoPtpMib::Cptpclockporttable::~Cptpclockporttable()
 
 bool CiscoPtpMib::Cptpclockporttable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportentry_.size(); index++)
     {
-        if(cptpclockportentry[index]->has_data())
+        if(cptpclockportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2475,9 +2475,9 @@ bool CiscoPtpMib::Cptpclockporttable::has_data() const
 
 bool CiscoPtpMib::Cptpclockporttable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportentry_.size(); index++)
     {
-        if(cptpclockportentry[index]->has_operation())
+        if(cptpclockportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2517,7 +2517,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockPortEntry")
     {
-        for(auto const & c : cptpclockportentry)
+        for(auto const & c : cptpclockportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2527,7 +2527,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockporttable::Cptpclockportentry>();
         c->parent = this;
-        cptpclockportentry.push_back(c);
+        cptpclockportentry_.push_back(c);
         return c;
     }
 
@@ -2537,7 +2537,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportentry)
+    for (auto const & c : cptpclockportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2704,9 +2704,9 @@ CiscoPtpMib::Cptpclockportdstable::~Cptpclockportdstable()
 
 bool CiscoPtpMib::Cptpclockportdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportdsentry_.size(); index++)
     {
-        if(cptpclockportdsentry[index]->has_data())
+        if(cptpclockportdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2714,9 +2714,9 @@ bool CiscoPtpMib::Cptpclockportdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportdsentry_.size(); index++)
     {
-        if(cptpclockportdsentry[index]->has_operation())
+        if(cptpclockportdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2756,7 +2756,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
 {
     if(child_yang_name == "cPtpClockPortDSEntry")
     {
-        for(auto const & c : cptpclockportdsentry)
+        for(auto const & c : cptpclockportdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2766,7 +2766,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry>();
         c->parent = this;
-        cptpclockportdsentry.push_back(c);
+        cptpclockportdsentry_.push_back(c);
         return c;
     }
 
@@ -2776,7 +2776,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportdsentry)
+    for (auto const & c : cptpclockportdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2983,9 +2983,9 @@ CiscoPtpMib::Cptpclockportrunningtable::~Cptpclockportrunningtable()
 
 bool CiscoPtpMib::Cptpclockportrunningtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportrunningentry_.size(); index++)
     {
-        if(cptpclockportrunningentry[index]->has_data())
+        if(cptpclockportrunningentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2993,9 +2993,9 @@ bool CiscoPtpMib::Cptpclockportrunningtable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportrunningtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportrunningentry_.size(); index++)
     {
-        if(cptpclockportrunningentry[index]->has_operation())
+        if(cptpclockportrunningentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3035,7 +3035,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortRunningEntry")
     {
-        for(auto const & c : cptpclockportrunningentry)
+        for(auto const & c : cptpclockportrunningentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3045,7 +3045,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry>();
         c->parent = this;
-        cptpclockportrunningentry.push_back(c);
+        cptpclockportrunningentry_.push_back(c);
         return c;
     }
 
@@ -3055,7 +3055,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportrunningentry)
+    for (auto const & c : cptpclockportrunningentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3254,9 +3254,9 @@ CiscoPtpMib::Cptpclockporttransdstable::~Cptpclockporttransdstable()
 
 bool CiscoPtpMib::Cptpclockporttransdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockporttransdsentry_.size(); index++)
     {
-        if(cptpclockporttransdsentry[index]->has_data())
+        if(cptpclockporttransdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3264,9 +3264,9 @@ bool CiscoPtpMib::Cptpclockporttransdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockporttransdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockporttransdsentry_.size(); index++)
     {
-        if(cptpclockporttransdsentry[index]->has_operation())
+        if(cptpclockporttransdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3306,7 +3306,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortTransDSEntry")
     {
-        for(auto const & c : cptpclockporttransdsentry)
+        for(auto const & c : cptpclockporttransdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3316,7 +3316,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry>();
         c->parent = this;
-        cptpclockporttransdsentry.push_back(c);
+        cptpclockporttransdsentry_.push_back(c);
         return c;
     }
 
@@ -3326,7 +3326,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttransdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockporttransdsentry)
+    for (auto const & c : cptpclockporttransdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3469,9 +3469,9 @@ CiscoPtpMib::Cptpclockportassociatetable::~Cptpclockportassociatetable()
 
 bool CiscoPtpMib::Cptpclockportassociatetable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportassociateentry_.size(); index++)
     {
-        if(cptpclockportassociateentry[index]->has_data())
+        if(cptpclockportassociateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3479,9 +3479,9 @@ bool CiscoPtpMib::Cptpclockportassociatetable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportassociatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportassociateentry_.size(); index++)
     {
-        if(cptpclockportassociateentry[index]->has_operation())
+        if(cptpclockportassociateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3521,7 +3521,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
 {
     if(child_yang_name == "cPtpClockPortAssociateEntry")
     {
-        for(auto const & c : cptpclockportassociateentry)
+        for(auto const & c : cptpclockportassociateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3531,7 +3531,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry>();
         c->parent = this;
-        cptpclockportassociateentry.push_back(c);
+        cptpclockportassociateentry_.push_back(c);
         return c;
     }
 
@@ -3541,7 +3541,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportassociatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportassociateentry)
+    for (auto const & c : cptpclockportassociateentry_)
     {
         children[c->get_segment_path()] = c;
     }

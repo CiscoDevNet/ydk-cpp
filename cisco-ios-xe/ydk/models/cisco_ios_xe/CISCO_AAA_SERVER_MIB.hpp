@@ -32,8 +32,8 @@ class CiscoAaaServerMib : public Entity
         class Casconfig; //type: CiscoAaaServerMib::Casconfig
         class Casconfigtable; //type: CiscoAaaServerMib::Casconfigtable
 
-        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfig> casconfig;
-        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable> casconfigtable;
+        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfig> casconfig_;
+        std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable> casconfigtable_;
         
 }; // CiscoAaaServerMib
 
@@ -73,7 +73,7 @@ class CiscoAaaServerMib::Casconfigtable : public Entity
 
         class Casconfigentry; //type: CiscoAaaServerMib::Casconfigtable::Casconfigentry
 
-        std::vector<std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable::Casconfigentry> > casconfigentry;
+        std::vector<std::shared_ptr<CISCO_AAA_SERVER_MIB::CiscoAaaServerMib::Casconfigtable::Casconfigentry> > casconfigentry_;
         
 }; // CiscoAaaServerMib::Casconfigtable
 

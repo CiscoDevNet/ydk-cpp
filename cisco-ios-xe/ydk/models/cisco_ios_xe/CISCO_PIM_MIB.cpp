@@ -11,12 +11,12 @@ namespace CISCO_PIM_MIB {
 
 CiscoPimMib::CiscoPimMib()
     :
-    ciscopimmibnotificationobjects(std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>())
-	,cpim(std::make_shared<CiscoPimMib::Cpim>())
+    ciscopimmibnotificationobjects_(std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>())
+	,cpim_(std::make_shared<CiscoPimMib::Cpim>())
 {
-    ciscopimmibnotificationobjects->parent = this;
+    ciscopimmibnotificationobjects_->parent = this;
 
-    cpim->parent = this;
+    cpim_->parent = this;
 
     yang_name = "CISCO-PIM-MIB"; yang_parent_name = "CISCO-PIM-MIB";
 }
@@ -27,15 +27,15 @@ CiscoPimMib::~CiscoPimMib()
 
 bool CiscoPimMib::has_data() const
 {
-    return (ciscopimmibnotificationobjects !=  nullptr && ciscopimmibnotificationobjects->has_data())
-	|| (cpim !=  nullptr && cpim->has_data());
+    return (ciscopimmibnotificationobjects_ !=  nullptr && ciscopimmibnotificationobjects_->has_data())
+	|| (cpim_ !=  nullptr && cpim_->has_data());
 }
 
 bool CiscoPimMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscopimmibnotificationobjects !=  nullptr && ciscopimmibnotificationobjects->has_operation())
-	|| (cpim !=  nullptr && cpim->has_operation());
+	|| (ciscopimmibnotificationobjects_ !=  nullptr && ciscopimmibnotificationobjects_->has_operation())
+	|| (cpim_ !=  nullptr && cpim_->has_operation());
 }
 
 std::string CiscoPimMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoPimMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ciscoPimMIBNotificationObjects")
     {
-        if(ciscopimmibnotificationobjects == nullptr)
+        if(ciscopimmibnotificationobjects_ == nullptr)
         {
-            ciscopimmibnotificationobjects = std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>();
+            ciscopimmibnotificationobjects_ = std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>();
         }
-        return ciscopimmibnotificationobjects;
+        return ciscopimmibnotificationobjects_;
     }
 
     if(child_yang_name == "cpim")
     {
-        if(cpim == nullptr)
+        if(cpim_ == nullptr)
         {
-            cpim = std::make_shared<CiscoPimMib::Cpim>();
+            cpim_ = std::make_shared<CiscoPimMib::Cpim>();
         }
-        return cpim;
+        return cpim_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoPimMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoPimMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscopimmibnotificationobjects != nullptr)
+    if(ciscopimmibnotificationobjects_ != nullptr)
     {
-        children["ciscoPimMIBNotificationObjects"] = ciscopimmibnotificationobjects;
+        children["ciscoPimMIBNotificationObjects"] = ciscopimmibnotificationobjects_;
     }
 
-    if(cpim != nullptr)
+    if(cpim_ != nullptr)
     {
-        children["cpim"] = cpim;
+        children["cpim"] = cpim_;
     }
 
     return children;

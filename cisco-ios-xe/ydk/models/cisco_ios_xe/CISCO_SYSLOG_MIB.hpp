@@ -35,11 +35,11 @@ class CiscoSyslogMib : public Entity
         class Cloghistorytable; //type: CiscoSyslogMib::Cloghistorytable
         class Clogserverconfigtable; //type: CiscoSyslogMib::Clogserverconfigtable
 
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogbasic> clogbasic;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistory> cloghistory;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable> cloghistorytable;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserver> clogserver;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable> clogserverconfigtable;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogbasic> clogbasic_;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistory> cloghistory_;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable> cloghistorytable_;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserver> clogserver_;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable> clogserverconfigtable_;
         
 }; // CiscoSyslogMib
 
@@ -125,7 +125,7 @@ class CiscoSyslogMib::Cloghistorytable : public Entity
 
         class Cloghistoryentry; //type: CiscoSyslogMib::Cloghistorytable::Cloghistoryentry
 
-        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable::Cloghistoryentry> > cloghistoryentry;
+        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable::Cloghistoryentry> > cloghistoryentry_;
         
 }; // CiscoSyslogMib::Cloghistorytable
 
@@ -170,7 +170,7 @@ class CiscoSyslogMib::Clogserverconfigtable : public Entity
 
         class Clogserverconfigentry; //type: CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry> > clogserverconfigentry;
+        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry> > clogserverconfigentry_;
         
 }; // CiscoSyslogMib::Clogserverconfigtable
 

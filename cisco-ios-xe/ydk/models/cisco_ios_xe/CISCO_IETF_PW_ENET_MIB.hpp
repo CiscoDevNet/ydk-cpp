@@ -33,9 +33,9 @@ class CiscoIetfPwEnetMib : public Entity
         class Cpwvcenetmplsprimappingtable; //type: CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable
         class Cpwvcenetstatstable; //type: CiscoIetfPwEnetMib::Cpwvcenetstatstable
 
-        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable> cpwvcenetmplsprimappingtable;
-        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetstatstable> cpwvcenetstatstable;
-        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenettable> cpwvcenettable;
+        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable> cpwvcenetmplsprimappingtable_;
+        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetstatstable> cpwvcenetstatstable_;
+        std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenettable> cpwvcenettable_;
         
 }; // CiscoIetfPwEnetMib
 
@@ -56,7 +56,7 @@ class CiscoIetfPwEnetMib::Cpwvcenettable : public Entity
 
         class Cpwvcenetentry; //type: CiscoIetfPwEnetMib::Cpwvcenettable::Cpwvcenetentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenettable::Cpwvcenetentry> > cpwvcenetentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenettable::Cpwvcenetentry> > cpwvcenetentry_;
         
 }; // CiscoIetfPwEnetMib::Cpwvcenettable
 
@@ -105,7 +105,7 @@ class CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable : public Entity
 
         class Cpwvcenetmplsprimappingtableentry; //type: CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry> > cpwvcenetmplsprimappingtableentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry> > cpwvcenetmplsprimappingtableentry_;
         
 }; // CiscoIetfPwEnetMib::Cpwvcenetmplsprimappingtable
 
@@ -149,7 +149,7 @@ class CiscoIetfPwEnetMib::Cpwvcenetstatstable : public Entity
 
         class Cpwvcenetstatsentry; //type: CiscoIetfPwEnetMib::Cpwvcenetstatstable::Cpwvcenetstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetstatstable::Cpwvcenetstatsentry> > cpwvcenetstatsentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_ENET_MIB::CiscoIetfPwEnetMib::Cpwvcenetstatstable::Cpwvcenetstatsentry> > cpwvcenetstatsentry_;
         
 }; // CiscoIetfPwEnetMib::Cpwvcenetstatstable
 

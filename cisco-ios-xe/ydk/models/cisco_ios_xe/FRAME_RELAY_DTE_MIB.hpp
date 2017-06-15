@@ -34,10 +34,10 @@ class FrameRelayDteMib : public Entity
         class Frcircuittable; //type: FrameRelayDteMib::Frcircuittable
         class Frerrtable; //type: FrameRelayDteMib::Frerrtable
 
-        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Framerelaytrapcontrol> framerelaytrapcontrol;
-        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frcircuittable> frcircuittable;
-        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frdlcmitable> frdlcmitable;
-        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frerrtable> frerrtable;
+        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Framerelaytrapcontrol> framerelaytrapcontrol_;
+        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frcircuittable> frcircuittable_;
+        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frdlcmitable> frdlcmitable_;
+        std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frerrtable> frerrtable_;
         
 }; // FrameRelayDteMib
 
@@ -79,7 +79,7 @@ class FrameRelayDteMib::Frdlcmitable : public Entity
 
         class Frdlcmientry; //type: FrameRelayDteMib::Frdlcmitable::Frdlcmientry
 
-        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frdlcmitable::Frdlcmientry> > frdlcmientry_;
         
 }; // FrameRelayDteMib::Frdlcmitable
 
@@ -135,7 +135,7 @@ class FrameRelayDteMib::Frcircuittable : public Entity
 
         class Frcircuitentry; //type: FrameRelayDteMib::Frcircuittable::Frcircuitentry
 
-        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frcircuittable::Frcircuitentry> > frcircuitentry;
+        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frcircuittable::Frcircuitentry> > frcircuitentry_;
         
 }; // FrameRelayDteMib::Frcircuittable
 
@@ -198,7 +198,7 @@ class FrameRelayDteMib::Frerrtable : public Entity
 
         class Frerrentry; //type: FrameRelayDteMib::Frerrtable::Frerrentry
 
-        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frerrtable::Frerrentry> > frerrentry;
+        std::vector<std::shared_ptr<FRAME_RELAY_DTE_MIB::FrameRelayDteMib::Frerrtable::Frerrentry> > frerrentry_;
         
 }; // FrameRelayDteMib::Frerrtable
 

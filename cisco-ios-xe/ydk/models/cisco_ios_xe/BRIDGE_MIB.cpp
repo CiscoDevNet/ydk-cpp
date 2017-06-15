@@ -11,30 +11,30 @@ namespace BRIDGE_MIB {
 
 BridgeMib::BridgeMib()
     :
-    dot1dbase(std::make_shared<BridgeMib::Dot1Dbase>())
-	,dot1dbaseporttable(std::make_shared<BridgeMib::Dot1Dbaseporttable>())
-	,dot1dstatictable(std::make_shared<BridgeMib::Dot1Dstatictable>())
-	,dot1dstp(std::make_shared<BridgeMib::Dot1Dstp>())
-	,dot1dstpporttable(std::make_shared<BridgeMib::Dot1Dstpporttable>())
-	,dot1dtp(std::make_shared<BridgeMib::Dot1Dtp>())
-	,dot1dtpfdbtable(std::make_shared<BridgeMib::Dot1Dtpfdbtable>())
-	,dot1dtpporttable(std::make_shared<BridgeMib::Dot1Dtpporttable>())
+    dot1dbase_(std::make_shared<BridgeMib::Dot1Dbase>())
+	,dot1dbaseporttable_(std::make_shared<BridgeMib::Dot1Dbaseporttable>())
+	,dot1dstatictable_(std::make_shared<BridgeMib::Dot1Dstatictable>())
+	,dot1dstp_(std::make_shared<BridgeMib::Dot1Dstp>())
+	,dot1dstpporttable_(std::make_shared<BridgeMib::Dot1Dstpporttable>())
+	,dot1dtp_(std::make_shared<BridgeMib::Dot1Dtp>())
+	,dot1dtpfdbtable_(std::make_shared<BridgeMib::Dot1Dtpfdbtable>())
+	,dot1dtpporttable_(std::make_shared<BridgeMib::Dot1Dtpporttable>())
 {
-    dot1dbase->parent = this;
+    dot1dbase_->parent = this;
 
-    dot1dbaseporttable->parent = this;
+    dot1dbaseporttable_->parent = this;
 
-    dot1dstatictable->parent = this;
+    dot1dstatictable_->parent = this;
 
-    dot1dstp->parent = this;
+    dot1dstp_->parent = this;
 
-    dot1dstpporttable->parent = this;
+    dot1dstpporttable_->parent = this;
 
-    dot1dtp->parent = this;
+    dot1dtp_->parent = this;
 
-    dot1dtpfdbtable->parent = this;
+    dot1dtpfdbtable_->parent = this;
 
-    dot1dtpporttable->parent = this;
+    dot1dtpporttable_->parent = this;
 
     yang_name = "BRIDGE-MIB"; yang_parent_name = "BRIDGE-MIB";
 }
@@ -45,27 +45,27 @@ BridgeMib::~BridgeMib()
 
 bool BridgeMib::has_data() const
 {
-    return (dot1dbase !=  nullptr && dot1dbase->has_data())
-	|| (dot1dbaseporttable !=  nullptr && dot1dbaseporttable->has_data())
-	|| (dot1dstatictable !=  nullptr && dot1dstatictable->has_data())
-	|| (dot1dstp !=  nullptr && dot1dstp->has_data())
-	|| (dot1dstpporttable !=  nullptr && dot1dstpporttable->has_data())
-	|| (dot1dtp !=  nullptr && dot1dtp->has_data())
-	|| (dot1dtpfdbtable !=  nullptr && dot1dtpfdbtable->has_data())
-	|| (dot1dtpporttable !=  nullptr && dot1dtpporttable->has_data());
+    return (dot1dbase_ !=  nullptr && dot1dbase_->has_data())
+	|| (dot1dbaseporttable_ !=  nullptr && dot1dbaseporttable_->has_data())
+	|| (dot1dstatictable_ !=  nullptr && dot1dstatictable_->has_data())
+	|| (dot1dstp_ !=  nullptr && dot1dstp_->has_data())
+	|| (dot1dstpporttable_ !=  nullptr && dot1dstpporttable_->has_data())
+	|| (dot1dtp_ !=  nullptr && dot1dtp_->has_data())
+	|| (dot1dtpfdbtable_ !=  nullptr && dot1dtpfdbtable_->has_data())
+	|| (dot1dtpporttable_ !=  nullptr && dot1dtpporttable_->has_data());
 }
 
 bool BridgeMib::has_operation() const
 {
     return is_set(operation)
-	|| (dot1dbase !=  nullptr && dot1dbase->has_operation())
-	|| (dot1dbaseporttable !=  nullptr && dot1dbaseporttable->has_operation())
-	|| (dot1dstatictable !=  nullptr && dot1dstatictable->has_operation())
-	|| (dot1dstp !=  nullptr && dot1dstp->has_operation())
-	|| (dot1dstpporttable !=  nullptr && dot1dstpporttable->has_operation())
-	|| (dot1dtp !=  nullptr && dot1dtp->has_operation())
-	|| (dot1dtpfdbtable !=  nullptr && dot1dtpfdbtable->has_operation())
-	|| (dot1dtpporttable !=  nullptr && dot1dtpporttable->has_operation());
+	|| (dot1dbase_ !=  nullptr && dot1dbase_->has_operation())
+	|| (dot1dbaseporttable_ !=  nullptr && dot1dbaseporttable_->has_operation())
+	|| (dot1dstatictable_ !=  nullptr && dot1dstatictable_->has_operation())
+	|| (dot1dstp_ !=  nullptr && dot1dstp_->has_operation())
+	|| (dot1dstpporttable_ !=  nullptr && dot1dstpporttable_->has_operation())
+	|| (dot1dtp_ !=  nullptr && dot1dtp_->has_operation())
+	|| (dot1dtpfdbtable_ !=  nullptr && dot1dtpfdbtable_->has_operation())
+	|| (dot1dtpporttable_ !=  nullptr && dot1dtpporttable_->has_operation());
 }
 
 std::string BridgeMib::get_segment_path() const
@@ -99,74 +99,74 @@ std::shared_ptr<Entity> BridgeMib::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "dot1dBase")
     {
-        if(dot1dbase == nullptr)
+        if(dot1dbase_ == nullptr)
         {
-            dot1dbase = std::make_shared<BridgeMib::Dot1Dbase>();
+            dot1dbase_ = std::make_shared<BridgeMib::Dot1Dbase>();
         }
-        return dot1dbase;
+        return dot1dbase_;
     }
 
     if(child_yang_name == "dot1dBasePortTable")
     {
-        if(dot1dbaseporttable == nullptr)
+        if(dot1dbaseporttable_ == nullptr)
         {
-            dot1dbaseporttable = std::make_shared<BridgeMib::Dot1Dbaseporttable>();
+            dot1dbaseporttable_ = std::make_shared<BridgeMib::Dot1Dbaseporttable>();
         }
-        return dot1dbaseporttable;
+        return dot1dbaseporttable_;
     }
 
     if(child_yang_name == "dot1dStaticTable")
     {
-        if(dot1dstatictable == nullptr)
+        if(dot1dstatictable_ == nullptr)
         {
-            dot1dstatictable = std::make_shared<BridgeMib::Dot1Dstatictable>();
+            dot1dstatictable_ = std::make_shared<BridgeMib::Dot1Dstatictable>();
         }
-        return dot1dstatictable;
+        return dot1dstatictable_;
     }
 
     if(child_yang_name == "dot1dStp")
     {
-        if(dot1dstp == nullptr)
+        if(dot1dstp_ == nullptr)
         {
-            dot1dstp = std::make_shared<BridgeMib::Dot1Dstp>();
+            dot1dstp_ = std::make_shared<BridgeMib::Dot1Dstp>();
         }
-        return dot1dstp;
+        return dot1dstp_;
     }
 
     if(child_yang_name == "dot1dStpPortTable")
     {
-        if(dot1dstpporttable == nullptr)
+        if(dot1dstpporttable_ == nullptr)
         {
-            dot1dstpporttable = std::make_shared<BridgeMib::Dot1Dstpporttable>();
+            dot1dstpporttable_ = std::make_shared<BridgeMib::Dot1Dstpporttable>();
         }
-        return dot1dstpporttable;
+        return dot1dstpporttable_;
     }
 
     if(child_yang_name == "dot1dTp")
     {
-        if(dot1dtp == nullptr)
+        if(dot1dtp_ == nullptr)
         {
-            dot1dtp = std::make_shared<BridgeMib::Dot1Dtp>();
+            dot1dtp_ = std::make_shared<BridgeMib::Dot1Dtp>();
         }
-        return dot1dtp;
+        return dot1dtp_;
     }
 
     if(child_yang_name == "dot1dTpFdbTable")
     {
-        if(dot1dtpfdbtable == nullptr)
+        if(dot1dtpfdbtable_ == nullptr)
         {
-            dot1dtpfdbtable = std::make_shared<BridgeMib::Dot1Dtpfdbtable>();
+            dot1dtpfdbtable_ = std::make_shared<BridgeMib::Dot1Dtpfdbtable>();
         }
-        return dot1dtpfdbtable;
+        return dot1dtpfdbtable_;
     }
 
     if(child_yang_name == "dot1dTpPortTable")
     {
-        if(dot1dtpporttable == nullptr)
+        if(dot1dtpporttable_ == nullptr)
         {
-            dot1dtpporttable = std::make_shared<BridgeMib::Dot1Dtpporttable>();
+            dot1dtpporttable_ = std::make_shared<BridgeMib::Dot1Dtpporttable>();
         }
-        return dot1dtpporttable;
+        return dot1dtpporttable_;
     }
 
     return nullptr;
@@ -175,44 +175,44 @@ std::shared_ptr<Entity> BridgeMib::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dot1dbase != nullptr)
+    if(dot1dbase_ != nullptr)
     {
-        children["dot1dBase"] = dot1dbase;
+        children["dot1dBase"] = dot1dbase_;
     }
 
-    if(dot1dbaseporttable != nullptr)
+    if(dot1dbaseporttable_ != nullptr)
     {
-        children["dot1dBasePortTable"] = dot1dbaseporttable;
+        children["dot1dBasePortTable"] = dot1dbaseporttable_;
     }
 
-    if(dot1dstatictable != nullptr)
+    if(dot1dstatictable_ != nullptr)
     {
-        children["dot1dStaticTable"] = dot1dstatictable;
+        children["dot1dStaticTable"] = dot1dstatictable_;
     }
 
-    if(dot1dstp != nullptr)
+    if(dot1dstp_ != nullptr)
     {
-        children["dot1dStp"] = dot1dstp;
+        children["dot1dStp"] = dot1dstp_;
     }
 
-    if(dot1dstpporttable != nullptr)
+    if(dot1dstpporttable_ != nullptr)
     {
-        children["dot1dStpPortTable"] = dot1dstpporttable;
+        children["dot1dStpPortTable"] = dot1dstpporttable_;
     }
 
-    if(dot1dtp != nullptr)
+    if(dot1dtp_ != nullptr)
     {
-        children["dot1dTp"] = dot1dtp;
+        children["dot1dTp"] = dot1dtp_;
     }
 
-    if(dot1dtpfdbtable != nullptr)
+    if(dot1dtpfdbtable_ != nullptr)
     {
-        children["dot1dTpFdbTable"] = dot1dtpfdbtable;
+        children["dot1dTpFdbTable"] = dot1dtpfdbtable_;
     }
 
-    if(dot1dtpporttable != nullptr)
+    if(dot1dtpporttable_ != nullptr)
     {
-        children["dot1dTpPortTable"] = dot1dtpporttable;
+        children["dot1dTpPortTable"] = dot1dtpporttable_;
     }
 
     return children;
@@ -597,9 +597,9 @@ BridgeMib::Dot1Dbaseporttable::~Dot1Dbaseporttable()
 
 bool BridgeMib::Dot1Dbaseporttable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dbaseportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dbaseportentry_.size(); index++)
     {
-        if(dot1dbaseportentry[index]->has_data())
+        if(dot1dbaseportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -607,9 +607,9 @@ bool BridgeMib::Dot1Dbaseporttable::has_data() const
 
 bool BridgeMib::Dot1Dbaseporttable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dbaseportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dbaseportentry_.size(); index++)
     {
-        if(dot1dbaseportentry[index]->has_operation())
+        if(dot1dbaseportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -649,7 +649,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dbaseporttable::get_child_by_name(const s
 {
     if(child_yang_name == "dot1dBasePortEntry")
     {
-        for(auto const & c : dot1dbaseportentry)
+        for(auto const & c : dot1dbaseportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -659,7 +659,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dbaseporttable::get_child_by_name(const s
         }
         auto c = std::make_shared<BridgeMib::Dot1Dbaseporttable::Dot1Dbaseportentry>();
         c->parent = this;
-        dot1dbaseportentry.push_back(c);
+        dot1dbaseportentry_.push_back(c);
         return c;
     }
 
@@ -669,7 +669,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dbaseporttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::Dot1Dbaseporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dbaseportentry)
+    for (auto const & c : dot1dbaseportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -876,9 +876,9 @@ BridgeMib::Dot1Dstpporttable::~Dot1Dstpporttable()
 
 bool BridgeMib::Dot1Dstpporttable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dstpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstpportentry_.size(); index++)
     {
-        if(dot1dstpportentry[index]->has_data())
+        if(dot1dstpportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -886,9 +886,9 @@ bool BridgeMib::Dot1Dstpporttable::has_data() const
 
 bool BridgeMib::Dot1Dstpporttable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dstpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstpportentry_.size(); index++)
     {
-        if(dot1dstpportentry[index]->has_operation())
+        if(dot1dstpportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -928,7 +928,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstpporttable::get_child_by_name(const st
 {
     if(child_yang_name == "dot1dStpPortEntry")
     {
-        for(auto const & c : dot1dstpportentry)
+        for(auto const & c : dot1dstpportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -938,7 +938,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstpporttable::get_child_by_name(const st
         }
         auto c = std::make_shared<BridgeMib::Dot1Dstpporttable::Dot1Dstpportentry>();
         c->parent = this;
-        dot1dstpportentry.push_back(c);
+        dot1dstpportentry_.push_back(c);
         return c;
     }
 
@@ -948,7 +948,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstpporttable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::Dot1Dstpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dstpportentry)
+    for (auto const & c : dot1dstpportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1131,9 +1131,9 @@ BridgeMib::Dot1Dtpfdbtable::~Dot1Dtpfdbtable()
 
 bool BridgeMib::Dot1Dtpfdbtable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dtpfdbentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpfdbentry_.size(); index++)
     {
-        if(dot1dtpfdbentry[index]->has_data())
+        if(dot1dtpfdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1141,9 +1141,9 @@ bool BridgeMib::Dot1Dtpfdbtable::has_data() const
 
 bool BridgeMib::Dot1Dtpfdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dtpfdbentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpfdbentry_.size(); index++)
     {
-        if(dot1dtpfdbentry[index]->has_operation())
+        if(dot1dtpfdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1183,7 +1183,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpfdbtable::get_child_by_name(const std:
 {
     if(child_yang_name == "dot1dTpFdbEntry")
     {
-        for(auto const & c : dot1dtpfdbentry)
+        for(auto const & c : dot1dtpfdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1193,7 +1193,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpfdbtable::get_child_by_name(const std:
         }
         auto c = std::make_shared<BridgeMib::Dot1Dtpfdbtable::Dot1Dtpfdbentry>();
         c->parent = this;
-        dot1dtpfdbentry.push_back(c);
+        dot1dtpfdbentry_.push_back(c);
         return c;
     }
 
@@ -1203,7 +1203,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpfdbtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::Dot1Dtpfdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dtpfdbentry)
+    for (auto const & c : dot1dtpfdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1314,9 +1314,9 @@ BridgeMib::Dot1Dtpporttable::~Dot1Dtpporttable()
 
 bool BridgeMib::Dot1Dtpporttable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dtpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpportentry_.size(); index++)
     {
-        if(dot1dtpportentry[index]->has_data())
+        if(dot1dtpportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1324,9 +1324,9 @@ bool BridgeMib::Dot1Dtpporttable::has_data() const
 
 bool BridgeMib::Dot1Dtpporttable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dtpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpportentry_.size(); index++)
     {
-        if(dot1dtpportentry[index]->has_operation())
+        if(dot1dtpportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1366,7 +1366,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpporttable::get_child_by_name(const std
 {
     if(child_yang_name == "dot1dTpPortEntry")
     {
-        for(auto const & c : dot1dtpportentry)
+        for(auto const & c : dot1dtpportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1376,7 +1376,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpporttable::get_child_by_name(const std
         }
         auto c = std::make_shared<BridgeMib::Dot1Dtpporttable::Dot1Dtpportentry>();
         c->parent = this;
-        dot1dtpportentry.push_back(c);
+        dot1dtpportentry_.push_back(c);
         return c;
     }
 
@@ -1386,7 +1386,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dtpporttable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::Dot1Dtpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dtpportentry)
+    for (auto const & c : dot1dtpportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1513,9 +1513,9 @@ BridgeMib::Dot1Dstatictable::~Dot1Dstatictable()
 
 bool BridgeMib::Dot1Dstatictable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dstaticentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstaticentry_.size(); index++)
     {
-        if(dot1dstaticentry[index]->has_data())
+        if(dot1dstaticentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1523,9 +1523,9 @@ bool BridgeMib::Dot1Dstatictable::has_data() const
 
 bool BridgeMib::Dot1Dstatictable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dstaticentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstaticentry_.size(); index++)
     {
-        if(dot1dstaticentry[index]->has_operation())
+        if(dot1dstaticentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1565,7 +1565,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstatictable::get_child_by_name(const std
 {
     if(child_yang_name == "dot1dStaticEntry")
     {
-        for(auto const & c : dot1dstaticentry)
+        for(auto const & c : dot1dstaticentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1575,7 +1575,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstatictable::get_child_by_name(const std
         }
         auto c = std::make_shared<BridgeMib::Dot1Dstatictable::Dot1Dstaticentry>();
         c->parent = this;
-        dot1dstaticentry.push_back(c);
+        dot1dstaticentry_.push_back(c);
         return c;
     }
 
@@ -1585,7 +1585,7 @@ std::shared_ptr<Entity> BridgeMib::Dot1Dstatictable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BridgeMib::Dot1Dstatictable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot1dstaticentry)
+    for (auto const & c : dot1dstaticentry_)
     {
         children[c->get_segment_path()] = c;
     }

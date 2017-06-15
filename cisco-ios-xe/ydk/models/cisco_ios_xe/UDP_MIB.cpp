@@ -11,15 +11,15 @@ namespace UDP_MIB {
 
 UdpMib::UdpMib()
     :
-    udp(std::make_shared<UdpMib::Udp>())
-	,udpendpointtable(std::make_shared<UdpMib::Udpendpointtable>())
-	,udptable(std::make_shared<UdpMib::Udptable>())
+    udp_(std::make_shared<UdpMib::Udp>())
+	,udpendpointtable_(std::make_shared<UdpMib::Udpendpointtable>())
+	,udptable_(std::make_shared<UdpMib::Udptable>())
 {
-    udp->parent = this;
+    udp_->parent = this;
 
-    udpendpointtable->parent = this;
+    udpendpointtable_->parent = this;
 
-    udptable->parent = this;
+    udptable_->parent = this;
 
     yang_name = "UDP-MIB"; yang_parent_name = "UDP-MIB";
 }
@@ -30,17 +30,17 @@ UdpMib::~UdpMib()
 
 bool UdpMib::has_data() const
 {
-    return (udp !=  nullptr && udp->has_data())
-	|| (udpendpointtable !=  nullptr && udpendpointtable->has_data())
-	|| (udptable !=  nullptr && udptable->has_data());
+    return (udp_ !=  nullptr && udp_->has_data())
+	|| (udpendpointtable_ !=  nullptr && udpendpointtable_->has_data())
+	|| (udptable_ !=  nullptr && udptable_->has_data());
 }
 
 bool UdpMib::has_operation() const
 {
     return is_set(operation)
-	|| (udp !=  nullptr && udp->has_operation())
-	|| (udpendpointtable !=  nullptr && udpendpointtable->has_operation())
-	|| (udptable !=  nullptr && udptable->has_operation());
+	|| (udp_ !=  nullptr && udp_->has_operation())
+	|| (udpendpointtable_ !=  nullptr && udpendpointtable_->has_operation())
+	|| (udptable_ !=  nullptr && udptable_->has_operation());
 }
 
 std::string UdpMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "udp")
     {
-        if(udp == nullptr)
+        if(udp_ == nullptr)
         {
-            udp = std::make_shared<UdpMib::Udp>();
+            udp_ = std::make_shared<UdpMib::Udp>();
         }
-        return udp;
+        return udp_;
     }
 
     if(child_yang_name == "udpEndpointTable")
     {
-        if(udpendpointtable == nullptr)
+        if(udpendpointtable_ == nullptr)
         {
-            udpendpointtable = std::make_shared<UdpMib::Udpendpointtable>();
+            udpendpointtable_ = std::make_shared<UdpMib::Udpendpointtable>();
         }
-        return udpendpointtable;
+        return udpendpointtable_;
     }
 
     if(child_yang_name == "udpTable")
     {
-        if(udptable == nullptr)
+        if(udptable_ == nullptr)
         {
-            udptable = std::make_shared<UdpMib::Udptable>();
+            udptable_ = std::make_shared<UdpMib::Udptable>();
         }
-        return udptable;
+        return udptable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> UdpMib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> UdpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(udp != nullptr)
+    if(udp_ != nullptr)
     {
-        children["udp"] = udp;
+        children["udp"] = udp_;
     }
 
-    if(udpendpointtable != nullptr)
+    if(udpendpointtable_ != nullptr)
     {
-        children["udpEndpointTable"] = udpendpointtable;
+        children["udpEndpointTable"] = udpendpointtable_;
     }
 
-    if(udptable != nullptr)
+    if(udptable_ != nullptr)
     {
-        children["udpTable"] = udptable;
+        children["udpTable"] = udptable_;
     }
 
     return children;
@@ -270,9 +270,9 @@ UdpMib::Udptable::~Udptable()
 
 bool UdpMib::Udptable::has_data() const
 {
-    for (std::size_t index=0; index<udpentry.size(); index++)
+    for (std::size_t index=0; index<udpentry_.size(); index++)
     {
-        if(udpentry[index]->has_data())
+        if(udpentry_[index]->has_data())
             return true;
     }
     return false;
@@ -280,9 +280,9 @@ bool UdpMib::Udptable::has_data() const
 
 bool UdpMib::Udptable::has_operation() const
 {
-    for (std::size_t index=0; index<udpentry.size(); index++)
+    for (std::size_t index=0; index<udpentry_.size(); index++)
     {
-        if(udpentry[index]->has_operation())
+        if(udpentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -322,7 +322,7 @@ std::shared_ptr<Entity> UdpMib::Udptable::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "udpEntry")
     {
-        for(auto const & c : udpentry)
+        for(auto const & c : udpentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -332,7 +332,7 @@ std::shared_ptr<Entity> UdpMib::Udptable::get_child_by_name(const std::string & 
         }
         auto c = std::make_shared<UdpMib::Udptable::Udpentry>();
         c->parent = this;
-        udpentry.push_back(c);
+        udpentry_.push_back(c);
         return c;
     }
 
@@ -342,7 +342,7 @@ std::shared_ptr<Entity> UdpMib::Udptable::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : udpentry)
+    for (auto const & c : udpentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -445,9 +445,9 @@ UdpMib::Udpendpointtable::~Udpendpointtable()
 
 bool UdpMib::Udpendpointtable::has_data() const
 {
-    for (std::size_t index=0; index<udpendpointentry.size(); index++)
+    for (std::size_t index=0; index<udpendpointentry_.size(); index++)
     {
-        if(udpendpointentry[index]->has_data())
+        if(udpendpointentry_[index]->has_data())
             return true;
     }
     return false;
@@ -455,9 +455,9 @@ bool UdpMib::Udpendpointtable::has_data() const
 
 bool UdpMib::Udpendpointtable::has_operation() const
 {
-    for (std::size_t index=0; index<udpendpointentry.size(); index++)
+    for (std::size_t index=0; index<udpendpointentry_.size(); index++)
     {
-        if(udpendpointentry[index]->has_operation())
+        if(udpendpointentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -497,7 +497,7 @@ std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "udpEndpointEntry")
     {
-        for(auto const & c : udpendpointentry)
+        for(auto const & c : udpendpointentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -507,7 +507,7 @@ std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<UdpMib::Udpendpointtable::Udpendpointentry>();
         c->parent = this;
-        udpendpointentry.push_back(c);
+        udpendpointentry_.push_back(c);
         return c;
     }
 
@@ -517,7 +517,7 @@ std::shared_ptr<Entity> UdpMib::Udpendpointtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> UdpMib::Udpendpointtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : udpendpointentry)
+    for (auto const & c : udpendpointentry_)
     {
         children[c->get_segment_path()] = c;
     }

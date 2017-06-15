@@ -33,7 +33,7 @@ class CheckpointArchive : public Entity
         YLeaf recent; //type: string
         class Archives; //type: CheckpointArchive::Archives
 
-        std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives> archives;
+        std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives> archives_;
         
 }; // CheckpointArchive
 
@@ -54,7 +54,7 @@ class CheckpointArchive::Archives : public Entity
 
         class Archive; //type: CheckpointArchive::Archives::Archive
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives::Archive> > archive;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives::Archive> > archive_;
         
 }; // CheckpointArchive::Archives
 

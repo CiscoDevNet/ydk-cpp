@@ -29,12 +29,12 @@ LspTypeIdentity::~LspTypeIdentity()
 
 MplsStatic::MplsStatic()
     :
-    mpls_static_cfg(std::make_shared<MplsStatic::MplsStaticCfg>())
-	,mpls_static_state(std::make_shared<MplsStatic::MplsStaticState>())
+    mpls_static_cfg_(std::make_shared<MplsStatic::MplsStaticCfg>())
+	,mpls_static_state_(std::make_shared<MplsStatic::MplsStaticState>())
 {
-    mpls_static_cfg->parent = this;
+    mpls_static_cfg_->parent = this;
 
-    mpls_static_state->parent = this;
+    mpls_static_state_->parent = this;
 
     yang_name = "mpls-static"; yang_parent_name = "common-mpls-static";
 }
@@ -45,15 +45,15 @@ MplsStatic::~MplsStatic()
 
 bool MplsStatic::has_data() const
 {
-    return (mpls_static_cfg !=  nullptr && mpls_static_cfg->has_data())
-	|| (mpls_static_state !=  nullptr && mpls_static_state->has_data());
+    return (mpls_static_cfg_ !=  nullptr && mpls_static_cfg_->has_data())
+	|| (mpls_static_state_ !=  nullptr && mpls_static_state_->has_data());
 }
 
 bool MplsStatic::has_operation() const
 {
     return is_set(operation)
-	|| (mpls_static_cfg !=  nullptr && mpls_static_cfg->has_operation())
-	|| (mpls_static_state !=  nullptr && mpls_static_state->has_operation());
+	|| (mpls_static_cfg_ !=  nullptr && mpls_static_cfg_->has_operation())
+	|| (mpls_static_state_ !=  nullptr && mpls_static_state_->has_operation());
 }
 
 std::string MplsStatic::get_segment_path() const
@@ -87,20 +87,20 @@ std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "mpls-static-cfg")
     {
-        if(mpls_static_cfg == nullptr)
+        if(mpls_static_cfg_ == nullptr)
         {
-            mpls_static_cfg = std::make_shared<MplsStatic::MplsStaticCfg>();
+            mpls_static_cfg_ = std::make_shared<MplsStatic::MplsStaticCfg>();
         }
-        return mpls_static_cfg;
+        return mpls_static_cfg_;
     }
 
     if(child_yang_name == "mpls-static-state")
     {
-        if(mpls_static_state == nullptr)
+        if(mpls_static_state_ == nullptr)
         {
-            mpls_static_state = std::make_shared<MplsStatic::MplsStaticState>();
+            mpls_static_state_ = std::make_shared<MplsStatic::MplsStaticState>();
         }
-        return mpls_static_state;
+        return mpls_static_state_;
     }
 
     return nullptr;
@@ -109,14 +109,14 @@ std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls_static_cfg != nullptr)
+    if(mpls_static_cfg_ != nullptr)
     {
-        children["mpls-static-cfg"] = mpls_static_cfg;
+        children["mpls-static-cfg"] = mpls_static_cfg_;
     }
 
-    if(mpls_static_state != nullptr)
+    if(mpls_static_state_ != nullptr)
     {
-        children["mpls-static-state"] = mpls_static_state;
+        children["mpls-static-state"] = mpls_static_state_;
     }
 
     return children;
@@ -148,21 +148,21 @@ augment_capabilities_function MplsStatic::get_augment_capabilities_function() co
 
 MplsStatic::MplsStaticCfg::MplsStaticCfg()
     :
-    in_label_lsps(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps>())
-	,interfaces(std::make_shared<MplsStatic::MplsStaticCfg::Interfaces>())
-	,ipv4_ingress_lsps(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps>())
-	,ipv6_ingress_lsps(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps>())
-	,named_lsps(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps>())
+    in_label_lsps_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps>())
+	,interfaces_(std::make_shared<MplsStatic::MplsStaticCfg::Interfaces>())
+	,ipv4_ingress_lsps_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps>())
+	,ipv6_ingress_lsps_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps>())
+	,named_lsps_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps>())
 {
-    in_label_lsps->parent = this;
+    in_label_lsps_->parent = this;
 
-    interfaces->parent = this;
+    interfaces_->parent = this;
 
-    ipv4_ingress_lsps->parent = this;
+    ipv4_ingress_lsps_->parent = this;
 
-    ipv6_ingress_lsps->parent = this;
+    ipv6_ingress_lsps_->parent = this;
 
-    named_lsps->parent = this;
+    named_lsps_->parent = this;
 
     yang_name = "mpls-static-cfg"; yang_parent_name = "mpls-static";
 }
@@ -173,21 +173,21 @@ MplsStatic::MplsStaticCfg::~MplsStaticCfg()
 
 bool MplsStatic::MplsStaticCfg::has_data() const
 {
-    return (in_label_lsps !=  nullptr && in_label_lsps->has_data())
-	|| (interfaces !=  nullptr && interfaces->has_data())
-	|| (ipv4_ingress_lsps !=  nullptr && ipv4_ingress_lsps->has_data())
-	|| (ipv6_ingress_lsps !=  nullptr && ipv6_ingress_lsps->has_data())
-	|| (named_lsps !=  nullptr && named_lsps->has_data());
+    return (in_label_lsps_ !=  nullptr && in_label_lsps_->has_data())
+	|| (interfaces_ !=  nullptr && interfaces_->has_data())
+	|| (ipv4_ingress_lsps_ !=  nullptr && ipv4_ingress_lsps_->has_data())
+	|| (ipv6_ingress_lsps_ !=  nullptr && ipv6_ingress_lsps_->has_data())
+	|| (named_lsps_ !=  nullptr && named_lsps_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::has_operation() const
 {
     return is_set(operation)
-	|| (in_label_lsps !=  nullptr && in_label_lsps->has_operation())
-	|| (interfaces !=  nullptr && interfaces->has_operation())
-	|| (ipv4_ingress_lsps !=  nullptr && ipv4_ingress_lsps->has_operation())
-	|| (ipv6_ingress_lsps !=  nullptr && ipv6_ingress_lsps->has_operation())
-	|| (named_lsps !=  nullptr && named_lsps->has_operation());
+	|| (in_label_lsps_ !=  nullptr && in_label_lsps_->has_operation())
+	|| (interfaces_ !=  nullptr && interfaces_->has_operation())
+	|| (ipv4_ingress_lsps_ !=  nullptr && ipv4_ingress_lsps_->has_operation())
+	|| (ipv6_ingress_lsps_ !=  nullptr && ipv6_ingress_lsps_->has_operation())
+	|| (named_lsps_ !=  nullptr && named_lsps_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::get_segment_path() const
@@ -224,47 +224,47 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::get_child_by_name(const std::
 {
     if(child_yang_name == "in-label-lsps")
     {
-        if(in_label_lsps == nullptr)
+        if(in_label_lsps_ == nullptr)
         {
-            in_label_lsps = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps>();
+            in_label_lsps_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps>();
         }
-        return in_label_lsps;
+        return in_label_lsps_;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces == nullptr)
+        if(interfaces_ == nullptr)
         {
-            interfaces = std::make_shared<MplsStatic::MplsStaticCfg::Interfaces>();
+            interfaces_ = std::make_shared<MplsStatic::MplsStaticCfg::Interfaces>();
         }
-        return interfaces;
+        return interfaces_;
     }
 
     if(child_yang_name == "ipv4-ingress-lsps")
     {
-        if(ipv4_ingress_lsps == nullptr)
+        if(ipv4_ingress_lsps_ == nullptr)
         {
-            ipv4_ingress_lsps = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps>();
+            ipv4_ingress_lsps_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps>();
         }
-        return ipv4_ingress_lsps;
+        return ipv4_ingress_lsps_;
     }
 
     if(child_yang_name == "ipv6-ingress-lsps")
     {
-        if(ipv6_ingress_lsps == nullptr)
+        if(ipv6_ingress_lsps_ == nullptr)
         {
-            ipv6_ingress_lsps = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps>();
+            ipv6_ingress_lsps_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps>();
         }
-        return ipv6_ingress_lsps;
+        return ipv6_ingress_lsps_;
     }
 
     if(child_yang_name == "named-lsps")
     {
-        if(named_lsps == nullptr)
+        if(named_lsps_ == nullptr)
         {
-            named_lsps = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps>();
+            named_lsps_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps>();
         }
-        return named_lsps;
+        return named_lsps_;
     }
 
     return nullptr;
@@ -273,29 +273,29 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(in_label_lsps != nullptr)
+    if(in_label_lsps_ != nullptr)
     {
-        children["in-label-lsps"] = in_label_lsps;
+        children["in-label-lsps"] = in_label_lsps_;
     }
 
-    if(interfaces != nullptr)
+    if(interfaces_ != nullptr)
     {
-        children["interfaces"] = interfaces;
+        children["interfaces"] = interfaces_;
     }
 
-    if(ipv4_ingress_lsps != nullptr)
+    if(ipv4_ingress_lsps_ != nullptr)
     {
-        children["ipv4-ingress-lsps"] = ipv4_ingress_lsps;
+        children["ipv4-ingress-lsps"] = ipv4_ingress_lsps_;
     }
 
-    if(ipv6_ingress_lsps != nullptr)
+    if(ipv6_ingress_lsps_ != nullptr)
     {
-        children["ipv6-ingress-lsps"] = ipv6_ingress_lsps;
+        children["ipv6-ingress-lsps"] = ipv6_ingress_lsps_;
     }
 
-    if(named_lsps != nullptr)
+    if(named_lsps_ != nullptr)
     {
-        children["named-lsps"] = named_lsps;
+        children["named-lsps"] = named_lsps_;
     }
 
     return children;
@@ -303,6 +303,1473 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::get_ch
 
 void MplsStatic::MplsStaticCfg::set_value(const std::string & value_path, std::string value)
 {
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsps()
+{
+    yang_name = "ipv4-ingress-lsps"; yang_parent_name = "mpls-static-cfg";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::~Ipv4IngressLsps()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::has_data() const
+{
+    for (std::size_t index=0; index<ipv4_ingress_lsp_.size(); index++)
+    {
+        if(ipv4_ingress_lsp_[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::has_operation() const
+{
+    for (std::size_t index=0; index<ipv4_ingress_lsp_.size(); index++)
+    {
+        if(ipv4_ingress_lsp_[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-ingress-lsps";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4-ingress-lsp")
+    {
+        for(auto const & c : ipv4_ingress_lsp_)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp>();
+        c->parent = this;
+        ipv4_ingress_lsp_.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipv4_ingress_lsp_)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Ipv4IngressLsp()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    prefix{YType::str, "prefix"},
+    in_label{YType::str, "in-label"},
+    name{YType::str, "name"}
+    	,
+    path_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path>())
+{
+    path_->parent = this;
+
+    yang_name = "ipv4-ingress-lsp"; yang_parent_name = "ipv4-ingress-lsps";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::~Ipv4IngressLsp()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::has_data() const
+{
+    return vrf_name.is_set
+	|| prefix.is_set
+	|| in_label.is_set
+	|| name.is_set
+	|| (path_ !=  nullptr && path_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(vrf_name.operation)
+	|| is_set(prefix.operation)
+	|| is_set(in_label.operation)
+	|| is_set(name.operation)
+	|| (path_ !=  nullptr && path_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-ingress-lsp" <<"[vrf-name='" <<vrf_name <<"']" <<"[prefix='" <<prefix <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/ipv4-ingress-lsps/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
+    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path")
+    {
+        if(path_ == nullptr)
+        {
+            path_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path>();
+        }
+        return path_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_ != nullptr)
+    {
+        children["path"] = path_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+    }
+    if(value_path == "in-label")
+    {
+        in_label = value;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Path()
+    :
+    auto_protect{YType::boolean, "auto-protect"}
+    	,
+    operations_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations>())
+{
+    operations_->parent = this;
+
+    yang_name = "path"; yang_parent_name = "ipv4-ingress-lsp";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::~Path()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::has_data() const
+{
+    for (std::size_t index=0; index<next_hop_.size(); index++)
+    {
+        if(next_hop_[index]->has_data())
+            return true;
+    }
+    return auto_protect.is_set
+	|| (operations_ !=  nullptr && operations_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::has_operation() const
+{
+    for (std::size_t index=0; index<next_hop_.size(); index++)
+    {
+        if(next_hop_[index]->has_operation())
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(auto_protect.operation)
+	|| (operations_ !=  nullptr && operations_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Path' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auto_protect.is_set || is_set(auto_protect.operation)) leaf_name_data.push_back(auto_protect.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop")
+    {
+        for(auto const & c : next_hop_)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop>();
+        c->parent = this;
+        next_hop_.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "operations")
+    {
+        if(operations_ == nullptr)
+        {
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations>();
+        }
+        return operations_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : next_hop_)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(operations_ != nullptr)
+    {
+        children["operations"] = operations_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "auto-protect")
+    {
+        auto_protect = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Operations()
+    :
+    pop_and_forward{YType::empty, "pop-and-forward"},
+    preserve{YType::empty, "preserve"}
+    	,
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap>())
+{
+    push_->parent = this;
+
+    swap_->parent = this;
+
+    yang_name = "operations"; yang_parent_name = "path";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::~Operations()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::has_data() const
+{
+    return pop_and_forward.is_set
+	|| preserve.is_set
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(pop_and_forward.operation)
+	|| is_set(preserve.operation)
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operations";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
+    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "push")
+    {
+        if(push_ == nullptr)
+        {
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push>();
+        }
+        return push_;
+    }
+
+    if(child_yang_name == "swap")
+    {
+        if(swap_ == nullptr)
+        {
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap>();
+        }
+        return swap_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(push_ != nullptr)
+    {
+        children["push"] = push_;
+    }
+
+    if(swap_ != nullptr)
+    {
+        children["swap"] = swap_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "pop-and-forward")
+    {
+        pop_and_forward = value;
+    }
+    if(value_path == "preserve")
+    {
+        preserve = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Swap()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "swap"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::~Swap()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "swap";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "swap";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Push()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "push"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::~Push()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "push";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "push";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHop()
+    :
+    index_{YType::uint32, "index"},
+    protected_by{YType::uint32, "protected-by"},
+    type{YType::enumeration, "type"}
+    	,
+    next_hop_type_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType>())
+	,operations_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations>())
+{
+    next_hop_type_->parent = this;
+
+    operations_->parent = this;
+
+    yang_name = "next-hop"; yang_parent_name = "path";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::~NextHop()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::has_data() const
+{
+    return index_.is_set
+	|| protected_by.is_set
+	|| type.is_set
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_data())
+	|| (operations_ !=  nullptr && operations_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(index_.operation)
+	|| is_set(protected_by.operation)
+	|| is_set(type.operation)
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_operation())
+	|| (operations_ !=  nullptr && operations_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop" <<"[index='" <<index_ <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NextHop' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (protected_by.is_set || is_set(protected_by.operation)) leaf_name_data.push_back(protected_by.get_name_leafdata());
+    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop-type")
+    {
+        if(next_hop_type_ == nullptr)
+        {
+            next_hop_type_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType>();
+        }
+        return next_hop_type_;
+    }
+
+    if(child_yang_name == "operations")
+    {
+        if(operations_ == nullptr)
+        {
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations>();
+        }
+        return operations_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop_type_ != nullptr)
+    {
+        children["next-hop-type"] = next_hop_type_;
+    }
+
+    if(operations_ != nullptr)
+    {
+        children["operations"] = operations_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+    }
+    if(value_path == "protected-by")
+    {
+        protected_by = value;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::NextHopType()
+    :
+    if_index{YType::uint32, "if-index"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"},
+    mac_address{YType::str, "mac-address"},
+    out_interface_name{YType::str, "out-interface-name"}
+{
+    yang_name = "next-hop-type"; yang_parent_name = "next-hop";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::~NextHopType()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::has_data() const
+{
+    return if_index.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set
+	|| mac_address.is_set
+	|| out_interface_name.is_set;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(if_index.operation)
+	|| is_set(ipv4_address.operation)
+	|| is_set(ipv6_address.operation)
+	|| is_set(mac_address.operation)
+	|| is_set(out_interface_name.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop-type";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NextHopType' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (out_interface_name.is_set || is_set(out_interface_name.operation)) leaf_name_data.push_back(out_interface_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "if-index")
+    {
+        if_index = value;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
+    }
+    if(value_path == "out-interface-name")
+    {
+        out_interface_name = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Operations()
+    :
+    pop_and_forward{YType::empty, "pop-and-forward"},
+    preserve{YType::empty, "preserve"}
+    	,
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap>())
+{
+    push_->parent = this;
+
+    swap_->parent = this;
+
+    yang_name = "operations"; yang_parent_name = "next-hop";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::~Operations()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::has_data() const
+{
+    return pop_and_forward.is_set
+	|| preserve.is_set
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(pop_and_forward.operation)
+	|| is_set(preserve.operation)
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operations";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
+    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "push")
+    {
+        if(push_ == nullptr)
+        {
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push>();
+        }
+        return push_;
+    }
+
+    if(child_yang_name == "swap")
+    {
+        if(swap_ == nullptr)
+        {
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap>();
+        }
+        return swap_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(push_ != nullptr)
+    {
+        children["push"] = push_;
+    }
+
+    if(swap_ != nullptr)
+    {
+        children["swap"] = swap_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "pop-and-forward")
+    {
+        pop_and_forward = value;
+    }
+    if(value_path == "preserve")
+    {
+        preserve = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Push()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "push"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::~Push()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "push";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "push";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Swap()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "swap"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::~Swap()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "swap";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "swap";
+}
+
+MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
 }
 
 MplsStatic::MplsStaticCfg::Interfaces::Interfaces()
@@ -316,9 +1783,9 @@ MplsStatic::MplsStaticCfg::Interfaces::~Interfaces()
 
 bool MplsStatic::MplsStaticCfg::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_.size(); index++)
     {
-        if(interface[index]->has_data())
+        if(interface_[index]->has_data())
             return true;
     }
     return false;
@@ -326,9 +1793,9 @@ bool MplsStatic::MplsStaticCfg::Interfaces::has_data() const
 
 bool MplsStatic::MplsStaticCfg::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_.size(); index++)
     {
-        if(interface[index]->has_operation())
+        if(interface_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -368,7 +1835,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Interfaces::get_child_by_name
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
+        for(auto const & c : interface_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -378,7 +1845,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Interfaces::get_child_by_name
         }
         auto c = std::make_shared<MplsStatic::MplsStaticCfg::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface_.push_back(c);
         return c;
     }
 
@@ -388,7 +1855,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Interfaces::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
+    for (auto const & c : interface_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -480,1489 +1947,6 @@ void MplsStatic::MplsStaticCfg::Interfaces::Interface::set_value(const std::stri
     }
 }
 
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsps()
-{
-    yang_name = "named-lsps"; yang_parent_name = "mpls-static-cfg";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::~NamedLsps()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::has_data() const
-{
-    for (std::size_t index=0; index<named_lsp.size(); index++)
-    {
-        if(named_lsp[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::has_operation() const
-{
-    for (std::size_t index=0; index<named_lsp.size(); index++)
-    {
-        if(named_lsp[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "named-lsps";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "named-lsp")
-    {
-        for(auto const & c : named_lsp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp>();
-        c->parent = this;
-        named_lsp.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : named_lsp)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::NamedLsp()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    name{YType::str, "name"},
-    in_label{YType::str, "in-label"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    ipv6_prefix{YType::str, "ipv6-prefix"},
-    lsp_type{YType::identityref, "lsp-type"}
-    	,
-    path(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path>())
-{
-    path->parent = this;
-
-    yang_name = "named-lsp"; yang_parent_name = "named-lsps";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::~NamedLsp()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::has_data() const
-{
-    return vrf_name.is_set
-	|| name.is_set
-	|| in_label.is_set
-	|| ipv4_prefix.is_set
-	|| ipv6_prefix.is_set
-	|| lsp_type.is_set
-	|| (path !=  nullptr && path->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(name.operation)
-	|| is_set(in_label.operation)
-	|| is_set(ipv4_prefix.operation)
-	|| is_set(ipv6_prefix.operation)
-	|| is_set(lsp_type.operation)
-	|| (path !=  nullptr && path->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "named-lsp" <<"[vrf-name='" <<vrf_name <<"']" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/named-lsps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
-    if (lsp_type.is_set || is_set(lsp_type.operation)) leaf_name_data.push_back(lsp_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "path")
-    {
-        if(path == nullptr)
-        {
-            path = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path>();
-        }
-        return path;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(path != nullptr)
-    {
-        children["path"] = path;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-    }
-    if(value_path == "in-label")
-    {
-        in_label = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-    }
-    if(value_path == "lsp-type")
-    {
-        lsp_type = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Path()
-    :
-    auto_protect{YType::boolean, "auto-protect"}
-    	,
-    operations(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations>())
-{
-    operations->parent = this;
-
-    yang_name = "path"; yang_parent_name = "named-lsp";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::~Path()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::has_data() const
-{
-    for (std::size_t index=0; index<next_hop.size(); index++)
-    {
-        if(next_hop[index]->has_data())
-            return true;
-    }
-    return auto_protect.is_set
-	|| (operations !=  nullptr && operations->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::has_operation() const
-{
-    for (std::size_t index=0; index<next_hop.size(); index++)
-    {
-        if(next_hop[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(auto_protect.operation)
-	|| (operations !=  nullptr && operations->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Path' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auto_protect.is_set || is_set(auto_protect.operation)) leaf_name_data.push_back(auto_protect.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "next-hop")
-    {
-        for(auto const & c : next_hop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop>();
-        c->parent = this;
-        next_hop.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "operations")
-    {
-        if(operations == nullptr)
-        {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations>();
-        }
-        return operations;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : next_hop)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    if(operations != nullptr)
-    {
-        children["operations"] = operations;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "auto-protect")
-    {
-        auto_protect = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Operations()
-    :
-    pop_and_forward{YType::empty, "pop-and-forward"},
-    preserve{YType::empty, "preserve"}
-    	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap>())
-{
-    push->parent = this;
-
-    swap->parent = this;
-
-    yang_name = "operations"; yang_parent_name = "path";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::~Operations()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::has_data() const
-{
-    return pop_and_forward.is_set
-	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(pop_and_forward.operation)
-	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
-    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "push")
-    {
-        if(push == nullptr)
-        {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push>();
-        }
-        return push;
-    }
-
-    if(child_yang_name == "swap")
-    {
-        if(swap == nullptr)
-        {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap>();
-        }
-        return swap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
-    {
-        children["push"] = push;
-    }
-
-    if(swap != nullptr)
-    {
-        children["swap"] = swap;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "pop-and-forward")
-    {
-        pop_and_forward = value;
-    }
-    if(value_path == "preserve")
-    {
-        preserve = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Swap()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "swap"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::~Swap()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "swap";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "swap";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Push()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "push"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::~Push()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "push";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "push";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHop()
-    :
-    index_{YType::uint32, "index"},
-    protected_by{YType::uint32, "protected-by"},
-    type{YType::enumeration, "type"}
-    	,
-    next_hop_type(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType>())
-	,operations(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations>())
-{
-    next_hop_type->parent = this;
-
-    operations->parent = this;
-
-    yang_name = "next-hop"; yang_parent_name = "path";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::~NextHop()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::has_data() const
-{
-    return index_.is_set
-	|| protected_by.is_set
-	|| type.is_set
-	|| (next_hop_type !=  nullptr && next_hop_type->has_data())
-	|| (operations !=  nullptr && operations->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(index_.operation)
-	|| is_set(protected_by.operation)
-	|| is_set(type.operation)
-	|| (next_hop_type !=  nullptr && next_hop_type->has_operation())
-	|| (operations !=  nullptr && operations->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop" <<"[index='" <<index_ <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NextHop' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (protected_by.is_set || is_set(protected_by.operation)) leaf_name_data.push_back(protected_by.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "next-hop-type")
-    {
-        if(next_hop_type == nullptr)
-        {
-            next_hop_type = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType>();
-        }
-        return next_hop_type;
-    }
-
-    if(child_yang_name == "operations")
-    {
-        if(operations == nullptr)
-        {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations>();
-        }
-        return operations;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(next_hop_type != nullptr)
-    {
-        children["next-hop-type"] = next_hop_type;
-    }
-
-    if(operations != nullptr)
-    {
-        children["operations"] = operations;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-    }
-    if(value_path == "protected-by")
-    {
-        protected_by = value;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::NextHopType()
-    :
-    if_index{YType::uint32, "if-index"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"},
-    mac_address{YType::str, "mac-address"},
-    out_interface_name{YType::str, "out-interface-name"}
-{
-    yang_name = "next-hop-type"; yang_parent_name = "next-hop";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::~NextHopType()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::has_data() const
-{
-    return if_index.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set
-	|| mac_address.is_set
-	|| out_interface_name.is_set;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(if_index.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(out_interface_name.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop-type";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NextHopType' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (out_interface_name.is_set || is_set(out_interface_name.operation)) leaf_name_data.push_back(out_interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "if-index")
-    {
-        if_index = value;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-    }
-    if(value_path == "mac-address")
-    {
-        mac_address = value;
-    }
-    if(value_path == "out-interface-name")
-    {
-        out_interface_name = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Operations()
-    :
-    pop_and_forward{YType::empty, "pop-and-forward"},
-    preserve{YType::empty, "preserve"}
-    	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap>())
-{
-    push->parent = this;
-
-    swap->parent = this;
-
-    yang_name = "operations"; yang_parent_name = "next-hop";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::~Operations()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::has_data() const
-{
-    return pop_and_forward.is_set
-	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(pop_and_forward.operation)
-	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
-    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "push")
-    {
-        if(push == nullptr)
-        {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push>();
-        }
-        return push;
-    }
-
-    if(child_yang_name == "swap")
-    {
-        if(swap == nullptr)
-        {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap>();
-        }
-        return swap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
-    {
-        children["push"] = push;
-    }
-
-    if(swap != nullptr)
-    {
-        children["swap"] = swap;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "pop-and-forward")
-    {
-        pop_and_forward = value;
-    }
-    if(value_path == "preserve")
-    {
-        preserve = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Swap()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "swap"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::~Swap()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "swap";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "swap";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Push()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "push"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::~Push()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "push";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "push";
-}
-
-MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
 MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsps()
 {
     yang_name = "ipv6-ingress-lsps"; yang_parent_name = "mpls-static-cfg";
@@ -1974,9 +1958,9 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::~Ipv6IngressLsps()
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_ingress_lsp.size(); index++)
+    for (std::size_t index=0; index<ipv6_ingress_lsp_.size(); index++)
     {
-        if(ipv6_ingress_lsp[index]->has_data())
+        if(ipv6_ingress_lsp_[index]->has_data())
             return true;
     }
     return false;
@@ -1984,9 +1968,9 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::has_data() const
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_ingress_lsp.size(); index++)
+    for (std::size_t index=0; index<ipv6_ingress_lsp_.size(); index++)
     {
-        if(ipv6_ingress_lsp[index]->has_operation())
+        if(ipv6_ingress_lsp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2026,7 +2010,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::get_child_by
 {
     if(child_yang_name == "ipv6-ingress-lsp")
     {
-        for(auto const & c : ipv6_ingress_lsp)
+        for(auto const & c : ipv6_ingress_lsp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2036,7 +2020,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::get_child_by
         }
         auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp>();
         c->parent = this;
-        ipv6_ingress_lsp.push_back(c);
+        ipv6_ingress_lsp_.push_back(c);
         return c;
     }
 
@@ -2046,7 +2030,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv6_ingress_lsp)
+    for (auto const & c : ipv6_ingress_lsp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2065,9 +2049,9 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Ipv6IngressLsp()
     in_label{YType::str, "in-label"},
     name{YType::str, "name"}
     	,
-    path(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path>())
+    path_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path>())
 {
-    path->parent = this;
+    path_->parent = this;
 
     yang_name = "ipv6-ingress-lsp"; yang_parent_name = "ipv6-ingress-lsps";
 }
@@ -2082,7 +2066,7 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::has_data() cons
 	|| prefix.is_set
 	|| in_label.is_set
 	|| name.is_set
-	|| (path !=  nullptr && path->has_data());
+	|| (path_ !=  nullptr && path_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::has_operation() const
@@ -2092,7 +2076,7 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::has_operation()
 	|| is_set(prefix.operation)
 	|| is_set(in_label.operation)
 	|| is_set(name.operation)
-	|| (path !=  nullptr && path->has_operation());
+	|| (path_ !=  nullptr && path_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::get_segment_path() const
@@ -2133,11 +2117,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "path")
     {
-        if(path == nullptr)
+        if(path_ == nullptr)
         {
-            path = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path>();
+            path_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path>();
         }
-        return path;
+        return path_;
     }
 
     return nullptr;
@@ -2146,9 +2130,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(path != nullptr)
+    if(path_ != nullptr)
     {
-        children["path"] = path;
+        children["path"] = path_;
     }
 
     return children;
@@ -2178,9 +2162,9 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Path()
     :
     auto_protect{YType::boolean, "auto-protect"}
     	,
-    operations(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations>())
+    operations_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations>())
 {
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "path"; yang_parent_name = "ipv6-ingress-lsp";
 }
@@ -2191,25 +2175,25 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::~Path()
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::has_data() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_data())
+        if(next_hop_[index]->has_data())
             return true;
     }
     return auto_protect.is_set
-	|| (operations !=  nullptr && operations->has_data());
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_operation())
+        if(next_hop_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(auto_protect.operation)
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::get_segment_path() const
@@ -2247,7 +2231,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "next-hop")
     {
-        for(auto const & c : next_hop)
+        for(auto const & c : next_hop_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2257,17 +2241,17 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
         }
         auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop>();
         c->parent = this;
-        next_hop.push_back(c);
+        next_hop_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -2276,14 +2260,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : next_hop)
+    for (auto const & c : next_hop_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -2302,12 +2286,12 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Op
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "path";
 }
@@ -2320,8 +2304,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operation
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::has_operation() const
@@ -2329,8 +2313,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operation
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::get_segment_path() const
@@ -2369,20 +2353,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -2391,14 +2375,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -2418,9 +2402,9 @@ void MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operation
 
 MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -2431,13 +2415,13 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Sw
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::get_segment_path() const
@@ -2474,11 +2458,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -2487,9 +2471,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -2584,9 +2568,9 @@ void MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operation
 
 MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -2597,13 +2581,13 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Pu
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::get_segment_path() const
@@ -2640,11 +2624,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -2653,9 +2637,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -2754,12 +2738,12 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextH
     protected_by{YType::uint32, "protected-by"},
     type{YType::enumeration, "type"}
     	,
-    next_hop_type(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType>())
-	,operations(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations>())
+    next_hop_type_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType>())
+	,operations_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations>())
 {
-    next_hop_type->parent = this;
+    next_hop_type_->parent = this;
 
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "next-hop"; yang_parent_name = "path";
 }
@@ -2773,8 +2757,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
     return index_.is_set
 	|| protected_by.is_set
 	|| type.is_set
-	|| (next_hop_type !=  nullptr && next_hop_type->has_data())
-	|| (operations !=  nullptr && operations->has_data());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_data())
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::has_operation() const
@@ -2783,8 +2767,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
 	|| is_set(index_.operation)
 	|| is_set(protected_by.operation)
 	|| is_set(type.operation)
-	|| (next_hop_type !=  nullptr && next_hop_type->has_operation())
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_operation())
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::get_segment_path() const
@@ -2824,20 +2808,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "next-hop-type")
     {
-        if(next_hop_type == nullptr)
+        if(next_hop_type_ == nullptr)
         {
-            next_hop_type = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType>();
+            next_hop_type_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType>();
         }
-        return next_hop_type;
+        return next_hop_type_;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -2846,14 +2830,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(next_hop_type != nullptr)
+    if(next_hop_type_ != nullptr)
     {
-        children["next-hop-type"] = next_hop_type;
+        children["next-hop-type"] = next_hop_type_;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -2984,12 +2968,12 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Opera
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "next-hop";
 }
@@ -3002,8 +2986,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::has_operation() const
@@ -3011,8 +2995,8 @@ bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::get_segment_path() const
@@ -3051,20 +3035,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -3073,14 +3057,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -3100,9 +3084,9 @@ void MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
 
 MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -3113,13 +3097,13 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Opera
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::get_segment_path() const
@@ -3156,11 +3140,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -3169,9 +3153,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -3266,9 +3250,9 @@ void MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
 
 MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -3279,13 +3263,13 @@ MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Opera
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::get_segment_path() const
@@ -3322,11 +3306,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -3335,9 +3319,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressL
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -3430,45 +3414,45 @@ void MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsps()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsps()
 {
-    yang_name = "ipv4-ingress-lsps"; yang_parent_name = "mpls-static-cfg";
+    yang_name = "named-lsps"; yang_parent_name = "mpls-static-cfg";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::~Ipv4IngressLsps()
+MplsStatic::MplsStaticCfg::NamedLsps::~NamedLsps()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_ingress_lsp.size(); index++)
+    for (std::size_t index=0; index<named_lsp_.size(); index++)
     {
-        if(ipv4_ingress_lsp[index]->has_data())
+        if(named_lsp_[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_ingress_lsp.size(); index++)
+    for (std::size_t index=0; index<named_lsp_.size(); index++)
     {
-        if(ipv4_ingress_lsp[index]->has_operation())
+        if(named_lsp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-ingress-lsps";
+    path_buffer << "named-lsps";
 
     return path_buffer.str();
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3489,11 +3473,11 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_entity_path(Ent
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4-ingress-lsp")
+    if(child_yang_name == "named-lsp")
     {
-        for(auto const & c : ipv4_ingress_lsp)
+        for(auto const & c : named_lsp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3501,19 +3485,19 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_child_by
                 return c;
             }
         }
-        auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp>();
+        auto c = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp>();
         c->parent = this;
-        ipv4_ingress_lsp.push_back(c);
+        named_lsp_.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv4_ingress_lsp)
+    for (auto const & c : named_lsp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3521,62 +3505,68 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4In
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::set_value(const std::string & value_path, std::string value)
 {
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Ipv4IngressLsp()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::NamedLsp()
     :
     vrf_name{YType::str, "vrf-name"},
-    prefix{YType::str, "prefix"},
+    name{YType::str, "name"},
     in_label{YType::str, "in-label"},
-    name{YType::str, "name"}
+    ipv4_prefix{YType::str, "ipv4-prefix"},
+    ipv6_prefix{YType::str, "ipv6-prefix"},
+    lsp_type{YType::identityref, "lsp-type"}
     	,
-    path(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path>())
+    path_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path>())
 {
-    path->parent = this;
+    path_->parent = this;
 
-    yang_name = "ipv4-ingress-lsp"; yang_parent_name = "ipv4-ingress-lsps";
+    yang_name = "named-lsp"; yang_parent_name = "named-lsps";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::~Ipv4IngressLsp()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::~NamedLsp()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::has_data() const
 {
     return vrf_name.is_set
-	|| prefix.is_set
-	|| in_label.is_set
 	|| name.is_set
-	|| (path !=  nullptr && path->has_data());
+	|| in_label.is_set
+	|| ipv4_prefix.is_set
+	|| ipv6_prefix.is_set
+	|| lsp_type.is_set
+	|| (path_ !=  nullptr && path_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| is_set(prefix.operation)
-	|| is_set(in_label.operation)
 	|| is_set(name.operation)
-	|| (path !=  nullptr && path->has_operation());
+	|| is_set(in_label.operation)
+	|| is_set(ipv4_prefix.operation)
+	|| is_set(ipv6_prefix.operation)
+	|| is_set(lsp_type.operation)
+	|| (path_ !=  nullptr && path_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-ingress-lsp" <<"[vrf-name='" <<vrf_name <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "named-lsp" <<"[vrf-name='" <<vrf_name <<"']" <<"[name='" <<name <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/ipv4-ingress-lsps/" << get_segment_path();
+        path_buffer << "common-mpls-static:mpls-static/mpls-static-cfg/named-lsps/" << get_segment_path();
     }
     else
     {
@@ -3586,9 +3576,11 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
     if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
+    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
+    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
+    if (lsp_type.is_set || is_set(lsp_type.operation)) leaf_name_data.push_back(lsp_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3596,90 +3588,98 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
-        if(path == nullptr)
+        if(path_ == nullptr)
         {
-            path = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path>();
+            path_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path>();
         }
-        return path;
+        return path_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(path != nullptr)
+    if(path_ != nullptr)
     {
-        children["path"] = path;
+        children["path"] = path_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
     }
-    if(value_path == "prefix")
+    if(value_path == "name")
     {
-        prefix = value;
+        name = value;
     }
     if(value_path == "in-label")
     {
         in_label = value;
     }
-    if(value_path == "name")
+    if(value_path == "ipv4-prefix")
     {
-        name = value;
+        ipv4_prefix = value;
+    }
+    if(value_path == "ipv6-prefix")
+    {
+        ipv6_prefix = value;
+    }
+    if(value_path == "lsp-type")
+    {
+        lsp_type = value;
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Path()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Path()
     :
     auto_protect{YType::boolean, "auto-protect"}
     	,
-    operations(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations>())
+    operations_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations>())
 {
-    operations->parent = this;
+    operations_->parent = this;
 
-    yang_name = "path"; yang_parent_name = "ipv4-ingress-lsp";
+    yang_name = "path"; yang_parent_name = "named-lsp";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::~Path()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::~Path()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::has_data() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_data())
+        if(next_hop_[index]->has_data())
             return true;
     }
     return auto_protect.is_set
-	|| (operations !=  nullptr && operations->has_data());
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_operation())
+        if(next_hop_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(auto_protect.operation)
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
@@ -3688,7 +3688,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::ge
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3710,11 +3710,11 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        for(auto const & c : next_hop)
+        for(auto const & c : next_hop_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3722,41 +3722,41 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressL
                 return c;
             }
         }
-        auto c = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop>();
+        auto c = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop>();
         c->parent = this;
-        next_hop.push_back(c);
+        next_hop_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : next_hop)
+    for (auto const & c : next_hop_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "auto-protect")
     {
@@ -3764,43 +3764,43 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::set_value
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Operations()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Operations()
     :
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "path";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::~Operations()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::~Operations()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::has_data() const
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::has_operation() const
 {
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "operations";
@@ -3809,7 +3809,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Op
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3832,46 +3832,46 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "pop-and-forward")
     {
@@ -3883,31 +3883,31 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Swap()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::~Swap()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::~Swap()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "swap";
@@ -3916,7 +3916,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Op
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3937,47 +3937,47 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::set_value(const std::string & value_path, std::string value)
 {
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::Stack()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::Stack()
     :
     label_stack{YType::str, "label-stack"}
 {
     yang_name = "stack"; yang_parent_name = "swap";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::~Stack()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::~Stack()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::has_data() const
 {
     for (auto const & leaf : label_stack.getYLeafs())
     {
@@ -3987,7 +3987,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
     return false;
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::has_operation() const
 {
     for (auto const & leaf : label_stack.getYLeafs())
     {
@@ -3998,7 +3998,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
 	|| is_set(label_stack.operation);
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stack";
@@ -4007,7 +4007,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Op
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4030,18 +4030,18 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "label-stack")
     {
@@ -4049,31 +4049,31 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Push()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::~Push()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::~Push()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "push";
@@ -4082,7 +4082,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Op
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4103,47 +4103,47 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::set_value(const std::string & value_path, std::string value)
 {
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::Stack()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::Stack()
     :
     label_stack{YType::str, "label-stack"}
 {
     yang_name = "stack"; yang_parent_name = "push";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::~Stack()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::~Stack()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::has_data() const
 {
     for (auto const & leaf : label_stack.getYLeafs())
     {
@@ -4153,7 +4153,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
     return false;
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::has_operation() const
 {
     for (auto const & leaf : label_stack.getYLeafs())
     {
@@ -4164,7 +4164,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
 	|| is_set(label_stack.operation);
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stack";
@@ -4173,7 +4173,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Op
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4196,18 +4196,18 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "label-stack")
     {
@@ -4215,46 +4215,46 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operation
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHop()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHop()
     :
     index_{YType::uint32, "index"},
     protected_by{YType::uint32, "protected-by"},
     type{YType::enumeration, "type"}
     	,
-    next_hop_type(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType>())
-	,operations(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations>())
+    next_hop_type_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType>())
+	,operations_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations>())
 {
-    next_hop_type->parent = this;
+    next_hop_type_->parent = this;
 
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "next-hop"; yang_parent_name = "path";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::~NextHop()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::~NextHop()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::has_data() const
 {
     return index_.is_set
 	|| protected_by.is_set
 	|| type.is_set
-	|| (next_hop_type !=  nullptr && next_hop_type->has_data())
-	|| (operations !=  nullptr && operations->has_data());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_data())
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::has_operation() const
 {
     return is_set(operation)
 	|| is_set(index_.operation)
 	|| is_set(protected_by.operation)
 	|| is_set(type.operation)
-	|| (next_hop_type !=  nullptr && next_hop_type->has_operation())
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_operation())
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop" <<"[index='" <<index_ <<"']";
@@ -4263,7 +4263,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Ne
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4287,46 +4287,46 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop-type")
     {
-        if(next_hop_type == nullptr)
+        if(next_hop_type_ == nullptr)
         {
-            next_hop_type = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType>();
+            next_hop_type_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType>();
         }
-        return next_hop_type;
+        return next_hop_type_;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(next_hop_type != nullptr)
+    if(next_hop_type_ != nullptr)
     {
-        children["next-hop-type"] = next_hop_type;
+        children["next-hop-type"] = next_hop_type_;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "index")
     {
@@ -4342,458 +4342,7 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::
     }
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Operations()
-    :
-    pop_and_forward{YType::empty, "pop-and-forward"},
-    preserve{YType::empty, "preserve"}
-    	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap>())
-{
-    push->parent = this;
-
-    swap->parent = this;
-
-    yang_name = "operations"; yang_parent_name = "next-hop";
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::~Operations()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::has_data() const
-{
-    return pop_and_forward.is_set
-	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(pop_and_forward.operation)
-	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "operations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
-    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "push")
-    {
-        if(push == nullptr)
-        {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push>();
-        }
-        return push;
-    }
-
-    if(child_yang_name == "swap")
-    {
-        if(swap == nullptr)
-        {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap>();
-        }
-        return swap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
-    {
-        children["push"] = push;
-    }
-
-    if(swap != nullptr)
-    {
-        children["swap"] = swap;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "pop-and-forward")
-    {
-        pop_and_forward = value;
-    }
-    if(value_path == "preserve")
-    {
-        preserve = value;
-    }
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Swap()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "swap"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::~Swap()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "swap";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "swap";
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Push()
-    :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack>())
-{
-    stack->parent = this;
-
-    yang_name = "push"; yang_parent_name = "operations";
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::~Push()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::has_data() const
-{
-    return (stack !=  nullptr && stack->has_data());
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::has_operation() const
-{
-    return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
-}
-
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "push";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stack")
-    {
-        if(stack == nullptr)
-        {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack>();
-        }
-        return stack;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
-    {
-        children["stack"] = stack;
-    }
-
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::set_value(const std::string & value_path, std::string value)
-{
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::Stack()
-    :
-    label_stack{YType::str, "label-stack"}
-{
-    yang_name = "stack"; yang_parent_name = "push";
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::~Stack()
-{
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::has_data() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::has_operation() const
-{
-    for (auto const & leaf : label_stack.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(label_stack.operation);
-}
-
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stack";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto label_stack_name_datas = label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "label-stack")
-    {
-        label_stack.append(value);
-    }
-}
-
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::NextHopType()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::NextHopType()
     :
     if_index{YType::uint32, "if-index"},
     ipv4_address{YType::str, "ipv4-address"},
@@ -4804,11 +4353,11 @@ MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextH
     yang_name = "next-hop-type"; yang_parent_name = "next-hop";
 }
 
-MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::~NextHopType()
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::~NextHopType()
 {
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::has_data() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::has_data() const
 {
     return if_index.is_set
 	|| ipv4_address.is_set
@@ -4817,7 +4366,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::
 	|| out_interface_name.is_set;
 }
 
-bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::has_operation() const
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::has_operation() const
 {
     return is_set(operation)
 	|| is_set(if_index.operation)
@@ -4827,7 +4376,7 @@ bool MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::
 	|| is_set(out_interface_name.operation);
 }
 
-std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_segment_path() const
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-type";
@@ -4836,7 +4385,7 @@ std::string MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Ne
 
 }
 
-const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4862,18 +4411,18 @@ const EntityPath MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Pat
 
 }
 
-std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType::set_value(const std::string & value_path, std::string value)
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "if-index")
     {
@@ -4897,6 +4446,457 @@ void MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::
     }
 }
 
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Operations()
+    :
+    pop_and_forward{YType::empty, "pop-and-forward"},
+    preserve{YType::empty, "preserve"}
+    	,
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap>())
+{
+    push_->parent = this;
+
+    swap_->parent = this;
+
+    yang_name = "operations"; yang_parent_name = "next-hop";
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::~Operations()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::has_data() const
+{
+    return pop_and_forward.is_set
+	|| preserve.is_set
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(pop_and_forward.operation)
+	|| is_set(preserve.operation)
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operations";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Operations' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pop_and_forward.is_set || is_set(pop_and_forward.operation)) leaf_name_data.push_back(pop_and_forward.get_name_leafdata());
+    if (preserve.is_set || is_set(preserve.operation)) leaf_name_data.push_back(preserve.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "push")
+    {
+        if(push_ == nullptr)
+        {
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push>();
+        }
+        return push_;
+    }
+
+    if(child_yang_name == "swap")
+    {
+        if(swap_ == nullptr)
+        {
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap>();
+        }
+        return swap_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(push_ != nullptr)
+    {
+        children["push"] = push_;
+    }
+
+    if(swap_ != nullptr)
+    {
+        children["swap"] = swap_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "pop-and-forward")
+    {
+        pop_and_forward = value;
+    }
+    if(value_path == "preserve")
+    {
+        preserve = value;
+    }
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Swap()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "swap"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::~Swap()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "swap";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Swap' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "swap";
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Push()
+    :
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack>())
+{
+    stack_->parent = this;
+
+    yang_name = "push"; yang_parent_name = "operations";
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::~Push()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::has_data() const
+{
+    return (stack_ !=  nullptr && stack_->has_data());
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::has_operation() const
+{
+    return is_set(operation)
+	|| (stack_ !=  nullptr && stack_->has_operation());
+}
+
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "push";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Push' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "stack")
+    {
+        if(stack_ == nullptr)
+        {
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack>();
+        }
+        return stack_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stack_ != nullptr)
+    {
+        children["stack"] = stack_;
+    }
+
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::set_value(const std::string & value_path, std::string value)
+{
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::Stack()
+    :
+    label_stack{YType::str, "label-stack"}
+{
+    yang_name = "stack"; yang_parent_name = "push";
+}
+
+MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::~Stack()
+{
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::has_data() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::has_operation() const
+{
+    for (auto const & leaf : label_stack.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(label_stack.operation);
+}
+
+std::string MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "stack";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Stack' in common_mpls_static cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto label_stack_name_datas = label_stack.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), label_stack_name_datas.begin(), label_stack_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label-stack")
+    {
+        label_stack.append(value);
+    }
+}
+
 MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsps()
 {
     yang_name = "in-label-lsps"; yang_parent_name = "mpls-static-cfg";
@@ -4908,9 +4908,9 @@ MplsStatic::MplsStaticCfg::InLabelLsps::~InLabelLsps()
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::has_data() const
 {
-    for (std::size_t index=0; index<in_label_lsp.size(); index++)
+    for (std::size_t index=0; index<in_label_lsp_.size(); index++)
     {
-        if(in_label_lsp[index]->has_data())
+        if(in_label_lsp_[index]->has_data())
             return true;
     }
     return false;
@@ -4918,9 +4918,9 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::has_data() const
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::has_operation() const
 {
-    for (std::size_t index=0; index<in_label_lsp.size(); index++)
+    for (std::size_t index=0; index<in_label_lsp_.size(); index++)
     {
-        if(in_label_lsp[index]->has_operation())
+        if(in_label_lsp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4960,7 +4960,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::get_child_by_nam
 {
     if(child_yang_name == "in-label-lsp")
     {
-        for(auto const & c : in_label_lsp)
+        for(auto const & c : in_label_lsp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4970,7 +4970,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::get_child_by_nam
         }
         auto c = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp>();
         c->parent = this;
-        in_label_lsp.push_back(c);
+        in_label_lsp_.push_back(c);
         return c;
     }
 
@@ -4980,7 +4980,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : in_label_lsp)
+    for (auto const & c : in_label_lsp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4997,9 +4997,9 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::InLabelLsp()
     vrf_name{YType::str, "vrf-name"},
     in_label{YType::str, "in-label"}
     	,
-    path(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path>())
+    path_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path>())
 {
-    path->parent = this;
+    path_->parent = this;
 
     yang_name = "in-label-lsp"; yang_parent_name = "in-label-lsps";
 }
@@ -5012,7 +5012,7 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::has_data() const
 {
     return vrf_name.is_set
 	|| in_label.is_set
-	|| (path !=  nullptr && path->has_data());
+	|| (path_ !=  nullptr && path_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::has_operation() const
@@ -5020,7 +5020,7 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::has_operation() const
     return is_set(operation)
 	|| is_set(vrf_name.operation)
 	|| is_set(in_label.operation)
-	|| (path !=  nullptr && path->has_operation());
+	|| (path_ !=  nullptr && path_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::get_segment_path() const
@@ -5059,11 +5059,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::get_
 {
     if(child_yang_name == "path")
     {
-        if(path == nullptr)
+        if(path_ == nullptr)
         {
-            path = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path>();
+            path_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path>();
         }
-        return path;
+        return path_;
     }
 
     return nullptr;
@@ -5072,9 +5072,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(path != nullptr)
+    if(path_ != nullptr)
     {
-        children["path"] = path;
+        children["path"] = path_;
     }
 
     return children;
@@ -5096,9 +5096,9 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Path()
     :
     auto_protect{YType::boolean, "auto-protect"}
     	,
-    operations(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations>())
+    operations_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations>())
 {
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "path"; yang_parent_name = "in-label-lsp";
 }
@@ -5109,25 +5109,25 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::~Path()
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::has_data() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_data())
+        if(next_hop_[index]->has_data())
             return true;
     }
     return auto_protect.is_set
-	|| (operations !=  nullptr && operations->has_data());
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_operation())
+        if(next_hop_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(auto_protect.operation)
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::get_segment_path() const
@@ -5165,7 +5165,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "next-hop")
     {
-        for(auto const & c : next_hop)
+        for(auto const & c : next_hop_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5175,17 +5175,17 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
         }
         auto c = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop>();
         c->parent = this;
-        next_hop.push_back(c);
+        next_hop_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -5194,14 +5194,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : next_hop)
+    for (auto const & c : next_hop_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -5220,12 +5220,12 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Operations
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "path";
 }
@@ -5238,8 +5238,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::has_d
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::has_operation() const
@@ -5247,8 +5247,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::has_o
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::get_segment_path() const
@@ -5287,20 +5287,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -5309,14 +5309,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -5336,9 +5336,9 @@ void MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::set_v
 
 MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -5349,13 +5349,13 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::~Swa
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::get_segment_path() const
@@ -5392,11 +5392,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -5405,9 +5405,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -5502,9 +5502,9 @@ void MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap:
 
 MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -5515,13 +5515,13 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::~Pus
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::get_segment_path() const
@@ -5558,11 +5558,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -5571,9 +5571,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -5672,12 +5672,12 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHop()
     protected_by{YType::uint32, "protected-by"},
     type{YType::enumeration, "type"}
     	,
-    next_hop_type(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType>())
-	,operations(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations>())
+    next_hop_type_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType>())
+	,operations_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations>())
 {
-    next_hop_type->parent = this;
+    next_hop_type_->parent = this;
 
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "next-hop"; yang_parent_name = "path";
 }
@@ -5691,8 +5691,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::has_data
     return index_.is_set
 	|| protected_by.is_set
 	|| type.is_set
-	|| (next_hop_type !=  nullptr && next_hop_type->has_data())
-	|| (operations !=  nullptr && operations->has_data());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_data())
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::has_operation() const
@@ -5701,8 +5701,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::has_oper
 	|| is_set(index_.operation)
 	|| is_set(protected_by.operation)
 	|| is_set(type.operation)
-	|| (next_hop_type !=  nullptr && next_hop_type->has_operation())
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_operation())
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::get_segment_path() const
@@ -5742,20 +5742,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "next-hop-type")
     {
-        if(next_hop_type == nullptr)
+        if(next_hop_type_ == nullptr)
         {
-            next_hop_type = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType>();
+            next_hop_type_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType>();
         }
-        return next_hop_type;
+        return next_hop_type_;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -5764,14 +5764,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(next_hop_type != nullptr)
+    if(next_hop_type_ != nullptr)
     {
-        children["next-hop-type"] = next_hop_type;
+        children["next-hop-type"] = next_hop_type_;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -5902,12 +5902,12 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::O
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "next-hop";
 }
@@ -5920,8 +5920,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operatio
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::has_operation() const
@@ -5929,8 +5929,8 @@ bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operatio
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::get_segment_path() const
@@ -5969,20 +5969,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -5991,14 +5991,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -6018,9 +6018,9 @@ void MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operatio
 
 MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -6031,13 +6031,13 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::S
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::get_segment_path() const
@@ -6074,11 +6074,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -6087,9 +6087,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -6184,9 +6184,9 @@ void MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operatio
 
 MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -6197,13 +6197,13 @@ MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::P
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::get_segment_path() const
@@ -6240,11 +6240,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -6253,9 +6253,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -6350,9 +6350,9 @@ void MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operatio
 
 MplsStatic::MplsStaticState::MplsStaticState()
     :
-    label_switched_paths(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths>())
+    label_switched_paths_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths>())
 {
-    label_switched_paths->parent = this;
+    label_switched_paths_->parent = this;
 
     yang_name = "mpls-static-state"; yang_parent_name = "mpls-static";
 }
@@ -6363,13 +6363,13 @@ MplsStatic::MplsStaticState::~MplsStaticState()
 
 bool MplsStatic::MplsStaticState::has_data() const
 {
-    return (label_switched_paths !=  nullptr && label_switched_paths->has_data());
+    return (label_switched_paths_ !=  nullptr && label_switched_paths_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::has_operation() const
 {
     return is_set(operation)
-	|| (label_switched_paths !=  nullptr && label_switched_paths->has_operation());
+	|| (label_switched_paths_ !=  nullptr && label_switched_paths_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::get_segment_path() const
@@ -6406,11 +6406,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::get_child_by_name(const std
 {
     if(child_yang_name == "label-switched-paths")
     {
-        if(label_switched_paths == nullptr)
+        if(label_switched_paths_ == nullptr)
         {
-            label_switched_paths = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths>();
+            label_switched_paths_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths>();
         }
-        return label_switched_paths;
+        return label_switched_paths_;
     }
 
     return nullptr;
@@ -6419,9 +6419,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(label_switched_paths != nullptr)
+    if(label_switched_paths_ != nullptr)
     {
-        children["label-switched-paths"] = label_switched_paths;
+        children["label-switched-paths"] = label_switched_paths_;
     }
 
     return children;
@@ -6442,9 +6442,9 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::~LabelSwitchedPaths()
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::has_data() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    for (std::size_t index=0; index<label_switched_path_.size(); index++)
     {
-        if(label_switched_path[index]->has_data())
+        if(label_switched_path_[index]->has_data())
             return true;
     }
     return false;
@@ -6452,9 +6452,9 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::has_data() const
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::has_operation() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    for (std::size_t index=0; index<label_switched_path_.size(); index++)
     {
-        if(label_switched_path[index]->has_operation())
+        if(label_switched_path_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -6494,7 +6494,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::get_chi
 {
     if(child_yang_name == "label-switched-path")
     {
-        for(auto const & c : label_switched_path)
+        for(auto const & c : label_switched_path_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6504,7 +6504,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::get_chi
         }
         auto c = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath>();
         c->parent = this;
-        label_switched_path.push_back(c);
+        label_switched_path_.push_back(c);
         return c;
     }
 
@@ -6514,7 +6514,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : label_switched_path)
+    for (auto const & c : label_switched_path_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -6533,15 +6533,15 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitche
     in_label_value{YType::str, "in-label-value"},
     name{YType::str, "name"}
     	,
-    egress_stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats>())
-	,ingress_stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats>())
-	,path(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path>())
+    egress_stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats>())
+	,ingress_stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats>())
+	,path_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path>())
 {
-    egress_stats->parent = this;
+    egress_stats_->parent = this;
 
-    ingress_stats->parent = this;
+    ingress_stats_->parent = this;
 
-    path->parent = this;
+    path_->parent = this;
 
     yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths";
 }
@@ -6556,9 +6556,9 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::has_dat
 	|| prefix.is_set
 	|| in_label_value.is_set
 	|| name.is_set
-	|| (egress_stats !=  nullptr && egress_stats->has_data())
-	|| (ingress_stats !=  nullptr && ingress_stats->has_data())
-	|| (path !=  nullptr && path->has_data());
+	|| (egress_stats_ !=  nullptr && egress_stats_->has_data())
+	|| (ingress_stats_ !=  nullptr && ingress_stats_->has_data())
+	|| (path_ !=  nullptr && path_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::has_operation() const
@@ -6568,9 +6568,9 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::has_ope
 	|| is_set(prefix.operation)
 	|| is_set(in_label_value.operation)
 	|| is_set(name.operation)
-	|| (egress_stats !=  nullptr && egress_stats->has_operation())
-	|| (ingress_stats !=  nullptr && ingress_stats->has_operation())
-	|| (path !=  nullptr && path->has_operation());
+	|| (egress_stats_ !=  nullptr && egress_stats_->has_operation())
+	|| (ingress_stats_ !=  nullptr && ingress_stats_->has_operation())
+	|| (path_ !=  nullptr && path_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::get_segment_path() const
@@ -6611,29 +6611,29 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "egress-stats")
     {
-        if(egress_stats == nullptr)
+        if(egress_stats_ == nullptr)
         {
-            egress_stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats>();
+            egress_stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats>();
         }
-        return egress_stats;
+        return egress_stats_;
     }
 
     if(child_yang_name == "ingress-stats")
     {
-        if(ingress_stats == nullptr)
+        if(ingress_stats_ == nullptr)
         {
-            ingress_stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats>();
+            ingress_stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats>();
         }
-        return ingress_stats;
+        return ingress_stats_;
     }
 
     if(child_yang_name == "path")
     {
-        if(path == nullptr)
+        if(path_ == nullptr)
         {
-            path = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path>();
+            path_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path>();
         }
-        return path;
+        return path_;
     }
 
     return nullptr;
@@ -6642,19 +6642,19 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(egress_stats != nullptr)
+    if(egress_stats_ != nullptr)
     {
-        children["egress-stats"] = egress_stats;
+        children["egress-stats"] = egress_stats_;
     }
 
-    if(ingress_stats != nullptr)
+    if(ingress_stats_ != nullptr)
     {
-        children["ingress-stats"] = ingress_stats;
+        children["ingress-stats"] = ingress_stats_;
     }
 
-    if(path != nullptr)
+    if(path_ != nullptr)
     {
-        children["path"] = path;
+        children["path"] = path_;
     }
 
     return children;
@@ -6682,9 +6682,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::set_val
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::IngressStats()
     :
-    stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats>())
+    stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats>())
 {
-    stats->parent = this;
+    stats_->parent = this;
 
     yang_name = "ingress-stats"; yang_parent_name = "label-switched-path";
 }
@@ -6695,13 +6695,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::has_data() const
 {
-    return (stats !=  nullptr && stats->has_data());
+    return (stats_ !=  nullptr && stats_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::has_operation() const
 {
     return is_set(operation)
-	|| (stats !=  nullptr && stats->has_operation());
+	|| (stats_ !=  nullptr && stats_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::get_segment_path() const
@@ -6738,11 +6738,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stats")
     {
-        if(stats == nullptr)
+        if(stats_ == nullptr)
         {
-            stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats>();
+            stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats>();
         }
-        return stats;
+        return stats_;
     }
 
     return nullptr;
@@ -6751,9 +6751,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stats != nullptr)
+    if(stats_ != nullptr)
     {
-        children["stats"] = stats;
+        children["stats"] = stats_;
     }
 
     return children;
@@ -6861,9 +6861,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Ingress
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::EgressStats()
     :
-    stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats>())
+    stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats>())
 {
-    stats->parent = this;
+    stats_->parent = this;
 
     yang_name = "egress-stats"; yang_parent_name = "label-switched-path";
 }
@@ -6874,13 +6874,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats:
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::has_data() const
 {
-    return (stats !=  nullptr && stats->has_data());
+    return (stats_ !=  nullptr && stats_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::has_operation() const
 {
     return is_set(operation)
-	|| (stats !=  nullptr && stats->has_operation());
+	|| (stats_ !=  nullptr && stats_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::get_segment_path() const
@@ -6917,11 +6917,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stats")
     {
-        if(stats == nullptr)
+        if(stats_ == nullptr)
         {
-            stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats>();
+            stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats>();
         }
-        return stats;
+        return stats_;
     }
 
     return nullptr;
@@ -6930,9 +6930,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stats != nullptr)
+    if(stats_ != nullptr)
     {
-        children["stats"] = stats;
+        children["stats"] = stats_;
     }
 
     return children;
@@ -7042,9 +7042,9 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Path()
     :
     auto_protect{YType::boolean, "auto-protect"}
     	,
-    operations(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations>())
+    operations_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations>())
 {
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "path"; yang_parent_name = "label-switched-path";
 }
@@ -7055,25 +7055,25 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::~Path(
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::has_data() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_data())
+        if(next_hop_[index]->has_data())
             return true;
     }
     return auto_protect.is_set
-	|| (operations !=  nullptr && operations->has_data());
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop.size(); index++)
+    for (std::size_t index=0; index<next_hop_.size(); index++)
     {
-        if(next_hop[index]->has_operation())
+        if(next_hop_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(auto_protect.operation)
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::get_segment_path() const
@@ -7111,7 +7111,7 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "next-hop")
     {
-        for(auto const & c : next_hop)
+        for(auto const & c : next_hop_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7121,17 +7121,17 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
         }
         auto c = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop>();
         c->parent = this;
-        next_hop.push_back(c);
+        next_hop_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -7140,14 +7140,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : next_hop)
+    for (auto const & c : next_hop_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -7166,12 +7166,12 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operat
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "path";
 }
@@ -7184,8 +7184,8 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::O
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::has_operation() const
@@ -7193,8 +7193,8 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::O
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::get_segment_path() const
@@ -7233,20 +7233,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -7255,14 +7255,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -7282,9 +7282,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::O
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -7295,13 +7295,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operat
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::get_segment_path() const
@@ -7338,11 +7338,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -7351,9 +7351,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -7448,9 +7448,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::O
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -7461,13 +7461,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operat
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::get_segment_path() const
@@ -7504,11 +7504,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -7517,9 +7517,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -7619,15 +7619,15 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHo
     protected_by{YType::uint32, "protected-by"},
     type{YType::enumeration, "type"}
     	,
-    next_hop_type(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType>())
-	,nexthop_stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats>())
-	,operations(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations>())
+    next_hop_type_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType>())
+	,nexthop_stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats>())
+	,operations_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations>())
 {
-    next_hop_type->parent = this;
+    next_hop_type_->parent = this;
 
-    nexthop_stats->parent = this;
+    nexthop_stats_->parent = this;
 
-    operations->parent = this;
+    operations_->parent = this;
 
     yang_name = "next-hop"; yang_parent_name = "path";
 }
@@ -7642,9 +7642,9 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 	|| origin.is_set
 	|| protected_by.is_set
 	|| type.is_set
-	|| (next_hop_type !=  nullptr && next_hop_type->has_data())
-	|| (nexthop_stats !=  nullptr && nexthop_stats->has_data())
-	|| (operations !=  nullptr && operations->has_data());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_data())
+	|| (nexthop_stats_ !=  nullptr && nexthop_stats_->has_data())
+	|| (operations_ !=  nullptr && operations_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::has_operation() const
@@ -7654,9 +7654,9 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 	|| is_set(origin.operation)
 	|| is_set(protected_by.operation)
 	|| is_set(type.operation)
-	|| (next_hop_type !=  nullptr && next_hop_type->has_operation())
-	|| (nexthop_stats !=  nullptr && nexthop_stats->has_operation())
-	|| (operations !=  nullptr && operations->has_operation());
+	|| (next_hop_type_ !=  nullptr && next_hop_type_->has_operation())
+	|| (nexthop_stats_ !=  nullptr && nexthop_stats_->has_operation())
+	|| (operations_ !=  nullptr && operations_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::get_segment_path() const
@@ -7697,29 +7697,29 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "next-hop-type")
     {
-        if(next_hop_type == nullptr)
+        if(next_hop_type_ == nullptr)
         {
-            next_hop_type = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType>();
+            next_hop_type_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType>();
         }
-        return next_hop_type;
+        return next_hop_type_;
     }
 
     if(child_yang_name == "nexthop-stats")
     {
-        if(nexthop_stats == nullptr)
+        if(nexthop_stats_ == nullptr)
         {
-            nexthop_stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats>();
+            nexthop_stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats>();
         }
-        return nexthop_stats;
+        return nexthop_stats_;
     }
 
     if(child_yang_name == "operations")
     {
-        if(operations == nullptr)
+        if(operations_ == nullptr)
         {
-            operations = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations>();
+            operations_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations>();
         }
-        return operations;
+        return operations_;
     }
 
     return nullptr;
@@ -7728,19 +7728,19 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(next_hop_type != nullptr)
+    if(next_hop_type_ != nullptr)
     {
-        children["next-hop-type"] = next_hop_type;
+        children["next-hop-type"] = next_hop_type_;
     }
 
-    if(nexthop_stats != nullptr)
+    if(nexthop_stats_ != nullptr)
     {
-        children["nexthop-stats"] = nexthop_stats;
+        children["nexthop-stats"] = nexthop_stats_;
     }
 
-    if(operations != nullptr)
+    if(operations_ != nullptr)
     {
-        children["operations"] = operations;
+        children["operations"] = operations_;
     }
 
     return children;
@@ -7875,12 +7875,12 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHo
     pop_and_forward{YType::empty, "pop-and-forward"},
     preserve{YType::empty, "preserve"}
     	,
-    push(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push>())
-	,swap(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap>())
+    push_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push>())
+	,swap_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap>())
 {
-    push->parent = this;
+    push_->parent = this;
 
-    swap->parent = this;
+    swap_->parent = this;
 
     yang_name = "operations"; yang_parent_name = "next-hop";
 }
@@ -7893,8 +7893,8 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 {
     return pop_and_forward.is_set
 	|| preserve.is_set
-	|| (push !=  nullptr && push->has_data())
-	|| (swap !=  nullptr && swap->has_data());
+	|| (push_ !=  nullptr && push_->has_data())
+	|| (swap_ !=  nullptr && swap_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::has_operation() const
@@ -7902,8 +7902,8 @@ bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
     return is_set(operation)
 	|| is_set(pop_and_forward.operation)
 	|| is_set(preserve.operation)
-	|| (push !=  nullptr && push->has_operation())
-	|| (swap !=  nullptr && swap->has_operation());
+	|| (push_ !=  nullptr && push_->has_operation())
+	|| (swap_ !=  nullptr && swap_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::get_segment_path() const
@@ -7942,20 +7942,20 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "push")
     {
-        if(push == nullptr)
+        if(push_ == nullptr)
         {
-            push = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push>();
+            push_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push>();
         }
-        return push;
+        return push_;
     }
 
     if(child_yang_name == "swap")
     {
-        if(swap == nullptr)
+        if(swap_ == nullptr)
         {
-            swap = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap>();
+            swap_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap>();
         }
-        return swap;
+        return swap_;
     }
 
     return nullptr;
@@ -7964,14 +7964,14 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(push != nullptr)
+    if(push_ != nullptr)
     {
-        children["push"] = push;
+        children["push"] = push_;
     }
 
-    if(swap != nullptr)
+    if(swap_ != nullptr)
     {
-        children["swap"] = swap;
+        children["swap"] = swap_;
     }
 
     return children;
@@ -7991,9 +7991,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Swap()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "swap"; yang_parent_name = "operations";
 }
@@ -8004,13 +8004,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHo
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::get_segment_path() const
@@ -8047,11 +8047,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -8060,9 +8060,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -8157,9 +8157,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Push()
     :
-    stack(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack>())
+    stack_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack>())
 {
-    stack->parent = this;
+    stack_->parent = this;
 
     yang_name = "push"; yang_parent_name = "operations";
 }
@@ -8170,13 +8170,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHo
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::has_data() const
 {
-    return (stack !=  nullptr && stack->has_data());
+    return (stack_ !=  nullptr && stack_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::has_operation() const
 {
     return is_set(operation)
-	|| (stack !=  nullptr && stack->has_operation());
+	|| (stack_ !=  nullptr && stack_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::get_segment_path() const
@@ -8213,11 +8213,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stack")
     {
-        if(stack == nullptr)
+        if(stack_ == nullptr)
         {
-            stack = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack>();
+            stack_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack>();
         }
-        return stack;
+        return stack_;
     }
 
     return nullptr;
@@ -8226,9 +8226,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stack != nullptr)
+    if(stack_ != nullptr)
     {
-        children["stack"] = stack;
+        children["stack"] = stack_;
     }
 
     return children;
@@ -8323,9 +8323,9 @@ void MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::N
 
 MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::NexthopStats()
     :
-    stats(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats>())
+    stats_(std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats>())
 {
-    stats->parent = this;
+    stats_->parent = this;
 
     yang_name = "nexthop-stats"; yang_parent_name = "next-hop";
 }
@@ -8336,13 +8336,13 @@ MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHo
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::has_data() const
 {
-    return (stats !=  nullptr && stats->has_data());
+    return (stats_ !=  nullptr && stats_->has_data());
 }
 
 bool MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::has_operation() const
 {
     return is_set(operation)
-	|| (stats !=  nullptr && stats->has_operation());
+	|| (stats_ !=  nullptr && stats_->has_operation());
 }
 
 std::string MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::get_segment_path() const
@@ -8379,11 +8379,11 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 {
     if(child_yang_name == "stats")
     {
-        if(stats == nullptr)
+        if(stats_ == nullptr)
         {
-            stats = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats>();
+            stats_ = std::make_shared<MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats>();
         }
-        return stats;
+        return stats_;
     }
 
     return nullptr;
@@ -8392,9 +8392,9 @@ std::shared_ptr<Entity> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSw
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stats != nullptr)
+    if(stats_ != nullptr)
     {
-        children["stats"] = stats;
+        children["stats"] = stats_;
     }
 
     return children;

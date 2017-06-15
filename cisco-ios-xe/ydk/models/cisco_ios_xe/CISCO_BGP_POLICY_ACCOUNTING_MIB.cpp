@@ -11,9 +11,9 @@ namespace CISCO_BGP_POLICY_ACCOUNTING_MIB {
 
 CiscoBgpPolicyAccountingMib::CiscoBgpPolicyAccountingMib()
     :
-    cbpaccttable(std::make_shared<CiscoBgpPolicyAccountingMib::Cbpaccttable>())
+    cbpaccttable_(std::make_shared<CiscoBgpPolicyAccountingMib::Cbpaccttable>())
 {
-    cbpaccttable->parent = this;
+    cbpaccttable_->parent = this;
 
     yang_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; yang_parent_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB";
 }
@@ -24,13 +24,13 @@ CiscoBgpPolicyAccountingMib::~CiscoBgpPolicyAccountingMib()
 
 bool CiscoBgpPolicyAccountingMib::has_data() const
 {
-    return (cbpaccttable !=  nullptr && cbpaccttable->has_data());
+    return (cbpaccttable_ !=  nullptr && cbpaccttable_->has_data());
 }
 
 bool CiscoBgpPolicyAccountingMib::has_operation() const
 {
     return is_set(operation)
-	|| (cbpaccttable !=  nullptr && cbpaccttable->has_operation());
+	|| (cbpaccttable_ !=  nullptr && cbpaccttable_->has_operation());
 }
 
 std::string CiscoBgpPolicyAccountingMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoBgpPolicyAccountingMib::get_child_by_name(const std
 {
     if(child_yang_name == "cbpAcctTable")
     {
-        if(cbpaccttable == nullptr)
+        if(cbpaccttable_ == nullptr)
         {
-            cbpaccttable = std::make_shared<CiscoBgpPolicyAccountingMib::Cbpaccttable>();
+            cbpaccttable_ = std::make_shared<CiscoBgpPolicyAccountingMib::Cbpaccttable>();
         }
-        return cbpaccttable;
+        return cbpaccttable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoBgpPolicyAccountingMib::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CiscoBgpPolicyAccountingMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cbpaccttable != nullptr)
+    if(cbpaccttable_ != nullptr)
     {
-        children["cbpAcctTable"] = cbpaccttable;
+        children["cbpAcctTable"] = cbpaccttable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoBgpPolicyAccountingMib::Cbpaccttable::~Cbpaccttable()
 
 bool CiscoBgpPolicyAccountingMib::Cbpaccttable::has_data() const
 {
-    for (std::size_t index=0; index<cbpacctentry.size(); index++)
+    for (std::size_t index=0; index<cbpacctentry_.size(); index++)
     {
-        if(cbpacctentry[index]->has_data())
+        if(cbpacctentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoBgpPolicyAccountingMib::Cbpaccttable::has_data() const
 
 bool CiscoBgpPolicyAccountingMib::Cbpaccttable::has_operation() const
 {
-    for (std::size_t index=0; index<cbpacctentry.size(); index++)
+    for (std::size_t index=0; index<cbpacctentry_.size(); index++)
     {
-        if(cbpacctentry[index]->has_operation())
+        if(cbpacctentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoBgpPolicyAccountingMib::Cbpaccttable::get_child_by_
 {
     if(child_yang_name == "cbpAcctEntry")
     {
-        for(auto const & c : cbpacctentry)
+        for(auto const & c : cbpacctentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoBgpPolicyAccountingMib::Cbpaccttable::get_child_by_
         }
         auto c = std::make_shared<CiscoBgpPolicyAccountingMib::Cbpaccttable::Cbpacctentry>();
         c->parent = this;
-        cbpacctentry.push_back(c);
+        cbpacctentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoBgpPolicyAccountingMib::Cbpaccttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoBgpPolicyAccountingMib::Cbpaccttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cbpacctentry)
+    for (auto const & c : cbpacctentry_)
     {
         children[c->get_segment_path()] = c;
     }

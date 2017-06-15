@@ -35,11 +35,11 @@ class CiscoCdpMib : public Entity
         class Cdpcachetable; //type: CiscoCdpMib::Cdpcachetable
         class Cdpctaddresstable; //type: CiscoCdpMib::Cdpctaddresstable
 
-        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpcachetable> cdpcachetable;
-        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpctaddresstable> cdpctaddresstable;
-        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpglobal> cdpglobal;
-        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfaceexttable> cdpinterfaceexttable;
-        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfacetable> cdpinterfacetable;
+        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpcachetable> cdpcachetable_;
+        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpctaddresstable> cdpctaddresstable_;
+        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpglobal> cdpglobal_;
+        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfaceexttable> cdpinterfaceexttable_;
+        std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfacetable> cdpinterfacetable_;
         
 }; // CiscoCdpMib
 
@@ -86,7 +86,7 @@ class CiscoCdpMib::Cdpinterfacetable : public Entity
 
         class Cdpinterfaceentry; //type: CiscoCdpMib::Cdpinterfacetable::Cdpinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfacetable::Cdpinterfaceentry> > cdpinterfaceentry;
+        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfacetable::Cdpinterfaceentry> > cdpinterfaceentry_;
         
 }; // CiscoCdpMib::Cdpinterfacetable
 
@@ -131,7 +131,7 @@ class CiscoCdpMib::Cdpinterfaceexttable : public Entity
 
         class Cdpinterfaceextentry; //type: CiscoCdpMib::Cdpinterfaceexttable::Cdpinterfaceextentry
 
-        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfaceexttable::Cdpinterfaceextentry> > cdpinterfaceextentry;
+        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpinterfaceexttable::Cdpinterfaceextentry> > cdpinterfaceextentry_;
         
 }; // CiscoCdpMib::Cdpinterfaceexttable
 
@@ -175,7 +175,7 @@ class CiscoCdpMib::Cdpcachetable : public Entity
 
         class Cdpcacheentry; //type: CiscoCdpMib::Cdpcachetable::Cdpcacheentry
 
-        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpcachetable::Cdpcacheentry> > cdpcacheentry;
+        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpcachetable::Cdpcacheentry> > cdpcacheentry_;
         
 }; // CiscoCdpMib::Cdpcachetable
 
@@ -239,7 +239,7 @@ class CiscoCdpMib::Cdpctaddresstable : public Entity
 
         class Cdpctaddressentry; //type: CiscoCdpMib::Cdpctaddresstable::Cdpctaddressentry
 
-        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpctaddresstable::Cdpctaddressentry> > cdpctaddressentry;
+        std::vector<std::shared_ptr<CISCO_CDP_MIB::CiscoCdpMib::Cdpctaddresstable::Cdpctaddressentry> > cdpctaddressentry_;
         
 }; // CiscoCdpMib::Cdpctaddresstable
 

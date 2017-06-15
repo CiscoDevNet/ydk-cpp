@@ -36,12 +36,12 @@ class CiscoIetfPwMplsMib : public Entity
         class Cpwvcmplsnontemappingtable; //type: CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable
         class Cpwvcmplstemappingtable; //type: CiscoIetfPwMplsMib::Cpwvcmplstemappingtable
 
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsinboundtable> cpwvcmplsinboundtable;
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable> cpwvcmplsnontemappingtable;
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsobjects> cpwvcmplsobjects;
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable> cpwvcmplsoutboundtable;
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstable> cpwvcmplstable;
-        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstemappingtable> cpwvcmplstemappingtable;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsinboundtable> cpwvcmplsinboundtable_;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable> cpwvcmplsnontemappingtable_;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsobjects> cpwvcmplsobjects_;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable> cpwvcmplsoutboundtable_;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstable> cpwvcmplstable_;
+        std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstemappingtable> cpwvcmplstemappingtable_;
         
 }; // CiscoIetfPwMplsMib
 
@@ -82,7 +82,7 @@ class CiscoIetfPwMplsMib::Cpwvcmplstable : public Entity
 
         class Cpwvcmplsentry; //type: CiscoIetfPwMplsMib::Cpwvcmplstable::Cpwvcmplsentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstable::Cpwvcmplsentry> > cpwvcmplsentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstable::Cpwvcmplsentry> > cpwvcmplsentry_;
         
 }; // CiscoIetfPwMplsMib::Cpwvcmplstable
 
@@ -132,7 +132,7 @@ class CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable : public Entity
 
         class Cpwvcmplsoutboundentry; //type: CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable::Cpwvcmplsoutboundentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable::Cpwvcmplsoutboundentry> > cpwvcmplsoutboundentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable::Cpwvcmplsoutboundentry> > cpwvcmplsoutboundentry_;
         
 }; // CiscoIetfPwMplsMib::Cpwvcmplsoutboundtable
 
@@ -182,7 +182,7 @@ class CiscoIetfPwMplsMib::Cpwvcmplsinboundtable : public Entity
 
         class Cpwvcmplsinboundentry; //type: CiscoIetfPwMplsMib::Cpwvcmplsinboundtable::Cpwvcmplsinboundentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsinboundtable::Cpwvcmplsinboundentry> > cpwvcmplsinboundentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsinboundtable::Cpwvcmplsinboundentry> > cpwvcmplsinboundentry_;
         
 }; // CiscoIetfPwMplsMib::Cpwvcmplsinboundtable
 
@@ -232,7 +232,7 @@ class CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable : public Entity
 
         class Cpwvcmplsnontemappingentry; //type: CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable::Cpwvcmplsnontemappingentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable::Cpwvcmplsnontemappingentry> > cpwvcmplsnontemappingentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable::Cpwvcmplsnontemappingentry> > cpwvcmplsnontemappingentry_;
         
 }; // CiscoIetfPwMplsMib::Cpwvcmplsnontemappingtable
 
@@ -276,7 +276,7 @@ class CiscoIetfPwMplsMib::Cpwvcmplstemappingtable : public Entity
 
         class Cpwvcmplstemappingentry; //type: CiscoIetfPwMplsMib::Cpwvcmplstemappingtable::Cpwvcmplstemappingentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstemappingtable::Cpwvcmplstemappingentry> > cpwvcmplstemappingentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_MPLS_MIB::CiscoIetfPwMplsMib::Cpwvcmplstemappingtable::Cpwvcmplstemappingentry> > cpwvcmplstemappingentry_;
         
 }; // CiscoIetfPwMplsMib::Cpwvcmplstemappingtable
 

@@ -11,12 +11,12 @@ namespace Cisco_IOS_XE_platform_software_oper {
 
 CiscoPlatformSoftware::CiscoPlatformSoftware()
     :
-    platform_software_interface_rp_active_brief_forwarding(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>())
-	,platform_software_status_control_processes(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>())
+    platform_software_interface_rp_active_brief_forwarding_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>())
+	,platform_software_status_control_processes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>())
 {
-    platform_software_interface_rp_active_brief_forwarding->parent = this;
+    platform_software_interface_rp_active_brief_forwarding_->parent = this;
 
-    platform_software_status_control_processes->parent = this;
+    platform_software_status_control_processes_->parent = this;
 
     yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper";
 }
@@ -27,15 +27,15 @@ CiscoPlatformSoftware::~CiscoPlatformSoftware()
 
 bool CiscoPlatformSoftware::has_data() const
 {
-    return (platform_software_interface_rp_active_brief_forwarding !=  nullptr && platform_software_interface_rp_active_brief_forwarding->has_data())
-	|| (platform_software_status_control_processes !=  nullptr && platform_software_status_control_processes->has_data());
+    return (platform_software_interface_rp_active_brief_forwarding_ !=  nullptr && platform_software_interface_rp_active_brief_forwarding_->has_data())
+	|| (platform_software_status_control_processes_ !=  nullptr && platform_software_status_control_processes_->has_data());
 }
 
 bool CiscoPlatformSoftware::has_operation() const
 {
     return is_set(operation)
-	|| (platform_software_interface_rp_active_brief_forwarding !=  nullptr && platform_software_interface_rp_active_brief_forwarding->has_operation())
-	|| (platform_software_status_control_processes !=  nullptr && platform_software_status_control_processes->has_operation());
+	|| (platform_software_interface_rp_active_brief_forwarding_ !=  nullptr && platform_software_interface_rp_active_brief_forwarding_->has_operation())
+	|| (platform_software_status_control_processes_ !=  nullptr && platform_software_status_control_processes_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
 {
     if(child_yang_name == "platform-software-interface-rp-active-brief-forwarding")
     {
-        if(platform_software_interface_rp_active_brief_forwarding == nullptr)
+        if(platform_software_interface_rp_active_brief_forwarding_ == nullptr)
         {
-            platform_software_interface_rp_active_brief_forwarding = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>();
+            platform_software_interface_rp_active_brief_forwarding_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>();
         }
-        return platform_software_interface_rp_active_brief_forwarding;
+        return platform_software_interface_rp_active_brief_forwarding_;
     }
 
     if(child_yang_name == "platform-software-status-control-processes")
     {
-        if(platform_software_status_control_processes == nullptr)
+        if(platform_software_status_control_processes_ == nullptr)
         {
-            platform_software_status_control_processes = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>();
+            platform_software_status_control_processes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>();
         }
-        return platform_software_status_control_processes;
+        return platform_software_status_control_processes_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(platform_software_interface_rp_active_brief_forwarding != nullptr)
+    if(platform_software_interface_rp_active_brief_forwarding_ != nullptr)
     {
-        children["platform-software-interface-rp-active-brief-forwarding"] = platform_software_interface_rp_active_brief_forwarding;
+        children["platform-software-interface-rp-active-brief-forwarding"] = platform_software_interface_rp_active_brief_forwarding_;
     }
 
-    if(platform_software_status_control_processes != nullptr)
+    if(platform_software_status_control_processes_ != nullptr)
     {
-        children["platform-software-status-control-processes"] = platform_software_status_control_processes;
+        children["platform-software-status-control-processes"] = platform_software_status_control_processes_;
     }
 
     return children;
@@ -130,9 +130,9 @@ augment_capabilities_function CiscoPlatformSoftware::get_augment_capabilities_fu
 
 CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::PlatformSoftwareStatusControlProcesses()
     :
-    control_processes(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>())
+    control_processes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>())
 {
-    control_processes->parent = this;
+    control_processes_->parent = this;
 
     yang_name = "platform-software-status-control-processes"; yang_parent_name = "cisco-platform-software";
 }
@@ -143,13 +143,13 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::~PlatformSoftware
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::has_data() const
 {
-    return (control_processes !=  nullptr && control_processes->has_data());
+    return (control_processes_ !=  nullptr && control_processes_->has_data());
 }
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::has_operation() const
 {
     return is_set(operation)
-	|| (control_processes !=  nullptr && control_processes->has_operation());
+	|| (control_processes_ !=  nullptr && control_processes_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_segment_path() const
@@ -186,11 +186,11 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "control-processes")
     {
-        if(control_processes == nullptr)
+        if(control_processes_ == nullptr)
         {
-            control_processes = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>();
+            control_processes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>();
         }
-        return control_processes;
+        return control_processes_;
     }
 
     return nullptr;
@@ -199,9 +199,9 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(control_processes != nullptr)
+    if(control_processes_ != nullptr)
     {
-        children["control-processes"] = control_processes;
+        children["control-processes"] = control_processes_;
     }
 
     return children;
@@ -222,9 +222,9 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::has_data() const
 {
-    for (std::size_t index=0; index<control_process.size(); index++)
+    for (std::size_t index=0; index<control_process_.size(); index++)
     {
-        if(control_process[index]->has_data())
+        if(control_process_[index]->has_data())
             return true;
     }
     return false;
@@ -232,9 +232,9 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<control_process.size(); index++)
+    for (std::size_t index=0; index<control_process_.size(); index++)
     {
-        if(control_process[index]->has_operation())
+        if(control_process_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -274,7 +274,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "control-process")
     {
-        for(auto const & c : control_process)
+        for(auto const & c : control_process_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -284,7 +284,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
         }
         auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess>();
         c->parent = this;
-        control_process.push_back(c);
+        control_process_.push_back(c);
         return c;
     }
 
@@ -294,7 +294,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : control_process)
+    for (auto const & c : control_process_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -312,18 +312,18 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     status{YType::str, "status"},
     updated{YType::uint64, "updated"}
     	,
-    load_average_stats(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>())
-	,load_avg_minutes(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>())
-	,memory_stats(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>())
-	,per_core_stats(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>())
+    load_average_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>())
+	,load_avg_minutes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>())
+	,memory_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>())
+	,per_core_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>())
 {
-    load_average_stats->parent = this;
+    load_average_stats_->parent = this;
 
-    load_avg_minutes->parent = this;
+    load_avg_minutes_->parent = this;
 
-    memory_stats->parent = this;
+    memory_stats_->parent = this;
 
-    per_core_stats->parent = this;
+    per_core_stats_->parent = this;
 
     yang_name = "control-process"; yang_parent_name = "control-processes";
 }
@@ -337,10 +337,10 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
     return name.is_set
 	|| status.is_set
 	|| updated.is_set
-	|| (load_average_stats !=  nullptr && load_average_stats->has_data())
-	|| (load_avg_minutes !=  nullptr && load_avg_minutes->has_data())
-	|| (memory_stats !=  nullptr && memory_stats->has_data())
-	|| (per_core_stats !=  nullptr && per_core_stats->has_data());
+	|| (load_average_stats_ !=  nullptr && load_average_stats_->has_data())
+	|| (load_avg_minutes_ !=  nullptr && load_avg_minutes_->has_data())
+	|| (memory_stats_ !=  nullptr && memory_stats_->has_data())
+	|| (per_core_stats_ !=  nullptr && per_core_stats_->has_data());
 }
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::has_operation() const
@@ -349,10 +349,10 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 	|| is_set(name.operation)
 	|| is_set(status.operation)
 	|| is_set(updated.operation)
-	|| (load_average_stats !=  nullptr && load_average_stats->has_operation())
-	|| (load_avg_minutes !=  nullptr && load_avg_minutes->has_operation())
-	|| (memory_stats !=  nullptr && memory_stats->has_operation())
-	|| (per_core_stats !=  nullptr && per_core_stats->has_operation());
+	|| (load_average_stats_ !=  nullptr && load_average_stats_->has_operation())
+	|| (load_avg_minutes_ !=  nullptr && load_avg_minutes_->has_operation())
+	|| (memory_stats_ !=  nullptr && memory_stats_->has_operation())
+	|| (per_core_stats_ !=  nullptr && per_core_stats_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_segment_path() const
@@ -392,38 +392,38 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "load-average-stats")
     {
-        if(load_average_stats == nullptr)
+        if(load_average_stats_ == nullptr)
         {
-            load_average_stats = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>();
+            load_average_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>();
         }
-        return load_average_stats;
+        return load_average_stats_;
     }
 
     if(child_yang_name == "load-avg-minutes")
     {
-        if(load_avg_minutes == nullptr)
+        if(load_avg_minutes_ == nullptr)
         {
-            load_avg_minutes = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>();
+            load_avg_minutes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>();
         }
-        return load_avg_minutes;
+        return load_avg_minutes_;
     }
 
     if(child_yang_name == "memory-stats")
     {
-        if(memory_stats == nullptr)
+        if(memory_stats_ == nullptr)
         {
-            memory_stats = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>();
+            memory_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>();
         }
-        return memory_stats;
+        return memory_stats_;
     }
 
     if(child_yang_name == "per-core-stats")
     {
-        if(per_core_stats == nullptr)
+        if(per_core_stats_ == nullptr)
         {
-            per_core_stats = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>();
+            per_core_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>();
         }
-        return per_core_stats;
+        return per_core_stats_;
     }
 
     return nullptr;
@@ -432,24 +432,24 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(load_average_stats != nullptr)
+    if(load_average_stats_ != nullptr)
     {
-        children["load-average-stats"] = load_average_stats;
+        children["load-average-stats"] = load_average_stats_;
     }
 
-    if(load_avg_minutes != nullptr)
+    if(load_avg_minutes_ != nullptr)
     {
-        children["load-avg-minutes"] = load_avg_minutes;
+        children["load-avg-minutes"] = load_avg_minutes_;
     }
 
-    if(memory_stats != nullptr)
+    if(memory_stats_ != nullptr)
     {
-        children["memory-stats"] = memory_stats;
+        children["memory-stats"] = memory_stats_;
     }
 
-    if(per_core_stats != nullptr)
+    if(per_core_stats_ != nullptr)
     {
-        children["per-core-stats"] = per_core_stats;
+        children["per-core-stats"] = per_core_stats_;
     }
 
     return children;
@@ -554,9 +554,9 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::has_data() const
 {
-    for (std::size_t index=0; index<load_avg_minute.size(); index++)
+    for (std::size_t index=0; index<load_avg_minute_.size(); index++)
     {
-        if(load_avg_minute[index]->has_data())
+        if(load_avg_minute_[index]->has_data())
             return true;
     }
     return false;
@@ -564,9 +564,9 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::has_operation() const
 {
-    for (std::size_t index=0; index<load_avg_minute.size(); index++)
+    for (std::size_t index=0; index<load_avg_minute_.size(); index++)
     {
-        if(load_avg_minute[index]->has_operation())
+        if(load_avg_minute_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -606,7 +606,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "load-avg-minute")
     {
-        for(auto const & c : load_avg_minute)
+        for(auto const & c : load_avg_minute_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -616,7 +616,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
         }
         auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
         c->parent = this;
-        load_avg_minute.push_back(c);
+        load_avg_minute_.push_back(c);
         return c;
     }
 
@@ -626,7 +626,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : load_avg_minute)
+    for (auto const & c : load_avg_minute_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -643,9 +643,9 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     number{YType::uint64, "number"},
     average{YType::str, "average"}
     	,
-    status(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>())
+    status_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>())
 {
-    status->parent = this;
+    status_->parent = this;
 
     yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes";
 }
@@ -658,7 +658,7 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 {
     return number.is_set
 	|| average.is_set
-	|| (status !=  nullptr && status->has_data());
+	|| (status_ !=  nullptr && status_->has_data());
 }
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_operation() const
@@ -666,7 +666,7 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
     return is_set(operation)
 	|| is_set(number.operation)
 	|| is_set(average.operation)
-	|| (status !=  nullptr && status->has_operation());
+	|| (status_ !=  nullptr && status_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_segment_path() const
@@ -705,11 +705,11 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "status")
     {
-        if(status == nullptr)
+        if(status_ == nullptr)
         {
-            status = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>();
+            status_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>();
         }
-        return status;
+        return status_;
     }
 
     return nullptr;
@@ -718,9 +718,9 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(status != nullptr)
+    if(status_ != nullptr)
     {
-        children["status"] = status;
+        children["status"] = status_;
     }
 
     return children;
@@ -839,9 +839,9 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     used_number{YType::uint64, "used-number"},
     used_percent{YType::uint64, "used-percent"}
     	,
-    status(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>())
+    status_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>())
 {
-    status->parent = this;
+    status_->parent = this;
 
     yang_name = "memory-stats"; yang_parent_name = "control-process";
 }
@@ -862,7 +862,7 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 	|| total.is_set
 	|| used_number.is_set
 	|| used_percent.is_set
-	|| (status !=  nullptr && status->has_data());
+	|| (status_ !=  nullptr && status_->has_data());
 }
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::has_operation() const
@@ -878,7 +878,7 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 	|| is_set(total.operation)
 	|| is_set(used_number.operation)
 	|| is_set(used_percent.operation)
-	|| (status !=  nullptr && status->has_operation());
+	|| (status_ !=  nullptr && status_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_segment_path() const
@@ -925,11 +925,11 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "status")
     {
-        if(status == nullptr)
+        if(status_ == nullptr)
         {
-            status = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>();
+            status_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>();
         }
-        return status;
+        return status_;
     }
 
     return nullptr;
@@ -938,9 +938,9 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(status != nullptr)
+    if(status_ != nullptr)
     {
-        children["status"] = status;
+        children["status"] = status_;
     }
 
     return children;
@@ -1089,9 +1089,9 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::has_data() const
 {
-    for (std::size_t index=0; index<per_core_stat.size(); index++)
+    for (std::size_t index=0; index<per_core_stat_.size(); index++)
     {
-        if(per_core_stat[index]->has_data())
+        if(per_core_stat_[index]->has_data())
             return true;
     }
     return false;
@@ -1099,9 +1099,9 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 
 bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::has_operation() const
 {
-    for (std::size_t index=0; index<per_core_stat.size(); index++)
+    for (std::size_t index=0; index<per_core_stat_.size(); index++)
     {
-        if(per_core_stat[index]->has_operation())
+        if(per_core_stat_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1141,7 +1141,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 {
     if(child_yang_name == "per-core-stat")
     {
-        for(auto const & c : per_core_stat)
+        for(auto const & c : per_core_stat_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1151,7 +1151,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
         }
         auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
         c->parent = this;
-        per_core_stat.push_back(c);
+        per_core_stat_.push_back(c);
         return c;
     }
 
@@ -1161,7 +1161,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : per_core_stat)
+    for (auto const & c : per_core_stat_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1303,9 +1303,9 @@ void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 
 CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::PlatformSoftwareInterfaceRpActiveBriefForwarding()
     :
-    xos_interfaces(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>())
+    xos_interfaces_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>())
 {
-    xos_interfaces->parent = this;
+    xos_interfaces_->parent = this;
 
     yang_name = "platform-software-interface-rp-active-brief-forwarding"; yang_parent_name = "cisco-platform-software";
 }
@@ -1316,13 +1316,13 @@ CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::~Platfo
 
 bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::has_data() const
 {
-    return (xos_interfaces !=  nullptr && xos_interfaces->has_data());
+    return (xos_interfaces_ !=  nullptr && xos_interfaces_->has_data());
 }
 
 bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::has_operation() const
 {
     return is_set(operation)
-	|| (xos_interfaces !=  nullptr && xos_interfaces->has_operation());
+	|| (xos_interfaces_ !=  nullptr && xos_interfaces_->has_operation());
 }
 
 std::string CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_segment_path() const
@@ -1359,11 +1359,11 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActive
 {
     if(child_yang_name == "xos-interfaces")
     {
-        if(xos_interfaces == nullptr)
+        if(xos_interfaces_ == nullptr)
         {
-            xos_interfaces = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>();
+            xos_interfaces_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>();
         }
-        return xos_interfaces;
+        return xos_interfaces_;
     }
 
     return nullptr;
@@ -1372,9 +1372,9 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActive
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(xos_interfaces != nullptr)
+    if(xos_interfaces_ != nullptr)
     {
-        children["xos-interfaces"] = xos_interfaces;
+        children["xos-interfaces"] = xos_interfaces_;
     }
 
     return children;
@@ -1395,9 +1395,9 @@ CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInte
 
 bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<xos_interface.size(); index++)
+    for (std::size_t index=0; index<xos_interface_.size(); index++)
     {
-        if(xos_interface[index]->has_data())
+        if(xos_interface_[index]->has_data())
             return true;
     }
     return false;
@@ -1405,9 +1405,9 @@ bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::Xo
 
 bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<xos_interface.size(); index++)
+    for (std::size_t index=0; index<xos_interface_.size(); index++)
     {
-        if(xos_interface[index]->has_operation())
+        if(xos_interface_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1447,7 +1447,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActive
 {
     if(child_yang_name == "xos-interface")
     {
-        for(auto const & c : xos_interface)
+        for(auto const & c : xos_interface_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1457,7 +1457,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActive
         }
         auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface>();
         c->parent = this;
-        xos_interface.push_back(c);
+        xos_interface_.push_back(c);
         return c;
     }
 
@@ -1467,7 +1467,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActive
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : xos_interface)
+    for (auto const & c : xos_interface_)
     {
         children[c->get_segment_path()] = c;
     }

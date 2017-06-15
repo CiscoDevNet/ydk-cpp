@@ -11,9 +11,9 @@ namespace Cisco_IOS_XE_process_cpu_oper {
 
 CpuUsage::CpuUsage()
     :
-    cpu_utilization(std::make_shared<CpuUsage::CpuUtilization>())
+    cpu_utilization_(std::make_shared<CpuUsage::CpuUtilization>())
 {
-    cpu_utilization->parent = this;
+    cpu_utilization_->parent = this;
 
     yang_name = "cpu-usage"; yang_parent_name = "Cisco-IOS-XE-process-cpu-oper";
 }
@@ -24,13 +24,13 @@ CpuUsage::~CpuUsage()
 
 bool CpuUsage::has_data() const
 {
-    return (cpu_utilization !=  nullptr && cpu_utilization->has_data());
+    return (cpu_utilization_ !=  nullptr && cpu_utilization_->has_data());
 }
 
 bool CpuUsage::has_operation() const
 {
     return is_set(operation)
-	|| (cpu_utilization !=  nullptr && cpu_utilization->has_operation());
+	|| (cpu_utilization_ !=  nullptr && cpu_utilization_->has_operation());
 }
 
 std::string CpuUsage::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CpuUsage::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "cpu-utilization")
     {
-        if(cpu_utilization == nullptr)
+        if(cpu_utilization_ == nullptr)
         {
-            cpu_utilization = std::make_shared<CpuUsage::CpuUtilization>();
+            cpu_utilization_ = std::make_shared<CpuUsage::CpuUtilization>();
         }
-        return cpu_utilization;
+        return cpu_utilization_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CpuUsage::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> CpuUsage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpu_utilization != nullptr)
+    if(cpu_utilization_ != nullptr)
     {
-        children["cpu-utilization"] = cpu_utilization;
+        children["cpu-utilization"] = cpu_utilization_;
     }
 
     return children;
@@ -116,9 +116,9 @@ CpuUsage::CpuUtilization::CpuUtilization()
     five_seconds_intr{YType::uint8, "five-seconds-intr"},
     one_minute{YType::uint8, "one-minute"}
     	,
-    cpu_usage_processes(std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses>())
+    cpu_usage_processes_(std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses>())
 {
-    cpu_usage_processes->parent = this;
+    cpu_usage_processes_->parent = this;
 
     yang_name = "cpu-utilization"; yang_parent_name = "cpu-usage";
 }
@@ -133,7 +133,7 @@ bool CpuUsage::CpuUtilization::has_data() const
 	|| five_seconds.is_set
 	|| five_seconds_intr.is_set
 	|| one_minute.is_set
-	|| (cpu_usage_processes !=  nullptr && cpu_usage_processes->has_data());
+	|| (cpu_usage_processes_ !=  nullptr && cpu_usage_processes_->has_data());
 }
 
 bool CpuUsage::CpuUtilization::has_operation() const
@@ -143,7 +143,7 @@ bool CpuUsage::CpuUtilization::has_operation() const
 	|| is_set(five_seconds.operation)
 	|| is_set(five_seconds_intr.operation)
 	|| is_set(one_minute.operation)
-	|| (cpu_usage_processes !=  nullptr && cpu_usage_processes->has_operation());
+	|| (cpu_usage_processes_ !=  nullptr && cpu_usage_processes_->has_operation());
 }
 
 std::string CpuUsage::CpuUtilization::get_segment_path() const
@@ -184,11 +184,11 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::get_child_by_name(const std::s
 {
     if(child_yang_name == "cpu-usage-processes")
     {
-        if(cpu_usage_processes == nullptr)
+        if(cpu_usage_processes_ == nullptr)
         {
-            cpu_usage_processes = std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses>();
+            cpu_usage_processes_ = std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses>();
         }
-        return cpu_usage_processes;
+        return cpu_usage_processes_;
     }
 
     return nullptr;
@@ -197,9 +197,9 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CpuUsage::CpuUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpu_usage_processes != nullptr)
+    if(cpu_usage_processes_ != nullptr)
     {
-        children["cpu-usage-processes"] = cpu_usage_processes;
+        children["cpu-usage-processes"] = cpu_usage_processes_;
     }
 
     return children;
@@ -236,9 +236,9 @@ CpuUsage::CpuUtilization::CpuUsageProcesses::~CpuUsageProcesses()
 
 bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_data() const
 {
-    for (std::size_t index=0; index<cpu_usage_process.size(); index++)
+    for (std::size_t index=0; index<cpu_usage_process_.size(); index++)
     {
-        if(cpu_usage_process[index]->has_data())
+        if(cpu_usage_process_[index]->has_data())
             return true;
     }
     return false;
@@ -246,9 +246,9 @@ bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_data() const
 
 bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<cpu_usage_process.size(); index++)
+    for (std::size_t index=0; index<cpu_usage_process_.size(); index++)
     {
-        if(cpu_usage_process[index]->has_operation())
+        if(cpu_usage_process_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -288,7 +288,7 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::CpuUsageProcesses::get_child_b
 {
     if(child_yang_name == "cpu-usage-process")
     {
-        for(auto const & c : cpu_usage_process)
+        for(auto const & c : cpu_usage_process_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -298,7 +298,7 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::CpuUsageProcesses::get_child_b
         }
         auto c = std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess>();
         c->parent = this;
-        cpu_usage_process.push_back(c);
+        cpu_usage_process_.push_back(c);
         return c;
     }
 
@@ -308,7 +308,7 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::CpuUsageProcesses::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CpuUsage::CpuUtilization::CpuUsageProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpu_usage_process)
+    for (auto const & c : cpu_usage_process_)
     {
         children[c->get_segment_path()] = c;
     }

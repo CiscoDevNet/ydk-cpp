@@ -45,22 +45,22 @@ class SonetMib : public Entity
         class Sonetfarendvtcurrenttable; //type: SonetMib::Sonetfarendvtcurrenttable
         class Sonetfarendvtintervaltable; //type: SonetMib::Sonetfarendvtintervaltable
 
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable> sonetfarendlinecurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable> sonetfarendlineintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable> sonetfarendpathcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable> sonetfarendpathintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable> sonetfarendvtcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable> sonetfarendvtintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable> sonetlinecurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable> sonetlineintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetmedium> sonetmedium;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable> sonetmediumtable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable> sonetpathcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable> sonetpathintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable> sonetsectioncurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable> sonetsectionintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable> sonetvtcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable> sonetvtintervaltable;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable> sonetfarendlinecurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable> sonetfarendlineintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable> sonetfarendpathcurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable> sonetfarendpathintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable> sonetfarendvtcurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable> sonetfarendvtintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable> sonetlinecurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable> sonetlineintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetmedium> sonetmedium_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable> sonetmediumtable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable> sonetpathcurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable> sonetpathintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable> sonetsectioncurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable> sonetsectionintervaltable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable> sonetvtcurrenttable_;
+        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable> sonetvtintervaltable_;
         
 }; // SonetMib
 
@@ -101,7 +101,7 @@ class SonetMib::Sonetmediumtable : public Entity
 
         class Sonetmediumentry; //type: SonetMib::Sonetmediumtable::Sonetmediumentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable::Sonetmediumentry> > sonetmediumentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable::Sonetmediumentry> > sonetmediumentry_;
         
 }; // SonetMib::Sonetmediumtable
 
@@ -153,7 +153,7 @@ class SonetMib::Sonetsectioncurrenttable : public Entity
 
         class Sonetsectioncurrententry; //type: SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry> > sonetsectioncurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry> > sonetsectioncurrententry_;
         
 }; // SonetMib::Sonetsectioncurrenttable
 
@@ -199,7 +199,7 @@ class SonetMib::Sonetsectionintervaltable : public Entity
 
         class Sonetsectionintervalentry; //type: SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry> > sonetsectionintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry> > sonetsectionintervalentry_;
         
 }; // SonetMib::Sonetsectionintervaltable
 
@@ -246,7 +246,7 @@ class SonetMib::Sonetlinecurrenttable : public Entity
 
         class Sonetlinecurrententry; //type: SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry> > sonetlinecurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry> > sonetlinecurrententry_;
         
 }; // SonetMib::Sonetlinecurrenttable
 
@@ -292,7 +292,7 @@ class SonetMib::Sonetlineintervaltable : public Entity
 
         class Sonetlineintervalentry; //type: SonetMib::Sonetlineintervaltable::Sonetlineintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable::Sonetlineintervalentry> > sonetlineintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable::Sonetlineintervalentry> > sonetlineintervalentry_;
         
 }; // SonetMib::Sonetlineintervaltable
 
@@ -339,7 +339,7 @@ class SonetMib::Sonetfarendlinecurrenttable : public Entity
 
         class Sonetfarendlinecurrententry; //type: SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry> > sonetfarendlinecurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry> > sonetfarendlinecurrententry_;
         
 }; // SonetMib::Sonetfarendlinecurrenttable
 
@@ -384,7 +384,7 @@ class SonetMib::Sonetfarendlineintervaltable : public Entity
 
         class Sonetfarendlineintervalentry; //type: SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry> > sonetfarendlineintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry> > sonetfarendlineintervalentry_;
         
 }; // SonetMib::Sonetfarendlineintervaltable
 
@@ -431,7 +431,7 @@ class SonetMib::Sonetpathcurrenttable : public Entity
 
         class Sonetpathcurrententry; //type: SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry> > sonetpathcurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry> > sonetpathcurrententry_;
         
 }; // SonetMib::Sonetpathcurrenttable
 
@@ -487,7 +487,7 @@ class SonetMib::Sonetpathintervaltable : public Entity
 
         class Sonetpathintervalentry; //type: SonetMib::Sonetpathintervaltable::Sonetpathintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable::Sonetpathintervalentry> > sonetpathintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable::Sonetpathintervalentry> > sonetpathintervalentry_;
         
 }; // SonetMib::Sonetpathintervaltable
 
@@ -534,7 +534,7 @@ class SonetMib::Sonetfarendpathcurrenttable : public Entity
 
         class Sonetfarendpathcurrententry; //type: SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry> > sonetfarendpathcurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry> > sonetfarendpathcurrententry_;
         
 }; // SonetMib::Sonetfarendpathcurrenttable
 
@@ -579,7 +579,7 @@ class SonetMib::Sonetfarendpathintervaltable : public Entity
 
         class Sonetfarendpathintervalentry; //type: SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry> > sonetfarendpathintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry> > sonetfarendpathintervalentry_;
         
 }; // SonetMib::Sonetfarendpathintervaltable
 
@@ -626,7 +626,7 @@ class SonetMib::Sonetvtcurrenttable : public Entity
 
         class Sonetvtcurrententry; //type: SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry> > sonetvtcurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry> > sonetvtcurrententry_;
         
 }; // SonetMib::Sonetvtcurrenttable
 
@@ -674,7 +674,7 @@ class SonetMib::Sonetvtintervaltable : public Entity
 
         class Sonetvtintervalentry; //type: SonetMib::Sonetvtintervaltable::Sonetvtintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable::Sonetvtintervalentry> > sonetvtintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable::Sonetvtintervalentry> > sonetvtintervalentry_;
         
 }; // SonetMib::Sonetvtintervaltable
 
@@ -721,7 +721,7 @@ class SonetMib::Sonetfarendvtcurrenttable : public Entity
 
         class Sonetfarendvtcurrententry; //type: SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry> > sonetfarendvtcurrententry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry> > sonetfarendvtcurrententry_;
         
 }; // SonetMib::Sonetfarendvtcurrenttable
 
@@ -766,7 +766,7 @@ class SonetMib::Sonetfarendvtintervaltable : public Entity
 
         class Sonetfarendvtintervalentry; //type: SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry> > sonetfarendvtintervalentry;
+        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry> > sonetfarendvtintervalentry_;
         
 }; // SonetMib::Sonetfarendvtintervaltable
 

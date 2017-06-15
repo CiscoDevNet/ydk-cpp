@@ -11,15 +11,15 @@ namespace CISCO_ENTITY_SENSOR_MIB {
 
 CiscoEntitySensorMib::CiscoEntitySensorMib()
     :
-    entsensorglobalobjects(std::make_shared<CiscoEntitySensorMib::Entsensorglobalobjects>())
-	,entsensorthresholdtable(std::make_shared<CiscoEntitySensorMib::Entsensorthresholdtable>())
-	,entsensorvaluetable(std::make_shared<CiscoEntitySensorMib::Entsensorvaluetable>())
+    entsensorglobalobjects_(std::make_shared<CiscoEntitySensorMib::Entsensorglobalobjects>())
+	,entsensorthresholdtable_(std::make_shared<CiscoEntitySensorMib::Entsensorthresholdtable>())
+	,entsensorvaluetable_(std::make_shared<CiscoEntitySensorMib::Entsensorvaluetable>())
 {
-    entsensorglobalobjects->parent = this;
+    entsensorglobalobjects_->parent = this;
 
-    entsensorthresholdtable->parent = this;
+    entsensorthresholdtable_->parent = this;
 
-    entsensorvaluetable->parent = this;
+    entsensorvaluetable_->parent = this;
 
     yang_name = "CISCO-ENTITY-SENSOR-MIB"; yang_parent_name = "CISCO-ENTITY-SENSOR-MIB";
 }
@@ -30,17 +30,17 @@ CiscoEntitySensorMib::~CiscoEntitySensorMib()
 
 bool CiscoEntitySensorMib::has_data() const
 {
-    return (entsensorglobalobjects !=  nullptr && entsensorglobalobjects->has_data())
-	|| (entsensorthresholdtable !=  nullptr && entsensorthresholdtable->has_data())
-	|| (entsensorvaluetable !=  nullptr && entsensorvaluetable->has_data());
+    return (entsensorglobalobjects_ !=  nullptr && entsensorglobalobjects_->has_data())
+	|| (entsensorthresholdtable_ !=  nullptr && entsensorthresholdtable_->has_data())
+	|| (entsensorvaluetable_ !=  nullptr && entsensorvaluetable_->has_data());
 }
 
 bool CiscoEntitySensorMib::has_operation() const
 {
     return is_set(operation)
-	|| (entsensorglobalobjects !=  nullptr && entsensorglobalobjects->has_operation())
-	|| (entsensorthresholdtable !=  nullptr && entsensorthresholdtable->has_operation())
-	|| (entsensorvaluetable !=  nullptr && entsensorvaluetable->has_operation());
+	|| (entsensorglobalobjects_ !=  nullptr && entsensorglobalobjects_->has_operation())
+	|| (entsensorthresholdtable_ !=  nullptr && entsensorthresholdtable_->has_operation())
+	|| (entsensorvaluetable_ !=  nullptr && entsensorvaluetable_->has_operation());
 }
 
 std::string CiscoEntitySensorMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::get_child_by_name(const std::strin
 {
     if(child_yang_name == "entSensorGlobalObjects")
     {
-        if(entsensorglobalobjects == nullptr)
+        if(entsensorglobalobjects_ == nullptr)
         {
-            entsensorglobalobjects = std::make_shared<CiscoEntitySensorMib::Entsensorglobalobjects>();
+            entsensorglobalobjects_ = std::make_shared<CiscoEntitySensorMib::Entsensorglobalobjects>();
         }
-        return entsensorglobalobjects;
+        return entsensorglobalobjects_;
     }
 
     if(child_yang_name == "entSensorThresholdTable")
     {
-        if(entsensorthresholdtable == nullptr)
+        if(entsensorthresholdtable_ == nullptr)
         {
-            entsensorthresholdtable = std::make_shared<CiscoEntitySensorMib::Entsensorthresholdtable>();
+            entsensorthresholdtable_ = std::make_shared<CiscoEntitySensorMib::Entsensorthresholdtable>();
         }
-        return entsensorthresholdtable;
+        return entsensorthresholdtable_;
     }
 
     if(child_yang_name == "entSensorValueTable")
     {
-        if(entsensorvaluetable == nullptr)
+        if(entsensorvaluetable_ == nullptr)
         {
-            entsensorvaluetable = std::make_shared<CiscoEntitySensorMib::Entsensorvaluetable>();
+            entsensorvaluetable_ = std::make_shared<CiscoEntitySensorMib::Entsensorvaluetable>();
         }
-        return entsensorvaluetable;
+        return entsensorvaluetable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntitySensorMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(entsensorglobalobjects != nullptr)
+    if(entsensorglobalobjects_ != nullptr)
     {
-        children["entSensorGlobalObjects"] = entsensorglobalobjects;
+        children["entSensorGlobalObjects"] = entsensorglobalobjects_;
     }
 
-    if(entsensorthresholdtable != nullptr)
+    if(entsensorthresholdtable_ != nullptr)
     {
-        children["entSensorThresholdTable"] = entsensorthresholdtable;
+        children["entSensorThresholdTable"] = entsensorthresholdtable_;
     }
 
-    if(entsensorvaluetable != nullptr)
+    if(entsensorvaluetable_ != nullptr)
     {
-        children["entSensorValueTable"] = entsensorvaluetable;
+        children["entSensorValueTable"] = entsensorvaluetable_;
     }
 
     return children;
@@ -230,9 +230,9 @@ CiscoEntitySensorMib::Entsensorvaluetable::~Entsensorvaluetable()
 
 bool CiscoEntitySensorMib::Entsensorvaluetable::has_data() const
 {
-    for (std::size_t index=0; index<entsensorvalueentry.size(); index++)
+    for (std::size_t index=0; index<entsensorvalueentry_.size(); index++)
     {
-        if(entsensorvalueentry[index]->has_data())
+        if(entsensorvalueentry_[index]->has_data())
             return true;
     }
     return false;
@@ -240,9 +240,9 @@ bool CiscoEntitySensorMib::Entsensorvaluetable::has_data() const
 
 bool CiscoEntitySensorMib::Entsensorvaluetable::has_operation() const
 {
-    for (std::size_t index=0; index<entsensorvalueentry.size(); index++)
+    for (std::size_t index=0; index<entsensorvalueentry_.size(); index++)
     {
-        if(entsensorvalueentry[index]->has_operation())
+        if(entsensorvalueentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -282,7 +282,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorvaluetable::get_child_by_
 {
     if(child_yang_name == "entSensorValueEntry")
     {
-        for(auto const & c : entsensorvalueentry)
+        for(auto const & c : entsensorvalueentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -292,7 +292,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorvaluetable::get_child_by_
         }
         auto c = std::make_shared<CiscoEntitySensorMib::Entsensorvaluetable::Entsensorvalueentry>();
         c->parent = this;
-        entsensorvalueentry.push_back(c);
+        entsensorvalueentry_.push_back(c);
         return c;
     }
 
@@ -302,7 +302,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorvaluetable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntitySensorMib::Entsensorvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entsensorvalueentry)
+    for (auto const & c : entsensorvalueentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -461,9 +461,9 @@ CiscoEntitySensorMib::Entsensorthresholdtable::~Entsensorthresholdtable()
 
 bool CiscoEntitySensorMib::Entsensorthresholdtable::has_data() const
 {
-    for (std::size_t index=0; index<entsensorthresholdentry.size(); index++)
+    for (std::size_t index=0; index<entsensorthresholdentry_.size(); index++)
     {
-        if(entsensorthresholdentry[index]->has_data())
+        if(entsensorthresholdentry_[index]->has_data())
             return true;
     }
     return false;
@@ -471,9 +471,9 @@ bool CiscoEntitySensorMib::Entsensorthresholdtable::has_data() const
 
 bool CiscoEntitySensorMib::Entsensorthresholdtable::has_operation() const
 {
-    for (std::size_t index=0; index<entsensorthresholdentry.size(); index++)
+    for (std::size_t index=0; index<entsensorthresholdentry_.size(); index++)
     {
-        if(entsensorthresholdentry[index]->has_operation())
+        if(entsensorthresholdentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -513,7 +513,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorthresholdtable::get_child
 {
     if(child_yang_name == "entSensorThresholdEntry")
     {
-        for(auto const & c : entsensorthresholdentry)
+        for(auto const & c : entsensorthresholdentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -523,7 +523,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorthresholdtable::get_child
         }
         auto c = std::make_shared<CiscoEntitySensorMib::Entsensorthresholdtable::Entsensorthresholdentry>();
         c->parent = this;
-        entsensorthresholdentry.push_back(c);
+        entsensorthresholdentry_.push_back(c);
         return c;
     }
 
@@ -533,7 +533,7 @@ std::shared_ptr<Entity> CiscoEntitySensorMib::Entsensorthresholdtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntitySensorMib::Entsensorthresholdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entsensorthresholdentry)
+    for (auto const & c : entsensorthresholdentry_)
     {
         children[c->get_segment_path()] = c;
     }

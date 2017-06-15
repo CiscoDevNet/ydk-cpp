@@ -20,9 +20,9 @@ MemoryStats::~MemoryStats()
 
 bool MemoryStats::has_data() const
 {
-    for (std::size_t index=0; index<memory_stat.size(); index++)
+    for (std::size_t index=0; index<memory_stat_.size(); index++)
     {
-        if(memory_stat[index]->has_data())
+        if(memory_stat_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool MemoryStats::has_data() const
 
 bool MemoryStats::has_operation() const
 {
-    for (std::size_t index=0; index<memory_stat.size(); index++)
+    for (std::size_t index=0; index<memory_stat_.size(); index++)
     {
-        if(memory_stat[index]->has_operation())
+        if(memory_stat_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> MemoryStats::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "memory-stat")
     {
-        for(auto const & c : memory_stat)
+        for(auto const & c : memory_stat_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> MemoryStats::get_child_by_name(const std::string & child
         }
         auto c = std::make_shared<MemoryStats::MemoryStat>();
         c->parent = this;
-        memory_stat.push_back(c);
+        memory_stat_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> MemoryStats::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> MemoryStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : memory_stat)
+    for (auto const & c : memory_stat_)
     {
         children[c->get_segment_path()] = c;
     }

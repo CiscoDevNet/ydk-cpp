@@ -11,24 +11,24 @@ namespace CISCO_CONFIG_MAN_MIB {
 
 CiscoConfigManMib::CiscoConfigManMib()
     :
-    ccmclicfg(std::make_shared<CiscoConfigManMib::Ccmclicfg>())
-	,ccmclihistory(std::make_shared<CiscoConfigManMib::Ccmclihistory>())
-	,ccmclihistorycommandtable(std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>())
-	,ccmctidobjects(std::make_shared<CiscoConfigManMib::Ccmctidobjects>())
-	,ccmhistory(std::make_shared<CiscoConfigManMib::Ccmhistory>())
-	,ccmhistoryeventtable(std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>())
+    ccmclicfg_(std::make_shared<CiscoConfigManMib::Ccmclicfg>())
+	,ccmclihistory_(std::make_shared<CiscoConfigManMib::Ccmclihistory>())
+	,ccmclihistorycommandtable_(std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>())
+	,ccmctidobjects_(std::make_shared<CiscoConfigManMib::Ccmctidobjects>())
+	,ccmhistory_(std::make_shared<CiscoConfigManMib::Ccmhistory>())
+	,ccmhistoryeventtable_(std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>())
 {
-    ccmclicfg->parent = this;
+    ccmclicfg_->parent = this;
 
-    ccmclihistory->parent = this;
+    ccmclihistory_->parent = this;
 
-    ccmclihistorycommandtable->parent = this;
+    ccmclihistorycommandtable_->parent = this;
 
-    ccmctidobjects->parent = this;
+    ccmctidobjects_->parent = this;
 
-    ccmhistory->parent = this;
+    ccmhistory_->parent = this;
 
-    ccmhistoryeventtable->parent = this;
+    ccmhistoryeventtable_->parent = this;
 
     yang_name = "CISCO-CONFIG-MAN-MIB"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
 }
@@ -39,23 +39,23 @@ CiscoConfigManMib::~CiscoConfigManMib()
 
 bool CiscoConfigManMib::has_data() const
 {
-    return (ccmclicfg !=  nullptr && ccmclicfg->has_data())
-	|| (ccmclihistory !=  nullptr && ccmclihistory->has_data())
-	|| (ccmclihistorycommandtable !=  nullptr && ccmclihistorycommandtable->has_data())
-	|| (ccmctidobjects !=  nullptr && ccmctidobjects->has_data())
-	|| (ccmhistory !=  nullptr && ccmhistory->has_data())
-	|| (ccmhistoryeventtable !=  nullptr && ccmhistoryeventtable->has_data());
+    return (ccmclicfg_ !=  nullptr && ccmclicfg_->has_data())
+	|| (ccmclihistory_ !=  nullptr && ccmclihistory_->has_data())
+	|| (ccmclihistorycommandtable_ !=  nullptr && ccmclihistorycommandtable_->has_data())
+	|| (ccmctidobjects_ !=  nullptr && ccmctidobjects_->has_data())
+	|| (ccmhistory_ !=  nullptr && ccmhistory_->has_data())
+	|| (ccmhistoryeventtable_ !=  nullptr && ccmhistoryeventtable_->has_data());
 }
 
 bool CiscoConfigManMib::has_operation() const
 {
     return is_set(operation)
-	|| (ccmclicfg !=  nullptr && ccmclicfg->has_operation())
-	|| (ccmclihistory !=  nullptr && ccmclihistory->has_operation())
-	|| (ccmclihistorycommandtable !=  nullptr && ccmclihistorycommandtable->has_operation())
-	|| (ccmctidobjects !=  nullptr && ccmctidobjects->has_operation())
-	|| (ccmhistory !=  nullptr && ccmhistory->has_operation())
-	|| (ccmhistoryeventtable !=  nullptr && ccmhistoryeventtable->has_operation());
+	|| (ccmclicfg_ !=  nullptr && ccmclicfg_->has_operation())
+	|| (ccmclihistory_ !=  nullptr && ccmclihistory_->has_operation())
+	|| (ccmclihistorycommandtable_ !=  nullptr && ccmclihistorycommandtable_->has_operation())
+	|| (ccmctidobjects_ !=  nullptr && ccmctidobjects_->has_operation())
+	|| (ccmhistory_ !=  nullptr && ccmhistory_->has_operation())
+	|| (ccmhistoryeventtable_ !=  nullptr && ccmhistoryeventtable_->has_operation());
 }
 
 std::string CiscoConfigManMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "ccmCLICfg")
     {
-        if(ccmclicfg == nullptr)
+        if(ccmclicfg_ == nullptr)
         {
-            ccmclicfg = std::make_shared<CiscoConfigManMib::Ccmclicfg>();
+            ccmclicfg_ = std::make_shared<CiscoConfigManMib::Ccmclicfg>();
         }
-        return ccmclicfg;
+        return ccmclicfg_;
     }
 
     if(child_yang_name == "ccmCLIHistory")
     {
-        if(ccmclihistory == nullptr)
+        if(ccmclihistory_ == nullptr)
         {
-            ccmclihistory = std::make_shared<CiscoConfigManMib::Ccmclihistory>();
+            ccmclihistory_ = std::make_shared<CiscoConfigManMib::Ccmclihistory>();
         }
-        return ccmclihistory;
+        return ccmclihistory_;
     }
 
     if(child_yang_name == "ccmCLIHistoryCommandTable")
     {
-        if(ccmclihistorycommandtable == nullptr)
+        if(ccmclihistorycommandtable_ == nullptr)
         {
-            ccmclihistorycommandtable = std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>();
+            ccmclihistorycommandtable_ = std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>();
         }
-        return ccmclihistorycommandtable;
+        return ccmclihistorycommandtable_;
     }
 
     if(child_yang_name == "ccmCTIDObjects")
     {
-        if(ccmctidobjects == nullptr)
+        if(ccmctidobjects_ == nullptr)
         {
-            ccmctidobjects = std::make_shared<CiscoConfigManMib::Ccmctidobjects>();
+            ccmctidobjects_ = std::make_shared<CiscoConfigManMib::Ccmctidobjects>();
         }
-        return ccmctidobjects;
+        return ccmctidobjects_;
     }
 
     if(child_yang_name == "ccmHistory")
     {
-        if(ccmhistory == nullptr)
+        if(ccmhistory_ == nullptr)
         {
-            ccmhistory = std::make_shared<CiscoConfigManMib::Ccmhistory>();
+            ccmhistory_ = std::make_shared<CiscoConfigManMib::Ccmhistory>();
         }
-        return ccmhistory;
+        return ccmhistory_;
     }
 
     if(child_yang_name == "ccmHistoryEventTable")
     {
-        if(ccmhistoryeventtable == nullptr)
+        if(ccmhistoryeventtable_ == nullptr)
         {
-            ccmhistoryeventtable = std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>();
+            ccmhistoryeventtable_ = std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>();
         }
-        return ccmhistoryeventtable;
+        return ccmhistoryeventtable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ccmclicfg != nullptr)
+    if(ccmclicfg_ != nullptr)
     {
-        children["ccmCLICfg"] = ccmclicfg;
+        children["ccmCLICfg"] = ccmclicfg_;
     }
 
-    if(ccmclihistory != nullptr)
+    if(ccmclihistory_ != nullptr)
     {
-        children["ccmCLIHistory"] = ccmclihistory;
+        children["ccmCLIHistory"] = ccmclihistory_;
     }
 
-    if(ccmclihistorycommandtable != nullptr)
+    if(ccmclihistorycommandtable_ != nullptr)
     {
-        children["ccmCLIHistoryCommandTable"] = ccmclihistorycommandtable;
+        children["ccmCLIHistoryCommandTable"] = ccmclihistorycommandtable_;
     }
 
-    if(ccmctidobjects != nullptr)
+    if(ccmctidobjects_ != nullptr)
     {
-        children["ccmCTIDObjects"] = ccmctidobjects;
+        children["ccmCTIDObjects"] = ccmctidobjects_;
     }
 
-    if(ccmhistory != nullptr)
+    if(ccmhistory_ != nullptr)
     {
-        children["ccmHistory"] = ccmhistory;
+        children["ccmHistory"] = ccmhistory_;
     }
 
-    if(ccmhistoryeventtable != nullptr)
+    if(ccmhistoryeventtable_ != nullptr)
     {
-        children["ccmHistoryEventTable"] = ccmhistoryeventtable;
+        children["ccmHistoryEventTable"] = ccmhistoryeventtable_;
     }
 
     return children;
@@ -575,9 +575,9 @@ CiscoConfigManMib::Ccmhistoryeventtable::~Ccmhistoryeventtable()
 
 bool CiscoConfigManMib::Ccmhistoryeventtable::has_data() const
 {
-    for (std::size_t index=0; index<ccmhistoryevententry.size(); index++)
+    for (std::size_t index=0; index<ccmhistoryevententry_.size(); index++)
     {
-        if(ccmhistoryevententry[index]->has_data())
+        if(ccmhistoryevententry_[index]->has_data())
             return true;
     }
     return false;
@@ -585,9 +585,9 @@ bool CiscoConfigManMib::Ccmhistoryeventtable::has_data() const
 
 bool CiscoConfigManMib::Ccmhistoryeventtable::has_operation() const
 {
-    for (std::size_t index=0; index<ccmhistoryevententry.size(); index++)
+    for (std::size_t index=0; index<ccmhistoryevententry_.size(); index++)
     {
-        if(ccmhistoryevententry[index]->has_operation())
+        if(ccmhistoryevententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -627,7 +627,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_na
 {
     if(child_yang_name == "ccmHistoryEventEntry")
     {
-        for(auto const & c : ccmhistoryevententry)
+        for(auto const & c : ccmhistoryevententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -637,7 +637,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry>();
         c->parent = this;
-        ccmhistoryevententry.push_back(c);
+        ccmhistoryevententry_.push_back(c);
         return c;
     }
 
@@ -647,7 +647,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccmhistoryevententry)
+    for (auto const & c : ccmhistoryevententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -886,9 +886,9 @@ CiscoConfigManMib::Ccmclihistorycommandtable::~Ccmclihistorycommandtable()
 
 bool CiscoConfigManMib::Ccmclihistorycommandtable::has_data() const
 {
-    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
+    for (std::size_t index=0; index<ccmclihistorycommandentry_.size(); index++)
     {
-        if(ccmclihistorycommandentry[index]->has_data())
+        if(ccmclihistorycommandentry_[index]->has_data())
             return true;
     }
     return false;
@@ -896,9 +896,9 @@ bool CiscoConfigManMib::Ccmclihistorycommandtable::has_data() const
 
 bool CiscoConfigManMib::Ccmclihistorycommandtable::has_operation() const
 {
-    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
+    for (std::size_t index=0; index<ccmclihistorycommandentry_.size(); index++)
     {
-        if(ccmclihistorycommandentry[index]->has_operation())
+        if(ccmclihistorycommandentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -938,7 +938,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistorycommandtable::get_child_
 {
     if(child_yang_name == "ccmCLIHistoryCommandEntry")
     {
-        for(auto const & c : ccmclihistorycommandentry)
+        for(auto const & c : ccmclihistorycommandentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -948,7 +948,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistorycommandtable::get_child_
         }
         auto c = std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry>();
         c->parent = this;
-        ccmclihistorycommandentry.push_back(c);
+        ccmclihistorycommandentry_.push_back(c);
         return c;
     }
 
@@ -958,7 +958,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistorycommandtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmclihistorycommandtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccmclihistorycommandentry)
+    for (auto const & c : ccmclihistorycommandentry_)
     {
         children[c->get_segment_path()] = c;
     }

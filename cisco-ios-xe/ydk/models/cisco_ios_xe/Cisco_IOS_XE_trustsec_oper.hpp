@@ -32,9 +32,9 @@ class TrustsecState : public Entity
         class CtsRolebasedPolicies; //type: TrustsecState::CtsRolebasedPolicies
         class CtsSxpConnections; //type: TrustsecState::CtsSxpConnections
 
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies> cts_rolebased_policies;
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps> cts_rolebased_sgtmaps;
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections> cts_sxp_connections;
+        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies> cts_rolebased_policies_;
+        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps> cts_rolebased_sgtmaps_;
+        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections> cts_sxp_connections_;
         
 }; // TrustsecState
 
@@ -55,7 +55,7 @@ class TrustsecState::CtsRolebasedSgtmaps : public Entity
 
         class CtsRolebasedSgtmap; //type: TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap> > cts_rolebased_sgtmap;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap> > cts_rolebased_sgtmap_;
         
 }; // TrustsecState::CtsRolebasedSgtmaps
 
@@ -98,7 +98,7 @@ class TrustsecState::CtsRolebasedPolicies : public Entity
 
         class CtsRolebasedPolicy; //type: TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy> > cts_rolebased_policy;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy> > cts_rolebased_policy_;
         
 }; // TrustsecState::CtsRolebasedPolicies
 
@@ -152,7 +152,7 @@ class TrustsecState::CtsSxpConnections : public Entity
 
         class CtsSxpConnection; //type: TrustsecState::CtsSxpConnections::CtsSxpConnection
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections::CtsSxpConnection> > cts_sxp_connection;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections::CtsSxpConnection> > cts_sxp_connection_;
         
 }; // TrustsecState::CtsSxpConnections
 

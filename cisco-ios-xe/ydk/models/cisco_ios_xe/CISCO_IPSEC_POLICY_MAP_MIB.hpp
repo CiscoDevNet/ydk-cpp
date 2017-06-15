@@ -31,8 +31,8 @@ class CiscoIpsecPolicyMapMib : public Entity
         class Ikepolmaptable; //type: CiscoIpsecPolicyMapMib::Ikepolmaptable
         class Ipsecpolmaptable; //type: CiscoIpsecPolicyMapMib::Ipsecpolmaptable
 
-        std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ikepolmaptable> ikepolmaptable;
-        std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ipsecpolmaptable> ipsecpolmaptable;
+        std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ikepolmaptable> ikepolmaptable_;
+        std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ipsecpolmaptable> ipsecpolmaptable_;
         
 }; // CiscoIpsecPolicyMapMib
 
@@ -53,7 +53,7 @@ class CiscoIpsecPolicyMapMib::Ikepolmaptable : public Entity
 
         class Ikepolmapentry; //type: CiscoIpsecPolicyMapMib::Ikepolmaptable::Ikepolmapentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ikepolmaptable::Ikepolmapentry> > ikepolmapentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ikepolmaptable::Ikepolmapentry> > ikepolmapentry_;
         
 }; // CiscoIpsecPolicyMapMib::Ikepolmaptable
 
@@ -94,7 +94,7 @@ class CiscoIpsecPolicyMapMib::Ipsecpolmaptable : public Entity
 
         class Ipsecpolmapentry; //type: CiscoIpsecPolicyMapMib::Ipsecpolmaptable::Ipsecpolmapentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ipsecpolmaptable::Ipsecpolmapentry> > ipsecpolmapentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_POLICY_MAP_MIB::CiscoIpsecPolicyMapMib::Ipsecpolmaptable::Ipsecpolmapentry> > ipsecpolmapentry_;
         
 }; // CiscoIpsecPolicyMapMib::Ipsecpolmaptable
 

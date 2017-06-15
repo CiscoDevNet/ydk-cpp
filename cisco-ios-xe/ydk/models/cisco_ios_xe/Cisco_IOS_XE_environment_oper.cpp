@@ -20,9 +20,9 @@ EnvironmentSensors::~EnvironmentSensors()
 
 bool EnvironmentSensors::has_data() const
 {
-    for (std::size_t index=0; index<environment_sensor.size(); index++)
+    for (std::size_t index=0; index<environment_sensor_.size(); index++)
     {
-        if(environment_sensor[index]->has_data())
+        if(environment_sensor_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool EnvironmentSensors::has_data() const
 
 bool EnvironmentSensors::has_operation() const
 {
-    for (std::size_t index=0; index<environment_sensor.size(); index++)
+    for (std::size_t index=0; index<environment_sensor_.size(); index++)
     {
-        if(environment_sensor[index]->has_operation())
+        if(environment_sensor_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
 {
     if(child_yang_name == "environment-sensor")
     {
-        for(auto const & c : environment_sensor)
+        for(auto const & c : environment_sensor_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<EnvironmentSensors::EnvironmentSensor>();
         c->parent = this;
-        environment_sensor.push_back(c);
+        environment_sensor_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> EnvironmentSensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : environment_sensor)
+    for (auto const & c : environment_sensor_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,36 +11,36 @@ namespace CISCO_DYNAMIC_TEMPLATE_MIB {
 
 CiscoDynamicTemplateMib::CiscoDynamicTemplateMib()
     :
-    cdtethernettemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>())
-	,cdtiftemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>())
-	,cdtppppeeripaddrpooltable(std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>())
-	,cdtppptemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>())
-	,cdtsrvtemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>())
-	,cdttemplateassociationtable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>())
-	,cdttemplatecommontable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>())
-	,cdttemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>())
-	,cdttemplatetargettable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>())
-	,cdttemplateusagetable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>())
+    cdtethernettemplatetable_(std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>())
+	,cdtiftemplatetable_(std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>())
+	,cdtppppeeripaddrpooltable_(std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>())
+	,cdtppptemplatetable_(std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>())
+	,cdtsrvtemplatetable_(std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>())
+	,cdttemplateassociationtable_(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>())
+	,cdttemplatecommontable_(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>())
+	,cdttemplatetable_(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>())
+	,cdttemplatetargettable_(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>())
+	,cdttemplateusagetable_(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>())
 {
-    cdtethernettemplatetable->parent = this;
+    cdtethernettemplatetable_->parent = this;
 
-    cdtiftemplatetable->parent = this;
+    cdtiftemplatetable_->parent = this;
 
-    cdtppppeeripaddrpooltable->parent = this;
+    cdtppppeeripaddrpooltable_->parent = this;
 
-    cdtppptemplatetable->parent = this;
+    cdtppptemplatetable_->parent = this;
 
-    cdtsrvtemplatetable->parent = this;
+    cdtsrvtemplatetable_->parent = this;
 
-    cdttemplateassociationtable->parent = this;
+    cdttemplateassociationtable_->parent = this;
 
-    cdttemplatecommontable->parent = this;
+    cdttemplatecommontable_->parent = this;
 
-    cdttemplatetable->parent = this;
+    cdttemplatetable_->parent = this;
 
-    cdttemplatetargettable->parent = this;
+    cdttemplatetargettable_->parent = this;
 
-    cdttemplateusagetable->parent = this;
+    cdttemplateusagetable_->parent = this;
 
     yang_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
 }
@@ -51,31 +51,31 @@ CiscoDynamicTemplateMib::~CiscoDynamicTemplateMib()
 
 bool CiscoDynamicTemplateMib::has_data() const
 {
-    return (cdtethernettemplatetable !=  nullptr && cdtethernettemplatetable->has_data())
-	|| (cdtiftemplatetable !=  nullptr && cdtiftemplatetable->has_data())
-	|| (cdtppppeeripaddrpooltable !=  nullptr && cdtppppeeripaddrpooltable->has_data())
-	|| (cdtppptemplatetable !=  nullptr && cdtppptemplatetable->has_data())
-	|| (cdtsrvtemplatetable !=  nullptr && cdtsrvtemplatetable->has_data())
-	|| (cdttemplateassociationtable !=  nullptr && cdttemplateassociationtable->has_data())
-	|| (cdttemplatecommontable !=  nullptr && cdttemplatecommontable->has_data())
-	|| (cdttemplatetable !=  nullptr && cdttemplatetable->has_data())
-	|| (cdttemplatetargettable !=  nullptr && cdttemplatetargettable->has_data())
-	|| (cdttemplateusagetable !=  nullptr && cdttemplateusagetable->has_data());
+    return (cdtethernettemplatetable_ !=  nullptr && cdtethernettemplatetable_->has_data())
+	|| (cdtiftemplatetable_ !=  nullptr && cdtiftemplatetable_->has_data())
+	|| (cdtppppeeripaddrpooltable_ !=  nullptr && cdtppppeeripaddrpooltable_->has_data())
+	|| (cdtppptemplatetable_ !=  nullptr && cdtppptemplatetable_->has_data())
+	|| (cdtsrvtemplatetable_ !=  nullptr && cdtsrvtemplatetable_->has_data())
+	|| (cdttemplateassociationtable_ !=  nullptr && cdttemplateassociationtable_->has_data())
+	|| (cdttemplatecommontable_ !=  nullptr && cdttemplatecommontable_->has_data())
+	|| (cdttemplatetable_ !=  nullptr && cdttemplatetable_->has_data())
+	|| (cdttemplatetargettable_ !=  nullptr && cdttemplatetargettable_->has_data())
+	|| (cdttemplateusagetable_ !=  nullptr && cdttemplateusagetable_->has_data());
 }
 
 bool CiscoDynamicTemplateMib::has_operation() const
 {
     return is_set(operation)
-	|| (cdtethernettemplatetable !=  nullptr && cdtethernettemplatetable->has_operation())
-	|| (cdtiftemplatetable !=  nullptr && cdtiftemplatetable->has_operation())
-	|| (cdtppppeeripaddrpooltable !=  nullptr && cdtppppeeripaddrpooltable->has_operation())
-	|| (cdtppptemplatetable !=  nullptr && cdtppptemplatetable->has_operation())
-	|| (cdtsrvtemplatetable !=  nullptr && cdtsrvtemplatetable->has_operation())
-	|| (cdttemplateassociationtable !=  nullptr && cdttemplateassociationtable->has_operation())
-	|| (cdttemplatecommontable !=  nullptr && cdttemplatecommontable->has_operation())
-	|| (cdttemplatetable !=  nullptr && cdttemplatetable->has_operation())
-	|| (cdttemplatetargettable !=  nullptr && cdttemplatetargettable->has_operation())
-	|| (cdttemplateusagetable !=  nullptr && cdttemplateusagetable->has_operation());
+	|| (cdtethernettemplatetable_ !=  nullptr && cdtethernettemplatetable_->has_operation())
+	|| (cdtiftemplatetable_ !=  nullptr && cdtiftemplatetable_->has_operation())
+	|| (cdtppppeeripaddrpooltable_ !=  nullptr && cdtppppeeripaddrpooltable_->has_operation())
+	|| (cdtppptemplatetable_ !=  nullptr && cdtppptemplatetable_->has_operation())
+	|| (cdtsrvtemplatetable_ !=  nullptr && cdtsrvtemplatetable_->has_operation())
+	|| (cdttemplateassociationtable_ !=  nullptr && cdttemplateassociationtable_->has_operation())
+	|| (cdttemplatecommontable_ !=  nullptr && cdttemplatecommontable_->has_operation())
+	|| (cdttemplatetable_ !=  nullptr && cdttemplatetable_->has_operation())
+	|| (cdttemplatetargettable_ !=  nullptr && cdttemplatetargettable_->has_operation())
+	|| (cdttemplateusagetable_ !=  nullptr && cdttemplateusagetable_->has_operation());
 }
 
 std::string CiscoDynamicTemplateMib::get_segment_path() const
@@ -109,92 +109,92 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
 {
     if(child_yang_name == "cdtEthernetTemplateTable")
     {
-        if(cdtethernettemplatetable == nullptr)
+        if(cdtethernettemplatetable_ == nullptr)
         {
-            cdtethernettemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>();
+            cdtethernettemplatetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>();
         }
-        return cdtethernettemplatetable;
+        return cdtethernettemplatetable_;
     }
 
     if(child_yang_name == "cdtIfTemplateTable")
     {
-        if(cdtiftemplatetable == nullptr)
+        if(cdtiftemplatetable_ == nullptr)
         {
-            cdtiftemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>();
+            cdtiftemplatetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>();
         }
-        return cdtiftemplatetable;
+        return cdtiftemplatetable_;
     }
 
     if(child_yang_name == "cdtPppPeerIpAddrPoolTable")
     {
-        if(cdtppppeeripaddrpooltable == nullptr)
+        if(cdtppppeeripaddrpooltable_ == nullptr)
         {
-            cdtppppeeripaddrpooltable = std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>();
+            cdtppppeeripaddrpooltable_ = std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>();
         }
-        return cdtppppeeripaddrpooltable;
+        return cdtppppeeripaddrpooltable_;
     }
 
     if(child_yang_name == "cdtPppTemplateTable")
     {
-        if(cdtppptemplatetable == nullptr)
+        if(cdtppptemplatetable_ == nullptr)
         {
-            cdtppptemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>();
+            cdtppptemplatetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>();
         }
-        return cdtppptemplatetable;
+        return cdtppptemplatetable_;
     }
 
     if(child_yang_name == "cdtSrvTemplateTable")
     {
-        if(cdtsrvtemplatetable == nullptr)
+        if(cdtsrvtemplatetable_ == nullptr)
         {
-            cdtsrvtemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>();
+            cdtsrvtemplatetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>();
         }
-        return cdtsrvtemplatetable;
+        return cdtsrvtemplatetable_;
     }
 
     if(child_yang_name == "cdtTemplateAssociationTable")
     {
-        if(cdttemplateassociationtable == nullptr)
+        if(cdttemplateassociationtable_ == nullptr)
         {
-            cdttemplateassociationtable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>();
+            cdttemplateassociationtable_ = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>();
         }
-        return cdttemplateassociationtable;
+        return cdttemplateassociationtable_;
     }
 
     if(child_yang_name == "cdtTemplateCommonTable")
     {
-        if(cdttemplatecommontable == nullptr)
+        if(cdttemplatecommontable_ == nullptr)
         {
-            cdttemplatecommontable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>();
+            cdttemplatecommontable_ = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>();
         }
-        return cdttemplatecommontable;
+        return cdttemplatecommontable_;
     }
 
     if(child_yang_name == "cdtTemplateTable")
     {
-        if(cdttemplatetable == nullptr)
+        if(cdttemplatetable_ == nullptr)
         {
-            cdttemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>();
+            cdttemplatetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>();
         }
-        return cdttemplatetable;
+        return cdttemplatetable_;
     }
 
     if(child_yang_name == "cdtTemplateTargetTable")
     {
-        if(cdttemplatetargettable == nullptr)
+        if(cdttemplatetargettable_ == nullptr)
         {
-            cdttemplatetargettable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>();
+            cdttemplatetargettable_ = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>();
         }
-        return cdttemplatetargettable;
+        return cdttemplatetargettable_;
     }
 
     if(child_yang_name == "cdtTemplateUsageTable")
     {
-        if(cdttemplateusagetable == nullptr)
+        if(cdttemplateusagetable_ == nullptr)
         {
-            cdttemplateusagetable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>();
+            cdttemplateusagetable_ = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>();
         }
-        return cdttemplateusagetable;
+        return cdttemplateusagetable_;
     }
 
     return nullptr;
@@ -203,54 +203,54 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdtethernettemplatetable != nullptr)
+    if(cdtethernettemplatetable_ != nullptr)
     {
-        children["cdtEthernetTemplateTable"] = cdtethernettemplatetable;
+        children["cdtEthernetTemplateTable"] = cdtethernettemplatetable_;
     }
 
-    if(cdtiftemplatetable != nullptr)
+    if(cdtiftemplatetable_ != nullptr)
     {
-        children["cdtIfTemplateTable"] = cdtiftemplatetable;
+        children["cdtIfTemplateTable"] = cdtiftemplatetable_;
     }
 
-    if(cdtppppeeripaddrpooltable != nullptr)
+    if(cdtppppeeripaddrpooltable_ != nullptr)
     {
-        children["cdtPppPeerIpAddrPoolTable"] = cdtppppeeripaddrpooltable;
+        children["cdtPppPeerIpAddrPoolTable"] = cdtppppeeripaddrpooltable_;
     }
 
-    if(cdtppptemplatetable != nullptr)
+    if(cdtppptemplatetable_ != nullptr)
     {
-        children["cdtPppTemplateTable"] = cdtppptemplatetable;
+        children["cdtPppTemplateTable"] = cdtppptemplatetable_;
     }
 
-    if(cdtsrvtemplatetable != nullptr)
+    if(cdtsrvtemplatetable_ != nullptr)
     {
-        children["cdtSrvTemplateTable"] = cdtsrvtemplatetable;
+        children["cdtSrvTemplateTable"] = cdtsrvtemplatetable_;
     }
 
-    if(cdttemplateassociationtable != nullptr)
+    if(cdttemplateassociationtable_ != nullptr)
     {
-        children["cdtTemplateAssociationTable"] = cdttemplateassociationtable;
+        children["cdtTemplateAssociationTable"] = cdttemplateassociationtable_;
     }
 
-    if(cdttemplatecommontable != nullptr)
+    if(cdttemplatecommontable_ != nullptr)
     {
-        children["cdtTemplateCommonTable"] = cdttemplatecommontable;
+        children["cdtTemplateCommonTable"] = cdttemplatecommontable_;
     }
 
-    if(cdttemplatetable != nullptr)
+    if(cdttemplatetable_ != nullptr)
     {
-        children["cdtTemplateTable"] = cdttemplatetable;
+        children["cdtTemplateTable"] = cdttemplatetable_;
     }
 
-    if(cdttemplatetargettable != nullptr)
+    if(cdttemplatetargettable_ != nullptr)
     {
-        children["cdtTemplateTargetTable"] = cdttemplatetargettable;
+        children["cdtTemplateTargetTable"] = cdttemplatetargettable_;
     }
 
-    if(cdttemplateusagetable != nullptr)
+    if(cdttemplateusagetable_ != nullptr)
     {
-        children["cdtTemplateUsageTable"] = cdttemplateusagetable;
+        children["cdtTemplateUsageTable"] = cdttemplateusagetable_;
     }
 
     return children;
@@ -291,9 +291,9 @@ CiscoDynamicTemplateMib::Cdttemplatetable::~Cdttemplatetable()
 
 bool CiscoDynamicTemplateMib::Cdttemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateentry_.size(); index++)
     {
-        if(cdttemplateentry[index]->has_data())
+        if(cdttemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -301,9 +301,9 @@ bool CiscoDynamicTemplateMib::Cdttemplatetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdttemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateentry_.size(); index++)
     {
-        if(cdttemplateentry[index]->has_operation())
+        if(cdttemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -343,7 +343,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::get_child_by_
 {
     if(child_yang_name == "cdtTemplateEntry")
     {
-        for(auto const & c : cdttemplateentry)
+        for(auto const & c : cdttemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -353,7 +353,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::get_child_by_
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry>();
         c->parent = this;
-        cdttemplateentry.push_back(c);
+        cdttemplateentry_.push_back(c);
         return c;
     }
 
@@ -363,7 +363,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateentry)
+    for (auto const & c : cdttemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -498,9 +498,9 @@ CiscoDynamicTemplateMib::Cdttemplatetargettable::~Cdttemplatetargettable()
 
 bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplatetargetentry_.size(); index++)
     {
-        if(cdttemplatetargetentry[index]->has_data())
+        if(cdttemplatetargetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -508,9 +508,9 @@ bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplatetargetentry_.size(); index++)
     {
-        if(cdttemplatetargetentry[index]->has_operation())
+        if(cdttemplatetargetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -550,7 +550,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_chi
 {
     if(child_yang_name == "cdtTemplateTargetEntry")
     {
-        for(auto const & c : cdttemplatetargetentry)
+        for(auto const & c : cdttemplatetargetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -560,7 +560,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_chi
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry>();
         c->parent = this;
-        cdttemplatetargetentry.push_back(c);
+        cdttemplatetargetentry_.push_back(c);
         return c;
     }
 
@@ -570,7 +570,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplatetargetentry)
+    for (auto const & c : cdttemplatetargetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -689,9 +689,9 @@ CiscoDynamicTemplateMib::Cdttemplateassociationtable::~Cdttemplateassociationtab
 
 bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateassociationentry_.size(); index++)
     {
-        if(cdttemplateassociationentry[index]->has_data())
+        if(cdttemplateassociationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -699,9 +699,9 @@ bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateassociationentry_.size(); index++)
     {
-        if(cdttemplateassociationentry[index]->has_operation())
+        if(cdttemplateassociationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -741,7 +741,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateassociationtable::ge
 {
     if(child_yang_name == "cdtTemplateAssociationEntry")
     {
-        for(auto const & c : cdttemplateassociationentry)
+        for(auto const & c : cdttemplateassociationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -751,7 +751,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateassociationtable::ge
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry>();
         c->parent = this;
-        cdttemplateassociationentry.push_back(c);
+        cdttemplateassociationentry_.push_back(c);
         return c;
     }
 
@@ -761,7 +761,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateassociationtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateassociationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateassociationentry)
+    for (auto const & c : cdttemplateassociationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -880,9 +880,9 @@ CiscoDynamicTemplateMib::Cdttemplateusagetable::~Cdttemplateusagetable()
 
 bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateusageentry_.size(); index++)
     {
-        if(cdttemplateusageentry[index]->has_data())
+        if(cdttemplateusageentry_[index]->has_data())
             return true;
     }
     return false;
@@ -890,9 +890,9 @@ bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplateusageentry_.size(); index++)
     {
-        if(cdttemplateusageentry[index]->has_operation())
+        if(cdttemplateusageentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -932,7 +932,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_chil
 {
     if(child_yang_name == "cdtTemplateUsageEntry")
     {
-        for(auto const & c : cdttemplateusageentry)
+        for(auto const & c : cdttemplateusageentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -942,7 +942,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_chil
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry>();
         c->parent = this;
-        cdttemplateusageentry.push_back(c);
+        cdttemplateusageentry_.push_back(c);
         return c;
     }
 
@@ -952,7 +952,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateusageentry)
+    for (auto const & c : cdttemplateusageentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1063,9 +1063,9 @@ CiscoDynamicTemplateMib::Cdttemplatecommontable::~Cdttemplatecommontable()
 
 bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplatecommonentry_.size(); index++)
     {
-        if(cdttemplatecommonentry[index]->has_data())
+        if(cdttemplatecommonentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1073,9 +1073,9 @@ bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
+    for (std::size_t index=0; index<cdttemplatecommonentry_.size(); index++)
     {
-        if(cdttemplatecommonentry[index]->has_operation())
+        if(cdttemplatecommonentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1115,7 +1115,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_chi
 {
     if(child_yang_name == "cdtTemplateCommonEntry")
     {
-        for(auto const & c : cdttemplatecommonentry)
+        for(auto const & c : cdttemplatecommonentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1125,7 +1125,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_chi
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry>();
         c->parent = this;
-        cdttemplatecommonentry.push_back(c);
+        cdttemplatecommonentry_.push_back(c);
         return c;
     }
 
@@ -1135,7 +1135,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplatecommonentry)
+    for (auto const & c : cdttemplatecommonentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1350,9 +1350,9 @@ CiscoDynamicTemplateMib::Cdtiftemplatetable::~Cdtiftemplatetable()
 
 bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdtiftemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtiftemplateentry_.size(); index++)
     {
-        if(cdtiftemplateentry[index]->has_data())
+        if(cdtiftemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1360,9 +1360,9 @@ bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdtiftemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtiftemplateentry_.size(); index++)
     {
-        if(cdtiftemplateentry[index]->has_operation())
+        if(cdtiftemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1402,7 +1402,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_b
 {
     if(child_yang_name == "cdtIfTemplateEntry")
     {
-        for(auto const & c : cdtiftemplateentry)
+        for(auto const & c : cdtiftemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1412,7 +1412,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_b
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry>();
         c->parent = this;
-        cdtiftemplateentry.push_back(c);
+        cdtiftemplateentry_.push_back(c);
         return c;
     }
 
@@ -1422,7 +1422,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtiftemplateentry)
+    for (auto const & c : cdtiftemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1757,9 +1757,9 @@ CiscoDynamicTemplateMib::Cdtppptemplatetable::~Cdtppptemplatetable()
 
 bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdtppptemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtppptemplateentry_.size(); index++)
     {
-        if(cdtppptemplateentry[index]->has_data())
+        if(cdtppptemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1767,9 +1767,9 @@ bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdtppptemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtppptemplateentry_.size(); index++)
     {
-        if(cdtppptemplateentry[index]->has_operation())
+        if(cdtppptemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1809,7 +1809,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_
 {
     if(child_yang_name == "cdtPppTemplateEntry")
     {
-        for(auto const & c : cdtppptemplateentry)
+        for(auto const & c : cdtppptemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1819,7 +1819,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry>();
         c->parent = this;
-        cdtppptemplateentry.push_back(c);
+        cdtppptemplateentry_.push_back(c);
         return c;
     }
 
@@ -1829,7 +1829,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtppptemplateentry)
+    for (auto const & c : cdtppptemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2236,9 +2236,9 @@ CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::~Cdtppppeeripaddrpooltable()
 
 bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_data() const
 {
-    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
+    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry_.size(); index++)
     {
-        if(cdtppppeeripaddrpoolentry[index]->has_data())
+        if(cdtppppeeripaddrpoolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2246,9 +2246,9 @@ bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_operation() const
 {
-    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
+    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry_.size(); index++)
     {
-        if(cdtppppeeripaddrpoolentry[index]->has_operation())
+        if(cdtppppeeripaddrpoolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2288,7 +2288,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_
 {
     if(child_yang_name == "cdtPppPeerIpAddrPoolEntry")
     {
-        for(auto const & c : cdtppppeeripaddrpoolentry)
+        for(auto const & c : cdtppppeeripaddrpoolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2298,7 +2298,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry>();
         c->parent = this;
-        cdtppppeeripaddrpoolentry.push_back(c);
+        cdtppppeeripaddrpoolentry_.push_back(c);
         return c;
     }
 
@@ -2308,7 +2308,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtppppeeripaddrpoolentry)
+    for (auto const & c : cdtppppeeripaddrpoolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2435,9 +2435,9 @@ CiscoDynamicTemplateMib::Cdtethernettemplatetable::~Cdtethernettemplatetable()
 
 bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtethernettemplateentry_.size(); index++)
     {
-        if(cdtethernettemplateentry[index]->has_data())
+        if(cdtethernettemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2445,9 +2445,9 @@ bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtethernettemplateentry_.size(); index++)
     {
-        if(cdtethernettemplateentry[index]->has_operation())
+        if(cdtethernettemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2487,7 +2487,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_c
 {
     if(child_yang_name == "cdtEthernetTemplateEntry")
     {
-        for(auto const & c : cdtethernettemplateentry)
+        for(auto const & c : cdtethernettemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2497,7 +2497,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_c
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry>();
         c->parent = this;
-        cdtethernettemplateentry.push_back(c);
+        cdtethernettemplateentry_.push_back(c);
         return c;
     }
 
@@ -2507,7 +2507,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtethernettemplateentry)
+    for (auto const & c : cdtethernettemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2642,9 +2642,9 @@ CiscoDynamicTemplateMib::Cdtsrvtemplatetable::~Cdtsrvtemplatetable()
 
 bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdtsrvtemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtsrvtemplateentry_.size(); index++)
     {
-        if(cdtsrvtemplateentry[index]->has_data())
+        if(cdtsrvtemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2652,9 +2652,9 @@ bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_data() const
 
 bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdtsrvtemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtsrvtemplateentry_.size(); index++)
     {
-        if(cdtsrvtemplateentry[index]->has_operation())
+        if(cdtsrvtemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2694,7 +2694,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_
 {
     if(child_yang_name == "cdtSrvTemplateEntry")
     {
-        for(auto const & c : cdtsrvtemplateentry)
+        for(auto const & c : cdtsrvtemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2704,7 +2704,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_
         }
         auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry>();
         c->parent = this;
-        cdtsrvtemplateentry.push_back(c);
+        cdtsrvtemplateentry_.push_back(c);
         return c;
     }
 
@@ -2714,7 +2714,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtsrvtemplateentry)
+    for (auto const & c : cdtsrvtemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }

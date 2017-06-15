@@ -11,12 +11,12 @@ namespace CISCO_HSRP_MIB {
 
 CiscoHsrpMib::CiscoHsrpMib()
     :
-    chsrpglobalconfig(std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>())
-	,chsrpgrptable(std::make_shared<CiscoHsrpMib::Chsrpgrptable>())
+    chsrpglobalconfig_(std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>())
+	,chsrpgrptable_(std::make_shared<CiscoHsrpMib::Chsrpgrptable>())
 {
-    chsrpglobalconfig->parent = this;
+    chsrpglobalconfig_->parent = this;
 
-    chsrpgrptable->parent = this;
+    chsrpgrptable_->parent = this;
 
     yang_name = "CISCO-HSRP-MIB"; yang_parent_name = "CISCO-HSRP-MIB";
 }
@@ -27,15 +27,15 @@ CiscoHsrpMib::~CiscoHsrpMib()
 
 bool CiscoHsrpMib::has_data() const
 {
-    return (chsrpglobalconfig !=  nullptr && chsrpglobalconfig->has_data())
-	|| (chsrpgrptable !=  nullptr && chsrpgrptable->has_data());
+    return (chsrpglobalconfig_ !=  nullptr && chsrpglobalconfig_->has_data())
+	|| (chsrpgrptable_ !=  nullptr && chsrpgrptable_->has_data());
 }
 
 bool CiscoHsrpMib::has_operation() const
 {
     return is_set(operation)
-	|| (chsrpglobalconfig !=  nullptr && chsrpglobalconfig->has_operation())
-	|| (chsrpgrptable !=  nullptr && chsrpgrptable->has_operation());
+	|| (chsrpglobalconfig_ !=  nullptr && chsrpglobalconfig_->has_operation())
+	|| (chsrpgrptable_ !=  nullptr && chsrpgrptable_->has_operation());
 }
 
 std::string CiscoHsrpMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoHsrpMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "cHsrpGlobalConfig")
     {
-        if(chsrpglobalconfig == nullptr)
+        if(chsrpglobalconfig_ == nullptr)
         {
-            chsrpglobalconfig = std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>();
+            chsrpglobalconfig_ = std::make_shared<CiscoHsrpMib::Chsrpglobalconfig>();
         }
-        return chsrpglobalconfig;
+        return chsrpglobalconfig_;
     }
 
     if(child_yang_name == "cHsrpGrpTable")
     {
-        if(chsrpgrptable == nullptr)
+        if(chsrpgrptable_ == nullptr)
         {
-            chsrpgrptable = std::make_shared<CiscoHsrpMib::Chsrpgrptable>();
+            chsrpgrptable_ = std::make_shared<CiscoHsrpMib::Chsrpgrptable>();
         }
-        return chsrpgrptable;
+        return chsrpgrptable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoHsrpMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(chsrpglobalconfig != nullptr)
+    if(chsrpglobalconfig_ != nullptr)
     {
-        children["cHsrpGlobalConfig"] = chsrpglobalconfig;
+        children["cHsrpGlobalConfig"] = chsrpglobalconfig_;
     }
 
-    if(chsrpgrptable != nullptr)
+    if(chsrpgrptable_ != nullptr)
     {
-        children["cHsrpGrpTable"] = chsrpgrptable;
+        children["cHsrpGrpTable"] = chsrpgrptable_;
     }
 
     return children;
@@ -211,9 +211,9 @@ CiscoHsrpMib::Chsrpgrptable::~Chsrpgrptable()
 
 bool CiscoHsrpMib::Chsrpgrptable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpgrpentry.size(); index++)
+    for (std::size_t index=0; index<chsrpgrpentry_.size(); index++)
     {
-        if(chsrpgrpentry[index]->has_data())
+        if(chsrpgrpentry_[index]->has_data())
             return true;
     }
     return false;
@@ -221,9 +221,9 @@ bool CiscoHsrpMib::Chsrpgrptable::has_data() const
 
 bool CiscoHsrpMib::Chsrpgrptable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpgrpentry.size(); index++)
+    for (std::size_t index=0; index<chsrpgrpentry_.size(); index++)
     {
-        if(chsrpgrpentry[index]->has_operation())
+        if(chsrpgrpentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -263,7 +263,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std
 {
     if(child_yang_name == "cHsrpGrpEntry")
     {
-        for(auto const & c : chsrpgrpentry)
+        for(auto const & c : chsrpgrpentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -273,7 +273,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std
         }
         auto c = std::make_shared<CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry>();
         c->parent = this;
-        chsrpgrpentry.push_back(c);
+        chsrpgrpentry_.push_back(c);
         return c;
     }
 
@@ -283,7 +283,7 @@ std::shared_ptr<Entity> CiscoHsrpMib::Chsrpgrptable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpMib::Chsrpgrptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : chsrpgrpentry)
+    for (auto const & c : chsrpgrpentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,12 +11,12 @@ namespace CISCO_FTP_CLIENT_MIB {
 
 CiscoFtpClientMib::CiscoFtpClientMib()
     :
-    cfcrequest(std::make_shared<CiscoFtpClientMib::Cfcrequest>())
-	,cfcrequesttable(std::make_shared<CiscoFtpClientMib::Cfcrequesttable>())
+    cfcrequest_(std::make_shared<CiscoFtpClientMib::Cfcrequest>())
+	,cfcrequesttable_(std::make_shared<CiscoFtpClientMib::Cfcrequesttable>())
 {
-    cfcrequest->parent = this;
+    cfcrequest_->parent = this;
 
-    cfcrequesttable->parent = this;
+    cfcrequesttable_->parent = this;
 
     yang_name = "CISCO-FTP-CLIENT-MIB"; yang_parent_name = "CISCO-FTP-CLIENT-MIB";
 }
@@ -27,15 +27,15 @@ CiscoFtpClientMib::~CiscoFtpClientMib()
 
 bool CiscoFtpClientMib::has_data() const
 {
-    return (cfcrequest !=  nullptr && cfcrequest->has_data())
-	|| (cfcrequesttable !=  nullptr && cfcrequesttable->has_data());
+    return (cfcrequest_ !=  nullptr && cfcrequest_->has_data())
+	|| (cfcrequesttable_ !=  nullptr && cfcrequesttable_->has_data());
 }
 
 bool CiscoFtpClientMib::has_operation() const
 {
     return is_set(operation)
-	|| (cfcrequest !=  nullptr && cfcrequest->has_operation())
-	|| (cfcrequesttable !=  nullptr && cfcrequesttable->has_operation());
+	|| (cfcrequest_ !=  nullptr && cfcrequest_->has_operation())
+	|| (cfcrequesttable_ !=  nullptr && cfcrequesttable_->has_operation());
 }
 
 std::string CiscoFtpClientMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoFtpClientMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "cfcRequest")
     {
-        if(cfcrequest == nullptr)
+        if(cfcrequest_ == nullptr)
         {
-            cfcrequest = std::make_shared<CiscoFtpClientMib::Cfcrequest>();
+            cfcrequest_ = std::make_shared<CiscoFtpClientMib::Cfcrequest>();
         }
-        return cfcrequest;
+        return cfcrequest_;
     }
 
     if(child_yang_name == "cfcRequestTable")
     {
-        if(cfcrequesttable == nullptr)
+        if(cfcrequesttable_ == nullptr)
         {
-            cfcrequesttable = std::make_shared<CiscoFtpClientMib::Cfcrequesttable>();
+            cfcrequesttable_ = std::make_shared<CiscoFtpClientMib::Cfcrequesttable>();
         }
-        return cfcrequesttable;
+        return cfcrequesttable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoFtpClientMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cfcrequest != nullptr)
+    if(cfcrequest_ != nullptr)
     {
-        children["cfcRequest"] = cfcrequest;
+        children["cfcRequest"] = cfcrequest_;
     }
 
-    if(cfcrequesttable != nullptr)
+    if(cfcrequesttable_ != nullptr)
     {
-        children["cfcRequestTable"] = cfcrequesttable;
+        children["cfcRequestTable"] = cfcrequesttable_;
     }
 
     return children;
@@ -235,9 +235,9 @@ CiscoFtpClientMib::Cfcrequesttable::~Cfcrequesttable()
 
 bool CiscoFtpClientMib::Cfcrequesttable::has_data() const
 {
-    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
+    for (std::size_t index=0; index<cfcrequestentry_.size(); index++)
     {
-        if(cfcrequestentry[index]->has_data())
+        if(cfcrequestentry_[index]->has_data())
             return true;
     }
     return false;
@@ -245,9 +245,9 @@ bool CiscoFtpClientMib::Cfcrequesttable::has_data() const
 
 bool CiscoFtpClientMib::Cfcrequesttable::has_operation() const
 {
-    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
+    for (std::size_t index=0; index<cfcrequestentry_.size(); index++)
     {
-        if(cfcrequestentry[index]->has_operation())
+        if(cfcrequestentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -287,7 +287,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
 {
     if(child_yang_name == "cfcRequestEntry")
     {
-        for(auto const & c : cfcrequestentry)
+        for(auto const & c : cfcrequestentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -297,7 +297,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry>();
         c->parent = this;
-        cfcrequestentry.push_back(c);
+        cfcrequestentry_.push_back(c);
         return c;
     }
 
@@ -307,7 +307,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::Cfcrequesttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cfcrequestentry)
+    for (auto const & c : cfcrequestentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -35,11 +35,11 @@ class CiscoIetfBfdMib : public Entity
         class Ciscobfdsessdiscmaptable; //type: CiscoIetfBfdMib::Ciscobfdsessdiscmaptable
         class Ciscobfdsessipmaptable; //type: CiscoIetfBfdMib::Ciscobfdsessipmaptable
 
-        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdscalarobjects> ciscobfdscalarobjects;
-        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessdiscmaptable> ciscobfdsessdiscmaptable;
-        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessipmaptable> ciscobfdsessipmaptable;
-        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessmaptable> ciscobfdsessmaptable;
-        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsesstable> ciscobfdsesstable;
+        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdscalarobjects> ciscobfdscalarobjects_;
+        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessdiscmaptable> ciscobfdsessdiscmaptable_;
+        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessipmaptable> ciscobfdsessipmaptable_;
+        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessmaptable> ciscobfdsessmaptable_;
+        std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsesstable> ciscobfdsesstable_;
         
 }; // CiscoIetfBfdMib
 
@@ -82,7 +82,7 @@ class CiscoIetfBfdMib::Ciscobfdsesstable : public Entity
 
         class Ciscobfdsessentry; //type: CiscoIetfBfdMib::Ciscobfdsesstable::Ciscobfdsessentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsesstable::Ciscobfdsessentry> > ciscobfdsessentry;
+        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsesstable::Ciscobfdsessentry> > ciscobfdsessentry_;
         
 }; // CiscoIetfBfdMib::Ciscobfdsesstable
 
@@ -159,7 +159,7 @@ class CiscoIetfBfdMib::Ciscobfdsessmaptable : public Entity
 
         class Ciscobfdsessmapentry; //type: CiscoIetfBfdMib::Ciscobfdsessmaptable::Ciscobfdsessmapentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessmaptable::Ciscobfdsessmapentry> > ciscobfdsessmapentry;
+        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessmaptable::Ciscobfdsessmapentry> > ciscobfdsessmapentry_;
         
 }; // CiscoIetfBfdMib::Ciscobfdsessmaptable
 
@@ -206,7 +206,7 @@ class CiscoIetfBfdMib::Ciscobfdsessdiscmaptable : public Entity
 
         class Ciscobfdsessdiscmapentry; //type: CiscoIetfBfdMib::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry> > ciscobfdsessdiscmapentry;
+        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry> > ciscobfdsessdiscmapentry_;
         
 }; // CiscoIetfBfdMib::Ciscobfdsessdiscmaptable
 
@@ -248,7 +248,7 @@ class CiscoIetfBfdMib::Ciscobfdsessipmaptable : public Entity
 
         class Ciscobfdsessipmapentry; //type: CiscoIetfBfdMib::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry> > ciscobfdsessipmapentry;
+        std::vector<std::shared_ptr<CISCO_IETF_BFD_MIB::CiscoIetfBfdMib::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry> > ciscobfdsessipmapentry_;
         
 }; // CiscoIetfBfdMib::Ciscobfdsessipmaptable
 

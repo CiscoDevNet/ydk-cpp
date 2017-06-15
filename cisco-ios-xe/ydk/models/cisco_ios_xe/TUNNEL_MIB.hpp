@@ -33,9 +33,9 @@ class TunnelMib : public Entity
         class Tunnelconfigtable; //type: TunnelMib::Tunnelconfigtable
         class Tunnelinetconfigtable; //type: TunnelMib::Tunnelinetconfigtable
 
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable> tunnelconfigtable;
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable> tunneliftable;
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable> tunnelinetconfigtable;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable> tunnelconfigtable_;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable> tunneliftable_;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable> tunnelinetconfigtable_;
         
 }; // TunnelMib
 
@@ -56,7 +56,7 @@ class TunnelMib::Tunneliftable : public Entity
 
         class Tunnelifentry; //type: TunnelMib::Tunneliftable::Tunnelifentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable::Tunnelifentry> > tunnelifentry;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable::Tunnelifentry> > tunnelifentry_;
         
 }; // TunnelMib::Tunneliftable
 
@@ -109,7 +109,7 @@ class TunnelMib::Tunnelconfigtable : public Entity
 
         class Tunnelconfigentry; //type: TunnelMib::Tunnelconfigtable::Tunnelconfigentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry_;
         
 }; // TunnelMib::Tunnelconfigtable
 
@@ -154,7 +154,7 @@ class TunnelMib::Tunnelinetconfigtable : public Entity
 
         class Tunnelinetconfigentry; //type: TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry> > tunnelinetconfigentry;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry> > tunnelinetconfigentry_;
         
 }; // TunnelMib::Tunnelinetconfigtable
 

@@ -13,7 +13,7 @@ const Enum::YLeaf TruthvalueEnum::true_ {1, "true"};
 const Enum::YLeaf TruthvalueEnum::false_ {2, "false"};
 
 const Enum::YLeaf StoragetypeEnum::other {1, "other"};
-const Enum::YLeaf StoragetypeEnum::volatile {2, "volatile"};
+const Enum::YLeaf StoragetypeEnum::volatile_ {2, "volatile"};
 const Enum::YLeaf StoragetypeEnum::nonVolatile {3, "nonVolatile"};
 const Enum::YLeaf StoragetypeEnum::permanent {4, "permanent"};
 const Enum::YLeaf StoragetypeEnum::readOnly {5, "readOnly"};

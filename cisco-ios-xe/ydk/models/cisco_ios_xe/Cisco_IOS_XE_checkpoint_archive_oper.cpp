@@ -15,9 +15,9 @@ CheckpointArchive::CheckpointArchive()
     max{YType::uint8, "max"},
     recent{YType::str, "recent"}
     	,
-    archives(std::make_shared<CheckpointArchive::Archives>())
+    archives_(std::make_shared<CheckpointArchive::Archives>())
 {
-    archives->parent = this;
+    archives_->parent = this;
 
     yang_name = "checkpoint-archive"; yang_parent_name = "Cisco-IOS-XE-checkpoint-archive-oper";
 }
@@ -31,7 +31,7 @@ bool CheckpointArchive::has_data() const
     return current.is_set
 	|| max.is_set
 	|| recent.is_set
-	|| (archives !=  nullptr && archives->has_data());
+	|| (archives_ !=  nullptr && archives_->has_data());
 }
 
 bool CheckpointArchive::has_operation() const
@@ -40,7 +40,7 @@ bool CheckpointArchive::has_operation() const
 	|| is_set(current.operation)
 	|| is_set(max.operation)
 	|| is_set(recent.operation)
-	|| (archives !=  nullptr && archives->has_operation());
+	|| (archives_ !=  nullptr && archives_->has_operation());
 }
 
 std::string CheckpointArchive::get_segment_path() const
@@ -77,11 +77,11 @@ std::shared_ptr<Entity> CheckpointArchive::get_child_by_name(const std::string &
 {
     if(child_yang_name == "archives")
     {
-        if(archives == nullptr)
+        if(archives_ == nullptr)
         {
-            archives = std::make_shared<CheckpointArchive::Archives>();
+            archives_ = std::make_shared<CheckpointArchive::Archives>();
         }
-        return archives;
+        return archives_;
     }
 
     return nullptr;
@@ -90,9 +90,9 @@ std::shared_ptr<Entity> CheckpointArchive::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CheckpointArchive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(archives != nullptr)
+    if(archives_ != nullptr)
     {
-        children["archives"] = archives;
+        children["archives"] = archives_;
     }
 
     return children;
@@ -145,9 +145,9 @@ CheckpointArchive::Archives::~Archives()
 
 bool CheckpointArchive::Archives::has_data() const
 {
-    for (std::size_t index=0; index<archive.size(); index++)
+    for (std::size_t index=0; index<archive_.size(); index++)
     {
-        if(archive[index]->has_data())
+        if(archive_[index]->has_data())
             return true;
     }
     return false;
@@ -155,9 +155,9 @@ bool CheckpointArchive::Archives::has_data() const
 
 bool CheckpointArchive::Archives::has_operation() const
 {
-    for (std::size_t index=0; index<archive.size(); index++)
+    for (std::size_t index=0; index<archive_.size(); index++)
     {
-        if(archive[index]->has_operation())
+        if(archive_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -197,7 +197,7 @@ std::shared_ptr<Entity> CheckpointArchive::Archives::get_child_by_name(const std
 {
     if(child_yang_name == "archive")
     {
-        for(auto const & c : archive)
+        for(auto const & c : archive_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -207,7 +207,7 @@ std::shared_ptr<Entity> CheckpointArchive::Archives::get_child_by_name(const std
         }
         auto c = std::make_shared<CheckpointArchive::Archives::Archive>();
         c->parent = this;
-        archive.push_back(c);
+        archive_.push_back(c);
         return c;
     }
 
@@ -217,7 +217,7 @@ std::shared_ptr<Entity> CheckpointArchive::Archives::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CheckpointArchive::Archives::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : archive)
+    for (auto const & c : archive_)
     {
         children[c->get_segment_path()] = c;
     }

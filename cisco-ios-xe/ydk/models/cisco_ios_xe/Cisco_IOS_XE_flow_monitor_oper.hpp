@@ -30,7 +30,7 @@ class FlowMonitors : public Entity
 
         class FlowMonitor; //type: FlowMonitors::FlowMonitor
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor> > flow_monitor;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor> > flow_monitor_;
         
 }; // FlowMonitors
 
@@ -53,7 +53,7 @@ class FlowMonitors::FlowMonitor : public Entity
         YLeaf time_collected; //type: uint64
         class Flows; //type: FlowMonitors::FlowMonitor::Flows
 
-        std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows> flows;
+        std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows> flows_;
         
 }; // FlowMonitors::FlowMonitor
 
@@ -74,7 +74,7 @@ class FlowMonitors::FlowMonitor::Flows : public Entity
 
         class Flow; //type: FlowMonitors::FlowMonitor::Flows::Flow
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows::Flow> > flow;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows::Flow> > flow_;
         
 }; // FlowMonitors::FlowMonitor::Flows
 

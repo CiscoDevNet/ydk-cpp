@@ -11,18 +11,18 @@ namespace TCP_MIB {
 
 TcpMib::TcpMib()
     :
-    tcp(std::make_shared<TcpMib::Tcp>())
-	,tcpconnectiontable(std::make_shared<TcpMib::Tcpconnectiontable>())
-	,tcpconntable(std::make_shared<TcpMib::Tcpconntable>())
-	,tcplistenertable(std::make_shared<TcpMib::Tcplistenertable>())
+    tcp_(std::make_shared<TcpMib::Tcp>())
+	,tcpconnectiontable_(std::make_shared<TcpMib::Tcpconnectiontable>())
+	,tcpconntable_(std::make_shared<TcpMib::Tcpconntable>())
+	,tcplistenertable_(std::make_shared<TcpMib::Tcplistenertable>())
 {
-    tcp->parent = this;
+    tcp_->parent = this;
 
-    tcpconnectiontable->parent = this;
+    tcpconnectiontable_->parent = this;
 
-    tcpconntable->parent = this;
+    tcpconntable_->parent = this;
 
-    tcplistenertable->parent = this;
+    tcplistenertable_->parent = this;
 
     yang_name = "TCP-MIB"; yang_parent_name = "TCP-MIB";
 }
@@ -33,19 +33,19 @@ TcpMib::~TcpMib()
 
 bool TcpMib::has_data() const
 {
-    return (tcp !=  nullptr && tcp->has_data())
-	|| (tcpconnectiontable !=  nullptr && tcpconnectiontable->has_data())
-	|| (tcpconntable !=  nullptr && tcpconntable->has_data())
-	|| (tcplistenertable !=  nullptr && tcplistenertable->has_data());
+    return (tcp_ !=  nullptr && tcp_->has_data())
+	|| (tcpconnectiontable_ !=  nullptr && tcpconnectiontable_->has_data())
+	|| (tcpconntable_ !=  nullptr && tcpconntable_->has_data())
+	|| (tcplistenertable_ !=  nullptr && tcplistenertable_->has_data());
 }
 
 bool TcpMib::has_operation() const
 {
     return is_set(operation)
-	|| (tcp !=  nullptr && tcp->has_operation())
-	|| (tcpconnectiontable !=  nullptr && tcpconnectiontable->has_operation())
-	|| (tcpconntable !=  nullptr && tcpconntable->has_operation())
-	|| (tcplistenertable !=  nullptr && tcplistenertable->has_operation());
+	|| (tcp_ !=  nullptr && tcp_->has_operation())
+	|| (tcpconnectiontable_ !=  nullptr && tcpconnectiontable_->has_operation())
+	|| (tcpconntable_ !=  nullptr && tcpconntable_->has_operation())
+	|| (tcplistenertable_ !=  nullptr && tcplistenertable_->has_operation());
 }
 
 std::string TcpMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> TcpMib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "tcp")
     {
-        if(tcp == nullptr)
+        if(tcp_ == nullptr)
         {
-            tcp = std::make_shared<TcpMib::Tcp>();
+            tcp_ = std::make_shared<TcpMib::Tcp>();
         }
-        return tcp;
+        return tcp_;
     }
 
     if(child_yang_name == "tcpConnectionTable")
     {
-        if(tcpconnectiontable == nullptr)
+        if(tcpconnectiontable_ == nullptr)
         {
-            tcpconnectiontable = std::make_shared<TcpMib::Tcpconnectiontable>();
+            tcpconnectiontable_ = std::make_shared<TcpMib::Tcpconnectiontable>();
         }
-        return tcpconnectiontable;
+        return tcpconnectiontable_;
     }
 
     if(child_yang_name == "tcpConnTable")
     {
-        if(tcpconntable == nullptr)
+        if(tcpconntable_ == nullptr)
         {
-            tcpconntable = std::make_shared<TcpMib::Tcpconntable>();
+            tcpconntable_ = std::make_shared<TcpMib::Tcpconntable>();
         }
-        return tcpconntable;
+        return tcpconntable_;
     }
 
     if(child_yang_name == "tcpListenerTable")
     {
-        if(tcplistenertable == nullptr)
+        if(tcplistenertable_ == nullptr)
         {
-            tcplistenertable = std::make_shared<TcpMib::Tcplistenertable>();
+            tcplistenertable_ = std::make_shared<TcpMib::Tcplistenertable>();
         }
-        return tcplistenertable;
+        return tcplistenertable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> TcpMib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tcp != nullptr)
+    if(tcp_ != nullptr)
     {
-        children["tcp"] = tcp;
+        children["tcp"] = tcp_;
     }
 
-    if(tcpconnectiontable != nullptr)
+    if(tcpconnectiontable_ != nullptr)
     {
-        children["tcpConnectionTable"] = tcpconnectiontable;
+        children["tcpConnectionTable"] = tcpconnectiontable_;
     }
 
-    if(tcpconntable != nullptr)
+    if(tcpconntable_ != nullptr)
     {
-        children["tcpConnTable"] = tcpconntable;
+        children["tcpConnTable"] = tcpconntable_;
     }
 
-    if(tcplistenertable != nullptr)
+    if(tcplistenertable_ != nullptr)
     {
-        children["tcpListenerTable"] = tcplistenertable;
+        children["tcpListenerTable"] = tcplistenertable_;
     }
 
     return children;
@@ -369,9 +369,9 @@ TcpMib::Tcpconntable::~Tcpconntable()
 
 bool TcpMib::Tcpconntable::has_data() const
 {
-    for (std::size_t index=0; index<tcpconnentry.size(); index++)
+    for (std::size_t index=0; index<tcpconnentry_.size(); index++)
     {
-        if(tcpconnentry[index]->has_data())
+        if(tcpconnentry_[index]->has_data())
             return true;
     }
     return false;
@@ -379,9 +379,9 @@ bool TcpMib::Tcpconntable::has_data() const
 
 bool TcpMib::Tcpconntable::has_operation() const
 {
-    for (std::size_t index=0; index<tcpconnentry.size(); index++)
+    for (std::size_t index=0; index<tcpconnentry_.size(); index++)
     {
-        if(tcpconnentry[index]->has_operation())
+        if(tcpconnentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -421,7 +421,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        for(auto const & c : tcpconnentry)
+        for(auto const & c : tcpconnentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -431,7 +431,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<TcpMib::Tcpconntable::Tcpconnentry>();
         c->parent = this;
-        tcpconnentry.push_back(c);
+        tcpconnentry_.push_back(c);
         return c;
     }
 
@@ -441,7 +441,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcpconnentry)
+    for (auto const & c : tcpconnentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -568,9 +568,9 @@ TcpMib::Tcpconnectiontable::~Tcpconnectiontable()
 
 bool TcpMib::Tcpconnectiontable::has_data() const
 {
-    for (std::size_t index=0; index<tcpconnectionentry.size(); index++)
+    for (std::size_t index=0; index<tcpconnectionentry_.size(); index++)
     {
-        if(tcpconnectionentry[index]->has_data())
+        if(tcpconnectionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -578,9 +578,9 @@ bool TcpMib::Tcpconnectiontable::has_data() const
 
 bool TcpMib::Tcpconnectiontable::has_operation() const
 {
-    for (std::size_t index=0; index<tcpconnectionentry.size(); index++)
+    for (std::size_t index=0; index<tcpconnectionentry_.size(); index++)
     {
-        if(tcpconnectionentry[index]->has_operation())
+        if(tcpconnectionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -620,7 +620,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
 {
     if(child_yang_name == "tcpConnectionEntry")
     {
-        for(auto const & c : tcpconnectionentry)
+        for(auto const & c : tcpconnectionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -630,7 +630,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
         }
         auto c = std::make_shared<TcpMib::Tcpconnectiontable::Tcpconnectionentry>();
         c->parent = this;
-        tcpconnectionentry.push_back(c);
+        tcpconnectionentry_.push_back(c);
         return c;
     }
 
@@ -640,7 +640,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconnectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcpconnectionentry)
+    for (auto const & c : tcpconnectionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -791,9 +791,9 @@ TcpMib::Tcplistenertable::~Tcplistenertable()
 
 bool TcpMib::Tcplistenertable::has_data() const
 {
-    for (std::size_t index=0; index<tcplistenerentry.size(); index++)
+    for (std::size_t index=0; index<tcplistenerentry_.size(); index++)
     {
-        if(tcplistenerentry[index]->has_data())
+        if(tcplistenerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -801,9 +801,9 @@ bool TcpMib::Tcplistenertable::has_data() const
 
 bool TcpMib::Tcplistenertable::has_operation() const
 {
-    for (std::size_t index=0; index<tcplistenerentry.size(); index++)
+    for (std::size_t index=0; index<tcplistenerentry_.size(); index++)
     {
-        if(tcplistenerentry[index]->has_operation())
+        if(tcplistenerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -843,7 +843,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tcpListenerEntry")
     {
-        for(auto const & c : tcplistenerentry)
+        for(auto const & c : tcplistenerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -853,7 +853,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<TcpMib::Tcplistenertable::Tcplistenerentry>();
         c->parent = this;
-        tcplistenerentry.push_back(c);
+        tcplistenerentry_.push_back(c);
         return c;
     }
 
@@ -863,7 +863,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcplistenertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcplistenerentry)
+    for (auto const & c : tcplistenerentry_)
     {
         children[c->get_segment_path()] = c;
     }

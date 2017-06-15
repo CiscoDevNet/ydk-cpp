@@ -11,24 +11,24 @@ namespace CISCO_ENVMON_MIB {
 
 CiscoEnvmonMib::CiscoEnvmonMib()
     :
-    ciscoenvmonfanstatustable(std::make_shared<CiscoEnvmonMib::Ciscoenvmonfanstatustable>())
-	,ciscoenvmonmibnotificationenables(std::make_shared<CiscoEnvmonMib::Ciscoenvmonmibnotificationenables>())
-	,ciscoenvmonobjects(std::make_shared<CiscoEnvmonMib::Ciscoenvmonobjects>())
-	,ciscoenvmonsupplystatustable(std::make_shared<CiscoEnvmonMib::Ciscoenvmonsupplystatustable>())
-	,ciscoenvmontemperaturestatustable(std::make_shared<CiscoEnvmonMib::Ciscoenvmontemperaturestatustable>())
-	,ciscoenvmonvoltagestatustable(std::make_shared<CiscoEnvmonMib::Ciscoenvmonvoltagestatustable>())
+    ciscoenvmonfanstatustable_(std::make_shared<CiscoEnvmonMib::Ciscoenvmonfanstatustable>())
+	,ciscoenvmonmibnotificationenables_(std::make_shared<CiscoEnvmonMib::Ciscoenvmonmibnotificationenables>())
+	,ciscoenvmonobjects_(std::make_shared<CiscoEnvmonMib::Ciscoenvmonobjects>())
+	,ciscoenvmonsupplystatustable_(std::make_shared<CiscoEnvmonMib::Ciscoenvmonsupplystatustable>())
+	,ciscoenvmontemperaturestatustable_(std::make_shared<CiscoEnvmonMib::Ciscoenvmontemperaturestatustable>())
+	,ciscoenvmonvoltagestatustable_(std::make_shared<CiscoEnvmonMib::Ciscoenvmonvoltagestatustable>())
 {
-    ciscoenvmonfanstatustable->parent = this;
+    ciscoenvmonfanstatustable_->parent = this;
 
-    ciscoenvmonmibnotificationenables->parent = this;
+    ciscoenvmonmibnotificationenables_->parent = this;
 
-    ciscoenvmonobjects->parent = this;
+    ciscoenvmonobjects_->parent = this;
 
-    ciscoenvmonsupplystatustable->parent = this;
+    ciscoenvmonsupplystatustable_->parent = this;
 
-    ciscoenvmontemperaturestatustable->parent = this;
+    ciscoenvmontemperaturestatustable_->parent = this;
 
-    ciscoenvmonvoltagestatustable->parent = this;
+    ciscoenvmonvoltagestatustable_->parent = this;
 
     yang_name = "CISCO-ENVMON-MIB"; yang_parent_name = "CISCO-ENVMON-MIB";
 }
@@ -39,23 +39,23 @@ CiscoEnvmonMib::~CiscoEnvmonMib()
 
 bool CiscoEnvmonMib::has_data() const
 {
-    return (ciscoenvmonfanstatustable !=  nullptr && ciscoenvmonfanstatustable->has_data())
-	|| (ciscoenvmonmibnotificationenables !=  nullptr && ciscoenvmonmibnotificationenables->has_data())
-	|| (ciscoenvmonobjects !=  nullptr && ciscoenvmonobjects->has_data())
-	|| (ciscoenvmonsupplystatustable !=  nullptr && ciscoenvmonsupplystatustable->has_data())
-	|| (ciscoenvmontemperaturestatustable !=  nullptr && ciscoenvmontemperaturestatustable->has_data())
-	|| (ciscoenvmonvoltagestatustable !=  nullptr && ciscoenvmonvoltagestatustable->has_data());
+    return (ciscoenvmonfanstatustable_ !=  nullptr && ciscoenvmonfanstatustable_->has_data())
+	|| (ciscoenvmonmibnotificationenables_ !=  nullptr && ciscoenvmonmibnotificationenables_->has_data())
+	|| (ciscoenvmonobjects_ !=  nullptr && ciscoenvmonobjects_->has_data())
+	|| (ciscoenvmonsupplystatustable_ !=  nullptr && ciscoenvmonsupplystatustable_->has_data())
+	|| (ciscoenvmontemperaturestatustable_ !=  nullptr && ciscoenvmontemperaturestatustable_->has_data())
+	|| (ciscoenvmonvoltagestatustable_ !=  nullptr && ciscoenvmonvoltagestatustable_->has_data());
 }
 
 bool CiscoEnvmonMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscoenvmonfanstatustable !=  nullptr && ciscoenvmonfanstatustable->has_operation())
-	|| (ciscoenvmonmibnotificationenables !=  nullptr && ciscoenvmonmibnotificationenables->has_operation())
-	|| (ciscoenvmonobjects !=  nullptr && ciscoenvmonobjects->has_operation())
-	|| (ciscoenvmonsupplystatustable !=  nullptr && ciscoenvmonsupplystatustable->has_operation())
-	|| (ciscoenvmontemperaturestatustable !=  nullptr && ciscoenvmontemperaturestatustable->has_operation())
-	|| (ciscoenvmonvoltagestatustable !=  nullptr && ciscoenvmonvoltagestatustable->has_operation());
+	|| (ciscoenvmonfanstatustable_ !=  nullptr && ciscoenvmonfanstatustable_->has_operation())
+	|| (ciscoenvmonmibnotificationenables_ !=  nullptr && ciscoenvmonmibnotificationenables_->has_operation())
+	|| (ciscoenvmonobjects_ !=  nullptr && ciscoenvmonobjects_->has_operation())
+	|| (ciscoenvmonsupplystatustable_ !=  nullptr && ciscoenvmonsupplystatustable_->has_operation())
+	|| (ciscoenvmontemperaturestatustable_ !=  nullptr && ciscoenvmontemperaturestatustable_->has_operation())
+	|| (ciscoenvmonvoltagestatustable_ !=  nullptr && ciscoenvmonvoltagestatustable_->has_operation());
 }
 
 std::string CiscoEnvmonMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoEnvmonMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "ciscoEnvMonFanStatusTable")
     {
-        if(ciscoenvmonfanstatustable == nullptr)
+        if(ciscoenvmonfanstatustable_ == nullptr)
         {
-            ciscoenvmonfanstatustable = std::make_shared<CiscoEnvmonMib::Ciscoenvmonfanstatustable>();
+            ciscoenvmonfanstatustable_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmonfanstatustable>();
         }
-        return ciscoenvmonfanstatustable;
+        return ciscoenvmonfanstatustable_;
     }
 
     if(child_yang_name == "ciscoEnvMonMIBNotificationEnables")
     {
-        if(ciscoenvmonmibnotificationenables == nullptr)
+        if(ciscoenvmonmibnotificationenables_ == nullptr)
         {
-            ciscoenvmonmibnotificationenables = std::make_shared<CiscoEnvmonMib::Ciscoenvmonmibnotificationenables>();
+            ciscoenvmonmibnotificationenables_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmonmibnotificationenables>();
         }
-        return ciscoenvmonmibnotificationenables;
+        return ciscoenvmonmibnotificationenables_;
     }
 
     if(child_yang_name == "ciscoEnvMonObjects")
     {
-        if(ciscoenvmonobjects == nullptr)
+        if(ciscoenvmonobjects_ == nullptr)
         {
-            ciscoenvmonobjects = std::make_shared<CiscoEnvmonMib::Ciscoenvmonobjects>();
+            ciscoenvmonobjects_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmonobjects>();
         }
-        return ciscoenvmonobjects;
+        return ciscoenvmonobjects_;
     }
 
     if(child_yang_name == "ciscoEnvMonSupplyStatusTable")
     {
-        if(ciscoenvmonsupplystatustable == nullptr)
+        if(ciscoenvmonsupplystatustable_ == nullptr)
         {
-            ciscoenvmonsupplystatustable = std::make_shared<CiscoEnvmonMib::Ciscoenvmonsupplystatustable>();
+            ciscoenvmonsupplystatustable_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmonsupplystatustable>();
         }
-        return ciscoenvmonsupplystatustable;
+        return ciscoenvmonsupplystatustable_;
     }
 
     if(child_yang_name == "ciscoEnvMonTemperatureStatusTable")
     {
-        if(ciscoenvmontemperaturestatustable == nullptr)
+        if(ciscoenvmontemperaturestatustable_ == nullptr)
         {
-            ciscoenvmontemperaturestatustable = std::make_shared<CiscoEnvmonMib::Ciscoenvmontemperaturestatustable>();
+            ciscoenvmontemperaturestatustable_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmontemperaturestatustable>();
         }
-        return ciscoenvmontemperaturestatustable;
+        return ciscoenvmontemperaturestatustable_;
     }
 
     if(child_yang_name == "ciscoEnvMonVoltageStatusTable")
     {
-        if(ciscoenvmonvoltagestatustable == nullptr)
+        if(ciscoenvmonvoltagestatustable_ == nullptr)
         {
-            ciscoenvmonvoltagestatustable = std::make_shared<CiscoEnvmonMib::Ciscoenvmonvoltagestatustable>();
+            ciscoenvmonvoltagestatustable_ = std::make_shared<CiscoEnvmonMib::Ciscoenvmonvoltagestatustable>();
         }
-        return ciscoenvmonvoltagestatustable;
+        return ciscoenvmonvoltagestatustable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoEnvmonMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnvmonMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoenvmonfanstatustable != nullptr)
+    if(ciscoenvmonfanstatustable_ != nullptr)
     {
-        children["ciscoEnvMonFanStatusTable"] = ciscoenvmonfanstatustable;
+        children["ciscoEnvMonFanStatusTable"] = ciscoenvmonfanstatustable_;
     }
 
-    if(ciscoenvmonmibnotificationenables != nullptr)
+    if(ciscoenvmonmibnotificationenables_ != nullptr)
     {
-        children["ciscoEnvMonMIBNotificationEnables"] = ciscoenvmonmibnotificationenables;
+        children["ciscoEnvMonMIBNotificationEnables"] = ciscoenvmonmibnotificationenables_;
     }
 
-    if(ciscoenvmonobjects != nullptr)
+    if(ciscoenvmonobjects_ != nullptr)
     {
-        children["ciscoEnvMonObjects"] = ciscoenvmonobjects;
+        children["ciscoEnvMonObjects"] = ciscoenvmonobjects_;
     }
 
-    if(ciscoenvmonsupplystatustable != nullptr)
+    if(ciscoenvmonsupplystatustable_ != nullptr)
     {
-        children["ciscoEnvMonSupplyStatusTable"] = ciscoenvmonsupplystatustable;
+        children["ciscoEnvMonSupplyStatusTable"] = ciscoenvmonsupplystatustable_;
     }
 
-    if(ciscoenvmontemperaturestatustable != nullptr)
+    if(ciscoenvmontemperaturestatustable_ != nullptr)
     {
-        children["ciscoEnvMonTemperatureStatusTable"] = ciscoenvmontemperaturestatustable;
+        children["ciscoEnvMonTemperatureStatusTable"] = ciscoenvmontemperaturestatustable_;
     }
 
-    if(ciscoenvmonvoltagestatustable != nullptr)
+    if(ciscoenvmonvoltagestatustable_ != nullptr)
     {
-        children["ciscoEnvMonVoltageStatusTable"] = ciscoenvmonvoltagestatustable;
+        children["ciscoEnvMonVoltageStatusTable"] = ciscoenvmonvoltagestatustable_;
     }
 
     return children;
@@ -407,9 +407,9 @@ CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::~Ciscoenvmonvoltagestatustable()
 
 bool CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoenvmonvoltagestatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonvoltagestatusentry_.size(); index++)
     {
-        if(ciscoenvmonvoltagestatusentry[index]->has_data())
+        if(ciscoenvmonvoltagestatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -417,9 +417,9 @@ bool CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::has_data() const
 
 bool CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoenvmonvoltagestatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonvoltagestatusentry_.size(); index++)
     {
-        if(ciscoenvmonvoltagestatusentry[index]->has_operation())
+        if(ciscoenvmonvoltagestatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -459,7 +459,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::get_child
 {
     if(child_yang_name == "ciscoEnvMonVoltageStatusEntry")
     {
-        for(auto const & c : ciscoenvmonvoltagestatusentry)
+        for(auto const & c : ciscoenvmonvoltagestatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -469,7 +469,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::get_child
         }
         auto c = std::make_shared<CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry>();
         c->parent = this;
-        ciscoenvmonvoltagestatusentry.push_back(c);
+        ciscoenvmonvoltagestatusentry_.push_back(c);
         return c;
     }
 
@@ -479,7 +479,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoenvmonvoltagestatusentry)
+    for (auto const & c : ciscoenvmonvoltagestatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -622,9 +622,9 @@ CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::~Ciscoenvmontemperaturestatus
 
 bool CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoenvmontemperaturestatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmontemperaturestatusentry_.size(); index++)
     {
-        if(ciscoenvmontemperaturestatusentry[index]->has_data())
+        if(ciscoenvmontemperaturestatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -632,9 +632,9 @@ bool CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::has_data() const
 
 bool CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoenvmontemperaturestatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmontemperaturestatusentry_.size(); index++)
     {
-        if(ciscoenvmontemperaturestatusentry[index]->has_operation())
+        if(ciscoenvmontemperaturestatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -674,7 +674,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::get_c
 {
     if(child_yang_name == "ciscoEnvMonTemperatureStatusEntry")
     {
-        for(auto const & c : ciscoenvmontemperaturestatusentry)
+        for(auto const & c : ciscoenvmontemperaturestatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -684,7 +684,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::get_c
         }
         auto c = std::make_shared<CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry>();
         c->parent = this;
-        ciscoenvmontemperaturestatusentry.push_back(c);
+        ciscoenvmontemperaturestatusentry_.push_back(c);
         return c;
     }
 
@@ -694,7 +694,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoenvmontemperaturestatusentry)
+    for (auto const & c : ciscoenvmontemperaturestatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -829,9 +829,9 @@ CiscoEnvmonMib::Ciscoenvmonfanstatustable::~Ciscoenvmonfanstatustable()
 
 bool CiscoEnvmonMib::Ciscoenvmonfanstatustable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoenvmonfanstatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonfanstatusentry_.size(); index++)
     {
-        if(ciscoenvmonfanstatusentry[index]->has_data())
+        if(ciscoenvmonfanstatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -839,9 +839,9 @@ bool CiscoEnvmonMib::Ciscoenvmonfanstatustable::has_data() const
 
 bool CiscoEnvmonMib::Ciscoenvmonfanstatustable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoenvmonfanstatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonfanstatusentry_.size(); index++)
     {
-        if(ciscoenvmonfanstatusentry[index]->has_operation())
+        if(ciscoenvmonfanstatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -881,7 +881,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonfanstatustable::get_child_by_
 {
     if(child_yang_name == "ciscoEnvMonFanStatusEntry")
     {
-        for(auto const & c : ciscoenvmonfanstatusentry)
+        for(auto const & c : ciscoenvmonfanstatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -891,7 +891,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonfanstatustable::get_child_by_
         }
         auto c = std::make_shared<CiscoEnvmonMib::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry>();
         c->parent = this;
-        ciscoenvmonfanstatusentry.push_back(c);
+        ciscoenvmonfanstatusentry_.push_back(c);
         return c;
     }
 
@@ -901,7 +901,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonfanstatustable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnvmonMib::Ciscoenvmonfanstatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoenvmonfanstatusentry)
+    for (auto const & c : ciscoenvmonfanstatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1012,9 +1012,9 @@ CiscoEnvmonMib::Ciscoenvmonsupplystatustable::~Ciscoenvmonsupplystatustable()
 
 bool CiscoEnvmonMib::Ciscoenvmonsupplystatustable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoenvmonsupplystatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonsupplystatusentry_.size(); index++)
     {
-        if(ciscoenvmonsupplystatusentry[index]->has_data())
+        if(ciscoenvmonsupplystatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1022,9 +1022,9 @@ bool CiscoEnvmonMib::Ciscoenvmonsupplystatustable::has_data() const
 
 bool CiscoEnvmonMib::Ciscoenvmonsupplystatustable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoenvmonsupplystatusentry.size(); index++)
+    for (std::size_t index=0; index<ciscoenvmonsupplystatusentry_.size(); index++)
     {
-        if(ciscoenvmonsupplystatusentry[index]->has_operation())
+        if(ciscoenvmonsupplystatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1064,7 +1064,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonsupplystatustable::get_child_
 {
     if(child_yang_name == "ciscoEnvMonSupplyStatusEntry")
     {
-        for(auto const & c : ciscoenvmonsupplystatusentry)
+        for(auto const & c : ciscoenvmonsupplystatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1074,7 +1074,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonsupplystatustable::get_child_
         }
         auto c = std::make_shared<CiscoEnvmonMib::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry>();
         c->parent = this;
-        ciscoenvmonsupplystatusentry.push_back(c);
+        ciscoenvmonsupplystatusentry_.push_back(c);
         return c;
     }
 
@@ -1084,7 +1084,7 @@ std::shared_ptr<Entity> CiscoEnvmonMib::Ciscoenvmonsupplystatustable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnvmonMib::Ciscoenvmonsupplystatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoenvmonsupplystatusentry)
+    for (auto const & c : ciscoenvmonsupplystatusentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -34,10 +34,10 @@ class TcpMib : public Entity
         class Tcpconnectiontable; //type: TcpMib::Tcpconnectiontable
         class Tcplistenertable; //type: TcpMib::Tcplistenertable
 
-        std::shared_ptr<TCP_MIB::TcpMib::Tcp> tcp;
-        std::shared_ptr<TCP_MIB::TcpMib::Tcpconnectiontable> tcpconnectiontable;
-        std::shared_ptr<TCP_MIB::TcpMib::Tcpconntable> tcpconntable;
-        std::shared_ptr<TCP_MIB::TcpMib::Tcplistenertable> tcplistenertable;
+        std::shared_ptr<TCP_MIB::TcpMib::Tcp> tcp_;
+        std::shared_ptr<TCP_MIB::TcpMib::Tcpconnectiontable> tcpconnectiontable_;
+        std::shared_ptr<TCP_MIB::TcpMib::Tcpconntable> tcpconntable_;
+        std::shared_ptr<TCP_MIB::TcpMib::Tcplistenertable> tcplistenertable_;
         
 }; // TcpMib
 
@@ -93,7 +93,7 @@ class TcpMib::Tcpconntable : public Entity
 
         class Tcpconnentry; //type: TcpMib::Tcpconntable::Tcpconnentry
 
-        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcpconntable::Tcpconnentry> > tcpconnentry;
+        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcpconntable::Tcpconnentry> > tcpconnentry_;
         
 }; // TcpMib::Tcpconntable
 
@@ -138,7 +138,7 @@ class TcpMib::Tcpconnectiontable : public Entity
 
         class Tcpconnectionentry; //type: TcpMib::Tcpconnectiontable::Tcpconnectionentry
 
-        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcpconnectiontable::Tcpconnectionentry> > tcpconnectionentry;
+        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcpconnectiontable::Tcpconnectionentry> > tcpconnectionentry_;
         
 }; // TcpMib::Tcpconnectiontable
 
@@ -186,7 +186,7 @@ class TcpMib::Tcplistenertable : public Entity
 
         class Tcplistenerentry; //type: TcpMib::Tcplistenertable::Tcplistenerentry
 
-        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcplistenertable::Tcplistenerentry> > tcplistenerentry;
+        std::vector<std::shared_ptr<TCP_MIB::TcpMib::Tcplistenertable::Tcplistenerentry> > tcplistenerentry_;
         
 }; // TcpMib::Tcplistenertable
 

@@ -11,42 +11,42 @@ namespace CISCO_SUBSCRIBER_SESSION_MIB {
 
 CiscoSubscriberSessionMib::CiscoSubscriberSessionMib()
     :
-    csubaggstatsinttable(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsinttable>())
-	,csubaggstatstable(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatstable>())
-	,csubaggstatsthreshtable(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsthreshtable>())
-	,csubaggthresh(std::make_shared<CiscoSubscriberSessionMib::Csubaggthresh>())
-	,csubjob(std::make_shared<CiscoSubscriberSessionMib::Csubjob>())
-	,csubjobmatchparamstable(std::make_shared<CiscoSubscriberSessionMib::Csubjobmatchparamstable>())
-	,csubjobqueryparamstable(std::make_shared<CiscoSubscriberSessionMib::Csubjobqueryparamstable>())
-	,csubjobqueuetable(std::make_shared<CiscoSubscriberSessionMib::Csubjobqueuetable>())
-	,csubjobreporttable(std::make_shared<CiscoSubscriberSessionMib::Csubjobreporttable>())
-	,csubjobtable(std::make_shared<CiscoSubscriberSessionMib::Csubjobtable>())
-	,csubsessionbytypetable(std::make_shared<CiscoSubscriberSessionMib::Csubsessionbytypetable>())
-	,csubsessiontable(std::make_shared<CiscoSubscriberSessionMib::Csubsessiontable>())
+    csubaggstatsinttable_(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsinttable>())
+	,csubaggstatstable_(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatstable>())
+	,csubaggstatsthreshtable_(std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsthreshtable>())
+	,csubaggthresh_(std::make_shared<CiscoSubscriberSessionMib::Csubaggthresh>())
+	,csubjob_(std::make_shared<CiscoSubscriberSessionMib::Csubjob>())
+	,csubjobmatchparamstable_(std::make_shared<CiscoSubscriberSessionMib::Csubjobmatchparamstable>())
+	,csubjobqueryparamstable_(std::make_shared<CiscoSubscriberSessionMib::Csubjobqueryparamstable>())
+	,csubjobqueuetable_(std::make_shared<CiscoSubscriberSessionMib::Csubjobqueuetable>())
+	,csubjobreporttable_(std::make_shared<CiscoSubscriberSessionMib::Csubjobreporttable>())
+	,csubjobtable_(std::make_shared<CiscoSubscriberSessionMib::Csubjobtable>())
+	,csubsessionbytypetable_(std::make_shared<CiscoSubscriberSessionMib::Csubsessionbytypetable>())
+	,csubsessiontable_(std::make_shared<CiscoSubscriberSessionMib::Csubsessiontable>())
 {
-    csubaggstatsinttable->parent = this;
+    csubaggstatsinttable_->parent = this;
 
-    csubaggstatstable->parent = this;
+    csubaggstatstable_->parent = this;
 
-    csubaggstatsthreshtable->parent = this;
+    csubaggstatsthreshtable_->parent = this;
 
-    csubaggthresh->parent = this;
+    csubaggthresh_->parent = this;
 
-    csubjob->parent = this;
+    csubjob_->parent = this;
 
-    csubjobmatchparamstable->parent = this;
+    csubjobmatchparamstable_->parent = this;
 
-    csubjobqueryparamstable->parent = this;
+    csubjobqueryparamstable_->parent = this;
 
-    csubjobqueuetable->parent = this;
+    csubjobqueuetable_->parent = this;
 
-    csubjobreporttable->parent = this;
+    csubjobreporttable_->parent = this;
 
-    csubjobtable->parent = this;
+    csubjobtable_->parent = this;
 
-    csubsessionbytypetable->parent = this;
+    csubsessionbytypetable_->parent = this;
 
-    csubsessiontable->parent = this;
+    csubsessiontable_->parent = this;
 
     yang_name = "CISCO-SUBSCRIBER-SESSION-MIB"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB";
 }
@@ -57,35 +57,35 @@ CiscoSubscriberSessionMib::~CiscoSubscriberSessionMib()
 
 bool CiscoSubscriberSessionMib::has_data() const
 {
-    return (csubaggstatsinttable !=  nullptr && csubaggstatsinttable->has_data())
-	|| (csubaggstatstable !=  nullptr && csubaggstatstable->has_data())
-	|| (csubaggstatsthreshtable !=  nullptr && csubaggstatsthreshtable->has_data())
-	|| (csubaggthresh !=  nullptr && csubaggthresh->has_data())
-	|| (csubjob !=  nullptr && csubjob->has_data())
-	|| (csubjobmatchparamstable !=  nullptr && csubjobmatchparamstable->has_data())
-	|| (csubjobqueryparamstable !=  nullptr && csubjobqueryparamstable->has_data())
-	|| (csubjobqueuetable !=  nullptr && csubjobqueuetable->has_data())
-	|| (csubjobreporttable !=  nullptr && csubjobreporttable->has_data())
-	|| (csubjobtable !=  nullptr && csubjobtable->has_data())
-	|| (csubsessionbytypetable !=  nullptr && csubsessionbytypetable->has_data())
-	|| (csubsessiontable !=  nullptr && csubsessiontable->has_data());
+    return (csubaggstatsinttable_ !=  nullptr && csubaggstatsinttable_->has_data())
+	|| (csubaggstatstable_ !=  nullptr && csubaggstatstable_->has_data())
+	|| (csubaggstatsthreshtable_ !=  nullptr && csubaggstatsthreshtable_->has_data())
+	|| (csubaggthresh_ !=  nullptr && csubaggthresh_->has_data())
+	|| (csubjob_ !=  nullptr && csubjob_->has_data())
+	|| (csubjobmatchparamstable_ !=  nullptr && csubjobmatchparamstable_->has_data())
+	|| (csubjobqueryparamstable_ !=  nullptr && csubjobqueryparamstable_->has_data())
+	|| (csubjobqueuetable_ !=  nullptr && csubjobqueuetable_->has_data())
+	|| (csubjobreporttable_ !=  nullptr && csubjobreporttable_->has_data())
+	|| (csubjobtable_ !=  nullptr && csubjobtable_->has_data())
+	|| (csubsessionbytypetable_ !=  nullptr && csubsessionbytypetable_->has_data())
+	|| (csubsessiontable_ !=  nullptr && csubsessiontable_->has_data());
 }
 
 bool CiscoSubscriberSessionMib::has_operation() const
 {
     return is_set(operation)
-	|| (csubaggstatsinttable !=  nullptr && csubaggstatsinttable->has_operation())
-	|| (csubaggstatstable !=  nullptr && csubaggstatstable->has_operation())
-	|| (csubaggstatsthreshtable !=  nullptr && csubaggstatsthreshtable->has_operation())
-	|| (csubaggthresh !=  nullptr && csubaggthresh->has_operation())
-	|| (csubjob !=  nullptr && csubjob->has_operation())
-	|| (csubjobmatchparamstable !=  nullptr && csubjobmatchparamstable->has_operation())
-	|| (csubjobqueryparamstable !=  nullptr && csubjobqueryparamstable->has_operation())
-	|| (csubjobqueuetable !=  nullptr && csubjobqueuetable->has_operation())
-	|| (csubjobreporttable !=  nullptr && csubjobreporttable->has_operation())
-	|| (csubjobtable !=  nullptr && csubjobtable->has_operation())
-	|| (csubsessionbytypetable !=  nullptr && csubsessionbytypetable->has_operation())
-	|| (csubsessiontable !=  nullptr && csubsessiontable->has_operation());
+	|| (csubaggstatsinttable_ !=  nullptr && csubaggstatsinttable_->has_operation())
+	|| (csubaggstatstable_ !=  nullptr && csubaggstatstable_->has_operation())
+	|| (csubaggstatsthreshtable_ !=  nullptr && csubaggstatsthreshtable_->has_operation())
+	|| (csubaggthresh_ !=  nullptr && csubaggthresh_->has_operation())
+	|| (csubjob_ !=  nullptr && csubjob_->has_operation())
+	|| (csubjobmatchparamstable_ !=  nullptr && csubjobmatchparamstable_->has_operation())
+	|| (csubjobqueryparamstable_ !=  nullptr && csubjobqueryparamstable_->has_operation())
+	|| (csubjobqueuetable_ !=  nullptr && csubjobqueuetable_->has_operation())
+	|| (csubjobreporttable_ !=  nullptr && csubjobreporttable_->has_operation())
+	|| (csubjobtable_ !=  nullptr && csubjobtable_->has_operation())
+	|| (csubsessionbytypetable_ !=  nullptr && csubsessionbytypetable_->has_operation())
+	|| (csubsessiontable_ !=  nullptr && csubsessiontable_->has_operation());
 }
 
 std::string CiscoSubscriberSessionMib::get_segment_path() const
@@ -119,110 +119,110 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::get_child_by_name(const std::
 {
     if(child_yang_name == "csubAggStatsIntTable")
     {
-        if(csubaggstatsinttable == nullptr)
+        if(csubaggstatsinttable_ == nullptr)
         {
-            csubaggstatsinttable = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsinttable>();
+            csubaggstatsinttable_ = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsinttable>();
         }
-        return csubaggstatsinttable;
+        return csubaggstatsinttable_;
     }
 
     if(child_yang_name == "csubAggStatsTable")
     {
-        if(csubaggstatstable == nullptr)
+        if(csubaggstatstable_ == nullptr)
         {
-            csubaggstatstable = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatstable>();
+            csubaggstatstable_ = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatstable>();
         }
-        return csubaggstatstable;
+        return csubaggstatstable_;
     }
 
     if(child_yang_name == "csubAggStatsThreshTable")
     {
-        if(csubaggstatsthreshtable == nullptr)
+        if(csubaggstatsthreshtable_ == nullptr)
         {
-            csubaggstatsthreshtable = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsthreshtable>();
+            csubaggstatsthreshtable_ = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsthreshtable>();
         }
-        return csubaggstatsthreshtable;
+        return csubaggstatsthreshtable_;
     }
 
     if(child_yang_name == "csubAggThresh")
     {
-        if(csubaggthresh == nullptr)
+        if(csubaggthresh_ == nullptr)
         {
-            csubaggthresh = std::make_shared<CiscoSubscriberSessionMib::Csubaggthresh>();
+            csubaggthresh_ = std::make_shared<CiscoSubscriberSessionMib::Csubaggthresh>();
         }
-        return csubaggthresh;
+        return csubaggthresh_;
     }
 
     if(child_yang_name == "csubJob")
     {
-        if(csubjob == nullptr)
+        if(csubjob_ == nullptr)
         {
-            csubjob = std::make_shared<CiscoSubscriberSessionMib::Csubjob>();
+            csubjob_ = std::make_shared<CiscoSubscriberSessionMib::Csubjob>();
         }
-        return csubjob;
+        return csubjob_;
     }
 
     if(child_yang_name == "csubJobMatchParamsTable")
     {
-        if(csubjobmatchparamstable == nullptr)
+        if(csubjobmatchparamstable_ == nullptr)
         {
-            csubjobmatchparamstable = std::make_shared<CiscoSubscriberSessionMib::Csubjobmatchparamstable>();
+            csubjobmatchparamstable_ = std::make_shared<CiscoSubscriberSessionMib::Csubjobmatchparamstable>();
         }
-        return csubjobmatchparamstable;
+        return csubjobmatchparamstable_;
     }
 
     if(child_yang_name == "csubJobQueryParamsTable")
     {
-        if(csubjobqueryparamstable == nullptr)
+        if(csubjobqueryparamstable_ == nullptr)
         {
-            csubjobqueryparamstable = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueryparamstable>();
+            csubjobqueryparamstable_ = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueryparamstable>();
         }
-        return csubjobqueryparamstable;
+        return csubjobqueryparamstable_;
     }
 
     if(child_yang_name == "csubJobQueueTable")
     {
-        if(csubjobqueuetable == nullptr)
+        if(csubjobqueuetable_ == nullptr)
         {
-            csubjobqueuetable = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueuetable>();
+            csubjobqueuetable_ = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueuetable>();
         }
-        return csubjobqueuetable;
+        return csubjobqueuetable_;
     }
 
     if(child_yang_name == "csubJobReportTable")
     {
-        if(csubjobreporttable == nullptr)
+        if(csubjobreporttable_ == nullptr)
         {
-            csubjobreporttable = std::make_shared<CiscoSubscriberSessionMib::Csubjobreporttable>();
+            csubjobreporttable_ = std::make_shared<CiscoSubscriberSessionMib::Csubjobreporttable>();
         }
-        return csubjobreporttable;
+        return csubjobreporttable_;
     }
 
     if(child_yang_name == "csubJobTable")
     {
-        if(csubjobtable == nullptr)
+        if(csubjobtable_ == nullptr)
         {
-            csubjobtable = std::make_shared<CiscoSubscriberSessionMib::Csubjobtable>();
+            csubjobtable_ = std::make_shared<CiscoSubscriberSessionMib::Csubjobtable>();
         }
-        return csubjobtable;
+        return csubjobtable_;
     }
 
     if(child_yang_name == "csubSessionByTypeTable")
     {
-        if(csubsessionbytypetable == nullptr)
+        if(csubsessionbytypetable_ == nullptr)
         {
-            csubsessionbytypetable = std::make_shared<CiscoSubscriberSessionMib::Csubsessionbytypetable>();
+            csubsessionbytypetable_ = std::make_shared<CiscoSubscriberSessionMib::Csubsessionbytypetable>();
         }
-        return csubsessionbytypetable;
+        return csubsessionbytypetable_;
     }
 
     if(child_yang_name == "csubSessionTable")
     {
-        if(csubsessiontable == nullptr)
+        if(csubsessiontable_ == nullptr)
         {
-            csubsessiontable = std::make_shared<CiscoSubscriberSessionMib::Csubsessiontable>();
+            csubsessiontable_ = std::make_shared<CiscoSubscriberSessionMib::Csubsessiontable>();
         }
-        return csubsessiontable;
+        return csubsessiontable_;
     }
 
     return nullptr;
@@ -231,64 +231,64 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(csubaggstatsinttable != nullptr)
+    if(csubaggstatsinttable_ != nullptr)
     {
-        children["csubAggStatsIntTable"] = csubaggstatsinttable;
+        children["csubAggStatsIntTable"] = csubaggstatsinttable_;
     }
 
-    if(csubaggstatstable != nullptr)
+    if(csubaggstatstable_ != nullptr)
     {
-        children["csubAggStatsTable"] = csubaggstatstable;
+        children["csubAggStatsTable"] = csubaggstatstable_;
     }
 
-    if(csubaggstatsthreshtable != nullptr)
+    if(csubaggstatsthreshtable_ != nullptr)
     {
-        children["csubAggStatsThreshTable"] = csubaggstatsthreshtable;
+        children["csubAggStatsThreshTable"] = csubaggstatsthreshtable_;
     }
 
-    if(csubaggthresh != nullptr)
+    if(csubaggthresh_ != nullptr)
     {
-        children["csubAggThresh"] = csubaggthresh;
+        children["csubAggThresh"] = csubaggthresh_;
     }
 
-    if(csubjob != nullptr)
+    if(csubjob_ != nullptr)
     {
-        children["csubJob"] = csubjob;
+        children["csubJob"] = csubjob_;
     }
 
-    if(csubjobmatchparamstable != nullptr)
+    if(csubjobmatchparamstable_ != nullptr)
     {
-        children["csubJobMatchParamsTable"] = csubjobmatchparamstable;
+        children["csubJobMatchParamsTable"] = csubjobmatchparamstable_;
     }
 
-    if(csubjobqueryparamstable != nullptr)
+    if(csubjobqueryparamstable_ != nullptr)
     {
-        children["csubJobQueryParamsTable"] = csubjobqueryparamstable;
+        children["csubJobQueryParamsTable"] = csubjobqueryparamstable_;
     }
 
-    if(csubjobqueuetable != nullptr)
+    if(csubjobqueuetable_ != nullptr)
     {
-        children["csubJobQueueTable"] = csubjobqueuetable;
+        children["csubJobQueueTable"] = csubjobqueuetable_;
     }
 
-    if(csubjobreporttable != nullptr)
+    if(csubjobreporttable_ != nullptr)
     {
-        children["csubJobReportTable"] = csubjobreporttable;
+        children["csubJobReportTable"] = csubjobreporttable_;
     }
 
-    if(csubjobtable != nullptr)
+    if(csubjobtable_ != nullptr)
     {
-        children["csubJobTable"] = csubjobtable;
+        children["csubJobTable"] = csubjobtable_;
     }
 
-    if(csubsessionbytypetable != nullptr)
+    if(csubsessionbytypetable_ != nullptr)
     {
-        children["csubSessionByTypeTable"] = csubsessionbytypetable;
+        children["csubSessionByTypeTable"] = csubsessionbytypetable_;
     }
 
-    if(csubsessiontable != nullptr)
+    if(csubsessiontable_ != nullptr)
     {
-        children["csubSessionTable"] = csubsessiontable;
+        children["csubSessionTable"] = csubsessiontable_;
     }
 
     return children;
@@ -513,9 +513,9 @@ CiscoSubscriberSessionMib::Csubsessiontable::~Csubsessiontable()
 
 bool CiscoSubscriberSessionMib::Csubsessiontable::has_data() const
 {
-    for (std::size_t index=0; index<csubsessionentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionentry_.size(); index++)
     {
-        if(csubsessionentry[index]->has_data())
+        if(csubsessionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -523,9 +523,9 @@ bool CiscoSubscriberSessionMib::Csubsessiontable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubsessiontable::has_operation() const
 {
-    for (std::size_t index=0; index<csubsessionentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionentry_.size(); index++)
     {
-        if(csubsessionentry[index]->has_operation())
+        if(csubsessionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -565,7 +565,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessiontable::get_child_b
 {
     if(child_yang_name == "csubSessionEntry")
     {
-        for(auto const & c : csubsessionentry)
+        for(auto const & c : csubsessionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -575,7 +575,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessiontable::get_child_b
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubsessiontable::Csubsessionentry>();
         c->parent = this;
-        csubsessionentry.push_back(c);
+        csubsessionentry_.push_back(c);
         return c;
     }
 
@@ -585,7 +585,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessiontable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubsessiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubsessionentry)
+    for (auto const & c : csubsessionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -976,9 +976,9 @@ CiscoSubscriberSessionMib::Csubsessionbytypetable::~Csubsessionbytypetable()
 
 bool CiscoSubscriberSessionMib::Csubsessionbytypetable::has_data() const
 {
-    for (std::size_t index=0; index<csubsessionbytypeentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionbytypeentry_.size(); index++)
     {
-        if(csubsessionbytypeentry[index]->has_data())
+        if(csubsessionbytypeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -986,9 +986,9 @@ bool CiscoSubscriberSessionMib::Csubsessionbytypetable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubsessionbytypetable::has_operation() const
 {
-    for (std::size_t index=0; index<csubsessionbytypeentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionbytypeentry_.size(); index++)
     {
-        if(csubsessionbytypeentry[index]->has_operation())
+        if(csubsessionbytypeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1028,7 +1028,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessionbytypetable::get_c
 {
     if(child_yang_name == "csubSessionByTypeEntry")
     {
-        for(auto const & c : csubsessionbytypeentry)
+        for(auto const & c : csubsessionbytypeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1038,7 +1038,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessionbytypetable::get_c
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubsessionbytypetable::Csubsessionbytypeentry>();
         c->parent = this;
-        csubsessionbytypeentry.push_back(c);
+        csubsessionbytypeentry_.push_back(c);
         return c;
     }
 
@@ -1048,7 +1048,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubsessionbytypetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubsessionbytypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubsessionbytypeentry)
+    for (auto const & c : csubsessionbytypeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1151,9 +1151,9 @@ CiscoSubscriberSessionMib::Csubaggstatstable::~Csubaggstatstable()
 
 bool CiscoSubscriberSessionMib::Csubaggstatstable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsentry_.size(); index++)
     {
-        if(csubaggstatsentry[index]->has_data())
+        if(csubaggstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1161,9 +1161,9 @@ bool CiscoSubscriberSessionMib::Csubaggstatstable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubaggstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsentry_.size(); index++)
     {
-        if(csubaggstatsentry[index]->has_operation())
+        if(csubaggstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1203,7 +1203,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatstable::get_child_
 {
     if(child_yang_name == "csubAggStatsEntry")
     {
-        for(auto const & c : csubaggstatsentry)
+        for(auto const & c : csubaggstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1213,7 +1213,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatstable::get_child_
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatstable::Csubaggstatsentry>();
         c->parent = this;
-        csubaggstatsentry.push_back(c);
+        csubaggstatsentry_.push_back(c);
         return c;
     }
 
@@ -1223,7 +1223,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatstable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubaggstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubaggstatsentry)
+    for (auto const & c : csubaggstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1598,9 +1598,9 @@ CiscoSubscriberSessionMib::Csubaggstatsinttable::~Csubaggstatsinttable()
 
 bool CiscoSubscriberSessionMib::Csubaggstatsinttable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsintentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsintentry_.size(); index++)
     {
-        if(csubaggstatsintentry[index]->has_data())
+        if(csubaggstatsintentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1608,9 +1608,9 @@ bool CiscoSubscriberSessionMib::Csubaggstatsinttable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubaggstatsinttable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsintentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsintentry_.size(); index++)
     {
-        if(csubaggstatsintentry[index]->has_operation())
+        if(csubaggstatsintentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1650,7 +1650,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsinttable::get_chi
 {
     if(child_yang_name == "csubAggStatsIntEntry")
     {
-        for(auto const & c : csubaggstatsintentry)
+        for(auto const & c : csubaggstatsintentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1660,7 +1660,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsinttable::get_chi
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsinttable::Csubaggstatsintentry>();
         c->parent = this;
-        csubaggstatsintentry.push_back(c);
+        csubaggstatsintentry_.push_back(c);
         return c;
     }
 
@@ -1670,7 +1670,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsinttable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubaggstatsinttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubaggstatsintentry)
+    for (auto const & c : csubaggstatsintentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1837,9 +1837,9 @@ CiscoSubscriberSessionMib::Csubaggstatsthreshtable::~Csubaggstatsthreshtable()
 
 bool CiscoSubscriberSessionMib::Csubaggstatsthreshtable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsthreshentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsthreshentry_.size(); index++)
     {
-        if(csubaggstatsthreshentry[index]->has_data())
+        if(csubaggstatsthreshentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1847,9 +1847,9 @@ bool CiscoSubscriberSessionMib::Csubaggstatsthreshtable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubaggstatsthreshtable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsthreshentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsthreshentry_.size(); index++)
     {
-        if(csubaggstatsthreshentry[index]->has_operation())
+        if(csubaggstatsthreshentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1889,7 +1889,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsthreshtable::get_
 {
     if(child_yang_name == "csubAggStatsThreshEntry")
     {
-        for(auto const & c : csubaggstatsthreshentry)
+        for(auto const & c : csubaggstatsthreshentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1899,7 +1899,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsthreshtable::get_
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubaggstatsthreshtable::Csubaggstatsthreshentry>();
         c->parent = this;
-        csubaggstatsthreshentry.push_back(c);
+        csubaggstatsthreshentry_.push_back(c);
         return c;
     }
 
@@ -1909,7 +1909,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubaggstatsthreshtable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubaggstatsthreshtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubaggstatsthreshentry)
+    for (auto const & c : csubaggstatsthreshentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2028,9 +2028,9 @@ CiscoSubscriberSessionMib::Csubjobtable::~Csubjobtable()
 
 bool CiscoSubscriberSessionMib::Csubjobtable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobentry.size(); index++)
+    for (std::size_t index=0; index<csubjobentry_.size(); index++)
     {
-        if(csubjobentry[index]->has_data())
+        if(csubjobentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2038,9 +2038,9 @@ bool CiscoSubscriberSessionMib::Csubjobtable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubjobtable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobentry.size(); index++)
+    for (std::size_t index=0; index<csubjobentry_.size(); index++)
     {
-        if(csubjobentry[index]->has_operation())
+        if(csubjobentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2080,7 +2080,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobtable::get_child_by_na
 {
     if(child_yang_name == "csubJobEntry")
     {
-        for(auto const & c : csubjobentry)
+        for(auto const & c : csubjobentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2090,7 +2090,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubjobtable::Csubjobentry>();
         c->parent = this;
-        csubjobentry.push_back(c);
+        csubjobentry_.push_back(c);
         return c;
     }
 
@@ -2100,7 +2100,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubjobtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubjobentry)
+    for (auto const & c : csubjobentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2259,9 +2259,9 @@ CiscoSubscriberSessionMib::Csubjobmatchparamstable::~Csubjobmatchparamstable()
 
 bool CiscoSubscriberSessionMib::Csubjobmatchparamstable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobmatchparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobmatchparamsentry_.size(); index++)
     {
-        if(csubjobmatchparamsentry[index]->has_data())
+        if(csubjobmatchparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2269,9 +2269,9 @@ bool CiscoSubscriberSessionMib::Csubjobmatchparamstable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubjobmatchparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobmatchparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobmatchparamsentry_.size(); index++)
     {
-        if(csubjobmatchparamsentry[index]->has_operation())
+        if(csubjobmatchparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2311,7 +2311,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobmatchparamstable::get_
 {
     if(child_yang_name == "csubJobMatchParamsEntry")
     {
-        for(auto const & c : csubjobmatchparamsentry)
+        for(auto const & c : csubjobmatchparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2321,7 +2321,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobmatchparamstable::get_
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubjobmatchparamstable::Csubjobmatchparamsentry>();
         c->parent = this;
-        csubjobmatchparamsentry.push_back(c);
+        csubjobmatchparamsentry_.push_back(c);
         return c;
     }
 
@@ -2331,7 +2331,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobmatchparamstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubjobmatchparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubjobmatchparamsentry)
+    for (auto const & c : csubjobmatchparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2666,9 +2666,9 @@ CiscoSubscriberSessionMib::Csubjobqueryparamstable::~Csubjobqueryparamstable()
 
 bool CiscoSubscriberSessionMib::Csubjobqueryparamstable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobqueryparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueryparamsentry_.size(); index++)
     {
-        if(csubjobqueryparamsentry[index]->has_data())
+        if(csubjobqueryparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2676,9 +2676,9 @@ bool CiscoSubscriberSessionMib::Csubjobqueryparamstable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubjobqueryparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobqueryparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueryparamsentry_.size(); index++)
     {
-        if(csubjobqueryparamsentry[index]->has_operation())
+        if(csubjobqueryparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2718,7 +2718,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueryparamstable::get_
 {
     if(child_yang_name == "csubJobQueryParamsEntry")
     {
-        for(auto const & c : csubjobqueryparamsentry)
+        for(auto const & c : csubjobqueryparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2728,7 +2728,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueryparamstable::get_
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueryparamstable::Csubjobqueryparamsentry>();
         c->parent = this;
-        csubjobqueryparamsentry.push_back(c);
+        csubjobqueryparamsentry_.push_back(c);
         return c;
     }
 
@@ -2738,7 +2738,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueryparamstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubjobqueryparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubjobqueryparamsentry)
+    for (auto const & c : csubjobqueryparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2865,9 +2865,9 @@ CiscoSubscriberSessionMib::Csubjobqueuetable::~Csubjobqueuetable()
 
 bool CiscoSubscriberSessionMib::Csubjobqueuetable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobqueueentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueueentry_.size(); index++)
     {
-        if(csubjobqueueentry[index]->has_data())
+        if(csubjobqueueentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2875,9 +2875,9 @@ bool CiscoSubscriberSessionMib::Csubjobqueuetable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubjobqueuetable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobqueueentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueueentry_.size(); index++)
     {
-        if(csubjobqueueentry[index]->has_operation())
+        if(csubjobqueueentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2917,7 +2917,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueuetable::get_child_
 {
     if(child_yang_name == "csubJobQueueEntry")
     {
-        for(auto const & c : csubjobqueueentry)
+        for(auto const & c : csubjobqueueentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2927,7 +2927,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueuetable::get_child_
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubjobqueuetable::Csubjobqueueentry>();
         c->parent = this;
-        csubjobqueueentry.push_back(c);
+        csubjobqueueentry_.push_back(c);
         return c;
     }
 
@@ -2937,7 +2937,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobqueuetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubjobqueuetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubjobqueueentry)
+    for (auto const & c : csubjobqueueentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3040,9 +3040,9 @@ CiscoSubscriberSessionMib::Csubjobreporttable::~Csubjobreporttable()
 
 bool CiscoSubscriberSessionMib::Csubjobreporttable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobreportentry.size(); index++)
+    for (std::size_t index=0; index<csubjobreportentry_.size(); index++)
     {
-        if(csubjobreportentry[index]->has_data())
+        if(csubjobreportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3050,9 +3050,9 @@ bool CiscoSubscriberSessionMib::Csubjobreporttable::has_data() const
 
 bool CiscoSubscriberSessionMib::Csubjobreporttable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobreportentry.size(); index++)
+    for (std::size_t index=0; index<csubjobreportentry_.size(); index++)
     {
-        if(csubjobreportentry[index]->has_operation())
+        if(csubjobreportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3092,7 +3092,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobreporttable::get_child
 {
     if(child_yang_name == "csubJobReportEntry")
     {
-        for(auto const & c : csubjobreportentry)
+        for(auto const & c : csubjobreportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3102,7 +3102,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobreporttable::get_child
         }
         auto c = std::make_shared<CiscoSubscriberSessionMib::Csubjobreporttable::Csubjobreportentry>();
         c->parent = this;
-        csubjobreportentry.push_back(c);
+        csubjobreportentry_.push_back(c);
         return c;
     }
 
@@ -3112,7 +3112,7 @@ std::shared_ptr<Entity> CiscoSubscriberSessionMib::Csubjobreporttable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoSubscriberSessionMib::Csubjobreporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csubjobreportentry)
+    for (auto const & c : csubjobreportentry_)
     {
         children[c->get_segment_path()] = c;
     }

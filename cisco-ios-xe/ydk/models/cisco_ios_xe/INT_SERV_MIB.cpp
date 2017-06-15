@@ -11,15 +11,15 @@ namespace INT_SERV_MIB {
 
 IntServMib::IntServMib()
     :
-    intsrvflowtable(std::make_shared<IntServMib::Intsrvflowtable>())
-	,intsrvgenobjects(std::make_shared<IntServMib::Intsrvgenobjects>())
-	,intsrvifattribtable(std::make_shared<IntServMib::Intsrvifattribtable>())
+    intsrvflowtable_(std::make_shared<IntServMib::Intsrvflowtable>())
+	,intsrvgenobjects_(std::make_shared<IntServMib::Intsrvgenobjects>())
+	,intsrvifattribtable_(std::make_shared<IntServMib::Intsrvifattribtable>())
 {
-    intsrvflowtable->parent = this;
+    intsrvflowtable_->parent = this;
 
-    intsrvgenobjects->parent = this;
+    intsrvgenobjects_->parent = this;
 
-    intsrvifattribtable->parent = this;
+    intsrvifattribtable_->parent = this;
 
     yang_name = "INT-SERV-MIB"; yang_parent_name = "INT-SERV-MIB";
 }
@@ -30,17 +30,17 @@ IntServMib::~IntServMib()
 
 bool IntServMib::has_data() const
 {
-    return (intsrvflowtable !=  nullptr && intsrvflowtable->has_data())
-	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data());
+    return (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_data())
+	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_data())
+	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_data());
 }
 
 bool IntServMib::has_operation() const
 {
     return is_set(operation)
-	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_operation())
-	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_operation())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_operation());
+	|| (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_operation())
+	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_operation())
+	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_operation());
 }
 
 std::string IntServMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> IntServMib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "intSrvFlowTable")
     {
-        if(intsrvflowtable == nullptr)
+        if(intsrvflowtable_ == nullptr)
         {
-            intsrvflowtable = std::make_shared<IntServMib::Intsrvflowtable>();
+            intsrvflowtable_ = std::make_shared<IntServMib::Intsrvflowtable>();
         }
-        return intsrvflowtable;
+        return intsrvflowtable_;
     }
 
     if(child_yang_name == "intSrvGenObjects")
     {
-        if(intsrvgenobjects == nullptr)
+        if(intsrvgenobjects_ == nullptr)
         {
-            intsrvgenobjects = std::make_shared<IntServMib::Intsrvgenobjects>();
+            intsrvgenobjects_ = std::make_shared<IntServMib::Intsrvgenobjects>();
         }
-        return intsrvgenobjects;
+        return intsrvgenobjects_;
     }
 
     if(child_yang_name == "intSrvIfAttribTable")
     {
-        if(intsrvifattribtable == nullptr)
+        if(intsrvifattribtable_ == nullptr)
         {
-            intsrvifattribtable = std::make_shared<IntServMib::Intsrvifattribtable>();
+            intsrvifattribtable_ = std::make_shared<IntServMib::Intsrvifattribtable>();
         }
-        return intsrvifattribtable;
+        return intsrvifattribtable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> IntServMib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> IntServMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(intsrvflowtable != nullptr)
+    if(intsrvflowtable_ != nullptr)
     {
-        children["intSrvFlowTable"] = intsrvflowtable;
+        children["intSrvFlowTable"] = intsrvflowtable_;
     }
 
-    if(intsrvgenobjects != nullptr)
+    if(intsrvgenobjects_ != nullptr)
     {
-        children["intSrvGenObjects"] = intsrvgenobjects;
+        children["intSrvGenObjects"] = intsrvgenobjects_;
     }
 
-    if(intsrvifattribtable != nullptr)
+    if(intsrvifattribtable_ != nullptr)
     {
-        children["intSrvIfAttribTable"] = intsrvifattribtable;
+        children["intSrvIfAttribTable"] = intsrvifattribtable_;
     }
 
     return children;
@@ -230,9 +230,9 @@ IntServMib::Intsrvifattribtable::~Intsrvifattribtable()
 
 bool IntServMib::Intsrvifattribtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
     {
-        if(intsrvifattribentry[index]->has_data())
+        if(intsrvifattribentry_[index]->has_data())
             return true;
     }
     return false;
@@ -240,9 +240,9 @@ bool IntServMib::Intsrvifattribtable::has_data() const
 
 bool IntServMib::Intsrvifattribtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
     {
-        if(intsrvifattribentry[index]->has_operation())
+        if(intsrvifattribentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -282,7 +282,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvifattribtable::get_child_by_name(const
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        for(auto const & c : intsrvifattribentry)
+        for(auto const & c : intsrvifattribentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -292,7 +292,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvifattribtable::get_child_by_name(const
         }
         auto c = std::make_shared<IntServMib::Intsrvifattribtable::Intsrvifattribentry>();
         c->parent = this;
-        intsrvifattribentry.push_back(c);
+        intsrvifattribentry_.push_back(c);
         return c;
     }
 
@@ -302,7 +302,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvifattribtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> IntServMib::Intsrvifattribtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvifattribentry)
+    for (auto const & c : intsrvifattribentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -445,9 +445,9 @@ IntServMib::Intsrvflowtable::~Intsrvflowtable()
 
 bool IntServMib::Intsrvflowtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
     {
-        if(intsrvflowentry[index]->has_data())
+        if(intsrvflowentry_[index]->has_data())
             return true;
     }
     return false;
@@ -455,9 +455,9 @@ bool IntServMib::Intsrvflowtable::has_data() const
 
 bool IntServMib::Intsrvflowtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
     {
-        if(intsrvflowentry[index]->has_operation())
+        if(intsrvflowentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -497,7 +497,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvflowtable::get_child_by_name(const std
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        for(auto const & c : intsrvflowentry)
+        for(auto const & c : intsrvflowentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -507,7 +507,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvflowtable::get_child_by_name(const std
         }
         auto c = std::make_shared<IntServMib::Intsrvflowtable::Intsrvflowentry>();
         c->parent = this;
-        intsrvflowentry.push_back(c);
+        intsrvflowentry_.push_back(c);
         return c;
     }
 
@@ -517,7 +517,7 @@ std::shared_ptr<Entity> IntServMib::Intsrvflowtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IntServMib::Intsrvflowtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvflowentry)
+    for (auto const & c : intsrvflowentry_)
     {
         children[c->get_segment_path()] = c;
     }

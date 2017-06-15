@@ -29,9 +29,9 @@ NvoInstances::~NvoInstances()
 
 bool NvoInstances::has_data() const
 {
-    for (std::size_t index=0; index<nvo_instance.size(); index++)
+    for (std::size_t index=0; index<nvo_instance_.size(); index++)
     {
-        if(nvo_instance[index]->has_data())
+        if(nvo_instance_[index]->has_data())
             return true;
     }
     return false;
@@ -39,9 +39,9 @@ bool NvoInstances::has_data() const
 
 bool NvoInstances::has_operation() const
 {
-    for (std::size_t index=0; index<nvo_instance.size(); index++)
+    for (std::size_t index=0; index<nvo_instance_.size(); index++)
     {
-        if(nvo_instance[index]->has_operation())
+        if(nvo_instance_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -78,7 +78,7 @@ std::shared_ptr<Entity> NvoInstances::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "nvo-instance")
     {
-        for(auto const & c : nvo_instance)
+        for(auto const & c : nvo_instance_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -88,7 +88,7 @@ std::shared_ptr<Entity> NvoInstances::get_child_by_name(const std::string & chil
         }
         auto c = std::make_shared<NvoInstances::NvoInstance>();
         c->parent = this;
-        nvo_instance.push_back(c);
+        nvo_instance_.push_back(c);
         return c;
     }
 
@@ -98,7 +98,7 @@ std::shared_ptr<Entity> NvoInstances::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> NvoInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nvo_instance)
+    for (auto const & c : nvo_instance_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -145,9 +145,9 @@ NvoInstances::NvoInstance::~NvoInstance()
 
 bool NvoInstances::NvoInstance::has_data() const
 {
-    for (std::size_t index=0; index<virtual_network.size(); index++)
+    for (std::size_t index=0; index<virtual_network_.size(); index++)
     {
-        if(virtual_network[index]->has_data())
+        if(virtual_network_[index]->has_data())
             return true;
     }
     return nvo_id.is_set
@@ -157,9 +157,9 @@ bool NvoInstances::NvoInstance::has_data() const
 
 bool NvoInstances::NvoInstance::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_network.size(); index++)
+    for (std::size_t index=0; index<virtual_network_.size(); index++)
     {
-        if(virtual_network[index]->has_operation())
+        if(virtual_network_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -205,7 +205,7 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::get_child_by_name(const std::
 {
     if(child_yang_name == "virtual-network")
     {
-        for(auto const & c : virtual_network)
+        for(auto const & c : virtual_network_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -215,7 +215,7 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::get_child_by_name(const std::
         }
         auto c = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork>();
         c->parent = this;
-        virtual_network.push_back(c);
+        virtual_network_.push_back(c);
         return c;
     }
 
@@ -225,7 +225,7 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : virtual_network)
+    for (auto const & c : virtual_network_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -258,9 +258,9 @@ NvoInstances::NvoInstance::VirtualNetwork::VirtualNetwork()
     routing_instance{YType::str, "routing-instance"},
     suppress_arp{YType::empty, "suppress-arp"}
     	,
-    multicast(std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>())
+    multicast_(std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>())
 {
-    multicast->parent = this;
+    multicast_->parent = this;
 
     yang_name = "virtual-network"; yang_parent_name = "nvo-instance";
 }
@@ -271,9 +271,9 @@ NvoInstances::NvoInstance::VirtualNetwork::~VirtualNetwork()
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers_.size(); index++)
     {
-        if(peers[index]->has_data())
+        if(peers_[index]->has_data())
             return true;
     }
     return vni_start.is_set
@@ -282,14 +282,14 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
 	|| end_host_discovery.is_set
 	|| routing_instance.is_set
 	|| suppress_arp.is_set
-	|| (multicast !=  nullptr && multicast->has_data());
+	|| (multicast_ !=  nullptr && multicast_->has_data());
 }
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers_.size(); index++)
     {
-        if(peers[index]->has_operation())
+        if(peers_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -299,7 +299,7 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
 	|| is_set(end_host_discovery.operation)
 	|| is_set(routing_instance.operation)
 	|| is_set(suppress_arp.operation)
-	|| (multicast !=  nullptr && multicast->has_operation());
+	|| (multicast_ !=  nullptr && multicast_->has_operation());
 }
 
 std::string NvoInstances::NvoInstance::VirtualNetwork::get_segment_path() const
@@ -342,16 +342,16 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::get_child_by_
 {
     if(child_yang_name == "multicast")
     {
-        if(multicast == nullptr)
+        if(multicast_ == nullptr)
         {
-            multicast = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>();
+            multicast_ = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>();
         }
-        return multicast;
+        return multicast_;
     }
 
     if(child_yang_name == "peers")
     {
-        for(auto const & c : peers)
+        for(auto const & c : peers_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -361,7 +361,7 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::get_child_by_
         }
         auto c = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Peers>();
         c->parent = this;
-        peers.push_back(c);
+        peers_.push_back(c);
         return c;
     }
 
@@ -371,12 +371,12 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::VirtualNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(multicast != nullptr)
+    if(multicast_ != nullptr)
     {
-        children["multicast"] = multicast;
+        children["multicast"] = multicast_;
     }
 
-    for (auto const & c : peers)
+    for (auto const & c : peers_)
     {
         children[c->get_segment_path()] = c;
     }

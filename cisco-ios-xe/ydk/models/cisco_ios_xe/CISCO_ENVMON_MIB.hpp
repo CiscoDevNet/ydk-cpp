@@ -35,12 +35,12 @@ class CiscoEnvmonMib : public Entity
         class Ciscoenvmonfanstatustable; //type: CiscoEnvmonMib::Ciscoenvmonfanstatustable
         class Ciscoenvmonsupplystatustable; //type: CiscoEnvmonMib::Ciscoenvmonsupplystatustable
 
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonfanstatustable> ciscoenvmonfanstatustable;
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonmibnotificationenables> ciscoenvmonmibnotificationenables;
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonobjects> ciscoenvmonobjects;
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonsupplystatustable> ciscoenvmonsupplystatustable;
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmontemperaturestatustable> ciscoenvmontemperaturestatustable;
-        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonvoltagestatustable> ciscoenvmonvoltagestatustable;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonfanstatustable> ciscoenvmonfanstatustable_;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonmibnotificationenables> ciscoenvmonmibnotificationenables_;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonobjects> ciscoenvmonobjects_;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonsupplystatustable> ciscoenvmonsupplystatustable_;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmontemperaturestatustable> ciscoenvmontemperaturestatustable_;
+        std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonvoltagestatustable> ciscoenvmonvoltagestatustable_;
         
 }; // CiscoEnvmonMib
 
@@ -106,7 +106,7 @@ class CiscoEnvmonMib::Ciscoenvmonvoltagestatustable : public Entity
 
         class Ciscoenvmonvoltagestatusentry; //type: CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry> > ciscoenvmonvoltagestatusentry;
+        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry> > ciscoenvmonvoltagestatusentry_;
         
 }; // CiscoEnvmonMib::Ciscoenvmonvoltagestatustable
 
@@ -152,7 +152,7 @@ class CiscoEnvmonMib::Ciscoenvmontemperaturestatustable : public Entity
 
         class Ciscoenvmontemperaturestatusentry; //type: CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry> > ciscoenvmontemperaturestatusentry;
+        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry> > ciscoenvmontemperaturestatusentry_;
         
 }; // CiscoEnvmonMib::Ciscoenvmontemperaturestatustable
 
@@ -197,7 +197,7 @@ class CiscoEnvmonMib::Ciscoenvmonfanstatustable : public Entity
 
         class Ciscoenvmonfanstatusentry; //type: CiscoEnvmonMib::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry> > ciscoenvmonfanstatusentry;
+        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry> > ciscoenvmonfanstatusentry_;
         
 }; // CiscoEnvmonMib::Ciscoenvmonfanstatustable
 
@@ -239,7 +239,7 @@ class CiscoEnvmonMib::Ciscoenvmonsupplystatustable : public Entity
 
         class Ciscoenvmonsupplystatusentry; //type: CiscoEnvmonMib::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry> > ciscoenvmonsupplystatusentry;
+        std::vector<std::shared_ptr<CISCO_ENVMON_MIB::CiscoEnvmonMib::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry> > ciscoenvmonsupplystatusentry_;
         
 }; // CiscoEnvmonMib::Ciscoenvmonsupplystatustable
 

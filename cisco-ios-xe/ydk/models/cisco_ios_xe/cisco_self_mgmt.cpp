@@ -11,12 +11,12 @@ namespace cisco_self_mgmt {
 
 NetconfYang::NetconfYang()
     :
-    cisco_ia(std::make_shared<NetconfYang::CiscoIa>())
-	,cisco_odm(std::make_shared<NetconfYang::CiscoOdm>())
+    cisco_ia_(std::make_shared<NetconfYang::CiscoIa>())
+	,cisco_odm_(std::make_shared<NetconfYang::CiscoOdm>())
 {
-    cisco_ia->parent = this;
+    cisco_ia_->parent = this;
 
-    cisco_odm->parent = this;
+    cisco_odm_->parent = this;
 
     yang_name = "netconf-yang"; yang_parent_name = "cisco-self-mgmt";
 }
@@ -27,15 +27,15 @@ NetconfYang::~NetconfYang()
 
 bool NetconfYang::has_data() const
 {
-    return (cisco_ia !=  nullptr && cisco_ia->has_data())
-	|| (cisco_odm !=  nullptr && cisco_odm->has_data());
+    return (cisco_ia_ !=  nullptr && cisco_ia_->has_data())
+	|| (cisco_odm_ !=  nullptr && cisco_odm_->has_data());
 }
 
 bool NetconfYang::has_operation() const
 {
     return is_set(operation)
-	|| (cisco_ia !=  nullptr && cisco_ia->has_operation())
-	|| (cisco_odm !=  nullptr && cisco_odm->has_operation());
+	|| (cisco_ia_ !=  nullptr && cisco_ia_->has_operation())
+	|| (cisco_odm_ !=  nullptr && cisco_odm_->has_operation());
 }
 
 std::string NetconfYang::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "cisco-ia")
     {
-        if(cisco_ia == nullptr)
+        if(cisco_ia_ == nullptr)
         {
-            cisco_ia = std::make_shared<NetconfYang::CiscoIa>();
+            cisco_ia_ = std::make_shared<NetconfYang::CiscoIa>();
         }
-        return cisco_ia;
+        return cisco_ia_;
     }
 
     if(child_yang_name == "cisco-odm")
     {
-        if(cisco_odm == nullptr)
+        if(cisco_odm_ == nullptr)
         {
-            cisco_odm = std::make_shared<NetconfYang::CiscoOdm>();
+            cisco_odm_ = std::make_shared<NetconfYang::CiscoOdm>();
         }
-        return cisco_odm;
+        return cisco_odm_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cisco_ia != nullptr)
+    if(cisco_ia_ != nullptr)
     {
-        children["cisco-ia"] = cisco_ia;
+        children["cisco-ia"] = cisco_ia_;
     }
 
-    if(cisco_odm != nullptr)
+    if(cisco_odm_ != nullptr)
     {
-        children["cisco-odm"] = cisco_odm;
+        children["cisco-odm"] = cisco_odm_;
     }
 
     return children;
@@ -143,15 +143,15 @@ NetconfYang::CiscoIa::CiscoIa()
     restored{YType::boolean, "restored"},
     snmp_community_string{YType::str, "snmp-community-string"}
     	,
-    blocking(std::make_shared<NetconfYang::CiscoIa::Blocking>())
-	,logging(std::make_shared<NetconfYang::CiscoIa::Logging>())
-	,snmp_trap_control(std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl>())
+    blocking_(std::make_shared<NetconfYang::CiscoIa::Blocking>())
+	,logging_(std::make_shared<NetconfYang::CiscoIa::Logging>())
+	,snmp_trap_control_(std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl>())
 {
-    blocking->parent = this;
+    blocking_->parent = this;
 
-    logging->parent = this;
+    logging_->parent = this;
 
-    snmp_trap_control->parent = this;
+    snmp_trap_control_->parent = this;
 
     yang_name = "cisco-ia"; yang_parent_name = "netconf-yang";
 }
@@ -162,29 +162,29 @@ NetconfYang::CiscoIa::~CiscoIa()
 
 bool NetconfYang::CiscoIa::has_data() const
 {
-    for (std::size_t index=0; index<conf_full_sync_cli.size(); index++)
+    for (std::size_t index=0; index<conf_full_sync_cli_.size(); index++)
     {
-        if(conf_full_sync_cli[index]->has_data())
+        if(conf_full_sync_cli_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<conf_parser_msg_ignore.size(); index++)
+    for (std::size_t index=0; index<conf_parser_msg_ignore_.size(); index++)
     {
-        if(conf_parser_msg_ignore[index]->has_data())
+        if(conf_parser_msg_ignore_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<full_sync_cli.size(); index++)
+    for (std::size_t index=0; index<full_sync_cli_.size(); index++)
     {
-        if(full_sync_cli[index]->has_data())
+        if(full_sync_cli_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<parser_msg_ignore.size(); index++)
+    for (std::size_t index=0; index<parser_msg_ignore_.size(); index++)
     {
-        if(parser_msg_ignore[index]->has_data())
+        if(parser_msg_ignore_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<preserve_ned_path.size(); index++)
+    for (std::size_t index=0; index<preserve_ned_path_.size(); index++)
     {
-        if(preserve_ned_path[index]->has_data())
+        if(preserve_ned_path_[index]->has_data())
             return true;
     }
     return auto_sync.is_set
@@ -199,36 +199,36 @@ bool NetconfYang::CiscoIa::has_data() const
 	|| process_missing_prc.is_set
 	|| restored.is_set
 	|| snmp_community_string.is_set
-	|| (blocking !=  nullptr && blocking->has_data())
-	|| (logging !=  nullptr && logging->has_data())
-	|| (snmp_trap_control !=  nullptr && snmp_trap_control->has_data());
+	|| (blocking_ !=  nullptr && blocking_->has_data())
+	|| (logging_ !=  nullptr && logging_->has_data())
+	|| (snmp_trap_control_ !=  nullptr && snmp_trap_control_->has_data());
 }
 
 bool NetconfYang::CiscoIa::has_operation() const
 {
-    for (std::size_t index=0; index<conf_full_sync_cli.size(); index++)
+    for (std::size_t index=0; index<conf_full_sync_cli_.size(); index++)
     {
-        if(conf_full_sync_cli[index]->has_operation())
+        if(conf_full_sync_cli_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<conf_parser_msg_ignore.size(); index++)
+    for (std::size_t index=0; index<conf_parser_msg_ignore_.size(); index++)
     {
-        if(conf_parser_msg_ignore[index]->has_operation())
+        if(conf_parser_msg_ignore_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<full_sync_cli.size(); index++)
+    for (std::size_t index=0; index<full_sync_cli_.size(); index++)
     {
-        if(full_sync_cli[index]->has_operation())
+        if(full_sync_cli_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<parser_msg_ignore.size(); index++)
+    for (std::size_t index=0; index<parser_msg_ignore_.size(); index++)
     {
-        if(parser_msg_ignore[index]->has_operation())
+        if(parser_msg_ignore_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<preserve_ned_path.size(); index++)
+    for (std::size_t index=0; index<preserve_ned_path_.size(); index++)
     {
-        if(preserve_ned_path[index]->has_operation())
+        if(preserve_ned_path_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -244,9 +244,9 @@ bool NetconfYang::CiscoIa::has_operation() const
 	|| is_set(process_missing_prc.operation)
 	|| is_set(restored.operation)
 	|| is_set(snmp_community_string.operation)
-	|| (blocking !=  nullptr && blocking->has_operation())
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (snmp_trap_control !=  nullptr && snmp_trap_control->has_operation());
+	|| (blocking_ !=  nullptr && blocking_->has_operation())
+	|| (logging_ !=  nullptr && logging_->has_operation())
+	|| (snmp_trap_control_ !=  nullptr && snmp_trap_control_->has_operation());
 }
 
 std::string NetconfYang::CiscoIa::get_segment_path() const
@@ -295,16 +295,16 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
 {
     if(child_yang_name == "blocking")
     {
-        if(blocking == nullptr)
+        if(blocking_ == nullptr)
         {
-            blocking = std::make_shared<NetconfYang::CiscoIa::Blocking>();
+            blocking_ = std::make_shared<NetconfYang::CiscoIa::Blocking>();
         }
-        return blocking;
+        return blocking_;
     }
 
     if(child_yang_name == "conf-full-sync-cli")
     {
-        for(auto const & c : conf_full_sync_cli)
+        for(auto const & c : conf_full_sync_cli_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -314,13 +314,13 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::ConfFullSyncCli>();
         c->parent = this;
-        conf_full_sync_cli.push_back(c);
+        conf_full_sync_cli_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "conf-parser-msg-ignore")
     {
-        for(auto const & c : conf_parser_msg_ignore)
+        for(auto const & c : conf_parser_msg_ignore_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -330,13 +330,13 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::ConfParserMsgIgnore>();
         c->parent = this;
-        conf_parser_msg_ignore.push_back(c);
+        conf_parser_msg_ignore_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "full-sync-cli")
     {
-        for(auto const & c : full_sync_cli)
+        for(auto const & c : full_sync_cli_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -346,22 +346,22 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::FullSyncCli>();
         c->parent = this;
-        full_sync_cli.push_back(c);
+        full_sync_cli_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging == nullptr)
+        if(logging_ == nullptr)
         {
-            logging = std::make_shared<NetconfYang::CiscoIa::Logging>();
+            logging_ = std::make_shared<NetconfYang::CiscoIa::Logging>();
         }
-        return logging;
+        return logging_;
     }
 
     if(child_yang_name == "parser-msg-ignore")
     {
-        for(auto const & c : parser_msg_ignore)
+        for(auto const & c : parser_msg_ignore_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -371,13 +371,13 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::ParserMsgIgnore>();
         c->parent = this;
-        parser_msg_ignore.push_back(c);
+        parser_msg_ignore_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "preserve-ned-path")
     {
-        for(auto const & c : preserve_ned_path)
+        for(auto const & c : preserve_ned_path_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -387,17 +387,17 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::PreserveNedPath>();
         c->parent = this;
-        preserve_ned_path.push_back(c);
+        preserve_ned_path_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "snmp-trap-control")
     {
-        if(snmp_trap_control == nullptr)
+        if(snmp_trap_control_ == nullptr)
         {
-            snmp_trap_control = std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl>();
+            snmp_trap_control_ = std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl>();
         }
-        return snmp_trap_control;
+        return snmp_trap_control_;
     }
 
     return nullptr;
@@ -406,44 +406,44 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(blocking != nullptr)
+    if(blocking_ != nullptr)
     {
-        children["blocking"] = blocking;
+        children["blocking"] = blocking_;
     }
 
-    for (auto const & c : conf_full_sync_cli)
+    for (auto const & c : conf_full_sync_cli_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : conf_parser_msg_ignore)
+    for (auto const & c : conf_parser_msg_ignore_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : full_sync_cli)
+    for (auto const & c : full_sync_cli_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(logging != nullptr)
+    if(logging_ != nullptr)
     {
-        children["logging"] = logging;
+        children["logging"] = logging_;
     }
 
-    for (auto const & c : parser_msg_ignore)
+    for (auto const & c : parser_msg_ignore_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : preserve_ned_path)
+    for (auto const & c : preserve_ned_path_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(snmp_trap_control != nullptr)
+    if(snmp_trap_control_ != nullptr)
     {
-        children["snmp-trap-control"] = snmp_trap_control;
+        children["snmp-trap-control"] = snmp_trap_control_;
     }
 
     return children;
@@ -514,9 +514,9 @@ NetconfYang::CiscoIa::SnmpTrapControl::~SnmpTrapControl()
 
 bool NetconfYang::CiscoIa::SnmpTrapControl::has_data() const
 {
-    for (std::size_t index=0; index<trap_list.size(); index++)
+    for (std::size_t index=0; index<trap_list_.size(); index++)
     {
-        if(trap_list[index]->has_data())
+        if(trap_list_[index]->has_data())
             return true;
     }
     return global_forwarding.is_set;
@@ -524,9 +524,9 @@ bool NetconfYang::CiscoIa::SnmpTrapControl::has_data() const
 
 bool NetconfYang::CiscoIa::SnmpTrapControl::has_operation() const
 {
-    for (std::size_t index=0; index<trap_list.size(); index++)
+    for (std::size_t index=0; index<trap_list_.size(); index++)
     {
-        if(trap_list[index]->has_operation())
+        if(trap_list_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -568,7 +568,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::get_child_by_name
 {
     if(child_yang_name == "trap-list")
     {
-        for(auto const & c : trap_list)
+        for(auto const & c : trap_list_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -578,7 +578,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::get_child_by_name
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl::TrapList>();
         c->parent = this;
-        trap_list.push_back(c);
+        trap_list_.push_back(c);
         return c;
     }
 
@@ -588,7 +588,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::SnmpTrapControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_list)
+    for (auto const & c : trap_list_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1178,14 +1178,14 @@ NetconfYang::CiscoIa::Blocking::~Blocking()
 
 bool NetconfYang::CiscoIa::Blocking::has_data() const
 {
-    for (std::size_t index=0; index<confd_cfg_command.size(); index++)
+    for (std::size_t index=0; index<confd_cfg_command_.size(); index++)
     {
-        if(confd_cfg_command[index]->has_data())
+        if(confd_cfg_command_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<network_element_command.size(); index++)
+    for (std::size_t index=0; index<network_element_command_.size(); index++)
     {
-        if(network_element_command[index]->has_data())
+        if(network_element_command_[index]->has_data())
             return true;
     }
     return cli_blocking_enabled.is_set
@@ -1194,14 +1194,14 @@ bool NetconfYang::CiscoIa::Blocking::has_data() const
 
 bool NetconfYang::CiscoIa::Blocking::has_operation() const
 {
-    for (std::size_t index=0; index<confd_cfg_command.size(); index++)
+    for (std::size_t index=0; index<confd_cfg_command_.size(); index++)
     {
-        if(confd_cfg_command[index]->has_operation())
+        if(confd_cfg_command_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<network_element_command.size(); index++)
+    for (std::size_t index=0; index<network_element_command_.size(); index++)
     {
-        if(network_element_command[index]->has_operation())
+        if(network_element_command_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -1245,7 +1245,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::get_child_by_name(const 
 {
     if(child_yang_name == "confd-cfg-command")
     {
-        for(auto const & c : confd_cfg_command)
+        for(auto const & c : confd_cfg_command_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1255,13 +1255,13 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::get_child_by_name(const 
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::Blocking::ConfdCfgCommand>();
         c->parent = this;
-        confd_cfg_command.push_back(c);
+        confd_cfg_command_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "network-element-command")
     {
-        for(auto const & c : network_element_command)
+        for(auto const & c : network_element_command_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1271,7 +1271,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::get_child_by_name(const 
         }
         auto c = std::make_shared<NetconfYang::CiscoIa::Blocking::NetworkElementCommand>();
         c->parent = this;
-        network_element_command.push_back(c);
+        network_element_command_.push_back(c);
         return c;
     }
 
@@ -1281,12 +1281,12 @@ std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::Blocking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : confd_cfg_command)
+    for (auto const & c : confd_cfg_command_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : network_element_command)
+    for (auto const & c : network_element_command_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1465,9 +1465,9 @@ NetconfYang::CiscoOdm::~CiscoOdm()
 
 bool NetconfYang::CiscoOdm::has_data() const
 {
-    for (std::size_t index=0; index<actions.size(); index++)
+    for (std::size_t index=0; index<actions_.size(); index++)
     {
-        if(actions[index]->has_data())
+        if(actions_[index]->has_data())
             return true;
     }
     return on_demand_default_time.is_set
@@ -1477,9 +1477,9 @@ bool NetconfYang::CiscoOdm::has_data() const
 
 bool NetconfYang::CiscoOdm::has_operation() const
 {
-    for (std::size_t index=0; index<actions.size(); index++)
+    for (std::size_t index=0; index<actions_.size(); index++)
     {
-        if(actions[index]->has_operation())
+        if(actions_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -1525,7 +1525,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoOdm::get_child_by_name(const std::stri
 {
     if(child_yang_name == "actions")
     {
-        for(auto const & c : actions)
+        for(auto const & c : actions_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1535,7 +1535,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoOdm::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<NetconfYang::CiscoOdm::Actions>();
         c->parent = this;
-        actions.push_back(c);
+        actions_.push_back(c);
         return c;
     }
 
@@ -1545,7 +1545,7 @@ std::shared_ptr<Entity> NetconfYang::CiscoOdm::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoOdm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : actions)
+    for (auto const & c : actions_)
     {
         children[c->get_segment_path()] = c;
     }

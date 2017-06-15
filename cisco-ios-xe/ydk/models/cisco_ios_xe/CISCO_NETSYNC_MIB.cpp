@@ -11,24 +11,24 @@ namespace CISCO_NETSYNC_MIB {
 
 CiscoNetsyncMib::CiscoNetsyncMib()
     :
-    cisconetsyncmibnotifcontrol(std::make_shared<CiscoNetsyncMib::Cisconetsyncmibnotifcontrol>())
-	,cnsclkselglobaltable(std::make_shared<CiscoNetsyncMib::Cnsclkselglobaltable>())
-	,cnsextoutputtable(std::make_shared<CiscoNetsyncMib::Cnsextoutputtable>())
-	,cnsinputsourcetable(std::make_shared<CiscoNetsyncMib::Cnsinputsourcetable>())
-	,cnsselectedinputsourcetable(std::make_shared<CiscoNetsyncMib::Cnsselectedinputsourcetable>())
-	,cnst4clocksourcetable(std::make_shared<CiscoNetsyncMib::Cnst4Clocksourcetable>())
+    cisconetsyncmibnotifcontrol_(std::make_shared<CiscoNetsyncMib::Cisconetsyncmibnotifcontrol>())
+	,cnsclkselglobaltable_(std::make_shared<CiscoNetsyncMib::Cnsclkselglobaltable>())
+	,cnsextoutputtable_(std::make_shared<CiscoNetsyncMib::Cnsextoutputtable>())
+	,cnsinputsourcetable_(std::make_shared<CiscoNetsyncMib::Cnsinputsourcetable>())
+	,cnsselectedinputsourcetable_(std::make_shared<CiscoNetsyncMib::Cnsselectedinputsourcetable>())
+	,cnst4clocksourcetable_(std::make_shared<CiscoNetsyncMib::Cnst4Clocksourcetable>())
 {
-    cisconetsyncmibnotifcontrol->parent = this;
+    cisconetsyncmibnotifcontrol_->parent = this;
 
-    cnsclkselglobaltable->parent = this;
+    cnsclkselglobaltable_->parent = this;
 
-    cnsextoutputtable->parent = this;
+    cnsextoutputtable_->parent = this;
 
-    cnsinputsourcetable->parent = this;
+    cnsinputsourcetable_->parent = this;
 
-    cnsselectedinputsourcetable->parent = this;
+    cnsselectedinputsourcetable_->parent = this;
 
-    cnst4clocksourcetable->parent = this;
+    cnst4clocksourcetable_->parent = this;
 
     yang_name = "CISCO-NETSYNC-MIB"; yang_parent_name = "CISCO-NETSYNC-MIB";
 }
@@ -39,23 +39,23 @@ CiscoNetsyncMib::~CiscoNetsyncMib()
 
 bool CiscoNetsyncMib::has_data() const
 {
-    return (cisconetsyncmibnotifcontrol !=  nullptr && cisconetsyncmibnotifcontrol->has_data())
-	|| (cnsclkselglobaltable !=  nullptr && cnsclkselglobaltable->has_data())
-	|| (cnsextoutputtable !=  nullptr && cnsextoutputtable->has_data())
-	|| (cnsinputsourcetable !=  nullptr && cnsinputsourcetable->has_data())
-	|| (cnsselectedinputsourcetable !=  nullptr && cnsselectedinputsourcetable->has_data())
-	|| (cnst4clocksourcetable !=  nullptr && cnst4clocksourcetable->has_data());
+    return (cisconetsyncmibnotifcontrol_ !=  nullptr && cisconetsyncmibnotifcontrol_->has_data())
+	|| (cnsclkselglobaltable_ !=  nullptr && cnsclkselglobaltable_->has_data())
+	|| (cnsextoutputtable_ !=  nullptr && cnsextoutputtable_->has_data())
+	|| (cnsinputsourcetable_ !=  nullptr && cnsinputsourcetable_->has_data())
+	|| (cnsselectedinputsourcetable_ !=  nullptr && cnsselectedinputsourcetable_->has_data())
+	|| (cnst4clocksourcetable_ !=  nullptr && cnst4clocksourcetable_->has_data());
 }
 
 bool CiscoNetsyncMib::has_operation() const
 {
     return is_set(operation)
-	|| (cisconetsyncmibnotifcontrol !=  nullptr && cisconetsyncmibnotifcontrol->has_operation())
-	|| (cnsclkselglobaltable !=  nullptr && cnsclkselglobaltable->has_operation())
-	|| (cnsextoutputtable !=  nullptr && cnsextoutputtable->has_operation())
-	|| (cnsinputsourcetable !=  nullptr && cnsinputsourcetable->has_operation())
-	|| (cnsselectedinputsourcetable !=  nullptr && cnsselectedinputsourcetable->has_operation())
-	|| (cnst4clocksourcetable !=  nullptr && cnst4clocksourcetable->has_operation());
+	|| (cisconetsyncmibnotifcontrol_ !=  nullptr && cisconetsyncmibnotifcontrol_->has_operation())
+	|| (cnsclkselglobaltable_ !=  nullptr && cnsclkselglobaltable_->has_operation())
+	|| (cnsextoutputtable_ !=  nullptr && cnsextoutputtable_->has_operation())
+	|| (cnsinputsourcetable_ !=  nullptr && cnsinputsourcetable_->has_operation())
+	|| (cnsselectedinputsourcetable_ !=  nullptr && cnsselectedinputsourcetable_->has_operation())
+	|| (cnst4clocksourcetable_ !=  nullptr && cnst4clocksourcetable_->has_operation());
 }
 
 std::string CiscoNetsyncMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoNetsyncMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "ciscoNetsyncMIBNotifControl")
     {
-        if(cisconetsyncmibnotifcontrol == nullptr)
+        if(cisconetsyncmibnotifcontrol_ == nullptr)
         {
-            cisconetsyncmibnotifcontrol = std::make_shared<CiscoNetsyncMib::Cisconetsyncmibnotifcontrol>();
+            cisconetsyncmibnotifcontrol_ = std::make_shared<CiscoNetsyncMib::Cisconetsyncmibnotifcontrol>();
         }
-        return cisconetsyncmibnotifcontrol;
+        return cisconetsyncmibnotifcontrol_;
     }
 
     if(child_yang_name == "cnsClkSelGlobalTable")
     {
-        if(cnsclkselglobaltable == nullptr)
+        if(cnsclkselglobaltable_ == nullptr)
         {
-            cnsclkselglobaltable = std::make_shared<CiscoNetsyncMib::Cnsclkselglobaltable>();
+            cnsclkselglobaltable_ = std::make_shared<CiscoNetsyncMib::Cnsclkselglobaltable>();
         }
-        return cnsclkselglobaltable;
+        return cnsclkselglobaltable_;
     }
 
     if(child_yang_name == "cnsExtOutputTable")
     {
-        if(cnsextoutputtable == nullptr)
+        if(cnsextoutputtable_ == nullptr)
         {
-            cnsextoutputtable = std::make_shared<CiscoNetsyncMib::Cnsextoutputtable>();
+            cnsextoutputtable_ = std::make_shared<CiscoNetsyncMib::Cnsextoutputtable>();
         }
-        return cnsextoutputtable;
+        return cnsextoutputtable_;
     }
 
     if(child_yang_name == "cnsInputSourceTable")
     {
-        if(cnsinputsourcetable == nullptr)
+        if(cnsinputsourcetable_ == nullptr)
         {
-            cnsinputsourcetable = std::make_shared<CiscoNetsyncMib::Cnsinputsourcetable>();
+            cnsinputsourcetable_ = std::make_shared<CiscoNetsyncMib::Cnsinputsourcetable>();
         }
-        return cnsinputsourcetable;
+        return cnsinputsourcetable_;
     }
 
     if(child_yang_name == "cnsSelectedInputSourceTable")
     {
-        if(cnsselectedinputsourcetable == nullptr)
+        if(cnsselectedinputsourcetable_ == nullptr)
         {
-            cnsselectedinputsourcetable = std::make_shared<CiscoNetsyncMib::Cnsselectedinputsourcetable>();
+            cnsselectedinputsourcetable_ = std::make_shared<CiscoNetsyncMib::Cnsselectedinputsourcetable>();
         }
-        return cnsselectedinputsourcetable;
+        return cnsselectedinputsourcetable_;
     }
 
     if(child_yang_name == "cnsT4ClockSourceTable")
     {
-        if(cnst4clocksourcetable == nullptr)
+        if(cnst4clocksourcetable_ == nullptr)
         {
-            cnst4clocksourcetable = std::make_shared<CiscoNetsyncMib::Cnst4Clocksourcetable>();
+            cnst4clocksourcetable_ = std::make_shared<CiscoNetsyncMib::Cnst4Clocksourcetable>();
         }
-        return cnst4clocksourcetable;
+        return cnst4clocksourcetable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoNetsyncMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cisconetsyncmibnotifcontrol != nullptr)
+    if(cisconetsyncmibnotifcontrol_ != nullptr)
     {
-        children["ciscoNetsyncMIBNotifControl"] = cisconetsyncmibnotifcontrol;
+        children["ciscoNetsyncMIBNotifControl"] = cisconetsyncmibnotifcontrol_;
     }
 
-    if(cnsclkselglobaltable != nullptr)
+    if(cnsclkselglobaltable_ != nullptr)
     {
-        children["cnsClkSelGlobalTable"] = cnsclkselglobaltable;
+        children["cnsClkSelGlobalTable"] = cnsclkselglobaltable_;
     }
 
-    if(cnsextoutputtable != nullptr)
+    if(cnsextoutputtable_ != nullptr)
     {
-        children["cnsExtOutputTable"] = cnsextoutputtable;
+        children["cnsExtOutputTable"] = cnsextoutputtable_;
     }
 
-    if(cnsinputsourcetable != nullptr)
+    if(cnsinputsourcetable_ != nullptr)
     {
-        children["cnsInputSourceTable"] = cnsinputsourcetable;
+        children["cnsInputSourceTable"] = cnsinputsourcetable_;
     }
 
-    if(cnsselectedinputsourcetable != nullptr)
+    if(cnsselectedinputsourcetable_ != nullptr)
     {
-        children["cnsSelectedInputSourceTable"] = cnsselectedinputsourcetable;
+        children["cnsSelectedInputSourceTable"] = cnsselectedinputsourcetable_;
     }
 
-    if(cnst4clocksourcetable != nullptr)
+    if(cnst4clocksourcetable_ != nullptr)
     {
-        children["cnsT4ClockSourceTable"] = cnst4clocksourcetable;
+        children["cnsT4ClockSourceTable"] = cnst4clocksourcetable_;
     }
 
     return children;
@@ -287,9 +287,9 @@ CiscoNetsyncMib::Cnsclkselglobaltable::~Cnsclkselglobaltable()
 
 bool CiscoNetsyncMib::Cnsclkselglobaltable::has_data() const
 {
-    for (std::size_t index=0; index<cnsclkselglobalentry.size(); index++)
+    for (std::size_t index=0; index<cnsclkselglobalentry_.size(); index++)
     {
-        if(cnsclkselglobalentry[index]->has_data())
+        if(cnsclkselglobalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -297,9 +297,9 @@ bool CiscoNetsyncMib::Cnsclkselglobaltable::has_data() const
 
 bool CiscoNetsyncMib::Cnsclkselglobaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsclkselglobalentry.size(); index++)
+    for (std::size_t index=0; index<cnsclkselglobalentry_.size(); index++)
     {
-        if(cnsclkselglobalentry[index]->has_operation())
+        if(cnsclkselglobalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -339,7 +339,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsclkselglobaltable::get_child_by_name
 {
     if(child_yang_name == "cnsClkSelGlobalEntry")
     {
-        for(auto const & c : cnsclkselglobalentry)
+        for(auto const & c : cnsclkselglobalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -349,7 +349,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsclkselglobaltable::get_child_by_name
         }
         auto c = std::make_shared<CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry>();
         c->parent = this;
-        cnsclkselglobalentry.push_back(c);
+        cnsclkselglobalentry_.push_back(c);
         return c;
     }
 
@@ -359,7 +359,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsclkselglobaltable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::Cnsclkselglobaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnsclkselglobalentry)
+    for (auto const & c : cnsclkselglobalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -550,9 +550,9 @@ CiscoNetsyncMib::Cnsselectedinputsourcetable::~Cnsselectedinputsourcetable()
 
 bool CiscoNetsyncMib::Cnsselectedinputsourcetable::has_data() const
 {
-    for (std::size_t index=0; index<cnsselectedinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsselectedinputsourceentry_.size(); index++)
     {
-        if(cnsselectedinputsourceentry[index]->has_data())
+        if(cnsselectedinputsourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -560,9 +560,9 @@ bool CiscoNetsyncMib::Cnsselectedinputsourcetable::has_data() const
 
 bool CiscoNetsyncMib::Cnsselectedinputsourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsselectedinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsselectedinputsourceentry_.size(); index++)
     {
-        if(cnsselectedinputsourceentry[index]->has_operation())
+        if(cnsselectedinputsourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -602,7 +602,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsselectedinputsourcetable::get_child_
 {
     if(child_yang_name == "cnsSelectedInputSourceEntry")
     {
-        for(auto const & c : cnsselectedinputsourceentry)
+        for(auto const & c : cnsselectedinputsourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -612,7 +612,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsselectedinputsourcetable::get_child_
         }
         auto c = std::make_shared<CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry>();
         c->parent = this;
-        cnsselectedinputsourceentry.push_back(c);
+        cnsselectedinputsourceentry_.push_back(c);
         return c;
     }
 
@@ -622,7 +622,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsselectedinputsourcetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::Cnsselectedinputsourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnsselectedinputsourceentry)
+    for (auto const & c : cnsselectedinputsourceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -773,9 +773,9 @@ CiscoNetsyncMib::Cnsinputsourcetable::~Cnsinputsourcetable()
 
 bool CiscoNetsyncMib::Cnsinputsourcetable::has_data() const
 {
-    for (std::size_t index=0; index<cnsinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsinputsourceentry_.size(); index++)
     {
-        if(cnsinputsourceentry[index]->has_data())
+        if(cnsinputsourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -783,9 +783,9 @@ bool CiscoNetsyncMib::Cnsinputsourcetable::has_data() const
 
 bool CiscoNetsyncMib::Cnsinputsourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsinputsourceentry_.size(); index++)
     {
-        if(cnsinputsourceentry[index]->has_operation())
+        if(cnsinputsourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -825,7 +825,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsinputsourcetable::get_child_by_name(
 {
     if(child_yang_name == "cnsInputSourceEntry")
     {
-        for(auto const & c : cnsinputsourceentry)
+        for(auto const & c : cnsinputsourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -835,7 +835,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsinputsourcetable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry>();
         c->parent = this;
-        cnsinputsourceentry.push_back(c);
+        cnsinputsourceentry_.push_back(c);
         return c;
     }
 
@@ -845,7 +845,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsinputsourcetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::Cnsinputsourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnsinputsourceentry)
+    for (auto const & c : cnsinputsourceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1084,9 +1084,9 @@ CiscoNetsyncMib::Cnsextoutputtable::~Cnsextoutputtable()
 
 bool CiscoNetsyncMib::Cnsextoutputtable::has_data() const
 {
-    for (std::size_t index=0; index<cnsextoutputentry.size(); index++)
+    for (std::size_t index=0; index<cnsextoutputentry_.size(); index++)
     {
-        if(cnsextoutputentry[index]->has_data())
+        if(cnsextoutputentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1094,9 +1094,9 @@ bool CiscoNetsyncMib::Cnsextoutputtable::has_data() const
 
 bool CiscoNetsyncMib::Cnsextoutputtable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsextoutputentry.size(); index++)
+    for (std::size_t index=0; index<cnsextoutputentry_.size(); index++)
     {
-        if(cnsextoutputentry[index]->has_operation())
+        if(cnsextoutputentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1136,7 +1136,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsextoutputtable::get_child_by_name(co
 {
     if(child_yang_name == "cnsExtOutputEntry")
     {
-        for(auto const & c : cnsextoutputentry)
+        for(auto const & c : cnsextoutputentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1146,7 +1146,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsextoutputtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry>();
         c->parent = this;
-        cnsextoutputentry.push_back(c);
+        cnsextoutputentry_.push_back(c);
         return c;
     }
 
@@ -1156,7 +1156,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnsextoutputtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::Cnsextoutputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnsextoutputentry)
+    for (auto const & c : cnsextoutputentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1315,9 +1315,9 @@ CiscoNetsyncMib::Cnst4Clocksourcetable::~Cnst4Clocksourcetable()
 
 bool CiscoNetsyncMib::Cnst4Clocksourcetable::has_data() const
 {
-    for (std::size_t index=0; index<cnst4clocksourceentry.size(); index++)
+    for (std::size_t index=0; index<cnst4clocksourceentry_.size(); index++)
     {
-        if(cnst4clocksourceentry[index]->has_data())
+        if(cnst4clocksourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1325,9 +1325,9 @@ bool CiscoNetsyncMib::Cnst4Clocksourcetable::has_data() const
 
 bool CiscoNetsyncMib::Cnst4Clocksourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<cnst4clocksourceentry.size(); index++)
+    for (std::size_t index=0; index<cnst4clocksourceentry_.size(); index++)
     {
-        if(cnst4clocksourceentry[index]->has_operation())
+        if(cnst4clocksourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1367,7 +1367,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnst4Clocksourcetable::get_child_by_nam
 {
     if(child_yang_name == "cnsT4ClockSourceEntry")
     {
-        for(auto const & c : cnst4clocksourceentry)
+        for(auto const & c : cnst4clocksourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1377,7 +1377,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnst4Clocksourcetable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry>();
         c->parent = this;
-        cnst4clocksourceentry.push_back(c);
+        cnst4clocksourceentry_.push_back(c);
         return c;
     }
 
@@ -1387,7 +1387,7 @@ std::shared_ptr<Entity> CiscoNetsyncMib::Cnst4Clocksourcetable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoNetsyncMib::Cnst4Clocksourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cnst4clocksourceentry)
+    for (auto const & c : cnst4clocksourceentry_)
     {
         children[c->get_segment_path()] = c;
     }

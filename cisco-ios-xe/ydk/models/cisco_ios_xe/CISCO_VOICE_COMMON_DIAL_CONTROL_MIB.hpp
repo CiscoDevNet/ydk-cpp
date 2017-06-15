@@ -31,8 +31,8 @@ class CiscoVoiceCommonDialControlMib : public Entity
         class Cvcommondccallactivetable; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable
         class Cvcommondccallhistorytable; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable
 
-        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable> cvcommondccallactivetable;
-        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable> cvcommondccallhistorytable;
+        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable> cvcommondccallactivetable_;
+        std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable> cvcommondccallhistorytable_;
         
 }; // CiscoVoiceCommonDialControlMib
 
@@ -53,7 +53,7 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable : public Entity
 
         class Cvcommondccallactiveentry; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry> > cvcommondccallactiveentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry> > cvcommondccallactiveentry_;
         
 }; // CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable
 
@@ -103,7 +103,7 @@ class CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable : public Entity
 
         class Cvcommondccallhistoryentry; //type: CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry> > cvcommondccallhistoryentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_COMMON_DIAL_CONTROL_MIB::CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry> > cvcommondccallhistoryentry_;
         
 }; // CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable
 

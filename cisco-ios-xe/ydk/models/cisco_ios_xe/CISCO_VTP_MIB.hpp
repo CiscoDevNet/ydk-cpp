@@ -44,20 +44,20 @@ class CiscoVtpMib : public Entity
         class Vtpdatabasetable; //type: CiscoVtpMib::Vtpdatabasetable
         class Vtpauthenticationtable; //type: CiscoVtpMib::Vtpauthenticationtable
 
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Internalvlaninfo> internalvlaninfo;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Managementdomaintable> managementdomaintable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlanstatistics> vlanstatistics;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkports> vlantrunkports;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkporttable> vlantrunkporttable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpauthenticationtable> vtpauthenticationtable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdatabasetable> vtpdatabasetable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscoverresulttable> vtpdiscoverresulttable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscovertable> vtpdiscovertable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpinternalvlantable> vtpinternalvlantable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpstatus> vtpstatus;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanedittable> vtpvlanedittable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanlocalshutdowntable> vtpvlanlocalshutdowntable;
-        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlantable> vtpvlantable;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Internalvlaninfo> internalvlaninfo_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Managementdomaintable> managementdomaintable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlanstatistics> vlanstatistics_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkports> vlantrunkports_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkporttable> vlantrunkporttable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpauthenticationtable> vtpauthenticationtable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdatabasetable> vtpdatabasetable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscoverresulttable> vtpdiscoverresulttable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscovertable> vtpdiscovertable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpinternalvlantable> vtpinternalvlantable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpstatus> vtpstatus_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanedittable> vtpvlanedittable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanlocalshutdowntable> vtpvlanlocalshutdowntable_;
+        std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlantable> vtpvlantable_;
         
 }; // CiscoVtpMib
 
@@ -164,7 +164,7 @@ class CiscoVtpMib::Managementdomaintable : public Entity
 
         class Managementdomainentry; //type: CiscoVtpMib::Managementdomaintable::Managementdomainentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Managementdomaintable::Managementdomainentry> > managementdomainentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Managementdomaintable::Managementdomainentry> > managementdomainentry_;
         
 }; // CiscoVtpMib::Managementdomaintable
 
@@ -241,7 +241,7 @@ class CiscoVtpMib::Vtpvlantable : public Entity
 
         class Vtpvlanentry; //type: CiscoVtpMib::Vtpvlantable::Vtpvlanentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlantable::Vtpvlanentry> > vtpvlanentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlantable::Vtpvlanentry> > vtpvlanentry_;
         
 }; // CiscoVtpMib::Vtpvlantable
 
@@ -304,7 +304,7 @@ class CiscoVtpMib::Vtpinternalvlantable : public Entity
 
         class Vtpinternalvlanentry; //type: CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry> > vtpinternalvlanentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry> > vtpinternalvlanentry_;
         
 }; // CiscoVtpMib::Vtpinternalvlantable
 
@@ -348,7 +348,7 @@ class CiscoVtpMib::Vtpvlanedittable : public Entity
 
         class Vtpvlaneditentry; //type: CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry> > vtpvlaneditentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry> > vtpvlaneditentry_;
         
 }; // CiscoVtpMib::Vtpvlanedittable
 
@@ -412,7 +412,7 @@ class CiscoVtpMib::Vtpvlanlocalshutdowntable : public Entity
 
         class Vtpvlanlocalshutdownentry; //type: CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry> > vtpvlanlocalshutdownentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry> > vtpvlanlocalshutdownentry_;
         
 }; // CiscoVtpMib::Vtpvlanlocalshutdowntable
 
@@ -457,7 +457,7 @@ class CiscoVtpMib::Vlantrunkporttable : public Entity
 
         class Vlantrunkportentry; //type: CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry> > vlantrunkportentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry> > vlantrunkportentry_;
         
 }; // CiscoVtpMib::Vlantrunkporttable
 
@@ -538,7 +538,7 @@ class CiscoVtpMib::Vtpdiscovertable : public Entity
 
         class Vtpdiscoverentry; //type: CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry> > vtpdiscoverentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry> > vtpdiscoverentry_;
         
 }; // CiscoVtpMib::Vtpdiscovertable
 
@@ -584,7 +584,7 @@ class CiscoVtpMib::Vtpdiscoverresulttable : public Entity
 
         class Vtpdiscoverresultentry; //type: CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry> > vtpdiscoverresultentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry> > vtpdiscoverresultentry_;
         
 }; // CiscoVtpMib::Vtpdiscoverresulttable
 
@@ -632,7 +632,7 @@ class CiscoVtpMib::Vtpdatabasetable : public Entity
 
         class Vtpdatabaseentry; //type: CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry> > vtpdatabaseentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry> > vtpdatabaseentry_;
         
 }; // CiscoVtpMib::Vtpdatabasetable
 
@@ -682,7 +682,7 @@ class CiscoVtpMib::Vtpauthenticationtable : public Entity
 
         class Vtpauthentry; //type: CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry
 
-        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry> > vtpauthentry;
+        std::vector<std::shared_ptr<CISCO_VTP_MIB::CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry> > vtpauthentry_;
         
 }; // CiscoVtpMib::Vtpauthenticationtable
 

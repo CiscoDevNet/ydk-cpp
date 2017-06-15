@@ -33,9 +33,9 @@ class CiscoNtpMib : public Entity
         class Cntppeersvartable; //type: CiscoNtpMib::Cntppeersvartable
         class Cntpfilterregistertable; //type: CiscoNtpMib::Cntpfilterregistertable
 
-        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpfilterregistertable> cntpfilterregistertable;
-        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntppeersvartable> cntppeersvartable;
-        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpsystem> cntpsystem;
+        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpfilterregistertable> cntpfilterregistertable_;
+        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntppeersvartable> cntppeersvartable_;
+        std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpsystem> cntpsystem_;
         
 }; // CiscoNtpMib
 
@@ -86,7 +86,7 @@ class CiscoNtpMib::Cntppeersvartable : public Entity
 
         class Cntppeersvarentry; //type: CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry
 
-        std::vector<std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry> > cntppeersvarentry;
+        std::vector<std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry> > cntppeersvarentry_;
         
 }; // CiscoNtpMib::Cntppeersvartable
 
@@ -157,7 +157,7 @@ class CiscoNtpMib::Cntpfilterregistertable : public Entity
 
         class Cntpfilterregisterentry; //type: CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry
 
-        std::vector<std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry> > cntpfilterregisterentry;
+        std::vector<std::shared_ptr<CISCO_NTP_MIB::CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry> > cntpfilterregisterentry_;
         
 }; // CiscoNtpMib::Cntpfilterregistertable
 

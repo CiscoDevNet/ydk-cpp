@@ -39,15 +39,15 @@ class CiscoBgp4Mib : public Entity
         class Cbgppeer2Addrfamilytable; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilytable
         class Cbgppeer2Addrfamilyprefixtable; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable
 
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgpglobal> cbgpglobal;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable> cbgppeer2addrfamilyprefixtable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable> cbgppeer2addrfamilytable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable> cbgppeer2capstable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table> cbgppeer2table;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable> cbgppeeraddrfamilyprefixtable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable> cbgppeeraddrfamilytable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable> cbgppeercapstable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable> cbgproutetable;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgpglobal> cbgpglobal_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable> cbgppeer2addrfamilyprefixtable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable> cbgppeer2addrfamilytable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable> cbgppeer2capstable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table> cbgppeer2table_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable> cbgppeeraddrfamilyprefixtable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable> cbgppeeraddrfamilytable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable> cbgppeercapstable_;
+        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable> cbgproutetable_;
         
 }; // CiscoBgp4Mib
 
@@ -88,7 +88,7 @@ class CiscoBgp4Mib::Cbgproutetable : public Entity
 
         class Cbgprouteentry; //type: CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry> > cbgprouteentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry> > cbgprouteentry_;
         
 }; // CiscoBgp4Mib::Cbgproutetable
 
@@ -148,7 +148,7 @@ class CiscoBgp4Mib::Cbgppeercapstable : public Entity
 
         class Cbgppeercapsentry; //type: CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry> > cbgppeercapsentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry> > cbgppeercapsentry_;
         
 }; // CiscoBgp4Mib::Cbgppeercapstable
 
@@ -193,7 +193,7 @@ class CiscoBgp4Mib::Cbgppeeraddrfamilytable : public Entity
 
         class Cbgppeeraddrfamilyentry; //type: CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry> > cbgppeeraddrfamilyentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry> > cbgppeeraddrfamilyentry_;
         
 }; // CiscoBgp4Mib::Cbgppeeraddrfamilytable
 
@@ -237,7 +237,7 @@ class CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable : public Entity
 
         class Cbgppeeraddrfamilyprefixentry; //type: CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry> > cbgppeeraddrfamilyprefixentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry> > cbgppeeraddrfamilyprefixentry_;
         
 }; // CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable
 
@@ -288,7 +288,7 @@ class CiscoBgp4Mib::Cbgppeer2Table : public Entity
 
         class Cbgppeer2Entry; //type: CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry> > cbgppeer2entry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry> > cbgppeer2entry_;
         
 }; // CiscoBgp4Mib::Cbgppeer2Table
 
@@ -359,7 +359,7 @@ class CiscoBgp4Mib::Cbgppeer2Capstable : public Entity
 
         class Cbgppeer2Capsentry; //type: CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry> > cbgppeer2capsentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry> > cbgppeer2capsentry_;
         
 }; // CiscoBgp4Mib::Cbgppeer2Capstable
 
@@ -405,7 +405,7 @@ class CiscoBgp4Mib::Cbgppeer2Addrfamilytable : public Entity
 
         class Cbgppeer2Addrfamilyentry; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry> > cbgppeer2addrfamilyentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry> > cbgppeer2addrfamilyentry_;
         
 }; // CiscoBgp4Mib::Cbgppeer2Addrfamilytable
 
@@ -450,7 +450,7 @@ class CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable : public Entity
 
         class Cbgppeer2Addrfamilyprefixentry; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry> > cbgppeer2addrfamilyprefixentry;
+        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry> > cbgppeer2addrfamilyprefixentry_;
         
 }; // CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable
 

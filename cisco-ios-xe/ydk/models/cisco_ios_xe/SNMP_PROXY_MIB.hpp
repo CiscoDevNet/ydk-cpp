@@ -31,7 +31,7 @@ class SnmpProxyMib : public Entity
 
         class Snmpproxytable; //type: SnmpProxyMib::Snmpproxytable
 
-        std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable> snmpproxytable;
+        std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable> snmpproxytable_;
         
 }; // SnmpProxyMib
 
@@ -52,7 +52,7 @@ class SnmpProxyMib::Snmpproxytable : public Entity
 
         class Snmpproxyentry; //type: SnmpProxyMib::Snmpproxytable::Snmpproxyentry
 
-        std::vector<std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable::Snmpproxyentry> > snmpproxyentry;
+        std::vector<std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable::Snmpproxyentry> > snmpproxyentry_;
         
 }; // SnmpProxyMib::Snmpproxytable
 

@@ -33,10 +33,10 @@ class Rfc1315Mib : public Entity
         class Frcircuittable; //type: Rfc1315Mib::Frcircuittable
         class Frerrtable; //type: Rfc1315Mib::Frerrtable
 
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::FrameRelayGlobals> frame_relay_globals;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable> frcircuittable;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable> frdlcmitable;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable> frerrtable;
+        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::FrameRelayGlobals> frame_relay_globals_;
+        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable> frcircuittable_;
+        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable> frdlcmitable_;
+        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable> frerrtable_;
         
 }; // Rfc1315Mib
 
@@ -77,7 +77,7 @@ class Rfc1315Mib::Frdlcmitable : public Entity
 
         class Frdlcmientry; //type: Rfc1315Mib::Frdlcmitable::Frdlcmientry
 
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable::Frdlcmientry> > frdlcmientry_;
         
 }; // Rfc1315Mib::Frdlcmitable
 
@@ -130,7 +130,7 @@ class Rfc1315Mib::Frcircuittable : public Entity
 
         class Frcircuitentry; //type: Rfc1315Mib::Frcircuittable::Frcircuitentry
 
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable::Frcircuitentry> > frcircuitentry;
+        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable::Frcircuitentry> > frcircuitentry_;
         
 }; // Rfc1315Mib::Frcircuittable
 
@@ -184,7 +184,7 @@ class Rfc1315Mib::Frerrtable : public Entity
 
         class Frerrentry; //type: Rfc1315Mib::Frerrtable::Frerrentry
 
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable::Frerrentry> > frerrentry;
+        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable::Frerrentry> > frerrentry_;
         
 }; // Rfc1315Mib::Frerrtable
 

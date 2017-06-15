@@ -11,18 +11,18 @@ namespace DRAFT_MSDP_MIB {
 
 DraftMsdpMib::DraftMsdpMib()
     :
-    msdp(std::make_shared<DraftMsdpMib::Msdp>())
-	,msdppeertable(std::make_shared<DraftMsdpMib::Msdppeertable>())
-	,msdprequeststable(std::make_shared<DraftMsdpMib::Msdprequeststable>())
-	,msdpsacachetable(std::make_shared<DraftMsdpMib::Msdpsacachetable>())
+    msdp_(std::make_shared<DraftMsdpMib::Msdp>())
+	,msdppeertable_(std::make_shared<DraftMsdpMib::Msdppeertable>())
+	,msdprequeststable_(std::make_shared<DraftMsdpMib::Msdprequeststable>())
+	,msdpsacachetable_(std::make_shared<DraftMsdpMib::Msdpsacachetable>())
 {
-    msdp->parent = this;
+    msdp_->parent = this;
 
-    msdppeertable->parent = this;
+    msdppeertable_->parent = this;
 
-    msdprequeststable->parent = this;
+    msdprequeststable_->parent = this;
 
-    msdpsacachetable->parent = this;
+    msdpsacachetable_->parent = this;
 
     yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB";
 }
@@ -33,19 +33,19 @@ DraftMsdpMib::~DraftMsdpMib()
 
 bool DraftMsdpMib::has_data() const
 {
-    return (msdp !=  nullptr && msdp->has_data())
-	|| (msdppeertable !=  nullptr && msdppeertable->has_data())
-	|| (msdprequeststable !=  nullptr && msdprequeststable->has_data())
-	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_data());
+    return (msdp_ !=  nullptr && msdp_->has_data())
+	|| (msdppeertable_ !=  nullptr && msdppeertable_->has_data())
+	|| (msdprequeststable_ !=  nullptr && msdprequeststable_->has_data())
+	|| (msdpsacachetable_ !=  nullptr && msdpsacachetable_->has_data());
 }
 
 bool DraftMsdpMib::has_operation() const
 {
     return is_set(operation)
-	|| (msdp !=  nullptr && msdp->has_operation())
-	|| (msdppeertable !=  nullptr && msdppeertable->has_operation())
-	|| (msdprequeststable !=  nullptr && msdprequeststable->has_operation())
-	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_operation());
+	|| (msdp_ !=  nullptr && msdp_->has_operation())
+	|| (msdppeertable_ !=  nullptr && msdppeertable_->has_operation())
+	|| (msdprequeststable_ !=  nullptr && msdprequeststable_->has_operation())
+	|| (msdpsacachetable_ !=  nullptr && msdpsacachetable_->has_operation());
 }
 
 std::string DraftMsdpMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "msdp")
     {
-        if(msdp == nullptr)
+        if(msdp_ == nullptr)
         {
-            msdp = std::make_shared<DraftMsdpMib::Msdp>();
+            msdp_ = std::make_shared<DraftMsdpMib::Msdp>();
         }
-        return msdp;
+        return msdp_;
     }
 
     if(child_yang_name == "msdpPeerTable")
     {
-        if(msdppeertable == nullptr)
+        if(msdppeertable_ == nullptr)
         {
-            msdppeertable = std::make_shared<DraftMsdpMib::Msdppeertable>();
+            msdppeertable_ = std::make_shared<DraftMsdpMib::Msdppeertable>();
         }
-        return msdppeertable;
+        return msdppeertable_;
     }
 
     if(child_yang_name == "msdpRequestsTable")
     {
-        if(msdprequeststable == nullptr)
+        if(msdprequeststable_ == nullptr)
         {
-            msdprequeststable = std::make_shared<DraftMsdpMib::Msdprequeststable>();
+            msdprequeststable_ = std::make_shared<DraftMsdpMib::Msdprequeststable>();
         }
-        return msdprequeststable;
+        return msdprequeststable_;
     }
 
     if(child_yang_name == "msdpSACacheTable")
     {
-        if(msdpsacachetable == nullptr)
+        if(msdpsacachetable_ == nullptr)
         {
-            msdpsacachetable = std::make_shared<DraftMsdpMib::Msdpsacachetable>();
+            msdpsacachetable_ = std::make_shared<DraftMsdpMib::Msdpsacachetable>();
         }
-        return msdpsacachetable;
+        return msdpsacachetable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(msdp != nullptr)
+    if(msdp_ != nullptr)
     {
-        children["msdp"] = msdp;
+        children["msdp"] = msdp_;
     }
 
-    if(msdppeertable != nullptr)
+    if(msdppeertable_ != nullptr)
     {
-        children["msdpPeerTable"] = msdppeertable;
+        children["msdpPeerTable"] = msdppeertable_;
     }
 
-    if(msdprequeststable != nullptr)
+    if(msdprequeststable_ != nullptr)
     {
-        children["msdpRequestsTable"] = msdprequeststable;
+        children["msdpRequestsTable"] = msdprequeststable_;
     }
 
-    if(msdpsacachetable != nullptr)
+    if(msdpsacachetable_ != nullptr)
     {
-        children["msdpSACacheTable"] = msdpsacachetable;
+        children["msdpSACacheTable"] = msdpsacachetable_;
     }
 
     return children;
@@ -273,9 +273,9 @@ DraftMsdpMib::Msdprequeststable::~Msdprequeststable()
 
 bool DraftMsdpMib::Msdprequeststable::has_data() const
 {
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    for (std::size_t index=0; index<msdprequestsentry_.size(); index++)
     {
-        if(msdprequestsentry[index]->has_data())
+        if(msdprequestsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -283,9 +283,9 @@ bool DraftMsdpMib::Msdprequeststable::has_data() const
 
 bool DraftMsdpMib::Msdprequeststable::has_operation() const
 {
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    for (std::size_t index=0; index<msdprequestsentry_.size(); index++)
     {
-        if(msdprequestsentry[index]->has_operation())
+        if(msdprequestsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -325,7 +325,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
 {
     if(child_yang_name == "msdpRequestsEntry")
     {
-        for(auto const & c : msdprequestsentry)
+        for(auto const & c : msdprequestsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -335,7 +335,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
         }
         auto c = std::make_shared<DraftMsdpMib::Msdprequeststable::Msdprequestsentry>();
         c->parent = this;
-        msdprequestsentry.push_back(c);
+        msdprequestsentry_.push_back(c);
         return c;
     }
 
@@ -345,7 +345,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdprequestsentry)
+    for (auto const & c : msdprequestsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -464,9 +464,9 @@ DraftMsdpMib::Msdppeertable::~Msdppeertable()
 
 bool DraftMsdpMib::Msdppeertable::has_data() const
 {
-    for (std::size_t index=0; index<msdppeerentry.size(); index++)
+    for (std::size_t index=0; index<msdppeerentry_.size(); index++)
     {
-        if(msdppeerentry[index]->has_data())
+        if(msdppeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -474,9 +474,9 @@ bool DraftMsdpMib::Msdppeertable::has_data() const
 
 bool DraftMsdpMib::Msdppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<msdppeerentry.size(); index++)
+    for (std::size_t index=0; index<msdppeerentry_.size(); index++)
     {
-        if(msdppeerentry[index]->has_operation())
+        if(msdppeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -516,7 +516,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
 {
     if(child_yang_name == "msdpPeerEntry")
     {
-        for(auto const & c : msdppeerentry)
+        for(auto const & c : msdppeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -526,7 +526,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
         }
         auto c = std::make_shared<DraftMsdpMib::Msdppeertable::Msdppeerentry>();
         c->parent = this;
-        msdppeerentry.push_back(c);
+        msdppeerentry_.push_back(c);
         return c;
     }
 
@@ -536,7 +536,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdppeerentry)
+    for (auto const & c : msdppeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -879,9 +879,9 @@ DraftMsdpMib::Msdpsacachetable::~Msdpsacachetable()
 
 bool DraftMsdpMib::Msdpsacachetable::has_data() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
+    for (std::size_t index=0; index<msdpsacacheentry_.size(); index++)
     {
-        if(msdpsacacheentry[index]->has_data())
+        if(msdpsacacheentry_[index]->has_data())
             return true;
     }
     return false;
@@ -889,9 +889,9 @@ bool DraftMsdpMib::Msdpsacachetable::has_data() const
 
 bool DraftMsdpMib::Msdpsacachetable::has_operation() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
+    for (std::size_t index=0; index<msdpsacacheentry_.size(); index++)
     {
-        if(msdpsacacheentry[index]->has_operation())
+        if(msdpsacacheentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -931,7 +931,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
-        for(auto const & c : msdpsacacheentry)
+        for(auto const & c : msdpsacacheentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -941,7 +941,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
         }
         auto c = std::make_shared<DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry>();
         c->parent = this;
-        msdpsacacheentry.push_back(c);
+        msdpsacacheentry_.push_back(c);
         return c;
     }
 
@@ -951,7 +951,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdpsacacheentry)
+    for (auto const & c : msdpsacacheentry_)
     {
         children[c->get_segment_path()] = c;
     }

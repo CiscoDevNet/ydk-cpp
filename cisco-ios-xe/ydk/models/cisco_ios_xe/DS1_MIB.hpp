@@ -38,15 +38,15 @@ class Ds1Mib : public Entity
         class Dsx1Fractable; //type: Ds1Mib::Dsx1Fractable
         class Dsx1Chanmappingtable; //type: Ds1Mib::Dsx1Chanmappingtable
 
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Chanmappingtable> dsx1chanmappingtable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Configtable> dsx1configtable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Currenttable> dsx1currenttable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendcurrenttable> dsx1farendcurrenttable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendintervaltable> dsx1farendintervaltable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendtotaltable> dsx1farendtotaltable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Fractable> dsx1fractable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Intervaltable> dsx1intervaltable;
-        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Totaltable> dsx1totaltable;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Chanmappingtable> dsx1chanmappingtable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Configtable> dsx1configtable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Currenttable> dsx1currenttable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendcurrenttable> dsx1farendcurrenttable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendintervaltable> dsx1farendintervaltable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendtotaltable> dsx1farendtotaltable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Fractable> dsx1fractable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Intervaltable> dsx1intervaltable_;
+        std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Totaltable> dsx1totaltable_;
         
 }; // Ds1Mib
 
@@ -67,7 +67,7 @@ class Ds1Mib::Dsx1Configtable : public Entity
 
         class Dsx1Configentry; //type: Ds1Mib::Dsx1Configtable::Dsx1Configentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Configtable::Dsx1Configentry> > dsx1configentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Configtable::Dsx1Configentry> > dsx1configentry_;
         
 }; // Ds1Mib::Dsx1Configtable
 
@@ -134,7 +134,7 @@ class Ds1Mib::Dsx1Currenttable : public Entity
 
         class Dsx1Currententry; //type: Ds1Mib::Dsx1Currenttable::Dsx1Currententry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Currenttable::Dsx1Currententry> > dsx1currententry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Currenttable::Dsx1Currententry> > dsx1currententry_;
         
 }; // Ds1Mib::Dsx1Currenttable
 
@@ -184,7 +184,7 @@ class Ds1Mib::Dsx1Intervaltable : public Entity
 
         class Dsx1Intervalentry; //type: Ds1Mib::Dsx1Intervaltable::Dsx1Intervalentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Intervaltable::Dsx1Intervalentry> > dsx1intervalentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Intervaltable::Dsx1Intervalentry> > dsx1intervalentry_;
         
 }; // Ds1Mib::Dsx1Intervaltable
 
@@ -236,7 +236,7 @@ class Ds1Mib::Dsx1Totaltable : public Entity
 
         class Dsx1Totalentry; //type: Ds1Mib::Dsx1Totaltable::Dsx1Totalentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Totaltable::Dsx1Totalentry> > dsx1totalentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Totaltable::Dsx1Totalentry> > dsx1totalentry_;
         
 }; // Ds1Mib::Dsx1Totaltable
 
@@ -286,7 +286,7 @@ class Ds1Mib::Dsx1Farendcurrenttable : public Entity
 
         class Dsx1Farendcurrententry; //type: Ds1Mib::Dsx1Farendcurrenttable::Dsx1Farendcurrententry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendcurrenttable::Dsx1Farendcurrententry> > dsx1farendcurrententry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendcurrenttable::Dsx1Farendcurrententry> > dsx1farendcurrententry_;
         
 }; // Ds1Mib::Dsx1Farendcurrenttable
 
@@ -338,7 +338,7 @@ class Ds1Mib::Dsx1Farendintervaltable : public Entity
 
         class Dsx1Farendintervalentry; //type: Ds1Mib::Dsx1Farendintervaltable::Dsx1Farendintervalentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendintervaltable::Dsx1Farendintervalentry> > dsx1farendintervalentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendintervaltable::Dsx1Farendintervalentry> > dsx1farendintervalentry_;
         
 }; // Ds1Mib::Dsx1Farendintervaltable
 
@@ -389,7 +389,7 @@ class Ds1Mib::Dsx1Farendtotaltable : public Entity
 
         class Dsx1Farendtotalentry; //type: Ds1Mib::Dsx1Farendtotaltable::Dsx1Farendtotalentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendtotaltable::Dsx1Farendtotalentry> > dsx1farendtotalentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Farendtotaltable::Dsx1Farendtotalentry> > dsx1farendtotalentry_;
         
 }; // Ds1Mib::Dsx1Farendtotaltable
 
@@ -438,7 +438,7 @@ class Ds1Mib::Dsx1Fractable : public Entity
 
         class Dsx1Fracentry; //type: Ds1Mib::Dsx1Fractable::Dsx1Fracentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Fractable::Dsx1Fracentry> > dsx1fracentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Fractable::Dsx1Fracentry> > dsx1fracentry_;
         
 }; // Ds1Mib::Dsx1Fractable
 
@@ -480,7 +480,7 @@ class Ds1Mib::Dsx1Chanmappingtable : public Entity
 
         class Dsx1Chanmappingentry; //type: Ds1Mib::Dsx1Chanmappingtable::Dsx1Chanmappingentry
 
-        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Chanmappingtable::Dsx1Chanmappingentry> > dsx1chanmappingentry;
+        std::vector<std::shared_ptr<DS1_MIB::Ds1Mib::Dsx1Chanmappingtable::Dsx1Chanmappingentry> > dsx1chanmappingentry_;
         
 }; // Ds1Mib::Dsx1Chanmappingtable
 

@@ -11,9 +11,9 @@ namespace CISCO_UBE_MIB {
 
 CiscoUbeMib::CiscoUbeMib()
     :
-    ciscoubemibobjects(std::make_shared<CiscoUbeMib::Ciscoubemibobjects>())
+    ciscoubemibobjects_(std::make_shared<CiscoUbeMib::Ciscoubemibobjects>())
 {
-    ciscoubemibobjects->parent = this;
+    ciscoubemibobjects_->parent = this;
 
     yang_name = "CISCO-UBE-MIB"; yang_parent_name = "CISCO-UBE-MIB";
 }
@@ -24,13 +24,13 @@ CiscoUbeMib::~CiscoUbeMib()
 
 bool CiscoUbeMib::has_data() const
 {
-    return (ciscoubemibobjects !=  nullptr && ciscoubemibobjects->has_data());
+    return (ciscoubemibobjects_ !=  nullptr && ciscoubemibobjects_->has_data());
 }
 
 bool CiscoUbeMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscoubemibobjects !=  nullptr && ciscoubemibobjects->has_operation());
+	|| (ciscoubemibobjects_ !=  nullptr && ciscoubemibobjects_->has_operation());
 }
 
 std::string CiscoUbeMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoUbeMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ciscoUbeMIBObjects")
     {
-        if(ciscoubemibobjects == nullptr)
+        if(ciscoubemibobjects_ == nullptr)
         {
-            ciscoubemibobjects = std::make_shared<CiscoUbeMib::Ciscoubemibobjects>();
+            ciscoubemibobjects_ = std::make_shared<CiscoUbeMib::Ciscoubemibobjects>();
         }
-        return ciscoubemibobjects;
+        return ciscoubemibobjects_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoUbeMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoUbeMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoubemibobjects != nullptr)
+    if(ciscoubemibobjects_ != nullptr)
     {
-        children["ciscoUbeMIBObjects"] = ciscoubemibobjects;
+        children["ciscoUbeMIBObjects"] = ciscoubemibobjects_;
     }
 
     return children;

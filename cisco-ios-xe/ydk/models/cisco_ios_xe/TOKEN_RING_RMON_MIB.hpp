@@ -39,16 +39,16 @@ class TokenRingRmonMib : public Entity
         class Ringstationconfigtable; //type: TokenRingRmonMib::Ringstationconfigtable
         class Sourceroutingstatstable; //type: TokenRingRmonMib::Sourceroutingstatstable
 
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable> ringstationconfigcontroltable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable> ringstationconfigtable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable> ringstationcontroltable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable> ringstationordertable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable> ringstationtable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable> sourceroutingstatstable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable> tokenringmlhistorytable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable> tokenringmlstatstable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable> tokenringphistorytable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable> tokenringpstatstable;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable> ringstationconfigcontroltable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable> ringstationconfigtable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable> ringstationcontroltable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable> ringstationordertable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable> ringstationtable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable> sourceroutingstatstable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable> tokenringmlhistorytable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable> tokenringmlstatstable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable> tokenringphistorytable_;
+        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable> tokenringpstatstable_;
         
 }; // TokenRingRmonMib
 
@@ -69,7 +69,7 @@ class TokenRingRmonMib::Tokenringmlstatstable : public Entity
 
         class Tokenringmlstatsentry; //type: TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry> > tokenringmlstatsentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry> > tokenringmlstatsentry_;
         
 }; // TokenRingRmonMib::Tokenringmlstatstable
 
@@ -135,7 +135,7 @@ class TokenRingRmonMib::Tokenringpstatstable : public Entity
 
         class Tokenringpstatsentry; //type: TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry> > tokenringpstatsentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry> > tokenringpstatsentry_;
         
 }; // TokenRingRmonMib::Tokenringpstatstable
 
@@ -193,7 +193,7 @@ class TokenRingRmonMib::Tokenringmlhistorytable : public Entity
 
         class Tokenringmlhistoryentry; //type: TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry> > tokenringmlhistoryentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry> > tokenringmlhistoryentry_;
         
 }; // TokenRingRmonMib::Tokenringmlhistorytable
 
@@ -259,7 +259,7 @@ class TokenRingRmonMib::Tokenringphistorytable : public Entity
 
         class Tokenringphistoryentry; //type: TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry> > tokenringphistoryentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry> > tokenringphistoryentry_;
         
 }; // TokenRingRmonMib::Tokenringphistorytable
 
@@ -316,7 +316,7 @@ class TokenRingRmonMib::Ringstationcontroltable : public Entity
 
         class Ringstationcontrolentry; //type: TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry> > ringstationcontrolentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry> > ringstationcontrolentry_;
         
 }; // TokenRingRmonMib::Ringstationcontroltable
 
@@ -366,7 +366,7 @@ class TokenRingRmonMib::Ringstationtable : public Entity
 
         class Ringstationentry; //type: TokenRingRmonMib::Ringstationtable::Ringstationentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable::Ringstationentry> > ringstationentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable::Ringstationentry> > ringstationentry_;
         
 }; // TokenRingRmonMib::Ringstationtable
 
@@ -428,7 +428,7 @@ class TokenRingRmonMib::Ringstationordertable : public Entity
 
         class Ringstationorderentry; //type: TokenRingRmonMib::Ringstationordertable::Ringstationorderentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable::Ringstationorderentry> > ringstationorderentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable::Ringstationorderentry> > ringstationorderentry_;
         
 }; // TokenRingRmonMib::Ringstationordertable
 
@@ -470,7 +470,7 @@ class TokenRingRmonMib::Ringstationconfigcontroltable : public Entity
 
         class Ringstationconfigcontrolentry; //type: TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry> > ringstationconfigcontrolentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry> > ringstationconfigcontrolentry_;
         
 }; // TokenRingRmonMib::Ringstationconfigcontroltable
 
@@ -515,7 +515,7 @@ class TokenRingRmonMib::Ringstationconfigtable : public Entity
 
         class Ringstationconfigentry; //type: TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry> > ringstationconfigentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry> > ringstationconfigentry_;
         
 }; // TokenRingRmonMib::Ringstationconfigtable
 
@@ -561,7 +561,7 @@ class TokenRingRmonMib::Sourceroutingstatstable : public Entity
 
         class Sourceroutingstatsentry; //type: TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry> > sourceroutingstatsentry;
+        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry> > sourceroutingstatsentry_;
         
 }; // TokenRingRmonMib::Sourceroutingstatstable
 

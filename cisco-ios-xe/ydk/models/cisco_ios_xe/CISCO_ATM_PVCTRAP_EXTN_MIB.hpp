@@ -41,18 +41,18 @@ class CiscoAtmPvctrapExtnMib : public Entity
         class Catmaisrdistatusuppvclrangetable; //type: CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable
         class Catmuppvclrangetable; //type: CiscoAtmPvctrapExtnMib::Catmuppvclrangetable
 
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable> catmaisrdistatuschpvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable> catmaisrdistatusuppvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable> catmcurstatchangepvcltable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable> catmcurstatusuppvcltable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable> catmdownpvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable> catmendccstatuschpvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable> catmendccstatusuppvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable> catmsegccstatuschpvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable> catmsegccstatusuppvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable> catmstatuschangepvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable> catmstatusuppvclrangetable;
-        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmuppvclrangetable> catmuppvclrangetable;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable> catmaisrdistatuschpvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable> catmaisrdistatusuppvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable> catmcurstatchangepvcltable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable> catmcurstatusuppvcltable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable> catmdownpvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable> catmendccstatuschpvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable> catmendccstatusuppvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable> catmsegccstatuschpvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable> catmsegccstatusuppvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable> catmstatuschangepvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable> catmstatusuppvclrangetable_;
+        std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmuppvclrangetable> catmuppvclrangetable_;
         
 }; // CiscoAtmPvctrapExtnMib
 
@@ -73,7 +73,7 @@ class CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable : public Entity
 
         class Catmcurstatchangepvclentry; //type: CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry> > catmcurstatchangepvclentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry> > catmcurstatchangepvclentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable
 
@@ -133,7 +133,7 @@ class CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable : public Entity
 
         class Catmstatuschangepvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry> > catmstatuschangepvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry> > catmstatuschangepvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable
 
@@ -181,7 +181,7 @@ class CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable : public Entity
 
         class Catmsegccstatuschpvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry> > catmsegccstatuschpvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry> > catmsegccstatuschpvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable
 
@@ -230,7 +230,7 @@ class CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable : public Entity
 
         class Catmendccstatuschpvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry> > catmendccstatuschpvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry> > catmendccstatuschpvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable
 
@@ -279,7 +279,7 @@ class CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable : public Entity
 
         class Catmaisrdistatuschpvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry> > catmaisrdistatuschpvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry> > catmaisrdistatuschpvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable
 
@@ -328,7 +328,7 @@ class CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable : public Entity
 
         class Catmdownpvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::Catmdownpvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::Catmdownpvclrangeentry> > catmdownpvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::Catmdownpvclrangeentry> > catmdownpvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable
 
@@ -380,7 +380,7 @@ class CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable : public Entity
 
         class Catmcurstatusuppvclentry; //type: CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry> > catmcurstatusuppvclentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry> > catmcurstatusuppvclentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable
 
@@ -440,7 +440,7 @@ class CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable : public Entity
 
         class Catmstatusuppvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry> > catmstatusuppvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry> > catmstatusuppvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable
 
@@ -489,7 +489,7 @@ class CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable : public Entity
 
         class Catmsegccstatusuppvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry> > catmsegccstatusuppvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry> > catmsegccstatusuppvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable
 
@@ -538,7 +538,7 @@ class CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable : public Entity
 
         class Catmendccstatusuppvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry> > catmendccstatusuppvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry> > catmendccstatusuppvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable
 
@@ -587,7 +587,7 @@ class CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable : public Entity
 
         class Catmaisrdistatusuppvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry> > catmaisrdistatusuppvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry> > catmaisrdistatusuppvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable
 
@@ -636,7 +636,7 @@ class CiscoAtmPvctrapExtnMib::Catmuppvclrangetable : public Entity
 
         class Catmuppvclrangeentry; //type: CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::Catmuppvclrangeentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::Catmuppvclrangeentry> > catmuppvclrangeentry;
+        std::vector<std::shared_ptr<CISCO_ATM_PVCTRAP_EXTN_MIB::CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::Catmuppvclrangeentry> > catmuppvclrangeentry_;
         
 }; // CiscoAtmPvctrapExtnMib::Catmuppvclrangetable
 

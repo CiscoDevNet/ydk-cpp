@@ -35,11 +35,11 @@ class CiscoIetfMplsTeExtStd03Mib : public Entity
         class Cmplstunnelexttable; //type: CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable
         class Cmplstunnelreverseperftable; //type: CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable
 
-        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable> cmplsnodeconfigtable;
-        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable> cmplsnodeiccmaptable;
-        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable> cmplsnodeipmaptable;
-        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable> cmplstunnelexttable;
-        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable> cmplstunnelreverseperftable;
+        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable> cmplsnodeconfigtable_;
+        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable> cmplsnodeiccmaptable_;
+        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable> cmplsnodeipmaptable_;
+        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable> cmplstunnelexttable_;
+        std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable> cmplstunnelreverseperftable_;
         
 }; // CiscoIetfMplsTeExtStd03Mib
 
@@ -60,7 +60,7 @@ class CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable : public Entity
 
         class Cmplsnodeconfigentry; //type: CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable::Cmplsnodeconfigentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable::Cmplsnodeconfigentry> > cmplsnodeconfigentry;
+        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable::Cmplsnodeconfigentry> > cmplsnodeconfigentry_;
         
 }; // CiscoIetfMplsTeExtStd03Mib::Cmplsnodeconfigtable
 
@@ -105,7 +105,7 @@ class CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable : public Entity
 
         class Cmplsnodeipmapentry; //type: CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable::Cmplsnodeipmapentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable::Cmplsnodeipmapentry> > cmplsnodeipmapentry;
+        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable::Cmplsnodeipmapentry> > cmplsnodeipmapentry_;
         
 }; // CiscoIetfMplsTeExtStd03Mib::Cmplsnodeipmaptable
 
@@ -147,7 +147,7 @@ class CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable : public Entity
 
         class Cmplsnodeiccmapentry; //type: CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry> > cmplsnodeiccmapentry;
+        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry> > cmplsnodeiccmapentry_;
         
 }; // CiscoIetfMplsTeExtStd03Mib::Cmplsnodeiccmaptable
 
@@ -188,7 +188,7 @@ class CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable : public Entity
 
         class Cmplstunnelextentry; //type: CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable::Cmplstunnelextentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable::Cmplstunnelextentry> > cmplstunnelextentry;
+        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable::Cmplstunnelextentry> > cmplstunnelextentry_;
         
 }; // CiscoIetfMplsTeExtStd03Mib::Cmplstunnelexttable
 
@@ -240,7 +240,7 @@ class CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable : public Entity
 
         class Cmplstunnelreverseperfentry; //type: CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry> > cmplstunnelreverseperfentry;
+        std::vector<std::shared_ptr<CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry> > cmplstunnelreverseperfentry_;
         
 }; // CiscoIetfMplsTeExtStd03Mib::Cmplstunnelreverseperftable
 

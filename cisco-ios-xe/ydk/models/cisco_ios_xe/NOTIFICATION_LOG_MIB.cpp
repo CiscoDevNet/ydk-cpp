@@ -11,21 +11,21 @@ namespace NOTIFICATION_LOG_MIB {
 
 NotificationLogMib::NotificationLogMib()
     :
-    nlmconfig(std::make_shared<NotificationLogMib::Nlmconfig>())
-	,nlmconfiglogtable(std::make_shared<NotificationLogMib::Nlmconfiglogtable>())
-	,nlmlogtable(std::make_shared<NotificationLogMib::Nlmlogtable>())
-	,nlmlogvariabletable(std::make_shared<NotificationLogMib::Nlmlogvariabletable>())
-	,nlmstats(std::make_shared<NotificationLogMib::Nlmstats>())
+    nlmconfig_(std::make_shared<NotificationLogMib::Nlmconfig>())
+	,nlmconfiglogtable_(std::make_shared<NotificationLogMib::Nlmconfiglogtable>())
+	,nlmlogtable_(std::make_shared<NotificationLogMib::Nlmlogtable>())
+	,nlmlogvariabletable_(std::make_shared<NotificationLogMib::Nlmlogvariabletable>())
+	,nlmstats_(std::make_shared<NotificationLogMib::Nlmstats>())
 {
-    nlmconfig->parent = this;
+    nlmconfig_->parent = this;
 
-    nlmconfiglogtable->parent = this;
+    nlmconfiglogtable_->parent = this;
 
-    nlmlogtable->parent = this;
+    nlmlogtable_->parent = this;
 
-    nlmlogvariabletable->parent = this;
+    nlmlogvariabletable_->parent = this;
 
-    nlmstats->parent = this;
+    nlmstats_->parent = this;
 
     yang_name = "NOTIFICATION-LOG-MIB"; yang_parent_name = "NOTIFICATION-LOG-MIB";
 }
@@ -36,21 +36,21 @@ NotificationLogMib::~NotificationLogMib()
 
 bool NotificationLogMib::has_data() const
 {
-    return (nlmconfig !=  nullptr && nlmconfig->has_data())
-	|| (nlmconfiglogtable !=  nullptr && nlmconfiglogtable->has_data())
-	|| (nlmlogtable !=  nullptr && nlmlogtable->has_data())
-	|| (nlmlogvariabletable !=  nullptr && nlmlogvariabletable->has_data())
-	|| (nlmstats !=  nullptr && nlmstats->has_data());
+    return (nlmconfig_ !=  nullptr && nlmconfig_->has_data())
+	|| (nlmconfiglogtable_ !=  nullptr && nlmconfiglogtable_->has_data())
+	|| (nlmlogtable_ !=  nullptr && nlmlogtable_->has_data())
+	|| (nlmlogvariabletable_ !=  nullptr && nlmlogvariabletable_->has_data())
+	|| (nlmstats_ !=  nullptr && nlmstats_->has_data());
 }
 
 bool NotificationLogMib::has_operation() const
 {
     return is_set(operation)
-	|| (nlmconfig !=  nullptr && nlmconfig->has_operation())
-	|| (nlmconfiglogtable !=  nullptr && nlmconfiglogtable->has_operation())
-	|| (nlmlogtable !=  nullptr && nlmlogtable->has_operation())
-	|| (nlmlogvariabletable !=  nullptr && nlmlogvariabletable->has_operation())
-	|| (nlmstats !=  nullptr && nlmstats->has_operation());
+	|| (nlmconfig_ !=  nullptr && nlmconfig_->has_operation())
+	|| (nlmconfiglogtable_ !=  nullptr && nlmconfiglogtable_->has_operation())
+	|| (nlmlogtable_ !=  nullptr && nlmlogtable_->has_operation())
+	|| (nlmlogvariabletable_ !=  nullptr && nlmlogvariabletable_->has_operation())
+	|| (nlmstats_ !=  nullptr && nlmstats_->has_operation());
 }
 
 std::string NotificationLogMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> NotificationLogMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "nlmConfig")
     {
-        if(nlmconfig == nullptr)
+        if(nlmconfig_ == nullptr)
         {
-            nlmconfig = std::make_shared<NotificationLogMib::Nlmconfig>();
+            nlmconfig_ = std::make_shared<NotificationLogMib::Nlmconfig>();
         }
-        return nlmconfig;
+        return nlmconfig_;
     }
 
     if(child_yang_name == "nlmConfigLogTable")
     {
-        if(nlmconfiglogtable == nullptr)
+        if(nlmconfiglogtable_ == nullptr)
         {
-            nlmconfiglogtable = std::make_shared<NotificationLogMib::Nlmconfiglogtable>();
+            nlmconfiglogtable_ = std::make_shared<NotificationLogMib::Nlmconfiglogtable>();
         }
-        return nlmconfiglogtable;
+        return nlmconfiglogtable_;
     }
 
     if(child_yang_name == "nlmLogTable")
     {
-        if(nlmlogtable == nullptr)
+        if(nlmlogtable_ == nullptr)
         {
-            nlmlogtable = std::make_shared<NotificationLogMib::Nlmlogtable>();
+            nlmlogtable_ = std::make_shared<NotificationLogMib::Nlmlogtable>();
         }
-        return nlmlogtable;
+        return nlmlogtable_;
     }
 
     if(child_yang_name == "nlmLogVariableTable")
     {
-        if(nlmlogvariabletable == nullptr)
+        if(nlmlogvariabletable_ == nullptr)
         {
-            nlmlogvariabletable = std::make_shared<NotificationLogMib::Nlmlogvariabletable>();
+            nlmlogvariabletable_ = std::make_shared<NotificationLogMib::Nlmlogvariabletable>();
         }
-        return nlmlogvariabletable;
+        return nlmlogvariabletable_;
     }
 
     if(child_yang_name == "nlmStats")
     {
-        if(nlmstats == nullptr)
+        if(nlmstats_ == nullptr)
         {
-            nlmstats = std::make_shared<NotificationLogMib::Nlmstats>();
+            nlmstats_ = std::make_shared<NotificationLogMib::Nlmstats>();
         }
-        return nlmstats;
+        return nlmstats_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> NotificationLogMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> NotificationLogMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nlmconfig != nullptr)
+    if(nlmconfig_ != nullptr)
     {
-        children["nlmConfig"] = nlmconfig;
+        children["nlmConfig"] = nlmconfig_;
     }
 
-    if(nlmconfiglogtable != nullptr)
+    if(nlmconfiglogtable_ != nullptr)
     {
-        children["nlmConfigLogTable"] = nlmconfiglogtable;
+        children["nlmConfigLogTable"] = nlmconfiglogtable_;
     }
 
-    if(nlmlogtable != nullptr)
+    if(nlmlogtable_ != nullptr)
     {
-        children["nlmLogTable"] = nlmlogtable;
+        children["nlmLogTable"] = nlmlogtable_;
     }
 
-    if(nlmlogvariabletable != nullptr)
+    if(nlmlogvariabletable_ != nullptr)
     {
-        children["nlmLogVariableTable"] = nlmlogvariabletable;
+        children["nlmLogVariableTable"] = nlmlogvariabletable_;
     }
 
-    if(nlmstats != nullptr)
+    if(nlmstats_ != nullptr)
     {
-        children["nlmStats"] = nlmstats;
+        children["nlmStats"] = nlmstats_;
     }
 
     return children;
@@ -356,9 +356,9 @@ NotificationLogMib::Nlmconfiglogtable::~Nlmconfiglogtable()
 
 bool NotificationLogMib::Nlmconfiglogtable::has_data() const
 {
-    for (std::size_t index=0; index<nlmconfiglogentry.size(); index++)
+    for (std::size_t index=0; index<nlmconfiglogentry_.size(); index++)
     {
-        if(nlmconfiglogentry[index]->has_data())
+        if(nlmconfiglogentry_[index]->has_data())
             return true;
     }
     return false;
@@ -366,9 +366,9 @@ bool NotificationLogMib::Nlmconfiglogtable::has_data() const
 
 bool NotificationLogMib::Nlmconfiglogtable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmconfiglogentry.size(); index++)
+    for (std::size_t index=0; index<nlmconfiglogentry_.size(); index++)
     {
-        if(nlmconfiglogentry[index]->has_operation())
+        if(nlmconfiglogentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -408,7 +408,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmconfiglogtable::get_child_by_name
 {
     if(child_yang_name == "nlmConfigLogEntry")
     {
-        for(auto const & c : nlmconfiglogentry)
+        for(auto const & c : nlmconfiglogentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -418,7 +418,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmconfiglogtable::get_child_by_name
         }
         auto c = std::make_shared<NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry>();
         c->parent = this;
-        nlmconfiglogentry.push_back(c);
+        nlmconfiglogentry_.push_back(c);
         return c;
     }
 
@@ -428,7 +428,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmconfiglogtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> NotificationLogMib::Nlmconfiglogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nlmconfiglogentry)
+    for (auto const & c : nlmconfiglogentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -587,9 +587,9 @@ NotificationLogMib::Nlmlogtable::~Nlmlogtable()
 
 bool NotificationLogMib::Nlmlogtable::has_data() const
 {
-    for (std::size_t index=0; index<nlmlogentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogentry_.size(); index++)
     {
-        if(nlmlogentry[index]->has_data())
+        if(nlmlogentry_[index]->has_data())
             return true;
     }
     return false;
@@ -597,9 +597,9 @@ bool NotificationLogMib::Nlmlogtable::has_data() const
 
 bool NotificationLogMib::Nlmlogtable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmlogentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogentry_.size(); index++)
     {
-        if(nlmlogentry[index]->has_operation())
+        if(nlmlogentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -639,7 +639,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogtable::get_child_by_name(const
 {
     if(child_yang_name == "nlmLogEntry")
     {
-        for(auto const & c : nlmlogentry)
+        for(auto const & c : nlmlogentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -649,7 +649,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogtable::get_child_by_name(const
         }
         auto c = std::make_shared<NotificationLogMib::Nlmlogtable::Nlmlogentry>();
         c->parent = this;
-        nlmlogentry.push_back(c);
+        nlmlogentry_.push_back(c);
         return c;
     }
 
@@ -659,7 +659,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> NotificationLogMib::Nlmlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nlmlogentry)
+    for (auto const & c : nlmlogentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -826,9 +826,9 @@ NotificationLogMib::Nlmlogvariabletable::~Nlmlogvariabletable()
 
 bool NotificationLogMib::Nlmlogvariabletable::has_data() const
 {
-    for (std::size_t index=0; index<nlmlogvariableentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogvariableentry_.size(); index++)
     {
-        if(nlmlogvariableentry[index]->has_data())
+        if(nlmlogvariableentry_[index]->has_data())
             return true;
     }
     return false;
@@ -836,9 +836,9 @@ bool NotificationLogMib::Nlmlogvariabletable::has_data() const
 
 bool NotificationLogMib::Nlmlogvariabletable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmlogvariableentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogvariableentry_.size(); index++)
     {
-        if(nlmlogvariableentry[index]->has_operation())
+        if(nlmlogvariableentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -878,7 +878,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogvariabletable::get_child_by_na
 {
     if(child_yang_name == "nlmLogVariableEntry")
     {
-        for(auto const & c : nlmlogvariableentry)
+        for(auto const & c : nlmlogvariableentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -888,7 +888,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogvariabletable::get_child_by_na
         }
         auto c = std::make_shared<NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry>();
         c->parent = this;
-        nlmlogvariableentry.push_back(c);
+        nlmlogvariableentry_.push_back(c);
         return c;
     }
 
@@ -898,7 +898,7 @@ std::shared_ptr<Entity> NotificationLogMib::Nlmlogvariabletable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> NotificationLogMib::Nlmlogvariabletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nlmlogvariableentry)
+    for (auto const & c : nlmlogvariableentry_)
     {
         children[c->get_segment_path()] = c;
     }

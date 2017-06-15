@@ -11,21 +11,21 @@ namespace CISCO_BULK_FILE_MIB {
 
 CiscoBulkFileMib::CiscoBulkFileMib()
     :
-    cbfdefine(std::make_shared<CiscoBulkFileMib::Cbfdefine>())
-	,cbfdefinefiletable(std::make_shared<CiscoBulkFileMib::Cbfdefinefiletable>())
-	,cbfdefineobjecttable(std::make_shared<CiscoBulkFileMib::Cbfdefineobjecttable>())
-	,cbfstatus(std::make_shared<CiscoBulkFileMib::Cbfstatus>())
-	,cbfstatusfiletable(std::make_shared<CiscoBulkFileMib::Cbfstatusfiletable>())
+    cbfdefine_(std::make_shared<CiscoBulkFileMib::Cbfdefine>())
+	,cbfdefinefiletable_(std::make_shared<CiscoBulkFileMib::Cbfdefinefiletable>())
+	,cbfdefineobjecttable_(std::make_shared<CiscoBulkFileMib::Cbfdefineobjecttable>())
+	,cbfstatus_(std::make_shared<CiscoBulkFileMib::Cbfstatus>())
+	,cbfstatusfiletable_(std::make_shared<CiscoBulkFileMib::Cbfstatusfiletable>())
 {
-    cbfdefine->parent = this;
+    cbfdefine_->parent = this;
 
-    cbfdefinefiletable->parent = this;
+    cbfdefinefiletable_->parent = this;
 
-    cbfdefineobjecttable->parent = this;
+    cbfdefineobjecttable_->parent = this;
 
-    cbfstatus->parent = this;
+    cbfstatus_->parent = this;
 
-    cbfstatusfiletable->parent = this;
+    cbfstatusfiletable_->parent = this;
 
     yang_name = "CISCO-BULK-FILE-MIB"; yang_parent_name = "CISCO-BULK-FILE-MIB";
 }
@@ -36,21 +36,21 @@ CiscoBulkFileMib::~CiscoBulkFileMib()
 
 bool CiscoBulkFileMib::has_data() const
 {
-    return (cbfdefine !=  nullptr && cbfdefine->has_data())
-	|| (cbfdefinefiletable !=  nullptr && cbfdefinefiletable->has_data())
-	|| (cbfdefineobjecttable !=  nullptr && cbfdefineobjecttable->has_data())
-	|| (cbfstatus !=  nullptr && cbfstatus->has_data())
-	|| (cbfstatusfiletable !=  nullptr && cbfstatusfiletable->has_data());
+    return (cbfdefine_ !=  nullptr && cbfdefine_->has_data())
+	|| (cbfdefinefiletable_ !=  nullptr && cbfdefinefiletable_->has_data())
+	|| (cbfdefineobjecttable_ !=  nullptr && cbfdefineobjecttable_->has_data())
+	|| (cbfstatus_ !=  nullptr && cbfstatus_->has_data())
+	|| (cbfstatusfiletable_ !=  nullptr && cbfstatusfiletable_->has_data());
 }
 
 bool CiscoBulkFileMib::has_operation() const
 {
     return is_set(operation)
-	|| (cbfdefine !=  nullptr && cbfdefine->has_operation())
-	|| (cbfdefinefiletable !=  nullptr && cbfdefinefiletable->has_operation())
-	|| (cbfdefineobjecttable !=  nullptr && cbfdefineobjecttable->has_operation())
-	|| (cbfstatus !=  nullptr && cbfstatus->has_operation())
-	|| (cbfstatusfiletable !=  nullptr && cbfstatusfiletable->has_operation());
+	|| (cbfdefine_ !=  nullptr && cbfdefine_->has_operation())
+	|| (cbfdefinefiletable_ !=  nullptr && cbfdefinefiletable_->has_operation())
+	|| (cbfdefineobjecttable_ !=  nullptr && cbfdefineobjecttable_->has_operation())
+	|| (cbfstatus_ !=  nullptr && cbfstatus_->has_operation())
+	|| (cbfstatusfiletable_ !=  nullptr && cbfstatusfiletable_->has_operation());
 }
 
 std::string CiscoBulkFileMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> CiscoBulkFileMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "cbfDefine")
     {
-        if(cbfdefine == nullptr)
+        if(cbfdefine_ == nullptr)
         {
-            cbfdefine = std::make_shared<CiscoBulkFileMib::Cbfdefine>();
+            cbfdefine_ = std::make_shared<CiscoBulkFileMib::Cbfdefine>();
         }
-        return cbfdefine;
+        return cbfdefine_;
     }
 
     if(child_yang_name == "cbfDefineFileTable")
     {
-        if(cbfdefinefiletable == nullptr)
+        if(cbfdefinefiletable_ == nullptr)
         {
-            cbfdefinefiletable = std::make_shared<CiscoBulkFileMib::Cbfdefinefiletable>();
+            cbfdefinefiletable_ = std::make_shared<CiscoBulkFileMib::Cbfdefinefiletable>();
         }
-        return cbfdefinefiletable;
+        return cbfdefinefiletable_;
     }
 
     if(child_yang_name == "cbfDefineObjectTable")
     {
-        if(cbfdefineobjecttable == nullptr)
+        if(cbfdefineobjecttable_ == nullptr)
         {
-            cbfdefineobjecttable = std::make_shared<CiscoBulkFileMib::Cbfdefineobjecttable>();
+            cbfdefineobjecttable_ = std::make_shared<CiscoBulkFileMib::Cbfdefineobjecttable>();
         }
-        return cbfdefineobjecttable;
+        return cbfdefineobjecttable_;
     }
 
     if(child_yang_name == "cbfStatus")
     {
-        if(cbfstatus == nullptr)
+        if(cbfstatus_ == nullptr)
         {
-            cbfstatus = std::make_shared<CiscoBulkFileMib::Cbfstatus>();
+            cbfstatus_ = std::make_shared<CiscoBulkFileMib::Cbfstatus>();
         }
-        return cbfstatus;
+        return cbfstatus_;
     }
 
     if(child_yang_name == "cbfStatusFileTable")
     {
-        if(cbfstatusfiletable == nullptr)
+        if(cbfstatusfiletable_ == nullptr)
         {
-            cbfstatusfiletable = std::make_shared<CiscoBulkFileMib::Cbfstatusfiletable>();
+            cbfstatusfiletable_ = std::make_shared<CiscoBulkFileMib::Cbfstatusfiletable>();
         }
-        return cbfstatusfiletable;
+        return cbfstatusfiletable_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> CiscoBulkFileMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CiscoBulkFileMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cbfdefine != nullptr)
+    if(cbfdefine_ != nullptr)
     {
-        children["cbfDefine"] = cbfdefine;
+        children["cbfDefine"] = cbfdefine_;
     }
 
-    if(cbfdefinefiletable != nullptr)
+    if(cbfdefinefiletable_ != nullptr)
     {
-        children["cbfDefineFileTable"] = cbfdefinefiletable;
+        children["cbfDefineFileTable"] = cbfdefinefiletable_;
     }
 
-    if(cbfdefineobjecttable != nullptr)
+    if(cbfdefineobjecttable_ != nullptr)
     {
-        children["cbfDefineObjectTable"] = cbfdefineobjecttable;
+        children["cbfDefineObjectTable"] = cbfdefineobjecttable_;
     }
 
-    if(cbfstatus != nullptr)
+    if(cbfstatus_ != nullptr)
     {
-        children["cbfStatus"] = cbfstatus;
+        children["cbfStatus"] = cbfstatus_;
     }
 
-    if(cbfstatusfiletable != nullptr)
+    if(cbfstatusfiletable_ != nullptr)
     {
-        children["cbfStatusFileTable"] = cbfstatusfiletable;
+        children["cbfStatusFileTable"] = cbfstatusfiletable_;
     }
 
     return children;
@@ -420,9 +420,9 @@ CiscoBulkFileMib::Cbfdefinefiletable::~Cbfdefinefiletable()
 
 bool CiscoBulkFileMib::Cbfdefinefiletable::has_data() const
 {
-    for (std::size_t index=0; index<cbfdefinefileentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefinefileentry_.size(); index++)
     {
-        if(cbfdefinefileentry[index]->has_data())
+        if(cbfdefinefileentry_[index]->has_data())
             return true;
     }
     return false;
@@ -430,9 +430,9 @@ bool CiscoBulkFileMib::Cbfdefinefiletable::has_data() const
 
 bool CiscoBulkFileMib::Cbfdefinefiletable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfdefinefileentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefinefileentry_.size(); index++)
     {
-        if(cbfdefinefileentry[index]->has_operation())
+        if(cbfdefinefileentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -472,7 +472,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefinefiletable::get_child_by_name(
 {
     if(child_yang_name == "cbfDefineFileEntry")
     {
-        for(auto const & c : cbfdefinefileentry)
+        for(auto const & c : cbfdefinefileentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -482,7 +482,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefinefiletable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry>();
         c->parent = this;
-        cbfdefinefileentry.push_back(c);
+        cbfdefinefileentry_.push_back(c);
         return c;
     }
 
@@ -492,7 +492,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefinefiletable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoBulkFileMib::Cbfdefinefiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cbfdefinefileentry)
+    for (auto const & c : cbfdefinefileentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -635,9 +635,9 @@ CiscoBulkFileMib::Cbfdefineobjecttable::~Cbfdefineobjecttable()
 
 bool CiscoBulkFileMib::Cbfdefineobjecttable::has_data() const
 {
-    for (std::size_t index=0; index<cbfdefineobjectentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefineobjectentry_.size(); index++)
     {
-        if(cbfdefineobjectentry[index]->has_data())
+        if(cbfdefineobjectentry_[index]->has_data())
             return true;
     }
     return false;
@@ -645,9 +645,9 @@ bool CiscoBulkFileMib::Cbfdefineobjecttable::has_data() const
 
 bool CiscoBulkFileMib::Cbfdefineobjecttable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfdefineobjectentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefineobjectentry_.size(); index++)
     {
-        if(cbfdefineobjectentry[index]->has_operation())
+        if(cbfdefineobjectentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -687,7 +687,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefineobjecttable::get_child_by_nam
 {
     if(child_yang_name == "cbfDefineObjectEntry")
     {
-        for(auto const & c : cbfdefineobjectentry)
+        for(auto const & c : cbfdefineobjectentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -697,7 +697,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefineobjecttable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoBulkFileMib::Cbfdefineobjecttable::Cbfdefineobjectentry>();
         c->parent = this;
-        cbfdefineobjectentry.push_back(c);
+        cbfdefineobjectentry_.push_back(c);
         return c;
     }
 
@@ -707,7 +707,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfdefineobjecttable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoBulkFileMib::Cbfdefineobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cbfdefineobjectentry)
+    for (auto const & c : cbfdefineobjectentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -858,9 +858,9 @@ CiscoBulkFileMib::Cbfstatusfiletable::~Cbfstatusfiletable()
 
 bool CiscoBulkFileMib::Cbfstatusfiletable::has_data() const
 {
-    for (std::size_t index=0; index<cbfstatusfileentry.size(); index++)
+    for (std::size_t index=0; index<cbfstatusfileentry_.size(); index++)
     {
-        if(cbfstatusfileentry[index]->has_data())
+        if(cbfstatusfileentry_[index]->has_data())
             return true;
     }
     return false;
@@ -868,9 +868,9 @@ bool CiscoBulkFileMib::Cbfstatusfiletable::has_data() const
 
 bool CiscoBulkFileMib::Cbfstatusfiletable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfstatusfileentry.size(); index++)
+    for (std::size_t index=0; index<cbfstatusfileentry_.size(); index++)
     {
-        if(cbfstatusfileentry[index]->has_operation())
+        if(cbfstatusfileentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -910,7 +910,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfstatusfiletable::get_child_by_name(
 {
     if(child_yang_name == "cbfStatusFileEntry")
     {
-        for(auto const & c : cbfstatusfileentry)
+        for(auto const & c : cbfstatusfileentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -920,7 +920,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfstatusfiletable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoBulkFileMib::Cbfstatusfiletable::Cbfstatusfileentry>();
         c->parent = this;
-        cbfstatusfileentry.push_back(c);
+        cbfstatusfileentry_.push_back(c);
         return c;
     }
 
@@ -930,7 +930,7 @@ std::shared_ptr<Entity> CiscoBulkFileMib::Cbfstatusfiletable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoBulkFileMib::Cbfstatusfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cbfstatusfileentry)
+    for (auto const & c : cbfstatusfileentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1047,7 +1047,7 @@ void CiscoBulkFileMib::Cbfstatusfiletable::Cbfstatusfileentry::set_value(const s
 }
 
 const Enum::YLeaf CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::CbfdefinefilestorageEnum::ephemeral {1, "ephemeral"};
-const Enum::YLeaf CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::CbfdefinefilestorageEnum::volatile {2, "volatile"};
+const Enum::YLeaf CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::CbfdefinefilestorageEnum::volatile_ {2, "volatile"};
 const Enum::YLeaf CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::CbfdefinefilestorageEnum::permanent {3, "permanent"};
 
 const Enum::YLeaf CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::CbfdefinefileformatEnum::standardBER {1, "standardBER"};

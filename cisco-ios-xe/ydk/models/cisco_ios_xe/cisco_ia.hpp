@@ -31,8 +31,8 @@ class SyncFromRpc : public Entity
         class Input; //type: SyncFromRpc::Input
         class Output; //type: SyncFromRpc::Output
 
-        std::shared_ptr<cisco_ia::SyncFromRpc::Input> input;
-        std::shared_ptr<cisco_ia::SyncFromRpc::Output> output;
+        std::shared_ptr<cisco_ia::SyncFromRpc::Input> input_;
+        std::shared_ptr<cisco_ia::SyncFromRpc::Output> output_;
         
 }; // SyncFromRpc
 
@@ -94,7 +94,7 @@ class SaveConfigRpc : public Entity
 
         class Output; //type: SaveConfigRpc::Output
 
-        std::shared_ptr<cisco_ia::SaveConfigRpc::Output> output;
+        std::shared_ptr<cisco_ia::SaveConfigRpc::Output> output_;
         
 }; // SaveConfigRpc
 
@@ -137,7 +137,7 @@ class CheckpointRpc : public Entity
 
         class Output; //type: CheckpointRpc::Output
 
-        std::shared_ptr<cisco_ia::CheckpointRpc::Output> output;
+        std::shared_ptr<cisco_ia::CheckpointRpc::Output> output_;
         
 }; // CheckpointRpc
 
@@ -181,8 +181,8 @@ class RevertRpc : public Entity
         class Input; //type: RevertRpc::Input
         class Output; //type: RevertRpc::Output
 
-        std::shared_ptr<cisco_ia::RevertRpc::Input> input;
-        std::shared_ptr<cisco_ia::RevertRpc::Output> output;
+        std::shared_ptr<cisco_ia::RevertRpc::Input> input_;
+        std::shared_ptr<cisco_ia::RevertRpc::Output> output_;
         
 }; // RevertRpc
 
@@ -247,8 +247,8 @@ class RollbackRpc : public Entity
         class Input; //type: RollbackRpc::Input
         class Output; //type: RollbackRpc::Output
 
-        std::shared_ptr<cisco_ia::RollbackRpc::Input> input;
-        std::shared_ptr<cisco_ia::RollbackRpc::Output> output;
+        std::shared_ptr<cisco_ia::RollbackRpc::Input> input_;
+        std::shared_ptr<cisco_ia::RollbackRpc::Output> output_;
         
 }; // RollbackRpc
 

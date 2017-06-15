@@ -31,7 +31,7 @@ class CiscoIetfPwAtmMib : public Entity
 
         class Cpwvcatmtable; //type: CiscoIetfPwAtmMib::Cpwvcatmtable
 
-        std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable> cpwvcatmtable;
+        std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable> cpwvcatmtable_;
         
 }; // CiscoIetfPwAtmMib
 
@@ -52,7 +52,7 @@ class CiscoIetfPwAtmMib::Cpwvcatmtable : public Entity
 
         class Cpwvcatmentry; //type: CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry> > cpwvcatmentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_ATM_MIB::CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry> > cpwvcatmentry_;
         
 }; // CiscoIetfPwAtmMib::Cpwvcatmtable
 

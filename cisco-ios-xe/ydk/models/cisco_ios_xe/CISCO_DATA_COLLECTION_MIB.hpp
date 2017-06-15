@@ -37,13 +37,13 @@ class CiscoDataCollectionMib : public Entity
         class Cdcdginstancetable; //type: CiscoDataCollectionMib::Cdcdginstancetable
         class Cdcfilexferconftable; //type: CiscoDataCollectionMib::Cdcfilexferconftable
 
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable> cdcdgbaseobjecttable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable> cdcdginstancetable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable> cdcdgtable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable> cdcfilexferconftable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfile> cdcvfile;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable> cdcvfilemgmttable;
-        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable> cdcvfiletable;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable> cdcdgbaseobjecttable_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable> cdcdginstancetable_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable> cdcdgtable_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable> cdcfilexferconftable_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfile> cdcvfile_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable> cdcvfilemgmttable_;
+        std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable> cdcvfiletable_;
         
 }; // CiscoDataCollectionMib
 
@@ -84,7 +84,7 @@ class CiscoDataCollectionMib::Cdcvfiletable : public Entity
 
         class Cdcvfileentry; //type: CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry> > cdcvfileentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry> > cdcvfileentry_;
         
 }; // CiscoDataCollectionMib::Cdcvfiletable
 
@@ -143,7 +143,7 @@ class CiscoDataCollectionMib::Cdcvfilemgmttable : public Entity
 
         class Cdcvfilemgmtentry; //type: CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry> > cdcvfilemgmtentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry> > cdcvfilemgmtentry_;
         
 }; // CiscoDataCollectionMib::Cdcvfilemgmttable
 
@@ -193,7 +193,7 @@ class CiscoDataCollectionMib::Cdcdgtable : public Entity
 
         class Cdcdgentry; //type: CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry> > cdcdgentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry> > cdcdgentry_;
         
 }; // CiscoDataCollectionMib::Cdcdgtable
 
@@ -244,7 +244,7 @@ class CiscoDataCollectionMib::Cdcdgbaseobjecttable : public Entity
 
         class Cdcdgbaseobjectentry; //type: CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry> > cdcdgbaseobjectentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry> > cdcdgbaseobjectentry_;
         
 }; // CiscoDataCollectionMib::Cdcdgbaseobjecttable
 
@@ -288,7 +288,7 @@ class CiscoDataCollectionMib::Cdcdginstancetable : public Entity
 
         class Cdcdginstanceentry; //type: CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry> > cdcdginstanceentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry> > cdcdginstanceentry_;
         
 }; // CiscoDataCollectionMib::Cdcdginstancetable
 
@@ -336,7 +336,7 @@ class CiscoDataCollectionMib::Cdcfilexferconftable : public Entity
 
         class Cdcfilexferconfentry; //type: CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry
 
-        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry> > cdcfilexferconfentry;
+        std::vector<std::shared_ptr<CISCO_DATA_COLLECTION_MIB::CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry> > cdcfilexferconfentry_;
         
 }; // CiscoDataCollectionMib::Cdcfilexferconftable
 

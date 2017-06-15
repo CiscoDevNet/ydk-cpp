@@ -29,9 +29,9 @@ SnmpauthprotocolsIdentity::~SnmpauthprotocolsIdentity()
 
 SnmpFrameworkMib::SnmpFrameworkMib()
     :
-    snmpengine(std::make_shared<SnmpFrameworkMib::Snmpengine>())
+    snmpengine_(std::make_shared<SnmpFrameworkMib::Snmpengine>())
 {
-    snmpengine->parent = this;
+    snmpengine_->parent = this;
 
     yang_name = "SNMP-FRAMEWORK-MIB"; yang_parent_name = "SNMP-FRAMEWORK-MIB";
 }
@@ -42,13 +42,13 @@ SnmpFrameworkMib::~SnmpFrameworkMib()
 
 bool SnmpFrameworkMib::has_data() const
 {
-    return (snmpengine !=  nullptr && snmpengine->has_data());
+    return (snmpengine_ !=  nullptr && snmpengine_->has_data());
 }
 
 bool SnmpFrameworkMib::has_operation() const
 {
     return is_set(operation)
-	|| (snmpengine !=  nullptr && snmpengine->has_operation());
+	|| (snmpengine_ !=  nullptr && snmpengine_->has_operation());
 }
 
 std::string SnmpFrameworkMib::get_segment_path() const
@@ -82,11 +82,11 @@ std::shared_ptr<Entity> SnmpFrameworkMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "snmpEngine")
     {
-        if(snmpengine == nullptr)
+        if(snmpengine_ == nullptr)
         {
-            snmpengine = std::make_shared<SnmpFrameworkMib::Snmpengine>();
+            snmpengine_ = std::make_shared<SnmpFrameworkMib::Snmpengine>();
         }
-        return snmpengine;
+        return snmpengine_;
     }
 
     return nullptr;
@@ -95,9 +95,9 @@ std::shared_ptr<Entity> SnmpFrameworkMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> SnmpFrameworkMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmpengine != nullptr)
+    if(snmpengine_ != nullptr)
     {
-        children["snmpEngine"] = snmpengine;
+        children["snmpEngine"] = snmpengine_;
     }
 
     return children;

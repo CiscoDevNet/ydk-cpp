@@ -11,36 +11,36 @@ namespace CISCO_IF_EXTENSION_MIB {
 
 CiscoIfExtensionMib::CiscoIfExtensionMib()
     :
-    cieifdot1dbasemappingtable(std::make_shared<CiscoIfExtensionMib::Cieifdot1Dbasemappingtable>())
-	,cieifdot1qcustomethertypetable(std::make_shared<CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable>())
-	,cieifindexpersistencetable(std::make_shared<CiscoIfExtensionMib::Cieifindexpersistencetable>())
-	,cieifinterfacetable(std::make_shared<CiscoIfExtensionMib::Cieifinterfacetable>())
-	,cieifnamemappingtable(std::make_shared<CiscoIfExtensionMib::Cieifnamemappingtable>())
-	,cieifpacketstatstable(std::make_shared<CiscoIfExtensionMib::Cieifpacketstatstable>())
-	,cieifstatuslisttable(std::make_shared<CiscoIfExtensionMib::Cieifstatuslisttable>())
-	,cieifutiltable(std::make_shared<CiscoIfExtensionMib::Cieifutiltable>())
-	,cieifvlstatstable(std::make_shared<CiscoIfExtensionMib::Cieifvlstatstable>())
-	,ciscoifextsystemconfig(std::make_shared<CiscoIfExtensionMib::Ciscoifextsystemconfig>())
+    cieifdot1dbasemappingtable_(std::make_shared<CiscoIfExtensionMib::Cieifdot1Dbasemappingtable>())
+	,cieifdot1qcustomethertypetable_(std::make_shared<CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable>())
+	,cieifindexpersistencetable_(std::make_shared<CiscoIfExtensionMib::Cieifindexpersistencetable>())
+	,cieifinterfacetable_(std::make_shared<CiscoIfExtensionMib::Cieifinterfacetable>())
+	,cieifnamemappingtable_(std::make_shared<CiscoIfExtensionMib::Cieifnamemappingtable>())
+	,cieifpacketstatstable_(std::make_shared<CiscoIfExtensionMib::Cieifpacketstatstable>())
+	,cieifstatuslisttable_(std::make_shared<CiscoIfExtensionMib::Cieifstatuslisttable>())
+	,cieifutiltable_(std::make_shared<CiscoIfExtensionMib::Cieifutiltable>())
+	,cieifvlstatstable_(std::make_shared<CiscoIfExtensionMib::Cieifvlstatstable>())
+	,ciscoifextsystemconfig_(std::make_shared<CiscoIfExtensionMib::Ciscoifextsystemconfig>())
 {
-    cieifdot1dbasemappingtable->parent = this;
+    cieifdot1dbasemappingtable_->parent = this;
 
-    cieifdot1qcustomethertypetable->parent = this;
+    cieifdot1qcustomethertypetable_->parent = this;
 
-    cieifindexpersistencetable->parent = this;
+    cieifindexpersistencetable_->parent = this;
 
-    cieifinterfacetable->parent = this;
+    cieifinterfacetable_->parent = this;
 
-    cieifnamemappingtable->parent = this;
+    cieifnamemappingtable_->parent = this;
 
-    cieifpacketstatstable->parent = this;
+    cieifpacketstatstable_->parent = this;
 
-    cieifstatuslisttable->parent = this;
+    cieifstatuslisttable_->parent = this;
 
-    cieifutiltable->parent = this;
+    cieifutiltable_->parent = this;
 
-    cieifvlstatstable->parent = this;
+    cieifvlstatstable_->parent = this;
 
-    ciscoifextsystemconfig->parent = this;
+    ciscoifextsystemconfig_->parent = this;
 
     yang_name = "CISCO-IF-EXTENSION-MIB"; yang_parent_name = "CISCO-IF-EXTENSION-MIB";
 }
@@ -51,31 +51,31 @@ CiscoIfExtensionMib::~CiscoIfExtensionMib()
 
 bool CiscoIfExtensionMib::has_data() const
 {
-    return (cieifdot1dbasemappingtable !=  nullptr && cieifdot1dbasemappingtable->has_data())
-	|| (cieifdot1qcustomethertypetable !=  nullptr && cieifdot1qcustomethertypetable->has_data())
-	|| (cieifindexpersistencetable !=  nullptr && cieifindexpersistencetable->has_data())
-	|| (cieifinterfacetable !=  nullptr && cieifinterfacetable->has_data())
-	|| (cieifnamemappingtable !=  nullptr && cieifnamemappingtable->has_data())
-	|| (cieifpacketstatstable !=  nullptr && cieifpacketstatstable->has_data())
-	|| (cieifstatuslisttable !=  nullptr && cieifstatuslisttable->has_data())
-	|| (cieifutiltable !=  nullptr && cieifutiltable->has_data())
-	|| (cieifvlstatstable !=  nullptr && cieifvlstatstable->has_data())
-	|| (ciscoifextsystemconfig !=  nullptr && ciscoifextsystemconfig->has_data());
+    return (cieifdot1dbasemappingtable_ !=  nullptr && cieifdot1dbasemappingtable_->has_data())
+	|| (cieifdot1qcustomethertypetable_ !=  nullptr && cieifdot1qcustomethertypetable_->has_data())
+	|| (cieifindexpersistencetable_ !=  nullptr && cieifindexpersistencetable_->has_data())
+	|| (cieifinterfacetable_ !=  nullptr && cieifinterfacetable_->has_data())
+	|| (cieifnamemappingtable_ !=  nullptr && cieifnamemappingtable_->has_data())
+	|| (cieifpacketstatstable_ !=  nullptr && cieifpacketstatstable_->has_data())
+	|| (cieifstatuslisttable_ !=  nullptr && cieifstatuslisttable_->has_data())
+	|| (cieifutiltable_ !=  nullptr && cieifutiltable_->has_data())
+	|| (cieifvlstatstable_ !=  nullptr && cieifvlstatstable_->has_data())
+	|| (ciscoifextsystemconfig_ !=  nullptr && ciscoifextsystemconfig_->has_data());
 }
 
 bool CiscoIfExtensionMib::has_operation() const
 {
     return is_set(operation)
-	|| (cieifdot1dbasemappingtable !=  nullptr && cieifdot1dbasemappingtable->has_operation())
-	|| (cieifdot1qcustomethertypetable !=  nullptr && cieifdot1qcustomethertypetable->has_operation())
-	|| (cieifindexpersistencetable !=  nullptr && cieifindexpersistencetable->has_operation())
-	|| (cieifinterfacetable !=  nullptr && cieifinterfacetable->has_operation())
-	|| (cieifnamemappingtable !=  nullptr && cieifnamemappingtable->has_operation())
-	|| (cieifpacketstatstable !=  nullptr && cieifpacketstatstable->has_operation())
-	|| (cieifstatuslisttable !=  nullptr && cieifstatuslisttable->has_operation())
-	|| (cieifutiltable !=  nullptr && cieifutiltable->has_operation())
-	|| (cieifvlstatstable !=  nullptr && cieifvlstatstable->has_operation())
-	|| (ciscoifextsystemconfig !=  nullptr && ciscoifextsystemconfig->has_operation());
+	|| (cieifdot1dbasemappingtable_ !=  nullptr && cieifdot1dbasemappingtable_->has_operation())
+	|| (cieifdot1qcustomethertypetable_ !=  nullptr && cieifdot1qcustomethertypetable_->has_operation())
+	|| (cieifindexpersistencetable_ !=  nullptr && cieifindexpersistencetable_->has_operation())
+	|| (cieifinterfacetable_ !=  nullptr && cieifinterfacetable_->has_operation())
+	|| (cieifnamemappingtable_ !=  nullptr && cieifnamemappingtable_->has_operation())
+	|| (cieifpacketstatstable_ !=  nullptr && cieifpacketstatstable_->has_operation())
+	|| (cieifstatuslisttable_ !=  nullptr && cieifstatuslisttable_->has_operation())
+	|| (cieifutiltable_ !=  nullptr && cieifutiltable_->has_operation())
+	|| (cieifvlstatstable_ !=  nullptr && cieifvlstatstable_->has_operation())
+	|| (ciscoifextsystemconfig_ !=  nullptr && ciscoifextsystemconfig_->has_operation());
 }
 
 std::string CiscoIfExtensionMib::get_segment_path() const
@@ -109,92 +109,92 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::get_child_by_name(const std::string
 {
     if(child_yang_name == "cieIfDot1dBaseMappingTable")
     {
-        if(cieifdot1dbasemappingtable == nullptr)
+        if(cieifdot1dbasemappingtable_ == nullptr)
         {
-            cieifdot1dbasemappingtable = std::make_shared<CiscoIfExtensionMib::Cieifdot1Dbasemappingtable>();
+            cieifdot1dbasemappingtable_ = std::make_shared<CiscoIfExtensionMib::Cieifdot1Dbasemappingtable>();
         }
-        return cieifdot1dbasemappingtable;
+        return cieifdot1dbasemappingtable_;
     }
 
     if(child_yang_name == "cieIfDot1qCustomEtherTypeTable")
     {
-        if(cieifdot1qcustomethertypetable == nullptr)
+        if(cieifdot1qcustomethertypetable_ == nullptr)
         {
-            cieifdot1qcustomethertypetable = std::make_shared<CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable>();
+            cieifdot1qcustomethertypetable_ = std::make_shared<CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable>();
         }
-        return cieifdot1qcustomethertypetable;
+        return cieifdot1qcustomethertypetable_;
     }
 
     if(child_yang_name == "cieIfIndexPersistenceTable")
     {
-        if(cieifindexpersistencetable == nullptr)
+        if(cieifindexpersistencetable_ == nullptr)
         {
-            cieifindexpersistencetable = std::make_shared<CiscoIfExtensionMib::Cieifindexpersistencetable>();
+            cieifindexpersistencetable_ = std::make_shared<CiscoIfExtensionMib::Cieifindexpersistencetable>();
         }
-        return cieifindexpersistencetable;
+        return cieifindexpersistencetable_;
     }
 
     if(child_yang_name == "cieIfInterfaceTable")
     {
-        if(cieifinterfacetable == nullptr)
+        if(cieifinterfacetable_ == nullptr)
         {
-            cieifinterfacetable = std::make_shared<CiscoIfExtensionMib::Cieifinterfacetable>();
+            cieifinterfacetable_ = std::make_shared<CiscoIfExtensionMib::Cieifinterfacetable>();
         }
-        return cieifinterfacetable;
+        return cieifinterfacetable_;
     }
 
     if(child_yang_name == "cieIfNameMappingTable")
     {
-        if(cieifnamemappingtable == nullptr)
+        if(cieifnamemappingtable_ == nullptr)
         {
-            cieifnamemappingtable = std::make_shared<CiscoIfExtensionMib::Cieifnamemappingtable>();
+            cieifnamemappingtable_ = std::make_shared<CiscoIfExtensionMib::Cieifnamemappingtable>();
         }
-        return cieifnamemappingtable;
+        return cieifnamemappingtable_;
     }
 
     if(child_yang_name == "cieIfPacketStatsTable")
     {
-        if(cieifpacketstatstable == nullptr)
+        if(cieifpacketstatstable_ == nullptr)
         {
-            cieifpacketstatstable = std::make_shared<CiscoIfExtensionMib::Cieifpacketstatstable>();
+            cieifpacketstatstable_ = std::make_shared<CiscoIfExtensionMib::Cieifpacketstatstable>();
         }
-        return cieifpacketstatstable;
+        return cieifpacketstatstable_;
     }
 
     if(child_yang_name == "cieIfStatusListTable")
     {
-        if(cieifstatuslisttable == nullptr)
+        if(cieifstatuslisttable_ == nullptr)
         {
-            cieifstatuslisttable = std::make_shared<CiscoIfExtensionMib::Cieifstatuslisttable>();
+            cieifstatuslisttable_ = std::make_shared<CiscoIfExtensionMib::Cieifstatuslisttable>();
         }
-        return cieifstatuslisttable;
+        return cieifstatuslisttable_;
     }
 
     if(child_yang_name == "cieIfUtilTable")
     {
-        if(cieifutiltable == nullptr)
+        if(cieifutiltable_ == nullptr)
         {
-            cieifutiltable = std::make_shared<CiscoIfExtensionMib::Cieifutiltable>();
+            cieifutiltable_ = std::make_shared<CiscoIfExtensionMib::Cieifutiltable>();
         }
-        return cieifutiltable;
+        return cieifutiltable_;
     }
 
     if(child_yang_name == "cieIfVlStatsTable")
     {
-        if(cieifvlstatstable == nullptr)
+        if(cieifvlstatstable_ == nullptr)
         {
-            cieifvlstatstable = std::make_shared<CiscoIfExtensionMib::Cieifvlstatstable>();
+            cieifvlstatstable_ = std::make_shared<CiscoIfExtensionMib::Cieifvlstatstable>();
         }
-        return cieifvlstatstable;
+        return cieifvlstatstable_;
     }
 
     if(child_yang_name == "ciscoIfExtSystemConfig")
     {
-        if(ciscoifextsystemconfig == nullptr)
+        if(ciscoifextsystemconfig_ == nullptr)
         {
-            ciscoifextsystemconfig = std::make_shared<CiscoIfExtensionMib::Ciscoifextsystemconfig>();
+            ciscoifextsystemconfig_ = std::make_shared<CiscoIfExtensionMib::Ciscoifextsystemconfig>();
         }
-        return ciscoifextsystemconfig;
+        return ciscoifextsystemconfig_;
     }
 
     return nullptr;
@@ -203,54 +203,54 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cieifdot1dbasemappingtable != nullptr)
+    if(cieifdot1dbasemappingtable_ != nullptr)
     {
-        children["cieIfDot1dBaseMappingTable"] = cieifdot1dbasemappingtable;
+        children["cieIfDot1dBaseMappingTable"] = cieifdot1dbasemappingtable_;
     }
 
-    if(cieifdot1qcustomethertypetable != nullptr)
+    if(cieifdot1qcustomethertypetable_ != nullptr)
     {
-        children["cieIfDot1qCustomEtherTypeTable"] = cieifdot1qcustomethertypetable;
+        children["cieIfDot1qCustomEtherTypeTable"] = cieifdot1qcustomethertypetable_;
     }
 
-    if(cieifindexpersistencetable != nullptr)
+    if(cieifindexpersistencetable_ != nullptr)
     {
-        children["cieIfIndexPersistenceTable"] = cieifindexpersistencetable;
+        children["cieIfIndexPersistenceTable"] = cieifindexpersistencetable_;
     }
 
-    if(cieifinterfacetable != nullptr)
+    if(cieifinterfacetable_ != nullptr)
     {
-        children["cieIfInterfaceTable"] = cieifinterfacetable;
+        children["cieIfInterfaceTable"] = cieifinterfacetable_;
     }
 
-    if(cieifnamemappingtable != nullptr)
+    if(cieifnamemappingtable_ != nullptr)
     {
-        children["cieIfNameMappingTable"] = cieifnamemappingtable;
+        children["cieIfNameMappingTable"] = cieifnamemappingtable_;
     }
 
-    if(cieifpacketstatstable != nullptr)
+    if(cieifpacketstatstable_ != nullptr)
     {
-        children["cieIfPacketStatsTable"] = cieifpacketstatstable;
+        children["cieIfPacketStatsTable"] = cieifpacketstatstable_;
     }
 
-    if(cieifstatuslisttable != nullptr)
+    if(cieifstatuslisttable_ != nullptr)
     {
-        children["cieIfStatusListTable"] = cieifstatuslisttable;
+        children["cieIfStatusListTable"] = cieifstatuslisttable_;
     }
 
-    if(cieifutiltable != nullptr)
+    if(cieifutiltable_ != nullptr)
     {
-        children["cieIfUtilTable"] = cieifutiltable;
+        children["cieIfUtilTable"] = cieifutiltable_;
     }
 
-    if(cieifvlstatstable != nullptr)
+    if(cieifvlstatstable_ != nullptr)
     {
-        children["cieIfVlStatsTable"] = cieifvlstatstable;
+        children["cieIfVlStatsTable"] = cieifvlstatstable_;
     }
 
-    if(ciscoifextsystemconfig != nullptr)
+    if(ciscoifextsystemconfig_ != nullptr)
     {
-        children["ciscoIfExtSystemConfig"] = ciscoifextsystemconfig;
+        children["ciscoIfExtSystemConfig"] = ciscoifextsystemconfig_;
     }
 
     return children;
@@ -419,9 +419,9 @@ CiscoIfExtensionMib::Cieifpacketstatstable::~Cieifpacketstatstable()
 
 bool CiscoIfExtensionMib::Cieifpacketstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cieifpacketstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifpacketstatsentry_.size(); index++)
     {
-        if(cieifpacketstatsentry[index]->has_data())
+        if(cieifpacketstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -429,9 +429,9 @@ bool CiscoIfExtensionMib::Cieifpacketstatstable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifpacketstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifpacketstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifpacketstatsentry_.size(); index++)
     {
-        if(cieifpacketstatsentry[index]->has_operation())
+        if(cieifpacketstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -471,7 +471,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifpacketstatstable::get_child_by
 {
     if(child_yang_name == "cieIfPacketStatsEntry")
     {
-        for(auto const & c : cieifpacketstatsentry)
+        for(auto const & c : cieifpacketstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -481,7 +481,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifpacketstatstable::get_child_by
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifpacketstatstable::Cieifpacketstatsentry>();
         c->parent = this;
-        cieifpacketstatsentry.push_back(c);
+        cieifpacketstatsentry_.push_back(c);
         return c;
     }
 
@@ -491,7 +491,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifpacketstatstable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifpacketstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifpacketstatsentry)
+    for (auto const & c : cieifpacketstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -682,9 +682,9 @@ CiscoIfExtensionMib::Cieifinterfacetable::~Cieifinterfacetable()
 
 bool CiscoIfExtensionMib::Cieifinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<cieifinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cieifinterfaceentry_.size(); index++)
     {
-        if(cieifinterfaceentry[index]->has_data())
+        if(cieifinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -692,9 +692,9 @@ bool CiscoIfExtensionMib::Cieifinterfacetable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cieifinterfaceentry_.size(); index++)
     {
-        if(cieifinterfaceentry[index]->has_operation())
+        if(cieifinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -734,7 +734,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifinterfacetable::get_child_by_n
 {
     if(child_yang_name == "cieIfInterfaceEntry")
     {
-        for(auto const & c : cieifinterfaceentry)
+        for(auto const & c : cieifinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -744,7 +744,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifinterfacetable::get_child_by_n
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifinterfacetable::Cieifinterfaceentry>();
         c->parent = this;
-        cieifinterfaceentry.push_back(c);
+        cieifinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -754,7 +754,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifinterfacetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifinterfaceentry)
+    for (auto const & c : cieifinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1001,9 +1001,9 @@ CiscoIfExtensionMib::Cieifstatuslisttable::~Cieifstatuslisttable()
 
 bool CiscoIfExtensionMib::Cieifstatuslisttable::has_data() const
 {
-    for (std::size_t index=0; index<cieifstatuslistentry.size(); index++)
+    for (std::size_t index=0; index<cieifstatuslistentry_.size(); index++)
     {
-        if(cieifstatuslistentry[index]->has_data())
+        if(cieifstatuslistentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1011,9 +1011,9 @@ bool CiscoIfExtensionMib::Cieifstatuslisttable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifstatuslisttable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifstatuslistentry.size(); index++)
+    for (std::size_t index=0; index<cieifstatuslistentry_.size(); index++)
     {
-        if(cieifstatuslistentry[index]->has_operation())
+        if(cieifstatuslistentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1053,7 +1053,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifstatuslisttable::get_child_by_
 {
     if(child_yang_name == "cieIfStatusListEntry")
     {
-        for(auto const & c : cieifstatuslistentry)
+        for(auto const & c : cieifstatuslistentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1063,7 +1063,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifstatuslisttable::get_child_by_
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifstatuslisttable::Cieifstatuslistentry>();
         c->parent = this;
-        cieifstatuslistentry.push_back(c);
+        cieifstatuslistentry_.push_back(c);
         return c;
     }
 
@@ -1073,7 +1073,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifstatuslisttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifstatuslisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifstatuslistentry)
+    for (auto const & c : cieifstatuslistentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1208,9 +1208,9 @@ CiscoIfExtensionMib::Cieifvlstatstable::~Cieifvlstatstable()
 
 bool CiscoIfExtensionMib::Cieifvlstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cieifvlstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifvlstatsentry_.size(); index++)
     {
-        if(cieifvlstatsentry[index]->has_data())
+        if(cieifvlstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1218,9 +1218,9 @@ bool CiscoIfExtensionMib::Cieifvlstatstable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifvlstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifvlstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifvlstatsentry_.size(); index++)
     {
-        if(cieifvlstatsentry[index]->has_operation())
+        if(cieifvlstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1260,7 +1260,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifvlstatstable::get_child_by_nam
 {
     if(child_yang_name == "cieIfVlStatsEntry")
     {
-        for(auto const & c : cieifvlstatsentry)
+        for(auto const & c : cieifvlstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1270,7 +1270,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifvlstatstable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifvlstatstable::Cieifvlstatsentry>();
         c->parent = this;
-        cieifvlstatsentry.push_back(c);
+        cieifvlstatsentry_.push_back(c);
         return c;
     }
 
@@ -1280,7 +1280,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifvlstatstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifvlstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifvlstatsentry)
+    for (auto const & c : cieifvlstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1439,9 +1439,9 @@ CiscoIfExtensionMib::Cieifindexpersistencetable::~Cieifindexpersistencetable()
 
 bool CiscoIfExtensionMib::Cieifindexpersistencetable::has_data() const
 {
-    for (std::size_t index=0; index<cieifindexpersistenceentry.size(); index++)
+    for (std::size_t index=0; index<cieifindexpersistenceentry_.size(); index++)
     {
-        if(cieifindexpersistenceentry[index]->has_data())
+        if(cieifindexpersistenceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1449,9 +1449,9 @@ bool CiscoIfExtensionMib::Cieifindexpersistencetable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifindexpersistencetable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifindexpersistenceentry.size(); index++)
+    for (std::size_t index=0; index<cieifindexpersistenceentry_.size(); index++)
     {
-        if(cieifindexpersistenceentry[index]->has_operation())
+        if(cieifindexpersistenceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1491,7 +1491,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifindexpersistencetable::get_chi
 {
     if(child_yang_name == "cieIfIndexPersistenceEntry")
     {
-        for(auto const & c : cieifindexpersistenceentry)
+        for(auto const & c : cieifindexpersistenceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1501,7 +1501,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifindexpersistencetable::get_chi
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifindexpersistencetable::Cieifindexpersistenceentry>();
         c->parent = this;
-        cieifindexpersistenceentry.push_back(c);
+        cieifindexpersistenceentry_.push_back(c);
         return c;
     }
 
@@ -1511,7 +1511,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifindexpersistencetable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifindexpersistencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifindexpersistenceentry)
+    for (auto const & c : cieifindexpersistenceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1622,9 +1622,9 @@ CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::~Cieifdot1Qcustomethertypet
 
 bool CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::has_data() const
 {
-    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry_.size(); index++)
     {
-        if(cieifdot1qcustomethertypeentry[index]->has_data())
+        if(cieifdot1qcustomethertypeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1632,9 +1632,9 @@ bool CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry_.size(); index++)
     {
-        if(cieifdot1qcustomethertypeentry[index]->has_operation())
+        if(cieifdot1qcustomethertypeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1674,7 +1674,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::get
 {
     if(child_yang_name == "cieIfDot1qCustomEtherTypeEntry")
     {
-        for(auto const & c : cieifdot1qcustomethertypeentry)
+        for(auto const & c : cieifdot1qcustomethertypeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1684,7 +1684,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::get
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry>();
         c->parent = this;
-        cieifdot1qcustomethertypeentry.push_back(c);
+        cieifdot1qcustomethertypeentry_.push_back(c);
         return c;
     }
 
@@ -1694,7 +1694,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifdot1qcustomethertypeentry)
+    for (auto const & c : cieifdot1qcustomethertypeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1805,9 +1805,9 @@ CiscoIfExtensionMib::Cieifutiltable::~Cieifutiltable()
 
 bool CiscoIfExtensionMib::Cieifutiltable::has_data() const
 {
-    for (std::size_t index=0; index<cieifutilentry.size(); index++)
+    for (std::size_t index=0; index<cieifutilentry_.size(); index++)
     {
-        if(cieifutilentry[index]->has_data())
+        if(cieifutilentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1815,9 +1815,9 @@ bool CiscoIfExtensionMib::Cieifutiltable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifutiltable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifutilentry.size(); index++)
+    for (std::size_t index=0; index<cieifutilentry_.size(); index++)
     {
-        if(cieifutilentry[index]->has_operation())
+        if(cieifutilentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1857,7 +1857,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifutiltable::get_child_by_name(c
 {
     if(child_yang_name == "cieIfUtilEntry")
     {
-        for(auto const & c : cieifutilentry)
+        for(auto const & c : cieifutilentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1867,7 +1867,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifutiltable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifutiltable::Cieifutilentry>();
         c->parent = this;
-        cieifutilentry.push_back(c);
+        cieifutilentry_.push_back(c);
         return c;
     }
 
@@ -1877,7 +1877,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifutiltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifutiltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifutilentry)
+    for (auto const & c : cieifutilentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2012,9 +2012,9 @@ CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::~Cieifdot1Dbasemappingtable()
 
 bool CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cieifdot1dbasemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1dbasemappingentry_.size(); index++)
     {
-        if(cieifdot1dbasemappingentry[index]->has_data())
+        if(cieifdot1dbasemappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2022,9 +2022,9 @@ bool CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifdot1dbasemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1dbasemappingentry_.size(); index++)
     {
-        if(cieifdot1dbasemappingentry[index]->has_operation())
+        if(cieifdot1dbasemappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2064,7 +2064,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::get_chi
 {
     if(child_yang_name == "cieIfDot1dBaseMappingEntry")
     {
-        for(auto const & c : cieifdot1dbasemappingentry)
+        for(auto const & c : cieifdot1dbasemappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2074,7 +2074,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::get_chi
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry>();
         c->parent = this;
-        cieifdot1dbasemappingentry.push_back(c);
+        cieifdot1dbasemappingentry_.push_back(c);
         return c;
     }
 
@@ -2084,7 +2084,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifdot1dbasemappingentry)
+    for (auto const & c : cieifdot1dbasemappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2187,9 +2187,9 @@ CiscoIfExtensionMib::Cieifnamemappingtable::~Cieifnamemappingtable()
 
 bool CiscoIfExtensionMib::Cieifnamemappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cieifnamemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifnamemappingentry_.size(); index++)
     {
-        if(cieifnamemappingentry[index]->has_data())
+        if(cieifnamemappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2197,9 +2197,9 @@ bool CiscoIfExtensionMib::Cieifnamemappingtable::has_data() const
 
 bool CiscoIfExtensionMib::Cieifnamemappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifnamemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifnamemappingentry_.size(); index++)
     {
-        if(cieifnamemappingentry[index]->has_operation())
+        if(cieifnamemappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2239,7 +2239,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifnamemappingtable::get_child_by
 {
     if(child_yang_name == "cieIfNameMappingEntry")
     {
-        for(auto const & c : cieifnamemappingentry)
+        for(auto const & c : cieifnamemappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2249,7 +2249,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifnamemappingtable::get_child_by
         }
         auto c = std::make_shared<CiscoIfExtensionMib::Cieifnamemappingtable::Cieifnamemappingentry>();
         c->parent = this;
-        cieifnamemappingentry.push_back(c);
+        cieifnamemappingentry_.push_back(c);
         return c;
     }
 
@@ -2259,7 +2259,7 @@ std::shared_ptr<Entity> CiscoIfExtensionMib::Cieifnamemappingtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIfExtensionMib::Cieifnamemappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cieifnamemappingentry)
+    for (auto const & c : cieifnamemappingentry_)
     {
         children[c->get_segment_path()] = c;
     }

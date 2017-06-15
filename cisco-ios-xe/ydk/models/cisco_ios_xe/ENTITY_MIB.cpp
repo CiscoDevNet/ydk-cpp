@@ -11,24 +11,24 @@ namespace ENTITY_MIB {
 
 EntityMib::EntityMib()
     :
-    entaliasmappingtable(std::make_shared<EntityMib::Entaliasmappingtable>())
-	,entitygeneral(std::make_shared<EntityMib::Entitygeneral>())
-	,entlogicaltable(std::make_shared<EntityMib::Entlogicaltable>())
-	,entlpmappingtable(std::make_shared<EntityMib::Entlpmappingtable>())
-	,entphysicalcontainstable(std::make_shared<EntityMib::Entphysicalcontainstable>())
-	,entphysicaltable(std::make_shared<EntityMib::Entphysicaltable>())
+    entaliasmappingtable_(std::make_shared<EntityMib::Entaliasmappingtable>())
+	,entitygeneral_(std::make_shared<EntityMib::Entitygeneral>())
+	,entlogicaltable_(std::make_shared<EntityMib::Entlogicaltable>())
+	,entlpmappingtable_(std::make_shared<EntityMib::Entlpmappingtable>())
+	,entphysicalcontainstable_(std::make_shared<EntityMib::Entphysicalcontainstable>())
+	,entphysicaltable_(std::make_shared<EntityMib::Entphysicaltable>())
 {
-    entaliasmappingtable->parent = this;
+    entaliasmappingtable_->parent = this;
 
-    entitygeneral->parent = this;
+    entitygeneral_->parent = this;
 
-    entlogicaltable->parent = this;
+    entlogicaltable_->parent = this;
 
-    entlpmappingtable->parent = this;
+    entlpmappingtable_->parent = this;
 
-    entphysicalcontainstable->parent = this;
+    entphysicalcontainstable_->parent = this;
 
-    entphysicaltable->parent = this;
+    entphysicaltable_->parent = this;
 
     yang_name = "ENTITY-MIB"; yang_parent_name = "ENTITY-MIB";
 }
@@ -39,23 +39,23 @@ EntityMib::~EntityMib()
 
 bool EntityMib::has_data() const
 {
-    return (entaliasmappingtable !=  nullptr && entaliasmappingtable->has_data())
-	|| (entitygeneral !=  nullptr && entitygeneral->has_data())
-	|| (entlogicaltable !=  nullptr && entlogicaltable->has_data())
-	|| (entlpmappingtable !=  nullptr && entlpmappingtable->has_data())
-	|| (entphysicalcontainstable !=  nullptr && entphysicalcontainstable->has_data())
-	|| (entphysicaltable !=  nullptr && entphysicaltable->has_data());
+    return (entaliasmappingtable_ !=  nullptr && entaliasmappingtable_->has_data())
+	|| (entitygeneral_ !=  nullptr && entitygeneral_->has_data())
+	|| (entlogicaltable_ !=  nullptr && entlogicaltable_->has_data())
+	|| (entlpmappingtable_ !=  nullptr && entlpmappingtable_->has_data())
+	|| (entphysicalcontainstable_ !=  nullptr && entphysicalcontainstable_->has_data())
+	|| (entphysicaltable_ !=  nullptr && entphysicaltable_->has_data());
 }
 
 bool EntityMib::has_operation() const
 {
     return is_set(operation)
-	|| (entaliasmappingtable !=  nullptr && entaliasmappingtable->has_operation())
-	|| (entitygeneral !=  nullptr && entitygeneral->has_operation())
-	|| (entlogicaltable !=  nullptr && entlogicaltable->has_operation())
-	|| (entlpmappingtable !=  nullptr && entlpmappingtable->has_operation())
-	|| (entphysicalcontainstable !=  nullptr && entphysicalcontainstable->has_operation())
-	|| (entphysicaltable !=  nullptr && entphysicaltable->has_operation());
+	|| (entaliasmappingtable_ !=  nullptr && entaliasmappingtable_->has_operation())
+	|| (entitygeneral_ !=  nullptr && entitygeneral_->has_operation())
+	|| (entlogicaltable_ !=  nullptr && entlogicaltable_->has_operation())
+	|| (entlpmappingtable_ !=  nullptr && entlpmappingtable_->has_operation())
+	|| (entphysicalcontainstable_ !=  nullptr && entphysicalcontainstable_->has_operation())
+	|| (entphysicaltable_ !=  nullptr && entphysicaltable_->has_operation());
 }
 
 std::string EntityMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> EntityMib::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "entAliasMappingTable")
     {
-        if(entaliasmappingtable == nullptr)
+        if(entaliasmappingtable_ == nullptr)
         {
-            entaliasmappingtable = std::make_shared<EntityMib::Entaliasmappingtable>();
+            entaliasmappingtable_ = std::make_shared<EntityMib::Entaliasmappingtable>();
         }
-        return entaliasmappingtable;
+        return entaliasmappingtable_;
     }
 
     if(child_yang_name == "entityGeneral")
     {
-        if(entitygeneral == nullptr)
+        if(entitygeneral_ == nullptr)
         {
-            entitygeneral = std::make_shared<EntityMib::Entitygeneral>();
+            entitygeneral_ = std::make_shared<EntityMib::Entitygeneral>();
         }
-        return entitygeneral;
+        return entitygeneral_;
     }
 
     if(child_yang_name == "entLogicalTable")
     {
-        if(entlogicaltable == nullptr)
+        if(entlogicaltable_ == nullptr)
         {
-            entlogicaltable = std::make_shared<EntityMib::Entlogicaltable>();
+            entlogicaltable_ = std::make_shared<EntityMib::Entlogicaltable>();
         }
-        return entlogicaltable;
+        return entlogicaltable_;
     }
 
     if(child_yang_name == "entLPMappingTable")
     {
-        if(entlpmappingtable == nullptr)
+        if(entlpmappingtable_ == nullptr)
         {
-            entlpmappingtable = std::make_shared<EntityMib::Entlpmappingtable>();
+            entlpmappingtable_ = std::make_shared<EntityMib::Entlpmappingtable>();
         }
-        return entlpmappingtable;
+        return entlpmappingtable_;
     }
 
     if(child_yang_name == "entPhysicalContainsTable")
     {
-        if(entphysicalcontainstable == nullptr)
+        if(entphysicalcontainstable_ == nullptr)
         {
-            entphysicalcontainstable = std::make_shared<EntityMib::Entphysicalcontainstable>();
+            entphysicalcontainstable_ = std::make_shared<EntityMib::Entphysicalcontainstable>();
         }
-        return entphysicalcontainstable;
+        return entphysicalcontainstable_;
     }
 
     if(child_yang_name == "entPhysicalTable")
     {
-        if(entphysicaltable == nullptr)
+        if(entphysicaltable_ == nullptr)
         {
-            entphysicaltable = std::make_shared<EntityMib::Entphysicaltable>();
+            entphysicaltable_ = std::make_shared<EntityMib::Entphysicaltable>();
         }
-        return entphysicaltable;
+        return entphysicaltable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> EntityMib::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(entaliasmappingtable != nullptr)
+    if(entaliasmappingtable_ != nullptr)
     {
-        children["entAliasMappingTable"] = entaliasmappingtable;
+        children["entAliasMappingTable"] = entaliasmappingtable_;
     }
 
-    if(entitygeneral != nullptr)
+    if(entitygeneral_ != nullptr)
     {
-        children["entityGeneral"] = entitygeneral;
+        children["entityGeneral"] = entitygeneral_;
     }
 
-    if(entlogicaltable != nullptr)
+    if(entlogicaltable_ != nullptr)
     {
-        children["entLogicalTable"] = entlogicaltable;
+        children["entLogicalTable"] = entlogicaltable_;
     }
 
-    if(entlpmappingtable != nullptr)
+    if(entlpmappingtable_ != nullptr)
     {
-        children["entLPMappingTable"] = entlpmappingtable;
+        children["entLPMappingTable"] = entlpmappingtable_;
     }
 
-    if(entphysicalcontainstable != nullptr)
+    if(entphysicalcontainstable_ != nullptr)
     {
-        children["entPhysicalContainsTable"] = entphysicalcontainstable;
+        children["entPhysicalContainsTable"] = entphysicalcontainstable_;
     }
 
-    if(entphysicaltable != nullptr)
+    if(entphysicaltable_ != nullptr)
     {
-        children["entPhysicalTable"] = entphysicaltable;
+        children["entPhysicalTable"] = entphysicaltable_;
     }
 
     return children;
@@ -287,9 +287,9 @@ EntityMib::Entphysicaltable::~Entphysicaltable()
 
 bool EntityMib::Entphysicaltable::has_data() const
 {
-    for (std::size_t index=0; index<entphysicalentry.size(); index++)
+    for (std::size_t index=0; index<entphysicalentry_.size(); index++)
     {
-        if(entphysicalentry[index]->has_data())
+        if(entphysicalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -297,9 +297,9 @@ bool EntityMib::Entphysicaltable::has_data() const
 
 bool EntityMib::Entphysicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysicalentry.size(); index++)
+    for (std::size_t index=0; index<entphysicalentry_.size(); index++)
     {
-        if(entphysicalentry[index]->has_operation())
+        if(entphysicalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -339,7 +339,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
 {
     if(child_yang_name == "entPhysicalEntry")
     {
-        for(auto const & c : entphysicalentry)
+        for(auto const & c : entphysicalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -349,7 +349,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
         }
         auto c = std::make_shared<EntityMib::Entphysicaltable::Entphysicalentry>();
         c->parent = this;
-        entphysicalentry.push_back(c);
+        entphysicalentry_.push_back(c);
         return c;
     }
 
@@ -359,7 +359,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entphysicalentry)
+    for (auto const & c : entphysicalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -598,9 +598,9 @@ EntityMib::Entlogicaltable::~Entlogicaltable()
 
 bool EntityMib::Entlogicaltable::has_data() const
 {
-    for (std::size_t index=0; index<entlogicalentry.size(); index++)
+    for (std::size_t index=0; index<entlogicalentry_.size(); index++)
     {
-        if(entlogicalentry[index]->has_data())
+        if(entlogicalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -608,9 +608,9 @@ bool EntityMib::Entlogicaltable::has_data() const
 
 bool EntityMib::Entlogicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<entlogicalentry.size(); index++)
+    for (std::size_t index=0; index<entlogicalentry_.size(); index++)
     {
-        if(entlogicalentry[index]->has_operation())
+        if(entlogicalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -650,7 +650,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
 {
     if(child_yang_name == "entLogicalEntry")
     {
-        for(auto const & c : entlogicalentry)
+        for(auto const & c : entlogicalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -660,7 +660,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
         }
         auto c = std::make_shared<EntityMib::Entlogicaltable::Entlogicalentry>();
         c->parent = this;
-        entlogicalentry.push_back(c);
+        entlogicalentry_.push_back(c);
         return c;
     }
 
@@ -670,7 +670,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlogicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entlogicalentry)
+    for (auto const & c : entlogicalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -821,9 +821,9 @@ EntityMib::Entlpmappingtable::~Entlpmappingtable()
 
 bool EntityMib::Entlpmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<entlpmappingentry.size(); index++)
+    for (std::size_t index=0; index<entlpmappingentry_.size(); index++)
     {
-        if(entlpmappingentry[index]->has_data())
+        if(entlpmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -831,9 +831,9 @@ bool EntityMib::Entlpmappingtable::has_data() const
 
 bool EntityMib::Entlpmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<entlpmappingentry.size(); index++)
+    for (std::size_t index=0; index<entlpmappingentry_.size(); index++)
     {
-        if(entlpmappingentry[index]->has_operation())
+        if(entlpmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -873,7 +873,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
 {
     if(child_yang_name == "entLPMappingEntry")
     {
-        for(auto const & c : entlpmappingentry)
+        for(auto const & c : entlpmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -883,7 +883,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
         }
         auto c = std::make_shared<EntityMib::Entlpmappingtable::Entlpmappingentry>();
         c->parent = this;
-        entlpmappingentry.push_back(c);
+        entlpmappingentry_.push_back(c);
         return c;
     }
 
@@ -893,7 +893,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlpmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entlpmappingentry)
+    for (auto const & c : entlpmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -996,9 +996,9 @@ EntityMib::Entaliasmappingtable::~Entaliasmappingtable()
 
 bool EntityMib::Entaliasmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<entaliasmappingentry.size(); index++)
+    for (std::size_t index=0; index<entaliasmappingentry_.size(); index++)
     {
-        if(entaliasmappingentry[index]->has_data())
+        if(entaliasmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1006,9 +1006,9 @@ bool EntityMib::Entaliasmappingtable::has_data() const
 
 bool EntityMib::Entaliasmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<entaliasmappingentry.size(); index++)
+    for (std::size_t index=0; index<entaliasmappingentry_.size(); index++)
     {
-        if(entaliasmappingentry[index]->has_operation())
+        if(entaliasmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1048,7 +1048,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
 {
     if(child_yang_name == "entAliasMappingEntry")
     {
-        for(auto const & c : entaliasmappingentry)
+        for(auto const & c : entaliasmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1058,7 +1058,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
         }
         auto c = std::make_shared<EntityMib::Entaliasmappingtable::Entaliasmappingentry>();
         c->parent = this;
-        entaliasmappingentry.push_back(c);
+        entaliasmappingentry_.push_back(c);
         return c;
     }
 
@@ -1068,7 +1068,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entaliasmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entaliasmappingentry)
+    for (auto const & c : entaliasmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1179,9 +1179,9 @@ EntityMib::Entphysicalcontainstable::~Entphysicalcontainstable()
 
 bool EntityMib::Entphysicalcontainstable::has_data() const
 {
-    for (std::size_t index=0; index<entphysicalcontainsentry.size(); index++)
+    for (std::size_t index=0; index<entphysicalcontainsentry_.size(); index++)
     {
-        if(entphysicalcontainsentry[index]->has_data())
+        if(entphysicalcontainsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1189,9 +1189,9 @@ bool EntityMib::Entphysicalcontainstable::has_data() const
 
 bool EntityMib::Entphysicalcontainstable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysicalcontainsentry.size(); index++)
+    for (std::size_t index=0; index<entphysicalcontainsentry_.size(); index++)
     {
-        if(entphysicalcontainsentry[index]->has_operation())
+        if(entphysicalcontainsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1231,7 +1231,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
 {
     if(child_yang_name == "entPhysicalContainsEntry")
     {
-        for(auto const & c : entphysicalcontainsentry)
+        for(auto const & c : entphysicalcontainsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1241,7 +1241,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
         }
         auto c = std::make_shared<EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry>();
         c->parent = this;
-        entphysicalcontainsentry.push_back(c);
+        entphysicalcontainsentry_.push_back(c);
         return c;
     }
 
@@ -1251,7 +1251,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicalcontainstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entphysicalcontainsentry)
+    for (auto const & c : entphysicalcontainsentry_)
     {
         children[c->get_segment_path()] = c;
     }

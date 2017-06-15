@@ -11,42 +11,42 @@ namespace DISMAN_EVENT_MIB {
 
 DismanEventMib::DismanEventMib()
     :
-    mteevent(std::make_shared<DismanEventMib::Mteevent>())
-	,mteeventnotificationtable(std::make_shared<DismanEventMib::Mteeventnotificationtable>())
-	,mteeventsettable(std::make_shared<DismanEventMib::Mteeventsettable>())
-	,mteeventtable(std::make_shared<DismanEventMib::Mteeventtable>())
-	,mteobjectstable(std::make_shared<DismanEventMib::Mteobjectstable>())
-	,mteresource(std::make_shared<DismanEventMib::Mteresource>())
-	,mtetrigger(std::make_shared<DismanEventMib::Mtetrigger>())
-	,mtetriggerbooleantable(std::make_shared<DismanEventMib::Mtetriggerbooleantable>())
-	,mtetriggerdeltatable(std::make_shared<DismanEventMib::Mtetriggerdeltatable>())
-	,mtetriggerexistencetable(std::make_shared<DismanEventMib::Mtetriggerexistencetable>())
-	,mtetriggertable(std::make_shared<DismanEventMib::Mtetriggertable>())
-	,mtetriggerthresholdtable(std::make_shared<DismanEventMib::Mtetriggerthresholdtable>())
+    mteevent_(std::make_shared<DismanEventMib::Mteevent>())
+	,mteeventnotificationtable_(std::make_shared<DismanEventMib::Mteeventnotificationtable>())
+	,mteeventsettable_(std::make_shared<DismanEventMib::Mteeventsettable>())
+	,mteeventtable_(std::make_shared<DismanEventMib::Mteeventtable>())
+	,mteobjectstable_(std::make_shared<DismanEventMib::Mteobjectstable>())
+	,mteresource_(std::make_shared<DismanEventMib::Mteresource>())
+	,mtetrigger_(std::make_shared<DismanEventMib::Mtetrigger>())
+	,mtetriggerbooleantable_(std::make_shared<DismanEventMib::Mtetriggerbooleantable>())
+	,mtetriggerdeltatable_(std::make_shared<DismanEventMib::Mtetriggerdeltatable>())
+	,mtetriggerexistencetable_(std::make_shared<DismanEventMib::Mtetriggerexistencetable>())
+	,mtetriggertable_(std::make_shared<DismanEventMib::Mtetriggertable>())
+	,mtetriggerthresholdtable_(std::make_shared<DismanEventMib::Mtetriggerthresholdtable>())
 {
-    mteevent->parent = this;
+    mteevent_->parent = this;
 
-    mteeventnotificationtable->parent = this;
+    mteeventnotificationtable_->parent = this;
 
-    mteeventsettable->parent = this;
+    mteeventsettable_->parent = this;
 
-    mteeventtable->parent = this;
+    mteeventtable_->parent = this;
 
-    mteobjectstable->parent = this;
+    mteobjectstable_->parent = this;
 
-    mteresource->parent = this;
+    mteresource_->parent = this;
 
-    mtetrigger->parent = this;
+    mtetrigger_->parent = this;
 
-    mtetriggerbooleantable->parent = this;
+    mtetriggerbooleantable_->parent = this;
 
-    mtetriggerdeltatable->parent = this;
+    mtetriggerdeltatable_->parent = this;
 
-    mtetriggerexistencetable->parent = this;
+    mtetriggerexistencetable_->parent = this;
 
-    mtetriggertable->parent = this;
+    mtetriggertable_->parent = this;
 
-    mtetriggerthresholdtable->parent = this;
+    mtetriggerthresholdtable_->parent = this;
 
     yang_name = "DISMAN-EVENT-MIB"; yang_parent_name = "DISMAN-EVENT-MIB";
 }
@@ -57,35 +57,35 @@ DismanEventMib::~DismanEventMib()
 
 bool DismanEventMib::has_data() const
 {
-    return (mteevent !=  nullptr && mteevent->has_data())
-	|| (mteeventnotificationtable !=  nullptr && mteeventnotificationtable->has_data())
-	|| (mteeventsettable !=  nullptr && mteeventsettable->has_data())
-	|| (mteeventtable !=  nullptr && mteeventtable->has_data())
-	|| (mteobjectstable !=  nullptr && mteobjectstable->has_data())
-	|| (mteresource !=  nullptr && mteresource->has_data())
-	|| (mtetrigger !=  nullptr && mtetrigger->has_data())
-	|| (mtetriggerbooleantable !=  nullptr && mtetriggerbooleantable->has_data())
-	|| (mtetriggerdeltatable !=  nullptr && mtetriggerdeltatable->has_data())
-	|| (mtetriggerexistencetable !=  nullptr && mtetriggerexistencetable->has_data())
-	|| (mtetriggertable !=  nullptr && mtetriggertable->has_data())
-	|| (mtetriggerthresholdtable !=  nullptr && mtetriggerthresholdtable->has_data());
+    return (mteevent_ !=  nullptr && mteevent_->has_data())
+	|| (mteeventnotificationtable_ !=  nullptr && mteeventnotificationtable_->has_data())
+	|| (mteeventsettable_ !=  nullptr && mteeventsettable_->has_data())
+	|| (mteeventtable_ !=  nullptr && mteeventtable_->has_data())
+	|| (mteobjectstable_ !=  nullptr && mteobjectstable_->has_data())
+	|| (mteresource_ !=  nullptr && mteresource_->has_data())
+	|| (mtetrigger_ !=  nullptr && mtetrigger_->has_data())
+	|| (mtetriggerbooleantable_ !=  nullptr && mtetriggerbooleantable_->has_data())
+	|| (mtetriggerdeltatable_ !=  nullptr && mtetriggerdeltatable_->has_data())
+	|| (mtetriggerexistencetable_ !=  nullptr && mtetriggerexistencetable_->has_data())
+	|| (mtetriggertable_ !=  nullptr && mtetriggertable_->has_data())
+	|| (mtetriggerthresholdtable_ !=  nullptr && mtetriggerthresholdtable_->has_data());
 }
 
 bool DismanEventMib::has_operation() const
 {
     return is_set(operation)
-	|| (mteevent !=  nullptr && mteevent->has_operation())
-	|| (mteeventnotificationtable !=  nullptr && mteeventnotificationtable->has_operation())
-	|| (mteeventsettable !=  nullptr && mteeventsettable->has_operation())
-	|| (mteeventtable !=  nullptr && mteeventtable->has_operation())
-	|| (mteobjectstable !=  nullptr && mteobjectstable->has_operation())
-	|| (mteresource !=  nullptr && mteresource->has_operation())
-	|| (mtetrigger !=  nullptr && mtetrigger->has_operation())
-	|| (mtetriggerbooleantable !=  nullptr && mtetriggerbooleantable->has_operation())
-	|| (mtetriggerdeltatable !=  nullptr && mtetriggerdeltatable->has_operation())
-	|| (mtetriggerexistencetable !=  nullptr && mtetriggerexistencetable->has_operation())
-	|| (mtetriggertable !=  nullptr && mtetriggertable->has_operation())
-	|| (mtetriggerthresholdtable !=  nullptr && mtetriggerthresholdtable->has_operation());
+	|| (mteevent_ !=  nullptr && mteevent_->has_operation())
+	|| (mteeventnotificationtable_ !=  nullptr && mteeventnotificationtable_->has_operation())
+	|| (mteeventsettable_ !=  nullptr && mteeventsettable_->has_operation())
+	|| (mteeventtable_ !=  nullptr && mteeventtable_->has_operation())
+	|| (mteobjectstable_ !=  nullptr && mteobjectstable_->has_operation())
+	|| (mteresource_ !=  nullptr && mteresource_->has_operation())
+	|| (mtetrigger_ !=  nullptr && mtetrigger_->has_operation())
+	|| (mtetriggerbooleantable_ !=  nullptr && mtetriggerbooleantable_->has_operation())
+	|| (mtetriggerdeltatable_ !=  nullptr && mtetriggerdeltatable_->has_operation())
+	|| (mtetriggerexistencetable_ !=  nullptr && mtetriggerexistencetable_->has_operation())
+	|| (mtetriggertable_ !=  nullptr && mtetriggertable_->has_operation())
+	|| (mtetriggerthresholdtable_ !=  nullptr && mtetriggerthresholdtable_->has_operation());
 }
 
 std::string DismanEventMib::get_segment_path() const
@@ -119,110 +119,110 @@ std::shared_ptr<Entity> DismanEventMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "mteEvent")
     {
-        if(mteevent == nullptr)
+        if(mteevent_ == nullptr)
         {
-            mteevent = std::make_shared<DismanEventMib::Mteevent>();
+            mteevent_ = std::make_shared<DismanEventMib::Mteevent>();
         }
-        return mteevent;
+        return mteevent_;
     }
 
     if(child_yang_name == "mteEventNotificationTable")
     {
-        if(mteeventnotificationtable == nullptr)
+        if(mteeventnotificationtable_ == nullptr)
         {
-            mteeventnotificationtable = std::make_shared<DismanEventMib::Mteeventnotificationtable>();
+            mteeventnotificationtable_ = std::make_shared<DismanEventMib::Mteeventnotificationtable>();
         }
-        return mteeventnotificationtable;
+        return mteeventnotificationtable_;
     }
 
     if(child_yang_name == "mteEventSetTable")
     {
-        if(mteeventsettable == nullptr)
+        if(mteeventsettable_ == nullptr)
         {
-            mteeventsettable = std::make_shared<DismanEventMib::Mteeventsettable>();
+            mteeventsettable_ = std::make_shared<DismanEventMib::Mteeventsettable>();
         }
-        return mteeventsettable;
+        return mteeventsettable_;
     }
 
     if(child_yang_name == "mteEventTable")
     {
-        if(mteeventtable == nullptr)
+        if(mteeventtable_ == nullptr)
         {
-            mteeventtable = std::make_shared<DismanEventMib::Mteeventtable>();
+            mteeventtable_ = std::make_shared<DismanEventMib::Mteeventtable>();
         }
-        return mteeventtable;
+        return mteeventtable_;
     }
 
     if(child_yang_name == "mteObjectsTable")
     {
-        if(mteobjectstable == nullptr)
+        if(mteobjectstable_ == nullptr)
         {
-            mteobjectstable = std::make_shared<DismanEventMib::Mteobjectstable>();
+            mteobjectstable_ = std::make_shared<DismanEventMib::Mteobjectstable>();
         }
-        return mteobjectstable;
+        return mteobjectstable_;
     }
 
     if(child_yang_name == "mteResource")
     {
-        if(mteresource == nullptr)
+        if(mteresource_ == nullptr)
         {
-            mteresource = std::make_shared<DismanEventMib::Mteresource>();
+            mteresource_ = std::make_shared<DismanEventMib::Mteresource>();
         }
-        return mteresource;
+        return mteresource_;
     }
 
     if(child_yang_name == "mteTrigger")
     {
-        if(mtetrigger == nullptr)
+        if(mtetrigger_ == nullptr)
         {
-            mtetrigger = std::make_shared<DismanEventMib::Mtetrigger>();
+            mtetrigger_ = std::make_shared<DismanEventMib::Mtetrigger>();
         }
-        return mtetrigger;
+        return mtetrigger_;
     }
 
     if(child_yang_name == "mteTriggerBooleanTable")
     {
-        if(mtetriggerbooleantable == nullptr)
+        if(mtetriggerbooleantable_ == nullptr)
         {
-            mtetriggerbooleantable = std::make_shared<DismanEventMib::Mtetriggerbooleantable>();
+            mtetriggerbooleantable_ = std::make_shared<DismanEventMib::Mtetriggerbooleantable>();
         }
-        return mtetriggerbooleantable;
+        return mtetriggerbooleantable_;
     }
 
     if(child_yang_name == "mteTriggerDeltaTable")
     {
-        if(mtetriggerdeltatable == nullptr)
+        if(mtetriggerdeltatable_ == nullptr)
         {
-            mtetriggerdeltatable = std::make_shared<DismanEventMib::Mtetriggerdeltatable>();
+            mtetriggerdeltatable_ = std::make_shared<DismanEventMib::Mtetriggerdeltatable>();
         }
-        return mtetriggerdeltatable;
+        return mtetriggerdeltatable_;
     }
 
     if(child_yang_name == "mteTriggerExistenceTable")
     {
-        if(mtetriggerexistencetable == nullptr)
+        if(mtetriggerexistencetable_ == nullptr)
         {
-            mtetriggerexistencetable = std::make_shared<DismanEventMib::Mtetriggerexistencetable>();
+            mtetriggerexistencetable_ = std::make_shared<DismanEventMib::Mtetriggerexistencetable>();
         }
-        return mtetriggerexistencetable;
+        return mtetriggerexistencetable_;
     }
 
     if(child_yang_name == "mteTriggerTable")
     {
-        if(mtetriggertable == nullptr)
+        if(mtetriggertable_ == nullptr)
         {
-            mtetriggertable = std::make_shared<DismanEventMib::Mtetriggertable>();
+            mtetriggertable_ = std::make_shared<DismanEventMib::Mtetriggertable>();
         }
-        return mtetriggertable;
+        return mtetriggertable_;
     }
 
     if(child_yang_name == "mteTriggerThresholdTable")
     {
-        if(mtetriggerthresholdtable == nullptr)
+        if(mtetriggerthresholdtable_ == nullptr)
         {
-            mtetriggerthresholdtable = std::make_shared<DismanEventMib::Mtetriggerthresholdtable>();
+            mtetriggerthresholdtable_ = std::make_shared<DismanEventMib::Mtetriggerthresholdtable>();
         }
-        return mtetriggerthresholdtable;
+        return mtetriggerthresholdtable_;
     }
 
     return nullptr;
@@ -231,64 +231,64 @@ std::shared_ptr<Entity> DismanEventMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mteevent != nullptr)
+    if(mteevent_ != nullptr)
     {
-        children["mteEvent"] = mteevent;
+        children["mteEvent"] = mteevent_;
     }
 
-    if(mteeventnotificationtable != nullptr)
+    if(mteeventnotificationtable_ != nullptr)
     {
-        children["mteEventNotificationTable"] = mteeventnotificationtable;
+        children["mteEventNotificationTable"] = mteeventnotificationtable_;
     }
 
-    if(mteeventsettable != nullptr)
+    if(mteeventsettable_ != nullptr)
     {
-        children["mteEventSetTable"] = mteeventsettable;
+        children["mteEventSetTable"] = mteeventsettable_;
     }
 
-    if(mteeventtable != nullptr)
+    if(mteeventtable_ != nullptr)
     {
-        children["mteEventTable"] = mteeventtable;
+        children["mteEventTable"] = mteeventtable_;
     }
 
-    if(mteobjectstable != nullptr)
+    if(mteobjectstable_ != nullptr)
     {
-        children["mteObjectsTable"] = mteobjectstable;
+        children["mteObjectsTable"] = mteobjectstable_;
     }
 
-    if(mteresource != nullptr)
+    if(mteresource_ != nullptr)
     {
-        children["mteResource"] = mteresource;
+        children["mteResource"] = mteresource_;
     }
 
-    if(mtetrigger != nullptr)
+    if(mtetrigger_ != nullptr)
     {
-        children["mteTrigger"] = mtetrigger;
+        children["mteTrigger"] = mtetrigger_;
     }
 
-    if(mtetriggerbooleantable != nullptr)
+    if(mtetriggerbooleantable_ != nullptr)
     {
-        children["mteTriggerBooleanTable"] = mtetriggerbooleantable;
+        children["mteTriggerBooleanTable"] = mtetriggerbooleantable_;
     }
 
-    if(mtetriggerdeltatable != nullptr)
+    if(mtetriggerdeltatable_ != nullptr)
     {
-        children["mteTriggerDeltaTable"] = mtetriggerdeltatable;
+        children["mteTriggerDeltaTable"] = mtetriggerdeltatable_;
     }
 
-    if(mtetriggerexistencetable != nullptr)
+    if(mtetriggerexistencetable_ != nullptr)
     {
-        children["mteTriggerExistenceTable"] = mtetriggerexistencetable;
+        children["mteTriggerExistenceTable"] = mtetriggerexistencetable_;
     }
 
-    if(mtetriggertable != nullptr)
+    if(mtetriggertable_ != nullptr)
     {
-        children["mteTriggerTable"] = mtetriggertable;
+        children["mteTriggerTable"] = mtetriggertable_;
     }
 
-    if(mtetriggerthresholdtable != nullptr)
+    if(mtetriggerthresholdtable_ != nullptr)
     {
-        children["mteTriggerThresholdTable"] = mtetriggerthresholdtable;
+        children["mteTriggerThresholdTable"] = mtetriggerthresholdtable_;
     }
 
     return children;
@@ -577,9 +577,9 @@ DismanEventMib::Mtetriggertable::~Mtetriggertable()
 
 bool DismanEventMib::Mtetriggertable::has_data() const
 {
-    for (std::size_t index=0; index<mtetriggerentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerentry_.size(); index++)
     {
-        if(mtetriggerentry[index]->has_data())
+        if(mtetriggerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -587,9 +587,9 @@ bool DismanEventMib::Mtetriggertable::has_data() const
 
 bool DismanEventMib::Mtetriggertable::has_operation() const
 {
-    for (std::size_t index=0; index<mtetriggerentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerentry_.size(); index++)
     {
-        if(mtetriggerentry[index]->has_operation())
+        if(mtetriggerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -629,7 +629,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggertable::get_child_by_name(const
 {
     if(child_yang_name == "mteTriggerEntry")
     {
-        for(auto const & c : mtetriggerentry)
+        for(auto const & c : mtetriggerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -639,7 +639,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggertable::get_child_by_name(const
         }
         auto c = std::make_shared<DismanEventMib::Mtetriggertable::Mtetriggerentry>();
         c->parent = this;
-        mtetriggerentry.push_back(c);
+        mtetriggerentry_.push_back(c);
         return c;
     }
 
@@ -649,7 +649,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mtetriggertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mtetriggerentry)
+    for (auto const & c : mtetriggerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -856,9 +856,9 @@ DismanEventMib::Mtetriggerdeltatable::~Mtetriggerdeltatable()
 
 bool DismanEventMib::Mtetriggerdeltatable::has_data() const
 {
-    for (std::size_t index=0; index<mtetriggerdeltaentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerdeltaentry_.size(); index++)
     {
-        if(mtetriggerdeltaentry[index]->has_data())
+        if(mtetriggerdeltaentry_[index]->has_data())
             return true;
     }
     return false;
@@ -866,9 +866,9 @@ bool DismanEventMib::Mtetriggerdeltatable::has_data() const
 
 bool DismanEventMib::Mtetriggerdeltatable::has_operation() const
 {
-    for (std::size_t index=0; index<mtetriggerdeltaentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerdeltaentry_.size(); index++)
     {
-        if(mtetriggerdeltaentry[index]->has_operation())
+        if(mtetriggerdeltaentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -908,7 +908,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerdeltatable::get_child_by_name(
 {
     if(child_yang_name == "mteTriggerDeltaEntry")
     {
-        for(auto const & c : mtetriggerdeltaentry)
+        for(auto const & c : mtetriggerdeltaentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -918,7 +918,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerdeltatable::get_child_by_name(
         }
         auto c = std::make_shared<DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry>();
         c->parent = this;
-        mtetriggerdeltaentry.push_back(c);
+        mtetriggerdeltaentry_.push_back(c);
         return c;
     }
 
@@ -928,7 +928,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerdeltatable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mtetriggerdeltatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mtetriggerdeltaentry)
+    for (auto const & c : mtetriggerdeltaentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1055,9 +1055,9 @@ DismanEventMib::Mtetriggerexistencetable::~Mtetriggerexistencetable()
 
 bool DismanEventMib::Mtetriggerexistencetable::has_data() const
 {
-    for (std::size_t index=0; index<mtetriggerexistenceentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerexistenceentry_.size(); index++)
     {
-        if(mtetriggerexistenceentry[index]->has_data())
+        if(mtetriggerexistenceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1065,9 +1065,9 @@ bool DismanEventMib::Mtetriggerexistencetable::has_data() const
 
 bool DismanEventMib::Mtetriggerexistencetable::has_operation() const
 {
-    for (std::size_t index=0; index<mtetriggerexistenceentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerexistenceentry_.size(); index++)
     {
-        if(mtetriggerexistenceentry[index]->has_operation())
+        if(mtetriggerexistenceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1107,7 +1107,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerexistencetable::get_child_by_n
 {
     if(child_yang_name == "mteTriggerExistenceEntry")
     {
-        for(auto const & c : mtetriggerexistenceentry)
+        for(auto const & c : mtetriggerexistenceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1117,7 +1117,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerexistencetable::get_child_by_n
         }
         auto c = std::make_shared<DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry>();
         c->parent = this;
-        mtetriggerexistenceentry.push_back(c);
+        mtetriggerexistenceentry_.push_back(c);
         return c;
     }
 
@@ -1127,7 +1127,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerexistencetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mtetriggerexistencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mtetriggerexistenceentry)
+    for (auto const & c : mtetriggerexistenceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1278,9 +1278,9 @@ DismanEventMib::Mtetriggerbooleantable::~Mtetriggerbooleantable()
 
 bool DismanEventMib::Mtetriggerbooleantable::has_data() const
 {
-    for (std::size_t index=0; index<mtetriggerbooleanentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerbooleanentry_.size(); index++)
     {
-        if(mtetriggerbooleanentry[index]->has_data())
+        if(mtetriggerbooleanentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1288,9 +1288,9 @@ bool DismanEventMib::Mtetriggerbooleantable::has_data() const
 
 bool DismanEventMib::Mtetriggerbooleantable::has_operation() const
 {
-    for (std::size_t index=0; index<mtetriggerbooleanentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerbooleanentry_.size(); index++)
     {
-        if(mtetriggerbooleanentry[index]->has_operation())
+        if(mtetriggerbooleanentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1330,7 +1330,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerbooleantable::get_child_by_nam
 {
     if(child_yang_name == "mteTriggerBooleanEntry")
     {
-        for(auto const & c : mtetriggerbooleanentry)
+        for(auto const & c : mtetriggerbooleanentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1340,7 +1340,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerbooleantable::get_child_by_nam
         }
         auto c = std::make_shared<DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry>();
         c->parent = this;
-        mtetriggerbooleanentry.push_back(c);
+        mtetriggerbooleanentry_.push_back(c);
         return c;
     }
 
@@ -1350,7 +1350,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerbooleantable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mtetriggerbooleantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mtetriggerbooleanentry)
+    for (auto const & c : mtetriggerbooleanentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1509,9 +1509,9 @@ DismanEventMib::Mtetriggerthresholdtable::~Mtetriggerthresholdtable()
 
 bool DismanEventMib::Mtetriggerthresholdtable::has_data() const
 {
-    for (std::size_t index=0; index<mtetriggerthresholdentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerthresholdentry_.size(); index++)
     {
-        if(mtetriggerthresholdentry[index]->has_data())
+        if(mtetriggerthresholdentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1519,9 +1519,9 @@ bool DismanEventMib::Mtetriggerthresholdtable::has_data() const
 
 bool DismanEventMib::Mtetriggerthresholdtable::has_operation() const
 {
-    for (std::size_t index=0; index<mtetriggerthresholdentry.size(); index++)
+    for (std::size_t index=0; index<mtetriggerthresholdentry_.size(); index++)
     {
-        if(mtetriggerthresholdentry[index]->has_operation())
+        if(mtetriggerthresholdentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1561,7 +1561,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerthresholdtable::get_child_by_n
 {
     if(child_yang_name == "mteTriggerThresholdEntry")
     {
-        for(auto const & c : mtetriggerthresholdentry)
+        for(auto const & c : mtetriggerthresholdentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1571,7 +1571,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerthresholdtable::get_child_by_n
         }
         auto c = std::make_shared<DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry>();
         c->parent = this;
-        mtetriggerthresholdentry.push_back(c);
+        mtetriggerthresholdentry_.push_back(c);
         return c;
     }
 
@@ -1581,7 +1581,7 @@ std::shared_ptr<Entity> DismanEventMib::Mtetriggerthresholdtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mtetriggerthresholdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mtetriggerthresholdentry)
+    for (auto const & c : mtetriggerthresholdentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1804,9 +1804,9 @@ DismanEventMib::Mteobjectstable::~Mteobjectstable()
 
 bool DismanEventMib::Mteobjectstable::has_data() const
 {
-    for (std::size_t index=0; index<mteobjectsentry.size(); index++)
+    for (std::size_t index=0; index<mteobjectsentry_.size(); index++)
     {
-        if(mteobjectsentry[index]->has_data())
+        if(mteobjectsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1814,9 +1814,9 @@ bool DismanEventMib::Mteobjectstable::has_data() const
 
 bool DismanEventMib::Mteobjectstable::has_operation() const
 {
-    for (std::size_t index=0; index<mteobjectsentry.size(); index++)
+    for (std::size_t index=0; index<mteobjectsentry_.size(); index++)
     {
-        if(mteobjectsentry[index]->has_operation())
+        if(mteobjectsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1856,7 +1856,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteobjectstable::get_child_by_name(const
 {
     if(child_yang_name == "mteObjectsEntry")
     {
-        for(auto const & c : mteobjectsentry)
+        for(auto const & c : mteobjectsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1866,7 +1866,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteobjectstable::get_child_by_name(const
         }
         auto c = std::make_shared<DismanEventMib::Mteobjectstable::Mteobjectsentry>();
         c->parent = this;
-        mteobjectsentry.push_back(c);
+        mteobjectsentry_.push_back(c);
         return c;
     }
 
@@ -1876,7 +1876,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteobjectstable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mteobjectstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mteobjectsentry)
+    for (auto const & c : mteobjectsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2011,9 +2011,9 @@ DismanEventMib::Mteeventtable::~Mteeventtable()
 
 bool DismanEventMib::Mteeventtable::has_data() const
 {
-    for (std::size_t index=0; index<mteevententry.size(); index++)
+    for (std::size_t index=0; index<mteevententry_.size(); index++)
     {
-        if(mteevententry[index]->has_data())
+        if(mteevententry_[index]->has_data())
             return true;
     }
     return false;
@@ -2021,9 +2021,9 @@ bool DismanEventMib::Mteeventtable::has_data() const
 
 bool DismanEventMib::Mteeventtable::has_operation() const
 {
-    for (std::size_t index=0; index<mteevententry.size(); index++)
+    for (std::size_t index=0; index<mteevententry_.size(); index++)
     {
-        if(mteevententry[index]->has_operation())
+        if(mteevententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2063,7 +2063,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventtable::get_child_by_name(const s
 {
     if(child_yang_name == "mteEventEntry")
     {
-        for(auto const & c : mteevententry)
+        for(auto const & c : mteevententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2073,7 +2073,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventtable::get_child_by_name(const s
         }
         auto c = std::make_shared<DismanEventMib::Mteeventtable::Mteevententry>();
         c->parent = this;
-        mteevententry.push_back(c);
+        mteevententry_.push_back(c);
         return c;
     }
 
@@ -2083,7 +2083,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mteeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mteevententry)
+    for (auto const & c : mteevententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2218,9 +2218,9 @@ DismanEventMib::Mteeventnotificationtable::~Mteeventnotificationtable()
 
 bool DismanEventMib::Mteeventnotificationtable::has_data() const
 {
-    for (std::size_t index=0; index<mteeventnotificationentry.size(); index++)
+    for (std::size_t index=0; index<mteeventnotificationentry_.size(); index++)
     {
-        if(mteeventnotificationentry[index]->has_data())
+        if(mteeventnotificationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2228,9 +2228,9 @@ bool DismanEventMib::Mteeventnotificationtable::has_data() const
 
 bool DismanEventMib::Mteeventnotificationtable::has_operation() const
 {
-    for (std::size_t index=0; index<mteeventnotificationentry.size(); index++)
+    for (std::size_t index=0; index<mteeventnotificationentry_.size(); index++)
     {
-        if(mteeventnotificationentry[index]->has_operation())
+        if(mteeventnotificationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2270,7 +2270,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventnotificationtable::get_child_by_
 {
     if(child_yang_name == "mteEventNotificationEntry")
     {
-        for(auto const & c : mteeventnotificationentry)
+        for(auto const & c : mteeventnotificationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2280,7 +2280,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventnotificationtable::get_child_by_
         }
         auto c = std::make_shared<DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry>();
         c->parent = this;
-        mteeventnotificationentry.push_back(c);
+        mteeventnotificationentry_.push_back(c);
         return c;
     }
 
@@ -2290,7 +2290,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventnotificationtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mteeventnotificationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mteeventnotificationentry)
+    for (auto const & c : mteeventnotificationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2417,9 +2417,9 @@ DismanEventMib::Mteeventsettable::~Mteeventsettable()
 
 bool DismanEventMib::Mteeventsettable::has_data() const
 {
-    for (std::size_t index=0; index<mteeventsetentry.size(); index++)
+    for (std::size_t index=0; index<mteeventsetentry_.size(); index++)
     {
-        if(mteeventsetentry[index]->has_data())
+        if(mteeventsetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2427,9 +2427,9 @@ bool DismanEventMib::Mteeventsettable::has_data() const
 
 bool DismanEventMib::Mteeventsettable::has_operation() const
 {
-    for (std::size_t index=0; index<mteeventsetentry.size(); index++)
+    for (std::size_t index=0; index<mteeventsetentry_.size(); index++)
     {
-        if(mteeventsetentry[index]->has_operation())
+        if(mteeventsetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2469,7 +2469,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventsettable::get_child_by_name(cons
 {
     if(child_yang_name == "mteEventSetEntry")
     {
-        for(auto const & c : mteeventsetentry)
+        for(auto const & c : mteeventsetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2479,7 +2479,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventsettable::get_child_by_name(cons
         }
         auto c = std::make_shared<DismanEventMib::Mteeventsettable::Mteeventsetentry>();
         c->parent = this;
-        mteeventsetentry.push_back(c);
+        mteeventsetentry_.push_back(c);
         return c;
     }
 
@@ -2489,7 +2489,7 @@ std::shared_ptr<Entity> DismanEventMib::Mteeventsettable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DismanEventMib::Mteeventsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mteeventsetentry)
+    for (auto const & c : mteeventsetentry_)
     {
         children[c->get_segment_path()] = c;
     }

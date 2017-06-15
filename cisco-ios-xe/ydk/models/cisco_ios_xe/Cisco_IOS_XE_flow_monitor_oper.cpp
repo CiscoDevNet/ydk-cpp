@@ -20,9 +20,9 @@ FlowMonitors::~FlowMonitors()
 
 bool FlowMonitors::has_data() const
 {
-    for (std::size_t index=0; index<flow_monitor.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_.size(); index++)
     {
-        if(flow_monitor[index]->has_data())
+        if(flow_monitor_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool FlowMonitors::has_data() const
 
 bool FlowMonitors::has_operation() const
 {
-    for (std::size_t index=0; index<flow_monitor.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_.size(); index++)
     {
-        if(flow_monitor[index]->has_operation())
+        if(flow_monitor_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "flow-monitor")
     {
-        for(auto const & c : flow_monitor)
+        for(auto const & c : flow_monitor_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
         }
         auto c = std::make_shared<FlowMonitors::FlowMonitor>();
         c->parent = this;
-        flow_monitor.push_back(c);
+        flow_monitor_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : flow_monitor)
+    for (auto const & c : flow_monitor_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -126,9 +126,9 @@ FlowMonitors::FlowMonitor::FlowMonitor()
     name{YType::str, "name"},
     time_collected{YType::uint64, "time-collected"}
     	,
-    flows(std::make_shared<FlowMonitors::FlowMonitor::Flows>())
+    flows_(std::make_shared<FlowMonitors::FlowMonitor::Flows>())
 {
-    flows->parent = this;
+    flows_->parent = this;
 
     yang_name = "flow-monitor"; yang_parent_name = "flow-monitors";
 }
@@ -141,7 +141,7 @@ bool FlowMonitors::FlowMonitor::has_data() const
 {
     return name.is_set
 	|| time_collected.is_set
-	|| (flows !=  nullptr && flows->has_data());
+	|| (flows_ !=  nullptr && flows_->has_data());
 }
 
 bool FlowMonitors::FlowMonitor::has_operation() const
@@ -149,7 +149,7 @@ bool FlowMonitors::FlowMonitor::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(time_collected.operation)
-	|| (flows !=  nullptr && flows->has_operation());
+	|| (flows_ !=  nullptr && flows_->has_operation());
 }
 
 std::string FlowMonitors::FlowMonitor::get_segment_path() const
@@ -188,11 +188,11 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::
 {
     if(child_yang_name == "flows")
     {
-        if(flows == nullptr)
+        if(flows_ == nullptr)
         {
-            flows = std::make_shared<FlowMonitors::FlowMonitor::Flows>();
+            flows_ = std::make_shared<FlowMonitors::FlowMonitor::Flows>();
         }
-        return flows;
+        return flows_;
     }
 
     return nullptr;
@@ -201,9 +201,9 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(flows != nullptr)
+    if(flows_ != nullptr)
     {
-        children["flows"] = flows;
+        children["flows"] = flows_;
     }
 
     return children;
@@ -232,9 +232,9 @@ FlowMonitors::FlowMonitor::Flows::~Flows()
 
 bool FlowMonitors::FlowMonitor::Flows::has_data() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    for (std::size_t index=0; index<flow_.size(); index++)
     {
-        if(flow[index]->has_data())
+        if(flow_[index]->has_data())
             return true;
     }
     return false;
@@ -242,9 +242,9 @@ bool FlowMonitors::FlowMonitor::Flows::has_data() const
 
 bool FlowMonitors::FlowMonitor::Flows::has_operation() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    for (std::size_t index=0; index<flow_.size(); index++)
     {
-        if(flow[index]->has_operation())
+        if(flow_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -284,7 +284,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
 {
     if(child_yang_name == "flow")
     {
-        for(auto const & c : flow)
+        for(auto const & c : flow_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -294,7 +294,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
         }
         auto c = std::make_shared<FlowMonitors::FlowMonitor::Flows::Flow>();
         c->parent = this;
-        flow.push_back(c);
+        flow_.push_back(c);
         return c;
     }
 
@@ -304,7 +304,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : flow)
+    for (auto const & c : flow_)
     {
         children[c->get_segment_path()] = c;
     }

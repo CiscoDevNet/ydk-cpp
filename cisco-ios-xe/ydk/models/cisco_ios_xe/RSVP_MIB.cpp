@@ -11,30 +11,30 @@ namespace RSVP_MIB {
 
 RsvpMib::RsvpMib()
     :
-    rsvpgenobjects(std::make_shared<RsvpMib::Rsvpgenobjects>())
-	,rsvpiftable(std::make_shared<RsvpMib::Rsvpiftable>())
-	,rsvpnbrtable(std::make_shared<RsvpMib::Rsvpnbrtable>())
-	,rsvpresvfwdtable(std::make_shared<RsvpMib::Rsvpresvfwdtable>())
-	,rsvpresvtable(std::make_shared<RsvpMib::Rsvpresvtable>())
-	,rsvpsenderoutinterfacetable(std::make_shared<RsvpMib::Rsvpsenderoutinterfacetable>())
-	,rsvpsendertable(std::make_shared<RsvpMib::Rsvpsendertable>())
-	,rsvpsessiontable(std::make_shared<RsvpMib::Rsvpsessiontable>())
+    rsvpgenobjects_(std::make_shared<RsvpMib::Rsvpgenobjects>())
+	,rsvpiftable_(std::make_shared<RsvpMib::Rsvpiftable>())
+	,rsvpnbrtable_(std::make_shared<RsvpMib::Rsvpnbrtable>())
+	,rsvpresvfwdtable_(std::make_shared<RsvpMib::Rsvpresvfwdtable>())
+	,rsvpresvtable_(std::make_shared<RsvpMib::Rsvpresvtable>())
+	,rsvpsenderoutinterfacetable_(std::make_shared<RsvpMib::Rsvpsenderoutinterfacetable>())
+	,rsvpsendertable_(std::make_shared<RsvpMib::Rsvpsendertable>())
+	,rsvpsessiontable_(std::make_shared<RsvpMib::Rsvpsessiontable>())
 {
-    rsvpgenobjects->parent = this;
+    rsvpgenobjects_->parent = this;
 
-    rsvpiftable->parent = this;
+    rsvpiftable_->parent = this;
 
-    rsvpnbrtable->parent = this;
+    rsvpnbrtable_->parent = this;
 
-    rsvpresvfwdtable->parent = this;
+    rsvpresvfwdtable_->parent = this;
 
-    rsvpresvtable->parent = this;
+    rsvpresvtable_->parent = this;
 
-    rsvpsenderoutinterfacetable->parent = this;
+    rsvpsenderoutinterfacetable_->parent = this;
 
-    rsvpsendertable->parent = this;
+    rsvpsendertable_->parent = this;
 
-    rsvpsessiontable->parent = this;
+    rsvpsessiontable_->parent = this;
 
     yang_name = "RSVP-MIB"; yang_parent_name = "RSVP-MIB";
 }
@@ -45,27 +45,27 @@ RsvpMib::~RsvpMib()
 
 bool RsvpMib::has_data() const
 {
-    return (rsvpgenobjects !=  nullptr && rsvpgenobjects->has_data())
-	|| (rsvpiftable !=  nullptr && rsvpiftable->has_data())
-	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_data())
-	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_data())
-	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_data())
-	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_data())
-	|| (rsvpsendertable !=  nullptr && rsvpsendertable->has_data())
-	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_data());
+    return (rsvpgenobjects_ !=  nullptr && rsvpgenobjects_->has_data())
+	|| (rsvpiftable_ !=  nullptr && rsvpiftable_->has_data())
+	|| (rsvpnbrtable_ !=  nullptr && rsvpnbrtable_->has_data())
+	|| (rsvpresvfwdtable_ !=  nullptr && rsvpresvfwdtable_->has_data())
+	|| (rsvpresvtable_ !=  nullptr && rsvpresvtable_->has_data())
+	|| (rsvpsenderoutinterfacetable_ !=  nullptr && rsvpsenderoutinterfacetable_->has_data())
+	|| (rsvpsendertable_ !=  nullptr && rsvpsendertable_->has_data())
+	|| (rsvpsessiontable_ !=  nullptr && rsvpsessiontable_->has_data());
 }
 
 bool RsvpMib::has_operation() const
 {
     return is_set(operation)
-	|| (rsvpgenobjects !=  nullptr && rsvpgenobjects->has_operation())
-	|| (rsvpiftable !=  nullptr && rsvpiftable->has_operation())
-	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_operation())
-	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_operation())
-	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_operation())
-	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_operation())
-	|| (rsvpsendertable !=  nullptr && rsvpsendertable->has_operation())
-	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_operation());
+	|| (rsvpgenobjects_ !=  nullptr && rsvpgenobjects_->has_operation())
+	|| (rsvpiftable_ !=  nullptr && rsvpiftable_->has_operation())
+	|| (rsvpnbrtable_ !=  nullptr && rsvpnbrtable_->has_operation())
+	|| (rsvpresvfwdtable_ !=  nullptr && rsvpresvfwdtable_->has_operation())
+	|| (rsvpresvtable_ !=  nullptr && rsvpresvtable_->has_operation())
+	|| (rsvpsenderoutinterfacetable_ !=  nullptr && rsvpsenderoutinterfacetable_->has_operation())
+	|| (rsvpsendertable_ !=  nullptr && rsvpsendertable_->has_operation())
+	|| (rsvpsessiontable_ !=  nullptr && rsvpsessiontable_->has_operation());
 }
 
 std::string RsvpMib::get_segment_path() const
@@ -99,74 +99,74 @@ std::shared_ptr<Entity> RsvpMib::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "rsvpGenObjects")
     {
-        if(rsvpgenobjects == nullptr)
+        if(rsvpgenobjects_ == nullptr)
         {
-            rsvpgenobjects = std::make_shared<RsvpMib::Rsvpgenobjects>();
+            rsvpgenobjects_ = std::make_shared<RsvpMib::Rsvpgenobjects>();
         }
-        return rsvpgenobjects;
+        return rsvpgenobjects_;
     }
 
     if(child_yang_name == "rsvpIfTable")
     {
-        if(rsvpiftable == nullptr)
+        if(rsvpiftable_ == nullptr)
         {
-            rsvpiftable = std::make_shared<RsvpMib::Rsvpiftable>();
+            rsvpiftable_ = std::make_shared<RsvpMib::Rsvpiftable>();
         }
-        return rsvpiftable;
+        return rsvpiftable_;
     }
 
     if(child_yang_name == "rsvpNbrTable")
     {
-        if(rsvpnbrtable == nullptr)
+        if(rsvpnbrtable_ == nullptr)
         {
-            rsvpnbrtable = std::make_shared<RsvpMib::Rsvpnbrtable>();
+            rsvpnbrtable_ = std::make_shared<RsvpMib::Rsvpnbrtable>();
         }
-        return rsvpnbrtable;
+        return rsvpnbrtable_;
     }
 
     if(child_yang_name == "rsvpResvFwdTable")
     {
-        if(rsvpresvfwdtable == nullptr)
+        if(rsvpresvfwdtable_ == nullptr)
         {
-            rsvpresvfwdtable = std::make_shared<RsvpMib::Rsvpresvfwdtable>();
+            rsvpresvfwdtable_ = std::make_shared<RsvpMib::Rsvpresvfwdtable>();
         }
-        return rsvpresvfwdtable;
+        return rsvpresvfwdtable_;
     }
 
     if(child_yang_name == "rsvpResvTable")
     {
-        if(rsvpresvtable == nullptr)
+        if(rsvpresvtable_ == nullptr)
         {
-            rsvpresvtable = std::make_shared<RsvpMib::Rsvpresvtable>();
+            rsvpresvtable_ = std::make_shared<RsvpMib::Rsvpresvtable>();
         }
-        return rsvpresvtable;
+        return rsvpresvtable_;
     }
 
     if(child_yang_name == "rsvpSenderOutInterfaceTable")
     {
-        if(rsvpsenderoutinterfacetable == nullptr)
+        if(rsvpsenderoutinterfacetable_ == nullptr)
         {
-            rsvpsenderoutinterfacetable = std::make_shared<RsvpMib::Rsvpsenderoutinterfacetable>();
+            rsvpsenderoutinterfacetable_ = std::make_shared<RsvpMib::Rsvpsenderoutinterfacetable>();
         }
-        return rsvpsenderoutinterfacetable;
+        return rsvpsenderoutinterfacetable_;
     }
 
     if(child_yang_name == "rsvpSenderTable")
     {
-        if(rsvpsendertable == nullptr)
+        if(rsvpsendertable_ == nullptr)
         {
-            rsvpsendertable = std::make_shared<RsvpMib::Rsvpsendertable>();
+            rsvpsendertable_ = std::make_shared<RsvpMib::Rsvpsendertable>();
         }
-        return rsvpsendertable;
+        return rsvpsendertable_;
     }
 
     if(child_yang_name == "rsvpSessionTable")
     {
-        if(rsvpsessiontable == nullptr)
+        if(rsvpsessiontable_ == nullptr)
         {
-            rsvpsessiontable = std::make_shared<RsvpMib::Rsvpsessiontable>();
+            rsvpsessiontable_ = std::make_shared<RsvpMib::Rsvpsessiontable>();
         }
-        return rsvpsessiontable;
+        return rsvpsessiontable_;
     }
 
     return nullptr;
@@ -175,44 +175,44 @@ std::shared_ptr<Entity> RsvpMib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rsvpgenobjects != nullptr)
+    if(rsvpgenobjects_ != nullptr)
     {
-        children["rsvpGenObjects"] = rsvpgenobjects;
+        children["rsvpGenObjects"] = rsvpgenobjects_;
     }
 
-    if(rsvpiftable != nullptr)
+    if(rsvpiftable_ != nullptr)
     {
-        children["rsvpIfTable"] = rsvpiftable;
+        children["rsvpIfTable"] = rsvpiftable_;
     }
 
-    if(rsvpnbrtable != nullptr)
+    if(rsvpnbrtable_ != nullptr)
     {
-        children["rsvpNbrTable"] = rsvpnbrtable;
+        children["rsvpNbrTable"] = rsvpnbrtable_;
     }
 
-    if(rsvpresvfwdtable != nullptr)
+    if(rsvpresvfwdtable_ != nullptr)
     {
-        children["rsvpResvFwdTable"] = rsvpresvfwdtable;
+        children["rsvpResvFwdTable"] = rsvpresvfwdtable_;
     }
 
-    if(rsvpresvtable != nullptr)
+    if(rsvpresvtable_ != nullptr)
     {
-        children["rsvpResvTable"] = rsvpresvtable;
+        children["rsvpResvTable"] = rsvpresvtable_;
     }
 
-    if(rsvpsenderoutinterfacetable != nullptr)
+    if(rsvpsenderoutinterfacetable_ != nullptr)
     {
-        children["rsvpSenderOutInterfaceTable"] = rsvpsenderoutinterfacetable;
+        children["rsvpSenderOutInterfaceTable"] = rsvpsenderoutinterfacetable_;
     }
 
-    if(rsvpsendertable != nullptr)
+    if(rsvpsendertable_ != nullptr)
     {
-        children["rsvpSenderTable"] = rsvpsendertable;
+        children["rsvpSenderTable"] = rsvpsendertable_;
     }
 
-    if(rsvpsessiontable != nullptr)
+    if(rsvpsessiontable_ != nullptr)
     {
-        children["rsvpSessionTable"] = rsvpsessiontable;
+        children["rsvpSessionTable"] = rsvpsessiontable_;
     }
 
     return children;
@@ -357,9 +357,9 @@ RsvpMib::Rsvpsessiontable::~Rsvpsessiontable()
 
 bool RsvpMib::Rsvpsessiontable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsessionentry_.size(); index++)
     {
-        if(rsvpsessionentry[index]->has_data())
+        if(rsvpsessionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -367,9 +367,9 @@ bool RsvpMib::Rsvpsessiontable::has_data() const
 
 bool RsvpMib::Rsvpsessiontable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsessionentry_.size(); index++)
     {
-        if(rsvpsessionentry[index]->has_operation())
+        if(rsvpsessionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -409,7 +409,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsessiontable::get_child_by_name(const std::
 {
     if(child_yang_name == "rsvpSessionEntry")
     {
-        for(auto const & c : rsvpsessionentry)
+        for(auto const & c : rsvpsessionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -419,7 +419,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsessiontable::get_child_by_name(const std::
         }
         auto c = std::make_shared<RsvpMib::Rsvpsessiontable::Rsvpsessionentry>();
         c->parent = this;
-        rsvpsessionentry.push_back(c);
+        rsvpsessionentry_.push_back(c);
         return c;
     }
 
@@ -429,7 +429,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsessiontable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpsessiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpsessionentry)
+    for (auto const & c : rsvpsessionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -588,9 +588,9 @@ RsvpMib::Rsvpsendertable::~Rsvpsendertable()
 
 bool RsvpMib::Rsvpsendertable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderentry_.size(); index++)
     {
-        if(rsvpsenderentry[index]->has_data())
+        if(rsvpsenderentry_[index]->has_data())
             return true;
     }
     return false;
@@ -598,9 +598,9 @@ bool RsvpMib::Rsvpsendertable::has_data() const
 
 bool RsvpMib::Rsvpsendertable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderentry_.size(); index++)
     {
-        if(rsvpsenderentry[index]->has_operation())
+        if(rsvpsenderentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -640,7 +640,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsendertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "rsvpSenderEntry")
     {
-        for(auto const & c : rsvpsenderentry)
+        for(auto const & c : rsvpsenderentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -650,7 +650,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsendertable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<RsvpMib::Rsvpsendertable::Rsvpsenderentry>();
         c->parent = this;
-        rsvpsenderentry.push_back(c);
+        rsvpsenderentry_.push_back(c);
         return c;
     }
 
@@ -660,7 +660,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsendertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpsendertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpsenderentry)
+    for (auto const & c : rsvpsenderentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1115,9 +1115,9 @@ RsvpMib::Rsvpsenderoutinterfacetable::~Rsvpsenderoutinterfacetable()
 
 bool RsvpMib::Rsvpsenderoutinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry_.size(); index++)
     {
-        if(rsvpsenderoutinterfaceentry[index]->has_data())
+        if(rsvpsenderoutinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1125,9 +1125,9 @@ bool RsvpMib::Rsvpsenderoutinterfacetable::has_data() const
 
 bool RsvpMib::Rsvpsenderoutinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry_.size(); index++)
     {
-        if(rsvpsenderoutinterfaceentry[index]->has_operation())
+        if(rsvpsenderoutinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1167,7 +1167,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsenderoutinterfacetable::get_child_by_name(
 {
     if(child_yang_name == "rsvpSenderOutInterfaceEntry")
     {
-        for(auto const & c : rsvpsenderoutinterfaceentry)
+        for(auto const & c : rsvpsenderoutinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1177,7 +1177,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsenderoutinterfacetable::get_child_by_name(
         }
         auto c = std::make_shared<RsvpMib::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry>();
         c->parent = this;
-        rsvpsenderoutinterfaceentry.push_back(c);
+        rsvpsenderoutinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -1187,7 +1187,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpsenderoutinterfacetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpsenderoutinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpsenderoutinterfaceentry)
+    for (auto const & c : rsvpsenderoutinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1306,9 +1306,9 @@ RsvpMib::Rsvpresvtable::~Rsvpresvtable()
 
 bool RsvpMib::Rsvpresvtable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    for (std::size_t index=0; index<rsvpresventry_.size(); index++)
     {
-        if(rsvpresventry[index]->has_data())
+        if(rsvpresventry_[index]->has_data())
             return true;
     }
     return false;
@@ -1316,9 +1316,9 @@ bool RsvpMib::Rsvpresvtable::has_data() const
 
 bool RsvpMib::Rsvpresvtable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    for (std::size_t index=0; index<rsvpresventry_.size(); index++)
     {
-        if(rsvpresventry[index]->has_operation())
+        if(rsvpresventry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1358,7 +1358,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "rsvpResvEntry")
     {
-        for(auto const & c : rsvpresventry)
+        for(auto const & c : rsvpresventry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1368,7 +1368,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvtable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<RsvpMib::Rsvpresvtable::Rsvpresventry>();
         c->parent = this;
-        rsvpresventry.push_back(c);
+        rsvpresventry_.push_back(c);
         return c;
     }
 
@@ -1378,7 +1378,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpresvtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpresventry)
+    for (auto const & c : rsvpresventry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1713,9 +1713,9 @@ RsvpMib::Rsvpresvfwdtable::~Rsvpresvfwdtable()
 
 bool RsvpMib::Rsvpresvfwdtable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresvfwdentry_.size(); index++)
     {
-        if(rsvpresvfwdentry[index]->has_data())
+        if(rsvpresvfwdentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1723,9 +1723,9 @@ bool RsvpMib::Rsvpresvfwdtable::has_data() const
 
 bool RsvpMib::Rsvpresvfwdtable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresvfwdentry_.size(); index++)
     {
-        if(rsvpresvfwdentry[index]->has_operation())
+        if(rsvpresvfwdentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1765,7 +1765,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvfwdtable::get_child_by_name(const std::
 {
     if(child_yang_name == "rsvpResvFwdEntry")
     {
-        for(auto const & c : rsvpresvfwdentry)
+        for(auto const & c : rsvpresvfwdentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1775,7 +1775,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvfwdtable::get_child_by_name(const std::
         }
         auto c = std::make_shared<RsvpMib::Rsvpresvfwdtable::Rsvpresvfwdentry>();
         c->parent = this;
-        rsvpresvfwdentry.push_back(c);
+        rsvpresvfwdentry_.push_back(c);
         return c;
     }
 
@@ -1785,7 +1785,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpresvfwdtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpresvfwdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpresvfwdentry)
+    for (auto const & c : rsvpresvfwdentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2120,9 +2120,9 @@ RsvpMib::Rsvpiftable::~Rsvpiftable()
 
 bool RsvpMib::Rsvpiftable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    for (std::size_t index=0; index<rsvpifentry_.size(); index++)
     {
-        if(rsvpifentry[index]->has_data())
+        if(rsvpifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2130,9 +2130,9 @@ bool RsvpMib::Rsvpiftable::has_data() const
 
 bool RsvpMib::Rsvpiftable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    for (std::size_t index=0; index<rsvpifentry_.size(); index++)
     {
-        if(rsvpifentry[index]->has_operation())
+        if(rsvpifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2172,7 +2172,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpiftable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "rsvpIfEntry")
     {
-        for(auto const & c : rsvpifentry)
+        for(auto const & c : rsvpifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2182,7 +2182,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpiftable::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<RsvpMib::Rsvpiftable::Rsvpifentry>();
         c->parent = this;
-        rsvpifentry.push_back(c);
+        rsvpifentry_.push_back(c);
         return c;
     }
 
@@ -2192,7 +2192,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpiftable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpifentry)
+    for (auto const & c : rsvpifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2375,9 +2375,9 @@ RsvpMib::Rsvpnbrtable::~Rsvpnbrtable()
 
 bool RsvpMib::Rsvpnbrtable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    for (std::size_t index=0; index<rsvpnbrentry_.size(); index++)
     {
-        if(rsvpnbrentry[index]->has_data())
+        if(rsvpnbrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2385,9 +2385,9 @@ bool RsvpMib::Rsvpnbrtable::has_data() const
 
 bool RsvpMib::Rsvpnbrtable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    for (std::size_t index=0; index<rsvpnbrentry_.size(); index++)
     {
-        if(rsvpnbrentry[index]->has_operation())
+        if(rsvpnbrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2427,7 +2427,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpnbrtable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "rsvpNbrEntry")
     {
-        for(auto const & c : rsvpnbrentry)
+        for(auto const & c : rsvpnbrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2437,7 +2437,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpnbrtable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<RsvpMib::Rsvpnbrtable::Rsvpnbrentry>();
         c->parent = this;
-        rsvpnbrentry.push_back(c);
+        rsvpnbrentry_.push_back(c);
         return c;
     }
 
@@ -2447,7 +2447,7 @@ std::shared_ptr<Entity> RsvpMib::Rsvpnbrtable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RsvpMib::Rsvpnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpnbrentry)
+    for (auto const & c : rsvpnbrentry_)
     {
         children[c->get_segment_path()] = c;
     }

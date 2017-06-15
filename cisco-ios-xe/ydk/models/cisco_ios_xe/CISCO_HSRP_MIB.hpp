@@ -32,8 +32,8 @@ class CiscoHsrpMib : public Entity
         class Chsrpglobalconfig; //type: CiscoHsrpMib::Chsrpglobalconfig
         class Chsrpgrptable; //type: CiscoHsrpMib::Chsrpgrptable
 
-        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpglobalconfig> chsrpglobalconfig;
-        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable> chsrpgrptable;
+        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpglobalconfig> chsrpglobalconfig_;
+        std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable> chsrpgrptable_;
         
 }; // CiscoHsrpMib
 
@@ -73,7 +73,7 @@ class CiscoHsrpMib::Chsrpgrptable : public Entity
 
         class Chsrpgrpentry; //type: CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry> > chsrpgrpentry;
+        std::vector<std::shared_ptr<CISCO_HSRP_MIB::CiscoHsrpMib::Chsrpgrptable::Chsrpgrpentry> > chsrpgrpentry_;
         
 }; // CiscoHsrpMib::Chsrpgrptable
 

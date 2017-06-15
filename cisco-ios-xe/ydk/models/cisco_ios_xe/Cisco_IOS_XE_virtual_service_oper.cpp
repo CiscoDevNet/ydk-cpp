@@ -20,9 +20,9 @@ VirtualServices::~VirtualServices()
 
 bool VirtualServices::has_data() const
 {
-    for (std::size_t index=0; index<virtual_service.size(); index++)
+    for (std::size_t index=0; index<virtual_service_.size(); index++)
     {
-        if(virtual_service[index]->has_data())
+        if(virtual_service_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool VirtualServices::has_data() const
 
 bool VirtualServices::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_service.size(); index++)
+    for (std::size_t index=0; index<virtual_service_.size(); index++)
     {
-        if(virtual_service[index]->has_operation())
+        if(virtual_service_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "virtual-service")
     {
-        for(auto const & c : virtual_service)
+        for(auto const & c : virtual_service_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
         }
         auto c = std::make_shared<VirtualServices::VirtualService>();
         c->parent = this;
-        virtual_service.push_back(c);
+        virtual_service_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : virtual_service)
+    for (auto const & c : virtual_service_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -125,27 +125,27 @@ VirtualServices::VirtualService::VirtualService()
     :
     name{YType::str, "name"}
     	,
-    attached_devices(std::make_shared<VirtualServices::VirtualService::AttachedDevices>())
-	,details(std::make_shared<VirtualServices::VirtualService::Details>())
-	,guest_routes(std::make_shared<VirtualServices::VirtualService::GuestRoutes>())
-	,network_interfaces(std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>())
-	,network_utils(std::make_shared<VirtualServices::VirtualService::NetworkUtils>())
-	,storage_utils(std::make_shared<VirtualServices::VirtualService::StorageUtils>())
-	,utilization(std::make_shared<VirtualServices::VirtualService::Utilization>())
+    attached_devices_(std::make_shared<VirtualServices::VirtualService::AttachedDevices>())
+	,details_(std::make_shared<VirtualServices::VirtualService::Details>())
+	,guest_routes_(std::make_shared<VirtualServices::VirtualService::GuestRoutes>())
+	,network_interfaces_(std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>())
+	,network_utils_(std::make_shared<VirtualServices::VirtualService::NetworkUtils>())
+	,storage_utils_(std::make_shared<VirtualServices::VirtualService::StorageUtils>())
+	,utilization_(std::make_shared<VirtualServices::VirtualService::Utilization>())
 {
-    attached_devices->parent = this;
+    attached_devices_->parent = this;
 
-    details->parent = this;
+    details_->parent = this;
 
-    guest_routes->parent = this;
+    guest_routes_->parent = this;
 
-    network_interfaces->parent = this;
+    network_interfaces_->parent = this;
 
-    network_utils->parent = this;
+    network_utils_->parent = this;
 
-    storage_utils->parent = this;
+    storage_utils_->parent = this;
 
-    utilization->parent = this;
+    utilization_->parent = this;
 
     yang_name = "virtual-service"; yang_parent_name = "virtual-services";
 }
@@ -157,26 +157,26 @@ VirtualServices::VirtualService::~VirtualService()
 bool VirtualServices::VirtualService::has_data() const
 {
     return name.is_set
-	|| (attached_devices !=  nullptr && attached_devices->has_data())
-	|| (details !=  nullptr && details->has_data())
-	|| (guest_routes !=  nullptr && guest_routes->has_data())
-	|| (network_interfaces !=  nullptr && network_interfaces->has_data())
-	|| (network_utils !=  nullptr && network_utils->has_data())
-	|| (storage_utils !=  nullptr && storage_utils->has_data())
-	|| (utilization !=  nullptr && utilization->has_data());
+	|| (attached_devices_ !=  nullptr && attached_devices_->has_data())
+	|| (details_ !=  nullptr && details_->has_data())
+	|| (guest_routes_ !=  nullptr && guest_routes_->has_data())
+	|| (network_interfaces_ !=  nullptr && network_interfaces_->has_data())
+	|| (network_utils_ !=  nullptr && network_utils_->has_data())
+	|| (storage_utils_ !=  nullptr && storage_utils_->has_data())
+	|| (utilization_ !=  nullptr && utilization_->has_data());
 }
 
 bool VirtualServices::VirtualService::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attached_devices !=  nullptr && attached_devices->has_operation())
-	|| (details !=  nullptr && details->has_operation())
-	|| (guest_routes !=  nullptr && guest_routes->has_operation())
-	|| (network_interfaces !=  nullptr && network_interfaces->has_operation())
-	|| (network_utils !=  nullptr && network_utils->has_operation())
-	|| (storage_utils !=  nullptr && storage_utils->has_operation())
-	|| (utilization !=  nullptr && utilization->has_operation());
+	|| (attached_devices_ !=  nullptr && attached_devices_->has_operation())
+	|| (details_ !=  nullptr && details_->has_operation())
+	|| (guest_routes_ !=  nullptr && guest_routes_->has_operation())
+	|| (network_interfaces_ !=  nullptr && network_interfaces_->has_operation())
+	|| (network_utils_ !=  nullptr && network_utils_->has_operation())
+	|| (storage_utils_ !=  nullptr && storage_utils_->has_operation())
+	|| (utilization_ !=  nullptr && utilization_->has_operation());
 }
 
 std::string VirtualServices::VirtualService::get_segment_path() const
@@ -214,65 +214,65 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::get_child_by_name(const
 {
     if(child_yang_name == "attached-devices")
     {
-        if(attached_devices == nullptr)
+        if(attached_devices_ == nullptr)
         {
-            attached_devices = std::make_shared<VirtualServices::VirtualService::AttachedDevices>();
+            attached_devices_ = std::make_shared<VirtualServices::VirtualService::AttachedDevices>();
         }
-        return attached_devices;
+        return attached_devices_;
     }
 
     if(child_yang_name == "details")
     {
-        if(details == nullptr)
+        if(details_ == nullptr)
         {
-            details = std::make_shared<VirtualServices::VirtualService::Details>();
+            details_ = std::make_shared<VirtualServices::VirtualService::Details>();
         }
-        return details;
+        return details_;
     }
 
     if(child_yang_name == "guest-routes")
     {
-        if(guest_routes == nullptr)
+        if(guest_routes_ == nullptr)
         {
-            guest_routes = std::make_shared<VirtualServices::VirtualService::GuestRoutes>();
+            guest_routes_ = std::make_shared<VirtualServices::VirtualService::GuestRoutes>();
         }
-        return guest_routes;
+        return guest_routes_;
     }
 
     if(child_yang_name == "network-interfaces")
     {
-        if(network_interfaces == nullptr)
+        if(network_interfaces_ == nullptr)
         {
-            network_interfaces = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>();
+            network_interfaces_ = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>();
         }
-        return network_interfaces;
+        return network_interfaces_;
     }
 
     if(child_yang_name == "network-utils")
     {
-        if(network_utils == nullptr)
+        if(network_utils_ == nullptr)
         {
-            network_utils = std::make_shared<VirtualServices::VirtualService::NetworkUtils>();
+            network_utils_ = std::make_shared<VirtualServices::VirtualService::NetworkUtils>();
         }
-        return network_utils;
+        return network_utils_;
     }
 
     if(child_yang_name == "storage-utils")
     {
-        if(storage_utils == nullptr)
+        if(storage_utils_ == nullptr)
         {
-            storage_utils = std::make_shared<VirtualServices::VirtualService::StorageUtils>();
+            storage_utils_ = std::make_shared<VirtualServices::VirtualService::StorageUtils>();
         }
-        return storage_utils;
+        return storage_utils_;
     }
 
     if(child_yang_name == "utilization")
     {
-        if(utilization == nullptr)
+        if(utilization_ == nullptr)
         {
-            utilization = std::make_shared<VirtualServices::VirtualService::Utilization>();
+            utilization_ = std::make_shared<VirtualServices::VirtualService::Utilization>();
         }
-        return utilization;
+        return utilization_;
     }
 
     return nullptr;
@@ -281,39 +281,39 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(attached_devices != nullptr)
+    if(attached_devices_ != nullptr)
     {
-        children["attached-devices"] = attached_devices;
+        children["attached-devices"] = attached_devices_;
     }
 
-    if(details != nullptr)
+    if(details_ != nullptr)
     {
-        children["details"] = details;
+        children["details"] = details_;
     }
 
-    if(guest_routes != nullptr)
+    if(guest_routes_ != nullptr)
     {
-        children["guest-routes"] = guest_routes;
+        children["guest-routes"] = guest_routes_;
     }
 
-    if(network_interfaces != nullptr)
+    if(network_interfaces_ != nullptr)
     {
-        children["network-interfaces"] = network_interfaces;
+        children["network-interfaces"] = network_interfaces_;
     }
 
-    if(network_utils != nullptr)
+    if(network_utils_ != nullptr)
     {
-        children["network-utils"] = network_utils;
+        children["network-utils"] = network_utils_;
     }
 
-    if(storage_utils != nullptr)
+    if(storage_utils_ != nullptr)
     {
-        children["storage-utils"] = storage_utils;
+        children["storage-utils"] = storage_utils_;
     }
 
-    if(utilization != nullptr)
+    if(utilization_ != nullptr)
     {
-        children["utilization"] = utilization;
+        children["utilization"] = utilization_;
     }
 
     return children;
@@ -333,18 +333,18 @@ VirtualServices::VirtualService::Details::Details()
     guest_interface{YType::str, "guest-interface"},
     state{YType::str, "state"}
     	,
-    detailed_guest_status(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>())
-	,package_information(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation>())
-	,resource_admission(std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>())
-	,resource_reservation(std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>())
+    detailed_guest_status_(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>())
+	,package_information_(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation>())
+	,resource_admission_(std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>())
+	,resource_reservation_(std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>())
 {
-    detailed_guest_status->parent = this;
+    detailed_guest_status_->parent = this;
 
-    package_information->parent = this;
+    package_information_->parent = this;
 
-    resource_admission->parent = this;
+    resource_admission_->parent = this;
 
-    resource_reservation->parent = this;
+    resource_reservation_->parent = this;
 
     yang_name = "details"; yang_parent_name = "virtual-service";
 }
@@ -358,10 +358,10 @@ bool VirtualServices::VirtualService::Details::has_data() const
     return activated_profile_name.is_set
 	|| guest_interface.is_set
 	|| state.is_set
-	|| (detailed_guest_status !=  nullptr && detailed_guest_status->has_data())
-	|| (package_information !=  nullptr && package_information->has_data())
-	|| (resource_admission !=  nullptr && resource_admission->has_data())
-	|| (resource_reservation !=  nullptr && resource_reservation->has_data());
+	|| (detailed_guest_status_ !=  nullptr && detailed_guest_status_->has_data())
+	|| (package_information_ !=  nullptr && package_information_->has_data())
+	|| (resource_admission_ !=  nullptr && resource_admission_->has_data())
+	|| (resource_reservation_ !=  nullptr && resource_reservation_->has_data());
 }
 
 bool VirtualServices::VirtualService::Details::has_operation() const
@@ -370,10 +370,10 @@ bool VirtualServices::VirtualService::Details::has_operation() const
 	|| is_set(activated_profile_name.operation)
 	|| is_set(guest_interface.operation)
 	|| is_set(state.operation)
-	|| (detailed_guest_status !=  nullptr && detailed_guest_status->has_operation())
-	|| (package_information !=  nullptr && package_information->has_operation())
-	|| (resource_admission !=  nullptr && resource_admission->has_operation())
-	|| (resource_reservation !=  nullptr && resource_reservation->has_operation());
+	|| (detailed_guest_status_ !=  nullptr && detailed_guest_status_->has_operation())
+	|| (package_information_ !=  nullptr && package_information_->has_operation())
+	|| (resource_admission_ !=  nullptr && resource_admission_->has_operation())
+	|| (resource_reservation_ !=  nullptr && resource_reservation_->has_operation());
 }
 
 std::string VirtualServices::VirtualService::Details::get_segment_path() const
@@ -413,38 +413,38 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::get_child_by_n
 {
     if(child_yang_name == "detailed-guest-status")
     {
-        if(detailed_guest_status == nullptr)
+        if(detailed_guest_status_ == nullptr)
         {
-            detailed_guest_status = std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>();
+            detailed_guest_status_ = std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>();
         }
-        return detailed_guest_status;
+        return detailed_guest_status_;
     }
 
     if(child_yang_name == "package-information")
     {
-        if(package_information == nullptr)
+        if(package_information_ == nullptr)
         {
-            package_information = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation>();
+            package_information_ = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation>();
         }
-        return package_information;
+        return package_information_;
     }
 
     if(child_yang_name == "resource-admission")
     {
-        if(resource_admission == nullptr)
+        if(resource_admission_ == nullptr)
         {
-            resource_admission = std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>();
+            resource_admission_ = std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>();
         }
-        return resource_admission;
+        return resource_admission_;
     }
 
     if(child_yang_name == "resource-reservation")
     {
-        if(resource_reservation == nullptr)
+        if(resource_reservation_ == nullptr)
         {
-            resource_reservation = std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>();
+            resource_reservation_ = std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>();
         }
-        return resource_reservation;
+        return resource_reservation_;
     }
 
     return nullptr;
@@ -453,24 +453,24 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(detailed_guest_status != nullptr)
+    if(detailed_guest_status_ != nullptr)
     {
-        children["detailed-guest-status"] = detailed_guest_status;
+        children["detailed-guest-status"] = detailed_guest_status_;
     }
 
-    if(package_information != nullptr)
+    if(package_information_ != nullptr)
     {
-        children["package-information"] = package_information;
+        children["package-information"] = package_information_;
     }
 
-    if(resource_admission != nullptr)
+    if(resource_admission_ != nullptr)
     {
-        children["resource-admission"] = resource_admission;
+        children["resource-admission"] = resource_admission_;
     }
 
-    if(resource_reservation != nullptr)
+    if(resource_reservation_ != nullptr)
     {
-        children["resource-reservation"] = resource_reservation;
+        children["resource-reservation"] = resource_reservation_;
     }
 
     return children;
@@ -497,15 +497,15 @@ VirtualServices::VirtualService::Details::PackageInformation::PackageInformation
     name{YType::str, "name"},
     path{YType::str, "path"}
     	,
-    application(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Application>())
-	,licensing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>())
-	,signing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>())
+    application_(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Application>())
+	,licensing_(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>())
+	,signing_(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>())
 {
-    application->parent = this;
+    application_->parent = this;
 
-    licensing->parent = this;
+    licensing_->parent = this;
 
-    signing->parent = this;
+    signing_->parent = this;
 
     yang_name = "package-information"; yang_parent_name = "details";
 }
@@ -518,9 +518,9 @@ bool VirtualServices::VirtualService::Details::PackageInformation::has_data() co
 {
     return name.is_set
 	|| path.is_set
-	|| (application !=  nullptr && application->has_data())
-	|| (licensing !=  nullptr && licensing->has_data())
-	|| (signing !=  nullptr && signing->has_data());
+	|| (application_ !=  nullptr && application_->has_data())
+	|| (licensing_ !=  nullptr && licensing_->has_data())
+	|| (signing_ !=  nullptr && signing_->has_data());
 }
 
 bool VirtualServices::VirtualService::Details::PackageInformation::has_operation() const
@@ -528,9 +528,9 @@ bool VirtualServices::VirtualService::Details::PackageInformation::has_operation
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(path.operation)
-	|| (application !=  nullptr && application->has_operation())
-	|| (licensing !=  nullptr && licensing->has_operation())
-	|| (signing !=  nullptr && signing->has_operation());
+	|| (application_ !=  nullptr && application_->has_operation())
+	|| (licensing_ !=  nullptr && licensing_->has_operation())
+	|| (signing_ !=  nullptr && signing_->has_operation());
 }
 
 std::string VirtualServices::VirtualService::Details::PackageInformation::get_segment_path() const
@@ -569,29 +569,29 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 {
     if(child_yang_name == "application")
     {
-        if(application == nullptr)
+        if(application_ == nullptr)
         {
-            application = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Application>();
+            application_ = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Application>();
         }
-        return application;
+        return application_;
     }
 
     if(child_yang_name == "licensing")
     {
-        if(licensing == nullptr)
+        if(licensing_ == nullptr)
         {
-            licensing = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>();
+            licensing_ = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>();
         }
-        return licensing;
+        return licensing_;
     }
 
     if(child_yang_name == "signing")
     {
-        if(signing == nullptr)
+        if(signing_ == nullptr)
         {
-            signing = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>();
+            signing_ = std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>();
         }
-        return signing;
+        return signing_;
     }
 
     return nullptr;
@@ -600,19 +600,19 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(application != nullptr)
+    if(application_ != nullptr)
     {
-        children["application"] = application;
+        children["application"] = application_;
     }
 
-    if(licensing != nullptr)
+    if(licensing_ != nullptr)
     {
-        children["licensing"] = licensing;
+        children["licensing"] = licensing_;
     }
 
-    if(signing != nullptr)
+    if(signing_ != nullptr)
     {
-        children["signing"] = signing;
+        children["signing"] = signing_;
     }
 
     return children;
@@ -880,9 +880,9 @@ void VirtualServices::VirtualService::Details::PackageInformation::Licensing::se
 
 VirtualServices::VirtualService::Details::DetailedGuestStatus::DetailedGuestStatus()
     :
-    processes(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes>())
+    processes_(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes>())
 {
-    processes->parent = this;
+    processes_->parent = this;
 
     yang_name = "detailed-guest-status"; yang_parent_name = "details";
 }
@@ -893,13 +893,13 @@ VirtualServices::VirtualService::Details::DetailedGuestStatus::~DetailedGuestSta
 
 bool VirtualServices::VirtualService::Details::DetailedGuestStatus::has_data() const
 {
-    return (processes !=  nullptr && processes->has_data());
+    return (processes_ !=  nullptr && processes_->has_data());
 }
 
 bool VirtualServices::VirtualService::Details::DetailedGuestStatus::has_operation() const
 {
     return is_set(operation)
-	|| (processes !=  nullptr && processes->has_operation());
+	|| (processes_ !=  nullptr && processes_->has_operation());
 }
 
 std::string VirtualServices::VirtualService::Details::DetailedGuestStatus::get_segment_path() const
@@ -936,11 +936,11 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestS
 {
     if(child_yang_name == "processes")
     {
-        if(processes == nullptr)
+        if(processes_ == nullptr)
         {
-            processes = std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes>();
+            processes_ = std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes>();
         }
-        return processes;
+        return processes_;
     }
 
     return nullptr;
@@ -949,9 +949,9 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestS
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(processes != nullptr)
+    if(processes_ != nullptr)
     {
-        children["processes"] = processes;
+        children["processes"] = processes_;
     }
 
     return children;
@@ -1261,12 +1261,12 @@ VirtualServices::VirtualService::Utilization::Utilization()
     :
     name{YType::str, "name"}
     	,
-    cpu_util(std::make_shared<VirtualServices::VirtualService::Utilization::CpuUtil>())
-	,memory_util(std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>())
+    cpu_util_(std::make_shared<VirtualServices::VirtualService::Utilization::CpuUtil>())
+	,memory_util_(std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>())
 {
-    cpu_util->parent = this;
+    cpu_util_->parent = this;
 
-    memory_util->parent = this;
+    memory_util_->parent = this;
 
     yang_name = "utilization"; yang_parent_name = "virtual-service";
 }
@@ -1278,16 +1278,16 @@ VirtualServices::VirtualService::Utilization::~Utilization()
 bool VirtualServices::VirtualService::Utilization::has_data() const
 {
     return name.is_set
-	|| (cpu_util !=  nullptr && cpu_util->has_data())
-	|| (memory_util !=  nullptr && memory_util->has_data());
+	|| (cpu_util_ !=  nullptr && cpu_util_->has_data())
+	|| (memory_util_ !=  nullptr && memory_util_->has_data());
 }
 
 bool VirtualServices::VirtualService::Utilization::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (cpu_util !=  nullptr && cpu_util->has_operation())
-	|| (memory_util !=  nullptr && memory_util->has_operation());
+	|| (cpu_util_ !=  nullptr && cpu_util_->has_operation())
+	|| (memory_util_ !=  nullptr && memory_util_->has_operation());
 }
 
 std::string VirtualServices::VirtualService::Utilization::get_segment_path() const
@@ -1325,20 +1325,20 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::get_child_
 {
     if(child_yang_name == "cpu-util")
     {
-        if(cpu_util == nullptr)
+        if(cpu_util_ == nullptr)
         {
-            cpu_util = std::make_shared<VirtualServices::VirtualService::Utilization::CpuUtil>();
+            cpu_util_ = std::make_shared<VirtualServices::VirtualService::Utilization::CpuUtil>();
         }
-        return cpu_util;
+        return cpu_util_;
     }
 
     if(child_yang_name == "memory-util")
     {
-        if(memory_util == nullptr)
+        if(memory_util_ == nullptr)
         {
-            memory_util = std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>();
+            memory_util_ = std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>();
         }
-        return memory_util;
+        return memory_util_;
     }
 
     return nullptr;
@@ -1347,14 +1347,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::get_child_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpu_util != nullptr)
+    if(cpu_util_ != nullptr)
     {
-        children["cpu-util"] = cpu_util;
+        children["cpu-util"] = cpu_util_;
     }
 
-    if(memory_util != nullptr)
+    if(memory_util_ != nullptr)
     {
-        children["memory-util"] = memory_util;
+        children["memory-util"] = memory_util_;
     }
 
     return children;
@@ -1547,9 +1547,9 @@ VirtualServices::VirtualService::NetworkUtils::~NetworkUtils()
 
 bool VirtualServices::VirtualService::NetworkUtils::has_data() const
 {
-    for (std::size_t index=0; index<network_util.size(); index++)
+    for (std::size_t index=0; index<network_util_.size(); index++)
     {
-        if(network_util[index]->has_data())
+        if(network_util_[index]->has_data())
             return true;
     }
     return false;
@@ -1557,9 +1557,9 @@ bool VirtualServices::VirtualService::NetworkUtils::has_data() const
 
 bool VirtualServices::VirtualService::NetworkUtils::has_operation() const
 {
-    for (std::size_t index=0; index<network_util.size(); index++)
+    for (std::size_t index=0; index<network_util_.size(); index++)
     {
-        if(network_util[index]->has_operation())
+        if(network_util_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1599,7 +1599,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
 {
     if(child_yang_name == "network-util")
     {
-        for(auto const & c : network_util)
+        for(auto const & c : network_util_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1609,7 +1609,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
         }
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkUtils::NetworkUtil>();
         c->parent = this;
-        network_util.push_back(c);
+        network_util_.push_back(c);
         return c;
     }
 
@@ -1619,7 +1619,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkUtils::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : network_util)
+    for (auto const & c : network_util_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1770,9 +1770,9 @@ VirtualServices::VirtualService::StorageUtils::~StorageUtils()
 
 bool VirtualServices::VirtualService::StorageUtils::has_data() const
 {
-    for (std::size_t index=0; index<storage_util.size(); index++)
+    for (std::size_t index=0; index<storage_util_.size(); index++)
     {
-        if(storage_util[index]->has_data())
+        if(storage_util_[index]->has_data())
             return true;
     }
     return false;
@@ -1780,9 +1780,9 @@ bool VirtualServices::VirtualService::StorageUtils::has_data() const
 
 bool VirtualServices::VirtualService::StorageUtils::has_operation() const
 {
-    for (std::size_t index=0; index<storage_util.size(); index++)
+    for (std::size_t index=0; index<storage_util_.size(); index++)
     {
-        if(storage_util[index]->has_operation())
+        if(storage_util_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1822,7 +1822,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
 {
     if(child_yang_name == "storage-util")
     {
-        for(auto const & c : storage_util)
+        for(auto const & c : storage_util_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1832,7 +1832,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
         }
         auto c = std::make_shared<VirtualServices::VirtualService::StorageUtils::StorageUtil>();
         c->parent = this;
-        storage_util.push_back(c);
+        storage_util_.push_back(c);
         return c;
     }
 
@@ -1842,7 +1842,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::StorageUtils::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : storage_util)
+    for (auto const & c : storage_util_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2017,9 +2017,9 @@ VirtualServices::VirtualService::AttachedDevices::~AttachedDevices()
 
 bool VirtualServices::VirtualService::AttachedDevices::has_data() const
 {
-    for (std::size_t index=0; index<attached_device.size(); index++)
+    for (std::size_t index=0; index<attached_device_.size(); index++)
     {
-        if(attached_device[index]->has_data())
+        if(attached_device_[index]->has_data())
             return true;
     }
     return false;
@@ -2027,9 +2027,9 @@ bool VirtualServices::VirtualService::AttachedDevices::has_data() const
 
 bool VirtualServices::VirtualService::AttachedDevices::has_operation() const
 {
-    for (std::size_t index=0; index<attached_device.size(); index++)
+    for (std::size_t index=0; index<attached_device_.size(); index++)
     {
-        if(attached_device[index]->has_operation())
+        if(attached_device_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2069,7 +2069,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
 {
     if(child_yang_name == "attached-device")
     {
-        for(auto const & c : attached_device)
+        for(auto const & c : attached_device_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2079,7 +2079,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
         }
         auto c = std::make_shared<VirtualServices::VirtualService::AttachedDevices::AttachedDevice>();
         c->parent = this;
-        attached_device.push_back(c);
+        attached_device_.push_back(c);
         return c;
     }
 
@@ -2089,7 +2089,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::AttachedDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : attached_device)
+    for (auto const & c : attached_device_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2200,9 +2200,9 @@ VirtualServices::VirtualService::NetworkInterfaces::~NetworkInterfaces()
 
 bool VirtualServices::VirtualService::NetworkInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<network_interface.size(); index++)
+    for (std::size_t index=0; index<network_interface_.size(); index++)
     {
-        if(network_interface[index]->has_data())
+        if(network_interface_[index]->has_data())
             return true;
     }
     return false;
@@ -2210,9 +2210,9 @@ bool VirtualServices::VirtualService::NetworkInterfaces::has_data() const
 
 bool VirtualServices::VirtualService::NetworkInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<network_interface.size(); index++)
+    for (std::size_t index=0; index<network_interface_.size(); index++)
     {
-        if(network_interface[index]->has_operation())
+        if(network_interface_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2252,7 +2252,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
 {
     if(child_yang_name == "network-interface")
     {
-        for(auto const & c : network_interface)
+        for(auto const & c : network_interface_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2262,7 +2262,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
         }
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface>();
         c->parent = this;
-        network_interface.push_back(c);
+        network_interface_.push_back(c);
         return c;
     }
 
@@ -2272,7 +2272,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : network_interface)
+    for (auto const & c : network_interface_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2375,9 +2375,9 @@ VirtualServices::VirtualService::GuestRoutes::~GuestRoutes()
 
 bool VirtualServices::VirtualService::GuestRoutes::has_data() const
 {
-    for (std::size_t index=0; index<guest_route.size(); index++)
+    for (std::size_t index=0; index<guest_route_.size(); index++)
     {
-        if(guest_route[index]->has_data())
+        if(guest_route_[index]->has_data())
             return true;
     }
     return false;
@@ -2385,9 +2385,9 @@ bool VirtualServices::VirtualService::GuestRoutes::has_data() const
 
 bool VirtualServices::VirtualService::GuestRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<guest_route.size(); index++)
+    for (std::size_t index=0; index<guest_route_.size(); index++)
     {
-        if(guest_route[index]->has_operation())
+        if(guest_route_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2427,7 +2427,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
 {
     if(child_yang_name == "guest-route")
     {
-        for(auto const & c : guest_route)
+        for(auto const & c : guest_route_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2437,7 +2437,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
         }
         auto c = std::make_shared<VirtualServices::VirtualService::GuestRoutes::GuestRoute>();
         c->parent = this;
-        guest_route.push_back(c);
+        guest_route_.push_back(c);
         return c;
     }
 
@@ -2447,7 +2447,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::GuestRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : guest_route)
+    for (auto const & c : guest_route_)
     {
         children[c->get_segment_path()] = c;
     }

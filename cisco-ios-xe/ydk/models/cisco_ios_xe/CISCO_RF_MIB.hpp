@@ -35,12 +35,12 @@ class CiscoRfMib : public Entity
         class Crfhistoryswitchovertable; //type: CiscoRfMib::Crfhistoryswitchovertable
         class Crfstatusrfclienttable; //type: CiscoRfMib::Crfstatusrfclienttable
 
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfcfg> crfcfg;
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistory> crfhistory;
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistoryswitchovertable> crfhistoryswitchovertable;
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatus> crfstatus;
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfclienttable> crfstatusrfclienttable;
-        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfmodecapstable> crfstatusrfmodecapstable;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfcfg> crfcfg_;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistory> crfhistory_;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistoryswitchovertable> crfhistoryswitchovertable_;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatus> crfstatus_;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfclienttable> crfstatusrfclienttable_;
+        std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfmodecapstable> crfstatusrfmodecapstable_;
         
 }; // CiscoRfMib
 
@@ -148,7 +148,7 @@ class CiscoRfMib::Crfstatusrfmodecapstable : public Entity
 
         class Crfstatusrfmodecapsentry; //type: CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry
 
-        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry> > crfstatusrfmodecapsentry;
+        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry> > crfstatusrfmodecapsentry_;
         
 }; // CiscoRfMib::Crfstatusrfmodecapstable
 
@@ -189,7 +189,7 @@ class CiscoRfMib::Crfhistoryswitchovertable : public Entity
 
         class Crfhistoryswitchoverentry; //type: CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry
 
-        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry> > crfhistoryswitchoverentry;
+        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry> > crfhistoryswitchoverentry_;
         
 }; // CiscoRfMib::Crfhistoryswitchovertable
 
@@ -233,7 +233,7 @@ class CiscoRfMib::Crfstatusrfclienttable : public Entity
 
         class Crfstatusrfcliententry; //type: CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry
 
-        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry> > crfstatusrfcliententry;
+        std::vector<std::shared_ptr<CISCO_RF_MIB::CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry> > crfstatusrfcliententry_;
         
 }; // CiscoRfMib::Crfstatusrfclienttable
 

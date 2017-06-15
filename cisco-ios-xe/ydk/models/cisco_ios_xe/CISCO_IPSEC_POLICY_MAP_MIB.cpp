@@ -11,12 +11,12 @@ namespace CISCO_IPSEC_POLICY_MAP_MIB {
 
 CiscoIpsecPolicyMapMib::CiscoIpsecPolicyMapMib()
     :
-    ikepolmaptable(std::make_shared<CiscoIpsecPolicyMapMib::Ikepolmaptable>())
-	,ipsecpolmaptable(std::make_shared<CiscoIpsecPolicyMapMib::Ipsecpolmaptable>())
+    ikepolmaptable_(std::make_shared<CiscoIpsecPolicyMapMib::Ikepolmaptable>())
+	,ipsecpolmaptable_(std::make_shared<CiscoIpsecPolicyMapMib::Ipsecpolmaptable>())
 {
-    ikepolmaptable->parent = this;
+    ikepolmaptable_->parent = this;
 
-    ipsecpolmaptable->parent = this;
+    ipsecpolmaptable_->parent = this;
 
     yang_name = "CISCO-IPSEC-POLICY-MAP-MIB"; yang_parent_name = "CISCO-IPSEC-POLICY-MAP-MIB";
 }
@@ -27,15 +27,15 @@ CiscoIpsecPolicyMapMib::~CiscoIpsecPolicyMapMib()
 
 bool CiscoIpsecPolicyMapMib::has_data() const
 {
-    return (ikepolmaptable !=  nullptr && ikepolmaptable->has_data())
-	|| (ipsecpolmaptable !=  nullptr && ipsecpolmaptable->has_data());
+    return (ikepolmaptable_ !=  nullptr && ikepolmaptable_->has_data())
+	|| (ipsecpolmaptable_ !=  nullptr && ipsecpolmaptable_->has_data());
 }
 
 bool CiscoIpsecPolicyMapMib::has_operation() const
 {
     return is_set(operation)
-	|| (ikepolmaptable !=  nullptr && ikepolmaptable->has_operation())
-	|| (ipsecpolmaptable !=  nullptr && ipsecpolmaptable->has_operation());
+	|| (ikepolmaptable_ !=  nullptr && ikepolmaptable_->has_operation())
+	|| (ipsecpolmaptable_ !=  nullptr && ipsecpolmaptable_->has_operation());
 }
 
 std::string CiscoIpsecPolicyMapMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "ikePolMapTable")
     {
-        if(ikepolmaptable == nullptr)
+        if(ikepolmaptable_ == nullptr)
         {
-            ikepolmaptable = std::make_shared<CiscoIpsecPolicyMapMib::Ikepolmaptable>();
+            ikepolmaptable_ = std::make_shared<CiscoIpsecPolicyMapMib::Ikepolmaptable>();
         }
-        return ikepolmaptable;
+        return ikepolmaptable_;
     }
 
     if(child_yang_name == "ipSecPolMapTable")
     {
-        if(ipsecpolmaptable == nullptr)
+        if(ipsecpolmaptable_ == nullptr)
         {
-            ipsecpolmaptable = std::make_shared<CiscoIpsecPolicyMapMib::Ipsecpolmaptable>();
+            ipsecpolmaptable_ = std::make_shared<CiscoIpsecPolicyMapMib::Ipsecpolmaptable>();
         }
-        return ipsecpolmaptable;
+        return ipsecpolmaptable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecPolicyMapMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ikepolmaptable != nullptr)
+    if(ikepolmaptable_ != nullptr)
     {
-        children["ikePolMapTable"] = ikepolmaptable;
+        children["ikePolMapTable"] = ikepolmaptable_;
     }
 
-    if(ipsecpolmaptable != nullptr)
+    if(ipsecpolmaptable_ != nullptr)
     {
-        children["ipSecPolMapTable"] = ipsecpolmaptable;
+        children["ipSecPolMapTable"] = ipsecpolmaptable_;
     }
 
     return children;
@@ -139,9 +139,9 @@ CiscoIpsecPolicyMapMib::Ikepolmaptable::~Ikepolmaptable()
 
 bool CiscoIpsecPolicyMapMib::Ikepolmaptable::has_data() const
 {
-    for (std::size_t index=0; index<ikepolmapentry.size(); index++)
+    for (std::size_t index=0; index<ikepolmapentry_.size(); index++)
     {
-        if(ikepolmapentry[index]->has_data())
+        if(ikepolmapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool CiscoIpsecPolicyMapMib::Ikepolmaptable::has_data() const
 
 bool CiscoIpsecPolicyMapMib::Ikepolmaptable::has_operation() const
 {
-    for (std::size_t index=0; index<ikepolmapentry.size(); index++)
+    for (std::size_t index=0; index<ikepolmapentry_.size(); index++)
     {
-        if(ikepolmapentry[index]->has_operation())
+        if(ikepolmapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ikepolmaptable::get_child_by_nam
 {
     if(child_yang_name == "ikePolMapEntry")
     {
-        for(auto const & c : ikepolmapentry)
+        for(auto const & c : ikepolmapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ikepolmaptable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoIpsecPolicyMapMib::Ikepolmaptable::Ikepolmapentry>();
         c->parent = this;
-        ikepolmapentry.push_back(c);
+        ikepolmapentry_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ikepolmaptable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecPolicyMapMib::Ikepolmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ikepolmapentry)
+    for (auto const & c : ikepolmapentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -314,9 +314,9 @@ CiscoIpsecPolicyMapMib::Ipsecpolmaptable::~Ipsecpolmaptable()
 
 bool CiscoIpsecPolicyMapMib::Ipsecpolmaptable::has_data() const
 {
-    for (std::size_t index=0; index<ipsecpolmapentry.size(); index++)
+    for (std::size_t index=0; index<ipsecpolmapentry_.size(); index++)
     {
-        if(ipsecpolmapentry[index]->has_data())
+        if(ipsecpolmapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -324,9 +324,9 @@ bool CiscoIpsecPolicyMapMib::Ipsecpolmaptable::has_data() const
 
 bool CiscoIpsecPolicyMapMib::Ipsecpolmaptable::has_operation() const
 {
-    for (std::size_t index=0; index<ipsecpolmapentry.size(); index++)
+    for (std::size_t index=0; index<ipsecpolmapentry_.size(); index++)
     {
-        if(ipsecpolmapentry[index]->has_operation())
+        if(ipsecpolmapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -366,7 +366,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ipsecpolmaptable::get_child_by_n
 {
     if(child_yang_name == "ipSecPolMapEntry")
     {
-        for(auto const & c : ipsecpolmapentry)
+        for(auto const & c : ipsecpolmapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -376,7 +376,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ipsecpolmaptable::get_child_by_n
         }
         auto c = std::make_shared<CiscoIpsecPolicyMapMib::Ipsecpolmaptable::Ipsecpolmapentry>();
         c->parent = this;
-        ipsecpolmapentry.push_back(c);
+        ipsecpolmapentry_.push_back(c);
         return c;
     }
 
@@ -386,7 +386,7 @@ std::shared_ptr<Entity> CiscoIpsecPolicyMapMib::Ipsecpolmaptable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecPolicyMapMib::Ipsecpolmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipsecpolmapentry)
+    for (auto const & c : ipsecpolmapentry_)
     {
         children[c->get_segment_path()] = c;
     }

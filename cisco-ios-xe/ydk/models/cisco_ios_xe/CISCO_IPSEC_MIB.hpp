@@ -39,16 +39,16 @@ class CiscoIpsecMib : public Entity
         class Cipsstaticcryptomaptable; //type: CiscoIpsecMib::Cipsstaticcryptomaptable
         class Cipscryptomapsetiftable; //type: CiscoIpsecMib::Cipscryptomapsetiftable
 
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipscryptomapsetiftable> cipscryptomapsetiftable;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsdynamiccryptomapsettable> cipsdynamiccryptomapsettable;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsipsecglobals> cipsipsecglobals;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsipsecstatistics> cipsipsecstatistics;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmpgroup> cipsisakmpgroup;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmppolicytable> cipsisakmppolicytable;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomapsettable> cipsstaticcryptomapsettable;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomaptable> cipsstaticcryptomaptable;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipssyscapacitygroup> cipssyscapacitygroup;
-        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipstrapcntlgroup> cipstrapcntlgroup;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipscryptomapsetiftable> cipscryptomapsetiftable_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsdynamiccryptomapsettable> cipsdynamiccryptomapsettable_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsipsecglobals> cipsipsecglobals_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsipsecstatistics> cipsipsecstatistics_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmpgroup> cipsisakmpgroup_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmppolicytable> cipsisakmppolicytable_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomapsettable> cipsstaticcryptomapsettable_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomaptable> cipsstaticcryptomaptable_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipssyscapacitygroup> cipssyscapacitygroup_;
+        std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipstrapcntlgroup> cipstrapcntlgroup_;
         
 }; // CiscoIpsecMib
 
@@ -181,7 +181,7 @@ class CiscoIpsecMib::Cipsisakmppolicytable : public Entity
 
         class Cipsisakmppolicyentry; //type: CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry> > cipsisakmppolicyentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry> > cipsisakmppolicyentry_;
         
 }; // CiscoIpsecMib::Cipsisakmppolicytable
 
@@ -226,7 +226,7 @@ class CiscoIpsecMib::Cipsstaticcryptomapsettable : public Entity
 
         class Cipsstaticcryptomapsetentry; //type: CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry> > cipsstaticcryptomapsetentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry> > cipsstaticcryptomapsetentry_;
         
 }; // CiscoIpsecMib::Cipsstaticcryptomapsettable
 
@@ -273,7 +273,7 @@ class CiscoIpsecMib::Cipsdynamiccryptomapsettable : public Entity
 
         class Cipsdynamiccryptomapsetentry; //type: CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry> > cipsdynamiccryptomapsetentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry> > cipsdynamiccryptomapsetentry_;
         
 }; // CiscoIpsecMib::Cipsdynamiccryptomapsettable
 
@@ -315,7 +315,7 @@ class CiscoIpsecMib::Cipsstaticcryptomaptable : public Entity
 
         class Cipsstaticcryptomapentry; //type: CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry> > cipsstaticcryptomapentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry> > cipsstaticcryptomapentry_;
         
 }; // CiscoIpsecMib::Cipsstaticcryptomaptable
 
@@ -365,7 +365,7 @@ class CiscoIpsecMib::Cipscryptomapsetiftable : public Entity
 
         class Cipscryptomapsetifentry; //type: CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry
 
-        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry> > cipscryptomapsetifentry;
+        std::vector<std::shared_ptr<CISCO_IPSEC_MIB::CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry> > cipscryptomapsetifentry_;
         
 }; // CiscoIpsecMib::Cipscryptomapsetiftable
 

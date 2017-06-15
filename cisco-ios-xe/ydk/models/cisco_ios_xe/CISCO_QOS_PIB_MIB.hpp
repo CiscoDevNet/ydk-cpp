@@ -47,24 +47,24 @@ class CiscoQosPibMib : public Entity
         class Qosiftaildroptable; //type: CiscoQosPibMib::Qosiftaildroptable
         class Qosifweightstable; //type: CiscoQosPibMib::Qosifweightstable
 
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable> qosaggregatetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable> qoscostodscptable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable> qosdeviceattributetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable> qosdevicepibincarnationtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable> qosdiffservmappingtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable> qosifdroppreferencetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable> qosifdscpassignmenttable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable> qosifredtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable> qosifschedulingpreferencestable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable> qosiftaildroptable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable> qosifweightstable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable> qosinterfacetypetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable> qosipacetable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable> qosipaclactiontable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable> qosipacldefinitiontable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable> qosmacclassificationtable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable> qospolicertable;
-        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable> qosunmatchedpolicytable;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable> qosaggregatetable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable> qoscostodscptable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable> qosdeviceattributetable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable> qosdevicepibincarnationtable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable> qosdiffservmappingtable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable> qosifdroppreferencetable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable> qosifdscpassignmenttable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable> qosifredtable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable> qosifschedulingpreferencestable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable> qosiftaildroptable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable> qosifweightstable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable> qosinterfacetypetable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable> qosipacetable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable> qosipaclactiontable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable> qosipacldefinitiontable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable> qosmacclassificationtable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable> qospolicertable_;
+        std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable> qosunmatchedpolicytable_;
         
 }; // CiscoQosPibMib
 
@@ -85,7 +85,7 @@ class CiscoQosPibMib::Qosdevicepibincarnationtable : public Entity
 
         class Qosdevicepibincarnationentry; //type: CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry> > qosdevicepibincarnationentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry> > qosdevicepibincarnationentry_;
         
 }; // CiscoQosPibMib::Qosdevicepibincarnationtable
 
@@ -128,7 +128,7 @@ class CiscoQosPibMib::Qosdeviceattributetable : public Entity
 
         class Qosdeviceattributeentry; //type: CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry> > qosdeviceattributeentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdeviceattributetable::Qosdeviceattributeentry> > qosdeviceattributeentry_;
         
 }; // CiscoQosPibMib::Qosdeviceattributetable
 
@@ -173,7 +173,7 @@ class CiscoQosPibMib::Qosinterfacetypetable : public Entity
 
         class Qosinterfacetypeentry; //type: CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry> > qosinterfacetypeentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosinterfacetypetable::Qosinterfacetypeentry> > qosinterfacetypeentry_;
         
 }; // CiscoQosPibMib::Qosinterfacetypetable
 
@@ -216,7 +216,7 @@ class CiscoQosPibMib::Qosdiffservmappingtable : public Entity
 
         class Qosdiffservmappingentry; //type: CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry> > qosdiffservmappingentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosdiffservmappingtable::Qosdiffservmappingentry> > qosdiffservmappingentry_;
         
 }; // CiscoQosPibMib::Qosdiffservmappingtable
 
@@ -258,7 +258,7 @@ class CiscoQosPibMib::Qoscostodscptable : public Entity
 
         class Qoscostodscpentry; //type: CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry> > qoscostodscpentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qoscostodscptable::Qoscostodscpentry> > qoscostodscpentry_;
         
 }; // CiscoQosPibMib::Qoscostodscptable
 
@@ -299,7 +299,7 @@ class CiscoQosPibMib::Qosunmatchedpolicytable : public Entity
 
         class Qosunmatchedpolicyentry; //type: CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry> > qosunmatchedpolicyentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosunmatchedpolicytable::Qosunmatchedpolicyentry> > qosunmatchedpolicyentry_;
         
 }; // CiscoQosPibMib::Qosunmatchedpolicytable
 
@@ -346,7 +346,7 @@ class CiscoQosPibMib::Qospolicertable : public Entity
 
         class Qospolicerentry; //type: CiscoQosPibMib::Qospolicertable::Qospolicerentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable::Qospolicerentry> > qospolicerentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qospolicertable::Qospolicerentry> > qospolicerentry_;
         
 }; // CiscoQosPibMib::Qospolicertable
 
@@ -391,7 +391,7 @@ class CiscoQosPibMib::Qosaggregatetable : public Entity
 
         class Qosaggregateentry; //type: CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry> > qosaggregateentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosaggregatetable::Qosaggregateentry> > qosaggregateentry_;
         
 }; // CiscoQosPibMib::Qosaggregatetable
 
@@ -432,7 +432,7 @@ class CiscoQosPibMib::Qosmacclassificationtable : public Entity
 
         class Qosmacclassificationentry; //type: CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry> > qosmacclassificationentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosmacclassificationtable::Qosmacclassificationentry> > qosmacclassificationentry_;
         
 }; // CiscoQosPibMib::Qosmacclassificationtable
 
@@ -475,7 +475,7 @@ class CiscoQosPibMib::Qosipacetable : public Entity
 
         class Qosipaceentry; //type: CiscoQosPibMib::Qosipacetable::Qosipaceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable::Qosipaceentry> > qosipaceentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacetable::Qosipaceentry> > qosipaceentry_;
         
 }; // CiscoQosPibMib::Qosipacetable
 
@@ -527,7 +527,7 @@ class CiscoQosPibMib::Qosipacldefinitiontable : public Entity
 
         class Qosipacldefinitionentry; //type: CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry> > qosipacldefinitionentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipacldefinitiontable::Qosipacldefinitionentry> > qosipacldefinitionentry_;
         
 }; // CiscoQosPibMib::Qosipacldefinitiontable
 
@@ -570,7 +570,7 @@ class CiscoQosPibMib::Qosipaclactiontable : public Entity
 
         class Qosipaclactionentry; //type: CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry> > qosipaclactionentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosipaclactiontable::Qosipaclactionentry> > qosipaclactionentry_;
         
 }; // CiscoQosPibMib::Qosipaclactiontable
 
@@ -619,7 +619,7 @@ class CiscoQosPibMib::Qosifschedulingpreferencestable : public Entity
 
         class Qosifschedulingpreferenceentry; //type: CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry> > qosifschedulingpreferenceentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry> > qosifschedulingpreferenceentry_;
         
 }; // CiscoQosPibMib::Qosifschedulingpreferencestable
 
@@ -664,7 +664,7 @@ class CiscoQosPibMib::Qosifdroppreferencetable : public Entity
 
         class Qosifdroppreferenceentry; //type: CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry> > qosifdroppreferenceentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdroppreferencetable::Qosifdroppreferenceentry> > qosifdroppreferenceentry_;
         
 }; // CiscoQosPibMib::Qosifdroppreferencetable
 
@@ -708,7 +708,7 @@ class CiscoQosPibMib::Qosifdscpassignmenttable : public Entity
 
         class Qosifdscpassignmententry; //type: CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry> > qosifdscpassignmententry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifdscpassignmenttable::Qosifdscpassignmententry> > qosifdscpassignmententry_;
         
 }; // CiscoQosPibMib::Qosifdscpassignmenttable
 
@@ -753,7 +753,7 @@ class CiscoQosPibMib::Qosifredtable : public Entity
 
         class Qosifredentry; //type: CiscoQosPibMib::Qosifredtable::Qosifredentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable::Qosifredentry> > qosifredentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifredtable::Qosifredentry> > qosifredentry_;
         
 }; // CiscoQosPibMib::Qosifredtable
 
@@ -798,7 +798,7 @@ class CiscoQosPibMib::Qosiftaildroptable : public Entity
 
         class Qosiftaildropentry; //type: CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry> > qosiftaildropentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosiftaildroptable::Qosiftaildropentry> > qosiftaildropentry_;
         
 }; // CiscoQosPibMib::Qosiftaildroptable
 
@@ -842,7 +842,7 @@ class CiscoQosPibMib::Qosifweightstable : public Entity
 
         class Qosifweightsentry; //type: CiscoQosPibMib::Qosifweightstable::Qosifweightsentry
 
-        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable::Qosifweightsentry> > qosifweightsentry;
+        std::vector<std::shared_ptr<CISCO_QOS_PIB_MIB::CiscoQosPibMib::Qosifweightstable::Qosifweightsentry> > qosifweightsentry_;
         
 }; // CiscoQosPibMib::Qosifweightstable
 

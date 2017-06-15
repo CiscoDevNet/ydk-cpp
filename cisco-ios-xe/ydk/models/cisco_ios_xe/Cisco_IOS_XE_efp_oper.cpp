@@ -20,9 +20,9 @@ EfpStats::~EfpStats()
 
 bool EfpStats::has_data() const
 {
-    for (std::size_t index=0; index<efp_stat.size(); index++)
+    for (std::size_t index=0; index<efp_stat_.size(); index++)
     {
-        if(efp_stat[index]->has_data())
+        if(efp_stat_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool EfpStats::has_data() const
 
 bool EfpStats::has_operation() const
 {
-    for (std::size_t index=0; index<efp_stat.size(); index++)
+    for (std::size_t index=0; index<efp_stat_.size(); index++)
     {
-        if(efp_stat[index]->has_operation())
+        if(efp_stat_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "efp-stat")
     {
-        for(auto const & c : efp_stat)
+        for(auto const & c : efp_stat_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
         }
         auto c = std::make_shared<EfpStats::EfpStat>();
         c->parent = this;
-        efp_stat.push_back(c);
+        efp_stat_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> EfpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : efp_stat)
+    for (auto const & c : efp_stat_)
     {
         children[c->get_segment_path()] = c;
     }

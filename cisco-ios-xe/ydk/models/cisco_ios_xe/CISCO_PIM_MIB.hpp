@@ -32,8 +32,8 @@ class CiscoPimMib : public Entity
         class Cpim; //type: CiscoPimMib::Cpim
         class Ciscopimmibnotificationobjects; //type: CiscoPimMib::Ciscopimmibnotificationobjects
 
-        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
-        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Cpim> cpim;
+        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects_;
+        std::shared_ptr<CISCO_PIM_MIB::CiscoPimMib::Cpim> cpim_;
         
 }; // CiscoPimMib
 

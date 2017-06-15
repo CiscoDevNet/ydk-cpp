@@ -30,7 +30,7 @@ class CiscoVlanIftableRelationshipMib : public Entity
 
         class Cvivlaninterfaceindextable; //type: CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable
 
-        std::shared_ptr<CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable> cvivlaninterfaceindextable;
+        std::shared_ptr<CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable> cvivlaninterfaceindextable_;
         
 }; // CiscoVlanIftableRelationshipMib
 
@@ -51,7 +51,7 @@ class CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable : public Entit
 
         class Cvivlaninterfaceindexentry; //type: CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry> > cvivlaninterfaceindexentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry> > cvivlaninterfaceindexentry_;
         
 }; // CiscoVlanIftableRelationshipMib::Cvivlaninterfaceindextable
 

@@ -32,8 +32,8 @@ class NetconfYang : public Entity
         class CiscoIa; //type: NetconfYang::CiscoIa
         class CiscoOdm; //type: NetconfYang::CiscoOdm
 
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm;
+        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia_;
+        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm_;
         
 }; // NetconfYang
 
@@ -73,14 +73,14 @@ class NetconfYang::CiscoIa : public Entity
         class Logging; //type: NetconfYang::CiscoIa::Logging
         class Blocking; //type: NetconfYang::CiscoIa::Blocking
 
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfFullSyncCli> > conf_full_sync_cli;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfParserMsgIgnore> > conf_parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::FullSyncCli> > full_sync_cli;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ParserMsgIgnore> > parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::PreserveNedPath> > preserve_ned_path;
-        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control;
+        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfFullSyncCli> > conf_full_sync_cli_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ConfParserMsgIgnore> > conf_parser_msg_ignore_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::FullSyncCli> > full_sync_cli_;
+        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::ParserMsgIgnore> > parser_msg_ignore_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::PreserveNedPath> > preserve_ned_path_;
+        std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control_;
         
 }; // NetconfYang::CiscoIa
 
@@ -102,7 +102,7 @@ class NetconfYang::CiscoIa::SnmpTrapControl : public Entity
         YLeaf global_forwarding; //type: boolean
         class TrapList; //type: NetconfYang::CiscoIa::SnmpTrapControl::TrapList
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl::TrapList> > trap_list;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl::TrapList> > trap_list_;
         
 }; // NetconfYang::CiscoIa::SnmpTrapControl
 
@@ -266,8 +266,8 @@ class NetconfYang::CiscoIa::Blocking : public Entity
         class NetworkElementCommand; //type: NetconfYang::CiscoIa::Blocking::NetworkElementCommand
         class ConfdCfgCommand; //type: NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::ConfdCfgCommand> > confd_cfg_command;
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::NetworkElementCommand> > network_element_command;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::ConfdCfgCommand> > confd_cfg_command_;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::NetworkElementCommand> > network_element_command_;
         
 }; // NetconfYang::CiscoIa::Blocking
 
@@ -329,7 +329,7 @@ class NetconfYang::CiscoOdm : public Entity
         YLeaf on_demand_enable; //type: boolean
         class Actions; //type: NetconfYang::CiscoOdm::Actions
 
-        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm::Actions> > actions;
+        std::vector<std::shared_ptr<cisco_self_mgmt::NetconfYang::CiscoOdm::Actions> > actions_;
         
 }; // NetconfYang::CiscoOdm
 

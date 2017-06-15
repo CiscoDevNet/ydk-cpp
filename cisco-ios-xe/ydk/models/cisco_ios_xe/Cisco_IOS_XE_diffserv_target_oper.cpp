@@ -29,9 +29,9 @@ DiffservInterfacesState::~DiffservInterfacesState()
 
 bool DiffservInterfacesState::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_interface.size(); index++)
+    for (std::size_t index=0; index<diffserv_interface_.size(); index++)
     {
-        if(diffserv_interface[index]->has_data())
+        if(diffserv_interface_[index]->has_data())
             return true;
     }
     return false;
@@ -39,9 +39,9 @@ bool DiffservInterfacesState::has_data() const
 
 bool DiffservInterfacesState::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_interface.size(); index++)
+    for (std::size_t index=0; index<diffserv_interface_.size(); index++)
     {
-        if(diffserv_interface[index]->has_operation())
+        if(diffserv_interface_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -78,7 +78,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 {
     if(child_yang_name == "diffserv-interface")
     {
-        for(auto const & c : diffserv_interface)
+        for(auto const & c : diffserv_interface_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -88,7 +88,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface>();
         c->parent = this;
-        diffserv_interface.push_back(c);
+        diffserv_interface_.push_back(c);
         return c;
     }
 
@@ -98,7 +98,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_interface)
+    for (auto const & c : diffserv_interface_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -143,9 +143,9 @@ DiffservInterfacesState::DiffservInterface::~DiffservInterface()
 
 bool DiffservInterfacesState::DiffservInterface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry_.size(); index++)
     {
-        if(diffserv_target_entry[index]->has_data())
+        if(diffserv_target_entry_[index]->has_data())
             return true;
     }
     return name.is_set;
@@ -153,9 +153,9 @@ bool DiffservInterfacesState::DiffservInterface::has_data() const
 
 bool DiffservInterfacesState::DiffservInterface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry_.size(); index++)
     {
-        if(diffserv_target_entry[index]->has_operation())
+        if(diffserv_target_entry_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -197,7 +197,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 {
     if(child_yang_name == "diffserv-target-entry")
     {
-        for(auto const & c : diffserv_target_entry)
+        for(auto const & c : diffserv_target_entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -207,7 +207,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry>();
         c->parent = this;
-        diffserv_target_entry.push_back(c);
+        diffserv_target_entry_.push_back(c);
         return c;
     }
 
@@ -217,7 +217,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_target_entry)
+    for (auto const & c : diffserv_target_entry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -247,9 +247,9 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::~DiffservTarget
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics_.size(); index++)
     {
-        if(diffserv_target_classifier_statistics[index]->has_data())
+        if(diffserv_target_classifier_statistics_[index]->has_data())
             return true;
     }
     return direction.is_set
@@ -258,9 +258,9 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data()
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics_.size(); index++)
     {
-        if(diffserv_target_classifier_statistics[index]->has_operation())
+        if(diffserv_target_classifier_statistics_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -304,7 +304,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "diffserv-target-classifier-statistics")
     {
-        for(auto const & c : diffserv_target_classifier_statistics)
+        for(auto const & c : diffserv_target_classifier_statistics_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -314,7 +314,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
-        diffserv_target_classifier_statistics.push_back(c);
+        diffserv_target_classifier_statistics_.push_back(c);
         return c;
     }
 
@@ -324,7 +324,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_target_classifier_statistics)
+    for (auto const & c : diffserv_target_classifier_statistics_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -349,12 +349,12 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     classifier_entry_name{YType::str, "classifier-entry-name"},
     parent_path{YType::str, "parent-path"}
     	,
-    classifier_entry_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
-	,queuing_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
+    classifier_entry_statistics_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
+	,queuing_statistics_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
 {
-    classifier_entry_statistics->parent = this;
+    classifier_entry_statistics_->parent = this;
 
-    queuing_statistics->parent = this;
+    queuing_statistics_->parent = this;
 
     yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry";
 }
@@ -365,29 +365,29 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_data() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    for (std::size_t index=0; index<meter_statistics_.size(); index++)
     {
-        if(meter_statistics[index]->has_data())
+        if(meter_statistics_[index]->has_data())
             return true;
     }
     return classifier_entry_name.is_set
 	|| parent_path.is_set
-	|| (classifier_entry_statistics !=  nullptr && classifier_entry_statistics->has_data())
-	|| (queuing_statistics !=  nullptr && queuing_statistics->has_data());
+	|| (classifier_entry_statistics_ !=  nullptr && classifier_entry_statistics_->has_data())
+	|| (queuing_statistics_ !=  nullptr && queuing_statistics_->has_data());
 }
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    for (std::size_t index=0; index<meter_statistics_.size(); index++)
     {
-        if(meter_statistics[index]->has_operation())
+        if(meter_statistics_[index]->has_operation())
             return true;
     }
     return is_set(operation)
 	|| is_set(classifier_entry_name.operation)
 	|| is_set(parent_path.operation)
-	|| (classifier_entry_statistics !=  nullptr && classifier_entry_statistics->has_operation())
-	|| (queuing_statistics !=  nullptr && queuing_statistics->has_operation());
+	|| (classifier_entry_statistics_ !=  nullptr && classifier_entry_statistics_->has_operation())
+	|| (queuing_statistics_ !=  nullptr && queuing_statistics_->has_operation());
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_segment_path() const
@@ -426,16 +426,16 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "classifier-entry-statistics")
     {
-        if(classifier_entry_statistics == nullptr)
+        if(classifier_entry_statistics_ == nullptr)
         {
-            classifier_entry_statistics = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>();
+            classifier_entry_statistics_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>();
         }
-        return classifier_entry_statistics;
+        return classifier_entry_statistics_;
     }
 
     if(child_yang_name == "meter-statistics")
     {
-        for(auto const & c : meter_statistics)
+        for(auto const & c : meter_statistics_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -445,17 +445,17 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
-        meter_statistics.push_back(c);
+        meter_statistics_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "queuing-statistics")
     {
-        if(queuing_statistics == nullptr)
+        if(queuing_statistics_ == nullptr)
         {
-            queuing_statistics = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>();
+            queuing_statistics_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>();
         }
-        return queuing_statistics;
+        return queuing_statistics_;
     }
 
     return nullptr;
@@ -464,19 +464,19 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(classifier_entry_statistics != nullptr)
+    if(classifier_entry_statistics_ != nullptr)
     {
-        children["classifier-entry-statistics"] = classifier_entry_statistics;
+        children["classifier-entry-statistics"] = classifier_entry_statistics_;
     }
 
-    for (auto const & c : meter_statistics)
+    for (auto const & c : meter_statistics_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(queuing_statistics != nullptr)
+    if(queuing_statistics_ != nullptr)
     {
-        children["queuing-statistics"] = queuing_statistics;
+        children["queuing-statistics"] = queuing_statistics_;
     }
 
     return children;
@@ -695,9 +695,9 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
     queue_size_pkts{YType::uint64, "queue-size-pkts"}
     	,
-    wred_stats(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
+    wred_stats_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
 {
-    wred_stats->parent = this;
+    wred_stats_->parent = this;
 
     yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics";
 }
@@ -714,7 +714,7 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 	|| output_pkts.is_set
 	|| queue_size_bytes.is_set
 	|| queue_size_pkts.is_set
-	|| (wred_stats !=  nullptr && wred_stats->has_data());
+	|| (wred_stats_ !=  nullptr && wred_stats_->has_data());
 }
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_operation() const
@@ -726,7 +726,7 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 	|| is_set(output_pkts.operation)
 	|| is_set(queue_size_bytes.operation)
 	|| is_set(queue_size_pkts.operation)
-	|| (wred_stats !=  nullptr && wred_stats->has_operation());
+	|| (wred_stats_ !=  nullptr && wred_stats_->has_operation());
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_segment_path() const
@@ -769,11 +769,11 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "wred-stats")
     {
-        if(wred_stats == nullptr)
+        if(wred_stats_ == nullptr)
         {
-            wred_stats = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>();
+            wred_stats_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>();
         }
-        return wred_stats;
+        return wred_stats_;
     }
 
     return nullptr;
@@ -782,9 +782,9 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(wred_stats != nullptr)
+    if(wred_stats_ != nullptr)
     {
-        children["wred-stats"] = wred_stats;
+        children["wred-stats"] = wred_stats_;
     }
 
     return children;

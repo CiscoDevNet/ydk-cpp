@@ -36,12 +36,12 @@ class IpmrouteStdMib : public Entity
         class Ipmrouteboundarytable; //type: IpmrouteStdMib::Ipmrouteboundarytable
         class Ipmroutescopenametable; //type: IpmrouteStdMib::Ipmroutescopenametable
 
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroute> ipmroute;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable> ipmrouteboundarytable;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable> ipmrouteinterfacetable;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable> ipmroutenexthoptable;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable> ipmroutescopenametable;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable> ipmroutetable;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroute> ipmroute_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable> ipmrouteboundarytable_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable> ipmrouteinterfacetable_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable> ipmroutenexthoptable_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable> ipmroutescopenametable_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable> ipmroutetable_;
         
 }; // IpmrouteStdMib
 
@@ -83,7 +83,7 @@ class IpmrouteStdMib::Ipmroutetable : public Entity
 
         class Ipmrouteentry; //type: IpmrouteStdMib::Ipmroutetable::Ipmrouteentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry> > ipmrouteentry;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry> > ipmrouteentry_;
         
 }; // IpmrouteStdMib::Ipmroutetable
 
@@ -160,7 +160,7 @@ class IpmrouteStdMib::Ipmroutenexthoptable : public Entity
 
         class Ipmroutenexthopentry; //type: IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry> > ipmroutenexthopentry;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry> > ipmroutenexthopentry_;
         
 }; // IpmrouteStdMib::Ipmroutenexthoptable
 
@@ -214,7 +214,7 @@ class IpmrouteStdMib::Ipmrouteinterfacetable : public Entity
 
         class Ipmrouteinterfaceentry; //type: IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry> > ipmrouteinterfaceentry;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry> > ipmrouteinterfaceentry_;
         
 }; // IpmrouteStdMib::Ipmrouteinterfacetable
 
@@ -267,7 +267,7 @@ class IpmrouteStdMib::Ipmrouteboundarytable : public Entity
 
         class Ipmrouteboundaryentry; //type: IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry> > ipmrouteboundaryentry;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry> > ipmrouteboundaryentry_;
         
 }; // IpmrouteStdMib::Ipmrouteboundarytable
 
@@ -310,7 +310,7 @@ class IpmrouteStdMib::Ipmroutescopenametable : public Entity
 
         class Ipmroutescopenameentry; //type: IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry> > ipmroutescopenameentry;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry> > ipmroutescopenameentry_;
         
 }; // IpmrouteStdMib::Ipmroutescopenametable
 

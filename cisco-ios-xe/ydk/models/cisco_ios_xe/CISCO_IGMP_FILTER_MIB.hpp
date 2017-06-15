@@ -34,10 +34,10 @@ class CiscoIgmpFilterMib : public Entity
         class Cigmpfiltertable; //type: CiscoIgmpFilterMib::Cigmpfiltertable
         class Cigmpfilterinterfacetable; //type: CiscoIgmpFilterMib::Cigmpfilterinterfacetable
 
-        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltereditor> cigmpfiltereditor;
-        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltergeneral> cigmpfiltergeneral;
-        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfilterinterfacetable> cigmpfilterinterfacetable;
-        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltertable> cigmpfiltertable;
+        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltereditor> cigmpfiltereditor_;
+        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltergeneral> cigmpfiltergeneral_;
+        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfilterinterfacetable> cigmpfilterinterfacetable_;
+        std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltertable> cigmpfiltertable_;
         
 }; // CiscoIgmpFilterMib
 
@@ -108,7 +108,7 @@ class CiscoIgmpFilterMib::Cigmpfiltertable : public Entity
 
         class Cigmpfilterentry; //type: CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry
 
-        std::vector<std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry> > cigmpfilterentry;
+        std::vector<std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry> > cigmpfilterentry_;
         
 }; // CiscoIgmpFilterMib::Cigmpfiltertable
 
@@ -154,7 +154,7 @@ class CiscoIgmpFilterMib::Cigmpfilterinterfacetable : public Entity
 
         class Cigmpfilterinterfaceentry; //type: CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry> > cigmpfilterinterfaceentry;
+        std::vector<std::shared_ptr<CISCO_IGMP_FILTER_MIB::CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry> > cigmpfilterinterfaceentry_;
         
 }; // CiscoIgmpFilterMib::Cigmpfilterinterfacetable
 

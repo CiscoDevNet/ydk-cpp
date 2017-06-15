@@ -20,9 +20,9 @@ LldpEntries::~LldpEntries()
 
 bool LldpEntries::has_data() const
 {
-    for (std::size_t index=0; index<lldp_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_entry_.size(); index++)
     {
-        if(lldp_entry[index]->has_data())
+        if(lldp_entry_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool LldpEntries::has_data() const
 
 bool LldpEntries::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_entry_.size(); index++)
     {
-        if(lldp_entry[index]->has_operation())
+        if(lldp_entry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "lldp-entry")
     {
-        for(auto const & c : lldp_entry)
+        for(auto const & c : lldp_entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
         }
         auto c = std::make_shared<LldpEntries::LldpEntry>();
         c->parent = this;
-        lldp_entry.push_back(c);
+        lldp_entry_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lldp_entry)
+    for (auto const & c : lldp_entry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -128,9 +128,9 @@ LldpEntries::LldpEntry::LldpEntry()
     connecting_interface{YType::str, "connecting-interface"},
     ttl{YType::uint32, "ttl"}
     	,
-    capabilities(std::make_shared<LldpEntries::LldpEntry::Capabilities>())
+    capabilities_(std::make_shared<LldpEntries::LldpEntry::Capabilities>())
 {
-    capabilities->parent = this;
+    capabilities_->parent = this;
 
     yang_name = "lldp-entry"; yang_parent_name = "lldp-entries";
 }
@@ -145,7 +145,7 @@ bool LldpEntries::LldpEntry::has_data() const
 	|| local_interface.is_set
 	|| connecting_interface.is_set
 	|| ttl.is_set
-	|| (capabilities !=  nullptr && capabilities->has_data());
+	|| (capabilities_ !=  nullptr && capabilities_->has_data());
 }
 
 bool LldpEntries::LldpEntry::has_operation() const
@@ -155,7 +155,7 @@ bool LldpEntries::LldpEntry::has_operation() const
 	|| is_set(local_interface.operation)
 	|| is_set(connecting_interface.operation)
 	|| is_set(ttl.operation)
-	|| (capabilities !=  nullptr && capabilities->has_operation());
+	|| (capabilities_ !=  nullptr && capabilities_->has_operation());
 }
 
 std::string LldpEntries::LldpEntry::get_segment_path() const
@@ -196,11 +196,11 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::get_child_by_name(const std::str
 {
     if(child_yang_name == "capabilities")
     {
-        if(capabilities == nullptr)
+        if(capabilities_ == nullptr)
         {
-            capabilities = std::make_shared<LldpEntries::LldpEntry::Capabilities>();
+            capabilities_ = std::make_shared<LldpEntries::LldpEntry::Capabilities>();
         }
-        return capabilities;
+        return capabilities_;
     }
 
     return nullptr;
@@ -209,9 +209,9 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(capabilities != nullptr)
+    if(capabilities_ != nullptr)
     {
-        children["capabilities"] = capabilities;
+        children["capabilities"] = capabilities_;
     }
 
     return children;

@@ -33,9 +33,9 @@ class CiscoIpslaEchoMib : public Entity
         class Cipslaudpechotmpltable; //type: CiscoIpslaEchoMib::Cipslaudpechotmpltable
         class Cipslatcpconntmpltable; //type: CiscoIpslaEchoMib::Cipslatcpconntmpltable
 
-        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaicmpechotmpltable> cipslaicmpechotmpltable;
-        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslatcpconntmpltable> cipslatcpconntmpltable;
-        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaudpechotmpltable> cipslaudpechotmpltable;
+        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaicmpechotmpltable> cipslaicmpechotmpltable_;
+        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslatcpconntmpltable> cipslatcpconntmpltable_;
+        std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaudpechotmpltable> cipslaudpechotmpltable_;
         
 }; // CiscoIpslaEchoMib
 
@@ -56,7 +56,7 @@ class CiscoIpslaEchoMib::Cipslaicmpechotmpltable : public Entity
 
         class Cipslaicmpechotmplentry; //type: CiscoIpslaEchoMib::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry> > cipslaicmpechotmplentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry> > cipslaicmpechotmplentry_;
         
 }; // CiscoIpslaEchoMib::Cipslaicmpechotmpltable
 
@@ -114,7 +114,7 @@ class CiscoIpslaEchoMib::Cipslaudpechotmpltable : public Entity
 
         class Cipslaudpechotmplentry; //type: CiscoIpslaEchoMib::Cipslaudpechotmpltable::Cipslaudpechotmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaudpechotmpltable::Cipslaudpechotmplentry> > cipslaudpechotmplentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslaudpechotmpltable::Cipslaudpechotmplentry> > cipslaudpechotmplentry_;
         
 }; // CiscoIpslaEchoMib::Cipslaudpechotmpltable
 
@@ -174,7 +174,7 @@ class CiscoIpslaEchoMib::Cipslatcpconntmpltable : public Entity
 
         class Cipslatcpconntmplentry; //type: CiscoIpslaEchoMib::Cipslatcpconntmpltable::Cipslatcpconntmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslatcpconntmpltable::Cipslatcpconntmplentry> > cipslatcpconntmplentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_ECHO_MIB::CiscoIpslaEchoMib::Cipslatcpconntmpltable::Cipslatcpconntmplentry> > cipslatcpconntmplentry_;
         
 }; // CiscoIpslaEchoMib::Cipslatcpconntmpltable
 

@@ -11,15 +11,15 @@ namespace CISCO_DIAL_CONTROL_MIB {
 
 CiscoDialControlMib::CiscoDialControlMib()
     :
-    ccallhistoryiectable(std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>())
-	,ccallhistorytable(std::make_shared<CiscoDialControlMib::Ccallhistorytable>())
-	,cpeerglobalconfiguration(std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>())
+    ccallhistoryiectable_(std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>())
+	,ccallhistorytable_(std::make_shared<CiscoDialControlMib::Ccallhistorytable>())
+	,cpeerglobalconfiguration_(std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>())
 {
-    ccallhistoryiectable->parent = this;
+    ccallhistoryiectable_->parent = this;
 
-    ccallhistorytable->parent = this;
+    ccallhistorytable_->parent = this;
 
-    cpeerglobalconfiguration->parent = this;
+    cpeerglobalconfiguration_->parent = this;
 
     yang_name = "CISCO-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-DIAL-CONTROL-MIB";
 }
@@ -30,17 +30,17 @@ CiscoDialControlMib::~CiscoDialControlMib()
 
 bool CiscoDialControlMib::has_data() const
 {
-    return (ccallhistoryiectable !=  nullptr && ccallhistoryiectable->has_data())
-	|| (ccallhistorytable !=  nullptr && ccallhistorytable->has_data())
-	|| (cpeerglobalconfiguration !=  nullptr && cpeerglobalconfiguration->has_data());
+    return (ccallhistoryiectable_ !=  nullptr && ccallhistoryiectable_->has_data())
+	|| (ccallhistorytable_ !=  nullptr && ccallhistorytable_->has_data())
+	|| (cpeerglobalconfiguration_ !=  nullptr && cpeerglobalconfiguration_->has_data());
 }
 
 bool CiscoDialControlMib::has_operation() const
 {
     return is_set(operation)
-	|| (ccallhistoryiectable !=  nullptr && ccallhistoryiectable->has_operation())
-	|| (ccallhistorytable !=  nullptr && ccallhistorytable->has_operation())
-	|| (cpeerglobalconfiguration !=  nullptr && cpeerglobalconfiguration->has_operation());
+	|| (ccallhistoryiectable_ !=  nullptr && ccallhistoryiectable_->has_operation())
+	|| (ccallhistorytable_ !=  nullptr && ccallhistorytable_->has_operation())
+	|| (cpeerglobalconfiguration_ !=  nullptr && cpeerglobalconfiguration_->has_operation());
 }
 
 std::string CiscoDialControlMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string
 {
     if(child_yang_name == "cCallHistoryIecTable")
     {
-        if(ccallhistoryiectable == nullptr)
+        if(ccallhistoryiectable_ == nullptr)
         {
-            ccallhistoryiectable = std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>();
+            ccallhistoryiectable_ = std::make_shared<CiscoDialControlMib::Ccallhistoryiectable>();
         }
-        return ccallhistoryiectable;
+        return ccallhistoryiectable_;
     }
 
     if(child_yang_name == "cCallHistoryTable")
     {
-        if(ccallhistorytable == nullptr)
+        if(ccallhistorytable_ == nullptr)
         {
-            ccallhistorytable = std::make_shared<CiscoDialControlMib::Ccallhistorytable>();
+            ccallhistorytable_ = std::make_shared<CiscoDialControlMib::Ccallhistorytable>();
         }
-        return ccallhistorytable;
+        return ccallhistorytable_;
     }
 
     if(child_yang_name == "cPeerGlobalConfiguration")
     {
-        if(cpeerglobalconfiguration == nullptr)
+        if(cpeerglobalconfiguration_ == nullptr)
         {
-            cpeerglobalconfiguration = std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>();
+            cpeerglobalconfiguration_ = std::make_shared<CiscoDialControlMib::Cpeerglobalconfiguration>();
         }
-        return cpeerglobalconfiguration;
+        return cpeerglobalconfiguration_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoDialControlMib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ccallhistoryiectable != nullptr)
+    if(ccallhistoryiectable_ != nullptr)
     {
-        children["cCallHistoryIecTable"] = ccallhistoryiectable;
+        children["cCallHistoryIecTable"] = ccallhistoryiectable_;
     }
 
-    if(ccallhistorytable != nullptr)
+    if(ccallhistorytable_ != nullptr)
     {
-        children["cCallHistoryTable"] = ccallhistorytable;
+        children["cCallHistoryTable"] = ccallhistorytable_;
     }
 
-    if(cpeerglobalconfiguration != nullptr)
+    if(cpeerglobalconfiguration_ != nullptr)
     {
-        children["cPeerGlobalConfiguration"] = cpeerglobalconfiguration;
+        children["cPeerGlobalConfiguration"] = cpeerglobalconfiguration_;
     }
 
     return children;
@@ -230,9 +230,9 @@ CiscoDialControlMib::Ccallhistorytable::~Ccallhistorytable()
 
 bool CiscoDialControlMib::Ccallhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<ccallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<ccallhistoryentry_.size(); index++)
     {
-        if(ccallhistoryentry[index]->has_data())
+        if(ccallhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -240,9 +240,9 @@ bool CiscoDialControlMib::Ccallhistorytable::has_data() const
 
 bool CiscoDialControlMib::Ccallhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<ccallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<ccallhistoryentry_.size(); index++)
     {
-        if(ccallhistoryentry[index]->has_operation())
+        if(ccallhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -282,7 +282,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_nam
 {
     if(child_yang_name == "cCallHistoryEntry")
     {
-        for(auto const & c : ccallhistoryentry)
+        for(auto const & c : ccallhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -292,7 +292,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry>();
         c->parent = this;
-        ccallhistoryentry.push_back(c);
+        ccallhistoryentry_.push_back(c);
         return c;
     }
 
@@ -302,7 +302,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistorytable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccallhistoryentry)
+    for (auto const & c : ccallhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -549,9 +549,9 @@ CiscoDialControlMib::Ccallhistoryiectable::~Ccallhistoryiectable()
 
 bool CiscoDialControlMib::Ccallhistoryiectable::has_data() const
 {
-    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
+    for (std::size_t index=0; index<ccallhistoryiecentry_.size(); index++)
     {
-        if(ccallhistoryiecentry[index]->has_data())
+        if(ccallhistoryiecentry_[index]->has_data())
             return true;
     }
     return false;
@@ -559,9 +559,9 @@ bool CiscoDialControlMib::Ccallhistoryiectable::has_data() const
 
 bool CiscoDialControlMib::Ccallhistoryiectable::has_operation() const
 {
-    for (std::size_t index=0; index<ccallhistoryiecentry.size(); index++)
+    for (std::size_t index=0; index<ccallhistoryiecentry_.size(); index++)
     {
-        if(ccallhistoryiecentry[index]->has_operation())
+        if(ccallhistoryiecentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -601,7 +601,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistoryiectable::get_child_by_
 {
     if(child_yang_name == "cCallHistoryIecEntry")
     {
-        for(auto const & c : ccallhistoryiecentry)
+        for(auto const & c : ccallhistoryiecentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -611,7 +611,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistoryiectable::get_child_by_
         }
         auto c = std::make_shared<CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry>();
         c->parent = this;
-        ccallhistoryiecentry.push_back(c);
+        ccallhistoryiecentry_.push_back(c);
         return c;
     }
 
@@ -621,7 +621,7 @@ std::shared_ptr<Entity> CiscoDialControlMib::Ccallhistoryiectable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDialControlMib::Ccallhistoryiectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccallhistoryiecentry)
+    for (auto const & c : ccallhistoryiecentry_)
     {
         children[c->get_segment_path()] = c;
     }

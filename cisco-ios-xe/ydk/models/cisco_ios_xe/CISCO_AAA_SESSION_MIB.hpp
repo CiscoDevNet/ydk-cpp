@@ -32,9 +32,9 @@ class CiscoAaaSessionMib : public Entity
         class Casngeneral; //type: CiscoAaaSessionMib::Casngeneral
         class Casnactivetable; //type: CiscoAaaSessionMib::Casnactivetable
 
-        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactive> casnactive;
-        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactivetable> casnactivetable;
-        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casngeneral> casngeneral;
+        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactive> casnactive_;
+        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactivetable> casnactivetable_;
+        std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casngeneral> casngeneral_;
         
 }; // CiscoAaaSessionMib
 
@@ -95,7 +95,7 @@ class CiscoAaaSessionMib::Casnactivetable : public Entity
 
         class Casnactiveentry; //type: CiscoAaaSessionMib::Casnactivetable::Casnactiveentry
 
-        std::vector<std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactivetable::Casnactiveentry> > casnactiveentry;
+        std::vector<std::shared_ptr<CISCO_AAA_SESSION_MIB::CiscoAaaSessionMib::Casnactivetable::Casnactiveentry> > casnactiveentry_;
         
 }; // CiscoAaaSessionMib::Casnactivetable
 

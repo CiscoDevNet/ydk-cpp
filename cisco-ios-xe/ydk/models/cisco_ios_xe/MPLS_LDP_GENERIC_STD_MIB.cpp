@@ -11,9 +11,9 @@ namespace MPLS_LDP_GENERIC_STD_MIB {
 
 MplsLdpGenericStdMib::MplsLdpGenericStdMib()
     :
-    mplsldpentitygenericlrtable(std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>())
+    mplsldpentitygenericlrtable_(std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>())
 {
-    mplsldpentitygenericlrtable->parent = this;
+    mplsldpentitygenericlrtable_->parent = this;
 
     yang_name = "MPLS-LDP-GENERIC-STD-MIB"; yang_parent_name = "MPLS-LDP-GENERIC-STD-MIB";
 }
@@ -24,13 +24,13 @@ MplsLdpGenericStdMib::~MplsLdpGenericStdMib()
 
 bool MplsLdpGenericStdMib::has_data() const
 {
-    return (mplsldpentitygenericlrtable !=  nullptr && mplsldpentitygenericlrtable->has_data());
+    return (mplsldpentitygenericlrtable_ !=  nullptr && mplsldpentitygenericlrtable_->has_data());
 }
 
 bool MplsLdpGenericStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (mplsldpentitygenericlrtable !=  nullptr && mplsldpentitygenericlrtable->has_operation());
+	|| (mplsldpentitygenericlrtable_ !=  nullptr && mplsldpentitygenericlrtable_->has_operation());
 }
 
 std::string MplsLdpGenericStdMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::get_child_by_name(const std::strin
 {
     if(child_yang_name == "mplsLdpEntityGenericLRTable")
     {
-        if(mplsldpentitygenericlrtable == nullptr)
+        if(mplsldpentitygenericlrtable_ == nullptr)
         {
-            mplsldpentitygenericlrtable = std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>();
+            mplsldpentitygenericlrtable_ = std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable>();
         }
-        return mplsldpentitygenericlrtable;
+        return mplsldpentitygenericlrtable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsldpentitygenericlrtable != nullptr)
+    if(mplsldpentitygenericlrtable_ != nullptr)
     {
-        children["mplsLdpEntityGenericLRTable"] = mplsldpentitygenericlrtable;
+        children["mplsLdpEntityGenericLRTable"] = mplsldpentitygenericlrtable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::~Mplsldpentitygenericlrtable(
 
 bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsldpentitygenericlrentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpentitygenericlrentry_.size(); index++)
     {
-        if(mplsldpentitygenericlrentry[index]->has_data())
+        if(mplsldpentitygenericlrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_data() const
 
 bool MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsldpentitygenericlrentry.size(); index++)
+    for (std::size_t index=0; index<mplsldpentitygenericlrentry_.size(); index++)
     {
-        if(mplsldpentitygenericlrentry[index]->has_operation())
+        if(mplsldpentitygenericlrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_c
 {
     if(child_yang_name == "mplsLdpEntityGenericLREntry")
     {
-        for(auto const & c : mplsldpentitygenericlrentry)
+        for(auto const & c : mplsldpentitygenericlrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_c
         }
         auto c = std::make_shared<MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry>();
         c->parent = this;
-        mplsldpentitygenericlrentry.push_back(c);
+        mplsldpentitygenericlrentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsldpentitygenericlrentry)
+    for (auto const & c : mplsldpentitygenericlrentry_)
     {
         children[c->get_segment_path()] = c;
     }

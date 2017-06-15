@@ -36,12 +36,12 @@ class CiscoIpLocalPoolMib : public Entity
         class Ciplocalpoolstatstable; //type: CiscoIpLocalPoolMib::Ciplocalpoolstatstable
         class Ciplocalpoolalloctable; //type: CiscoIpLocalPoolMib::Ciplocalpoolalloctable
 
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolalloctable> ciplocalpoolalloctable;
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfig> ciplocalpoolconfig;
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfigtable> ciplocalpoolconfigtable;
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable> ciplocalpoolgroupcontainstable;
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgrouptable> ciplocalpoolgrouptable;
-        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolstatstable> ciplocalpoolstatstable;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolalloctable> ciplocalpoolalloctable_;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfig> ciplocalpoolconfig_;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfigtable> ciplocalpoolconfigtable_;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable> ciplocalpoolgroupcontainstable_;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgrouptable> ciplocalpoolgrouptable_;
+        std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolstatstable> ciplocalpoolstatstable_;
         
 }; // CiscoIpLocalPoolMib
 
@@ -81,7 +81,7 @@ class CiscoIpLocalPoolMib::Ciplocalpoolconfigtable : public Entity
 
         class Ciplocalpoolconfigentry; //type: CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry
 
-        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry> > ciplocalpoolconfigentry;
+        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry> > ciplocalpoolconfigentry_;
         
 }; // CiscoIpLocalPoolMib::Ciplocalpoolconfigtable
 
@@ -129,7 +129,7 @@ class CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable : public Entity
 
         class Ciplocalpoolgroupcontainsentry; //type: CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry
 
-        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry> > ciplocalpoolgroupcontainsentry;
+        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry> > ciplocalpoolgroupcontainsentry_;
         
 }; // CiscoIpLocalPoolMib::Ciplocalpoolgroupcontainstable
 
@@ -170,7 +170,7 @@ class CiscoIpLocalPoolMib::Ciplocalpoolgrouptable : public Entity
 
         class Ciplocalpoolgroupentry; //type: CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry
 
-        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry> > ciplocalpoolgroupentry;
+        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry> > ciplocalpoolgroupentry_;
         
 }; // CiscoIpLocalPoolMib::Ciplocalpoolgrouptable
 
@@ -213,7 +213,7 @@ class CiscoIpLocalPoolMib::Ciplocalpoolstatstable : public Entity
 
         class Ciplocalpoolstatsentry; //type: CiscoIpLocalPoolMib::Ciplocalpoolstatstable::Ciplocalpoolstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolstatstable::Ciplocalpoolstatsentry> > ciplocalpoolstatsentry;
+        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolstatstable::Ciplocalpoolstatsentry> > ciplocalpoolstatsentry_;
         
 }; // CiscoIpLocalPoolMib::Ciplocalpoolstatstable
 
@@ -261,7 +261,7 @@ class CiscoIpLocalPoolMib::Ciplocalpoolalloctable : public Entity
 
         class Ciplocalpoolallocentry; //type: CiscoIpLocalPoolMib::Ciplocalpoolalloctable::Ciplocalpoolallocentry
 
-        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolalloctable::Ciplocalpoolallocentry> > ciplocalpoolallocentry;
+        std::vector<std::shared_ptr<CISCO_IP_LOCAL_POOL_MIB::CiscoIpLocalPoolMib::Ciplocalpoolalloctable::Ciplocalpoolallocentry> > ciplocalpoolallocentry_;
         
 }; // CiscoIpLocalPoolMib::Ciplocalpoolalloctable
 

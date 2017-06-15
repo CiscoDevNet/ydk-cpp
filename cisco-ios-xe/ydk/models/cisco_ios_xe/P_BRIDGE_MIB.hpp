@@ -35,12 +35,12 @@ class PBridgeMib : public Entity
         class Dot1Dtrafficclasstable; //type: PBridgeMib::Dot1Dtrafficclasstable
         class Dot1Dportoutboundaccessprioritytable; //type: PBridgeMib::Dot1Dportoutboundaccessprioritytable
 
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dextbase> dot1dextbase;
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dportoutboundaccessprioritytable> dot1dportoutboundaccessprioritytable;
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtphcporttable> dot1dtphcporttable;
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtpportoverflowtable> dot1dtpportoverflowtable;
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtrafficclasstable> dot1dtrafficclasstable;
-        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Duserpriorityregentable> dot1duserpriorityregentable;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dextbase> dot1dextbase_;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dportoutboundaccessprioritytable> dot1dportoutboundaccessprioritytable_;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtphcporttable> dot1dtphcporttable_;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtpportoverflowtable> dot1dtpportoverflowtable_;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtrafficclasstable> dot1dtrafficclasstable_;
+        std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Duserpriorityregentable> dot1duserpriorityregentable_;
         
 }; // PBridgeMib
 
@@ -82,7 +82,7 @@ class PBridgeMib::Dot1Dtphcporttable : public Entity
 
         class Dot1Dtphcportentry; //type: PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry
 
-        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry> > dot1dtphcportentry;
+        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtphcporttable::Dot1Dtphcportentry> > dot1dtphcportentry_;
         
 }; // PBridgeMib::Dot1Dtphcporttable
 
@@ -126,7 +126,7 @@ class PBridgeMib::Dot1Dtpportoverflowtable : public Entity
 
         class Dot1Dtpportoverflowentry; //type: PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry
 
-        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry> > dot1dtpportoverflowentry;
+        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry> > dot1dtpportoverflowentry_;
         
 }; // PBridgeMib::Dot1Dtpportoverflowtable
 
@@ -170,7 +170,7 @@ class PBridgeMib::Dot1Duserpriorityregentable : public Entity
 
         class Dot1Duserpriorityregenentry; //type: PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry
 
-        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry> > dot1duserpriorityregenentry;
+        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry> > dot1duserpriorityregenentry_;
         
 }; // PBridgeMib::Dot1Duserpriorityregentable
 
@@ -213,7 +213,7 @@ class PBridgeMib::Dot1Dtrafficclasstable : public Entity
 
         class Dot1Dtrafficclassentry; //type: PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry
 
-        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry> > dot1dtrafficclassentry;
+        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry> > dot1dtrafficclassentry_;
         
 }; // PBridgeMib::Dot1Dtrafficclasstable
 
@@ -256,7 +256,7 @@ class PBridgeMib::Dot1Dportoutboundaccessprioritytable : public Entity
 
         class Dot1Dportoutboundaccesspriorityentry; //type: PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry
 
-        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry> > dot1dportoutboundaccesspriorityentry;
+        std::vector<std::shared_ptr<P_BRIDGE_MIB::PBridgeMib::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry> > dot1dportoutboundaccesspriorityentry_;
         
 }; // PBridgeMib::Dot1Dportoutboundaccessprioritytable
 

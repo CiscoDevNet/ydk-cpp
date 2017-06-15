@@ -11,12 +11,12 @@ namespace CISCO_CONFIG_COPY_MIB {
 
 CiscoConfigCopyMib::CiscoConfigCopyMib()
     :
-    cccopyerrortable(std::make_shared<CiscoConfigCopyMib::Cccopyerrortable>())
-	,cccopytable(std::make_shared<CiscoConfigCopyMib::Cccopytable>())
+    cccopyerrortable_(std::make_shared<CiscoConfigCopyMib::Cccopyerrortable>())
+	,cccopytable_(std::make_shared<CiscoConfigCopyMib::Cccopytable>())
 {
-    cccopyerrortable->parent = this;
+    cccopyerrortable_->parent = this;
 
-    cccopytable->parent = this;
+    cccopytable_->parent = this;
 
     yang_name = "CISCO-CONFIG-COPY-MIB"; yang_parent_name = "CISCO-CONFIG-COPY-MIB";
 }
@@ -27,15 +27,15 @@ CiscoConfigCopyMib::~CiscoConfigCopyMib()
 
 bool CiscoConfigCopyMib::has_data() const
 {
-    return (cccopyerrortable !=  nullptr && cccopyerrortable->has_data())
-	|| (cccopytable !=  nullptr && cccopytable->has_data());
+    return (cccopyerrortable_ !=  nullptr && cccopyerrortable_->has_data())
+	|| (cccopytable_ !=  nullptr && cccopytable_->has_data());
 }
 
 bool CiscoConfigCopyMib::has_operation() const
 {
     return is_set(operation)
-	|| (cccopyerrortable !=  nullptr && cccopyerrortable->has_operation())
-	|| (cccopytable !=  nullptr && cccopytable->has_operation());
+	|| (cccopyerrortable_ !=  nullptr && cccopyerrortable_->has_operation())
+	|| (cccopytable_ !=  nullptr && cccopytable_->has_operation());
 }
 
 std::string CiscoConfigCopyMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "ccCopyErrorTable")
     {
-        if(cccopyerrortable == nullptr)
+        if(cccopyerrortable_ == nullptr)
         {
-            cccopyerrortable = std::make_shared<CiscoConfigCopyMib::Cccopyerrortable>();
+            cccopyerrortable_ = std::make_shared<CiscoConfigCopyMib::Cccopyerrortable>();
         }
-        return cccopyerrortable;
+        return cccopyerrortable_;
     }
 
     if(child_yang_name == "ccCopyTable")
     {
-        if(cccopytable == nullptr)
+        if(cccopytable_ == nullptr)
         {
-            cccopytable = std::make_shared<CiscoConfigCopyMib::Cccopytable>();
+            cccopytable_ = std::make_shared<CiscoConfigCopyMib::Cccopytable>();
         }
-        return cccopytable;
+        return cccopytable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigCopyMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cccopyerrortable != nullptr)
+    if(cccopyerrortable_ != nullptr)
     {
-        children["ccCopyErrorTable"] = cccopyerrortable;
+        children["ccCopyErrorTable"] = cccopyerrortable_;
     }
 
-    if(cccopytable != nullptr)
+    if(cccopytable_ != nullptr)
     {
-        children["ccCopyTable"] = cccopytable;
+        children["ccCopyTable"] = cccopytable_;
     }
 
     return children;
@@ -139,9 +139,9 @@ CiscoConfigCopyMib::Cccopytable::~Cccopytable()
 
 bool CiscoConfigCopyMib::Cccopytable::has_data() const
 {
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    for (std::size_t index=0; index<cccopyentry_.size(); index++)
     {
-        if(cccopyentry[index]->has_data())
+        if(cccopyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool CiscoConfigCopyMib::Cccopytable::has_data() const
 
 bool CiscoConfigCopyMib::Cccopytable::has_operation() const
 {
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    for (std::size_t index=0; index<cccopyentry_.size(); index++)
     {
-        if(cccopyentry[index]->has_operation())
+        if(cccopyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopytable::get_child_by_name(const
 {
     if(child_yang_name == "ccCopyEntry")
     {
-        for(auto const & c : cccopyentry)
+        for(auto const & c : cccopyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopytable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoConfigCopyMib::Cccopytable::Cccopyentry>();
         c->parent = this;
-        cccopyentry.push_back(c);
+        cccopyentry_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopytable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigCopyMib::Cccopytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cccopyentry)
+    for (auto const & c : cccopyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -426,9 +426,9 @@ CiscoConfigCopyMib::Cccopyerrortable::~Cccopyerrortable()
 
 bool CiscoConfigCopyMib::Cccopyerrortable::has_data() const
 {
-    for (std::size_t index=0; index<cccopyerrorentry.size(); index++)
+    for (std::size_t index=0; index<cccopyerrorentry_.size(); index++)
     {
-        if(cccopyerrorentry[index]->has_data())
+        if(cccopyerrorentry_[index]->has_data())
             return true;
     }
     return false;
@@ -436,9 +436,9 @@ bool CiscoConfigCopyMib::Cccopyerrortable::has_data() const
 
 bool CiscoConfigCopyMib::Cccopyerrortable::has_operation() const
 {
-    for (std::size_t index=0; index<cccopyerrorentry.size(); index++)
+    for (std::size_t index=0; index<cccopyerrorentry_.size(); index++)
     {
-        if(cccopyerrorentry[index]->has_operation())
+        if(cccopyerrorentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -478,7 +478,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopyerrortable::get_child_by_name(
 {
     if(child_yang_name == "ccCopyErrorEntry")
     {
-        for(auto const & c : cccopyerrorentry)
+        for(auto const & c : cccopyerrorentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -488,7 +488,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopyerrortable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry>();
         c->parent = this;
-        cccopyerrorentry.push_back(c);
+        cccopyerrorentry_.push_back(c);
         return c;
     }
 
@@ -498,7 +498,7 @@ std::shared_ptr<Entity> CiscoConfigCopyMib::Cccopyerrortable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoConfigCopyMib::Cccopyerrortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cccopyerrorentry)
+    for (auto const & c : cccopyerrorentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,9 +11,9 @@ namespace CISCO_IETF_MPLS_ID_STD_03_MIB {
 
 CiscoIetfMplsIdStd03Mib::CiscoIetfMplsIdStd03Mib()
     :
-    cmplsidobjects(std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>())
+    cmplsidobjects_(std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>())
 {
-    cmplsidobjects->parent = this;
+    cmplsidobjects_->parent = this;
 
     yang_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB";
 }
@@ -24,13 +24,13 @@ CiscoIetfMplsIdStd03Mib::~CiscoIetfMplsIdStd03Mib()
 
 bool CiscoIetfMplsIdStd03Mib::has_data() const
 {
-    return (cmplsidobjects !=  nullptr && cmplsidobjects->has_data());
+    return (cmplsidobjects_ !=  nullptr && cmplsidobjects_->has_data());
 }
 
 bool CiscoIetfMplsIdStd03Mib::has_operation() const
 {
     return is_set(operation)
-	|| (cmplsidobjects !=  nullptr && cmplsidobjects->has_operation());
+	|| (cmplsidobjects_ !=  nullptr && cmplsidobjects_->has_operation());
 }
 
 std::string CiscoIetfMplsIdStd03Mib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoIetfMplsIdStd03Mib::get_child_by_name(const std::st
 {
     if(child_yang_name == "cmplsIdObjects")
     {
-        if(cmplsidobjects == nullptr)
+        if(cmplsidobjects_ == nullptr)
         {
-            cmplsidobjects = std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>();
+            cmplsidobjects_ = std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>();
         }
-        return cmplsidobjects;
+        return cmplsidobjects_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoIetfMplsIdStd03Mib::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfMplsIdStd03Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmplsidobjects != nullptr)
+    if(cmplsidobjects_ != nullptr)
     {
-        children["cmplsIdObjects"] = cmplsidobjects;
+        children["cmplsIdObjects"] = cmplsidobjects_;
     }
 
     return children;

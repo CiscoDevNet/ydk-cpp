@@ -20,9 +20,9 @@ MemoryUsageProcesses::~MemoryUsageProcesses()
 
 bool MemoryUsageProcesses::has_data() const
 {
-    for (std::size_t index=0; index<memory_usage_process.size(); index++)
+    for (std::size_t index=0; index<memory_usage_process_.size(); index++)
     {
-        if(memory_usage_process[index]->has_data())
+        if(memory_usage_process_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool MemoryUsageProcesses::has_data() const
 
 bool MemoryUsageProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<memory_usage_process.size(); index++)
+    for (std::size_t index=0; index<memory_usage_process_.size(); index++)
     {
-        if(memory_usage_process[index]->has_operation())
+        if(memory_usage_process_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
 {
     if(child_yang_name == "memory-usage-process")
     {
-        for(auto const & c : memory_usage_process)
+        for(auto const & c : memory_usage_process_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<MemoryUsageProcesses::MemoryUsageProcess>();
         c->parent = this;
-        memory_usage_process.push_back(c);
+        memory_usage_process_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MemoryUsageProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : memory_usage_process)
+    for (auto const & c : memory_usage_process_)
     {
         children[c->get_segment_path()] = c;
     }

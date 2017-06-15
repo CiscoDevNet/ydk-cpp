@@ -35,11 +35,11 @@ class DialControlMib : public Entity
         class Callactivetable; //type: DialControlMib::Callactivetable
         class Callhistorytable; //type: DialControlMib::Callhistorytable
 
-        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callactivetable> callactivetable;
-        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistory> callhistory;
-        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistorytable> callhistorytable;
-        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlconfiguration> dialctlconfiguration;
-        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlpeercfgtable> dialctlpeercfgtable;
+        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callactivetable> callactivetable_;
+        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistory> callhistory_;
+        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistorytable> callhistorytable_;
+        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlconfiguration> dialctlconfiguration_;
+        std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlpeercfgtable> dialctlpeercfgtable_;
         
 }; // DialControlMib
 
@@ -102,7 +102,7 @@ class DialControlMib::Dialctlpeercfgtable : public Entity
 
         class Dialctlpeercfgentry; //type: DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry
 
-        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry> > dialctlpeercfgentry;
+        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry> > dialctlpeercfgentry_;
         
 }; // DialControlMib::Dialctlpeercfgtable
 
@@ -174,7 +174,7 @@ class DialControlMib::Callactivetable : public Entity
 
         class Callactiveentry; //type: DialControlMib::Callactivetable::Callactiveentry
 
-        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callactivetable::Callactiveentry> > callactiveentry;
+        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callactivetable::Callactiveentry> > callactiveentry_;
         
 }; // DialControlMib::Callactivetable
 
@@ -232,7 +232,7 @@ class DialControlMib::Callhistorytable : public Entity
 
         class Callhistoryentry; //type: DialControlMib::Callhistorytable::Callhistoryentry
 
-        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistorytable::Callhistoryentry> > callhistoryentry;
+        std::vector<std::shared_ptr<DIAL_CONTROL_MIB::DialControlMib::Callhistorytable::Callhistoryentry> > callhistoryentry_;
         
 }; // DialControlMib::Callhistorytable
 

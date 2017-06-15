@@ -30,7 +30,7 @@ class EfpStats : public Entity
 
         class EfpStat; //type: EfpStats::EfpStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_efp_oper::EfpStats::EfpStat> > efp_stat;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_efp_oper::EfpStats::EfpStat> > efp_stat_;
         
 }; // EfpStats
 

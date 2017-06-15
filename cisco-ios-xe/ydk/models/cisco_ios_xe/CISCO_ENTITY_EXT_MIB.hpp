@@ -32,9 +32,9 @@ class CiscoEntityExtMib : public Entity
         class Ceextconfigregtable; //type: CiscoEntityExtMib::Ceextconfigregtable
         class Ceextentityledtable; //type: CiscoEntityExtMib::Ceextentityledtable
 
-        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextconfigregtable> ceextconfigregtable;
-        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextentityledtable> ceextentityledtable;
-        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextphysicalprocessortable> ceextphysicalprocessortable;
+        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextconfigregtable> ceextconfigregtable_;
+        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextentityledtable> ceextentityledtable_;
+        std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextphysicalprocessortable> ceextphysicalprocessortable_;
         
 }; // CiscoEntityExtMib
 
@@ -55,7 +55,7 @@ class CiscoEntityExtMib::Ceextphysicalprocessortable : public Entity
 
         class Ceextphysicalprocessorentry; //type: CiscoEntityExtMib::Ceextphysicalprocessortable::Ceextphysicalprocessorentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextphysicalprocessortable::Ceextphysicalprocessorentry> > ceextphysicalprocessorentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextphysicalprocessortable::Ceextphysicalprocessorentry> > ceextphysicalprocessorentry_;
         
 }; // CiscoEntityExtMib::Ceextphysicalprocessortable
 
@@ -101,7 +101,7 @@ class CiscoEntityExtMib::Ceextconfigregtable : public Entity
 
         class Ceextconfigregentry; //type: CiscoEntityExtMib::Ceextconfigregtable::Ceextconfigregentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextconfigregtable::Ceextconfigregentry> > ceextconfigregentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextconfigregtable::Ceextconfigregentry> > ceextconfigregentry_;
         
 }; // CiscoEntityExtMib::Ceextconfigregtable
 
@@ -146,7 +146,7 @@ class CiscoEntityExtMib::Ceextentityledtable : public Entity
 
         class Ceextentityledentry; //type: CiscoEntityExtMib::Ceextentityledtable::Ceextentityledentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextentityledtable::Ceextentityledentry> > ceextentityledentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_EXT_MIB::CiscoEntityExtMib::Ceextentityledtable::Ceextentityledentry> > ceextentityledentry_;
         
 }; // CiscoEntityExtMib::Ceextentityledtable
 

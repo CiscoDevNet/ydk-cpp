@@ -11,9 +11,9 @@ namespace CISCO_IMAGE_MIB {
 
 CiscoImageMib::CiscoImageMib()
     :
-    ciscoimagetable(std::make_shared<CiscoImageMib::Ciscoimagetable>())
+    ciscoimagetable_(std::make_shared<CiscoImageMib::Ciscoimagetable>())
 {
-    ciscoimagetable->parent = this;
+    ciscoimagetable_->parent = this;
 
     yang_name = "CISCO-IMAGE-MIB"; yang_parent_name = "CISCO-IMAGE-MIB";
 }
@@ -24,13 +24,13 @@ CiscoImageMib::~CiscoImageMib()
 
 bool CiscoImageMib::has_data() const
 {
-    return (ciscoimagetable !=  nullptr && ciscoimagetable->has_data());
+    return (ciscoimagetable_ !=  nullptr && ciscoimagetable_->has_data());
 }
 
 bool CiscoImageMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscoimagetable !=  nullptr && ciscoimagetable->has_operation());
+	|| (ciscoimagetable_ !=  nullptr && ciscoimagetable_->has_operation());
 }
 
 std::string CiscoImageMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoImageMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "ciscoImageTable")
     {
-        if(ciscoimagetable == nullptr)
+        if(ciscoimagetable_ == nullptr)
         {
-            ciscoimagetable = std::make_shared<CiscoImageMib::Ciscoimagetable>();
+            ciscoimagetable_ = std::make_shared<CiscoImageMib::Ciscoimagetable>();
         }
-        return ciscoimagetable;
+        return ciscoimagetable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoImageMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoimagetable != nullptr)
+    if(ciscoimagetable_ != nullptr)
     {
-        children["ciscoImageTable"] = ciscoimagetable;
+        children["ciscoImageTable"] = ciscoimagetable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoImageMib::Ciscoimagetable::~Ciscoimagetable()
 
 bool CiscoImageMib::Ciscoimagetable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoimageentry.size(); index++)
+    for (std::size_t index=0; index<ciscoimageentry_.size(); index++)
     {
-        if(ciscoimageentry[index]->has_data())
+        if(ciscoimageentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoImageMib::Ciscoimagetable::has_data() const
 
 bool CiscoImageMib::Ciscoimagetable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoimageentry.size(); index++)
+    for (std::size_t index=0; index<ciscoimageentry_.size(); index++)
     {
-        if(ciscoimageentry[index]->has_operation())
+        if(ciscoimageentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const 
 {
     if(child_yang_name == "ciscoImageEntry")
     {
-        for(auto const & c : ciscoimageentry)
+        for(auto const & c : ciscoimageentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoImageMib::Ciscoimagetable::Ciscoimageentry>();
         c->parent = this;
-        ciscoimageentry.push_back(c);
+        ciscoimageentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoImageMib::Ciscoimagetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoImageMib::Ciscoimagetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoimageentry)
+    for (auto const & c : ciscoimageentry_)
     {
         children[c->get_segment_path()] = c;
     }

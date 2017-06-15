@@ -30,7 +30,7 @@ class CiscoBgpPolicyAccountingMib : public Entity
 
         class Cbpaccttable; //type: CiscoBgpPolicyAccountingMib::Cbpaccttable
 
-        std::shared_ptr<CISCO_BGP_POLICY_ACCOUNTING_MIB::CiscoBgpPolicyAccountingMib::Cbpaccttable> cbpaccttable;
+        std::shared_ptr<CISCO_BGP_POLICY_ACCOUNTING_MIB::CiscoBgpPolicyAccountingMib::Cbpaccttable> cbpaccttable_;
         
 }; // CiscoBgpPolicyAccountingMib
 
@@ -51,7 +51,7 @@ class CiscoBgpPolicyAccountingMib::Cbpaccttable : public Entity
 
         class Cbpacctentry; //type: CiscoBgpPolicyAccountingMib::Cbpaccttable::Cbpacctentry
 
-        std::vector<std::shared_ptr<CISCO_BGP_POLICY_ACCOUNTING_MIB::CiscoBgpPolicyAccountingMib::Cbpaccttable::Cbpacctentry> > cbpacctentry;
+        std::vector<std::shared_ptr<CISCO_BGP_POLICY_ACCOUNTING_MIB::CiscoBgpPolicyAccountingMib::Cbpaccttable::Cbpacctentry> > cbpacctentry_;
         
 }; // CiscoBgpPolicyAccountingMib::Cbpaccttable
 

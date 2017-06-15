@@ -30,7 +30,7 @@ class BfdState : public Entity
 
         class Sessions; //type: BfdState::Sessions
 
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions> sessions;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions> sessions_;
         
 }; // BfdState
 
@@ -51,7 +51,7 @@ class BfdState::Sessions : public Entity
 
         class Session; //type: BfdState::Sessions::Session
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session> > session;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session> > session_;
         
 }; // BfdState::Sessions
 
@@ -77,11 +77,11 @@ class BfdState::Sessions::Session : public Entity
         class BfdMhopNbrs; //type: BfdState::Sessions::Session::BfdMhopNbrs
         class BfdMhopVrfNbrs; //type: BfdState::Sessions::Session::BfdMhopVrfNbrs
 
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdCircuits> bfd_circuits;
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopNbrs> bfd_mhop_nbrs;
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopVrfNbrs> bfd_mhop_vrf_nbrs;
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdNbrs> bfd_nbrs;
-        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdTunnelPaths> bfd_tunnel_paths;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdCircuits> bfd_circuits_;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopNbrs> bfd_mhop_nbrs_;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopVrfNbrs> bfd_mhop_vrf_nbrs_;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdNbrs> bfd_nbrs_;
+        std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdTunnelPaths> bfd_tunnel_paths_;
         
 }; // BfdState::Sessions::Session
 
@@ -102,7 +102,7 @@ class BfdState::Sessions::Session::BfdTunnelPaths : public Entity
 
         class BfdTunnelPath; //type: BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath> > bfd_tunnel_path;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath> > bfd_tunnel_path_;
         
 }; // BfdState::Sessions::Session::BfdTunnelPaths
 
@@ -147,7 +147,7 @@ class BfdState::Sessions::Session::BfdCircuits : public Entity
 
         class BfdCircuit; //type: BfdState::Sessions::Session::BfdCircuits::BfdCircuit
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdCircuits::BfdCircuit> > bfd_circuit;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdCircuits::BfdCircuit> > bfd_circuit_;
         
 }; // BfdState::Sessions::Session::BfdCircuits
 
@@ -192,7 +192,7 @@ class BfdState::Sessions::Session::BfdNbrs : public Entity
 
         class BfdNbr; //type: BfdState::Sessions::Session::BfdNbrs::BfdNbr
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdNbrs::BfdNbr> > bfd_nbr;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdNbrs::BfdNbr> > bfd_nbr_;
         
 }; // BfdState::Sessions::Session::BfdNbrs
 
@@ -237,7 +237,7 @@ class BfdState::Sessions::Session::BfdMhopNbrs : public Entity
 
         class BfdMhopNbr; //type: BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr> > bfd_mhop_nbr;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr> > bfd_mhop_nbr_;
         
 }; // BfdState::Sessions::Session::BfdMhopNbrs
 
@@ -281,7 +281,7 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs : public Entity
 
         class BfdMhopVrfNbr; //type: BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr> > bfd_mhop_vrf_nbr;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr> > bfd_mhop_vrf_nbr_;
         
 }; // BfdState::Sessions::Session::BfdMhopVrfNbrs
 

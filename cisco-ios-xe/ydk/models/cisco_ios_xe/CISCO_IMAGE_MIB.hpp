@@ -30,7 +30,7 @@ class CiscoImageMib : public Entity
 
         class Ciscoimagetable; //type: CiscoImageMib::Ciscoimagetable
 
-        std::shared_ptr<CISCO_IMAGE_MIB::CiscoImageMib::Ciscoimagetable> ciscoimagetable;
+        std::shared_ptr<CISCO_IMAGE_MIB::CiscoImageMib::Ciscoimagetable> ciscoimagetable_;
         
 }; // CiscoImageMib
 
@@ -51,7 +51,7 @@ class CiscoImageMib::Ciscoimagetable : public Entity
 
         class Ciscoimageentry; //type: CiscoImageMib::Ciscoimagetable::Ciscoimageentry
 
-        std::vector<std::shared_ptr<CISCO_IMAGE_MIB::CiscoImageMib::Ciscoimagetable::Ciscoimageentry> > ciscoimageentry;
+        std::vector<std::shared_ptr<CISCO_IMAGE_MIB::CiscoImageMib::Ciscoimagetable::Ciscoimageentry> > ciscoimageentry_;
         
 }; // CiscoImageMib::Ciscoimagetable
 

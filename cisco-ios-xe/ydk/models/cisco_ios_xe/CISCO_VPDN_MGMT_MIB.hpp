@@ -42,18 +42,18 @@ class CiscoVpdnMgmtMib : public Entity
         class Cvpdnbundletable; //type: CiscoVpdnMgmtMib::Cvpdnbundletable
         class Cvpdnbundlechildtable; //type: CiscoVpdnMgmtMib::Cvpdnbundlechildtable
 
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs> ciscovpdnmgmtmibnotifs;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundlechildtable> cvpdnbundlechildtable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundletable> cvpdnbundletable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnmultilinkinfo> cvpdnmultilinkinfo;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsessionattrtable> cvpdnsessionattrtable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsysteminfo> cvpdnsysteminfo;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsystemtable> cvpdnsystemtable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntemplatetable> cvpdntemplatetable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelattrtable> cvpdntunnelattrtable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelsessiontable> cvpdntunnelsessiontable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunneltable> cvpdntunneltable;
-        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable> cvpdnusertofailhistinfotable;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs> ciscovpdnmgmtmibnotifs_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundlechildtable> cvpdnbundlechildtable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundletable> cvpdnbundletable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnmultilinkinfo> cvpdnmultilinkinfo_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsessionattrtable> cvpdnsessionattrtable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsysteminfo> cvpdnsysteminfo_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsystemtable> cvpdnsystemtable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntemplatetable> cvpdntemplatetable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelattrtable> cvpdntunnelattrtable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelsessiontable> cvpdntunnelsessiontable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunneltable> cvpdntunneltable_;
+        std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable> cvpdnusertofailhistinfotable_;
         
 }; // CiscoVpdnMgmtMib
 
@@ -141,7 +141,7 @@ class CiscoVpdnMgmtMib::Cvpdnsystemtable : public Entity
 
         class Cvpdnsystementry; //type: CiscoVpdnMgmtMib::Cvpdnsystemtable::Cvpdnsystementry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsystemtable::Cvpdnsystementry> > cvpdnsystementry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsystemtable::Cvpdnsystementry> > cvpdnsystementry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdnsystemtable
 
@@ -187,7 +187,7 @@ class CiscoVpdnMgmtMib::Cvpdntunneltable : public Entity
 
         class Cvpdntunnelentry; //type: CiscoVpdnMgmtMib::Cvpdntunneltable::Cvpdntunnelentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunneltable::Cvpdntunnelentry> > cvpdntunnelentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunneltable::Cvpdntunnelentry> > cvpdntunnelentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdntunneltable
 
@@ -244,7 +244,7 @@ class CiscoVpdnMgmtMib::Cvpdntunnelattrtable : public Entity
 
         class Cvpdntunnelattrentry; //type: CiscoVpdnMgmtMib::Cvpdntunnelattrtable::Cvpdntunnelattrentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelattrtable::Cvpdntunnelattrentry> > cvpdntunnelattrentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelattrtable::Cvpdntunnelattrentry> > cvpdntunnelattrentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdntunnelattrtable
 
@@ -308,7 +308,7 @@ class CiscoVpdnMgmtMib::Cvpdntunnelsessiontable : public Entity
 
         class Cvpdntunnelsessionentry; //type: CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry> > cvpdntunnelsessionentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry> > cvpdntunnelsessionentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdntunnelsessiontable
 
@@ -370,7 +370,7 @@ class CiscoVpdnMgmtMib::Cvpdnsessionattrtable : public Entity
 
         class Cvpdnsessionattrentry; //type: CiscoVpdnMgmtMib::Cvpdnsessionattrtable::Cvpdnsessionattrentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsessionattrtable::Cvpdnsessionattrentry> > cvpdnsessionattrentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnsessionattrtable::Cvpdnsessionattrentry> > cvpdnsessionattrentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdnsessionattrtable
 
@@ -438,7 +438,7 @@ class CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable : public Entity
 
         class Cvpdnusertofailhistinfoentry; //type: CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry> > cvpdnusertofailhistinfoentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry> > cvpdnusertofailhistinfoentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable
 
@@ -493,7 +493,7 @@ class CiscoVpdnMgmtMib::Cvpdntemplatetable : public Entity
 
         class Cvpdntemplateentry; //type: CiscoVpdnMgmtMib::Cvpdntemplatetable::Cvpdntemplateentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntemplatetable::Cvpdntemplateentry> > cvpdntemplateentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdntemplatetable::Cvpdntemplateentry> > cvpdntemplateentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdntemplatetable
 
@@ -534,7 +534,7 @@ class CiscoVpdnMgmtMib::Cvpdnbundletable : public Entity
 
         class Cvpdnbundleentry; //type: CiscoVpdnMgmtMib::Cvpdnbundletable::Cvpdnbundleentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundletable::Cvpdnbundleentry> > cvpdnbundleentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundletable::Cvpdnbundleentry> > cvpdnbundleentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdnbundletable
 
@@ -581,7 +581,7 @@ class CiscoVpdnMgmtMib::Cvpdnbundlechildtable : public Entity
 
         class Cvpdnbundlechildentry; //type: CiscoVpdnMgmtMib::Cvpdnbundlechildtable::Cvpdnbundlechildentry
 
-        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundlechildtable::Cvpdnbundlechildentry> > cvpdnbundlechildentry;
+        std::vector<std::shared_ptr<CISCO_VPDN_MGMT_MIB::CiscoVpdnMgmtMib::Cvpdnbundlechildtable::Cvpdnbundlechildentry> > cvpdnbundlechildentry_;
         
 }; // CiscoVpdnMgmtMib::Cvpdnbundlechildtable
 

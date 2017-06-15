@@ -45,21 +45,21 @@ class CiscoPtpMib : public Entity
         class Cptpclockporttransdstable; //type: CiscoPtpMib::Cptpclockporttransdstable
         class Cptpclockportassociatetable; //type: CiscoPtpMib::Cptpclockportassociatetable
 
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Ciscoptpmibsysteminfo> ciscoptpmibsysteminfo;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable> cptpclockcurrentdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable> cptpclockdefaultdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable> cptpclocknodetable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable> cptpclockparentdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable> cptpclockportassociatetable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable> cptpclockportdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable> cptpclockportrunningtable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable> cptpclockporttable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable> cptpclockporttransdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable> cptpclockrunningtable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable> cptpclocktimepropertiesdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable> cptpclocktransdefaultdstable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable> cptpsystemdomaintable;
-        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable> cptpsystemtable;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Ciscoptpmibsysteminfo> ciscoptpmibsysteminfo_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable> cptpclockcurrentdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable> cptpclockdefaultdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable> cptpclocknodetable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable> cptpclockparentdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable> cptpclockportassociatetable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable> cptpclockportdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable> cptpclockportrunningtable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable> cptpclockporttable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable> cptpclockporttransdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable> cptpclockrunningtable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable> cptpclocktimepropertiesdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable> cptpclocktransdefaultdstable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable> cptpsystemdomaintable_;
+        std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable> cptpsystemtable_;
         
 }; // CiscoPtpMib
 
@@ -99,7 +99,7 @@ class CiscoPtpMib::Cptpsystemtable : public Entity
 
         class Cptpsystementry; //type: CiscoPtpMib::Cptpsystemtable::Cptpsystementry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable::Cptpsystementry> > cptpsystementry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemtable::Cptpsystementry> > cptpsystementry_;
         
 }; // CiscoPtpMib::Cptpsystemtable
 
@@ -142,7 +142,7 @@ class CiscoPtpMib::Cptpsystemdomaintable : public Entity
 
         class Cptpsystemdomainentry; //type: CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry> > cptpsystemdomainentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry> > cptpsystemdomainentry_;
         
 }; // CiscoPtpMib::Cptpsystemdomaintable
 
@@ -183,7 +183,7 @@ class CiscoPtpMib::Cptpclocknodetable : public Entity
 
         class Cptpclocknodeentry; //type: CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry> > cptpclocknodeentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry> > cptpclocknodeentry_;
         
 }; // CiscoPtpMib::Cptpclocknodetable
 
@@ -235,7 +235,7 @@ class CiscoPtpMib::Cptpclockcurrentdstable : public Entity
 
         class Cptpclockcurrentdsentry; //type: CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry> > cptpclockcurrentdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry> > cptpclockcurrentdsentry_;
         
 }; // CiscoPtpMib::Cptpclockcurrentdstable
 
@@ -280,7 +280,7 @@ class CiscoPtpMib::Cptpclockparentdstable : public Entity
 
         class Cptpclockparentdsentry; //type: CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry> > cptpclockparentdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry> > cptpclockparentdsentry_;
         
 }; // CiscoPtpMib::Cptpclockparentdstable
 
@@ -332,7 +332,7 @@ class CiscoPtpMib::Cptpclockdefaultdstable : public Entity
 
         class Cptpclockdefaultdsentry; //type: CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry> > cptpclockdefaultdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry> > cptpclockdefaultdsentry_;
         
 }; // CiscoPtpMib::Cptpclockdefaultdstable
 
@@ -382,7 +382,7 @@ class CiscoPtpMib::Cptpclockrunningtable : public Entity
 
         class Cptpclockrunningentry; //type: CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry> > cptpclockrunningentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry> > cptpclockrunningentry_;
         
 }; // CiscoPtpMib::Cptpclockrunningtable
 
@@ -427,7 +427,7 @@ class CiscoPtpMib::Cptpclocktimepropertiesdstable : public Entity
 
         class Cptpclocktimepropertiesdsentry; //type: CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry> > cptpclocktimepropertiesdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry> > cptpclocktimepropertiesdsentry_;
         
 }; // CiscoPtpMib::Cptpclocktimepropertiesdstable
 
@@ -477,7 +477,7 @@ class CiscoPtpMib::Cptpclocktransdefaultdstable : public Entity
 
         class Cptpclocktransdefaultdsentry; //type: CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry> > cptpclocktransdefaultdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry> > cptpclocktransdefaultdsentry_;
         
 }; // CiscoPtpMib::Cptpclocktransdefaultdstable
 
@@ -522,7 +522,7 @@ class CiscoPtpMib::Cptpclockporttable : public Entity
 
         class Cptpclockportentry; //type: CiscoPtpMib::Cptpclockporttable::Cptpclockportentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable::Cptpclockportentry> > cptpclockportentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttable::Cptpclockportentry> > cptpclockportentry_;
         
 }; // CiscoPtpMib::Cptpclockporttable
 
@@ -571,7 +571,7 @@ class CiscoPtpMib::Cptpclockportdstable : public Entity
 
         class Cptpclockportdsentry; //type: CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry> > cptpclockportdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry> > cptpclockportdsentry_;
         
 }; // CiscoPtpMib::Cptpclockportdstable
 
@@ -625,7 +625,7 @@ class CiscoPtpMib::Cptpclockportrunningtable : public Entity
 
         class Cptpclockportrunningentry; //type: CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry> > cptpclockportrunningentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry> > cptpclockportrunningentry_;
         
 }; // CiscoPtpMib::Cptpclockportrunningtable
 
@@ -678,7 +678,7 @@ class CiscoPtpMib::Cptpclockporttransdstable : public Entity
 
         class Cptpclockporttransdsentry; //type: CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry> > cptpclockporttransdsentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry> > cptpclockporttransdsentry_;
         
 }; // CiscoPtpMib::Cptpclockporttransdstable
 
@@ -724,7 +724,7 @@ class CiscoPtpMib::Cptpclockportassociatetable : public Entity
 
         class Cptpclockportassociateentry; //type: CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry
 
-        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry> > cptpclockportassociateentry;
+        std::vector<std::shared_ptr<CISCO_PTP_MIB::CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry> > cptpclockportassociateentry_;
         
 }; // CiscoPtpMib::Cptpclockportassociatetable
 

@@ -47,23 +47,23 @@ class OspfMib : public Entity
         class Ospfaslsdbtable; //type: OspfMib::Ospfaslsdbtable
         class Ospfarealsacounttable; //type: OspfMib::Ospfarealsacounttable
 
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable> ospfareaaggregatetable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable> ospfarealsacounttable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable> ospfarearangetable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable> ospfareatable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable> ospfaslsdbtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable> ospfextlsdbtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfgeneralgroup> ospfgeneralgroup;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable> ospfhosttable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable> ospfifmetrictable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable> ospfiftable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable> ospflocallsdbtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable> ospflsdbtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable> ospfnbrtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable> ospfstubareatable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable> ospfvirtiftable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable> ospfvirtlocallsdbtable;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable> ospfvirtnbrtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable> ospfareaaggregatetable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable> ospfarealsacounttable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable> ospfarearangetable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable> ospfareatable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable> ospfaslsdbtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable> ospfextlsdbtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfgeneralgroup> ospfgeneralgroup_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable> ospfhosttable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable> ospfifmetrictable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable> ospfiftable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable> ospflocallsdbtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable> ospflsdbtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable> ospfnbrtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable> ospfstubareatable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable> ospfvirtiftable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable> ospfvirtlocallsdbtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable> ospfvirtnbrtable_;
         
 }; // OspfMib
 
@@ -135,7 +135,7 @@ class OspfMib::Ospfareatable : public Entity
 
         class Ospfareaentry; //type: OspfMib::Ospfareatable::Ospfareaentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable::Ospfareaentry> > ospfareaentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable::Ospfareaentry> > ospfareaentry_;
         
 }; // OspfMib::Ospfareatable
 
@@ -199,7 +199,7 @@ class OspfMib::Ospfstubareatable : public Entity
 
         class Ospfstubareaentry; //type: OspfMib::Ospfstubareatable::Ospfstubareaentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable::Ospfstubareaentry> > ospfstubareaentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable::Ospfstubareaentry> > ospfstubareaentry_;
         
 }; // OspfMib::Ospfstubareatable
 
@@ -244,7 +244,7 @@ class OspfMib::Ospflsdbtable : public Entity
 
         class Ospflsdbentry; //type: OspfMib::Ospflsdbtable::Ospflsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry> > ospflsdbentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry> > ospflsdbentry_;
         
 }; // OspfMib::Ospflsdbtable
 
@@ -292,7 +292,7 @@ class OspfMib::Ospfarearangetable : public Entity
 
         class Ospfarearangeentry; //type: OspfMib::Ospfarearangetable::Ospfarearangeentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable::Ospfarearangeentry> > ospfarearangeentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable::Ospfarearangeentry> > ospfarearangeentry_;
         
 }; // OspfMib::Ospfarearangetable
 
@@ -337,7 +337,7 @@ class OspfMib::Ospfhosttable : public Entity
 
         class Ospfhostentry; //type: OspfMib::Ospfhosttable::Ospfhostentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable::Ospfhostentry> > ospfhostentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable::Ospfhostentry> > ospfhostentry_;
         
 }; // OspfMib::Ospfhosttable
 
@@ -382,7 +382,7 @@ class OspfMib::Ospfiftable : public Entity
 
         class Ospfifentry; //type: OspfMib::Ospfiftable::Ospfifentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable::Ospfifentry> > ospfifentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable::Ospfifentry> > ospfifentry_;
         
 }; // OspfMib::Ospfiftable
 
@@ -450,7 +450,7 @@ class OspfMib::Ospfifmetrictable : public Entity
 
         class Ospfifmetricentry; //type: OspfMib::Ospfifmetrictable::Ospfifmetricentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable::Ospfifmetricentry> > ospfifmetricentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable::Ospfifmetricentry> > ospfifmetricentry_;
         
 }; // OspfMib::Ospfifmetrictable
 
@@ -494,7 +494,7 @@ class OspfMib::Ospfvirtiftable : public Entity
 
         class Ospfvirtifentry; //type: OspfMib::Ospfvirtiftable::Ospfvirtifentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable::Ospfvirtifentry> > ospfvirtifentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable::Ospfvirtifentry> > ospfvirtifentry_;
         
 }; // OspfMib::Ospfvirtiftable
 
@@ -549,7 +549,7 @@ class OspfMib::Ospfnbrtable : public Entity
 
         class Ospfnbrentry; //type: OspfMib::Ospfnbrtable::Ospfnbrentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable::Ospfnbrentry> > ospfnbrentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable::Ospfnbrentry> > ospfnbrentry_;
         
 }; // OspfMib::Ospfnbrtable
 
@@ -606,7 +606,7 @@ class OspfMib::Ospfvirtnbrtable : public Entity
 
         class Ospfvirtnbrentry; //type: OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry> > ospfvirtnbrentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry> > ospfvirtnbrentry_;
         
 }; // OspfMib::Ospfvirtnbrtable
 
@@ -659,7 +659,7 @@ class OspfMib::Ospfextlsdbtable : public Entity
 
         class Ospfextlsdbentry; //type: OspfMib::Ospfextlsdbtable::Ospfextlsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable::Ospfextlsdbentry> > ospfextlsdbentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable::Ospfextlsdbentry> > ospfextlsdbentry_;
         
 }; // OspfMib::Ospfextlsdbtable
 
@@ -706,7 +706,7 @@ class OspfMib::Ospfareaaggregatetable : public Entity
 
         class Ospfareaaggregateentry; //type: OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry> > ospfareaaggregateentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry> > ospfareaaggregateentry_;
         
 }; // OspfMib::Ospfareaaggregatetable
 
@@ -754,7 +754,7 @@ class OspfMib::Ospflocallsdbtable : public Entity
 
         class Ospflocallsdbentry; //type: OspfMib::Ospflocallsdbtable::Ospflocallsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable::Ospflocallsdbentry> > ospflocallsdbentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable::Ospflocallsdbentry> > ospflocallsdbentry_;
         
 }; // OspfMib::Ospflocallsdbtable
 
@@ -803,7 +803,7 @@ class OspfMib::Ospfvirtlocallsdbtable : public Entity
 
         class Ospfvirtlocallsdbentry; //type: OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry> > ospfvirtlocallsdbentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry> > ospfvirtlocallsdbentry_;
         
 }; // OspfMib::Ospfvirtlocallsdbtable
 
@@ -852,7 +852,7 @@ class OspfMib::Ospfaslsdbtable : public Entity
 
         class Ospfaslsdbentry; //type: OspfMib::Ospfaslsdbtable::Ospfaslsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable::Ospfaslsdbentry> > ospfaslsdbentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable::Ospfaslsdbentry> > ospfaslsdbentry_;
         
 }; // OspfMib::Ospfaslsdbtable
 
@@ -899,7 +899,7 @@ class OspfMib::Ospfarealsacounttable : public Entity
 
         class Ospfarealsacountentry; //type: OspfMib::Ospfarealsacounttable::Ospfarealsacountentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable::Ospfarealsacountentry> > ospfarealsacountentry;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable::Ospfarealsacountentry> > ospfarealsacountentry_;
         
 }; // OspfMib::Ospfarealsacounttable
 

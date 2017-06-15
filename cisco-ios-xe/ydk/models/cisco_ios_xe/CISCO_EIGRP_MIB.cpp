@@ -11,21 +11,21 @@ namespace CISCO_EIGRP_MIB {
 
 CiscoEigrpMib::CiscoEigrpMib()
     :
-    ceigrpinterfacetable(std::make_shared<CiscoEigrpMib::Ceigrpinterfacetable>())
-	,ceigrppeertable(std::make_shared<CiscoEigrpMib::Ceigrppeertable>())
-	,ceigrptopotable(std::make_shared<CiscoEigrpMib::Ceigrptopotable>())
-	,ceigrptraffstatstable(std::make_shared<CiscoEigrpMib::Ceigrptraffstatstable>())
-	,ceigrpvpntable(std::make_shared<CiscoEigrpMib::Ceigrpvpntable>())
+    ceigrpinterfacetable_(std::make_shared<CiscoEigrpMib::Ceigrpinterfacetable>())
+	,ceigrppeertable_(std::make_shared<CiscoEigrpMib::Ceigrppeertable>())
+	,ceigrptopotable_(std::make_shared<CiscoEigrpMib::Ceigrptopotable>())
+	,ceigrptraffstatstable_(std::make_shared<CiscoEigrpMib::Ceigrptraffstatstable>())
+	,ceigrpvpntable_(std::make_shared<CiscoEigrpMib::Ceigrpvpntable>())
 {
-    ceigrpinterfacetable->parent = this;
+    ceigrpinterfacetable_->parent = this;
 
-    ceigrppeertable->parent = this;
+    ceigrppeertable_->parent = this;
 
-    ceigrptopotable->parent = this;
+    ceigrptopotable_->parent = this;
 
-    ceigrptraffstatstable->parent = this;
+    ceigrptraffstatstable_->parent = this;
 
-    ceigrpvpntable->parent = this;
+    ceigrpvpntable_->parent = this;
 
     yang_name = "CISCO-EIGRP-MIB"; yang_parent_name = "CISCO-EIGRP-MIB";
 }
@@ -36,21 +36,21 @@ CiscoEigrpMib::~CiscoEigrpMib()
 
 bool CiscoEigrpMib::has_data() const
 {
-    return (ceigrpinterfacetable !=  nullptr && ceigrpinterfacetable->has_data())
-	|| (ceigrppeertable !=  nullptr && ceigrppeertable->has_data())
-	|| (ceigrptopotable !=  nullptr && ceigrptopotable->has_data())
-	|| (ceigrptraffstatstable !=  nullptr && ceigrptraffstatstable->has_data())
-	|| (ceigrpvpntable !=  nullptr && ceigrpvpntable->has_data());
+    return (ceigrpinterfacetable_ !=  nullptr && ceigrpinterfacetable_->has_data())
+	|| (ceigrppeertable_ !=  nullptr && ceigrppeertable_->has_data())
+	|| (ceigrptopotable_ !=  nullptr && ceigrptopotable_->has_data())
+	|| (ceigrptraffstatstable_ !=  nullptr && ceigrptraffstatstable_->has_data())
+	|| (ceigrpvpntable_ !=  nullptr && ceigrpvpntable_->has_data());
 }
 
 bool CiscoEigrpMib::has_operation() const
 {
     return is_set(operation)
-	|| (ceigrpinterfacetable !=  nullptr && ceigrpinterfacetable->has_operation())
-	|| (ceigrppeertable !=  nullptr && ceigrppeertable->has_operation())
-	|| (ceigrptopotable !=  nullptr && ceigrptopotable->has_operation())
-	|| (ceigrptraffstatstable !=  nullptr && ceigrptraffstatstable->has_operation())
-	|| (ceigrpvpntable !=  nullptr && ceigrpvpntable->has_operation());
+	|| (ceigrpinterfacetable_ !=  nullptr && ceigrpinterfacetable_->has_operation())
+	|| (ceigrppeertable_ !=  nullptr && ceigrppeertable_->has_operation())
+	|| (ceigrptopotable_ !=  nullptr && ceigrptopotable_->has_operation())
+	|| (ceigrptraffstatstable_ !=  nullptr && ceigrptraffstatstable_->has_operation())
+	|| (ceigrpvpntable_ !=  nullptr && ceigrpvpntable_->has_operation());
 }
 
 std::string CiscoEigrpMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> CiscoEigrpMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "cEigrpInterfaceTable")
     {
-        if(ceigrpinterfacetable == nullptr)
+        if(ceigrpinterfacetable_ == nullptr)
         {
-            ceigrpinterfacetable = std::make_shared<CiscoEigrpMib::Ceigrpinterfacetable>();
+            ceigrpinterfacetable_ = std::make_shared<CiscoEigrpMib::Ceigrpinterfacetable>();
         }
-        return ceigrpinterfacetable;
+        return ceigrpinterfacetable_;
     }
 
     if(child_yang_name == "cEigrpPeerTable")
     {
-        if(ceigrppeertable == nullptr)
+        if(ceigrppeertable_ == nullptr)
         {
-            ceigrppeertable = std::make_shared<CiscoEigrpMib::Ceigrppeertable>();
+            ceigrppeertable_ = std::make_shared<CiscoEigrpMib::Ceigrppeertable>();
         }
-        return ceigrppeertable;
+        return ceigrppeertable_;
     }
 
     if(child_yang_name == "cEigrpTopoTable")
     {
-        if(ceigrptopotable == nullptr)
+        if(ceigrptopotable_ == nullptr)
         {
-            ceigrptopotable = std::make_shared<CiscoEigrpMib::Ceigrptopotable>();
+            ceigrptopotable_ = std::make_shared<CiscoEigrpMib::Ceigrptopotable>();
         }
-        return ceigrptopotable;
+        return ceigrptopotable_;
     }
 
     if(child_yang_name == "cEigrpTraffStatsTable")
     {
-        if(ceigrptraffstatstable == nullptr)
+        if(ceigrptraffstatstable_ == nullptr)
         {
-            ceigrptraffstatstable = std::make_shared<CiscoEigrpMib::Ceigrptraffstatstable>();
+            ceigrptraffstatstable_ = std::make_shared<CiscoEigrpMib::Ceigrptraffstatstable>();
         }
-        return ceigrptraffstatstable;
+        return ceigrptraffstatstable_;
     }
 
     if(child_yang_name == "cEigrpVpnTable")
     {
-        if(ceigrpvpntable == nullptr)
+        if(ceigrpvpntable_ == nullptr)
         {
-            ceigrpvpntable = std::make_shared<CiscoEigrpMib::Ceigrpvpntable>();
+            ceigrpvpntable_ = std::make_shared<CiscoEigrpMib::Ceigrpvpntable>();
         }
-        return ceigrpvpntable;
+        return ceigrpvpntable_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> CiscoEigrpMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceigrpinterfacetable != nullptr)
+    if(ceigrpinterfacetable_ != nullptr)
     {
-        children["cEigrpInterfaceTable"] = ceigrpinterfacetable;
+        children["cEigrpInterfaceTable"] = ceigrpinterfacetable_;
     }
 
-    if(ceigrppeertable != nullptr)
+    if(ceigrppeertable_ != nullptr)
     {
-        children["cEigrpPeerTable"] = ceigrppeertable;
+        children["cEigrpPeerTable"] = ceigrppeertable_;
     }
 
-    if(ceigrptopotable != nullptr)
+    if(ceigrptopotable_ != nullptr)
     {
-        children["cEigrpTopoTable"] = ceigrptopotable;
+        children["cEigrpTopoTable"] = ceigrptopotable_;
     }
 
-    if(ceigrptraffstatstable != nullptr)
+    if(ceigrptraffstatstable_ != nullptr)
     {
-        children["cEigrpTraffStatsTable"] = ceigrptraffstatstable;
+        children["cEigrpTraffStatsTable"] = ceigrptraffstatstable_;
     }
 
-    if(ceigrpvpntable != nullptr)
+    if(ceigrpvpntable_ != nullptr)
     {
-        children["cEigrpVpnTable"] = ceigrpvpntable;
+        children["cEigrpVpnTable"] = ceigrpvpntable_;
     }
 
     return children;
@@ -196,9 +196,9 @@ CiscoEigrpMib::Ceigrpvpntable::~Ceigrpvpntable()
 
 bool CiscoEigrpMib::Ceigrpvpntable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrpvpnentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpvpnentry_.size(); index++)
     {
-        if(ceigrpvpnentry[index]->has_data())
+        if(ceigrpvpnentry_[index]->has_data())
             return true;
     }
     return false;
@@ -206,9 +206,9 @@ bool CiscoEigrpMib::Ceigrpvpntable::has_data() const
 
 bool CiscoEigrpMib::Ceigrpvpntable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrpvpnentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpvpnentry_.size(); index++)
     {
-        if(ceigrpvpnentry[index]->has_operation())
+        if(ceigrpvpnentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -248,7 +248,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpvpntable::get_child_by_name(const s
 {
     if(child_yang_name == "cEigrpVpnEntry")
     {
-        for(auto const & c : ceigrpvpnentry)
+        for(auto const & c : ceigrpvpnentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -258,7 +258,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpvpntable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry>();
         c->parent = this;
-        ceigrpvpnentry.push_back(c);
+        ceigrpvpnentry_.push_back(c);
         return c;
     }
 
@@ -268,7 +268,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpvpntable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::Ceigrpvpntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceigrpvpnentry)
+    for (auto const & c : ceigrpvpnentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -371,9 +371,9 @@ CiscoEigrpMib::Ceigrptraffstatstable::~Ceigrptraffstatstable()
 
 bool CiscoEigrpMib::Ceigrptraffstatstable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrptraffstatsentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptraffstatsentry_.size(); index++)
     {
-        if(ceigrptraffstatsentry[index]->has_data())
+        if(ceigrptraffstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -381,9 +381,9 @@ bool CiscoEigrpMib::Ceigrptraffstatstable::has_data() const
 
 bool CiscoEigrpMib::Ceigrptraffstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrptraffstatsentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptraffstatsentry_.size(); index++)
     {
-        if(ceigrptraffstatsentry[index]->has_operation())
+        if(ceigrptraffstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -423,7 +423,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptraffstatstable::get_child_by_name(
 {
     if(child_yang_name == "cEigrpTraffStatsEntry")
     {
-        for(auto const & c : ceigrptraffstatsentry)
+        for(auto const & c : ceigrptraffstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -433,7 +433,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptraffstatstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry>();
         c->parent = this;
-        ceigrptraffstatsentry.push_back(c);
+        ceigrptraffstatsentry_.push_back(c);
         return c;
     }
 
@@ -443,7 +443,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptraffstatstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::Ceigrptraffstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceigrptraffstatsentry)
+    for (auto const & c : ceigrptraffstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -722,9 +722,9 @@ CiscoEigrpMib::Ceigrptopotable::~Ceigrptopotable()
 
 bool CiscoEigrpMib::Ceigrptopotable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrptopoentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptopoentry_.size(); index++)
     {
-        if(ceigrptopoentry[index]->has_data())
+        if(ceigrptopoentry_[index]->has_data())
             return true;
     }
     return false;
@@ -732,9 +732,9 @@ bool CiscoEigrpMib::Ceigrptopotable::has_data() const
 
 bool CiscoEigrpMib::Ceigrptopotable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrptopoentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptopoentry_.size(); index++)
     {
-        if(ceigrptopoentry[index]->has_operation())
+        if(ceigrptopoentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -774,7 +774,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptopotable::get_child_by_name(const 
 {
     if(child_yang_name == "cEigrpTopoEntry")
     {
-        for(auto const & c : ceigrptopoentry)
+        for(auto const & c : ceigrptopoentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -784,7 +784,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptopotable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry>();
         c->parent = this;
-        ceigrptopoentry.push_back(c);
+        ceigrptopoentry_.push_back(c);
         return c;
     }
 
@@ -794,7 +794,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrptopotable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::Ceigrptopotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceigrptopoentry)
+    for (auto const & c : ceigrptopoentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1017,9 +1017,9 @@ CiscoEigrpMib::Ceigrppeertable::~Ceigrppeertable()
 
 bool CiscoEigrpMib::Ceigrppeertable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrppeerentry.size(); index++)
+    for (std::size_t index=0; index<ceigrppeerentry_.size(); index++)
     {
-        if(ceigrppeerentry[index]->has_data())
+        if(ceigrppeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1027,9 +1027,9 @@ bool CiscoEigrpMib::Ceigrppeertable::has_data() const
 
 bool CiscoEigrpMib::Ceigrppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrppeerentry.size(); index++)
+    for (std::size_t index=0; index<ceigrppeerentry_.size(); index++)
     {
-        if(ceigrppeerentry[index]->has_operation())
+        if(ceigrppeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1069,7 +1069,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrppeertable::get_child_by_name(const 
 {
     if(child_yang_name == "cEigrpPeerEntry")
     {
-        for(auto const & c : ceigrppeerentry)
+        for(auto const & c : ceigrppeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1079,7 +1079,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrppeertable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry>();
         c->parent = this;
-        ceigrppeerentry.push_back(c);
+        ceigrppeerentry_.push_back(c);
         return c;
     }
 
@@ -1089,7 +1089,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrppeertable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::Ceigrppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceigrppeerentry)
+    for (auto const & c : ceigrppeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1296,9 +1296,9 @@ CiscoEigrpMib::Ceigrpinterfacetable::~Ceigrpinterfacetable()
 
 bool CiscoEigrpMib::Ceigrpinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpinterfaceentry_.size(); index++)
     {
-        if(ceigrpinterfaceentry[index]->has_data())
+        if(ceigrpinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1306,9 +1306,9 @@ bool CiscoEigrpMib::Ceigrpinterfacetable::has_data() const
 
 bool CiscoEigrpMib::Ceigrpinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpinterfaceentry_.size(); index++)
     {
-        if(ceigrpinterfaceentry[index]->has_operation())
+        if(ceigrpinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1348,7 +1348,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpinterfacetable::get_child_by_name(c
 {
     if(child_yang_name == "cEigrpInterfaceEntry")
     {
-        for(auto const & c : ceigrpinterfaceentry)
+        for(auto const & c : ceigrpinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1358,7 +1358,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpinterfacetable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry>();
         c->parent = this;
-        ceigrpinterfaceentry.push_back(c);
+        ceigrpinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -1368,7 +1368,7 @@ std::shared_ptr<Entity> CiscoEigrpMib::Ceigrpinterfacetable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEigrpMib::Ceigrpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceigrpinterfaceentry)
+    for (auto const & c : ceigrpinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }

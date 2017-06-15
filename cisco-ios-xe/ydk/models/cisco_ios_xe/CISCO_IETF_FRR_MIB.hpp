@@ -34,10 +34,10 @@ class CiscoIetfFrrMib : public Entity
         class Cmplsfrrlogtable; //type: CiscoIetfFrrMib::Cmplsfrrlogtable
         class Cmplsfrrfacroutedbtable; //type: CiscoIetfFrrMib::Cmplsfrrfacroutedbtable
 
-        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrconsttable> cmplsfrrconsttable;
-        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrfacroutedbtable> cmplsfrrfacroutedbtable;
-        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrlogtable> cmplsfrrlogtable;
-        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrscalars> cmplsfrrscalars;
+        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrconsttable> cmplsfrrconsttable_;
+        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrfacroutedbtable> cmplsfrrfacroutedbtable_;
+        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrlogtable> cmplsfrrlogtable_;
+        std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrscalars> cmplsfrrscalars_;
         
 }; // CiscoIetfFrrMib
 
@@ -91,7 +91,7 @@ class CiscoIetfFrrMib::Cmplsfrrconsttable : public Entity
 
         class Cmplsfrrconstentry; //type: CiscoIetfFrrMib::Cmplsfrrconsttable::Cmplsfrrconstentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrconsttable::Cmplsfrrconstentry> > cmplsfrrconstentry;
+        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrconsttable::Cmplsfrrconstentry> > cmplsfrrconstentry_;
         
 }; // CiscoIetfFrrMib::Cmplsfrrconsttable
 
@@ -143,7 +143,7 @@ class CiscoIetfFrrMib::Cmplsfrrlogtable : public Entity
 
         class Cmplsfrrlogentry; //type: CiscoIetfFrrMib::Cmplsfrrlogtable::Cmplsfrrlogentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrlogtable::Cmplsfrrlogentry> > cmplsfrrlogentry;
+        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrlogtable::Cmplsfrrlogentry> > cmplsfrrlogentry_;
         
 }; // CiscoIetfFrrMib::Cmplsfrrlogtable
 
@@ -189,7 +189,7 @@ class CiscoIetfFrrMib::Cmplsfrrfacroutedbtable : public Entity
 
         class Cmplsfrrfacroutedbentry; //type: CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry> > cmplsfrrfacroutedbentry;
+        std::vector<std::shared_ptr<CISCO_IETF_FRR_MIB::CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry> > cmplsfrrfacroutedbentry_;
         
 }; // CiscoIetfFrrMib::Cmplsfrrfacroutedbtable
 

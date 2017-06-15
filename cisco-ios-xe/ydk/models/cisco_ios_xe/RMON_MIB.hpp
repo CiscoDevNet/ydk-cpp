@@ -58,24 +58,24 @@ class RmonMib : public Entity
         class Eventtable; //type: RmonMib::Eventtable
         class Logtable; //type: RmonMib::Logtable
 
-        std::shared_ptr<RMON_MIB::RmonMib::Alarmtable> alarmtable;
-        std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable> buffercontroltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable> capturebuffertable;
-        std::shared_ptr<RMON_MIB::RmonMib::Channeltable> channeltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable> etherhistorytable;
-        std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable> etherstatstable;
-        std::shared_ptr<RMON_MIB::RmonMib::Eventtable> eventtable;
-        std::shared_ptr<RMON_MIB::RmonMib::Filtertable> filtertable;
-        std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable> historycontroltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable> hostcontroltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttable> hosttable;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable> hosttimetable;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable> hosttopncontroltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable> hosttopntable;
-        std::shared_ptr<RMON_MIB::RmonMib::Logtable> logtable;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable> matrixcontroltable;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable> matrixdstable;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable> matrixsdtable;
+        std::shared_ptr<RMON_MIB::RmonMib::Alarmtable> alarmtable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable> buffercontroltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable> capturebuffertable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Channeltable> channeltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable> etherhistorytable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable> etherstatstable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Eventtable> eventtable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Filtertable> filtertable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable> historycontroltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable> hostcontroltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttable> hosttable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable> hosttimetable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable> hosttopncontroltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable> hosttopntable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Logtable> logtable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable> matrixcontroltable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable> matrixdstable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable> matrixsdtable_;
         
 }; // RmonMib
 
@@ -96,7 +96,7 @@ class RmonMib::Etherstatstable : public Entity
 
         class Etherstatsentry; //type: RmonMib::Etherstatstable::Etherstatsentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable::Etherstatsentry> > etherstatsentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable::Etherstatsentry> > etherstatsentry_;
         
 }; // RmonMib::Etherstatstable
 
@@ -156,7 +156,7 @@ class RmonMib::Historycontroltable : public Entity
 
         class Historycontrolentry; //type: RmonMib::Historycontroltable::Historycontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable::Historycontrolentry> > historycontrolentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable::Historycontrolentry> > historycontrolentry_;
         
 }; // RmonMib::Historycontroltable
 
@@ -202,7 +202,7 @@ class RmonMib::Etherhistorytable : public Entity
 
         class Etherhistoryentry; //type: RmonMib::Etherhistorytable::Etherhistoryentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable::Etherhistoryentry> > etherhistoryentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable::Etherhistoryentry> > etherhistoryentry_;
         
 }; // RmonMib::Etherhistorytable
 
@@ -256,7 +256,7 @@ class RmonMib::Alarmtable : public Entity
 
         class Alarmentry; //type: RmonMib::Alarmtable::Alarmentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Alarmtable::Alarmentry> > alarmentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Alarmtable::Alarmentry> > alarmentry_;
         
 }; // RmonMib::Alarmtable
 
@@ -309,7 +309,7 @@ class RmonMib::Hostcontroltable : public Entity
 
         class Hostcontrolentry; //type: RmonMib::Hostcontroltable::Hostcontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable::Hostcontrolentry> > hostcontrolentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable::Hostcontrolentry> > hostcontrolentry_;
         
 }; // RmonMib::Hostcontroltable
 
@@ -354,7 +354,7 @@ class RmonMib::Hosttable : public Entity
 
         class Hostentry; //type: RmonMib::Hosttable::Hostentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttable::Hostentry> > hostentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttable::Hostentry> > hostentry_;
         
 }; // RmonMib::Hosttable
 
@@ -403,7 +403,7 @@ class RmonMib::Hosttimetable : public Entity
 
         class Hosttimeentry; //type: RmonMib::Hosttimetable::Hosttimeentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable::Hosttimeentry> > hosttimeentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable::Hosttimeentry> > hosttimeentry_;
         
 }; // RmonMib::Hosttimetable
 
@@ -452,7 +452,7 @@ class RmonMib::Hosttopncontroltable : public Entity
 
         class Hosttopncontrolentry; //type: RmonMib::Hosttopncontroltable::Hosttopncontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable::Hosttopncontrolentry> > hosttopncontrolentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable::Hosttopncontrolentry> > hosttopncontrolentry_;
         
 }; // RmonMib::Hosttopncontroltable
 
@@ -502,7 +502,7 @@ class RmonMib::Hosttopntable : public Entity
 
         class Hosttopnentry; //type: RmonMib::Hosttopntable::Hosttopnentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable::Hosttopnentry> > hosttopnentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable::Hosttopnentry> > hosttopnentry_;
         
 }; // RmonMib::Hosttopntable
 
@@ -545,7 +545,7 @@ class RmonMib::Matrixcontroltable : public Entity
 
         class Matrixcontrolentry; //type: RmonMib::Matrixcontroltable::Matrixcontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable::Matrixcontrolentry> > matrixcontrolentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable::Matrixcontrolentry> > matrixcontrolentry_;
         
 }; // RmonMib::Matrixcontroltable
 
@@ -590,7 +590,7 @@ class RmonMib::Matrixsdtable : public Entity
 
         class Matrixsdentry; //type: RmonMib::Matrixsdtable::Matrixsdentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable::Matrixsdentry> > matrixsdentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable::Matrixsdentry> > matrixsdentry_;
         
 }; // RmonMib::Matrixsdtable
 
@@ -635,7 +635,7 @@ class RmonMib::Matrixdstable : public Entity
 
         class Matrixdsentry; //type: RmonMib::Matrixdstable::Matrixdsentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable::Matrixdsentry> > matrixdsentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable::Matrixdsentry> > matrixdsentry_;
         
 }; // RmonMib::Matrixdstable
 
@@ -680,7 +680,7 @@ class RmonMib::Filtertable : public Entity
 
         class Filterentry; //type: RmonMib::Filtertable::Filterentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Filtertable::Filterentry> > filterentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Filtertable::Filterentry> > filterentry_;
         
 }; // RmonMib::Filtertable
 
@@ -730,7 +730,7 @@ class RmonMib::Channeltable : public Entity
 
         class Channelentry; //type: RmonMib::Channeltable::Channelentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Channeltable::Channelentry> > channelentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Channeltable::Channelentry> > channelentry_;
         
 }; // RmonMib::Channeltable
 
@@ -784,7 +784,7 @@ class RmonMib::Buffercontroltable : public Entity
 
         class Buffercontrolentry; //type: RmonMib::Buffercontroltable::Buffercontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable::Buffercontrolentry> > buffercontrolentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable::Buffercontrolentry> > buffercontrolentry_;
         
 }; // RmonMib::Buffercontroltable
 
@@ -838,7 +838,7 @@ class RmonMib::Capturebuffertable : public Entity
 
         class Capturebufferentry; //type: RmonMib::Capturebuffertable::Capturebufferentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable::Capturebufferentry> > capturebufferentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable::Capturebufferentry> > capturebufferentry_;
         
 }; // RmonMib::Capturebuffertable
 
@@ -884,7 +884,7 @@ class RmonMib::Eventtable : public Entity
 
         class Evententry; //type: RmonMib::Eventtable::Evententry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Eventtable::Evententry> > evententry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Eventtable::Evententry> > evententry_;
         
 }; // RmonMib::Eventtable
 
@@ -931,7 +931,7 @@ class RmonMib::Logtable : public Entity
 
         class Logentry; //type: RmonMib::Logtable::Logentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Logtable::Logentry> > logentry;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Logtable::Logentry> > logentry_;
         
 }; // RmonMib::Logtable
 

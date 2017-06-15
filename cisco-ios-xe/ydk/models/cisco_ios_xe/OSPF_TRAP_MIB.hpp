@@ -30,7 +30,7 @@ class OspfTrapMib : public Entity
 
         class Ospftrapcontrol; //type: OspfTrapMib::Ospftrapcontrol
 
-        std::shared_ptr<OSPF_TRAP_MIB::OspfTrapMib::Ospftrapcontrol> ospftrapcontrol;
+        std::shared_ptr<OSPF_TRAP_MIB::OspfTrapMib::Ospftrapcontrol> ospftrapcontrol_;
         
 }; // OspfTrapMib
 

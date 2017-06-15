@@ -17,19 +17,19 @@ ConfdState::ConfdState()
     upgrade_mode{YType::empty, "upgrade-mode"},
     version{YType::str, "version"}
     	,
-    cli(nullptr) // presence node
-	,ha(nullptr) // presence node
-	,internal(std::make_shared<ConfdState::Internal>())
-	,loaded_data_models(std::make_shared<ConfdState::LoadedDataModels>())
-	,netconf(nullptr) // presence node
-	,rest(nullptr) // presence node
-	,smp(nullptr) // presence node
-	,snmp(nullptr) // presence node
-	,webui(nullptr) // presence node
+    cli_(nullptr) // presence node
+	,ha_(nullptr) // presence node
+	,internal_(std::make_shared<ConfdState::Internal>())
+	,loaded_data_models_(std::make_shared<ConfdState::LoadedDataModels>())
+	,netconf_(nullptr) // presence node
+	,rest_(nullptr) // presence node
+	,smp_(nullptr) // presence node
+	,snmp_(nullptr) // presence node
+	,webui_(nullptr) // presence node
 {
-    internal->parent = this;
+    internal_->parent = this;
 
-    loaded_data_models->parent = this;
+    loaded_data_models_->parent = this;
 
     yang_name = "confd-state"; yang_parent_name = "tailf-confd-monitoring";
 }
@@ -45,15 +45,15 @@ bool ConfdState::has_data() const
 	|| read_only_mode.is_set
 	|| upgrade_mode.is_set
 	|| version.is_set
-	|| (cli !=  nullptr && cli->has_data())
-	|| (ha !=  nullptr && ha->has_data())
-	|| (internal !=  nullptr && internal->has_data())
-	|| (loaded_data_models !=  nullptr && loaded_data_models->has_data())
-	|| (netconf !=  nullptr && netconf->has_data())
-	|| (rest !=  nullptr && rest->has_data())
-	|| (smp !=  nullptr && smp->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (webui !=  nullptr && webui->has_data());
+	|| (cli_ !=  nullptr && cli_->has_data())
+	|| (ha_ !=  nullptr && ha_->has_data())
+	|| (internal_ !=  nullptr && internal_->has_data())
+	|| (loaded_data_models_ !=  nullptr && loaded_data_models_->has_data())
+	|| (netconf_ !=  nullptr && netconf_->has_data())
+	|| (rest_ !=  nullptr && rest_->has_data())
+	|| (smp_ !=  nullptr && smp_->has_data())
+	|| (snmp_ !=  nullptr && snmp_->has_data())
+	|| (webui_ !=  nullptr && webui_->has_data());
 }
 
 bool ConfdState::has_operation() const
@@ -64,15 +64,15 @@ bool ConfdState::has_operation() const
 	|| is_set(read_only_mode.operation)
 	|| is_set(upgrade_mode.operation)
 	|| is_set(version.operation)
-	|| (cli !=  nullptr && cli->has_operation())
-	|| (ha !=  nullptr && ha->has_operation())
-	|| (internal !=  nullptr && internal->has_operation())
-	|| (loaded_data_models !=  nullptr && loaded_data_models->has_operation())
-	|| (netconf !=  nullptr && netconf->has_operation())
-	|| (rest !=  nullptr && rest->has_operation())
-	|| (smp !=  nullptr && smp->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (webui !=  nullptr && webui->has_operation());
+	|| (cli_ !=  nullptr && cli_->has_operation())
+	|| (ha_ !=  nullptr && ha_->has_operation())
+	|| (internal_ !=  nullptr && internal_->has_operation())
+	|| (loaded_data_models_ !=  nullptr && loaded_data_models_->has_operation())
+	|| (netconf_ !=  nullptr && netconf_->has_operation())
+	|| (rest_ !=  nullptr && rest_->has_operation())
+	|| (smp_ !=  nullptr && smp_->has_operation())
+	|| (snmp_ !=  nullptr && snmp_->has_operation())
+	|| (webui_ !=  nullptr && webui_->has_operation());
 }
 
 std::string ConfdState::get_segment_path() const
@@ -111,83 +111,83 @@ std::shared_ptr<Entity> ConfdState::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "cli")
     {
-        if(cli == nullptr)
+        if(cli_ == nullptr)
         {
-            cli = std::make_shared<ConfdState::Cli>();
+            cli_ = std::make_shared<ConfdState::Cli>();
         }
-        return cli;
+        return cli_;
     }
 
     if(child_yang_name == "ha")
     {
-        if(ha == nullptr)
+        if(ha_ == nullptr)
         {
-            ha = std::make_shared<ConfdState::Ha>();
+            ha_ = std::make_shared<ConfdState::Ha>();
         }
-        return ha;
+        return ha_;
     }
 
     if(child_yang_name == "internal")
     {
-        if(internal == nullptr)
+        if(internal_ == nullptr)
         {
-            internal = std::make_shared<ConfdState::Internal>();
+            internal_ = std::make_shared<ConfdState::Internal>();
         }
-        return internal;
+        return internal_;
     }
 
     if(child_yang_name == "loaded-data-models")
     {
-        if(loaded_data_models == nullptr)
+        if(loaded_data_models_ == nullptr)
         {
-            loaded_data_models = std::make_shared<ConfdState::LoadedDataModels>();
+            loaded_data_models_ = std::make_shared<ConfdState::LoadedDataModels>();
         }
-        return loaded_data_models;
+        return loaded_data_models_;
     }
 
     if(child_yang_name == "netconf")
     {
-        if(netconf == nullptr)
+        if(netconf_ == nullptr)
         {
-            netconf = std::make_shared<ConfdState::Netconf>();
+            netconf_ = std::make_shared<ConfdState::Netconf>();
         }
-        return netconf;
+        return netconf_;
     }
 
     if(child_yang_name == "rest")
     {
-        if(rest == nullptr)
+        if(rest_ == nullptr)
         {
-            rest = std::make_shared<ConfdState::Rest>();
+            rest_ = std::make_shared<ConfdState::Rest>();
         }
-        return rest;
+        return rest_;
     }
 
     if(child_yang_name == "smp")
     {
-        if(smp == nullptr)
+        if(smp_ == nullptr)
         {
-            smp = std::make_shared<ConfdState::Smp>();
+            smp_ = std::make_shared<ConfdState::Smp>();
         }
-        return smp;
+        return smp_;
     }
 
     if(child_yang_name == "snmp")
     {
-        if(snmp == nullptr)
+        if(snmp_ == nullptr)
         {
-            snmp = std::make_shared<ConfdState::Snmp>();
+            snmp_ = std::make_shared<ConfdState::Snmp>();
         }
-        return snmp;
+        return snmp_;
     }
 
     if(child_yang_name == "webui")
     {
-        if(webui == nullptr)
+        if(webui_ == nullptr)
         {
-            webui = std::make_shared<ConfdState::Webui>();
+            webui_ = std::make_shared<ConfdState::Webui>();
         }
-        return webui;
+        return webui_;
     }
 
     return nullptr;
@@ -196,49 +196,49 @@ std::shared_ptr<Entity> ConfdState::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cli != nullptr)
+    if(cli_ != nullptr)
     {
-        children["cli"] = cli;
+        children["cli"] = cli_;
     }
 
-    if(ha != nullptr)
+    if(ha_ != nullptr)
     {
-        children["ha"] = ha;
+        children["ha"] = ha_;
     }
 
-    if(internal != nullptr)
+    if(internal_ != nullptr)
     {
-        children["internal"] = internal;
+        children["internal"] = internal_;
     }
 
-    if(loaded_data_models != nullptr)
+    if(loaded_data_models_ != nullptr)
     {
-        children["loaded-data-models"] = loaded_data_models;
+        children["loaded-data-models"] = loaded_data_models_;
     }
 
-    if(netconf != nullptr)
+    if(netconf_ != nullptr)
     {
-        children["netconf"] = netconf;
+        children["netconf"] = netconf_;
     }
 
-    if(rest != nullptr)
+    if(rest_ != nullptr)
     {
-        children["rest"] = rest;
+        children["rest"] = rest_;
     }
 
-    if(smp != nullptr)
+    if(smp_ != nullptr)
     {
-        children["smp"] = smp;
+        children["smp"] = smp_;
     }
 
-    if(snmp != nullptr)
+    if(snmp_ != nullptr)
     {
-        children["snmp"] = snmp;
+        children["snmp"] = snmp_;
     }
 
-    if(webui != nullptr)
+    if(webui_ != nullptr)
     {
-        children["webui"] = webui;
+        children["webui"] = webui_;
     }
 
     return children;
@@ -495,9 +495,9 @@ ConfdState::LoadedDataModels::~LoadedDataModels()
 
 bool ConfdState::LoadedDataModels::has_data() const
 {
-    for (std::size_t index=0; index<data_model.size(); index++)
+    for (std::size_t index=0; index<data_model_.size(); index++)
     {
-        if(data_model[index]->has_data())
+        if(data_model_[index]->has_data())
             return true;
     }
     return false;
@@ -505,9 +505,9 @@ bool ConfdState::LoadedDataModels::has_data() const
 
 bool ConfdState::LoadedDataModels::has_operation() const
 {
-    for (std::size_t index=0; index<data_model.size(); index++)
+    for (std::size_t index=0; index<data_model_.size(); index++)
     {
-        if(data_model[index]->has_operation())
+        if(data_model_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -547,7 +547,7 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const st
 {
     if(child_yang_name == "data-model")
     {
-        for(auto const & c : data_model)
+        for(auto const & c : data_model_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -557,7 +557,7 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const st
         }
         auto c = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
         c->parent = this;
-        data_model.push_back(c);
+        data_model_.push_back(c);
         return c;
     }
 
@@ -567,7 +567,7 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : data_model)
+    for (auto const & c : data_model_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -703,9 +703,9 @@ void ConfdState::LoadedDataModels::DataModel::set_value(const std::string & valu
 
 ConfdState::Netconf::Netconf()
     :
-    listen(std::make_shared<ConfdState::Netconf::Listen>())
+    listen_(std::make_shared<ConfdState::Netconf::Listen>())
 {
-    listen->parent = this;
+    listen_->parent = this;
 
     yang_name = "netconf"; yang_parent_name = "confd-state";
 }
@@ -716,13 +716,13 @@ ConfdState::Netconf::~Netconf()
 
 bool ConfdState::Netconf::has_data() const
 {
-    return (listen !=  nullptr && listen->has_data());
+    return (listen_ !=  nullptr && listen_->has_data());
 }
 
 bool ConfdState::Netconf::has_operation() const
 {
     return is_set(operation)
-	|| (listen !=  nullptr && listen->has_operation());
+	|| (listen_ !=  nullptr && listen_->has_operation());
 }
 
 std::string ConfdState::Netconf::get_segment_path() const
@@ -759,11 +759,11 @@ std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string
 {
     if(child_yang_name == "listen")
     {
-        if(listen == nullptr)
+        if(listen_ == nullptr)
         {
-            listen = std::make_shared<ConfdState::Netconf::Listen>();
+            listen_ = std::make_shared<ConfdState::Netconf::Listen>();
         }
-        return listen;
+        return listen_;
     }
 
     return nullptr;
@@ -772,9 +772,9 @@ std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
+    if(listen_ != nullptr)
     {
-        children["listen"] = listen;
+        children["listen"] = listen_;
     }
 
     return children;
@@ -795,14 +795,14 @@ ConfdState::Netconf::Listen::~Listen()
 
 bool ConfdState::Netconf::Listen::has_data() const
 {
-    for (std::size_t index=0; index<ssh.size(); index++)
+    for (std::size_t index=0; index<ssh_.size(); index++)
     {
-        if(ssh[index]->has_data())
+        if(ssh_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_data())
+        if(tcp_[index]->has_data())
             return true;
     }
     return false;
@@ -810,14 +810,14 @@ bool ConfdState::Netconf::Listen::has_data() const
 
 bool ConfdState::Netconf::Listen::has_operation() const
 {
-    for (std::size_t index=0; index<ssh.size(); index++)
+    for (std::size_t index=0; index<ssh_.size(); index++)
     {
-        if(ssh[index]->has_operation())
+        if(ssh_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_operation())
+        if(tcp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -857,7 +857,7 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
 {
     if(child_yang_name == "ssh")
     {
-        for(auto const & c : ssh)
+        for(auto const & c : ssh_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -867,13 +867,13 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
         }
         auto c = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
         c->parent = this;
-        ssh.push_back(c);
+        ssh_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
+        for(auto const & c : tcp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -883,7 +883,7 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
         }
         auto c = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
         c->parent = this;
-        tcp.push_back(c);
+        tcp_.push_back(c);
         return c;
     }
 
@@ -893,12 +893,12 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssh)
+    for (auto const & c : ssh_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : tcp)
+    for (auto const & c : tcp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1072,9 +1072,9 @@ void ConfdState::Netconf::Listen::Ssh::set_value(const std::string & value_path,
 
 ConfdState::Cli::Cli()
     :
-    listen(std::make_shared<ConfdState::Cli::Listen>())
+    listen_(std::make_shared<ConfdState::Cli::Listen>())
 {
-    listen->parent = this;
+    listen_->parent = this;
 
     yang_name = "cli"; yang_parent_name = "confd-state";
 }
@@ -1085,13 +1085,13 @@ ConfdState::Cli::~Cli()
 
 bool ConfdState::Cli::has_data() const
 {
-    return (listen !=  nullptr && listen->has_data());
+    return (listen_ !=  nullptr && listen_->has_data());
 }
 
 bool ConfdState::Cli::has_operation() const
 {
     return is_set(operation)
-	|| (listen !=  nullptr && listen->has_operation());
+	|| (listen_ !=  nullptr && listen_->has_operation());
 }
 
 std::string ConfdState::Cli::get_segment_path() const
@@ -1128,11 +1128,11 @@ std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "listen")
     {
-        if(listen == nullptr)
+        if(listen_ == nullptr)
         {
-            listen = std::make_shared<ConfdState::Cli::Listen>();
+            listen_ = std::make_shared<ConfdState::Cli::Listen>();
         }
-        return listen;
+        return listen_;
     }
 
     return nullptr;
@@ -1141,9 +1141,9 @@ std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
+    if(listen_ != nullptr)
     {
-        children["listen"] = listen;
+        children["listen"] = listen_;
     }
 
     return children;
@@ -1164,9 +1164,9 @@ ConfdState::Cli::Listen::~Listen()
 
 bool ConfdState::Cli::Listen::has_data() const
 {
-    for (std::size_t index=0; index<ssh.size(); index++)
+    for (std::size_t index=0; index<ssh_.size(); index++)
     {
-        if(ssh[index]->has_data())
+        if(ssh_[index]->has_data())
             return true;
     }
     return false;
@@ -1174,9 +1174,9 @@ bool ConfdState::Cli::Listen::has_data() const
 
 bool ConfdState::Cli::Listen::has_operation() const
 {
-    for (std::size_t index=0; index<ssh.size(); index++)
+    for (std::size_t index=0; index<ssh_.size(); index++)
     {
-        if(ssh[index]->has_operation())
+        if(ssh_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1216,7 +1216,7 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::st
 {
     if(child_yang_name == "ssh")
     {
-        for(auto const & c : ssh)
+        for(auto const & c : ssh_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1226,7 +1226,7 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::st
         }
         auto c = std::make_shared<ConfdState::Cli::Listen::Ssh>();
         c->parent = this;
-        ssh.push_back(c);
+        ssh_.push_back(c);
         return c;
     }
 
@@ -1236,7 +1236,7 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssh)
+    for (auto const & c : ssh_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1330,9 +1330,9 @@ void ConfdState::Cli::Listen::Ssh::set_value(const std::string & value_path, std
 
 ConfdState::Webui::Webui()
     :
-    listen(std::make_shared<ConfdState::Webui::Listen>())
+    listen_(std::make_shared<ConfdState::Webui::Listen>())
 {
-    listen->parent = this;
+    listen_->parent = this;
 
     yang_name = "webui"; yang_parent_name = "confd-state";
 }
@@ -1343,13 +1343,13 @@ ConfdState::Webui::~Webui()
 
 bool ConfdState::Webui::has_data() const
 {
-    return (listen !=  nullptr && listen->has_data());
+    return (listen_ !=  nullptr && listen_->has_data());
 }
 
 bool ConfdState::Webui::has_operation() const
 {
     return is_set(operation)
-	|| (listen !=  nullptr && listen->has_operation());
+	|| (listen_ !=  nullptr && listen_->has_operation());
 }
 
 std::string ConfdState::Webui::get_segment_path() const
@@ -1386,11 +1386,11 @@ std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string &
 {
     if(child_yang_name == "listen")
     {
-        if(listen == nullptr)
+        if(listen_ == nullptr)
         {
-            listen = std::make_shared<ConfdState::Webui::Listen>();
+            listen_ = std::make_shared<ConfdState::Webui::Listen>();
         }
-        return listen;
+        return listen_;
     }
 
     return nullptr;
@@ -1399,9 +1399,9 @@ std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
+    if(listen_ != nullptr)
     {
-        children["listen"] = listen;
+        children["listen"] = listen_;
     }
 
     return children;
@@ -1422,14 +1422,14 @@ ConfdState::Webui::Listen::~Listen()
 
 bool ConfdState::Webui::Listen::has_data() const
 {
-    for (std::size_t index=0; index<ssl.size(); index++)
+    for (std::size_t index=0; index<ssl_.size(); index++)
     {
-        if(ssl[index]->has_data())
+        if(ssl_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_data())
+        if(tcp_[index]->has_data())
             return true;
     }
     return false;
@@ -1437,14 +1437,14 @@ bool ConfdState::Webui::Listen::has_data() const
 
 bool ConfdState::Webui::Listen::has_operation() const
 {
-    for (std::size_t index=0; index<ssl.size(); index++)
+    for (std::size_t index=0; index<ssl_.size(); index++)
     {
-        if(ssl[index]->has_operation())
+        if(ssl_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_operation())
+        if(tcp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1484,7 +1484,7 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
 {
     if(child_yang_name == "ssl")
     {
-        for(auto const & c : ssl)
+        for(auto const & c : ssl_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1494,13 +1494,13 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
         }
         auto c = std::make_shared<ConfdState::Webui::Listen::Ssl>();
         c->parent = this;
-        ssl.push_back(c);
+        ssl_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
+        for(auto const & c : tcp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1510,7 +1510,7 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
         }
         auto c = std::make_shared<ConfdState::Webui::Listen::Tcp>();
         c->parent = this;
-        tcp.push_back(c);
+        tcp_.push_back(c);
         return c;
     }
 
@@ -1520,12 +1520,12 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssl)
+    for (auto const & c : ssl_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : tcp)
+    for (auto const & c : tcp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1699,9 +1699,9 @@ void ConfdState::Webui::Listen::Ssl::set_value(const std::string & value_path, s
 
 ConfdState::Rest::Rest()
     :
-    listen(std::make_shared<ConfdState::Rest::Listen>())
+    listen_(std::make_shared<ConfdState::Rest::Listen>())
 {
-    listen->parent = this;
+    listen_->parent = this;
 
     yang_name = "rest"; yang_parent_name = "confd-state";
 }
@@ -1712,13 +1712,13 @@ ConfdState::Rest::~Rest()
 
 bool ConfdState::Rest::has_data() const
 {
-    return (listen !=  nullptr && listen->has_data());
+    return (listen_ !=  nullptr && listen_->has_data());
 }
 
 bool ConfdState::Rest::has_operation() const
 {
     return is_set(operation)
-	|| (listen !=  nullptr && listen->has_operation());
+	|| (listen_ !=  nullptr && listen_->has_operation());
 }
 
 std::string ConfdState::Rest::get_segment_path() const
@@ -1755,11 +1755,11 @@ std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "listen")
     {
-        if(listen == nullptr)
+        if(listen_ == nullptr)
         {
-            listen = std::make_shared<ConfdState::Rest::Listen>();
+            listen_ = std::make_shared<ConfdState::Rest::Listen>();
         }
-        return listen;
+        return listen_;
     }
 
     return nullptr;
@@ -1768,9 +1768,9 @@ std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
+    if(listen_ != nullptr)
     {
-        children["listen"] = listen;
+        children["listen"] = listen_;
     }
 
     return children;
@@ -1791,14 +1791,14 @@ ConfdState::Rest::Listen::~Listen()
 
 bool ConfdState::Rest::Listen::has_data() const
 {
-    for (std::size_t index=0; index<ssl.size(); index++)
+    for (std::size_t index=0; index<ssl_.size(); index++)
     {
-        if(ssl[index]->has_data())
+        if(ssl_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_data())
+        if(tcp_[index]->has_data())
             return true;
     }
     return false;
@@ -1806,14 +1806,14 @@ bool ConfdState::Rest::Listen::has_data() const
 
 bool ConfdState::Rest::Listen::has_operation() const
 {
-    for (std::size_t index=0; index<ssl.size(); index++)
+    for (std::size_t index=0; index<ssl_.size(); index++)
     {
-        if(ssl[index]->has_operation())
+        if(ssl_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tcp.size(); index++)
+    for (std::size_t index=0; index<tcp_.size(); index++)
     {
-        if(tcp[index]->has_operation())
+        if(tcp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1853,7 +1853,7 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
 {
     if(child_yang_name == "ssl")
     {
-        for(auto const & c : ssl)
+        for(auto const & c : ssl_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1863,13 +1863,13 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
         }
         auto c = std::make_shared<ConfdState::Rest::Listen::Ssl>();
         c->parent = this;
-        ssl.push_back(c);
+        ssl_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
+        for(auto const & c : tcp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1879,7 +1879,7 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
         }
         auto c = std::make_shared<ConfdState::Rest::Listen::Tcp>();
         c->parent = this;
-        tcp.push_back(c);
+        tcp_.push_back(c);
         return c;
     }
 
@@ -1889,12 +1889,12 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ssl)
+    for (auto const & c : ssl_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : tcp)
+    for (auto const & c : tcp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2071,12 +2071,12 @@ ConfdState::Snmp::Snmp()
     engine_id{YType::str, "engine-id"},
     mib{YType::str, "mib"}
     	,
-    listen(std::make_shared<ConfdState::Snmp::Listen>())
-	,version(std::make_shared<ConfdState::Snmp::Version>())
+    listen_(std::make_shared<ConfdState::Snmp::Listen>())
+	,version_(std::make_shared<ConfdState::Snmp::Version>())
 {
-    listen->parent = this;
+    listen_->parent = this;
 
-    version->parent = this;
+    version_->parent = this;
 
     yang_name = "snmp"; yang_parent_name = "confd-state";
 }
@@ -2093,8 +2093,8 @@ bool ConfdState::Snmp::has_data() const
             return true;
     }
     return engine_id.is_set
-	|| (listen !=  nullptr && listen->has_data())
-	|| (version !=  nullptr && version->has_data());
+	|| (listen_ !=  nullptr && listen_->has_data())
+	|| (version_ !=  nullptr && version_->has_data());
 }
 
 bool ConfdState::Snmp::has_operation() const
@@ -2107,8 +2107,8 @@ bool ConfdState::Snmp::has_operation() const
     return is_set(operation)
 	|| is_set(engine_id.operation)
 	|| is_set(mib.operation)
-	|| (listen !=  nullptr && listen->has_operation())
-	|| (version !=  nullptr && version->has_operation());
+	|| (listen_ !=  nullptr && listen_->has_operation())
+	|| (version_ !=  nullptr && version_->has_operation());
 }
 
 std::string ConfdState::Snmp::get_segment_path() const
@@ -2148,20 +2148,20 @@ std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "listen")
     {
-        if(listen == nullptr)
+        if(listen_ == nullptr)
         {
-            listen = std::make_shared<ConfdState::Snmp::Listen>();
+            listen_ = std::make_shared<ConfdState::Snmp::Listen>();
         }
-        return listen;
+        return listen_;
     }
 
     if(child_yang_name == "version")
     {
-        if(version == nullptr)
+        if(version_ == nullptr)
         {
-            version = std::make_shared<ConfdState::Snmp::Version>();
+            version_ = std::make_shared<ConfdState::Snmp::Version>();
         }
-        return version;
+        return version_;
     }
 
     return nullptr;
@@ -2170,14 +2170,14 @@ std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(listen != nullptr)
+    if(listen_ != nullptr)
     {
-        children["listen"] = listen;
+        children["listen"] = listen_;
     }
 
-    if(version != nullptr)
+    if(version_ != nullptr)
     {
-        children["version"] = version;
+        children["version"] = version_;
     }
 
     return children;
@@ -2206,9 +2206,9 @@ ConfdState::Snmp::Listen::~Listen()
 
 bool ConfdState::Snmp::Listen::has_data() const
 {
-    for (std::size_t index=0; index<udp.size(); index++)
+    for (std::size_t index=0; index<udp_.size(); index++)
     {
-        if(udp[index]->has_data())
+        if(udp_[index]->has_data())
             return true;
     }
     return false;
@@ -2216,9 +2216,9 @@ bool ConfdState::Snmp::Listen::has_data() const
 
 bool ConfdState::Snmp::Listen::has_operation() const
 {
-    for (std::size_t index=0; index<udp.size(); index++)
+    for (std::size_t index=0; index<udp_.size(); index++)
     {
-        if(udp[index]->has_operation())
+        if(udp_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2258,7 +2258,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::s
 {
     if(child_yang_name == "udp")
     {
-        for(auto const & c : udp)
+        for(auto const & c : udp_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2268,7 +2268,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::s
         }
         auto c = std::make_shared<ConfdState::Snmp::Listen::Udp>();
         c->parent = this;
-        udp.push_back(c);
+        udp_.push_back(c);
         return c;
     }
 
@@ -2278,7 +2278,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : udp)
+    for (auto const & c : udp_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2460,12 +2460,12 @@ void ConfdState::Snmp::Version::set_value(const std::string & value_path, std::s
 
 ConfdState::Internal::Internal()
     :
-    callpoints(std::make_shared<ConfdState::Internal::Callpoints>())
-	,cdb(std::make_shared<ConfdState::Internal::Cdb>())
+    callpoints_(std::make_shared<ConfdState::Internal::Callpoints>())
+	,cdb_(std::make_shared<ConfdState::Internal::Cdb>())
 {
-    callpoints->parent = this;
+    callpoints_->parent = this;
 
-    cdb->parent = this;
+    cdb_->parent = this;
 
     yang_name = "internal"; yang_parent_name = "confd-state";
 }
@@ -2476,15 +2476,15 @@ ConfdState::Internal::~Internal()
 
 bool ConfdState::Internal::has_data() const
 {
-    return (callpoints !=  nullptr && callpoints->has_data())
-	|| (cdb !=  nullptr && cdb->has_data());
+    return (callpoints_ !=  nullptr && callpoints_->has_data())
+	|| (cdb_ !=  nullptr && cdb_->has_data());
 }
 
 bool ConfdState::Internal::has_operation() const
 {
     return is_set(operation)
-	|| (callpoints !=  nullptr && callpoints->has_operation())
-	|| (cdb !=  nullptr && cdb->has_operation());
+	|| (callpoints_ !=  nullptr && callpoints_->has_operation())
+	|| (cdb_ !=  nullptr && cdb_->has_operation());
 }
 
 std::string ConfdState::Internal::get_segment_path() const
@@ -2521,20 +2521,20 @@ std::shared_ptr<Entity> ConfdState::Internal::get_child_by_name(const std::strin
 {
     if(child_yang_name == "callpoints")
     {
-        if(callpoints == nullptr)
+        if(callpoints_ == nullptr)
         {
-            callpoints = std::make_shared<ConfdState::Internal::Callpoints>();
+            callpoints_ = std::make_shared<ConfdState::Internal::Callpoints>();
         }
-        return callpoints;
+        return callpoints_;
     }
 
     if(child_yang_name == "cdb")
     {
-        if(cdb == nullptr)
+        if(cdb_ == nullptr)
         {
-            cdb = std::make_shared<ConfdState::Internal::Cdb>();
+            cdb_ = std::make_shared<ConfdState::Internal::Cdb>();
         }
-        return cdb;
+        return cdb_;
     }
 
     return nullptr;
@@ -2543,14 +2543,14 @@ std::shared_ptr<Entity> ConfdState::Internal::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(callpoints != nullptr)
+    if(callpoints_ != nullptr)
     {
-        children["callpoints"] = callpoints;
+        children["callpoints"] = callpoints_;
     }
 
-    if(cdb != nullptr)
+    if(cdb_ != nullptr)
     {
-        children["cdb"] = cdb;
+        children["cdb"] = cdb_;
     }
 
     return children;
@@ -2562,8 +2562,8 @@ void ConfdState::Internal::set_value(const std::string & value_path, std::string
 
 ConfdState::Internal::Callpoints::Callpoints()
     :
-    authentication_callback(nullptr) // presence node
-	,authorization_callbacks(nullptr) // presence node
+    authentication_callback_(nullptr) // presence node
+	,authorization_callbacks_(nullptr) // presence node
 {
     yang_name = "callpoints"; yang_parent_name = "internal";
 }
@@ -2574,95 +2574,95 @@ ConfdState::Internal::Callpoints::~Callpoints()
 
 bool ConfdState::Internal::Callpoints::has_data() const
 {
-    for (std::size_t index=0; index<actionpoint.size(); index++)
+    for (std::size_t index=0; index<actionpoint_.size(); index++)
     {
-        if(actionpoint[index]->has_data())
+        if(actionpoint_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<callpoint.size(); index++)
+    for (std::size_t index=0; index<callpoint_.size(); index++)
     {
-        if(callpoint[index]->has_data())
+        if(callpoint_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<error_formatting_callback.size(); index++)
+    for (std::size_t index=0; index<error_formatting_callback_.size(); index++)
     {
-        if(error_formatting_callback[index]->has_data())
+        if(error_formatting_callback_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<notification_stream_replay.size(); index++)
+    for (std::size_t index=0; index<notification_stream_replay_.size(); index++)
     {
-        if(notification_stream_replay[index]->has_data())
+        if(notification_stream_replay_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<snmp_inform_callback.size(); index++)
+    for (std::size_t index=0; index<snmp_inform_callback_.size(); index++)
     {
-        if(snmp_inform_callback[index]->has_data())
+        if(snmp_inform_callback_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<snmp_notification_subscription.size(); index++)
+    for (std::size_t index=0; index<snmp_notification_subscription_.size(); index++)
     {
-        if(snmp_notification_subscription[index]->has_data())
+        if(snmp_notification_subscription_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<typepoint.size(); index++)
+    for (std::size_t index=0; index<typepoint_.size(); index++)
     {
-        if(typepoint[index]->has_data())
+        if(typepoint_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<validationpoint.size(); index++)
+    for (std::size_t index=0; index<validationpoint_.size(); index++)
     {
-        if(validationpoint[index]->has_data())
+        if(validationpoint_[index]->has_data())
             return true;
     }
-    return (authentication_callback !=  nullptr && authentication_callback->has_data())
-	|| (authorization_callbacks !=  nullptr && authorization_callbacks->has_data());
+    return (authentication_callback_ !=  nullptr && authentication_callback_->has_data())
+	|| (authorization_callbacks_ !=  nullptr && authorization_callbacks_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::has_operation() const
 {
-    for (std::size_t index=0; index<actionpoint.size(); index++)
+    for (std::size_t index=0; index<actionpoint_.size(); index++)
     {
-        if(actionpoint[index]->has_operation())
+        if(actionpoint_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<callpoint.size(); index++)
+    for (std::size_t index=0; index<callpoint_.size(); index++)
     {
-        if(callpoint[index]->has_operation())
+        if(callpoint_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<error_formatting_callback.size(); index++)
+    for (std::size_t index=0; index<error_formatting_callback_.size(); index++)
     {
-        if(error_formatting_callback[index]->has_operation())
+        if(error_formatting_callback_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<notification_stream_replay.size(); index++)
+    for (std::size_t index=0; index<notification_stream_replay_.size(); index++)
     {
-        if(notification_stream_replay[index]->has_operation())
+        if(notification_stream_replay_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<snmp_inform_callback.size(); index++)
+    for (std::size_t index=0; index<snmp_inform_callback_.size(); index++)
     {
-        if(snmp_inform_callback[index]->has_operation())
+        if(snmp_inform_callback_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<snmp_notification_subscription.size(); index++)
+    for (std::size_t index=0; index<snmp_notification_subscription_.size(); index++)
     {
-        if(snmp_notification_subscription[index]->has_operation())
+        if(snmp_notification_subscription_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<typepoint.size(); index++)
+    for (std::size_t index=0; index<typepoint_.size(); index++)
     {
-        if(typepoint[index]->has_operation())
+        if(typepoint_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<validationpoint.size(); index++)
+    for (std::size_t index=0; index<validationpoint_.size(); index++)
     {
-        if(validationpoint[index]->has_operation())
+        if(validationpoint_[index]->has_operation())
             return true;
     }
     return is_set(operation)
-	|| (authentication_callback !=  nullptr && authentication_callback->has_operation())
-	|| (authorization_callbacks !=  nullptr && authorization_callbacks->has_operation());
+	|| (authentication_callback_ !=  nullptr && authentication_callback_->has_operation())
+	|| (authorization_callbacks_ !=  nullptr && authorization_callbacks_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::get_segment_path() const
@@ -2699,7 +2699,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 {
     if(child_yang_name == "actionpoint")
     {
-        for(auto const & c : actionpoint)
+        for(auto const & c : actionpoint_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2709,31 +2709,31 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint>();
         c->parent = this;
-        actionpoint.push_back(c);
+        actionpoint_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "authentication-callback")
     {
-        if(authentication_callback == nullptr)
+        if(authentication_callback_ == nullptr)
         {
-            authentication_callback = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback>();
+            authentication_callback_ = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback>();
         }
-        return authentication_callback;
+        return authentication_callback_;
     }
 
     if(child_yang_name == "authorization-callbacks")
     {
-        if(authorization_callbacks == nullptr)
+        if(authorization_callbacks_ == nullptr)
         {
-            authorization_callbacks = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks>();
+            authorization_callbacks_ = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks>();
         }
-        return authorization_callbacks;
+        return authorization_callbacks_;
     }
 
     if(child_yang_name == "callpoint")
     {
-        for(auto const & c : callpoint)
+        for(auto const & c : callpoint_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2743,13 +2743,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint>();
         c->parent = this;
-        callpoint.push_back(c);
+        callpoint_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "error-formatting-callback")
     {
-        for(auto const & c : error_formatting_callback)
+        for(auto const & c : error_formatting_callback_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2759,13 +2759,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback>();
         c->parent = this;
-        error_formatting_callback.push_back(c);
+        error_formatting_callback_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "notification-stream-replay")
     {
-        for(auto const & c : notification_stream_replay)
+        for(auto const & c : notification_stream_replay_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2775,13 +2775,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay>();
         c->parent = this;
-        notification_stream_replay.push_back(c);
+        notification_stream_replay_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "snmp-inform-callback")
     {
-        for(auto const & c : snmp_inform_callback)
+        for(auto const & c : snmp_inform_callback_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2791,13 +2791,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback>();
         c->parent = this;
-        snmp_inform_callback.push_back(c);
+        snmp_inform_callback_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "snmp-notification-subscription")
     {
-        for(auto const & c : snmp_notification_subscription)
+        for(auto const & c : snmp_notification_subscription_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2807,13 +2807,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription>();
         c->parent = this;
-        snmp_notification_subscription.push_back(c);
+        snmp_notification_subscription_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "typepoint")
     {
-        for(auto const & c : typepoint)
+        for(auto const & c : typepoint_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2823,13 +2823,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint>();
         c->parent = this;
-        typepoint.push_back(c);
+        typepoint_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "validationpoint")
     {
-        for(auto const & c : validationpoint)
+        for(auto const & c : validationpoint_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2839,7 +2839,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint>();
         c->parent = this;
-        validationpoint.push_back(c);
+        validationpoint_.push_back(c);
         return c;
     }
 
@@ -2849,52 +2849,52 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : actionpoint)
+    for (auto const & c : actionpoint_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(authentication_callback != nullptr)
+    if(authentication_callback_ != nullptr)
     {
-        children["authentication-callback"] = authentication_callback;
+        children["authentication-callback"] = authentication_callback_;
     }
 
-    if(authorization_callbacks != nullptr)
+    if(authorization_callbacks_ != nullptr)
     {
-        children["authorization-callbacks"] = authorization_callbacks;
+        children["authorization-callbacks"] = authorization_callbacks_;
     }
 
-    for (auto const & c : callpoint)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : error_formatting_callback)
+    for (auto const & c : callpoint_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : notification_stream_replay)
+    for (auto const & c : error_formatting_callback_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : snmp_inform_callback)
+    for (auto const & c : notification_stream_replay_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : snmp_notification_subscription)
+    for (auto const & c : snmp_inform_callback_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : typepoint)
+    for (auto const & c : snmp_notification_subscription_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : validationpoint)
+    for (auto const & c : typepoint_)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : validationpoint_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2913,9 +2913,9 @@ ConfdState::Internal::Callpoints::Callpoint::Callpoint()
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "callpoint"; yang_parent_name = "callpoints";
 }
@@ -2926,23 +2926,23 @@ ConfdState::Internal::Callpoints::Callpoint::~Callpoint()
 
 bool ConfdState::Internal::Callpoints::Callpoint::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Callpoint::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2950,7 +2950,7 @@ bool ConfdState::Internal::Callpoints::Callpoint::has_operation() const
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Callpoint::get_segment_path() const
@@ -2991,16 +2991,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3010,7 +3010,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -3020,12 +3020,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3147,9 +3147,9 @@ ConfdState::Internal::Callpoints::Callpoint::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "callpoint";
 }
@@ -3163,7 +3163,7 @@ bool ConfdState::Internal::Callpoints::Callpoint::Range::has_data() const
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Callpoint::Range::has_operation() const
@@ -3172,7 +3172,7 @@ bool ConfdState::Internal::Callpoints::Callpoint::Range::has_operation() const
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Callpoint::Range::get_segment_path() const
@@ -3212,11 +3212,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -3225,9 +3225,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -3344,9 +3344,9 @@ ConfdState::Internal::Callpoints::Validationpoint::Validationpoint()
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "validationpoint"; yang_parent_name = "callpoints";
 }
@@ -3357,23 +3357,23 @@ ConfdState::Internal::Callpoints::Validationpoint::~Validationpoint()
 
 bool ConfdState::Internal::Callpoints::Validationpoint::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Validationpoint::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -3381,7 +3381,7 @@ bool ConfdState::Internal::Callpoints::Validationpoint::has_operation() const
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Validationpoint::get_segment_path() const
@@ -3422,16 +3422,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3441,7 +3441,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -3451,12 +3451,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3578,9 +3578,9 @@ ConfdState::Internal::Callpoints::Validationpoint::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "validationpoint";
 }
@@ -3594,7 +3594,7 @@ bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_data() const
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_operation() const
@@ -3603,7 +3603,7 @@ bool ConfdState::Internal::Callpoints::Validationpoint::Range::has_operation() c
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Validationpoint::Range::get_segment_path() const
@@ -3643,11 +3643,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -3656,9 +3656,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -3775,9 +3775,9 @@ ConfdState::Internal::Callpoints::Actionpoint::Actionpoint()
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "actionpoint"; yang_parent_name = "callpoints";
 }
@@ -3788,23 +3788,23 @@ ConfdState::Internal::Callpoints::Actionpoint::~Actionpoint()
 
 bool ConfdState::Internal::Callpoints::Actionpoint::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Actionpoint::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -3812,7 +3812,7 @@ bool ConfdState::Internal::Callpoints::Actionpoint::has_operation() const
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Actionpoint::get_segment_path() const
@@ -3853,16 +3853,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3872,7 +3872,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -3882,12 +3882,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4009,9 +4009,9 @@ ConfdState::Internal::Callpoints::Actionpoint::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "actionpoint";
 }
@@ -4025,7 +4025,7 @@ bool ConfdState::Internal::Callpoints::Actionpoint::Range::has_data() const
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Actionpoint::Range::has_operation() const
@@ -4034,7 +4034,7 @@ bool ConfdState::Internal::Callpoints::Actionpoint::Range::has_operation() const
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Actionpoint::Range::get_segment_path() const
@@ -4074,11 +4074,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::ge
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -4087,9 +4087,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::ge
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -4206,9 +4206,9 @@ ConfdState::Internal::Callpoints::SnmpInformCallback::SnmpInformCallback()
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "snmp-inform-callback"; yang_parent_name = "callpoints";
 }
@@ -4219,23 +4219,23 @@ ConfdState::Internal::Callpoints::SnmpInformCallback::~SnmpInformCallback()
 
 bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -4243,7 +4243,7 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::has_operation() const
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::SnmpInformCallback::get_segment_path() const
@@ -4284,16 +4284,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4303,7 +4303,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -4313,12 +4313,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4440,9 +4440,9 @@ ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "snmp-inform-callback";
 }
@@ -4456,7 +4456,7 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_data() con
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_operation() const
@@ -4465,7 +4465,7 @@ bool ConfdState::Internal::Callpoints::SnmpInformCallback::Range::has_operation(
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_segment_path() const
@@ -4505,11 +4505,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -4518,9 +4518,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -4637,9 +4637,9 @@ ConfdState::Internal::Callpoints::SnmpNotificationSubscription::SnmpNotification
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "snmp-notification-subscription"; yang_parent_name = "callpoints";
 }
@@ -4650,23 +4650,23 @@ ConfdState::Internal::Callpoints::SnmpNotificationSubscription::~SnmpNotificatio
 
 bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -4674,7 +4674,7 @@ bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::has_operati
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_segment_path() const
@@ -4715,16 +4715,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4734,7 +4734,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -4744,12 +4744,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4871,9 +4871,9 @@ ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "snmp-notification-subscription";
 }
@@ -4887,7 +4887,7 @@ bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_operation() const
@@ -4896,7 +4896,7 @@ bool ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::has_
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_segment_path() const
@@ -4936,11 +4936,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -4949,9 +4949,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -5068,9 +5068,9 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::ErrorFormattingCallba
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "error-formatting-callback"; yang_parent_name = "callpoints";
 }
@@ -5081,23 +5081,23 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::~ErrorFormattingCallb
 
 bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -5105,7 +5105,7 @@ bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::has_operation() 
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_segment_path() const
@@ -5146,16 +5146,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5165,7 +5165,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -5175,12 +5175,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5302,9 +5302,9 @@ ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "error-formatting-callback";
 }
@@ -5318,7 +5318,7 @@ bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::has_data(
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::has_operation() const
@@ -5327,7 +5327,7 @@ bool ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::has_opera
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_segment_path() const
@@ -5367,11 +5367,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -5380,9 +5380,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -5499,9 +5499,9 @@ ConfdState::Internal::Callpoints::Typepoint::Typepoint()
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "typepoint"; yang_parent_name = "callpoints";
 }
@@ -5512,23 +5512,23 @@ ConfdState::Internal::Callpoints::Typepoint::~Typepoint()
 
 bool ConfdState::Internal::Callpoints::Typepoint::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return id.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Typepoint::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -5536,7 +5536,7 @@ bool ConfdState::Internal::Callpoints::Typepoint::has_operation() const
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Typepoint::get_segment_path() const
@@ -5577,16 +5577,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5596,7 +5596,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -5606,12 +5606,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5733,9 +5733,9 @@ ConfdState::Internal::Callpoints::Typepoint::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "typepoint";
 }
@@ -5749,7 +5749,7 @@ bool ConfdState::Internal::Callpoints::Typepoint::Range::has_data() const
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::Typepoint::Range::has_operation() const
@@ -5758,7 +5758,7 @@ bool ConfdState::Internal::Callpoints::Typepoint::Range::has_operation() const
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::Typepoint::Range::get_segment_path() const
@@ -5798,11 +5798,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -5811,9 +5811,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -5931,9 +5931,9 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::NotificationStreamRe
     path{YType::str, "path"},
     replay_support{YType::enumeration, "replay-support"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "notification-stream-replay"; yang_parent_name = "callpoints";
 }
@@ -5944,9 +5944,9 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::~NotificationStreamR
 
 bool ConfdState::Internal::Callpoints::NotificationStreamReplay::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return name.is_set
@@ -5954,14 +5954,14 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::has_data() cons
 	|| file.is_set
 	|| path.is_set
 	|| replay_support.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::NotificationStreamReplay::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -5970,7 +5970,7 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::has_operation()
 	|| is_set(file.operation)
 	|| is_set(path.operation)
 	|| is_set(replay_support.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::get_segment_path() const
@@ -6012,16 +6012,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6031,7 +6031,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -6041,12 +6041,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -6172,9 +6172,9 @@ ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "notification-stream-replay";
 }
@@ -6188,7 +6188,7 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::has_data
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::has_operation() const
@@ -6197,7 +6197,7 @@ bool ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::has_oper
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_segment_path() const
@@ -6237,11 +6237,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -6250,9 +6250,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -6369,9 +6369,9 @@ ConfdState::Internal::Callpoints::AuthenticationCallback::AuthenticationCallback
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "authentication-callback"; yang_parent_name = "callpoints";
 }
@@ -6382,23 +6382,23 @@ ConfdState::Internal::Callpoints::AuthenticationCallback::~AuthenticationCallbac
 
 bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return enabled.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -6406,7 +6406,7 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::has_operation() c
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::AuthenticationCallback::get_segment_path() const
@@ -6447,16 +6447,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6466,7 +6466,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -6476,12 +6476,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -6603,9 +6603,9 @@ ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "authentication-callback";
 }
@@ -6619,7 +6619,7 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_data()
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_operation() const
@@ -6628,7 +6628,7 @@ bool ConfdState::Internal::Callpoints::AuthenticationCallback::Range::has_operat
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_segment_path() const
@@ -6668,11 +6668,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -6681,9 +6681,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -6800,9 +6800,9 @@ ConfdState::Internal::Callpoints::AuthorizationCallbacks::AuthorizationCallbacks
     file{YType::str, "file"},
     path{YType::str, "path"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "authorization-callbacks"; yang_parent_name = "callpoints";
 }
@@ -6813,23 +6813,23 @@ ConfdState::Internal::Callpoints::AuthorizationCallbacks::~AuthorizationCallback
 
 bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_data())
+        if(range_[index]->has_data())
             return true;
     }
     return enabled.is_set
 	|| error.is_set
 	|| file.is_set
 	|| path.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range_.size(); index++)
     {
-        if(range[index]->has_operation())
+        if(range_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -6837,7 +6837,7 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::has_operation() c
 	|| is_set(error.operation)
 	|| is_set(file.operation)
 	|| is_set(path.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_segment_path() const
@@ -6878,16 +6878,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
+        for(auto const & c : range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6897,7 +6897,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
         }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
         c->parent = this;
-        range.push_back(c);
+        range_.push_back(c);
         return c;
     }
 
@@ -6907,12 +6907,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
-    for (auto const & c : range)
+    for (auto const & c : range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7034,9 +7034,9 @@ ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Range()
     lower{YType::str, "lower"},
     upper{YType::str, "upper"}
     	,
-    daemon(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>())
+    daemon_(std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>())
 {
-    daemon->parent = this;
+    daemon_->parent = this;
 
     yang_name = "range"; yang_parent_name = "authorization-callbacks";
 }
@@ -7050,7 +7050,7 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_data()
     return default_.is_set
 	|| lower.is_set
 	|| upper.is_set
-	|| (daemon !=  nullptr && daemon->has_data());
+	|| (daemon_ !=  nullptr && daemon_->has_data());
 }
 
 bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_operation() const
@@ -7059,7 +7059,7 @@ bool ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::has_operat
 	|| is_set(default_.operation)
 	|| is_set(lower.operation)
 	|| is_set(upper.operation)
-	|| (daemon !=  nullptr && daemon->has_operation());
+	|| (daemon_ !=  nullptr && daemon_->has_operation());
 }
 
 std::string ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_segment_path() const
@@ -7099,11 +7099,11 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 {
     if(child_yang_name == "daemon")
     {
-        if(daemon == nullptr)
+        if(daemon_ == nullptr)
         {
-            daemon = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>();
+            daemon_ = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon>();
         }
-        return daemon;
+        return daemon_;
     }
 
     return nullptr;
@@ -7112,9 +7112,9 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(daemon != nullptr)
+    if(daemon_ != nullptr)
     {
-        children["daemon"] = daemon;
+        children["daemon"] = daemon_;
     }
 
     return children;
@@ -7235,14 +7235,14 @@ ConfdState::Internal::Cdb::~Cdb()
 
 bool ConfdState::Internal::Cdb::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client_.size(); index++)
     {
-        if(client[index]->has_data())
+        if(client_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<datastore.size(); index++)
+    for (std::size_t index=0; index<datastore_.size(); index++)
     {
-        if(datastore[index]->has_data())
+        if(datastore_[index]->has_data())
             return true;
     }
     return false;
@@ -7250,14 +7250,14 @@ bool ConfdState::Internal::Cdb::has_data() const
 
 bool ConfdState::Internal::Cdb::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client_.size(); index++)
     {
-        if(client[index]->has_operation())
+        if(client_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<datastore.size(); index++)
+    for (std::size_t index=0; index<datastore_.size(); index++)
     {
-        if(datastore[index]->has_operation())
+        if(datastore_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -7297,7 +7297,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
+        for(auto const & c : client_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7307,13 +7307,13 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Client>();
         c->parent = this;
-        client.push_back(c);
+        client_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "datastore")
     {
-        for(auto const & c : datastore)
+        for(auto const & c : datastore_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7323,7 +7323,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore>();
         c->parent = this;
-        datastore.push_back(c);
+        datastore_.push_back(c);
         return c;
     }
 
@@ -7333,12 +7333,12 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : client)
+    for (auto const & c : client_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : datastore)
+    for (auto const & c : datastore_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7363,7 +7363,7 @@ ConfdState::Internal::Cdb::Datastore::Datastore()
     write_lock_set{YType::boolean, "write-lock-set"},
     write_queue{YType::uint32, "write-queue"}
     	,
-    pending_subscription_sync(nullptr) // presence node
+    pending_subscription_sync_(nullptr) // presence node
 {
     yang_name = "datastore"; yang_parent_name = "cdb";
 }
@@ -7374,9 +7374,9 @@ ConfdState::Internal::Cdb::Datastore::~Datastore()
 
 bool ConfdState::Internal::Cdb::Datastore::has_data() const
 {
-    for (std::size_t index=0; index<pending_notification_queue.size(); index++)
+    for (std::size_t index=0; index<pending_notification_queue_.size(); index++)
     {
-        if(pending_notification_queue[index]->has_data())
+        if(pending_notification_queue_[index]->has_data())
             return true;
     }
     return name.is_set
@@ -7389,14 +7389,14 @@ bool ConfdState::Internal::Cdb::Datastore::has_data() const
 	|| waiting_for_replication_sync.is_set
 	|| write_lock_set.is_set
 	|| write_queue.is_set
-	|| (pending_subscription_sync !=  nullptr && pending_subscription_sync->has_data());
+	|| (pending_subscription_sync_ !=  nullptr && pending_subscription_sync_->has_data());
 }
 
 bool ConfdState::Internal::Cdb::Datastore::has_operation() const
 {
-    for (std::size_t index=0; index<pending_notification_queue.size(); index++)
+    for (std::size_t index=0; index<pending_notification_queue_.size(); index++)
     {
-        if(pending_notification_queue[index]->has_operation())
+        if(pending_notification_queue_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -7410,7 +7410,7 @@ bool ConfdState::Internal::Cdb::Datastore::has_operation() const
 	|| is_set(waiting_for_replication_sync.operation)
 	|| is_set(write_lock_set.operation)
 	|| is_set(write_queue.operation)
-	|| (pending_subscription_sync !=  nullptr && pending_subscription_sync->has_operation());
+	|| (pending_subscription_sync_ !=  nullptr && pending_subscription_sync_->has_operation());
 }
 
 std::string ConfdState::Internal::Cdb::Datastore::get_segment_path() const
@@ -7457,7 +7457,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
 {
     if(child_yang_name == "pending-notification-queue")
     {
-        for(auto const & c : pending_notification_queue)
+        for(auto const & c : pending_notification_queue_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7467,17 +7467,17 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue>();
         c->parent = this;
-        pending_notification_queue.push_back(c);
+        pending_notification_queue_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "pending-subscription-sync")
     {
-        if(pending_subscription_sync == nullptr)
+        if(pending_subscription_sync_ == nullptr)
         {
-            pending_subscription_sync = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync>();
+            pending_subscription_sync_ = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync>();
         }
-        return pending_subscription_sync;
+        return pending_subscription_sync_;
     }
 
     return nullptr;
@@ -7486,14 +7486,14 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pending_notification_queue)
+    for (auto const & c : pending_notification_queue_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(pending_subscription_sync != nullptr)
+    if(pending_subscription_sync_ != nullptr)
     {
-        children["pending-subscription-sync"] = pending_subscription_sync;
+        children["pending-subscription-sync"] = pending_subscription_sync_;
     }
 
     return children;
@@ -7557,9 +7557,9 @@ ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::~PendingSubscript
 
 bool ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::has_data() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<notification_.size(); index++)
     {
-        if(notification[index]->has_data())
+        if(notification_[index]->has_data())
             return true;
     }
     return priority.is_set
@@ -7568,9 +7568,9 @@ bool ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::has_data() c
 
 bool ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::has_operation() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<notification_.size(); index++)
     {
-        if(notification[index]->has_operation())
+        if(notification_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -7614,7 +7614,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
 {
     if(child_yang_name == "notification")
     {
-        for(auto const & c : notification)
+        for(auto const & c : notification_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7624,7 +7624,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification>();
         c->parent = this;
-        notification.push_back(c);
+        notification_.push_back(c);
         return c;
     }
 
@@ -7634,7 +7634,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : notification)
+    for (auto const & c : notification_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7755,9 +7755,9 @@ ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::~PendingNotifica
 
 bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_data() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<notification_.size(); index++)
     {
-        if(notification[index]->has_data())
+        if(notification_[index]->has_data())
             return true;
     }
     return false;
@@ -7765,9 +7765,9 @@ bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_data() 
 
 bool ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::has_operation() const
 {
-    for (std::size_t index=0; index<notification.size(); index++)
+    for (std::size_t index=0; index<notification_.size(); index++)
     {
-        if(notification[index]->has_operation())
+        if(notification_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -7807,7 +7807,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
 {
     if(child_yang_name == "notification")
     {
-        for(auto const & c : notification)
+        for(auto const & c : notification_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7817,7 +7817,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
         c->parent = this;
-        notification.push_back(c);
+        notification_.push_back(c);
         return c;
     }
 
@@ -7827,7 +7827,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : notification)
+    for (auto const & c : notification_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7954,9 +7954,9 @@ ConfdState::Internal::Cdb::Client::~Client()
 
 bool ConfdState::Internal::Cdb::Client::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription_.size(); index++)
     {
-        if(subscription[index]->has_data())
+        if(subscription_[index]->has_data())
             return true;
     }
     return datastore.is_set
@@ -7968,9 +7968,9 @@ bool ConfdState::Internal::Cdb::Client::has_data() const
 
 bool ConfdState::Internal::Cdb::Client::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription_.size(); index++)
     {
-        if(subscription[index]->has_operation())
+        if(subscription_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -8020,7 +8020,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(con
 {
     if(child_yang_name == "subscription")
     {
-        for(auto const & c : subscription)
+        for(auto const & c : subscription_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -8030,7 +8030,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(con
         }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription_.push_back(c);
         return c;
     }
 
@@ -8040,7 +8040,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : subscription)
+    for (auto const & c : subscription_)
     {
         children[c->get_segment_path()] = c;
     }

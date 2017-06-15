@@ -42,18 +42,18 @@ class DismanEventMib : public Entity
         class Mteeventnotificationtable; //type: DismanEventMib::Mteeventnotificationtable
         class Mteeventsettable; //type: DismanEventMib::Mteeventsettable
 
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteevent> mteevent;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable> mteeventnotificationtable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable> mteeventsettable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable> mteeventtable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable> mteobjectstable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteresource> mteresource;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetrigger> mtetrigger;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable> mtetriggerbooleantable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable> mtetriggerdeltatable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable> mtetriggerexistencetable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable> mtetriggertable;
-        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable> mtetriggerthresholdtable;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteevent> mteevent_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable> mteeventnotificationtable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable> mteeventsettable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable> mteeventtable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable> mteobjectstable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteresource> mteresource_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetrigger> mtetrigger_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable> mtetriggerbooleantable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable> mtetriggerdeltatable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable> mtetriggerexistencetable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable> mtetriggertable_;
+        std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable> mtetriggerthresholdtable_;
         
 }; // DismanEventMib
 
@@ -135,7 +135,7 @@ class DismanEventMib::Mtetriggertable : public Entity
 
         class Mtetriggerentry; //type: DismanEventMib::Mtetriggertable::Mtetriggerentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry> > mtetriggerentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggertable::Mtetriggerentry> > mtetriggerentry_;
         
 }; // DismanEventMib::Mtetriggertable
 
@@ -190,7 +190,7 @@ class DismanEventMib::Mtetriggerdeltatable : public Entity
 
         class Mtetriggerdeltaentry; //type: DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry> > mtetriggerdeltaentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerdeltatable::Mtetriggerdeltaentry> > mtetriggerdeltaentry_;
         
 }; // DismanEventMib::Mtetriggerdeltatable
 
@@ -237,7 +237,7 @@ class DismanEventMib::Mtetriggerexistencetable : public Entity
 
         class Mtetriggerexistenceentry; //type: DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry> > mtetriggerexistenceentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerexistencetable::Mtetriggerexistenceentry> > mtetriggerexistenceentry_;
         
 }; // DismanEventMib::Mtetriggerexistencetable
 
@@ -286,7 +286,7 @@ class DismanEventMib::Mtetriggerbooleantable : public Entity
 
         class Mtetriggerbooleanentry; //type: DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry> > mtetriggerbooleanentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerbooleantable::Mtetriggerbooleanentry> > mtetriggerbooleanentry_;
         
 }; // DismanEventMib::Mtetriggerbooleantable
 
@@ -337,7 +337,7 @@ class DismanEventMib::Mtetriggerthresholdtable : public Entity
 
         class Mtetriggerthresholdentry; //type: DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry> > mtetriggerthresholdentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mtetriggerthresholdtable::Mtetriggerthresholdentry> > mtetriggerthresholdentry_;
         
 }; // DismanEventMib::Mtetriggerthresholdtable
 
@@ -396,7 +396,7 @@ class DismanEventMib::Mteobjectstable : public Entity
 
         class Mteobjectsentry; //type: DismanEventMib::Mteobjectstable::Mteobjectsentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable::Mteobjectsentry> > mteobjectsentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteobjectstable::Mteobjectsentry> > mteobjectsentry_;
         
 }; // DismanEventMib::Mteobjectstable
 
@@ -442,7 +442,7 @@ class DismanEventMib::Mteeventtable : public Entity
 
         class Mteevententry; //type: DismanEventMib::Mteeventtable::Mteevententry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable::Mteevententry> > mteevententry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventtable::Mteevententry> > mteevententry_;
         
 }; // DismanEventMib::Mteeventtable
 
@@ -488,7 +488,7 @@ class DismanEventMib::Mteeventnotificationtable : public Entity
 
         class Mteeventnotificationentry; //type: DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry> > mteeventnotificationentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventnotificationtable::Mteeventnotificationentry> > mteeventnotificationentry_;
         
 }; // DismanEventMib::Mteeventnotificationtable
 
@@ -534,7 +534,7 @@ class DismanEventMib::Mteeventsettable : public Entity
 
         class Mteeventsetentry; //type: DismanEventMib::Mteeventsettable::Mteeventsetentry
 
-        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable::Mteeventsetentry> > mteeventsetentry;
+        std::vector<std::shared_ptr<DISMAN_EVENT_MIB::DismanEventMib::Mteeventsettable::Mteeventsetentry> > mteeventsetentry_;
         
 }; // DismanEventMib::Mteeventsettable
 

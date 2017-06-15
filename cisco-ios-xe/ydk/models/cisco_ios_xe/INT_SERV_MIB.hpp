@@ -33,9 +33,9 @@ class IntServMib : public Entity
         class Intsrvifattribtable; //type: IntServMib::Intsrvifattribtable
         class Intsrvflowtable; //type: IntServMib::Intsrvflowtable
 
-        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvflowtable> intsrvflowtable;
-        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvgenobjects> intsrvgenobjects;
-        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvifattribtable> intsrvifattribtable;
+        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvflowtable> intsrvflowtable_;
+        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvgenobjects> intsrvgenobjects_;
+        std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvifattribtable> intsrvifattribtable_;
         
 }; // IntServMib
 
@@ -75,7 +75,7 @@ class IntServMib::Intsrvifattribtable : public Entity
 
         class Intsrvifattribentry; //type: IntServMib::Intsrvifattribtable::Intsrvifattribentry
 
-        std::vector<std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
+        std::vector<std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry_;
         
 }; // IntServMib::Intsrvifattribtable
 
@@ -122,7 +122,7 @@ class IntServMib::Intsrvflowtable : public Entity
 
         class Intsrvflowentry; //type: IntServMib::Intsrvflowtable::Intsrvflowentry
 
-        std::vector<std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
+        std::vector<std::shared_ptr<INT_SERV_MIB::IntServMib::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry_;
         
 }; // IntServMib::Intsrvflowtable
 

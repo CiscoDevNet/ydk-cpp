@@ -36,12 +36,12 @@ class CiscoTap2Mib : public Entity
         class Ctap2Debugtable; //type: CiscoTap2Mib::Ctap2Debugtable
         class Ctap2Debugusertable; //type: CiscoTap2Mib::Ctap2Debugusertable
 
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debuggroup> ctap2debuggroup;
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugtable> ctap2debugtable;
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugusertable> ctap2debugusertable;
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationgroup> ctap2mediationgroup;
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationtable> ctap2mediationtable;
-        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Streamtable> ctap2streamtable;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debuggroup> ctap2debuggroup_;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugtable> ctap2debugtable_;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugusertable> ctap2debugusertable_;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationgroup> ctap2mediationgroup_;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationtable> ctap2mediationtable_;
+        std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Streamtable> ctap2streamtable_;
         
 }; // CiscoTap2Mib
 
@@ -102,7 +102,7 @@ class CiscoTap2Mib::Ctap2Mediationtable : public Entity
 
         class Ctap2Mediationentry; //type: CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry
 
-        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry> > ctap2mediationentry;
+        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry> > ctap2mediationentry_;
         
 }; // CiscoTap2Mib::Ctap2Mediationtable
 
@@ -156,7 +156,7 @@ class CiscoTap2Mib::Ctap2Streamtable : public Entity
 
         class Ctap2Streamentry; //type: CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry
 
-        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry> > ctap2streamentry;
+        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry> > ctap2streamentry_;
         
 }; // CiscoTap2Mib::Ctap2Streamtable
 
@@ -206,7 +206,7 @@ class CiscoTap2Mib::Ctap2Debugtable : public Entity
 
         class Ctap2Debugentry; //type: CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry
 
-        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry> > ctap2debugentry;
+        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry> > ctap2debugentry_;
         
 }; // CiscoTap2Mib::Ctap2Debugtable
 
@@ -250,7 +250,7 @@ class CiscoTap2Mib::Ctap2Debugusertable : public Entity
 
         class Ctap2Debuguserentry; //type: CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry
 
-        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry> > ctap2debuguserentry;
+        std::vector<std::shared_ptr<CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry> > ctap2debuguserentry_;
         
 }; // CiscoTap2Mib::Ctap2Debugusertable
 

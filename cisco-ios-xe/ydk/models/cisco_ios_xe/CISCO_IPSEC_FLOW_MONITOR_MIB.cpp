@@ -11,63 +11,63 @@ namespace CISCO_IPSEC_FLOW_MONITOR_MIB {
 
 CiscoIpsecFlowMonitorMib::CiscoIpsecFlowMonitorMib()
     :
-    cikefailtable(std::make_shared<CiscoIpsecFlowMonitorMib::Cikefailtable>())
-	,cikeglobalstats(std::make_shared<CiscoIpsecFlowMonitorMib::Cikeglobalstats>())
-	,cikepeercorrtable(std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeercorrtable>())
-	,cikepeertable(std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeertable>())
-	,cikephase1gwstatstable(std::make_shared<CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable>())
-	,ciketunnelhisttable(std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunnelhisttable>())
-	,ciketunneltable(std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunneltable>())
-	,cipsecendpthisttable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpthisttable>())
-	,cipsecendpttable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpttable>())
-	,cipsecfailglobalcntl(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl>())
-	,cipsecfailtable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailtable>())
-	,cipsecglobalstats(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecglobalstats>())
-	,cipsechistglobalcntl(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl>())
-	,cipseclevels(std::make_shared<CiscoIpsecFlowMonitorMib::Cipseclevels>())
-	,cipsecphase2gwstatstable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable>())
-	,cipsecspitable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecspitable>())
-	,cipsectrapcntl(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectrapcntl>())
-	,cipsectunnelhisttable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable>())
-	,cipsectunneltable(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunneltable>())
+    cikefailtable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cikefailtable>())
+	,cikeglobalstats_(std::make_shared<CiscoIpsecFlowMonitorMib::Cikeglobalstats>())
+	,cikepeercorrtable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeercorrtable>())
+	,cikepeertable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeertable>())
+	,cikephase1gwstatstable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable>())
+	,ciketunnelhisttable_(std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunnelhisttable>())
+	,ciketunneltable_(std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunneltable>())
+	,cipsecendpthisttable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpthisttable>())
+	,cipsecendpttable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpttable>())
+	,cipsecfailglobalcntl_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl>())
+	,cipsecfailtable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailtable>())
+	,cipsecglobalstats_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecglobalstats>())
+	,cipsechistglobalcntl_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl>())
+	,cipseclevels_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipseclevels>())
+	,cipsecphase2gwstatstable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable>())
+	,cipsecspitable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecspitable>())
+	,cipsectrapcntl_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectrapcntl>())
+	,cipsectunnelhisttable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable>())
+	,cipsectunneltable_(std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunneltable>())
 {
-    cikefailtable->parent = this;
+    cikefailtable_->parent = this;
 
-    cikeglobalstats->parent = this;
+    cikeglobalstats_->parent = this;
 
-    cikepeercorrtable->parent = this;
+    cikepeercorrtable_->parent = this;
 
-    cikepeertable->parent = this;
+    cikepeertable_->parent = this;
 
-    cikephase1gwstatstable->parent = this;
+    cikephase1gwstatstable_->parent = this;
 
-    ciketunnelhisttable->parent = this;
+    ciketunnelhisttable_->parent = this;
 
-    ciketunneltable->parent = this;
+    ciketunneltable_->parent = this;
 
-    cipsecendpthisttable->parent = this;
+    cipsecendpthisttable_->parent = this;
 
-    cipsecendpttable->parent = this;
+    cipsecendpttable_->parent = this;
 
-    cipsecfailglobalcntl->parent = this;
+    cipsecfailglobalcntl_->parent = this;
 
-    cipsecfailtable->parent = this;
+    cipsecfailtable_->parent = this;
 
-    cipsecglobalstats->parent = this;
+    cipsecglobalstats_->parent = this;
 
-    cipsechistglobalcntl->parent = this;
+    cipsechistglobalcntl_->parent = this;
 
-    cipseclevels->parent = this;
+    cipseclevels_->parent = this;
 
-    cipsecphase2gwstatstable->parent = this;
+    cipsecphase2gwstatstable_->parent = this;
 
-    cipsecspitable->parent = this;
+    cipsecspitable_->parent = this;
 
-    cipsectrapcntl->parent = this;
+    cipsectrapcntl_->parent = this;
 
-    cipsectunnelhisttable->parent = this;
+    cipsectunnelhisttable_->parent = this;
 
-    cipsectunneltable->parent = this;
+    cipsectunneltable_->parent = this;
 
     yang_name = "CISCO-IPSEC-FLOW-MONITOR-MIB"; yang_parent_name = "CISCO-IPSEC-FLOW-MONITOR-MIB";
 }
@@ -78,49 +78,49 @@ CiscoIpsecFlowMonitorMib::~CiscoIpsecFlowMonitorMib()
 
 bool CiscoIpsecFlowMonitorMib::has_data() const
 {
-    return (cikefailtable !=  nullptr && cikefailtable->has_data())
-	|| (cikeglobalstats !=  nullptr && cikeglobalstats->has_data())
-	|| (cikepeercorrtable !=  nullptr && cikepeercorrtable->has_data())
-	|| (cikepeertable !=  nullptr && cikepeertable->has_data())
-	|| (cikephase1gwstatstable !=  nullptr && cikephase1gwstatstable->has_data())
-	|| (ciketunnelhisttable !=  nullptr && ciketunnelhisttable->has_data())
-	|| (ciketunneltable !=  nullptr && ciketunneltable->has_data())
-	|| (cipsecendpthisttable !=  nullptr && cipsecendpthisttable->has_data())
-	|| (cipsecendpttable !=  nullptr && cipsecendpttable->has_data())
-	|| (cipsecfailglobalcntl !=  nullptr && cipsecfailglobalcntl->has_data())
-	|| (cipsecfailtable !=  nullptr && cipsecfailtable->has_data())
-	|| (cipsecglobalstats !=  nullptr && cipsecglobalstats->has_data())
-	|| (cipsechistglobalcntl !=  nullptr && cipsechistglobalcntl->has_data())
-	|| (cipseclevels !=  nullptr && cipseclevels->has_data())
-	|| (cipsecphase2gwstatstable !=  nullptr && cipsecphase2gwstatstable->has_data())
-	|| (cipsecspitable !=  nullptr && cipsecspitable->has_data())
-	|| (cipsectrapcntl !=  nullptr && cipsectrapcntl->has_data())
-	|| (cipsectunnelhisttable !=  nullptr && cipsectunnelhisttable->has_data())
-	|| (cipsectunneltable !=  nullptr && cipsectunneltable->has_data());
+    return (cikefailtable_ !=  nullptr && cikefailtable_->has_data())
+	|| (cikeglobalstats_ !=  nullptr && cikeglobalstats_->has_data())
+	|| (cikepeercorrtable_ !=  nullptr && cikepeercorrtable_->has_data())
+	|| (cikepeertable_ !=  nullptr && cikepeertable_->has_data())
+	|| (cikephase1gwstatstable_ !=  nullptr && cikephase1gwstatstable_->has_data())
+	|| (ciketunnelhisttable_ !=  nullptr && ciketunnelhisttable_->has_data())
+	|| (ciketunneltable_ !=  nullptr && ciketunneltable_->has_data())
+	|| (cipsecendpthisttable_ !=  nullptr && cipsecendpthisttable_->has_data())
+	|| (cipsecendpttable_ !=  nullptr && cipsecendpttable_->has_data())
+	|| (cipsecfailglobalcntl_ !=  nullptr && cipsecfailglobalcntl_->has_data())
+	|| (cipsecfailtable_ !=  nullptr && cipsecfailtable_->has_data())
+	|| (cipsecglobalstats_ !=  nullptr && cipsecglobalstats_->has_data())
+	|| (cipsechistglobalcntl_ !=  nullptr && cipsechistglobalcntl_->has_data())
+	|| (cipseclevels_ !=  nullptr && cipseclevels_->has_data())
+	|| (cipsecphase2gwstatstable_ !=  nullptr && cipsecphase2gwstatstable_->has_data())
+	|| (cipsecspitable_ !=  nullptr && cipsecspitable_->has_data())
+	|| (cipsectrapcntl_ !=  nullptr && cipsectrapcntl_->has_data())
+	|| (cipsectunnelhisttable_ !=  nullptr && cipsectunnelhisttable_->has_data())
+	|| (cipsectunneltable_ !=  nullptr && cipsectunneltable_->has_data());
 }
 
 bool CiscoIpsecFlowMonitorMib::has_operation() const
 {
     return is_set(operation)
-	|| (cikefailtable !=  nullptr && cikefailtable->has_operation())
-	|| (cikeglobalstats !=  nullptr && cikeglobalstats->has_operation())
-	|| (cikepeercorrtable !=  nullptr && cikepeercorrtable->has_operation())
-	|| (cikepeertable !=  nullptr && cikepeertable->has_operation())
-	|| (cikephase1gwstatstable !=  nullptr && cikephase1gwstatstable->has_operation())
-	|| (ciketunnelhisttable !=  nullptr && ciketunnelhisttable->has_operation())
-	|| (ciketunneltable !=  nullptr && ciketunneltable->has_operation())
-	|| (cipsecendpthisttable !=  nullptr && cipsecendpthisttable->has_operation())
-	|| (cipsecendpttable !=  nullptr && cipsecendpttable->has_operation())
-	|| (cipsecfailglobalcntl !=  nullptr && cipsecfailglobalcntl->has_operation())
-	|| (cipsecfailtable !=  nullptr && cipsecfailtable->has_operation())
-	|| (cipsecglobalstats !=  nullptr && cipsecglobalstats->has_operation())
-	|| (cipsechistglobalcntl !=  nullptr && cipsechistglobalcntl->has_operation())
-	|| (cipseclevels !=  nullptr && cipseclevels->has_operation())
-	|| (cipsecphase2gwstatstable !=  nullptr && cipsecphase2gwstatstable->has_operation())
-	|| (cipsecspitable !=  nullptr && cipsecspitable->has_operation())
-	|| (cipsectrapcntl !=  nullptr && cipsectrapcntl->has_operation())
-	|| (cipsectunnelhisttable !=  nullptr && cipsectunnelhisttable->has_operation())
-	|| (cipsectunneltable !=  nullptr && cipsectunneltable->has_operation());
+	|| (cikefailtable_ !=  nullptr && cikefailtable_->has_operation())
+	|| (cikeglobalstats_ !=  nullptr && cikeglobalstats_->has_operation())
+	|| (cikepeercorrtable_ !=  nullptr && cikepeercorrtable_->has_operation())
+	|| (cikepeertable_ !=  nullptr && cikepeertable_->has_operation())
+	|| (cikephase1gwstatstable_ !=  nullptr && cikephase1gwstatstable_->has_operation())
+	|| (ciketunnelhisttable_ !=  nullptr && ciketunnelhisttable_->has_operation())
+	|| (ciketunneltable_ !=  nullptr && ciketunneltable_->has_operation())
+	|| (cipsecendpthisttable_ !=  nullptr && cipsecendpthisttable_->has_operation())
+	|| (cipsecendpttable_ !=  nullptr && cipsecendpttable_->has_operation())
+	|| (cipsecfailglobalcntl_ !=  nullptr && cipsecfailglobalcntl_->has_operation())
+	|| (cipsecfailtable_ !=  nullptr && cipsecfailtable_->has_operation())
+	|| (cipsecglobalstats_ !=  nullptr && cipsecglobalstats_->has_operation())
+	|| (cipsechistglobalcntl_ !=  nullptr && cipsechistglobalcntl_->has_operation())
+	|| (cipseclevels_ !=  nullptr && cipseclevels_->has_operation())
+	|| (cipsecphase2gwstatstable_ !=  nullptr && cipsecphase2gwstatstable_->has_operation())
+	|| (cipsecspitable_ !=  nullptr && cipsecspitable_->has_operation())
+	|| (cipsectrapcntl_ !=  nullptr && cipsectrapcntl_->has_operation())
+	|| (cipsectunnelhisttable_ !=  nullptr && cipsectunnelhisttable_->has_operation())
+	|| (cipsectunneltable_ !=  nullptr && cipsectunneltable_->has_operation());
 }
 
 std::string CiscoIpsecFlowMonitorMib::get_segment_path() const
@@ -154,173 +154,173 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "cikeFailTable")
     {
-        if(cikefailtable == nullptr)
+        if(cikefailtable_ == nullptr)
         {
-            cikefailtable = std::make_shared<CiscoIpsecFlowMonitorMib::Cikefailtable>();
+            cikefailtable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cikefailtable>();
         }
-        return cikefailtable;
+        return cikefailtable_;
     }
 
     if(child_yang_name == "cikeGlobalStats")
     {
-        if(cikeglobalstats == nullptr)
+        if(cikeglobalstats_ == nullptr)
         {
-            cikeglobalstats = std::make_shared<CiscoIpsecFlowMonitorMib::Cikeglobalstats>();
+            cikeglobalstats_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cikeglobalstats>();
         }
-        return cikeglobalstats;
+        return cikeglobalstats_;
     }
 
     if(child_yang_name == "cikePeerCorrTable")
     {
-        if(cikepeercorrtable == nullptr)
+        if(cikepeercorrtable_ == nullptr)
         {
-            cikepeercorrtable = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeercorrtable>();
+            cikepeercorrtable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeercorrtable>();
         }
-        return cikepeercorrtable;
+        return cikepeercorrtable_;
     }
 
     if(child_yang_name == "cikePeerTable")
     {
-        if(cikepeertable == nullptr)
+        if(cikepeertable_ == nullptr)
         {
-            cikepeertable = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeertable>();
+            cikepeertable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeertable>();
         }
-        return cikepeertable;
+        return cikepeertable_;
     }
 
     if(child_yang_name == "cikePhase1GWStatsTable")
     {
-        if(cikephase1gwstatstable == nullptr)
+        if(cikephase1gwstatstable_ == nullptr)
         {
-            cikephase1gwstatstable = std::make_shared<CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable>();
+            cikephase1gwstatstable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable>();
         }
-        return cikephase1gwstatstable;
+        return cikephase1gwstatstable_;
     }
 
     if(child_yang_name == "cikeTunnelHistTable")
     {
-        if(ciketunnelhisttable == nullptr)
+        if(ciketunnelhisttable_ == nullptr)
         {
-            ciketunnelhisttable = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunnelhisttable>();
+            ciketunnelhisttable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunnelhisttable>();
         }
-        return ciketunnelhisttable;
+        return ciketunnelhisttable_;
     }
 
     if(child_yang_name == "cikeTunnelTable")
     {
-        if(ciketunneltable == nullptr)
+        if(ciketunneltable_ == nullptr)
         {
-            ciketunneltable = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunneltable>();
+            ciketunneltable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunneltable>();
         }
-        return ciketunneltable;
+        return ciketunneltable_;
     }
 
     if(child_yang_name == "cipSecEndPtHistTable")
     {
-        if(cipsecendpthisttable == nullptr)
+        if(cipsecendpthisttable_ == nullptr)
         {
-            cipsecendpthisttable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpthisttable>();
+            cipsecendpthisttable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpthisttable>();
         }
-        return cipsecendpthisttable;
+        return cipsecendpthisttable_;
     }
 
     if(child_yang_name == "cipSecEndPtTable")
     {
-        if(cipsecendpttable == nullptr)
+        if(cipsecendpttable_ == nullptr)
         {
-            cipsecendpttable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpttable>();
+            cipsecendpttable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpttable>();
         }
-        return cipsecendpttable;
+        return cipsecendpttable_;
     }
 
     if(child_yang_name == "cipSecFailGlobalCntl")
     {
-        if(cipsecfailglobalcntl == nullptr)
+        if(cipsecfailglobalcntl_ == nullptr)
         {
-            cipsecfailglobalcntl = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl>();
+            cipsecfailglobalcntl_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailglobalcntl>();
         }
-        return cipsecfailglobalcntl;
+        return cipsecfailglobalcntl_;
     }
 
     if(child_yang_name == "cipSecFailTable")
     {
-        if(cipsecfailtable == nullptr)
+        if(cipsecfailtable_ == nullptr)
         {
-            cipsecfailtable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailtable>();
+            cipsecfailtable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailtable>();
         }
-        return cipsecfailtable;
+        return cipsecfailtable_;
     }
 
     if(child_yang_name == "cipSecGlobalStats")
     {
-        if(cipsecglobalstats == nullptr)
+        if(cipsecglobalstats_ == nullptr)
         {
-            cipsecglobalstats = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecglobalstats>();
+            cipsecglobalstats_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecglobalstats>();
         }
-        return cipsecglobalstats;
+        return cipsecglobalstats_;
     }
 
     if(child_yang_name == "cipSecHistGlobalCntl")
     {
-        if(cipsechistglobalcntl == nullptr)
+        if(cipsechistglobalcntl_ == nullptr)
         {
-            cipsechistglobalcntl = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl>();
+            cipsechistglobalcntl_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsechistglobalcntl>();
         }
-        return cipsechistglobalcntl;
+        return cipsechistglobalcntl_;
     }
 
     if(child_yang_name == "cipSecLevels")
     {
-        if(cipseclevels == nullptr)
+        if(cipseclevels_ == nullptr)
         {
-            cipseclevels = std::make_shared<CiscoIpsecFlowMonitorMib::Cipseclevels>();
+            cipseclevels_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipseclevels>();
         }
-        return cipseclevels;
+        return cipseclevels_;
     }
 
     if(child_yang_name == "cipSecPhase2GWStatsTable")
     {
-        if(cipsecphase2gwstatstable == nullptr)
+        if(cipsecphase2gwstatstable_ == nullptr)
         {
-            cipsecphase2gwstatstable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable>();
+            cipsecphase2gwstatstable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable>();
         }
-        return cipsecphase2gwstatstable;
+        return cipsecphase2gwstatstable_;
     }
 
     if(child_yang_name == "cipSecSpiTable")
     {
-        if(cipsecspitable == nullptr)
+        if(cipsecspitable_ == nullptr)
         {
-            cipsecspitable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecspitable>();
+            cipsecspitable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecspitable>();
         }
-        return cipsecspitable;
+        return cipsecspitable_;
     }
 
     if(child_yang_name == "cipSecTrapCntl")
     {
-        if(cipsectrapcntl == nullptr)
+        if(cipsectrapcntl_ == nullptr)
         {
-            cipsectrapcntl = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectrapcntl>();
+            cipsectrapcntl_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectrapcntl>();
         }
-        return cipsectrapcntl;
+        return cipsectrapcntl_;
     }
 
     if(child_yang_name == "cipSecTunnelHistTable")
     {
-        if(cipsectunnelhisttable == nullptr)
+        if(cipsectunnelhisttable_ == nullptr)
         {
-            cipsectunnelhisttable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable>();
+            cipsectunnelhisttable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable>();
         }
-        return cipsectunnelhisttable;
+        return cipsectunnelhisttable_;
     }
 
     if(child_yang_name == "cipSecTunnelTable")
     {
-        if(cipsectunneltable == nullptr)
+        if(cipsectunneltable_ == nullptr)
         {
-            cipsectunneltable = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunneltable>();
+            cipsectunneltable_ = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunneltable>();
         }
-        return cipsectunneltable;
+        return cipsectunneltable_;
     }
 
     return nullptr;
@@ -329,99 +329,99 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cikefailtable != nullptr)
+    if(cikefailtable_ != nullptr)
     {
-        children["cikeFailTable"] = cikefailtable;
+        children["cikeFailTable"] = cikefailtable_;
     }
 
-    if(cikeglobalstats != nullptr)
+    if(cikeglobalstats_ != nullptr)
     {
-        children["cikeGlobalStats"] = cikeglobalstats;
+        children["cikeGlobalStats"] = cikeglobalstats_;
     }
 
-    if(cikepeercorrtable != nullptr)
+    if(cikepeercorrtable_ != nullptr)
     {
-        children["cikePeerCorrTable"] = cikepeercorrtable;
+        children["cikePeerCorrTable"] = cikepeercorrtable_;
     }
 
-    if(cikepeertable != nullptr)
+    if(cikepeertable_ != nullptr)
     {
-        children["cikePeerTable"] = cikepeertable;
+        children["cikePeerTable"] = cikepeertable_;
     }
 
-    if(cikephase1gwstatstable != nullptr)
+    if(cikephase1gwstatstable_ != nullptr)
     {
-        children["cikePhase1GWStatsTable"] = cikephase1gwstatstable;
+        children["cikePhase1GWStatsTable"] = cikephase1gwstatstable_;
     }
 
-    if(ciketunnelhisttable != nullptr)
+    if(ciketunnelhisttable_ != nullptr)
     {
-        children["cikeTunnelHistTable"] = ciketunnelhisttable;
+        children["cikeTunnelHistTable"] = ciketunnelhisttable_;
     }
 
-    if(ciketunneltable != nullptr)
+    if(ciketunneltable_ != nullptr)
     {
-        children["cikeTunnelTable"] = ciketunneltable;
+        children["cikeTunnelTable"] = ciketunneltable_;
     }
 
-    if(cipsecendpthisttable != nullptr)
+    if(cipsecendpthisttable_ != nullptr)
     {
-        children["cipSecEndPtHistTable"] = cipsecendpthisttable;
+        children["cipSecEndPtHistTable"] = cipsecendpthisttable_;
     }
 
-    if(cipsecendpttable != nullptr)
+    if(cipsecendpttable_ != nullptr)
     {
-        children["cipSecEndPtTable"] = cipsecendpttable;
+        children["cipSecEndPtTable"] = cipsecendpttable_;
     }
 
-    if(cipsecfailglobalcntl != nullptr)
+    if(cipsecfailglobalcntl_ != nullptr)
     {
-        children["cipSecFailGlobalCntl"] = cipsecfailglobalcntl;
+        children["cipSecFailGlobalCntl"] = cipsecfailglobalcntl_;
     }
 
-    if(cipsecfailtable != nullptr)
+    if(cipsecfailtable_ != nullptr)
     {
-        children["cipSecFailTable"] = cipsecfailtable;
+        children["cipSecFailTable"] = cipsecfailtable_;
     }
 
-    if(cipsecglobalstats != nullptr)
+    if(cipsecglobalstats_ != nullptr)
     {
-        children["cipSecGlobalStats"] = cipsecglobalstats;
+        children["cipSecGlobalStats"] = cipsecglobalstats_;
     }
 
-    if(cipsechistglobalcntl != nullptr)
+    if(cipsechistglobalcntl_ != nullptr)
     {
-        children["cipSecHistGlobalCntl"] = cipsechistglobalcntl;
+        children["cipSecHistGlobalCntl"] = cipsechistglobalcntl_;
     }
 
-    if(cipseclevels != nullptr)
+    if(cipseclevels_ != nullptr)
     {
-        children["cipSecLevels"] = cipseclevels;
+        children["cipSecLevels"] = cipseclevels_;
     }
 
-    if(cipsecphase2gwstatstable != nullptr)
+    if(cipsecphase2gwstatstable_ != nullptr)
     {
-        children["cipSecPhase2GWStatsTable"] = cipsecphase2gwstatstable;
+        children["cipSecPhase2GWStatsTable"] = cipsecphase2gwstatstable_;
     }
 
-    if(cipsecspitable != nullptr)
+    if(cipsecspitable_ != nullptr)
     {
-        children["cipSecSpiTable"] = cipsecspitable;
+        children["cipSecSpiTable"] = cipsecspitable_;
     }
 
-    if(cipsectrapcntl != nullptr)
+    if(cipsectrapcntl_ != nullptr)
     {
-        children["cipSecTrapCntl"] = cipsectrapcntl;
+        children["cipSecTrapCntl"] = cipsectrapcntl_;
     }
 
-    if(cipsectunnelhisttable != nullptr)
+    if(cipsectunnelhisttable_ != nullptr)
     {
-        children["cipSecTunnelHistTable"] = cipsectunnelhisttable;
+        children["cipSecTunnelHistTable"] = cipsectunnelhisttable_;
     }
 
-    if(cipsectunneltable != nullptr)
+    if(cipsectunneltable_ != nullptr)
     {
-        children["cipSecTunnelTable"] = cipsectunneltable;
+        children["cipSecTunnelTable"] = cipsectunneltable_;
     }
 
     return children;
@@ -1430,9 +1430,9 @@ CiscoIpsecFlowMonitorMib::Cikepeertable::~Cikepeertable()
 
 bool CiscoIpsecFlowMonitorMib::Cikepeertable::has_data() const
 {
-    for (std::size_t index=0; index<cikepeerentry.size(); index++)
+    for (std::size_t index=0; index<cikepeerentry_.size(); index++)
     {
-        if(cikepeerentry[index]->has_data())
+        if(cikepeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1440,9 +1440,9 @@ bool CiscoIpsecFlowMonitorMib::Cikepeertable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cikepeertable::has_operation() const
 {
-    for (std::size_t index=0; index<cikepeerentry.size(); index++)
+    for (std::size_t index=0; index<cikepeerentry_.size(); index++)
     {
-        if(cikepeerentry[index]->has_operation())
+        if(cikepeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1482,7 +1482,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeertable::get_child_by_na
 {
     if(child_yang_name == "cikePeerEntry")
     {
-        for(auto const & c : cikepeerentry)
+        for(auto const & c : cikepeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1492,7 +1492,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeertable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeertable::Cikepeerentry>();
         c->parent = this;
-        cikepeerentry.push_back(c);
+        cikepeerentry_.push_back(c);
         return c;
     }
 
@@ -1502,7 +1502,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeertable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cikepeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cikepeerentry)
+    for (auto const & c : cikepeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1661,9 +1661,9 @@ CiscoIpsecFlowMonitorMib::Ciketunneltable::~Ciketunneltable()
 
 bool CiscoIpsecFlowMonitorMib::Ciketunneltable::has_data() const
 {
-    for (std::size_t index=0; index<ciketunnelentry.size(); index++)
+    for (std::size_t index=0; index<ciketunnelentry_.size(); index++)
     {
-        if(ciketunnelentry[index]->has_data())
+        if(ciketunnelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1671,9 +1671,9 @@ bool CiscoIpsecFlowMonitorMib::Ciketunneltable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Ciketunneltable::has_operation() const
 {
-    for (std::size_t index=0; index<ciketunnelentry.size(); index++)
+    for (std::size_t index=0; index<ciketunnelentry_.size(); index++)
     {
-        if(ciketunnelentry[index]->has_operation())
+        if(ciketunnelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1713,7 +1713,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunneltable::get_child_by_
 {
     if(child_yang_name == "cikeTunnelEntry")
     {
-        for(auto const & c : ciketunnelentry)
+        for(auto const & c : ciketunnelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1723,7 +1723,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunneltable::get_child_by_
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunneltable::Ciketunnelentry>();
         c->parent = this;
-        ciketunnelentry.push_back(c);
+        ciketunnelentry_.push_back(c);
         return c;
     }
 
@@ -1733,7 +1733,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunneltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Ciketunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciketunnelentry)
+    for (auto const & c : ciketunnelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2100,9 +2100,9 @@ CiscoIpsecFlowMonitorMib::Cikepeercorrtable::~Cikepeercorrtable()
 
 bool CiscoIpsecFlowMonitorMib::Cikepeercorrtable::has_data() const
 {
-    for (std::size_t index=0; index<cikepeercorrentry.size(); index++)
+    for (std::size_t index=0; index<cikepeercorrentry_.size(); index++)
     {
-        if(cikepeercorrentry[index]->has_data())
+        if(cikepeercorrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2110,9 +2110,9 @@ bool CiscoIpsecFlowMonitorMib::Cikepeercorrtable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cikepeercorrtable::has_operation() const
 {
-    for (std::size_t index=0; index<cikepeercorrentry.size(); index++)
+    for (std::size_t index=0; index<cikepeercorrentry_.size(); index++)
     {
-        if(cikepeercorrentry[index]->has_operation())
+        if(cikepeercorrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2152,7 +2152,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeercorrtable::get_child_b
 {
     if(child_yang_name == "cikePeerCorrEntry")
     {
-        for(auto const & c : cikepeercorrentry)
+        for(auto const & c : cikepeercorrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2162,7 +2162,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeercorrtable::get_child_b
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cikepeercorrtable::Cikepeercorrentry>();
         c->parent = this;
-        cikepeercorrentry.push_back(c);
+        cikepeercorrentry_.push_back(c);
         return c;
     }
 
@@ -2172,7 +2172,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikepeercorrtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cikepeercorrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cikepeercorrentry)
+    for (auto const & c : cikepeercorrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2315,9 +2315,9 @@ CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::~Cikephase1Gwstatstable()
 
 bool CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cikephase1gwstatsentry.size(); index++)
+    for (std::size_t index=0; index<cikephase1gwstatsentry_.size(); index++)
     {
-        if(cikephase1gwstatsentry[index]->has_data())
+        if(cikephase1gwstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2325,9 +2325,9 @@ bool CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cikephase1gwstatsentry.size(); index++)
+    for (std::size_t index=0; index<cikephase1gwstatsentry_.size(); index++)
     {
-        if(cikephase1gwstatsentry[index]->has_operation())
+        if(cikephase1gwstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2367,7 +2367,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::get_ch
 {
     if(child_yang_name == "cikePhase1GWStatsEntry")
     {
-        for(auto const & c : cikephase1gwstatsentry)
+        for(auto const & c : cikephase1gwstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2377,7 +2377,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::get_ch
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::Cikephase1Gwstatsentry>();
         c->parent = this;
-        cikephase1gwstatsentry.push_back(c);
+        cikephase1gwstatsentry_.push_back(c);
         return c;
     }
 
@@ -2387,7 +2387,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cikephase1Gwstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cikephase1gwstatsentry)
+    for (auto const & c : cikephase1gwstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2690,9 +2690,9 @@ CiscoIpsecFlowMonitorMib::Cipsectunneltable::~Cipsectunneltable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsectunneltable::has_data() const
 {
-    for (std::size_t index=0; index<cipsectunnelentry.size(); index++)
+    for (std::size_t index=0; index<cipsectunnelentry_.size(); index++)
     {
-        if(cipsectunnelentry[index]->has_data())
+        if(cipsectunnelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2700,9 +2700,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsectunneltable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsectunneltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsectunnelentry.size(); index++)
+    for (std::size_t index=0; index<cipsectunnelentry_.size(); index++)
     {
-        if(cipsectunnelentry[index]->has_operation())
+        if(cipsectunnelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2742,7 +2742,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunneltable::get_child_b
 {
     if(child_yang_name == "cipSecTunnelEntry")
     {
-        for(auto const & c : cipsectunnelentry)
+        for(auto const & c : cipsectunnelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2752,7 +2752,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunneltable::get_child_b
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunneltable::Cipsectunnelentry>();
         c->parent = this;
-        cipsectunnelentry.push_back(c);
+        cipsectunnelentry_.push_back(c);
         return c;
     }
 
@@ -2762,7 +2762,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunneltable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsectunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsectunnelentry)
+    for (auto const & c : cipsectunnelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3257,9 +3257,9 @@ CiscoIpsecFlowMonitorMib::Cipsecendpttable::~Cipsecendpttable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsecendpttable::has_data() const
 {
-    for (std::size_t index=0; index<cipsecendptentry.size(); index++)
+    for (std::size_t index=0; index<cipsecendptentry_.size(); index++)
     {
-        if(cipsecendptentry[index]->has_data())
+        if(cipsecendptentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3267,9 +3267,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsecendpttable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsecendpttable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsecendptentry.size(); index++)
+    for (std::size_t index=0; index<cipsecendptentry_.size(); index++)
     {
-        if(cipsecendptentry[index]->has_operation())
+        if(cipsecendptentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3309,7 +3309,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpttable::get_child_by
 {
     if(child_yang_name == "cipSecEndPtEntry")
     {
-        for(auto const & c : cipsecendptentry)
+        for(auto const & c : cipsecendptentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3319,7 +3319,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpttable::get_child_by
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpttable::Cipsecendptentry>();
         c->parent = this;
-        cipsecendptentry.push_back(c);
+        cipsecendptentry_.push_back(c);
         return c;
     }
 
@@ -3329,7 +3329,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsecendpttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsecendptentry)
+    for (auto const & c : cipsecendptentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3528,9 +3528,9 @@ CiscoIpsecFlowMonitorMib::Cipsecspitable::~Cipsecspitable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsecspitable::has_data() const
 {
-    for (std::size_t index=0; index<cipsecspientry.size(); index++)
+    for (std::size_t index=0; index<cipsecspientry_.size(); index++)
     {
-        if(cipsecspientry[index]->has_data())
+        if(cipsecspientry_[index]->has_data())
             return true;
     }
     return false;
@@ -3538,9 +3538,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsecspitable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsecspitable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsecspientry.size(); index++)
+    for (std::size_t index=0; index<cipsecspientry_.size(); index++)
     {
-        if(cipsecspientry[index]->has_operation())
+        if(cipsecspientry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3580,7 +3580,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecspitable::get_child_by_n
 {
     if(child_yang_name == "cipSecSpiEntry")
     {
-        for(auto const & c : cipsecspientry)
+        for(auto const & c : cipsecspientry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3590,7 +3590,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecspitable::get_child_by_n
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecspitable::Cipsecspientry>();
         c->parent = this;
-        cipsecspientry.push_back(c);
+        cipsecspientry_.push_back(c);
         return c;
     }
 
@@ -3600,7 +3600,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecspitable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsecspitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsecspientry)
+    for (auto const & c : cipsecspientry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3735,9 +3735,9 @@ CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::~Cipsecphase2Gwstatstable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cipsecphase2gwstatsentry.size(); index++)
+    for (std::size_t index=0; index<cipsecphase2gwstatsentry_.size(); index++)
     {
-        if(cipsecphase2gwstatsentry[index]->has_data())
+        if(cipsecphase2gwstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3745,9 +3745,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsecphase2gwstatsentry.size(); index++)
+    for (std::size_t index=0; index<cipsecphase2gwstatsentry_.size(); index++)
     {
-        if(cipsecphase2gwstatsentry[index]->has_operation())
+        if(cipsecphase2gwstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3787,7 +3787,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::get_
 {
     if(child_yang_name == "cipSecPhase2GWStatsEntry")
     {
-        for(auto const & c : cipsecphase2gwstatsentry)
+        for(auto const & c : cipsecphase2gwstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3797,7 +3797,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::get_
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry>();
         c->parent = this;
-        cipsecphase2gwstatsentry.push_back(c);
+        cipsecphase2gwstatsentry_.push_back(c);
         return c;
     }
 
@@ -3807,7 +3807,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsecphase2Gwstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsecphase2gwstatsentry)
+    for (auto const & c : cipsecphase2gwstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4110,9 +4110,9 @@ CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::~Ciketunnelhisttable()
 
 bool CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::has_data() const
 {
-    for (std::size_t index=0; index<ciketunnelhistentry.size(); index++)
+    for (std::size_t index=0; index<ciketunnelhistentry_.size(); index++)
     {
-        if(ciketunnelhistentry[index]->has_data())
+        if(ciketunnelhistentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4120,9 +4120,9 @@ bool CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::has_operation() const
 {
-    for (std::size_t index=0; index<ciketunnelhistentry.size(); index++)
+    for (std::size_t index=0; index<ciketunnelhistentry_.size(); index++)
     {
-        if(ciketunnelhistentry[index]->has_operation())
+        if(ciketunnelhistentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4162,7 +4162,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::get_child
 {
     if(child_yang_name == "cikeTunnelHistEntry")
     {
-        for(auto const & c : ciketunnelhistentry)
+        for(auto const & c : ciketunnelhistentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4172,7 +4172,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::get_child
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::Ciketunnelhistentry>();
         c->parent = this;
-        ciketunnelhistentry.push_back(c);
+        ciketunnelhistentry_.push_back(c);
         return c;
     }
 
@@ -4182,7 +4182,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Ciketunnelhisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciketunnelhistentry)
+    for (auto const & c : ciketunnelhistentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4573,9 +4573,9 @@ CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::~Cipsectunnelhisttable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::has_data() const
 {
-    for (std::size_t index=0; index<cipsectunnelhistentry.size(); index++)
+    for (std::size_t index=0; index<cipsectunnelhistentry_.size(); index++)
     {
-        if(cipsectunnelhistentry[index]->has_data())
+        if(cipsectunnelhistentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4583,9 +4583,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsectunnelhistentry.size(); index++)
+    for (std::size_t index=0; index<cipsectunnelhistentry_.size(); index++)
     {
-        if(cipsectunnelhistentry[index]->has_operation())
+        if(cipsectunnelhistentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4625,7 +4625,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::get_chi
 {
     if(child_yang_name == "cipSecTunnelHistEntry")
     {
-        for(auto const & c : cipsectunnelhistentry)
+        for(auto const & c : cipsectunnelhistentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4635,7 +4635,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::get_chi
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::Cipsectunnelhistentry>();
         c->parent = this;
-        cipsectunnelhistentry.push_back(c);
+        cipsectunnelhistentry_.push_back(c);
         return c;
     }
 
@@ -4645,7 +4645,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsectunnelhisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsectunnelhistentry)
+    for (auto const & c : cipsectunnelhistentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5124,9 +5124,9 @@ CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::~Cipsecendpthisttable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::has_data() const
 {
-    for (std::size_t index=0; index<cipsecendpthistentry.size(); index++)
+    for (std::size_t index=0; index<cipsecendpthistentry_.size(); index++)
     {
-        if(cipsecendpthistentry[index]->has_data())
+        if(cipsecendpthistentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5134,9 +5134,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsecendpthistentry.size(); index++)
+    for (std::size_t index=0; index<cipsecendpthistentry_.size(); index++)
     {
-        if(cipsecendpthistentry[index]->has_operation())
+        if(cipsecendpthistentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5176,7 +5176,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::get_chil
 {
     if(child_yang_name == "cipSecEndPtHistEntry")
     {
-        for(auto const & c : cipsecendpthistentry)
+        for(auto const & c : cipsecendpthistentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5186,7 +5186,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::get_chil
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::Cipsecendpthistentry>();
         c->parent = this;
-        cipsecendpthistentry.push_back(c);
+        cipsecendpthistentry_.push_back(c);
         return c;
     }
 
@@ -5196,7 +5196,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsecendpthisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsecendpthistentry)
+    for (auto const & c : cipsecendpthistentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5403,9 +5403,9 @@ CiscoIpsecFlowMonitorMib::Cikefailtable::~Cikefailtable()
 
 bool CiscoIpsecFlowMonitorMib::Cikefailtable::has_data() const
 {
-    for (std::size_t index=0; index<cikefailentry.size(); index++)
+    for (std::size_t index=0; index<cikefailentry_.size(); index++)
     {
-        if(cikefailentry[index]->has_data())
+        if(cikefailentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5413,9 +5413,9 @@ bool CiscoIpsecFlowMonitorMib::Cikefailtable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cikefailtable::has_operation() const
 {
-    for (std::size_t index=0; index<cikefailentry.size(); index++)
+    for (std::size_t index=0; index<cikefailentry_.size(); index++)
     {
-        if(cikefailentry[index]->has_operation())
+        if(cikefailentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5455,7 +5455,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikefailtable::get_child_by_na
 {
     if(child_yang_name == "cikeFailEntry")
     {
-        for(auto const & c : cikefailentry)
+        for(auto const & c : cikefailentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5465,7 +5465,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikefailtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cikefailtable::Cikefailentry>();
         c->parent = this;
-        cikefailentry.push_back(c);
+        cikefailentry_.push_back(c);
         return c;
     }
 
@@ -5475,7 +5475,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cikefailtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cikefailtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cikefailentry)
+    for (auto const & c : cikefailentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5634,9 +5634,9 @@ CiscoIpsecFlowMonitorMib::Cipsecfailtable::~Cipsecfailtable()
 
 bool CiscoIpsecFlowMonitorMib::Cipsecfailtable::has_data() const
 {
-    for (std::size_t index=0; index<cipsecfailentry.size(); index++)
+    for (std::size_t index=0; index<cipsecfailentry_.size(); index++)
     {
-        if(cipsecfailentry[index]->has_data())
+        if(cipsecfailentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5644,9 +5644,9 @@ bool CiscoIpsecFlowMonitorMib::Cipsecfailtable::has_data() const
 
 bool CiscoIpsecFlowMonitorMib::Cipsecfailtable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsecfailentry.size(); index++)
+    for (std::size_t index=0; index<cipsecfailentry_.size(); index++)
     {
-        if(cipsecfailentry[index]->has_operation())
+        if(cipsecfailentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5686,7 +5686,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecfailtable::get_child_by_
 {
     if(child_yang_name == "cipSecFailEntry")
     {
-        for(auto const & c : cipsecfailentry)
+        for(auto const & c : cipsecfailentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5696,7 +5696,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecfailtable::get_child_by_
         }
         auto c = std::make_shared<CiscoIpsecFlowMonitorMib::Cipsecfailtable::Cipsecfailentry>();
         c->parent = this;
-        cipsecfailentry.push_back(c);
+        cipsecfailentry_.push_back(c);
         return c;
     }
 
@@ -5706,7 +5706,7 @@ std::shared_ptr<Entity> CiscoIpsecFlowMonitorMib::Cipsecfailtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecFlowMonitorMib::Cipsecfailtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsecfailentry)
+    for (auto const & c : cipsecfailentry_)
     {
         children[c->get_segment_path()] = c;
     }

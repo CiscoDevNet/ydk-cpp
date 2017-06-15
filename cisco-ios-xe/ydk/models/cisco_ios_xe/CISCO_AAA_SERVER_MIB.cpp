@@ -11,12 +11,12 @@ namespace CISCO_AAA_SERVER_MIB {
 
 CiscoAaaServerMib::CiscoAaaServerMib()
     :
-    casconfig(std::make_shared<CiscoAaaServerMib::Casconfig>())
-	,casconfigtable(std::make_shared<CiscoAaaServerMib::Casconfigtable>())
+    casconfig_(std::make_shared<CiscoAaaServerMib::Casconfig>())
+	,casconfigtable_(std::make_shared<CiscoAaaServerMib::Casconfigtable>())
 {
-    casconfig->parent = this;
+    casconfig_->parent = this;
 
-    casconfigtable->parent = this;
+    casconfigtable_->parent = this;
 
     yang_name = "CISCO-AAA-SERVER-MIB"; yang_parent_name = "CISCO-AAA-SERVER-MIB";
 }
@@ -27,15 +27,15 @@ CiscoAaaServerMib::~CiscoAaaServerMib()
 
 bool CiscoAaaServerMib::has_data() const
 {
-    return (casconfig !=  nullptr && casconfig->has_data())
-	|| (casconfigtable !=  nullptr && casconfigtable->has_data());
+    return (casconfig_ !=  nullptr && casconfig_->has_data())
+	|| (casconfigtable_ !=  nullptr && casconfigtable_->has_data());
 }
 
 bool CiscoAaaServerMib::has_operation() const
 {
     return is_set(operation)
-	|| (casconfig !=  nullptr && casconfig->has_operation())
-	|| (casconfigtable !=  nullptr && casconfigtable->has_operation());
+	|| (casconfig_ !=  nullptr && casconfig_->has_operation())
+	|| (casconfigtable_ !=  nullptr && casconfigtable_->has_operation());
 }
 
 std::string CiscoAaaServerMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoAaaServerMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "casConfig")
     {
-        if(casconfig == nullptr)
+        if(casconfig_ == nullptr)
         {
-            casconfig = std::make_shared<CiscoAaaServerMib::Casconfig>();
+            casconfig_ = std::make_shared<CiscoAaaServerMib::Casconfig>();
         }
-        return casconfig;
+        return casconfig_;
     }
 
     if(child_yang_name == "casConfigTable")
     {
-        if(casconfigtable == nullptr)
+        if(casconfigtable_ == nullptr)
         {
-            casconfigtable = std::make_shared<CiscoAaaServerMib::Casconfigtable>();
+            casconfigtable_ = std::make_shared<CiscoAaaServerMib::Casconfigtable>();
         }
-        return casconfigtable;
+        return casconfigtable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoAaaServerMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoAaaServerMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(casconfig != nullptr)
+    if(casconfig_ != nullptr)
     {
-        children["casConfig"] = casconfig;
+        children["casConfig"] = casconfig_;
     }
 
-    if(casconfigtable != nullptr)
+    if(casconfigtable_ != nullptr)
     {
-        children["casConfigTable"] = casconfigtable;
+        children["casConfigTable"] = casconfigtable_;
     }
 
     return children;
@@ -211,9 +211,9 @@ CiscoAaaServerMib::Casconfigtable::~Casconfigtable()
 
 bool CiscoAaaServerMib::Casconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<casconfigentry.size(); index++)
+    for (std::size_t index=0; index<casconfigentry_.size(); index++)
     {
-        if(casconfigentry[index]->has_data())
+        if(casconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -221,9 +221,9 @@ bool CiscoAaaServerMib::Casconfigtable::has_data() const
 
 bool CiscoAaaServerMib::Casconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<casconfigentry.size(); index++)
+    for (std::size_t index=0; index<casconfigentry_.size(); index++)
     {
-        if(casconfigentry[index]->has_operation())
+        if(casconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -263,7 +263,7 @@ std::shared_ptr<Entity> CiscoAaaServerMib::Casconfigtable::get_child_by_name(con
 {
     if(child_yang_name == "casConfigEntry")
     {
-        for(auto const & c : casconfigentry)
+        for(auto const & c : casconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -273,7 +273,7 @@ std::shared_ptr<Entity> CiscoAaaServerMib::Casconfigtable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoAaaServerMib::Casconfigtable::Casconfigentry>();
         c->parent = this;
-        casconfigentry.push_back(c);
+        casconfigentry_.push_back(c);
         return c;
     }
 
@@ -283,7 +283,7 @@ std::shared_ptr<Entity> CiscoAaaServerMib::Casconfigtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoAaaServerMib::Casconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : casconfigentry)
+    for (auto const & c : casconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }

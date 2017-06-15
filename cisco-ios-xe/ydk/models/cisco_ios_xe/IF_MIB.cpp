@@ -11,21 +11,21 @@ namespace IF_MIB {
 
 IfMib::IfMib()
     :
-    ifmibobjects(std::make_shared<IfMib::Ifmibobjects>())
-	,ifrcvaddresstable(std::make_shared<IfMib::Ifrcvaddresstable>())
-	,ifstacktable(std::make_shared<IfMib::Ifstacktable>())
-	,iftable(std::make_shared<IfMib::Iftable>())
-	,interfaces(std::make_shared<IfMib::Interfaces>())
+    ifmibobjects_(std::make_shared<IfMib::Ifmibobjects>())
+	,ifrcvaddresstable_(std::make_shared<IfMib::Ifrcvaddresstable>())
+	,ifstacktable_(std::make_shared<IfMib::Ifstacktable>())
+	,iftable_(std::make_shared<IfMib::Iftable>())
+	,interfaces_(std::make_shared<IfMib::Interfaces>())
 {
-    ifmibobjects->parent = this;
+    ifmibobjects_->parent = this;
 
-    ifrcvaddresstable->parent = this;
+    ifrcvaddresstable_->parent = this;
 
-    ifstacktable->parent = this;
+    ifstacktable_->parent = this;
 
-    iftable->parent = this;
+    iftable_->parent = this;
 
-    interfaces->parent = this;
+    interfaces_->parent = this;
 
     yang_name = "IF-MIB"; yang_parent_name = "IF-MIB";
 }
@@ -36,21 +36,21 @@ IfMib::~IfMib()
 
 bool IfMib::has_data() const
 {
-    return (ifmibobjects !=  nullptr && ifmibobjects->has_data())
-	|| (ifrcvaddresstable !=  nullptr && ifrcvaddresstable->has_data())
-	|| (ifstacktable !=  nullptr && ifstacktable->has_data())
-	|| (iftable !=  nullptr && iftable->has_data())
-	|| (interfaces !=  nullptr && interfaces->has_data());
+    return (ifmibobjects_ !=  nullptr && ifmibobjects_->has_data())
+	|| (ifrcvaddresstable_ !=  nullptr && ifrcvaddresstable_->has_data())
+	|| (ifstacktable_ !=  nullptr && ifstacktable_->has_data())
+	|| (iftable_ !=  nullptr && iftable_->has_data())
+	|| (interfaces_ !=  nullptr && interfaces_->has_data());
 }
 
 bool IfMib::has_operation() const
 {
     return is_set(operation)
-	|| (ifmibobjects !=  nullptr && ifmibobjects->has_operation())
-	|| (ifrcvaddresstable !=  nullptr && ifrcvaddresstable->has_operation())
-	|| (ifstacktable !=  nullptr && ifstacktable->has_operation())
-	|| (iftable !=  nullptr && iftable->has_operation())
-	|| (interfaces !=  nullptr && interfaces->has_operation());
+	|| (ifmibobjects_ !=  nullptr && ifmibobjects_->has_operation())
+	|| (ifrcvaddresstable_ !=  nullptr && ifrcvaddresstable_->has_operation())
+	|| (ifstacktable_ !=  nullptr && ifstacktable_->has_operation())
+	|| (iftable_ !=  nullptr && iftable_->has_operation())
+	|| (interfaces_ !=  nullptr && interfaces_->has_operation());
 }
 
 std::string IfMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> IfMib::get_child_by_name(const std::string & child_yang_
 {
     if(child_yang_name == "ifMIBObjects")
     {
-        if(ifmibobjects == nullptr)
+        if(ifmibobjects_ == nullptr)
         {
-            ifmibobjects = std::make_shared<IfMib::Ifmibobjects>();
+            ifmibobjects_ = std::make_shared<IfMib::Ifmibobjects>();
         }
-        return ifmibobjects;
+        return ifmibobjects_;
     }
 
     if(child_yang_name == "ifRcvAddressTable")
     {
-        if(ifrcvaddresstable == nullptr)
+        if(ifrcvaddresstable_ == nullptr)
         {
-            ifrcvaddresstable = std::make_shared<IfMib::Ifrcvaddresstable>();
+            ifrcvaddresstable_ = std::make_shared<IfMib::Ifrcvaddresstable>();
         }
-        return ifrcvaddresstable;
+        return ifrcvaddresstable_;
     }
 
     if(child_yang_name == "ifStackTable")
     {
-        if(ifstacktable == nullptr)
+        if(ifstacktable_ == nullptr)
         {
-            ifstacktable = std::make_shared<IfMib::Ifstacktable>();
+            ifstacktable_ = std::make_shared<IfMib::Ifstacktable>();
         }
-        return ifstacktable;
+        return ifstacktable_;
     }
 
     if(child_yang_name == "ifTable")
     {
-        if(iftable == nullptr)
+        if(iftable_ == nullptr)
         {
-            iftable = std::make_shared<IfMib::Iftable>();
+            iftable_ = std::make_shared<IfMib::Iftable>();
         }
-        return iftable;
+        return iftable_;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces == nullptr)
+        if(interfaces_ == nullptr)
         {
-            interfaces = std::make_shared<IfMib::Interfaces>();
+            interfaces_ = std::make_shared<IfMib::Interfaces>();
         }
-        return interfaces;
+        return interfaces_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> IfMib::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IfMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ifmibobjects != nullptr)
+    if(ifmibobjects_ != nullptr)
     {
-        children["ifMIBObjects"] = ifmibobjects;
+        children["ifMIBObjects"] = ifmibobjects_;
     }
 
-    if(ifrcvaddresstable != nullptr)
+    if(ifrcvaddresstable_ != nullptr)
     {
-        children["ifRcvAddressTable"] = ifrcvaddresstable;
+        children["ifRcvAddressTable"] = ifrcvaddresstable_;
     }
 
-    if(ifstacktable != nullptr)
+    if(ifstacktable_ != nullptr)
     {
-        children["ifStackTable"] = ifstacktable;
+        children["ifStackTable"] = ifstacktable_;
     }
 
-    if(iftable != nullptr)
+    if(iftable_ != nullptr)
     {
-        children["ifTable"] = iftable;
+        children["ifTable"] = iftable_;
     }
 
-    if(interfaces != nullptr)
+    if(interfaces_ != nullptr)
     {
-        children["interfaces"] = interfaces;
+        children["interfaces"] = interfaces_;
     }
 
     return children;
@@ -348,9 +348,9 @@ IfMib::Iftable::~Iftable()
 
 bool IfMib::Iftable::has_data() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    for (std::size_t index=0; index<ifentry_.size(); index++)
     {
-        if(ifentry[index]->has_data())
+        if(ifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -358,9 +358,9 @@ bool IfMib::Iftable::has_data() const
 
 bool IfMib::Iftable::has_operation() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    for (std::size_t index=0; index<ifentry_.size(); index++)
     {
-        if(ifentry[index]->has_operation())
+        if(ifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -400,7 +400,7 @@ std::shared_ptr<Entity> IfMib::Iftable::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "ifEntry")
     {
-        for(auto const & c : ifentry)
+        for(auto const & c : ifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -410,7 +410,7 @@ std::shared_ptr<Entity> IfMib::Iftable::get_child_by_name(const std::string & ch
         }
         auto c = std::make_shared<IfMib::Iftable::Ifentry>();
         c->parent = this;
-        ifentry.push_back(c);
+        ifentry_.push_back(c);
         return c;
     }
 
@@ -420,7 +420,7 @@ std::shared_ptr<Entity> IfMib::Iftable::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> IfMib::Iftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ifentry)
+    for (auto const & c : ifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -883,9 +883,9 @@ IfMib::Ifstacktable::~Ifstacktable()
 
 bool IfMib::Ifstacktable::has_data() const
 {
-    for (std::size_t index=0; index<ifstackentry.size(); index++)
+    for (std::size_t index=0; index<ifstackentry_.size(); index++)
     {
-        if(ifstackentry[index]->has_data())
+        if(ifstackentry_[index]->has_data())
             return true;
     }
     return false;
@@ -893,9 +893,9 @@ bool IfMib::Ifstacktable::has_data() const
 
 bool IfMib::Ifstacktable::has_operation() const
 {
-    for (std::size_t index=0; index<ifstackentry.size(); index++)
+    for (std::size_t index=0; index<ifstackentry_.size(); index++)
     {
-        if(ifstackentry[index]->has_operation())
+        if(ifstackentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -935,7 +935,7 @@ std::shared_ptr<Entity> IfMib::Ifstacktable::get_child_by_name(const std::string
 {
     if(child_yang_name == "ifStackEntry")
     {
-        for(auto const & c : ifstackentry)
+        for(auto const & c : ifstackentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -945,7 +945,7 @@ std::shared_ptr<Entity> IfMib::Ifstacktable::get_child_by_name(const std::string
         }
         auto c = std::make_shared<IfMib::Ifstacktable::Ifstackentry>();
         c->parent = this;
-        ifstackentry.push_back(c);
+        ifstackentry_.push_back(c);
         return c;
     }
 
@@ -955,7 +955,7 @@ std::shared_ptr<Entity> IfMib::Ifstacktable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> IfMib::Ifstacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ifstackentry)
+    for (auto const & c : ifstackentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1066,9 +1066,9 @@ IfMib::Ifrcvaddresstable::~Ifrcvaddresstable()
 
 bool IfMib::Ifrcvaddresstable::has_data() const
 {
-    for (std::size_t index=0; index<ifrcvaddressentry.size(); index++)
+    for (std::size_t index=0; index<ifrcvaddressentry_.size(); index++)
     {
-        if(ifrcvaddressentry[index]->has_data())
+        if(ifrcvaddressentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1076,9 +1076,9 @@ bool IfMib::Ifrcvaddresstable::has_data() const
 
 bool IfMib::Ifrcvaddresstable::has_operation() const
 {
-    for (std::size_t index=0; index<ifrcvaddressentry.size(); index++)
+    for (std::size_t index=0; index<ifrcvaddressentry_.size(); index++)
     {
-        if(ifrcvaddressentry[index]->has_operation())
+        if(ifrcvaddressentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1118,7 +1118,7 @@ std::shared_ptr<Entity> IfMib::Ifrcvaddresstable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ifRcvAddressEntry")
     {
-        for(auto const & c : ifrcvaddressentry)
+        for(auto const & c : ifrcvaddressentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1128,7 +1128,7 @@ std::shared_ptr<Entity> IfMib::Ifrcvaddresstable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<IfMib::Ifrcvaddresstable::Ifrcvaddressentry>();
         c->parent = this;
-        ifrcvaddressentry.push_back(c);
+        ifrcvaddressentry_.push_back(c);
         return c;
     }
 
@@ -1138,7 +1138,7 @@ std::shared_ptr<Entity> IfMib::Ifrcvaddresstable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IfMib::Ifrcvaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ifrcvaddressentry)
+    for (auto const & c : ifrcvaddressentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1273,7 +1273,7 @@ const Enum::YLeaf IfMib::Iftable::Ifentry::IftestresultEnum::aborted {6, "aborte
 const Enum::YLeaf IfMib::Iftable::Ifentry::IftestresultEnum::failed {7, "failed"};
 
 const Enum::YLeaf IfMib::Ifrcvaddresstable::Ifrcvaddressentry::IfrcvaddresstypeEnum::other {1, "other"};
-const Enum::YLeaf IfMib::Ifrcvaddresstable::Ifrcvaddressentry::IfrcvaddresstypeEnum::volatile {2, "volatile"};
+const Enum::YLeaf IfMib::Ifrcvaddresstable::Ifrcvaddressentry::IfrcvaddresstypeEnum::volatile_ {2, "volatile"};
 const Enum::YLeaf IfMib::Ifrcvaddresstable::Ifrcvaddressentry::IfrcvaddresstypeEnum::nonVolatile {3, "nonVolatile"};
 
 

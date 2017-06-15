@@ -52,28 +52,28 @@ class CiscoIetfIsisMib : public Entity
         class Ciilspsummarytable; //type: CiscoIetfIsisMib::Ciilspsummarytable
         class Ciilsptlvtable; //type: CiscoIetfIsisMib::Ciilsptlvtable
 
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiareaaddrtable> ciiareaaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirc> ciicirc;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircleveltable> ciicircleveltable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirctable> ciicirctable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircuitcountertable> ciicircuitcountertable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiipratable> ciiipratable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjareaaddrtable> ciiisadjareaaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjipaddrtable> ciiisadjipaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjprotsupptable> ciiisadjprotsupptable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjtable> ciiisadjtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilspsummarytable> ciilspsummarytable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilsptlvtable> ciilsptlvtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciimanareaaddrtable> ciimanareaaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciipacketcountertable> ciipacketcountertable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiratable> ciiratable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiredistributeaddrtable> ciiredistributeaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiroutertable> ciiroutertable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisummaddrtable> ciisummaddrtable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysleveltable> ciisysleveltable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysobject> ciisysobject;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysprotsupptable> ciisysprotsupptable;
-        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisystemcountertable> ciisystemcountertable;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiareaaddrtable> ciiareaaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirc> ciicirc_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircleveltable> ciicircleveltable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirctable> ciicirctable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircuitcountertable> ciicircuitcountertable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiipratable> ciiipratable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjareaaddrtable> ciiisadjareaaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjipaddrtable> ciiisadjipaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjprotsupptable> ciiisadjprotsupptable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjtable> ciiisadjtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilspsummarytable> ciilspsummarytable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilsptlvtable> ciilsptlvtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciimanareaaddrtable> ciimanareaaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciipacketcountertable> ciipacketcountertable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiratable> ciiratable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiredistributeaddrtable> ciiredistributeaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiroutertable> ciiroutertable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisummaddrtable> ciisummaddrtable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysleveltable> ciisysleveltable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysobject> ciisysobject_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysprotsupptable> ciisysprotsupptable_;
+        std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisystemcountertable> ciisystemcountertable_;
         
 }; // CiscoIetfIsisMib
 
@@ -144,7 +144,7 @@ class CiscoIetfIsisMib::Ciimanareaaddrtable : public Entity
 
         class Ciimanareaaddrentry; //type: CiscoIetfIsisMib::Ciimanareaaddrtable::Ciimanareaaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciimanareaaddrtable::Ciimanareaaddrentry> > ciimanareaaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciimanareaaddrtable::Ciimanareaaddrentry> > ciimanareaaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciimanareaaddrtable
 
@@ -185,7 +185,7 @@ class CiscoIetfIsisMib::Ciiareaaddrtable : public Entity
 
         class Ciiareaaddrentry; //type: CiscoIetfIsisMib::Ciiareaaddrtable::Ciiareaaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiareaaddrtable::Ciiareaaddrentry> > ciiareaaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiareaaddrtable::Ciiareaaddrentry> > ciiareaaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciiareaaddrtable
 
@@ -225,7 +225,7 @@ class CiscoIetfIsisMib::Ciisysprotsupptable : public Entity
 
         class Ciisysprotsuppentry; //type: CiscoIetfIsisMib::Ciisysprotsupptable::Ciisysprotsuppentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysprotsupptable::Ciisysprotsuppentry> > ciisysprotsuppentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysprotsupptable::Ciisysprotsuppentry> > ciisysprotsuppentry_;
         
 }; // CiscoIetfIsisMib::Ciisysprotsupptable
 
@@ -266,7 +266,7 @@ class CiscoIetfIsisMib::Ciisummaddrtable : public Entity
 
         class Ciisummaddrentry; //type: CiscoIetfIsisMib::Ciisummaddrtable::Ciisummaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisummaddrtable::Ciisummaddrentry> > ciisummaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisummaddrtable::Ciisummaddrentry> > ciisummaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciisummaddrtable
 
@@ -311,7 +311,7 @@ class CiscoIetfIsisMib::Ciiredistributeaddrtable : public Entity
 
         class Ciiredistributeaddrentry; //type: CiscoIetfIsisMib::Ciiredistributeaddrtable::Ciiredistributeaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiredistributeaddrtable::Ciiredistributeaddrentry> > ciiredistributeaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiredistributeaddrtable::Ciiredistributeaddrentry> > ciiredistributeaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciiredistributeaddrtable
 
@@ -354,7 +354,7 @@ class CiscoIetfIsisMib::Ciiroutertable : public Entity
 
         class Ciirouterentry; //type: CiscoIetfIsisMib::Ciiroutertable::Ciirouterentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiroutertable::Ciirouterentry> > ciirouterentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiroutertable::Ciirouterentry> > ciirouterentry_;
         
 }; // CiscoIetfIsisMib::Ciiroutertable
 
@@ -397,7 +397,7 @@ class CiscoIetfIsisMib::Ciisysleveltable : public Entity
 
         class Ciisyslevelentry; //type: CiscoIetfIsisMib::Ciisysleveltable::Ciisyslevelentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysleveltable::Ciisyslevelentry> > ciisyslevelentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisysleveltable::Ciisyslevelentry> > ciisyslevelentry_;
         
 }; // CiscoIetfIsisMib::Ciisysleveltable
 
@@ -446,7 +446,7 @@ class CiscoIetfIsisMib::Ciicirctable : public Entity
 
         class Ciicircentry; //type: CiscoIetfIsisMib::Ciicirctable::Ciicircentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirctable::Ciicircentry> > ciicircentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicirctable::Ciicircentry> > ciicircentry_;
         
 }; // CiscoIetfIsisMib::Ciicirctable
 
@@ -503,7 +503,7 @@ class CiscoIetfIsisMib::Ciicircleveltable : public Entity
 
         class Ciicirclevelentry; //type: CiscoIetfIsisMib::Ciicircleveltable::Ciicirclevelentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircleveltable::Ciicirclevelentry> > ciicirclevelentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircleveltable::Ciicirclevelentry> > ciicirclevelentry_;
         
 }; // CiscoIetfIsisMib::Ciicircleveltable
 
@@ -559,7 +559,7 @@ class CiscoIetfIsisMib::Ciisystemcountertable : public Entity
 
         class Ciisystemcounterentry; //type: CiscoIetfIsisMib::Ciisystemcountertable::Ciisystemcounterentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisystemcountertable::Ciisystemcounterentry> > ciisystemcounterentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciisystemcountertable::Ciisystemcounterentry> > ciisystemcounterentry_;
         
 }; // CiscoIetfIsisMib::Ciisystemcountertable
 
@@ -612,7 +612,7 @@ class CiscoIetfIsisMib::Ciicircuitcountertable : public Entity
 
         class Ciicircuitcounterentry; //type: CiscoIetfIsisMib::Ciicircuitcountertable::Ciicircuitcounterentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircuitcountertable::Ciicircuitcounterentry> > ciicircuitcounterentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciicircuitcountertable::Ciicircuitcounterentry> > ciicircuitcounterentry_;
         
 }; // CiscoIetfIsisMib::Ciicircuitcountertable
 
@@ -664,7 +664,7 @@ class CiscoIetfIsisMib::Ciipacketcountertable : public Entity
 
         class Ciipacketcounterentry; //type: CiscoIetfIsisMib::Ciipacketcountertable::Ciipacketcounterentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciipacketcountertable::Ciipacketcounterentry> > ciipacketcounterentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciipacketcountertable::Ciipacketcounterentry> > ciipacketcounterentry_;
         
 }; // CiscoIetfIsisMib::Ciipacketcountertable
 
@@ -716,7 +716,7 @@ class CiscoIetfIsisMib::Ciiisadjtable : public Entity
 
         class Ciiisadjentry; //type: CiscoIetfIsisMib::Ciiisadjtable::Ciiisadjentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjtable::Ciiisadjentry> > ciiisadjentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjtable::Ciiisadjentry> > ciiisadjentry_;
         
 }; // CiscoIetfIsisMib::Ciiisadjtable
 
@@ -772,7 +772,7 @@ class CiscoIetfIsisMib::Ciiisadjareaaddrtable : public Entity
 
         class Ciiisadjareaaddrentry; //type: CiscoIetfIsisMib::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry> > ciiisadjareaaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry> > ciiisadjareaaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciiisadjareaaddrtable
 
@@ -817,7 +817,7 @@ class CiscoIetfIsisMib::Ciiisadjipaddrtable : public Entity
 
         class Ciiisadjipaddrentry; //type: CiscoIetfIsisMib::Ciiisadjipaddrtable::Ciiisadjipaddrentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjipaddrtable::Ciiisadjipaddrentry> > ciiisadjipaddrentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjipaddrtable::Ciiisadjipaddrentry> > ciiisadjipaddrentry_;
         
 }; // CiscoIetfIsisMib::Ciiisadjipaddrtable
 
@@ -863,7 +863,7 @@ class CiscoIetfIsisMib::Ciiisadjprotsupptable : public Entity
 
         class Ciiisadjprotsuppentry; //type: CiscoIetfIsisMib::Ciiisadjprotsupptable::Ciiisadjprotsuppentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjprotsupptable::Ciiisadjprotsuppentry> > ciiisadjprotsuppentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiisadjprotsupptable::Ciiisadjprotsuppentry> > ciiisadjprotsuppentry_;
         
 }; // CiscoIetfIsisMib::Ciiisadjprotsupptable
 
@@ -907,7 +907,7 @@ class CiscoIetfIsisMib::Ciiratable : public Entity
 
         class Ciiraentry; //type: CiscoIetfIsisMib::Ciiratable::Ciiraentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiratable::Ciiraentry> > ciiraentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiratable::Ciiraentry> > ciiraentry_;
         
 }; // CiscoIetfIsisMib::Ciiratable
 
@@ -961,7 +961,7 @@ class CiscoIetfIsisMib::Ciiipratable : public Entity
 
         class Ciiipraentry; //type: CiscoIetfIsisMib::Ciiipratable::Ciiipraentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiipratable::Ciiipraentry> > ciiipraentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciiipratable::Ciiipraentry> > ciiipraentry_;
         
 }; // CiscoIetfIsisMib::Ciiipratable
 
@@ -1016,7 +1016,7 @@ class CiscoIetfIsisMib::Ciilspsummarytable : public Entity
 
         class Ciilspsummaryentry; //type: CiscoIetfIsisMib::Ciilspsummarytable::Ciilspsummaryentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilspsummarytable::Ciilspsummaryentry> > ciilspsummaryentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilspsummarytable::Ciilspsummaryentry> > ciilspsummaryentry_;
         
 }; // CiscoIetfIsisMib::Ciilspsummarytable
 
@@ -1063,7 +1063,7 @@ class CiscoIetfIsisMib::Ciilsptlvtable : public Entity
 
         class Ciilsptlventry; //type: CiscoIetfIsisMib::Ciilsptlvtable::Ciilsptlventry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilsptlvtable::Ciilsptlventry> > ciilsptlventry;
+        std::vector<std::shared_ptr<CISCO_IETF_ISIS_MIB::CiscoIetfIsisMib::Ciilsptlvtable::Ciilsptlventry> > ciilsptlventry_;
         
 }; // CiscoIetfIsisMib::Ciilsptlvtable
 

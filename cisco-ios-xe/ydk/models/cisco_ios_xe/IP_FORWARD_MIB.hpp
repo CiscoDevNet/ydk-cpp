@@ -33,9 +33,9 @@ class IpForwardMib : public Entity
         class Ipforwardtable; //type: IpForwardMib::Ipforwardtable
         class Ipcidrroutetable; //type: IpForwardMib::Ipcidrroutetable
 
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable> ipcidrroutetable;
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforward> ipforward;
-        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable> ipforwardtable;
+        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable> ipcidrroutetable_;
+        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforward> ipforward_;
+        std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable> ipforwardtable_;
         
 }; // IpForwardMib
 
@@ -76,7 +76,7 @@ class IpForwardMib::Ipforwardtable : public Entity
 
         class Ipforwardentry; //type: IpForwardMib::Ipforwardtable::Ipforwardentry
 
-        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable::Ipforwardentry> > ipforwardentry;
+        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipforwardtable::Ipforwardentry> > ipforwardentry_;
         
 }; // IpForwardMib::Ipforwardtable
 
@@ -132,7 +132,7 @@ class IpForwardMib::Ipcidrroutetable : public Entity
 
         class Ipcidrrouteentry; //type: IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry
 
-        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry> > ipcidrrouteentry;
+        std::vector<std::shared_ptr<IP_FORWARD_MIB::IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry> > ipcidrrouteentry_;
         
 }; // IpForwardMib::Ipcidrroutetable
 

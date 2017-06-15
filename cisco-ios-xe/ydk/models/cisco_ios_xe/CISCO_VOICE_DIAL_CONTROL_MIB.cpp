@@ -11,78 +11,78 @@ namespace CISCO_VOICE_DIAL_CONTROL_MIB {
 
 CiscoVoiceDialControlMib::CiscoVoiceDialControlMib()
     :
-    cvactivecallstatstable(std::make_shared<CiscoVoiceDialControlMib::Cvactivecallstatstable>())
-	,cvactivecallwmtable(std::make_shared<CiscoVoiceDialControlMib::Cvactivecallwmtable>())
-	,cvcallactivetable(std::make_shared<CiscoVoiceDialControlMib::Cvcallactivetable>())
-	,cvcalldurationstatstable(std::make_shared<CiscoVoiceDialControlMib::Cvcalldurationstatstable>())
-	,cvcallhistorytable(std::make_shared<CiscoVoiceDialControlMib::Cvcallhistorytable>())
-	,cvcalllegratestatstable(std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratestatstable>())
-	,cvcalllegratewmtable(std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratewmtable>())
-	,cvcallratemonitor(std::make_shared<CiscoVoiceDialControlMib::Cvcallratemonitor>())
-	,cvcallratestatstable(std::make_shared<CiscoVoiceDialControlMib::Cvcallratestatstable>())
-	,cvcallratewmtable(std::make_shared<CiscoVoiceDialControlMib::Cvcallratewmtable>())
-	,cvcallvolconntable(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolconntable>())
-	,cvcallvoliftable(std::make_shared<CiscoVoiceDialControlMib::Cvcallvoliftable>())
-	,cvcallvolume(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolume>())
-	,cvcallvolumestatshistory(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolumestatshistory>())
-	,cvgatewaycallactive(std::make_shared<CiscoVoiceDialControlMib::Cvgatewaycallactive>())
-	,cvgeneralconfiguration(std::make_shared<CiscoVoiceDialControlMib::Cvgeneralconfiguration>())
-	,cvpeercfgtable(std::make_shared<CiscoVoiceDialControlMib::Cvpeercfgtable>())
-	,cvpeercommoncfgtable(std::make_shared<CiscoVoiceDialControlMib::Cvpeercommoncfgtable>())
-	,cvsipmsgratestatstable(std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratestatstable>())
-	,cvsipmsgratewmtable(std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratewmtable>())
-	,cvvoicepeercfgtable(std::make_shared<CiscoVoiceDialControlMib::Cvvoicepeercfgtable>())
-	,cvvoipcallactivetable(std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallactivetable>())
-	,cvvoipcallhistorytable(std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallhistorytable>())
-	,cvvoippeercfgtable(std::make_shared<CiscoVoiceDialControlMib::Cvvoippeercfgtable>())
+    cvactivecallstatstable_(std::make_shared<CiscoVoiceDialControlMib::Cvactivecallstatstable>())
+	,cvactivecallwmtable_(std::make_shared<CiscoVoiceDialControlMib::Cvactivecallwmtable>())
+	,cvcallactivetable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallactivetable>())
+	,cvcalldurationstatstable_(std::make_shared<CiscoVoiceDialControlMib::Cvcalldurationstatstable>())
+	,cvcallhistorytable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallhistorytable>())
+	,cvcalllegratestatstable_(std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratestatstable>())
+	,cvcalllegratewmtable_(std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratewmtable>())
+	,cvcallratemonitor_(std::make_shared<CiscoVoiceDialControlMib::Cvcallratemonitor>())
+	,cvcallratestatstable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallratestatstable>())
+	,cvcallratewmtable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallratewmtable>())
+	,cvcallvolconntable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolconntable>())
+	,cvcallvoliftable_(std::make_shared<CiscoVoiceDialControlMib::Cvcallvoliftable>())
+	,cvcallvolume_(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolume>())
+	,cvcallvolumestatshistory_(std::make_shared<CiscoVoiceDialControlMib::Cvcallvolumestatshistory>())
+	,cvgatewaycallactive_(std::make_shared<CiscoVoiceDialControlMib::Cvgatewaycallactive>())
+	,cvgeneralconfiguration_(std::make_shared<CiscoVoiceDialControlMib::Cvgeneralconfiguration>())
+	,cvpeercfgtable_(std::make_shared<CiscoVoiceDialControlMib::Cvpeercfgtable>())
+	,cvpeercommoncfgtable_(std::make_shared<CiscoVoiceDialControlMib::Cvpeercommoncfgtable>())
+	,cvsipmsgratestatstable_(std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratestatstable>())
+	,cvsipmsgratewmtable_(std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratewmtable>())
+	,cvvoicepeercfgtable_(std::make_shared<CiscoVoiceDialControlMib::Cvvoicepeercfgtable>())
+	,cvvoipcallactivetable_(std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallactivetable>())
+	,cvvoipcallhistorytable_(std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallhistorytable>())
+	,cvvoippeercfgtable_(std::make_shared<CiscoVoiceDialControlMib::Cvvoippeercfgtable>())
 {
-    cvactivecallstatstable->parent = this;
+    cvactivecallstatstable_->parent = this;
 
-    cvactivecallwmtable->parent = this;
+    cvactivecallwmtable_->parent = this;
 
-    cvcallactivetable->parent = this;
+    cvcallactivetable_->parent = this;
 
-    cvcalldurationstatstable->parent = this;
+    cvcalldurationstatstable_->parent = this;
 
-    cvcallhistorytable->parent = this;
+    cvcallhistorytable_->parent = this;
 
-    cvcalllegratestatstable->parent = this;
+    cvcalllegratestatstable_->parent = this;
 
-    cvcalllegratewmtable->parent = this;
+    cvcalllegratewmtable_->parent = this;
 
-    cvcallratemonitor->parent = this;
+    cvcallratemonitor_->parent = this;
 
-    cvcallratestatstable->parent = this;
+    cvcallratestatstable_->parent = this;
 
-    cvcallratewmtable->parent = this;
+    cvcallratewmtable_->parent = this;
 
-    cvcallvolconntable->parent = this;
+    cvcallvolconntable_->parent = this;
 
-    cvcallvoliftable->parent = this;
+    cvcallvoliftable_->parent = this;
 
-    cvcallvolume->parent = this;
+    cvcallvolume_->parent = this;
 
-    cvcallvolumestatshistory->parent = this;
+    cvcallvolumestatshistory_->parent = this;
 
-    cvgatewaycallactive->parent = this;
+    cvgatewaycallactive_->parent = this;
 
-    cvgeneralconfiguration->parent = this;
+    cvgeneralconfiguration_->parent = this;
 
-    cvpeercfgtable->parent = this;
+    cvpeercfgtable_->parent = this;
 
-    cvpeercommoncfgtable->parent = this;
+    cvpeercommoncfgtable_->parent = this;
 
-    cvsipmsgratestatstable->parent = this;
+    cvsipmsgratestatstable_->parent = this;
 
-    cvsipmsgratewmtable->parent = this;
+    cvsipmsgratewmtable_->parent = this;
 
-    cvvoicepeercfgtable->parent = this;
+    cvvoicepeercfgtable_->parent = this;
 
-    cvvoipcallactivetable->parent = this;
+    cvvoipcallactivetable_->parent = this;
 
-    cvvoipcallhistorytable->parent = this;
+    cvvoipcallhistorytable_->parent = this;
 
-    cvvoippeercfgtable->parent = this;
+    cvvoippeercfgtable_->parent = this;
 
     yang_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB";
 }
@@ -93,59 +93,59 @@ CiscoVoiceDialControlMib::~CiscoVoiceDialControlMib()
 
 bool CiscoVoiceDialControlMib::has_data() const
 {
-    return (cvactivecallstatstable !=  nullptr && cvactivecallstatstable->has_data())
-	|| (cvactivecallwmtable !=  nullptr && cvactivecallwmtable->has_data())
-	|| (cvcallactivetable !=  nullptr && cvcallactivetable->has_data())
-	|| (cvcalldurationstatstable !=  nullptr && cvcalldurationstatstable->has_data())
-	|| (cvcallhistorytable !=  nullptr && cvcallhistorytable->has_data())
-	|| (cvcalllegratestatstable !=  nullptr && cvcalllegratestatstable->has_data())
-	|| (cvcalllegratewmtable !=  nullptr && cvcalllegratewmtable->has_data())
-	|| (cvcallratemonitor !=  nullptr && cvcallratemonitor->has_data())
-	|| (cvcallratestatstable !=  nullptr && cvcallratestatstable->has_data())
-	|| (cvcallratewmtable !=  nullptr && cvcallratewmtable->has_data())
-	|| (cvcallvolconntable !=  nullptr && cvcallvolconntable->has_data())
-	|| (cvcallvoliftable !=  nullptr && cvcallvoliftable->has_data())
-	|| (cvcallvolume !=  nullptr && cvcallvolume->has_data())
-	|| (cvcallvolumestatshistory !=  nullptr && cvcallvolumestatshistory->has_data())
-	|| (cvgatewaycallactive !=  nullptr && cvgatewaycallactive->has_data())
-	|| (cvgeneralconfiguration !=  nullptr && cvgeneralconfiguration->has_data())
-	|| (cvpeercfgtable !=  nullptr && cvpeercfgtable->has_data())
-	|| (cvpeercommoncfgtable !=  nullptr && cvpeercommoncfgtable->has_data())
-	|| (cvsipmsgratestatstable !=  nullptr && cvsipmsgratestatstable->has_data())
-	|| (cvsipmsgratewmtable !=  nullptr && cvsipmsgratewmtable->has_data())
-	|| (cvvoicepeercfgtable !=  nullptr && cvvoicepeercfgtable->has_data())
-	|| (cvvoipcallactivetable !=  nullptr && cvvoipcallactivetable->has_data())
-	|| (cvvoipcallhistorytable !=  nullptr && cvvoipcallhistorytable->has_data())
-	|| (cvvoippeercfgtable !=  nullptr && cvvoippeercfgtable->has_data());
+    return (cvactivecallstatstable_ !=  nullptr && cvactivecallstatstable_->has_data())
+	|| (cvactivecallwmtable_ !=  nullptr && cvactivecallwmtable_->has_data())
+	|| (cvcallactivetable_ !=  nullptr && cvcallactivetable_->has_data())
+	|| (cvcalldurationstatstable_ !=  nullptr && cvcalldurationstatstable_->has_data())
+	|| (cvcallhistorytable_ !=  nullptr && cvcallhistorytable_->has_data())
+	|| (cvcalllegratestatstable_ !=  nullptr && cvcalllegratestatstable_->has_data())
+	|| (cvcalllegratewmtable_ !=  nullptr && cvcalllegratewmtable_->has_data())
+	|| (cvcallratemonitor_ !=  nullptr && cvcallratemonitor_->has_data())
+	|| (cvcallratestatstable_ !=  nullptr && cvcallratestatstable_->has_data())
+	|| (cvcallratewmtable_ !=  nullptr && cvcallratewmtable_->has_data())
+	|| (cvcallvolconntable_ !=  nullptr && cvcallvolconntable_->has_data())
+	|| (cvcallvoliftable_ !=  nullptr && cvcallvoliftable_->has_data())
+	|| (cvcallvolume_ !=  nullptr && cvcallvolume_->has_data())
+	|| (cvcallvolumestatshistory_ !=  nullptr && cvcallvolumestatshistory_->has_data())
+	|| (cvgatewaycallactive_ !=  nullptr && cvgatewaycallactive_->has_data())
+	|| (cvgeneralconfiguration_ !=  nullptr && cvgeneralconfiguration_->has_data())
+	|| (cvpeercfgtable_ !=  nullptr && cvpeercfgtable_->has_data())
+	|| (cvpeercommoncfgtable_ !=  nullptr && cvpeercommoncfgtable_->has_data())
+	|| (cvsipmsgratestatstable_ !=  nullptr && cvsipmsgratestatstable_->has_data())
+	|| (cvsipmsgratewmtable_ !=  nullptr && cvsipmsgratewmtable_->has_data())
+	|| (cvvoicepeercfgtable_ !=  nullptr && cvvoicepeercfgtable_->has_data())
+	|| (cvvoipcallactivetable_ !=  nullptr && cvvoipcallactivetable_->has_data())
+	|| (cvvoipcallhistorytable_ !=  nullptr && cvvoipcallhistorytable_->has_data())
+	|| (cvvoippeercfgtable_ !=  nullptr && cvvoippeercfgtable_->has_data());
 }
 
 bool CiscoVoiceDialControlMib::has_operation() const
 {
     return is_set(operation)
-	|| (cvactivecallstatstable !=  nullptr && cvactivecallstatstable->has_operation())
-	|| (cvactivecallwmtable !=  nullptr && cvactivecallwmtable->has_operation())
-	|| (cvcallactivetable !=  nullptr && cvcallactivetable->has_operation())
-	|| (cvcalldurationstatstable !=  nullptr && cvcalldurationstatstable->has_operation())
-	|| (cvcallhistorytable !=  nullptr && cvcallhistorytable->has_operation())
-	|| (cvcalllegratestatstable !=  nullptr && cvcalllegratestatstable->has_operation())
-	|| (cvcalllegratewmtable !=  nullptr && cvcalllegratewmtable->has_operation())
-	|| (cvcallratemonitor !=  nullptr && cvcallratemonitor->has_operation())
-	|| (cvcallratestatstable !=  nullptr && cvcallratestatstable->has_operation())
-	|| (cvcallratewmtable !=  nullptr && cvcallratewmtable->has_operation())
-	|| (cvcallvolconntable !=  nullptr && cvcallvolconntable->has_operation())
-	|| (cvcallvoliftable !=  nullptr && cvcallvoliftable->has_operation())
-	|| (cvcallvolume !=  nullptr && cvcallvolume->has_operation())
-	|| (cvcallvolumestatshistory !=  nullptr && cvcallvolumestatshistory->has_operation())
-	|| (cvgatewaycallactive !=  nullptr && cvgatewaycallactive->has_operation())
-	|| (cvgeneralconfiguration !=  nullptr && cvgeneralconfiguration->has_operation())
-	|| (cvpeercfgtable !=  nullptr && cvpeercfgtable->has_operation())
-	|| (cvpeercommoncfgtable !=  nullptr && cvpeercommoncfgtable->has_operation())
-	|| (cvsipmsgratestatstable !=  nullptr && cvsipmsgratestatstable->has_operation())
-	|| (cvsipmsgratewmtable !=  nullptr && cvsipmsgratewmtable->has_operation())
-	|| (cvvoicepeercfgtable !=  nullptr && cvvoicepeercfgtable->has_operation())
-	|| (cvvoipcallactivetable !=  nullptr && cvvoipcallactivetable->has_operation())
-	|| (cvvoipcallhistorytable !=  nullptr && cvvoipcallhistorytable->has_operation())
-	|| (cvvoippeercfgtable !=  nullptr && cvvoippeercfgtable->has_operation());
+	|| (cvactivecallstatstable_ !=  nullptr && cvactivecallstatstable_->has_operation())
+	|| (cvactivecallwmtable_ !=  nullptr && cvactivecallwmtable_->has_operation())
+	|| (cvcallactivetable_ !=  nullptr && cvcallactivetable_->has_operation())
+	|| (cvcalldurationstatstable_ !=  nullptr && cvcalldurationstatstable_->has_operation())
+	|| (cvcallhistorytable_ !=  nullptr && cvcallhistorytable_->has_operation())
+	|| (cvcalllegratestatstable_ !=  nullptr && cvcalllegratestatstable_->has_operation())
+	|| (cvcalllegratewmtable_ !=  nullptr && cvcalllegratewmtable_->has_operation())
+	|| (cvcallratemonitor_ !=  nullptr && cvcallratemonitor_->has_operation())
+	|| (cvcallratestatstable_ !=  nullptr && cvcallratestatstable_->has_operation())
+	|| (cvcallratewmtable_ !=  nullptr && cvcallratewmtable_->has_operation())
+	|| (cvcallvolconntable_ !=  nullptr && cvcallvolconntable_->has_operation())
+	|| (cvcallvoliftable_ !=  nullptr && cvcallvoliftable_->has_operation())
+	|| (cvcallvolume_ !=  nullptr && cvcallvolume_->has_operation())
+	|| (cvcallvolumestatshistory_ !=  nullptr && cvcallvolumestatshistory_->has_operation())
+	|| (cvgatewaycallactive_ !=  nullptr && cvgatewaycallactive_->has_operation())
+	|| (cvgeneralconfiguration_ !=  nullptr && cvgeneralconfiguration_->has_operation())
+	|| (cvpeercfgtable_ !=  nullptr && cvpeercfgtable_->has_operation())
+	|| (cvpeercommoncfgtable_ !=  nullptr && cvpeercommoncfgtable_->has_operation())
+	|| (cvsipmsgratestatstable_ !=  nullptr && cvsipmsgratestatstable_->has_operation())
+	|| (cvsipmsgratewmtable_ !=  nullptr && cvsipmsgratewmtable_->has_operation())
+	|| (cvvoicepeercfgtable_ !=  nullptr && cvvoicepeercfgtable_->has_operation())
+	|| (cvvoipcallactivetable_ !=  nullptr && cvvoipcallactivetable_->has_operation())
+	|| (cvvoipcallhistorytable_ !=  nullptr && cvvoipcallhistorytable_->has_operation())
+	|| (cvvoippeercfgtable_ !=  nullptr && cvvoippeercfgtable_->has_operation());
 }
 
 std::string CiscoVoiceDialControlMib::get_segment_path() const
@@ -179,218 +179,218 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "cvActiveCallStatsTable")
     {
-        if(cvactivecallstatstable == nullptr)
+        if(cvactivecallstatstable_ == nullptr)
         {
-            cvactivecallstatstable = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallstatstable>();
+            cvactivecallstatstable_ = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallstatstable>();
         }
-        return cvactivecallstatstable;
+        return cvactivecallstatstable_;
     }
 
     if(child_yang_name == "cvActiveCallWMTable")
     {
-        if(cvactivecallwmtable == nullptr)
+        if(cvactivecallwmtable_ == nullptr)
         {
-            cvactivecallwmtable = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallwmtable>();
+            cvactivecallwmtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallwmtable>();
         }
-        return cvactivecallwmtable;
+        return cvactivecallwmtable_;
     }
 
     if(child_yang_name == "cvCallActiveTable")
     {
-        if(cvcallactivetable == nullptr)
+        if(cvcallactivetable_ == nullptr)
         {
-            cvcallactivetable = std::make_shared<CiscoVoiceDialControlMib::Cvcallactivetable>();
+            cvcallactivetable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallactivetable>();
         }
-        return cvcallactivetable;
+        return cvcallactivetable_;
     }
 
     if(child_yang_name == "cvCallDurationStatsTable")
     {
-        if(cvcalldurationstatstable == nullptr)
+        if(cvcalldurationstatstable_ == nullptr)
         {
-            cvcalldurationstatstable = std::make_shared<CiscoVoiceDialControlMib::Cvcalldurationstatstable>();
+            cvcalldurationstatstable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcalldurationstatstable>();
         }
-        return cvcalldurationstatstable;
+        return cvcalldurationstatstable_;
     }
 
     if(child_yang_name == "cvCallHistoryTable")
     {
-        if(cvcallhistorytable == nullptr)
+        if(cvcallhistorytable_ == nullptr)
         {
-            cvcallhistorytable = std::make_shared<CiscoVoiceDialControlMib::Cvcallhistorytable>();
+            cvcallhistorytable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallhistorytable>();
         }
-        return cvcallhistorytable;
+        return cvcallhistorytable_;
     }
 
     if(child_yang_name == "cvCallLegRateStatsTable")
     {
-        if(cvcalllegratestatstable == nullptr)
+        if(cvcalllegratestatstable_ == nullptr)
         {
-            cvcalllegratestatstable = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratestatstable>();
+            cvcalllegratestatstable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratestatstable>();
         }
-        return cvcalllegratestatstable;
+        return cvcalllegratestatstable_;
     }
 
     if(child_yang_name == "cvCallLegRateWMTable")
     {
-        if(cvcalllegratewmtable == nullptr)
+        if(cvcalllegratewmtable_ == nullptr)
         {
-            cvcalllegratewmtable = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratewmtable>();
+            cvcalllegratewmtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratewmtable>();
         }
-        return cvcalllegratewmtable;
+        return cvcalllegratewmtable_;
     }
 
     if(child_yang_name == "cvCallRateMonitor")
     {
-        if(cvcallratemonitor == nullptr)
+        if(cvcallratemonitor_ == nullptr)
         {
-            cvcallratemonitor = std::make_shared<CiscoVoiceDialControlMib::Cvcallratemonitor>();
+            cvcallratemonitor_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallratemonitor>();
         }
-        return cvcallratemonitor;
+        return cvcallratemonitor_;
     }
 
     if(child_yang_name == "cvCallRateStatsTable")
     {
-        if(cvcallratestatstable == nullptr)
+        if(cvcallratestatstable_ == nullptr)
         {
-            cvcallratestatstable = std::make_shared<CiscoVoiceDialControlMib::Cvcallratestatstable>();
+            cvcallratestatstable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallratestatstable>();
         }
-        return cvcallratestatstable;
+        return cvcallratestatstable_;
     }
 
     if(child_yang_name == "cvCallRateWMTable")
     {
-        if(cvcallratewmtable == nullptr)
+        if(cvcallratewmtable_ == nullptr)
         {
-            cvcallratewmtable = std::make_shared<CiscoVoiceDialControlMib::Cvcallratewmtable>();
+            cvcallratewmtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallratewmtable>();
         }
-        return cvcallratewmtable;
+        return cvcallratewmtable_;
     }
 
     if(child_yang_name == "cvCallVolConnTable")
     {
-        if(cvcallvolconntable == nullptr)
+        if(cvcallvolconntable_ == nullptr)
         {
-            cvcallvolconntable = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolconntable>();
+            cvcallvolconntable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolconntable>();
         }
-        return cvcallvolconntable;
+        return cvcallvolconntable_;
     }
 
     if(child_yang_name == "cvCallVolIfTable")
     {
-        if(cvcallvoliftable == nullptr)
+        if(cvcallvoliftable_ == nullptr)
         {
-            cvcallvoliftable = std::make_shared<CiscoVoiceDialControlMib::Cvcallvoliftable>();
+            cvcallvoliftable_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallvoliftable>();
         }
-        return cvcallvoliftable;
+        return cvcallvoliftable_;
     }
 
     if(child_yang_name == "cvCallVolume")
     {
-        if(cvcallvolume == nullptr)
+        if(cvcallvolume_ == nullptr)
         {
-            cvcallvolume = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolume>();
+            cvcallvolume_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolume>();
         }
-        return cvcallvolume;
+        return cvcallvolume_;
     }
 
     if(child_yang_name == "cvCallVolumeStatsHistory")
     {
-        if(cvcallvolumestatshistory == nullptr)
+        if(cvcallvolumestatshistory_ == nullptr)
         {
-            cvcallvolumestatshistory = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolumestatshistory>();
+            cvcallvolumestatshistory_ = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolumestatshistory>();
         }
-        return cvcallvolumestatshistory;
+        return cvcallvolumestatshistory_;
     }
 
     if(child_yang_name == "cvGatewayCallActive")
     {
-        if(cvgatewaycallactive == nullptr)
+        if(cvgatewaycallactive_ == nullptr)
         {
-            cvgatewaycallactive = std::make_shared<CiscoVoiceDialControlMib::Cvgatewaycallactive>();
+            cvgatewaycallactive_ = std::make_shared<CiscoVoiceDialControlMib::Cvgatewaycallactive>();
         }
-        return cvgatewaycallactive;
+        return cvgatewaycallactive_;
     }
 
     if(child_yang_name == "cvGeneralConfiguration")
     {
-        if(cvgeneralconfiguration == nullptr)
+        if(cvgeneralconfiguration_ == nullptr)
         {
-            cvgeneralconfiguration = std::make_shared<CiscoVoiceDialControlMib::Cvgeneralconfiguration>();
+            cvgeneralconfiguration_ = std::make_shared<CiscoVoiceDialControlMib::Cvgeneralconfiguration>();
         }
-        return cvgeneralconfiguration;
+        return cvgeneralconfiguration_;
     }
 
     if(child_yang_name == "cvPeerCfgTable")
     {
-        if(cvpeercfgtable == nullptr)
+        if(cvpeercfgtable_ == nullptr)
         {
-            cvpeercfgtable = std::make_shared<CiscoVoiceDialControlMib::Cvpeercfgtable>();
+            cvpeercfgtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvpeercfgtable>();
         }
-        return cvpeercfgtable;
+        return cvpeercfgtable_;
     }
 
     if(child_yang_name == "cvPeerCommonCfgTable")
     {
-        if(cvpeercommoncfgtable == nullptr)
+        if(cvpeercommoncfgtable_ == nullptr)
         {
-            cvpeercommoncfgtable = std::make_shared<CiscoVoiceDialControlMib::Cvpeercommoncfgtable>();
+            cvpeercommoncfgtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvpeercommoncfgtable>();
         }
-        return cvpeercommoncfgtable;
+        return cvpeercommoncfgtable_;
     }
 
     if(child_yang_name == "cvSipMsgRateStatsTable")
     {
-        if(cvsipmsgratestatstable == nullptr)
+        if(cvsipmsgratestatstable_ == nullptr)
         {
-            cvsipmsgratestatstable = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratestatstable>();
+            cvsipmsgratestatstable_ = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratestatstable>();
         }
-        return cvsipmsgratestatstable;
+        return cvsipmsgratestatstable_;
     }
 
     if(child_yang_name == "cvSipMsgRateWMTable")
     {
-        if(cvsipmsgratewmtable == nullptr)
+        if(cvsipmsgratewmtable_ == nullptr)
         {
-            cvsipmsgratewmtable = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratewmtable>();
+            cvsipmsgratewmtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratewmtable>();
         }
-        return cvsipmsgratewmtable;
+        return cvsipmsgratewmtable_;
     }
 
     if(child_yang_name == "cvVoicePeerCfgTable")
     {
-        if(cvvoicepeercfgtable == nullptr)
+        if(cvvoicepeercfgtable_ == nullptr)
         {
-            cvvoicepeercfgtable = std::make_shared<CiscoVoiceDialControlMib::Cvvoicepeercfgtable>();
+            cvvoicepeercfgtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvvoicepeercfgtable>();
         }
-        return cvvoicepeercfgtable;
+        return cvvoicepeercfgtable_;
     }
 
     if(child_yang_name == "cvVoIPCallActiveTable")
     {
-        if(cvvoipcallactivetable == nullptr)
+        if(cvvoipcallactivetable_ == nullptr)
         {
-            cvvoipcallactivetable = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallactivetable>();
+            cvvoipcallactivetable_ = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallactivetable>();
         }
-        return cvvoipcallactivetable;
+        return cvvoipcallactivetable_;
     }
 
     if(child_yang_name == "cvVoIPCallHistoryTable")
     {
-        if(cvvoipcallhistorytable == nullptr)
+        if(cvvoipcallhistorytable_ == nullptr)
         {
-            cvvoipcallhistorytable = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallhistorytable>();
+            cvvoipcallhistorytable_ = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallhistorytable>();
         }
-        return cvvoipcallhistorytable;
+        return cvvoipcallhistorytable_;
     }
 
     if(child_yang_name == "cvVoIPPeerCfgTable")
     {
-        if(cvvoippeercfgtable == nullptr)
+        if(cvvoippeercfgtable_ == nullptr)
         {
-            cvvoippeercfgtable = std::make_shared<CiscoVoiceDialControlMib::Cvvoippeercfgtable>();
+            cvvoippeercfgtable_ = std::make_shared<CiscoVoiceDialControlMib::Cvvoippeercfgtable>();
         }
-        return cvvoippeercfgtable;
+        return cvvoippeercfgtable_;
     }
 
     return nullptr;
@@ -399,124 +399,124 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cvactivecallstatstable != nullptr)
+    if(cvactivecallstatstable_ != nullptr)
     {
-        children["cvActiveCallStatsTable"] = cvactivecallstatstable;
+        children["cvActiveCallStatsTable"] = cvactivecallstatstable_;
     }
 
-    if(cvactivecallwmtable != nullptr)
+    if(cvactivecallwmtable_ != nullptr)
     {
-        children["cvActiveCallWMTable"] = cvactivecallwmtable;
+        children["cvActiveCallWMTable"] = cvactivecallwmtable_;
     }
 
-    if(cvcallactivetable != nullptr)
+    if(cvcallactivetable_ != nullptr)
     {
-        children["cvCallActiveTable"] = cvcallactivetable;
+        children["cvCallActiveTable"] = cvcallactivetable_;
     }
 
-    if(cvcalldurationstatstable != nullptr)
+    if(cvcalldurationstatstable_ != nullptr)
     {
-        children["cvCallDurationStatsTable"] = cvcalldurationstatstable;
+        children["cvCallDurationStatsTable"] = cvcalldurationstatstable_;
     }
 
-    if(cvcallhistorytable != nullptr)
+    if(cvcallhistorytable_ != nullptr)
     {
-        children["cvCallHistoryTable"] = cvcallhistorytable;
+        children["cvCallHistoryTable"] = cvcallhistorytable_;
     }
 
-    if(cvcalllegratestatstable != nullptr)
+    if(cvcalllegratestatstable_ != nullptr)
     {
-        children["cvCallLegRateStatsTable"] = cvcalllegratestatstable;
+        children["cvCallLegRateStatsTable"] = cvcalllegratestatstable_;
     }
 
-    if(cvcalllegratewmtable != nullptr)
+    if(cvcalllegratewmtable_ != nullptr)
     {
-        children["cvCallLegRateWMTable"] = cvcalllegratewmtable;
+        children["cvCallLegRateWMTable"] = cvcalllegratewmtable_;
     }
 
-    if(cvcallratemonitor != nullptr)
+    if(cvcallratemonitor_ != nullptr)
     {
-        children["cvCallRateMonitor"] = cvcallratemonitor;
+        children["cvCallRateMonitor"] = cvcallratemonitor_;
     }
 
-    if(cvcallratestatstable != nullptr)
+    if(cvcallratestatstable_ != nullptr)
     {
-        children["cvCallRateStatsTable"] = cvcallratestatstable;
+        children["cvCallRateStatsTable"] = cvcallratestatstable_;
     }
 
-    if(cvcallratewmtable != nullptr)
+    if(cvcallratewmtable_ != nullptr)
     {
-        children["cvCallRateWMTable"] = cvcallratewmtable;
+        children["cvCallRateWMTable"] = cvcallratewmtable_;
     }
 
-    if(cvcallvolconntable != nullptr)
+    if(cvcallvolconntable_ != nullptr)
     {
-        children["cvCallVolConnTable"] = cvcallvolconntable;
+        children["cvCallVolConnTable"] = cvcallvolconntable_;
     }
 
-    if(cvcallvoliftable != nullptr)
+    if(cvcallvoliftable_ != nullptr)
     {
-        children["cvCallVolIfTable"] = cvcallvoliftable;
+        children["cvCallVolIfTable"] = cvcallvoliftable_;
     }
 
-    if(cvcallvolume != nullptr)
+    if(cvcallvolume_ != nullptr)
     {
-        children["cvCallVolume"] = cvcallvolume;
+        children["cvCallVolume"] = cvcallvolume_;
     }
 
-    if(cvcallvolumestatshistory != nullptr)
+    if(cvcallvolumestatshistory_ != nullptr)
     {
-        children["cvCallVolumeStatsHistory"] = cvcallvolumestatshistory;
+        children["cvCallVolumeStatsHistory"] = cvcallvolumestatshistory_;
     }
 
-    if(cvgatewaycallactive != nullptr)
+    if(cvgatewaycallactive_ != nullptr)
     {
-        children["cvGatewayCallActive"] = cvgatewaycallactive;
+        children["cvGatewayCallActive"] = cvgatewaycallactive_;
     }
 
-    if(cvgeneralconfiguration != nullptr)
+    if(cvgeneralconfiguration_ != nullptr)
     {
-        children["cvGeneralConfiguration"] = cvgeneralconfiguration;
+        children["cvGeneralConfiguration"] = cvgeneralconfiguration_;
     }
 
-    if(cvpeercfgtable != nullptr)
+    if(cvpeercfgtable_ != nullptr)
     {
-        children["cvPeerCfgTable"] = cvpeercfgtable;
+        children["cvPeerCfgTable"] = cvpeercfgtable_;
     }
 
-    if(cvpeercommoncfgtable != nullptr)
+    if(cvpeercommoncfgtable_ != nullptr)
     {
-        children["cvPeerCommonCfgTable"] = cvpeercommoncfgtable;
+        children["cvPeerCommonCfgTable"] = cvpeercommoncfgtable_;
     }
 
-    if(cvsipmsgratestatstable != nullptr)
+    if(cvsipmsgratestatstable_ != nullptr)
     {
-        children["cvSipMsgRateStatsTable"] = cvsipmsgratestatstable;
+        children["cvSipMsgRateStatsTable"] = cvsipmsgratestatstable_;
     }
 
-    if(cvsipmsgratewmtable != nullptr)
+    if(cvsipmsgratewmtable_ != nullptr)
     {
-        children["cvSipMsgRateWMTable"] = cvsipmsgratewmtable;
+        children["cvSipMsgRateWMTable"] = cvsipmsgratewmtable_;
     }
 
-    if(cvvoicepeercfgtable != nullptr)
+    if(cvvoicepeercfgtable_ != nullptr)
     {
-        children["cvVoicePeerCfgTable"] = cvvoicepeercfgtable;
+        children["cvVoicePeerCfgTable"] = cvvoicepeercfgtable_;
     }
 
-    if(cvvoipcallactivetable != nullptr)
+    if(cvvoipcallactivetable_ != nullptr)
     {
-        children["cvVoIPCallActiveTable"] = cvvoipcallactivetable;
+        children["cvVoIPCallActiveTable"] = cvvoipcallactivetable_;
     }
 
-    if(cvvoipcallhistorytable != nullptr)
+    if(cvvoipcallhistorytable_ != nullptr)
     {
-        children["cvVoIPCallHistoryTable"] = cvvoipcallhistorytable;
+        children["cvVoIPCallHistoryTable"] = cvvoipcallhistorytable_;
     }
 
-    if(cvvoippeercfgtable != nullptr)
+    if(cvvoippeercfgtable_ != nullptr)
     {
-        children["cvVoIPPeerCfgTable"] = cvvoippeercfgtable;
+        children["cvVoIPPeerCfgTable"] = cvvoippeercfgtable_;
     }
 
     return children;
@@ -1013,9 +1013,9 @@ CiscoVoiceDialControlMib::Cvpeercfgtable::~Cvpeercfgtable()
 
 bool CiscoVoiceDialControlMib::Cvpeercfgtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercfgentry_.size(); index++)
     {
-        if(cvpeercfgentry[index]->has_data())
+        if(cvpeercfgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1023,9 +1023,9 @@ bool CiscoVoiceDialControlMib::Cvpeercfgtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvpeercfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercfgentry_.size(); index++)
     {
-        if(cvpeercfgentry[index]->has_operation())
+        if(cvpeercfgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1065,7 +1065,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercfgtable::get_child_by_n
 {
     if(child_yang_name == "cvPeerCfgEntry")
     {
-        for(auto const & c : cvpeercfgentry)
+        for(auto const & c : cvpeercfgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1075,7 +1075,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercfgtable::get_child_by_n
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvpeercfgtable::Cvpeercfgentry>();
         c->parent = this;
-        cvpeercfgentry.push_back(c);
+        cvpeercfgentry_.push_back(c);
         return c;
     }
 
@@ -1085,7 +1085,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercfgtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvpeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpeercfgentry)
+    for (auto const & c : cvpeercfgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1228,9 +1228,9 @@ CiscoVoiceDialControlMib::Cvvoicepeercfgtable::~Cvvoicepeercfgtable()
 
 bool CiscoVoiceDialControlMib::Cvvoicepeercfgtable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoicepeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoicepeercfgentry_.size(); index++)
     {
-        if(cvvoicepeercfgentry[index]->has_data())
+        if(cvvoicepeercfgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1238,9 +1238,9 @@ bool CiscoVoiceDialControlMib::Cvvoicepeercfgtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvvoicepeercfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoicepeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoicepeercfgentry_.size(); index++)
     {
-        if(cvvoicepeercfgentry[index]->has_operation())
+        if(cvvoicepeercfgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1280,7 +1280,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoicepeercfgtable::get_child
 {
     if(child_yang_name == "cvVoicePeerCfgEntry")
     {
-        for(auto const & c : cvvoicepeercfgentry)
+        for(auto const & c : cvvoicepeercfgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1290,7 +1290,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoicepeercfgtable::get_child
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvvoicepeercfgtable::Cvvoicepeercfgentry>();
         c->parent = this;
-        cvvoicepeercfgentry.push_back(c);
+        cvvoicepeercfgentry_.push_back(c);
         return c;
     }
 
@@ -1300,7 +1300,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoicepeercfgtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvvoicepeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvvoicepeercfgentry)
+    for (auto const & c : cvvoicepeercfgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1451,9 +1451,9 @@ CiscoVoiceDialControlMib::Cvvoippeercfgtable::~Cvvoippeercfgtable()
 
 bool CiscoVoiceDialControlMib::Cvvoippeercfgtable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoippeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoippeercfgentry_.size(); index++)
     {
-        if(cvvoippeercfgentry[index]->has_data())
+        if(cvvoippeercfgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1461,9 +1461,9 @@ bool CiscoVoiceDialControlMib::Cvvoippeercfgtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvvoippeercfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoippeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoippeercfgentry_.size(); index++)
     {
-        if(cvvoippeercfgentry[index]->has_operation())
+        if(cvvoippeercfgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1503,7 +1503,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoippeercfgtable::get_child_
 {
     if(child_yang_name == "cvVoIPPeerCfgEntry")
     {
-        for(auto const & c : cvvoippeercfgentry)
+        for(auto const & c : cvvoippeercfgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1513,7 +1513,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoippeercfgtable::get_child_
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvvoippeercfgtable::Cvvoippeercfgentry>();
         c->parent = this;
-        cvvoippeercfgentry.push_back(c);
+        cvvoippeercfgentry_.push_back(c);
         return c;
     }
 
@@ -1523,7 +1523,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoippeercfgtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvvoippeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvvoippeercfgentry)
+    for (auto const & c : cvvoippeercfgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1858,9 +1858,9 @@ CiscoVoiceDialControlMib::Cvpeercommoncfgtable::~Cvpeercommoncfgtable()
 
 bool CiscoVoiceDialControlMib::Cvpeercommoncfgtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpeercommoncfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercommoncfgentry_.size(); index++)
     {
-        if(cvpeercommoncfgentry[index]->has_data())
+        if(cvpeercommoncfgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1868,9 +1868,9 @@ bool CiscoVoiceDialControlMib::Cvpeercommoncfgtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvpeercommoncfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpeercommoncfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercommoncfgentry_.size(); index++)
     {
-        if(cvpeercommoncfgentry[index]->has_operation())
+        if(cvpeercommoncfgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1910,7 +1910,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercommoncfgtable::get_chil
 {
     if(child_yang_name == "cvPeerCommonCfgEntry")
     {
-        for(auto const & c : cvpeercommoncfgentry)
+        for(auto const & c : cvpeercommoncfgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1920,7 +1920,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercommoncfgtable::get_chil
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvpeercommoncfgtable::Cvpeercommoncfgentry>();
         c->parent = this;
-        cvpeercommoncfgentry.push_back(c);
+        cvpeercommoncfgentry_.push_back(c);
         return c;
     }
 
@@ -1930,7 +1930,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvpeercommoncfgtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvpeercommoncfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpeercommoncfgentry)
+    for (auto const & c : cvpeercommoncfgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2105,9 +2105,9 @@ CiscoVoiceDialControlMib::Cvcallactivetable::~Cvcallactivetable()
 
 bool CiscoVoiceDialControlMib::Cvcallactivetable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvcallactiveentry_.size(); index++)
     {
-        if(cvcallactiveentry[index]->has_data())
+        if(cvcallactiveentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2115,9 +2115,9 @@ bool CiscoVoiceDialControlMib::Cvcallactivetable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallactivetable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvcallactiveentry_.size(); index++)
     {
-        if(cvcallactiveentry[index]->has_operation())
+        if(cvcallactiveentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2157,7 +2157,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallactivetable::get_child_b
 {
     if(child_yang_name == "cvCallActiveEntry")
     {
-        for(auto const & c : cvcallactiveentry)
+        for(auto const & c : cvcallactiveentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2167,7 +2167,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallactivetable::get_child_b
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallactivetable::Cvcallactiveentry>();
         c->parent = this;
-        cvcallactiveentry.push_back(c);
+        cvcallactiveentry_.push_back(c);
         return c;
     }
 
@@ -2177,7 +2177,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallactivetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallactiveentry)
+    for (auto const & c : cvcallactiveentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2424,9 +2424,9 @@ CiscoVoiceDialControlMib::Cvvoipcallactivetable::~Cvvoipcallactivetable()
 
 bool CiscoVoiceDialControlMib::Cvvoipcallactivetable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoipcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallactiveentry_.size(); index++)
     {
-        if(cvvoipcallactiveentry[index]->has_data())
+        if(cvvoipcallactiveentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2434,9 +2434,9 @@ bool CiscoVoiceDialControlMib::Cvvoipcallactivetable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvvoipcallactivetable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoipcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallactiveentry_.size(); index++)
     {
-        if(cvvoipcallactiveentry[index]->has_operation())
+        if(cvvoipcallactiveentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2476,7 +2476,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallactivetable::get_chi
 {
     if(child_yang_name == "cvVoIPCallActiveEntry")
     {
-        for(auto const & c : cvvoipcallactiveentry)
+        for(auto const & c : cvvoipcallactiveentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2486,7 +2486,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallactivetable::get_chi
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallactivetable::Cvvoipcallactiveentry>();
         c->parent = this;
-        cvvoipcallactiveentry.push_back(c);
+        cvvoipcallactiveentry_.push_back(c);
         return c;
     }
 
@@ -2496,7 +2496,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallactivetable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvvoipcallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvvoipcallactiveentry)
+    for (auto const & c : cvvoipcallactiveentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2967,9 +2967,9 @@ CiscoVoiceDialControlMib::Cvcallvolconntable::~Cvcallvolconntable()
 
 bool CiscoVoiceDialControlMib::Cvcallvolconntable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallvolconnentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolconnentry_.size(); index++)
     {
-        if(cvcallvolconnentry[index]->has_data())
+        if(cvcallvolconnentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2977,9 +2977,9 @@ bool CiscoVoiceDialControlMib::Cvcallvolconntable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallvolconntable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallvolconnentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolconnentry_.size(); index++)
     {
-        if(cvcallvolconnentry[index]->has_operation())
+        if(cvcallvolconnentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3019,7 +3019,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvolconntable::get_child_
 {
     if(child_yang_name == "cvCallVolConnEntry")
     {
-        for(auto const & c : cvcallvolconnentry)
+        for(auto const & c : cvcallvolconnentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3029,7 +3029,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvolconntable::get_child_
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallvolconntable::Cvcallvolconnentry>();
         c->parent = this;
-        cvcallvolconnentry.push_back(c);
+        cvcallvolconnentry_.push_back(c);
         return c;
     }
 
@@ -3039,7 +3039,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvolconntable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallvolconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallvolconnentry)
+    for (auto const & c : cvcallvolconnentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3142,9 +3142,9 @@ CiscoVoiceDialControlMib::Cvcallvoliftable::~Cvcallvoliftable()
 
 bool CiscoVoiceDialControlMib::Cvcallvoliftable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallvolifentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolifentry_.size(); index++)
     {
-        if(cvcallvolifentry[index]->has_data())
+        if(cvcallvolifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3152,9 +3152,9 @@ bool CiscoVoiceDialControlMib::Cvcallvoliftable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallvoliftable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallvolifentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolifentry_.size(); index++)
     {
-        if(cvcallvolifentry[index]->has_operation())
+        if(cvcallvolifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3194,7 +3194,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvoliftable::get_child_by
 {
     if(child_yang_name == "cvCallVolIfEntry")
     {
-        for(auto const & c : cvcallvolifentry)
+        for(auto const & c : cvcallvolifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3204,7 +3204,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvoliftable::get_child_by
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallvoliftable::Cvcallvolifentry>();
         c->parent = this;
-        cvcallvolifentry.push_back(c);
+        cvcallvolifentry_.push_back(c);
         return c;
     }
 
@@ -3214,7 +3214,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallvoliftable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallvoliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallvolifentry)
+    for (auto const & c : cvcallvolifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3325,9 +3325,9 @@ CiscoVoiceDialControlMib::Cvcallhistorytable::~Cvcallhistorytable()
 
 bool CiscoVoiceDialControlMib::Cvcallhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvcallhistoryentry_.size(); index++)
     {
-        if(cvcallhistoryentry[index]->has_data())
+        if(cvcallhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3335,9 +3335,9 @@ bool CiscoVoiceDialControlMib::Cvcallhistorytable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvcallhistoryentry_.size(); index++)
     {
-        if(cvcallhistoryentry[index]->has_operation())
+        if(cvcallhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3377,7 +3377,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallhistorytable::get_child_
 {
     if(child_yang_name == "cvCallHistoryEntry")
     {
-        for(auto const & c : cvcallhistoryentry)
+        for(auto const & c : cvcallhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3387,7 +3387,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallhistorytable::get_child_
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallhistorytable::Cvcallhistoryentry>();
         c->parent = this;
-        cvcallhistoryentry.push_back(c);
+        cvcallhistoryentry_.push_back(c);
         return c;
     }
 
@@ -3397,7 +3397,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallhistorytable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallhistoryentry)
+    for (auto const & c : cvcallhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3596,9 +3596,9 @@ CiscoVoiceDialControlMib::Cvvoipcallhistorytable::~Cvvoipcallhistorytable()
 
 bool CiscoVoiceDialControlMib::Cvvoipcallhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoipcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallhistoryentry_.size(); index++)
     {
-        if(cvvoipcallhistoryentry[index]->has_data())
+        if(cvvoipcallhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3606,9 +3606,9 @@ bool CiscoVoiceDialControlMib::Cvvoipcallhistorytable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvvoipcallhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoipcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallhistoryentry_.size(); index++)
     {
-        if(cvvoipcallhistoryentry[index]->has_operation())
+        if(cvvoipcallhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3648,7 +3648,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallhistorytable::get_ch
 {
     if(child_yang_name == "cvVoIPCallHistoryEntry")
     {
-        for(auto const & c : cvvoipcallhistoryentry)
+        for(auto const & c : cvvoipcallhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3658,7 +3658,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallhistorytable::get_ch
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvvoipcallhistorytable::Cvvoipcallhistoryentry>();
         c->parent = this;
-        cvvoipcallhistoryentry.push_back(c);
+        cvvoipcallhistoryentry_.push_back(c);
         return c;
     }
 
@@ -3668,7 +3668,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvvoipcallhistorytable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvvoipcallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvvoipcallhistoryentry)
+    for (auto const & c : cvvoipcallhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4147,9 +4147,9 @@ CiscoVoiceDialControlMib::Cvcallratestatstable::~Cvcallratestatstable()
 
 bool CiscoVoiceDialControlMib::Cvcallratestatstable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratestatsentry_.size(); index++)
     {
-        if(cvcallratestatsentry[index]->has_data())
+        if(cvcallratestatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4157,9 +4157,9 @@ bool CiscoVoiceDialControlMib::Cvcallratestatstable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallratestatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratestatsentry_.size(); index++)
     {
-        if(cvcallratestatsentry[index]->has_operation())
+        if(cvcallratestatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4199,7 +4199,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratestatstable::get_chil
 {
     if(child_yang_name == "cvCallRateStatsEntry")
     {
-        for(auto const & c : cvcallratestatsentry)
+        for(auto const & c : cvcallratestatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4209,7 +4209,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratestatstable::get_chil
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallratestatstable::Cvcallratestatsentry>();
         c->parent = this;
-        cvcallratestatsentry.push_back(c);
+        cvcallratestatsentry_.push_back(c);
         return c;
     }
 
@@ -4219,7 +4219,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratestatstable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallratestatsentry)
+    for (auto const & c : cvcallratestatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4338,9 +4338,9 @@ CiscoVoiceDialControlMib::Cvcalllegratestatstable::~Cvcalllegratestatstable()
 
 bool CiscoVoiceDialControlMib::Cvcalllegratestatstable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalllegratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratestatsentry_.size(); index++)
     {
-        if(cvcalllegratestatsentry[index]->has_data())
+        if(cvcalllegratestatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4348,9 +4348,9 @@ bool CiscoVoiceDialControlMib::Cvcalllegratestatstable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcalllegratestatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalllegratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratestatsentry_.size(); index++)
     {
-        if(cvcalllegratestatsentry[index]->has_operation())
+        if(cvcalllegratestatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4390,7 +4390,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratestatstable::get_c
 {
     if(child_yang_name == "cvCallLegRateStatsEntry")
     {
-        for(auto const & c : cvcalllegratestatsentry)
+        for(auto const & c : cvcalllegratestatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4400,7 +4400,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratestatstable::get_c
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratestatstable::Cvcalllegratestatsentry>();
         c->parent = this;
-        cvcalllegratestatsentry.push_back(c);
+        cvcalllegratestatsentry_.push_back(c);
         return c;
     }
 
@@ -4410,7 +4410,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratestatstable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcalllegratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcalllegratestatsentry)
+    for (auto const & c : cvcalllegratestatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4529,9 +4529,9 @@ CiscoVoiceDialControlMib::Cvactivecallstatstable::~Cvactivecallstatstable()
 
 bool CiscoVoiceDialControlMib::Cvactivecallstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cvactivecallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallstatsentry_.size(); index++)
     {
-        if(cvactivecallstatsentry[index]->has_data())
+        if(cvactivecallstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4539,9 +4539,9 @@ bool CiscoVoiceDialControlMib::Cvactivecallstatstable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvactivecallstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cvactivecallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallstatsentry_.size(); index++)
     {
-        if(cvactivecallstatsentry[index]->has_operation())
+        if(cvactivecallstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4581,7 +4581,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallstatstable::get_ch
 {
     if(child_yang_name == "cvActiveCallStatsEntry")
     {
-        for(auto const & c : cvactivecallstatsentry)
+        for(auto const & c : cvactivecallstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4591,7 +4591,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallstatstable::get_ch
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallstatstable::Cvactivecallstatsentry>();
         c->parent = this;
-        cvactivecallstatsentry.push_back(c);
+        cvactivecallstatsentry_.push_back(c);
         return c;
     }
 
@@ -4601,7 +4601,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallstatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvactivecallstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvactivecallstatsentry)
+    for (auto const & c : cvactivecallstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4720,9 +4720,9 @@ CiscoVoiceDialControlMib::Cvcalldurationstatstable::~Cvcalldurationstatstable()
 
 bool CiscoVoiceDialControlMib::Cvcalldurationstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalldurationstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalldurationstatsentry_.size(); index++)
     {
-        if(cvcalldurationstatsentry[index]->has_data())
+        if(cvcalldurationstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4730,9 +4730,9 @@ bool CiscoVoiceDialControlMib::Cvcalldurationstatstable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcalldurationstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalldurationstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalldurationstatsentry_.size(); index++)
     {
-        if(cvcalldurationstatsentry[index]->has_operation())
+        if(cvcalldurationstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4772,7 +4772,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalldurationstatstable::get_
 {
     if(child_yang_name == "cvCallDurationStatsEntry")
     {
-        for(auto const & c : cvcalldurationstatsentry)
+        for(auto const & c : cvcalldurationstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4782,7 +4782,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalldurationstatstable::get_
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcalldurationstatstable::Cvcalldurationstatsentry>();
         c->parent = this;
-        cvcalldurationstatsentry.push_back(c);
+        cvcalldurationstatsentry_.push_back(c);
         return c;
     }
 
@@ -4792,7 +4792,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalldurationstatstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcalldurationstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcalldurationstatsentry)
+    for (auto const & c : cvcalldurationstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4911,9 +4911,9 @@ CiscoVoiceDialControlMib::Cvsipmsgratestatstable::~Cvsipmsgratestatstable()
 
 bool CiscoVoiceDialControlMib::Cvsipmsgratestatstable::has_data() const
 {
-    for (std::size_t index=0; index<cvsipmsgratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratestatsentry_.size(); index++)
     {
-        if(cvsipmsgratestatsentry[index]->has_data())
+        if(cvsipmsgratestatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4921,9 +4921,9 @@ bool CiscoVoiceDialControlMib::Cvsipmsgratestatstable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvsipmsgratestatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cvsipmsgratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratestatsentry_.size(); index++)
     {
-        if(cvsipmsgratestatsentry[index]->has_operation())
+        if(cvsipmsgratestatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4963,7 +4963,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratestatstable::get_ch
 {
     if(child_yang_name == "cvSipMsgRateStatsEntry")
     {
-        for(auto const & c : cvsipmsgratestatsentry)
+        for(auto const & c : cvsipmsgratestatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4973,7 +4973,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratestatstable::get_ch
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratestatstable::Cvsipmsgratestatsentry>();
         c->parent = this;
-        cvsipmsgratestatsentry.push_back(c);
+        cvsipmsgratestatsentry_.push_back(c);
         return c;
     }
 
@@ -4983,7 +4983,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratestatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvsipmsgratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvsipmsgratestatsentry)
+    for (auto const & c : cvsipmsgratestatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5102,9 +5102,9 @@ CiscoVoiceDialControlMib::Cvcallratewmtable::~Cvcallratewmtable()
 
 bool CiscoVoiceDialControlMib::Cvcallratewmtable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratewmentry_.size(); index++)
     {
-        if(cvcallratewmentry[index]->has_data())
+        if(cvcallratewmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5112,9 +5112,9 @@ bool CiscoVoiceDialControlMib::Cvcallratewmtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcallratewmtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratewmentry_.size(); index++)
     {
-        if(cvcallratewmentry[index]->has_operation())
+        if(cvcallratewmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5154,7 +5154,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratewmtable::get_child_b
 {
     if(child_yang_name == "cvCallRateWMEntry")
     {
-        for(auto const & c : cvcallratewmentry)
+        for(auto const & c : cvcallratewmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5164,7 +5164,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratewmtable::get_child_b
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcallratewmtable::Cvcallratewmentry>();
         c->parent = this;
-        cvcallratewmentry.push_back(c);
+        cvcallratewmentry_.push_back(c);
         return c;
     }
 
@@ -5174,7 +5174,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcallratewmtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcallratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcallratewmentry)
+    for (auto const & c : cvcallratewmentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5293,9 +5293,9 @@ CiscoVoiceDialControlMib::Cvcalllegratewmtable::~Cvcalllegratewmtable()
 
 bool CiscoVoiceDialControlMib::Cvcalllegratewmtable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalllegratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratewmentry_.size(); index++)
     {
-        if(cvcalllegratewmentry[index]->has_data())
+        if(cvcalllegratewmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5303,9 +5303,9 @@ bool CiscoVoiceDialControlMib::Cvcalllegratewmtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvcalllegratewmtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalllegratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratewmentry_.size(); index++)
     {
-        if(cvcalllegratewmentry[index]->has_operation())
+        if(cvcalllegratewmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5345,7 +5345,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratewmtable::get_chil
 {
     if(child_yang_name == "cvCallLegRateWMEntry")
     {
-        for(auto const & c : cvcalllegratewmentry)
+        for(auto const & c : cvcalllegratewmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5355,7 +5355,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratewmtable::get_chil
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvcalllegratewmtable::Cvcalllegratewmentry>();
         c->parent = this;
-        cvcalllegratewmentry.push_back(c);
+        cvcalllegratewmentry_.push_back(c);
         return c;
     }
 
@@ -5365,7 +5365,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvcalllegratewmtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvcalllegratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcalllegratewmentry)
+    for (auto const & c : cvcalllegratewmentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5484,9 +5484,9 @@ CiscoVoiceDialControlMib::Cvactivecallwmtable::~Cvactivecallwmtable()
 
 bool CiscoVoiceDialControlMib::Cvactivecallwmtable::has_data() const
 {
-    for (std::size_t index=0; index<cvactivecallwmentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallwmentry_.size(); index++)
     {
-        if(cvactivecallwmentry[index]->has_data())
+        if(cvactivecallwmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5494,9 +5494,9 @@ bool CiscoVoiceDialControlMib::Cvactivecallwmtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvactivecallwmtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvactivecallwmentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallwmentry_.size(); index++)
     {
-        if(cvactivecallwmentry[index]->has_operation())
+        if(cvactivecallwmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5536,7 +5536,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallwmtable::get_child
 {
     if(child_yang_name == "cvActiveCallWMEntry")
     {
-        for(auto const & c : cvactivecallwmentry)
+        for(auto const & c : cvactivecallwmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5546,7 +5546,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallwmtable::get_child
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvactivecallwmtable::Cvactivecallwmentry>();
         c->parent = this;
-        cvactivecallwmentry.push_back(c);
+        cvactivecallwmentry_.push_back(c);
         return c;
     }
 
@@ -5556,7 +5556,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvactivecallwmtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvactivecallwmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvactivecallwmentry)
+    for (auto const & c : cvactivecallwmentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5675,9 +5675,9 @@ CiscoVoiceDialControlMib::Cvsipmsgratewmtable::~Cvsipmsgratewmtable()
 
 bool CiscoVoiceDialControlMib::Cvsipmsgratewmtable::has_data() const
 {
-    for (std::size_t index=0; index<cvsipmsgratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratewmentry_.size(); index++)
     {
-        if(cvsipmsgratewmentry[index]->has_data())
+        if(cvsipmsgratewmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5685,9 +5685,9 @@ bool CiscoVoiceDialControlMib::Cvsipmsgratewmtable::has_data() const
 
 bool CiscoVoiceDialControlMib::Cvsipmsgratewmtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvsipmsgratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratewmentry_.size(); index++)
     {
-        if(cvsipmsgratewmentry[index]->has_operation())
+        if(cvsipmsgratewmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5727,7 +5727,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratewmtable::get_child
 {
     if(child_yang_name == "cvSipMsgRateWMEntry")
     {
-        for(auto const & c : cvsipmsgratewmentry)
+        for(auto const & c : cvsipmsgratewmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5737,7 +5737,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratewmtable::get_child
         }
         auto c = std::make_shared<CiscoVoiceDialControlMib::Cvsipmsgratewmtable::Cvsipmsgratewmentry>();
         c->parent = this;
-        cvsipmsgratewmentry.push_back(c);
+        cvsipmsgratewmentry_.push_back(c);
         return c;
     }
 
@@ -5747,7 +5747,7 @@ std::shared_ptr<Entity> CiscoVoiceDialControlMib::Cvsipmsgratewmtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDialControlMib::Cvsipmsgratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvsipmsgratewmentry)
+    for (auto const & c : cvsipmsgratewmentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,15 +11,15 @@ namespace TUNNEL_MIB {
 
 TunnelMib::TunnelMib()
     :
-    tunnelconfigtable(std::make_shared<TunnelMib::Tunnelconfigtable>())
-	,tunneliftable(std::make_shared<TunnelMib::Tunneliftable>())
-	,tunnelinetconfigtable(std::make_shared<TunnelMib::Tunnelinetconfigtable>())
+    tunnelconfigtable_(std::make_shared<TunnelMib::Tunnelconfigtable>())
+	,tunneliftable_(std::make_shared<TunnelMib::Tunneliftable>())
+	,tunnelinetconfigtable_(std::make_shared<TunnelMib::Tunnelinetconfigtable>())
 {
-    tunnelconfigtable->parent = this;
+    tunnelconfigtable_->parent = this;
 
-    tunneliftable->parent = this;
+    tunneliftable_->parent = this;
 
-    tunnelinetconfigtable->parent = this;
+    tunnelinetconfigtable_->parent = this;
 
     yang_name = "TUNNEL-MIB"; yang_parent_name = "TUNNEL-MIB";
 }
@@ -30,17 +30,17 @@ TunnelMib::~TunnelMib()
 
 bool TunnelMib::has_data() const
 {
-    return (tunnelconfigtable !=  nullptr && tunnelconfigtable->has_data())
-	|| (tunneliftable !=  nullptr && tunneliftable->has_data())
-	|| (tunnelinetconfigtable !=  nullptr && tunnelinetconfigtable->has_data());
+    return (tunnelconfigtable_ !=  nullptr && tunnelconfigtable_->has_data())
+	|| (tunneliftable_ !=  nullptr && tunneliftable_->has_data())
+	|| (tunnelinetconfigtable_ !=  nullptr && tunnelinetconfigtable_->has_data());
 }
 
 bool TunnelMib::has_operation() const
 {
     return is_set(operation)
-	|| (tunnelconfigtable !=  nullptr && tunnelconfigtable->has_operation())
-	|| (tunneliftable !=  nullptr && tunneliftable->has_operation())
-	|| (tunnelinetconfigtable !=  nullptr && tunnelinetconfigtable->has_operation());
+	|| (tunnelconfigtable_ !=  nullptr && tunnelconfigtable_->has_operation())
+	|| (tunneliftable_ !=  nullptr && tunneliftable_->has_operation())
+	|| (tunnelinetconfigtable_ !=  nullptr && tunnelinetconfigtable_->has_operation());
 }
 
 std::string TunnelMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> TunnelMib::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "tunnelConfigTable")
     {
-        if(tunnelconfigtable == nullptr)
+        if(tunnelconfigtable_ == nullptr)
         {
-            tunnelconfigtable = std::make_shared<TunnelMib::Tunnelconfigtable>();
+            tunnelconfigtable_ = std::make_shared<TunnelMib::Tunnelconfigtable>();
         }
-        return tunnelconfigtable;
+        return tunnelconfigtable_;
     }
 
     if(child_yang_name == "tunnelIfTable")
     {
-        if(tunneliftable == nullptr)
+        if(tunneliftable_ == nullptr)
         {
-            tunneliftable = std::make_shared<TunnelMib::Tunneliftable>();
+            tunneliftable_ = std::make_shared<TunnelMib::Tunneliftable>();
         }
-        return tunneliftable;
+        return tunneliftable_;
     }
 
     if(child_yang_name == "tunnelInetConfigTable")
     {
-        if(tunnelinetconfigtable == nullptr)
+        if(tunnelinetconfigtable_ == nullptr)
         {
-            tunnelinetconfigtable = std::make_shared<TunnelMib::Tunnelinetconfigtable>();
+            tunnelinetconfigtable_ = std::make_shared<TunnelMib::Tunnelinetconfigtable>();
         }
-        return tunnelinetconfigtable;
+        return tunnelinetconfigtable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> TunnelMib::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> TunnelMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tunnelconfigtable != nullptr)
+    if(tunnelconfigtable_ != nullptr)
     {
-        children["tunnelConfigTable"] = tunnelconfigtable;
+        children["tunnelConfigTable"] = tunnelconfigtable_;
     }
 
-    if(tunneliftable != nullptr)
+    if(tunneliftable_ != nullptr)
     {
-        children["tunnelIfTable"] = tunneliftable;
+        children["tunnelIfTable"] = tunneliftable_;
     }
 
-    if(tunnelinetconfigtable != nullptr)
+    if(tunnelinetconfigtable_ != nullptr)
     {
-        children["tunnelInetConfigTable"] = tunnelinetconfigtable;
+        children["tunnelInetConfigTable"] = tunnelinetconfigtable_;
     }
 
     return children;
@@ -158,9 +158,9 @@ TunnelMib::Tunneliftable::~Tunneliftable()
 
 bool TunnelMib::Tunneliftable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelifentry.size(); index++)
+    for (std::size_t index=0; index<tunnelifentry_.size(); index++)
     {
-        if(tunnelifentry[index]->has_data())
+        if(tunnelifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -168,9 +168,9 @@ bool TunnelMib::Tunneliftable::has_data() const
 
 bool TunnelMib::Tunneliftable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelifentry.size(); index++)
+    for (std::size_t index=0; index<tunnelifentry_.size(); index++)
     {
-        if(tunnelifentry[index]->has_operation())
+        if(tunnelifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -210,7 +210,7 @@ std::shared_ptr<Entity> TunnelMib::Tunneliftable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tunnelIfEntry")
     {
-        for(auto const & c : tunnelifentry)
+        for(auto const & c : tunnelifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> TunnelMib::Tunneliftable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<TunnelMib::Tunneliftable::Tunnelifentry>();
         c->parent = this;
-        tunnelifentry.push_back(c);
+        tunnelifentry_.push_back(c);
         return c;
     }
 
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> TunnelMib::Tunneliftable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> TunnelMib::Tunneliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tunnelifentry)
+    for (auto const & c : tunnelifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -413,9 +413,9 @@ TunnelMib::Tunnelconfigtable::~Tunnelconfigtable()
 
 bool TunnelMib::Tunnelconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelconfigentry_.size(); index++)
     {
-        if(tunnelconfigentry[index]->has_data())
+        if(tunnelconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -423,9 +423,9 @@ bool TunnelMib::Tunnelconfigtable::has_data() const
 
 bool TunnelMib::Tunnelconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelconfigentry_.size(); index++)
     {
-        if(tunnelconfigentry[index]->has_operation())
+        if(tunnelconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -465,7 +465,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelconfigtable::get_child_by_name(const st
 {
     if(child_yang_name == "tunnelConfigEntry")
     {
-        for(auto const & c : tunnelconfigentry)
+        for(auto const & c : tunnelconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -475,7 +475,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelconfigtable::get_child_by_name(const st
         }
         auto c = std::make_shared<TunnelMib::Tunnelconfigtable::Tunnelconfigentry>();
         c->parent = this;
-        tunnelconfigentry.push_back(c);
+        tunnelconfigentry_.push_back(c);
         return c;
     }
 
@@ -485,7 +485,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelconfigtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TunnelMib::Tunnelconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tunnelconfigentry)
+    for (auto const & c : tunnelconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -620,9 +620,9 @@ TunnelMib::Tunnelinetconfigtable::~Tunnelinetconfigtable()
 
 bool TunnelMib::Tunnelinetconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelinetconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelinetconfigentry_.size(); index++)
     {
-        if(tunnelinetconfigentry[index]->has_data())
+        if(tunnelinetconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -630,9 +630,9 @@ bool TunnelMib::Tunnelinetconfigtable::has_data() const
 
 bool TunnelMib::Tunnelinetconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelinetconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelinetconfigentry_.size(); index++)
     {
-        if(tunnelinetconfigentry[index]->has_operation())
+        if(tunnelinetconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -672,7 +672,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelinetconfigtable::get_child_by_name(cons
 {
     if(child_yang_name == "tunnelInetConfigEntry")
     {
-        for(auto const & c : tunnelinetconfigentry)
+        for(auto const & c : tunnelinetconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -682,7 +682,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelinetconfigtable::get_child_by_name(cons
         }
         auto c = std::make_shared<TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry>();
         c->parent = this;
-        tunnelinetconfigentry.push_back(c);
+        tunnelinetconfigentry_.push_back(c);
         return c;
     }
 
@@ -692,7 +692,7 @@ std::shared_ptr<Entity> TunnelMib::Tunnelinetconfigtable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> TunnelMib::Tunnelinetconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tunnelinetconfigentry)
+    for (auto const & c : tunnelinetconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }

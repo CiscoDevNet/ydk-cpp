@@ -20,9 +20,9 @@ MplsForwardingTable::~MplsForwardingTable()
 
 bool MplsForwardingTable::has_data() const
 {
-    for (std::size_t index=0; index<local_label_entry.size(); index++)
+    for (std::size_t index=0; index<local_label_entry_.size(); index++)
     {
-        if(local_label_entry[index]->has_data())
+        if(local_label_entry_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool MplsForwardingTable::has_data() const
 
 bool MplsForwardingTable::has_operation() const
 {
-    for (std::size_t index=0; index<local_label_entry.size(); index++)
+    for (std::size_t index=0; index<local_label_entry_.size(); index++)
     {
-        if(local_label_entry[index]->has_operation())
+        if(local_label_entry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
 {
     if(child_yang_name == "local-label-entry")
     {
-        for(auto const & c : local_label_entry)
+        for(auto const & c : local_label_entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
         }
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry>();
         c->parent = this;
-        local_label_entry.push_back(c);
+        local_label_entry_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : local_label_entry)
+    for (auto const & c : local_label_entry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -134,9 +134,9 @@ MplsForwardingTable::LocalLabelEntry::~LocalLabelEntry()
 
 bool MplsForwardingTable::LocalLabelEntry::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_info.size(); index++)
+    for (std::size_t index=0; index<forwarding_info_.size(); index++)
     {
-        if(forwarding_info[index]->has_data())
+        if(forwarding_info_[index]->has_data())
             return true;
     }
     return local_label.is_set;
@@ -144,9 +144,9 @@ bool MplsForwardingTable::LocalLabelEntry::has_data() const
 
 bool MplsForwardingTable::LocalLabelEntry::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_info.size(); index++)
+    for (std::size_t index=0; index<forwarding_info_.size(); index++)
     {
-        if(forwarding_info[index]->has_operation())
+        if(forwarding_info_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -188,7 +188,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
 {
     if(child_yang_name == "forwarding-info")
     {
-        for(auto const & c : forwarding_info)
+        for(auto const & c : forwarding_info_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -198,7 +198,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
         }
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo>();
         c->parent = this;
-        forwarding_info.push_back(c);
+        forwarding_info_.push_back(c);
         return c;
     }
 
@@ -208,7 +208,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : forwarding_info)
+    for (auto const & c : forwarding_info_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -231,9 +231,9 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ForwardingInfo()
     next_hop{YType::str, "next-hop"},
     outgoing_label{YType::str, "outgoing-label"}
     	,
-    connection_info(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>())
+    connection_info_(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>())
 {
-    connection_info->parent = this;
+    connection_info_->parent = this;
 
     yang_name = "forwarding-info"; yang_parent_name = "local-label-entry";
 }
@@ -248,7 +248,7 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_data() const
 	|| label_switched_bytes.is_set
 	|| next_hop.is_set
 	|| outgoing_label.is_set
-	|| (connection_info !=  nullptr && connection_info->has_data());
+	|| (connection_info_ !=  nullptr && connection_info_->has_data());
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_operation() const
@@ -258,7 +258,7 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_operation() const
 	|| is_set(label_switched_bytes.operation)
 	|| is_set(next_hop.operation)
 	|| is_set(outgoing_label.operation)
-	|| (connection_info !=  nullptr && connection_info->has_operation());
+	|| (connection_info_ !=  nullptr && connection_info_->has_operation());
 }
 
 std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_segment_path() const
@@ -299,11 +299,11 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ge
 {
     if(child_yang_name == "connection-info")
     {
-        if(connection_info == nullptr)
+        if(connection_info_ == nullptr)
         {
-            connection_info = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>();
+            connection_info_ = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>();
         }
-        return connection_info;
+        return connection_info_;
     }
 
     return nullptr;
@@ -312,9 +312,9 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(connection_info != nullptr)
+    if(connection_info_ != nullptr)
     {
-        children["connection-info"] = connection_info;
+        children["connection-info"] = connection_info_;
     }
 
     return children;
@@ -350,9 +350,9 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Connection
     type{YType::enumeration, "type"},
     vrf_id{YType::uint32, "vrf-id"}
     	,
-    tunnel_tp(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>())
+    tunnel_tp_(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>())
 {
-    tunnel_tp->parent = this;
+    tunnel_tp_->parent = this;
 
     yang_name = "connection-info"; yang_parent_name = "forwarding-info";
 }
@@ -370,7 +370,7 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_d
 	|| tunnel_id.is_set
 	|| type.is_set
 	|| vrf_id.is_set
-	|| (tunnel_tp !=  nullptr && tunnel_tp->has_data());
+	|| (tunnel_tp_ !=  nullptr && tunnel_tp_->has_data());
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_operation() const
@@ -383,7 +383,7 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_o
 	|| is_set(tunnel_id.operation)
 	|| is_set(type.operation)
 	|| is_set(vrf_id.operation)
-	|| (tunnel_tp !=  nullptr && tunnel_tp->has_operation());
+	|| (tunnel_tp_ !=  nullptr && tunnel_tp_->has_operation());
 }
 
 std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::get_segment_path() const
@@ -427,11 +427,11 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 {
     if(child_yang_name == "tunnel-tp")
     {
-        if(tunnel_tp == nullptr)
+        if(tunnel_tp_ == nullptr)
         {
-            tunnel_tp = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>();
+            tunnel_tp_ = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>();
         }
-        return tunnel_tp;
+        return tunnel_tp_;
     }
 
     return nullptr;
@@ -440,9 +440,9 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tunnel_tp != nullptr)
+    if(tunnel_tp_ != nullptr)
     {
-        children["tunnel-tp"] = tunnel_tp;
+        children["tunnel-tp"] = tunnel_tp_;
     }
 
     return children;
@@ -484,12 +484,12 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
     :
     tunnel{YType::uint32, "tunnel"}
     	,
-    dst_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
-	,src_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
+    dst_id_(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
+	,src_id_(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
 {
-    dst_id->parent = this;
+    dst_id_->parent = this;
 
-    src_id->parent = this;
+    src_id_->parent = this;
 
     yang_name = "tunnel-tp"; yang_parent_name = "connection-info";
 }
@@ -501,16 +501,16 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_data() const
 {
     return tunnel.is_set
-	|| (dst_id !=  nullptr && dst_id->has_data())
-	|| (src_id !=  nullptr && src_id->has_data());
+	|| (dst_id_ !=  nullptr && dst_id_->has_data())
+	|| (src_id_ !=  nullptr && src_id_->has_data());
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tunnel.operation)
-	|| (dst_id !=  nullptr && dst_id->has_operation())
-	|| (src_id !=  nullptr && src_id->has_operation());
+	|| (dst_id_ !=  nullptr && dst_id_->has_operation())
+	|| (src_id_ !=  nullptr && src_id_->has_operation());
 }
 
 std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_segment_path() const
@@ -548,20 +548,20 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 {
     if(child_yang_name == "dst-id")
     {
-        if(dst_id == nullptr)
+        if(dst_id_ == nullptr)
         {
-            dst_id = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>();
+            dst_id_ = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>();
         }
-        return dst_id;
+        return dst_id_;
     }
 
     if(child_yang_name == "src-id")
     {
-        if(src_id == nullptr)
+        if(src_id_ == nullptr)
         {
-            src_id = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>();
+            src_id_ = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>();
         }
-        return src_id;
+        return src_id_;
     }
 
     return nullptr;
@@ -570,14 +570,14 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dst_id != nullptr)
+    if(dst_id_ != nullptr)
     {
-        children["dst-id"] = dst_id;
+        children["dst-id"] = dst_id_;
     }
 
-    if(src_id != nullptr)
+    if(src_id_ != nullptr)
     {
-        children["src-id"] = src_id;
+        children["src-id"] = src_id_;
     }
 
     return children;

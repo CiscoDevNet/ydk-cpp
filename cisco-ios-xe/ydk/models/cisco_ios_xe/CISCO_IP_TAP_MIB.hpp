@@ -32,8 +32,8 @@ class CiscoIpTapMib : public Entity
         class Citapstreamencodepacket; //type: CiscoIpTapMib::Citapstreamencodepacket
         class Citapstreamtable; //type: CiscoIpTapMib::Citapstreamtable
 
-        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamencodepacket> citapstreamencodepacket;
-        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable> citapstreamtable;
+        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamencodepacket> citapstreamencodepacket_;
+        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable> citapstreamtable_;
         
 }; // CiscoIpTapMib
 
@@ -73,7 +73,7 @@ class CiscoIpTapMib::Citapstreamtable : public Entity
 
         class Citapstreamentry; //type: CiscoIpTapMib::Citapstreamtable::Citapstreamentry
 
-        std::vector<std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable::Citapstreamentry> > citapstreamentry;
+        std::vector<std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable::Citapstreamentry> > citapstreamentry_;
         
 }; // CiscoIpTapMib::Citapstreamtable
 

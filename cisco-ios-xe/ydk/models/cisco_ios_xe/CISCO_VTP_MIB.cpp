@@ -11,48 +11,48 @@ namespace CISCO_VTP_MIB {
 
 CiscoVtpMib::CiscoVtpMib()
     :
-    internalvlaninfo(std::make_shared<CiscoVtpMib::Internalvlaninfo>())
-	,managementdomaintable(std::make_shared<CiscoVtpMib::Managementdomaintable>())
-	,vlanstatistics(std::make_shared<CiscoVtpMib::Vlanstatistics>())
-	,vlantrunkports(std::make_shared<CiscoVtpMib::Vlantrunkports>())
-	,vlantrunkporttable(std::make_shared<CiscoVtpMib::Vlantrunkporttable>())
-	,vtpauthenticationtable(std::make_shared<CiscoVtpMib::Vtpauthenticationtable>())
-	,vtpdatabasetable(std::make_shared<CiscoVtpMib::Vtpdatabasetable>())
-	,vtpdiscoverresulttable(std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>())
-	,vtpdiscovertable(std::make_shared<CiscoVtpMib::Vtpdiscovertable>())
-	,vtpinternalvlantable(std::make_shared<CiscoVtpMib::Vtpinternalvlantable>())
-	,vtpstatus(std::make_shared<CiscoVtpMib::Vtpstatus>())
-	,vtpvlanedittable(std::make_shared<CiscoVtpMib::Vtpvlanedittable>())
-	,vtpvlanlocalshutdowntable(std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>())
-	,vtpvlantable(std::make_shared<CiscoVtpMib::Vtpvlantable>())
+    internalvlaninfo_(std::make_shared<CiscoVtpMib::Internalvlaninfo>())
+	,managementdomaintable_(std::make_shared<CiscoVtpMib::Managementdomaintable>())
+	,vlanstatistics_(std::make_shared<CiscoVtpMib::Vlanstatistics>())
+	,vlantrunkports_(std::make_shared<CiscoVtpMib::Vlantrunkports>())
+	,vlantrunkporttable_(std::make_shared<CiscoVtpMib::Vlantrunkporttable>())
+	,vtpauthenticationtable_(std::make_shared<CiscoVtpMib::Vtpauthenticationtable>())
+	,vtpdatabasetable_(std::make_shared<CiscoVtpMib::Vtpdatabasetable>())
+	,vtpdiscoverresulttable_(std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>())
+	,vtpdiscovertable_(std::make_shared<CiscoVtpMib::Vtpdiscovertable>())
+	,vtpinternalvlantable_(std::make_shared<CiscoVtpMib::Vtpinternalvlantable>())
+	,vtpstatus_(std::make_shared<CiscoVtpMib::Vtpstatus>())
+	,vtpvlanedittable_(std::make_shared<CiscoVtpMib::Vtpvlanedittable>())
+	,vtpvlanlocalshutdowntable_(std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>())
+	,vtpvlantable_(std::make_shared<CiscoVtpMib::Vtpvlantable>())
 {
-    internalvlaninfo->parent = this;
+    internalvlaninfo_->parent = this;
 
-    managementdomaintable->parent = this;
+    managementdomaintable_->parent = this;
 
-    vlanstatistics->parent = this;
+    vlanstatistics_->parent = this;
 
-    vlantrunkports->parent = this;
+    vlantrunkports_->parent = this;
 
-    vlantrunkporttable->parent = this;
+    vlantrunkporttable_->parent = this;
 
-    vtpauthenticationtable->parent = this;
+    vtpauthenticationtable_->parent = this;
 
-    vtpdatabasetable->parent = this;
+    vtpdatabasetable_->parent = this;
 
-    vtpdiscoverresulttable->parent = this;
+    vtpdiscoverresulttable_->parent = this;
 
-    vtpdiscovertable->parent = this;
+    vtpdiscovertable_->parent = this;
 
-    vtpinternalvlantable->parent = this;
+    vtpinternalvlantable_->parent = this;
 
-    vtpstatus->parent = this;
+    vtpstatus_->parent = this;
 
-    vtpvlanedittable->parent = this;
+    vtpvlanedittable_->parent = this;
 
-    vtpvlanlocalshutdowntable->parent = this;
+    vtpvlanlocalshutdowntable_->parent = this;
 
-    vtpvlantable->parent = this;
+    vtpvlantable_->parent = this;
 
     yang_name = "CISCO-VTP-MIB"; yang_parent_name = "CISCO-VTP-MIB";
 }
@@ -63,39 +63,39 @@ CiscoVtpMib::~CiscoVtpMib()
 
 bool CiscoVtpMib::has_data() const
 {
-    return (internalvlaninfo !=  nullptr && internalvlaninfo->has_data())
-	|| (managementdomaintable !=  nullptr && managementdomaintable->has_data())
-	|| (vlanstatistics !=  nullptr && vlanstatistics->has_data())
-	|| (vlantrunkports !=  nullptr && vlantrunkports->has_data())
-	|| (vlantrunkporttable !=  nullptr && vlantrunkporttable->has_data())
-	|| (vtpauthenticationtable !=  nullptr && vtpauthenticationtable->has_data())
-	|| (vtpdatabasetable !=  nullptr && vtpdatabasetable->has_data())
-	|| (vtpdiscoverresulttable !=  nullptr && vtpdiscoverresulttable->has_data())
-	|| (vtpdiscovertable !=  nullptr && vtpdiscovertable->has_data())
-	|| (vtpinternalvlantable !=  nullptr && vtpinternalvlantable->has_data())
-	|| (vtpstatus !=  nullptr && vtpstatus->has_data())
-	|| (vtpvlanedittable !=  nullptr && vtpvlanedittable->has_data())
-	|| (vtpvlanlocalshutdowntable !=  nullptr && vtpvlanlocalshutdowntable->has_data())
-	|| (vtpvlantable !=  nullptr && vtpvlantable->has_data());
+    return (internalvlaninfo_ !=  nullptr && internalvlaninfo_->has_data())
+	|| (managementdomaintable_ !=  nullptr && managementdomaintable_->has_data())
+	|| (vlanstatistics_ !=  nullptr && vlanstatistics_->has_data())
+	|| (vlantrunkports_ !=  nullptr && vlantrunkports_->has_data())
+	|| (vlantrunkporttable_ !=  nullptr && vlantrunkporttable_->has_data())
+	|| (vtpauthenticationtable_ !=  nullptr && vtpauthenticationtable_->has_data())
+	|| (vtpdatabasetable_ !=  nullptr && vtpdatabasetable_->has_data())
+	|| (vtpdiscoverresulttable_ !=  nullptr && vtpdiscoverresulttable_->has_data())
+	|| (vtpdiscovertable_ !=  nullptr && vtpdiscovertable_->has_data())
+	|| (vtpinternalvlantable_ !=  nullptr && vtpinternalvlantable_->has_data())
+	|| (vtpstatus_ !=  nullptr && vtpstatus_->has_data())
+	|| (vtpvlanedittable_ !=  nullptr && vtpvlanedittable_->has_data())
+	|| (vtpvlanlocalshutdowntable_ !=  nullptr && vtpvlanlocalshutdowntable_->has_data())
+	|| (vtpvlantable_ !=  nullptr && vtpvlantable_->has_data());
 }
 
 bool CiscoVtpMib::has_operation() const
 {
     return is_set(operation)
-	|| (internalvlaninfo !=  nullptr && internalvlaninfo->has_operation())
-	|| (managementdomaintable !=  nullptr && managementdomaintable->has_operation())
-	|| (vlanstatistics !=  nullptr && vlanstatistics->has_operation())
-	|| (vlantrunkports !=  nullptr && vlantrunkports->has_operation())
-	|| (vlantrunkporttable !=  nullptr && vlantrunkporttable->has_operation())
-	|| (vtpauthenticationtable !=  nullptr && vtpauthenticationtable->has_operation())
-	|| (vtpdatabasetable !=  nullptr && vtpdatabasetable->has_operation())
-	|| (vtpdiscoverresulttable !=  nullptr && vtpdiscoverresulttable->has_operation())
-	|| (vtpdiscovertable !=  nullptr && vtpdiscovertable->has_operation())
-	|| (vtpinternalvlantable !=  nullptr && vtpinternalvlantable->has_operation())
-	|| (vtpstatus !=  nullptr && vtpstatus->has_operation())
-	|| (vtpvlanedittable !=  nullptr && vtpvlanedittable->has_operation())
-	|| (vtpvlanlocalshutdowntable !=  nullptr && vtpvlanlocalshutdowntable->has_operation())
-	|| (vtpvlantable !=  nullptr && vtpvlantable->has_operation());
+	|| (internalvlaninfo_ !=  nullptr && internalvlaninfo_->has_operation())
+	|| (managementdomaintable_ !=  nullptr && managementdomaintable_->has_operation())
+	|| (vlanstatistics_ !=  nullptr && vlanstatistics_->has_operation())
+	|| (vlantrunkports_ !=  nullptr && vlantrunkports_->has_operation())
+	|| (vlantrunkporttable_ !=  nullptr && vlantrunkporttable_->has_operation())
+	|| (vtpauthenticationtable_ !=  nullptr && vtpauthenticationtable_->has_operation())
+	|| (vtpdatabasetable_ !=  nullptr && vtpdatabasetable_->has_operation())
+	|| (vtpdiscoverresulttable_ !=  nullptr && vtpdiscoverresulttable_->has_operation())
+	|| (vtpdiscovertable_ !=  nullptr && vtpdiscovertable_->has_operation())
+	|| (vtpinternalvlantable_ !=  nullptr && vtpinternalvlantable_->has_operation())
+	|| (vtpstatus_ !=  nullptr && vtpstatus_->has_operation())
+	|| (vtpvlanedittable_ !=  nullptr && vtpvlanedittable_->has_operation())
+	|| (vtpvlanlocalshutdowntable_ !=  nullptr && vtpvlanlocalshutdowntable_->has_operation())
+	|| (vtpvlantable_ !=  nullptr && vtpvlantable_->has_operation());
 }
 
 std::string CiscoVtpMib::get_segment_path() const
@@ -129,128 +129,128 @@ std::shared_ptr<Entity> CiscoVtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "internalVlanInfo")
     {
-        if(internalvlaninfo == nullptr)
+        if(internalvlaninfo_ == nullptr)
         {
-            internalvlaninfo = std::make_shared<CiscoVtpMib::Internalvlaninfo>();
+            internalvlaninfo_ = std::make_shared<CiscoVtpMib::Internalvlaninfo>();
         }
-        return internalvlaninfo;
+        return internalvlaninfo_;
     }
 
     if(child_yang_name == "managementDomainTable")
     {
-        if(managementdomaintable == nullptr)
+        if(managementdomaintable_ == nullptr)
         {
-            managementdomaintable = std::make_shared<CiscoVtpMib::Managementdomaintable>();
+            managementdomaintable_ = std::make_shared<CiscoVtpMib::Managementdomaintable>();
         }
-        return managementdomaintable;
+        return managementdomaintable_;
     }
 
     if(child_yang_name == "vlanStatistics")
     {
-        if(vlanstatistics == nullptr)
+        if(vlanstatistics_ == nullptr)
         {
-            vlanstatistics = std::make_shared<CiscoVtpMib::Vlanstatistics>();
+            vlanstatistics_ = std::make_shared<CiscoVtpMib::Vlanstatistics>();
         }
-        return vlanstatistics;
+        return vlanstatistics_;
     }
 
     if(child_yang_name == "vlanTrunkPorts")
     {
-        if(vlantrunkports == nullptr)
+        if(vlantrunkports_ == nullptr)
         {
-            vlantrunkports = std::make_shared<CiscoVtpMib::Vlantrunkports>();
+            vlantrunkports_ = std::make_shared<CiscoVtpMib::Vlantrunkports>();
         }
-        return vlantrunkports;
+        return vlantrunkports_;
     }
 
     if(child_yang_name == "vlanTrunkPortTable")
     {
-        if(vlantrunkporttable == nullptr)
+        if(vlantrunkporttable_ == nullptr)
         {
-            vlantrunkporttable = std::make_shared<CiscoVtpMib::Vlantrunkporttable>();
+            vlantrunkporttable_ = std::make_shared<CiscoVtpMib::Vlantrunkporttable>();
         }
-        return vlantrunkporttable;
+        return vlantrunkporttable_;
     }
 
     if(child_yang_name == "vtpAuthenticationTable")
     {
-        if(vtpauthenticationtable == nullptr)
+        if(vtpauthenticationtable_ == nullptr)
         {
-            vtpauthenticationtable = std::make_shared<CiscoVtpMib::Vtpauthenticationtable>();
+            vtpauthenticationtable_ = std::make_shared<CiscoVtpMib::Vtpauthenticationtable>();
         }
-        return vtpauthenticationtable;
+        return vtpauthenticationtable_;
     }
 
     if(child_yang_name == "vtpDatabaseTable")
     {
-        if(vtpdatabasetable == nullptr)
+        if(vtpdatabasetable_ == nullptr)
         {
-            vtpdatabasetable = std::make_shared<CiscoVtpMib::Vtpdatabasetable>();
+            vtpdatabasetable_ = std::make_shared<CiscoVtpMib::Vtpdatabasetable>();
         }
-        return vtpdatabasetable;
+        return vtpdatabasetable_;
     }
 
     if(child_yang_name == "vtpDiscoverResultTable")
     {
-        if(vtpdiscoverresulttable == nullptr)
+        if(vtpdiscoverresulttable_ == nullptr)
         {
-            vtpdiscoverresulttable = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>();
+            vtpdiscoverresulttable_ = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>();
         }
-        return vtpdiscoverresulttable;
+        return vtpdiscoverresulttable_;
     }
 
     if(child_yang_name == "vtpDiscoverTable")
     {
-        if(vtpdiscovertable == nullptr)
+        if(vtpdiscovertable_ == nullptr)
         {
-            vtpdiscovertable = std::make_shared<CiscoVtpMib::Vtpdiscovertable>();
+            vtpdiscovertable_ = std::make_shared<CiscoVtpMib::Vtpdiscovertable>();
         }
-        return vtpdiscovertable;
+        return vtpdiscovertable_;
     }
 
     if(child_yang_name == "vtpInternalVlanTable")
     {
-        if(vtpinternalvlantable == nullptr)
+        if(vtpinternalvlantable_ == nullptr)
         {
-            vtpinternalvlantable = std::make_shared<CiscoVtpMib::Vtpinternalvlantable>();
+            vtpinternalvlantable_ = std::make_shared<CiscoVtpMib::Vtpinternalvlantable>();
         }
-        return vtpinternalvlantable;
+        return vtpinternalvlantable_;
     }
 
     if(child_yang_name == "vtpStatus")
     {
-        if(vtpstatus == nullptr)
+        if(vtpstatus_ == nullptr)
         {
-            vtpstatus = std::make_shared<CiscoVtpMib::Vtpstatus>();
+            vtpstatus_ = std::make_shared<CiscoVtpMib::Vtpstatus>();
         }
-        return vtpstatus;
+        return vtpstatus_;
     }
 
     if(child_yang_name == "vtpVlanEditTable")
     {
-        if(vtpvlanedittable == nullptr)
+        if(vtpvlanedittable_ == nullptr)
         {
-            vtpvlanedittable = std::make_shared<CiscoVtpMib::Vtpvlanedittable>();
+            vtpvlanedittable_ = std::make_shared<CiscoVtpMib::Vtpvlanedittable>();
         }
-        return vtpvlanedittable;
+        return vtpvlanedittable_;
     }
 
     if(child_yang_name == "vtpVlanLocalShutdownTable")
     {
-        if(vtpvlanlocalshutdowntable == nullptr)
+        if(vtpvlanlocalshutdowntable_ == nullptr)
         {
-            vtpvlanlocalshutdowntable = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>();
+            vtpvlanlocalshutdowntable_ = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>();
         }
-        return vtpvlanlocalshutdowntable;
+        return vtpvlanlocalshutdowntable_;
     }
 
     if(child_yang_name == "vtpVlanTable")
     {
-        if(vtpvlantable == nullptr)
+        if(vtpvlantable_ == nullptr)
         {
-            vtpvlantable = std::make_shared<CiscoVtpMib::Vtpvlantable>();
+            vtpvlantable_ = std::make_shared<CiscoVtpMib::Vtpvlantable>();
         }
-        return vtpvlantable;
+        return vtpvlantable_;
     }
 
     return nullptr;
@@ -259,74 +259,74 @@ std::shared_ptr<Entity> CiscoVtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(internalvlaninfo != nullptr)
+    if(internalvlaninfo_ != nullptr)
     {
-        children["internalVlanInfo"] = internalvlaninfo;
+        children["internalVlanInfo"] = internalvlaninfo_;
     }
 
-    if(managementdomaintable != nullptr)
+    if(managementdomaintable_ != nullptr)
     {
-        children["managementDomainTable"] = managementdomaintable;
+        children["managementDomainTable"] = managementdomaintable_;
     }
 
-    if(vlanstatistics != nullptr)
+    if(vlanstatistics_ != nullptr)
     {
-        children["vlanStatistics"] = vlanstatistics;
+        children["vlanStatistics"] = vlanstatistics_;
     }
 
-    if(vlantrunkports != nullptr)
+    if(vlantrunkports_ != nullptr)
     {
-        children["vlanTrunkPorts"] = vlantrunkports;
+        children["vlanTrunkPorts"] = vlantrunkports_;
     }
 
-    if(vlantrunkporttable != nullptr)
+    if(vlantrunkporttable_ != nullptr)
     {
-        children["vlanTrunkPortTable"] = vlantrunkporttable;
+        children["vlanTrunkPortTable"] = vlantrunkporttable_;
     }
 
-    if(vtpauthenticationtable != nullptr)
+    if(vtpauthenticationtable_ != nullptr)
     {
-        children["vtpAuthenticationTable"] = vtpauthenticationtable;
+        children["vtpAuthenticationTable"] = vtpauthenticationtable_;
     }
 
-    if(vtpdatabasetable != nullptr)
+    if(vtpdatabasetable_ != nullptr)
     {
-        children["vtpDatabaseTable"] = vtpdatabasetable;
+        children["vtpDatabaseTable"] = vtpdatabasetable_;
     }
 
-    if(vtpdiscoverresulttable != nullptr)
+    if(vtpdiscoverresulttable_ != nullptr)
     {
-        children["vtpDiscoverResultTable"] = vtpdiscoverresulttable;
+        children["vtpDiscoverResultTable"] = vtpdiscoverresulttable_;
     }
 
-    if(vtpdiscovertable != nullptr)
+    if(vtpdiscovertable_ != nullptr)
     {
-        children["vtpDiscoverTable"] = vtpdiscovertable;
+        children["vtpDiscoverTable"] = vtpdiscovertable_;
     }
 
-    if(vtpinternalvlantable != nullptr)
+    if(vtpinternalvlantable_ != nullptr)
     {
-        children["vtpInternalVlanTable"] = vtpinternalvlantable;
+        children["vtpInternalVlanTable"] = vtpinternalvlantable_;
     }
 
-    if(vtpstatus != nullptr)
+    if(vtpstatus_ != nullptr)
     {
-        children["vtpStatus"] = vtpstatus;
+        children["vtpStatus"] = vtpstatus_;
     }
 
-    if(vtpvlanedittable != nullptr)
+    if(vtpvlanedittable_ != nullptr)
     {
-        children["vtpVlanEditTable"] = vtpvlanedittable;
+        children["vtpVlanEditTable"] = vtpvlanedittable_;
     }
 
-    if(vtpvlanlocalshutdowntable != nullptr)
+    if(vtpvlanlocalshutdowntable_ != nullptr)
     {
-        children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable;
+        children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable_;
     }
 
-    if(vtpvlantable != nullptr)
+    if(vtpvlantable_ != nullptr)
     {
-        children["vtpVlanTable"] = vtpvlantable;
+        children["vtpVlanTable"] = vtpvlantable_;
     }
 
     return children;
@@ -719,9 +719,9 @@ CiscoVtpMib::Managementdomaintable::~Managementdomaintable()
 
 bool CiscoVtpMib::Managementdomaintable::has_data() const
 {
-    for (std::size_t index=0; index<managementdomainentry.size(); index++)
+    for (std::size_t index=0; index<managementdomainentry_.size(); index++)
     {
-        if(managementdomainentry[index]->has_data())
+        if(managementdomainentry_[index]->has_data())
             return true;
     }
     return false;
@@ -729,9 +729,9 @@ bool CiscoVtpMib::Managementdomaintable::has_data() const
 
 bool CiscoVtpMib::Managementdomaintable::has_operation() const
 {
-    for (std::size_t index=0; index<managementdomainentry.size(); index++)
+    for (std::size_t index=0; index<managementdomainentry_.size(); index++)
     {
-        if(managementdomainentry[index]->has_operation())
+        if(managementdomainentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -771,7 +771,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "managementDomainEntry")
     {
-        for(auto const & c : managementdomainentry)
+        for(auto const & c : managementdomainentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -781,7 +781,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVtpMib::Managementdomaintable::Managementdomainentry>();
         c->parent = this;
-        managementdomainentry.push_back(c);
+        managementdomainentry_.push_back(c);
         return c;
     }
 
@@ -791,7 +791,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Managementdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : managementdomainentry)
+    for (auto const & c : managementdomainentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1134,9 +1134,9 @@ CiscoVtpMib::Vtpvlantable::~Vtpvlantable()
 
 bool CiscoVtpMib::Vtpvlantable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanentry_.size(); index++)
     {
-        if(vtpvlanentry[index]->has_data())
+        if(vtpvlanentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1144,9 +1144,9 @@ bool CiscoVtpMib::Vtpvlantable::has_data() const
 
 bool CiscoVtpMib::Vtpvlantable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanentry_.size(); index++)
     {
-        if(vtpvlanentry[index]->has_operation())
+        if(vtpvlanentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1186,7 +1186,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
 {
     if(child_yang_name == "vtpVlanEntry")
     {
-        for(auto const & c : vtpvlanentry)
+        for(auto const & c : vtpvlanentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1196,7 +1196,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlantable::Vtpvlanentry>();
         c->parent = this;
-        vtpvlanentry.push_back(c);
+        vtpvlanentry_.push_back(c);
         return c;
     }
 
@@ -1206,7 +1206,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlanentry)
+    for (auto const & c : vtpvlanentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1453,9 +1453,9 @@ CiscoVtpMib::Vtpinternalvlantable::~Vtpinternalvlantable()
 
 bool CiscoVtpMib::Vtpinternalvlantable::has_data() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpinternalvlanentry_.size(); index++)
     {
-        if(vtpinternalvlanentry[index]->has_data())
+        if(vtpinternalvlanentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1463,9 +1463,9 @@ bool CiscoVtpMib::Vtpinternalvlantable::has_data() const
 
 bool CiscoVtpMib::Vtpinternalvlantable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpinternalvlanentry_.size(); index++)
     {
-        if(vtpinternalvlanentry[index]->has_operation())
+        if(vtpinternalvlanentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1505,7 +1505,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
 {
     if(child_yang_name == "vtpInternalVlanEntry")
     {
-        for(auto const & c : vtpinternalvlanentry)
+        for(auto const & c : vtpinternalvlanentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1515,7 +1515,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry>();
         c->parent = this;
-        vtpinternalvlanentry.push_back(c);
+        vtpinternalvlanentry_.push_back(c);
         return c;
     }
 
@@ -1525,7 +1525,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpinternalvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpinternalvlanentry)
+    for (auto const & c : vtpinternalvlanentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1636,9 +1636,9 @@ CiscoVtpMib::Vtpvlanedittable::~Vtpvlanedittable()
 
 bool CiscoVtpMib::Vtpvlanedittable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlaneditentry_.size(); index++)
     {
-        if(vtpvlaneditentry[index]->has_data())
+        if(vtpvlaneditentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1646,9 +1646,9 @@ bool CiscoVtpMib::Vtpvlanedittable::has_data() const
 
 bool CiscoVtpMib::Vtpvlanedittable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlaneditentry_.size(); index++)
     {
-        if(vtpvlaneditentry[index]->has_operation())
+        if(vtpvlaneditentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1688,7 +1688,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpVlanEditEntry")
     {
-        for(auto const & c : vtpvlaneditentry)
+        for(auto const & c : vtpvlaneditentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1698,7 +1698,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry>();
         c->parent = this;
-        vtpvlaneditentry.push_back(c);
+        vtpvlaneditentry_.push_back(c);
         return c;
     }
 
@@ -1708,7 +1708,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlaneditentry)
+    for (auto const & c : vtpvlaneditentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1963,9 +1963,9 @@ CiscoVtpMib::Vtpvlanlocalshutdowntable::~Vtpvlanlocalshutdowntable()
 
 bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry_.size(); index++)
     {
-        if(vtpvlanlocalshutdownentry[index]->has_data())
+        if(vtpvlanlocalshutdownentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1973,9 +1973,9 @@ bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_data() const
 
 bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry_.size(); index++)
     {
-        if(vtpvlanlocalshutdownentry[index]->has_operation())
+        if(vtpvlanlocalshutdownentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2015,7 +2015,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
 {
     if(child_yang_name == "vtpVlanLocalShutdownEntry")
     {
-        for(auto const & c : vtpvlanlocalshutdownentry)
+        for(auto const & c : vtpvlanlocalshutdownentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2025,7 +2025,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry>();
         c->parent = this;
-        vtpvlanlocalshutdownentry.push_back(c);
+        vtpvlanlocalshutdownentry_.push_back(c);
         return c;
     }
 
@@ -2035,7 +2035,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlanlocalshutdownentry)
+    for (auto const & c : vtpvlanlocalshutdownentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2146,9 +2146,9 @@ CiscoVtpMib::Vlantrunkporttable::~Vlantrunkporttable()
 
 bool CiscoVtpMib::Vlantrunkporttable::has_data() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
+    for (std::size_t index=0; index<vlantrunkportentry_.size(); index++)
     {
-        if(vlantrunkportentry[index]->has_data())
+        if(vlantrunkportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2156,9 +2156,9 @@ bool CiscoVtpMib::Vlantrunkporttable::has_data() const
 
 bool CiscoVtpMib::Vlantrunkporttable::has_operation() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
+    for (std::size_t index=0; index<vlantrunkportentry_.size(); index++)
     {
-        if(vlantrunkportentry[index]->has_operation())
+        if(vlantrunkportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2198,7 +2198,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
 {
     if(child_yang_name == "vlanTrunkPortEntry")
     {
-        for(auto const & c : vlantrunkportentry)
+        for(auto const & c : vlantrunkportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2208,7 +2208,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry>();
         c->parent = this;
-        vlantrunkportentry.push_back(c);
+        vlantrunkportentry_.push_back(c);
         return c;
     }
 
@@ -2218,7 +2218,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlantrunkporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vlantrunkportentry)
+    for (auto const & c : vlantrunkportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2601,9 +2601,9 @@ CiscoVtpMib::Vtpdiscovertable::~Vtpdiscovertable()
 
 bool CiscoVtpMib::Vtpdiscovertable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverentry_.size(); index++)
     {
-        if(vtpdiscoverentry[index]->has_data())
+        if(vtpdiscoverentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2611,9 +2611,9 @@ bool CiscoVtpMib::Vtpdiscovertable::has_data() const
 
 bool CiscoVtpMib::Vtpdiscovertable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverentry_.size(); index++)
     {
-        if(vtpdiscoverentry[index]->has_operation())
+        if(vtpdiscoverentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2653,7 +2653,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDiscoverEntry")
     {
-        for(auto const & c : vtpdiscoverentry)
+        for(auto const & c : vtpdiscoverentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2663,7 +2663,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry>();
         c->parent = this;
-        vtpdiscoverentry.push_back(c);
+        vtpdiscoverentry_.push_back(c);
         return c;
     }
 
@@ -2673,7 +2673,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdiscoverentry)
+    for (auto const & c : vtpdiscoverentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2792,9 +2792,9 @@ CiscoVtpMib::Vtpdiscoverresulttable::~Vtpdiscoverresulttable()
 
 bool CiscoVtpMib::Vtpdiscoverresulttable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverresultentry_.size(); index++)
     {
-        if(vtpdiscoverresultentry[index]->has_data())
+        if(vtpdiscoverresultentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2802,9 +2802,9 @@ bool CiscoVtpMib::Vtpdiscoverresulttable::has_data() const
 
 bool CiscoVtpMib::Vtpdiscoverresulttable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverresultentry_.size(); index++)
     {
-        if(vtpdiscoverresultentry[index]->has_operation())
+        if(vtpdiscoverresultentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2844,7 +2844,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
 {
     if(child_yang_name == "vtpDiscoverResultEntry")
     {
-        for(auto const & c : vtpdiscoverresultentry)
+        for(auto const & c : vtpdiscoverresultentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2854,7 +2854,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry>();
         c->parent = this;
-        vtpdiscoverresultentry.push_back(c);
+        vtpdiscoverresultentry_.push_back(c);
         return c;
     }
 
@@ -2864,7 +2864,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscoverresulttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdiscoverresultentry)
+    for (auto const & c : vtpdiscoverresultentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3015,9 +3015,9 @@ CiscoVtpMib::Vtpdatabasetable::~Vtpdatabasetable()
 
 bool CiscoVtpMib::Vtpdatabasetable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
+    for (std::size_t index=0; index<vtpdatabaseentry_.size(); index++)
     {
-        if(vtpdatabaseentry[index]->has_data())
+        if(vtpdatabaseentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3025,9 +3025,9 @@ bool CiscoVtpMib::Vtpdatabasetable::has_data() const
 
 bool CiscoVtpMib::Vtpdatabasetable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
+    for (std::size_t index=0; index<vtpdatabaseentry_.size(); index++)
     {
-        if(vtpdatabaseentry[index]->has_operation())
+        if(vtpdatabaseentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3067,7 +3067,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDatabaseEntry")
     {
-        for(auto const & c : vtpdatabaseentry)
+        for(auto const & c : vtpdatabaseentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3077,7 +3077,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry>();
         c->parent = this;
-        vtpdatabaseentry.push_back(c);
+        vtpdatabaseentry_.push_back(c);
         return c;
     }
 
@@ -3087,7 +3087,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdatabasetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdatabaseentry)
+    for (auto const & c : vtpdatabaseentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3246,9 +3246,9 @@ CiscoVtpMib::Vtpauthenticationtable::~Vtpauthenticationtable()
 
 bool CiscoVtpMib::Vtpauthenticationtable::has_data() const
 {
-    for (std::size_t index=0; index<vtpauthentry.size(); index++)
+    for (std::size_t index=0; index<vtpauthentry_.size(); index++)
     {
-        if(vtpauthentry[index]->has_data())
+        if(vtpauthentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3256,9 +3256,9 @@ bool CiscoVtpMib::Vtpauthenticationtable::has_data() const
 
 bool CiscoVtpMib::Vtpauthenticationtable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpauthentry.size(); index++)
+    for (std::size_t index=0; index<vtpauthentry_.size(); index++)
     {
-        if(vtpauthentry[index]->has_operation())
+        if(vtpauthentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3298,7 +3298,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
 {
     if(child_yang_name == "vtpAuthEntry")
     {
-        for(auto const & c : vtpauthentry)
+        for(auto const & c : vtpauthentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3308,7 +3308,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry>();
         c->parent = this;
-        vtpauthentry.push_back(c);
+        vtpauthentry_.push_back(c);
         return c;
     }
 
@@ -3318,7 +3318,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpauthenticationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpauthentry)
+    for (auto const & c : vtpauthentry_)
     {
         children[c->get_segment_path()] = c;
     }

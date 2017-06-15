@@ -39,15 +39,15 @@ class PimMib : public Entity
         class Pimcandidaterptable; //type: PimMib::Pimcandidaterptable
         class Pimcomponenttable; //type: PimMib::Pimcomponenttable
 
-        std::shared_ptr<PIM_MIB::PimMib::Pim> pim;
-        std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable> pimcandidaterptable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable> pimcomponenttable;
-        std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable> piminterfacetable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable> pimipmroutenexthoptable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable> pimipmroutetable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable> pimneighbortable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable> pimrpsettable;
-        std::shared_ptr<PIM_MIB::PimMib::Pimrptable> pimrptable;
+        std::shared_ptr<PIM_MIB::PimMib::Pim> pim_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable> pimcandidaterptable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable> pimcomponenttable_;
+        std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable> piminterfacetable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable> pimipmroutenexthoptable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable> pimipmroutetable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable> pimneighbortable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable> pimrpsettable_;
+        std::shared_ptr<PIM_MIB::PimMib::Pimrptable> pimrptable_;
         
 }; // PimMib
 
@@ -87,7 +87,7 @@ class PimMib::Piminterfacetable : public Entity
 
         class Piminterfaceentry; //type: PimMib::Piminterfacetable::Piminterfaceentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable::Piminterfaceentry> > piminterfaceentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Piminterfacetable::Piminterfaceentry> > piminterfaceentry_;
         
 }; // PimMib::Piminterfacetable
 
@@ -136,7 +136,7 @@ class PimMib::Pimneighbortable : public Entity
 
         class Pimneighborentry; //type: PimMib::Pimneighbortable::Pimneighborentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable::Pimneighborentry> > pimneighborentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimneighbortable::Pimneighborentry> > pimneighborentry_;
         
 }; // PimMib::Pimneighbortable
 
@@ -181,7 +181,7 @@ class PimMib::Pimipmroutetable : public Entity
 
         class Pimipmrouteentry; //type: PimMib::Pimipmroutetable::Pimipmrouteentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable::Pimipmrouteentry> > pimipmrouteentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutetable::Pimipmrouteentry> > pimipmrouteentry_;
         
 }; // PimMib::Pimipmroutetable
 
@@ -231,7 +231,7 @@ class PimMib::Pimrptable : public Entity
 
         class Pimrpentry; //type: PimMib::Pimrptable::Pimrpentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrptable::Pimrpentry> > pimrpentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrptable::Pimrpentry> > pimrpentry_;
         
 }; // PimMib::Pimrptable
 
@@ -277,7 +277,7 @@ class PimMib::Pimrpsettable : public Entity
 
         class Pimrpsetentry; //type: PimMib::Pimrpsettable::Pimrpsetentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable::Pimrpsetentry> > pimrpsetentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimrpsettable::Pimrpsetentry> > pimrpsetentry_;
         
 }; // PimMib::Pimrpsettable
 
@@ -322,7 +322,7 @@ class PimMib::Pimipmroutenexthoptable : public Entity
 
         class Pimipmroutenexthopentry; //type: PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry> > pimipmroutenexthopentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry> > pimipmroutenexthopentry_;
         
 }; // PimMib::Pimipmroutenexthoptable
 
@@ -373,7 +373,7 @@ class PimMib::Pimcandidaterptable : public Entity
 
         class Pimcandidaterpentry; //type: PimMib::Pimcandidaterptable::Pimcandidaterpentry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable::Pimcandidaterpentry> > pimcandidaterpentry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcandidaterptable::Pimcandidaterpentry> > pimcandidaterpentry_;
         
 }; // PimMib::Pimcandidaterptable
 
@@ -416,7 +416,7 @@ class PimMib::Pimcomponenttable : public Entity
 
         class Pimcomponententry; //type: PimMib::Pimcomponenttable::Pimcomponententry
 
-        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable::Pimcomponententry> > pimcomponententry;
+        std::vector<std::shared_ptr<PIM_MIB::PimMib::Pimcomponenttable::Pimcomponententry> > pimcomponententry_;
         
 }; // PimMib::Pimcomponenttable
 

@@ -42,18 +42,18 @@ class MplsLdpStdMib : public Entity
         class Mplsldplspfectable; //type: MplsLdpStdMib::Mplsldplspfectable
         class Mplsldpsessionpeeraddrtable; //type: MplsLdpStdMib::Mplsldpsessionpeeraddrtable
 
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfecobjects> mplsfecobjects;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfectable> mplsfectable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsinsegmentldplsptable> mplsinsegmentldplsptable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentityobjects> mplsldpentityobjects;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable> mplsldpentitytable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldphelloadjacencytable> mplsldphelloadjacencytable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplspfectable> mplsldplspfectable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplsrobjects> mplsldplsrobjects;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldppeertable> mplsldppeertable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionobjects> mplsldpsessionobjects;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionpeeraddrtable> mplsldpsessionpeeraddrtable;
-        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsoutsegmentldplsptable> mplsoutsegmentldplsptable;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfecobjects> mplsfecobjects_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfectable> mplsfectable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsinsegmentldplsptable> mplsinsegmentldplsptable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentityobjects> mplsldpentityobjects_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable> mplsldpentitytable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldphelloadjacencytable> mplsldphelloadjacencytable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplspfectable> mplsldplspfectable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplsrobjects> mplsldplsrobjects_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldppeertable> mplsldppeertable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionobjects> mplsldpsessionobjects_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionpeeraddrtable> mplsldpsessionpeeraddrtable_;
+        std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsoutsegmentldplsptable> mplsoutsegmentldplsptable_;
         
 }; // MplsLdpStdMib
 
@@ -155,7 +155,7 @@ class MplsLdpStdMib::Mplsldpentitytable : public Entity
 
         class Mplsldpentityentry; //type: MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry> > mplsldpentityentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry> > mplsldpentityentry_;
         
 }; // MplsLdpStdMib::Mplsldpentitytable
 
@@ -233,7 +233,7 @@ class MplsLdpStdMib::Mplsldppeertable : public Entity
 
         class Mplsldppeerentry; //type: MplsLdpStdMib::Mplsldppeertable::Mplsldppeerentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldppeertable::Mplsldppeerentry> > mplsldppeerentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldppeertable::Mplsldppeerentry> > mplsldppeerentry_;
         
 }; // MplsLdpStdMib::Mplsldppeertable
 
@@ -293,7 +293,7 @@ class MplsLdpStdMib::Mplsldphelloadjacencytable : public Entity
 
         class Mplsldphelloadjacencyentry; //type: MplsLdpStdMib::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry> > mplsldphelloadjacencyentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry> > mplsldphelloadjacencyentry_;
         
 }; // MplsLdpStdMib::Mplsldphelloadjacencytable
 
@@ -343,7 +343,7 @@ class MplsLdpStdMib::Mplsinsegmentldplsptable : public Entity
 
         class Mplsinsegmentldplspentry; //type: MplsLdpStdMib::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry> > mplsinsegmentldplspentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry> > mplsinsegmentldplspentry_;
         
 }; // MplsLdpStdMib::Mplsinsegmentldplsptable
 
@@ -391,7 +391,7 @@ class MplsLdpStdMib::Mplsoutsegmentldplsptable : public Entity
 
         class Mplsoutsegmentldplspentry; //type: MplsLdpStdMib::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry> > mplsoutsegmentldplspentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry> > mplsoutsegmentldplspentry_;
         
 }; // MplsLdpStdMib::Mplsoutsegmentldplsptable
 
@@ -439,7 +439,7 @@ class MplsLdpStdMib::Mplsfectable : public Entity
 
         class Mplsfecentry; //type: MplsLdpStdMib::Mplsfectable::Mplsfecentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfectable::Mplsfecentry> > mplsfecentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsfectable::Mplsfecentry> > mplsfecentry_;
         
 }; // MplsLdpStdMib::Mplsfectable
 
@@ -486,7 +486,7 @@ class MplsLdpStdMib::Mplsldplspfectable : public Entity
 
         class Mplsldplspfecentry; //type: MplsLdpStdMib::Mplsldplspfectable::Mplsldplspfecentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplspfectable::Mplsldplspfecentry> > mplsldplspfecentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldplspfectable::Mplsldplspfecentry> > mplsldplspfecentry_;
         
 }; // MplsLdpStdMib::Mplsldplspfectable
 
@@ -537,7 +537,7 @@ class MplsLdpStdMib::Mplsldpsessionpeeraddrtable : public Entity
 
         class Mplsldpsessionpeeraddrentry; //type: MplsLdpStdMib::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry> > mplsldpsessionpeeraddrentry;
+        std::vector<std::shared_ptr<MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry> > mplsldpsessionpeeraddrentry_;
         
 }; // MplsLdpStdMib::Mplsldpsessionpeeraddrtable
 

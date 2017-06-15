@@ -34,11 +34,11 @@ class CiscoIpUrpfMib : public Entity
         class Cipurpfvrfiftable; //type: CiscoIpUrpfMib::Cipurpfvrfiftable
         class Cipurpfvrftable; //type: CiscoIpUrpfMib::Cipurpfvrftable
 
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable> cipurpfifmontable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfscalar> cipurpfscalar;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable> cipurpftable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable> cipurpfvrfiftable;
-        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable> cipurpfvrftable;
+        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable> cipurpfifmontable_;
+        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfscalar> cipurpfscalar_;
+        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable> cipurpftable_;
+        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable> cipurpfvrfiftable_;
+        std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable> cipurpfvrftable_;
         
 }; // CiscoIpUrpfMib
 
@@ -80,7 +80,7 @@ class CiscoIpUrpfMib::Cipurpftable : public Entity
 
         class Cipurpfentry; //type: CiscoIpUrpfMib::Cipurpftable::Cipurpfentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable::Cipurpfentry> > cipurpfentry;
+        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpftable::Cipurpfentry> > cipurpfentry_;
         
 }; // CiscoIpUrpfMib::Cipurpftable
 
@@ -123,7 +123,7 @@ class CiscoIpUrpfMib::Cipurpfifmontable : public Entity
 
         class Cipurpfifmonentry; //type: CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry> > cipurpfifmonentry;
+        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry> > cipurpfifmonentry_;
         
 }; // CiscoIpUrpfMib::Cipurpfifmontable
 
@@ -178,7 +178,7 @@ class CiscoIpUrpfMib::Cipurpfvrfiftable : public Entity
 
         class Cipurpfvrfifentry; //type: CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry> > cipurpfvrfifentry;
+        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry> > cipurpfvrfifentry_;
         
 }; // CiscoIpUrpfMib::Cipurpfvrfiftable
 
@@ -223,7 +223,7 @@ class CiscoIpUrpfMib::Cipurpfvrftable : public Entity
 
         class Cipurpfvrfentry; //type: CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry
 
-        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry> > cipurpfvrfentry;
+        std::vector<std::shared_ptr<CISCO_IP_URPF_MIB::CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry> > cipurpfvrfentry_;
         
 }; // CiscoIpUrpfMib::Cipurpfvrftable
 

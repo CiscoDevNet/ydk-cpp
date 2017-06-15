@@ -36,12 +36,12 @@ class CiscoConfigManMib : public Entity
         class Ccmhistoryeventtable; //type: CiscoConfigManMib::Ccmhistoryeventtable
         class Ccmclihistorycommandtable; //type: CiscoConfigManMib::Ccmclihistorycommandtable
 
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclicfg> ccmclicfg;
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistory> ccmclihistory;
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistorycommandtable> ccmclihistorycommandtable;
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmctidobjects> ccmctidobjects;
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistory> ccmhistory;
-        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistoryeventtable> ccmhistoryeventtable;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclicfg> ccmclicfg_;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistory> ccmclihistory_;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistorycommandtable> ccmclihistorycommandtable_;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmctidobjects> ccmctidobjects_;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistory> ccmhistory_;
+        std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistoryeventtable> ccmhistoryeventtable_;
         
 }; // CiscoConfigManMib
 
@@ -147,7 +147,7 @@ class CiscoConfigManMib::Ccmhistoryeventtable : public Entity
 
         class Ccmhistoryevententry; //type: CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry> > ccmhistoryevententry;
+        std::vector<std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry> > ccmhistoryevententry_;
         
 }; // CiscoConfigManMib::Ccmhistoryeventtable
 
@@ -207,7 +207,7 @@ class CiscoConfigManMib::Ccmclihistorycommandtable : public Entity
 
         class Ccmclihistorycommandentry; //type: CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry> > ccmclihistorycommandentry;
+        std::vector<std::shared_ptr<CISCO_CONFIG_MAN_MIB::CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry> > ccmclihistorycommandentry_;
         
 }; // CiscoConfigManMib::Ccmclihistorycommandtable
 

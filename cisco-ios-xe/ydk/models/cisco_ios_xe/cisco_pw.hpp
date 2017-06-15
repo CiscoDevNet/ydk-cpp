@@ -77,9 +77,9 @@ class PseudowireConfig : public Entity
         class PwTemplates; //type: PseudowireConfig::PwTemplates
         class PwStaticOamClasses; //type: PseudowireConfig::PwStaticOamClasses
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::Global> global;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates> pw_templates;
+        std::shared_ptr<cisco_pw::PseudowireConfig::Global> global_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates> pw_templates_;
         
 }; // PseudowireConfig
 
@@ -125,7 +125,7 @@ class PseudowireConfig::PwTemplates : public Entity
 
         class PwTemplate; //type: PseudowireConfig::PwTemplates::PwTemplate
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate> > pw_template;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate> > pw_template_;
         
 }; // PseudowireConfig::PwTemplates
 
@@ -161,13 +161,13 @@ class PseudowireConfig::PwTemplates::PwTemplate : public Entity
         class Status; //type: PseudowireConfig::PwTemplates::PwTemplate::Status
         class PortProfileSpec; //type: PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance> load_balance;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PreferredPath> preferred_path;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Sequencing> sequencing;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Vccv> vccv;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance> load_balance_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PreferredPath> preferred_path_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Sequencing> sequencing_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Vccv> vccv_;
         
 }; // PseudowireConfig::PwTemplates::PwTemplate
 
@@ -190,7 +190,7 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance : public Entity
         YLeaf ip; //type: PwLbIpTypeIdentity
         class FlowLabel; //type: PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel> flow_label;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel> flow_label_;
         
 }; // PseudowireConfig::PwTemplates::PwTemplate::LoadBalance
 
@@ -363,7 +363,7 @@ class PseudowireConfig::PwStaticOamClasses : public Entity
 
         class PwStaticOamClass; //type: PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class_;
         
 }; // PseudowireConfig::PwStaticOamClasses
 
@@ -410,7 +410,7 @@ class PseudowireState : public Entity
 
         class Pseudowires; //type: PseudowireState::Pseudowires
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireState::Pseudowires> > pseudowires;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireState::Pseudowires> > pseudowires_;
         
 }; // PseudowireState
 
@@ -450,7 +450,7 @@ class PseudowireState::Pseudowires : public Entity
         YLeaf vc_outbound_oper_status; //type: PwOperStateTypeEnum
         class Statistics; //type: PseudowireState::Pseudowires::Statistics
 
-        std::shared_ptr<cisco_pw::PseudowireState::Pseudowires::Statistics> statistics;
+        std::shared_ptr<cisco_pw::PseudowireState::Pseudowires::Statistics> statistics_;
                 class VcOwnerTypeEnum;
         class VcPsnTypeEnum;
         class VcRemoteControlWordEnum;

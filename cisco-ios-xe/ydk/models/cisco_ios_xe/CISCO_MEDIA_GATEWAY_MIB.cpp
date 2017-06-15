@@ -11,30 +11,30 @@ namespace CISCO_MEDIA_GATEWAY_MIB {
 
 CiscoMediaGatewayMib::CiscoMediaGatewayMib()
     :
-    cmediagwcallcontrolconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>())
-	,cmediagwdnsipconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>())
-	,cmediagwdomainnameconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>())
-	,cmediagwipconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>())
-	,cmediagwrscstatstable(std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>())
-	,cmediagwtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>())
-	,cmgwliftable(std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>())
-	,cmgwsignalprotocoltable(std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>())
+    cmediagwcallcontrolconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>())
+	,cmediagwdnsipconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>())
+	,cmediagwdomainnameconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>())
+	,cmediagwipconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>())
+	,cmediagwrscstatstable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>())
+	,cmediagwtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>())
+	,cmgwliftable_(std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>())
+	,cmgwsignalprotocoltable_(std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>())
 {
-    cmediagwcallcontrolconfigtable->parent = this;
+    cmediagwcallcontrolconfigtable_->parent = this;
 
-    cmediagwdnsipconfigtable->parent = this;
+    cmediagwdnsipconfigtable_->parent = this;
 
-    cmediagwdomainnameconfigtable->parent = this;
+    cmediagwdomainnameconfigtable_->parent = this;
 
-    cmediagwipconfigtable->parent = this;
+    cmediagwipconfigtable_->parent = this;
 
-    cmediagwrscstatstable->parent = this;
+    cmediagwrscstatstable_->parent = this;
 
-    cmediagwtable->parent = this;
+    cmediagwtable_->parent = this;
 
-    cmgwliftable->parent = this;
+    cmgwliftable_->parent = this;
 
-    cmgwsignalprotocoltable->parent = this;
+    cmgwsignalprotocoltable_->parent = this;
 
     yang_name = "CISCO-MEDIA-GATEWAY-MIB"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB";
 }
@@ -45,27 +45,27 @@ CiscoMediaGatewayMib::~CiscoMediaGatewayMib()
 
 bool CiscoMediaGatewayMib::has_data() const
 {
-    return (cmediagwcallcontrolconfigtable !=  nullptr && cmediagwcallcontrolconfigtable->has_data())
-	|| (cmediagwdnsipconfigtable !=  nullptr && cmediagwdnsipconfigtable->has_data())
-	|| (cmediagwdomainnameconfigtable !=  nullptr && cmediagwdomainnameconfigtable->has_data())
-	|| (cmediagwipconfigtable !=  nullptr && cmediagwipconfigtable->has_data())
-	|| (cmediagwrscstatstable !=  nullptr && cmediagwrscstatstable->has_data())
-	|| (cmediagwtable !=  nullptr && cmediagwtable->has_data())
-	|| (cmgwliftable !=  nullptr && cmgwliftable->has_data())
-	|| (cmgwsignalprotocoltable !=  nullptr && cmgwsignalprotocoltable->has_data());
+    return (cmediagwcallcontrolconfigtable_ !=  nullptr && cmediagwcallcontrolconfigtable_->has_data())
+	|| (cmediagwdnsipconfigtable_ !=  nullptr && cmediagwdnsipconfigtable_->has_data())
+	|| (cmediagwdomainnameconfigtable_ !=  nullptr && cmediagwdomainnameconfigtable_->has_data())
+	|| (cmediagwipconfigtable_ !=  nullptr && cmediagwipconfigtable_->has_data())
+	|| (cmediagwrscstatstable_ !=  nullptr && cmediagwrscstatstable_->has_data())
+	|| (cmediagwtable_ !=  nullptr && cmediagwtable_->has_data())
+	|| (cmgwliftable_ !=  nullptr && cmgwliftable_->has_data())
+	|| (cmgwsignalprotocoltable_ !=  nullptr && cmgwsignalprotocoltable_->has_data());
 }
 
 bool CiscoMediaGatewayMib::has_operation() const
 {
     return is_set(operation)
-	|| (cmediagwcallcontrolconfigtable !=  nullptr && cmediagwcallcontrolconfigtable->has_operation())
-	|| (cmediagwdnsipconfigtable !=  nullptr && cmediagwdnsipconfigtable->has_operation())
-	|| (cmediagwdomainnameconfigtable !=  nullptr && cmediagwdomainnameconfigtable->has_operation())
-	|| (cmediagwipconfigtable !=  nullptr && cmediagwipconfigtable->has_operation())
-	|| (cmediagwrscstatstable !=  nullptr && cmediagwrscstatstable->has_operation())
-	|| (cmediagwtable !=  nullptr && cmediagwtable->has_operation())
-	|| (cmgwliftable !=  nullptr && cmgwliftable->has_operation())
-	|| (cmgwsignalprotocoltable !=  nullptr && cmgwsignalprotocoltable->has_operation());
+	|| (cmediagwcallcontrolconfigtable_ !=  nullptr && cmediagwcallcontrolconfigtable_->has_operation())
+	|| (cmediagwdnsipconfigtable_ !=  nullptr && cmediagwdnsipconfigtable_->has_operation())
+	|| (cmediagwdomainnameconfigtable_ !=  nullptr && cmediagwdomainnameconfigtable_->has_operation())
+	|| (cmediagwipconfigtable_ !=  nullptr && cmediagwipconfigtable_->has_operation())
+	|| (cmediagwrscstatstable_ !=  nullptr && cmediagwrscstatstable_->has_operation())
+	|| (cmediagwtable_ !=  nullptr && cmediagwtable_->has_operation())
+	|| (cmgwliftable_ !=  nullptr && cmgwliftable_->has_operation())
+	|| (cmgwsignalprotocoltable_ !=  nullptr && cmgwsignalprotocoltable_->has_operation());
 }
 
 std::string CiscoMediaGatewayMib::get_segment_path() const
@@ -99,74 +99,74 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::get_child_by_name(const std::strin
 {
     if(child_yang_name == "cMediaGwCallControlConfigTable")
     {
-        if(cmediagwcallcontrolconfigtable == nullptr)
+        if(cmediagwcallcontrolconfigtable_ == nullptr)
         {
-            cmediagwcallcontrolconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>();
+            cmediagwcallcontrolconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>();
         }
-        return cmediagwcallcontrolconfigtable;
+        return cmediagwcallcontrolconfigtable_;
     }
 
     if(child_yang_name == "cMediaGwDnsIpConfigTable")
     {
-        if(cmediagwdnsipconfigtable == nullptr)
+        if(cmediagwdnsipconfigtable_ == nullptr)
         {
-            cmediagwdnsipconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>();
+            cmediagwdnsipconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>();
         }
-        return cmediagwdnsipconfigtable;
+        return cmediagwdnsipconfigtable_;
     }
 
     if(child_yang_name == "cMediaGwDomainNameConfigTable")
     {
-        if(cmediagwdomainnameconfigtable == nullptr)
+        if(cmediagwdomainnameconfigtable_ == nullptr)
         {
-            cmediagwdomainnameconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>();
+            cmediagwdomainnameconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>();
         }
-        return cmediagwdomainnameconfigtable;
+        return cmediagwdomainnameconfigtable_;
     }
 
     if(child_yang_name == "cMediaGwIpConfigTable")
     {
-        if(cmediagwipconfigtable == nullptr)
+        if(cmediagwipconfigtable_ == nullptr)
         {
-            cmediagwipconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>();
+            cmediagwipconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>();
         }
-        return cmediagwipconfigtable;
+        return cmediagwipconfigtable_;
     }
 
     if(child_yang_name == "cMediaGwRscStatsTable")
     {
-        if(cmediagwrscstatstable == nullptr)
+        if(cmediagwrscstatstable_ == nullptr)
         {
-            cmediagwrscstatstable = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>();
+            cmediagwrscstatstable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>();
         }
-        return cmediagwrscstatstable;
+        return cmediagwrscstatstable_;
     }
 
     if(child_yang_name == "cMediaGwTable")
     {
-        if(cmediagwtable == nullptr)
+        if(cmediagwtable_ == nullptr)
         {
-            cmediagwtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>();
+            cmediagwtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>();
         }
-        return cmediagwtable;
+        return cmediagwtable_;
     }
 
     if(child_yang_name == "cmgwLifTable")
     {
-        if(cmgwliftable == nullptr)
+        if(cmgwliftable_ == nullptr)
         {
-            cmgwliftable = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>();
+            cmgwliftable_ = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>();
         }
-        return cmgwliftable;
+        return cmgwliftable_;
     }
 
     if(child_yang_name == "cmgwSignalProtocolTable")
     {
-        if(cmgwsignalprotocoltable == nullptr)
+        if(cmgwsignalprotocoltable_ == nullptr)
         {
-            cmgwsignalprotocoltable = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>();
+            cmgwsignalprotocoltable_ = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>();
         }
-        return cmgwsignalprotocoltable;
+        return cmgwsignalprotocoltable_;
     }
 
     return nullptr;
@@ -175,44 +175,44 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmediagwcallcontrolconfigtable != nullptr)
+    if(cmediagwcallcontrolconfigtable_ != nullptr)
     {
-        children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable;
+        children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable_;
     }
 
-    if(cmediagwdnsipconfigtable != nullptr)
+    if(cmediagwdnsipconfigtable_ != nullptr)
     {
-        children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable;
+        children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable_;
     }
 
-    if(cmediagwdomainnameconfigtable != nullptr)
+    if(cmediagwdomainnameconfigtable_ != nullptr)
     {
-        children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable;
+        children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable_;
     }
 
-    if(cmediagwipconfigtable != nullptr)
+    if(cmediagwipconfigtable_ != nullptr)
     {
-        children["cMediaGwIpConfigTable"] = cmediagwipconfigtable;
+        children["cMediaGwIpConfigTable"] = cmediagwipconfigtable_;
     }
 
-    if(cmediagwrscstatstable != nullptr)
+    if(cmediagwrscstatstable_ != nullptr)
     {
-        children["cMediaGwRscStatsTable"] = cmediagwrscstatstable;
+        children["cMediaGwRscStatsTable"] = cmediagwrscstatstable_;
     }
 
-    if(cmediagwtable != nullptr)
+    if(cmediagwtable_ != nullptr)
     {
-        children["cMediaGwTable"] = cmediagwtable;
+        children["cMediaGwTable"] = cmediagwtable_;
     }
 
-    if(cmgwliftable != nullptr)
+    if(cmgwliftable_ != nullptr)
     {
-        children["cmgwLifTable"] = cmgwliftable;
+        children["cmgwLifTable"] = cmgwliftable_;
     }
 
-    if(cmgwsignalprotocoltable != nullptr)
+    if(cmgwsignalprotocoltable_ != nullptr)
     {
-        children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable;
+        children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable_;
     }
 
     return children;
@@ -253,9 +253,9 @@ CiscoMediaGatewayMib::Cmediagwtable::~Cmediagwtable()
 
 bool CiscoMediaGatewayMib::Cmediagwtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwentry_.size(); index++)
     {
-        if(cmediagwentry[index]->has_data())
+        if(cmediagwentry_[index]->has_data())
             return true;
     }
     return false;
@@ -263,9 +263,9 @@ bool CiscoMediaGatewayMib::Cmediagwtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwentry_.size(); index++)
     {
-        if(cmediagwentry[index]->has_operation())
+        if(cmediagwentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -305,7 +305,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
 {
     if(child_yang_name == "cMediaGwEntry")
     {
-        for(auto const & c : cmediagwentry)
+        for(auto const & c : cmediagwentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -315,7 +315,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry>();
         c->parent = this;
-        cmediagwentry.push_back(c);
+        cmediagwentry_.push_back(c);
         return c;
     }
 
@@ -325,7 +325,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwentry)
+    for (auto const & c : cmediagwentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -492,9 +492,9 @@ CiscoMediaGatewayMib::Cmgwsignalprotocoltable::~Cmgwsignalprotocoltable()
 
 bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
+    for (std::size_t index=0; index<cmgwsignalprotocolentry_.size(); index++)
     {
-        if(cmgwsignalprotocolentry[index]->has_data())
+        if(cmgwsignalprotocolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -502,9 +502,9 @@ bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
+    for (std::size_t index=0; index<cmgwsignalprotocolentry_.size(); index++)
     {
-        if(cmgwsignalprotocolentry[index]->has_operation())
+        if(cmgwsignalprotocolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -544,7 +544,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
 {
     if(child_yang_name == "cmgwSignalProtocolEntry")
     {
-        for(auto const & c : cmgwsignalprotocolentry)
+        for(auto const & c : cmgwsignalprotocolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -554,7 +554,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry>();
         c->parent = this;
-        cmgwsignalprotocolentry.push_back(c);
+        cmgwsignalprotocolentry_.push_back(c);
         return c;
     }
 
@@ -564,7 +564,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmgwsignalprotocolentry)
+    for (auto const & c : cmgwsignalprotocolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -715,9 +715,9 @@ CiscoMediaGatewayMib::Cmediagwipconfigtable::~Cmediagwipconfigtable()
 
 bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwipconfigentry_.size(); index++)
     {
-        if(cmediagwipconfigentry[index]->has_data())
+        if(cmediagwipconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -725,9 +725,9 @@ bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwipconfigentry_.size(); index++)
     {
-        if(cmediagwipconfigentry[index]->has_operation())
+        if(cmediagwipconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -767,7 +767,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
 {
     if(child_yang_name == "cMediaGwIpConfigEntry")
     {
-        for(auto const & c : cmediagwipconfigentry)
+        for(auto const & c : cmediagwipconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -777,7 +777,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry>();
         c->parent = this;
-        cmediagwipconfigentry.push_back(c);
+        cmediagwipconfigentry_.push_back(c);
         return c;
     }
 
@@ -787,7 +787,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwipconfigentry)
+    for (auto const & c : cmediagwipconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -962,9 +962,9 @@ CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::~Cmediagwdomainnameconfigta
 
 bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry_.size(); index++)
     {
-        if(cmediagwdomainnameconfigentry[index]->has_data())
+        if(cmediagwdomainnameconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -972,9 +972,9 @@ bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry_.size(); index++)
     {
-        if(cmediagwdomainnameconfigentry[index]->has_operation())
+        if(cmediagwdomainnameconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1014,7 +1014,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
 {
     if(child_yang_name == "cMediaGwDomainNameConfigEntry")
     {
-        for(auto const & c : cmediagwdomainnameconfigentry)
+        for(auto const & c : cmediagwdomainnameconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1024,7 +1024,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry>();
         c->parent = this;
-        cmediagwdomainnameconfigentry.push_back(c);
+        cmediagwdomainnameconfigentry_.push_back(c);
         return c;
     }
 
@@ -1034,7 +1034,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwdomainnameconfigentry)
+    for (auto const & c : cmediagwdomainnameconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1161,9 +1161,9 @@ CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::~Cmediagwdnsipconfigtable()
 
 bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry_.size(); index++)
     {
-        if(cmediagwdnsipconfigentry[index]->has_data())
+        if(cmediagwdnsipconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1171,9 +1171,9 @@ bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry_.size(); index++)
     {
-        if(cmediagwdnsipconfigentry[index]->has_operation())
+        if(cmediagwdnsipconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1213,7 +1213,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
 {
     if(child_yang_name == "cMediaGwDnsIpConfigEntry")
     {
-        for(auto const & c : cmediagwdnsipconfigentry)
+        for(auto const & c : cmediagwdnsipconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1223,7 +1223,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry>();
         c->parent = this;
-        cmediagwdnsipconfigentry.push_back(c);
+        cmediagwdnsipconfigentry_.push_back(c);
         return c;
     }
 
@@ -1233,7 +1233,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwdnsipconfigentry)
+    for (auto const & c : cmediagwdnsipconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1368,9 +1368,9 @@ CiscoMediaGatewayMib::Cmgwliftable::~Cmgwliftable()
 
 bool CiscoMediaGatewayMib::Cmgwliftable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
+    for (std::size_t index=0; index<cmgwlifentry_.size(); index++)
     {
-        if(cmgwlifentry[index]->has_data())
+        if(cmgwlifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1378,9 +1378,9 @@ bool CiscoMediaGatewayMib::Cmgwliftable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmgwliftable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
+    for (std::size_t index=0; index<cmgwlifentry_.size(); index++)
     {
-        if(cmgwlifentry[index]->has_operation())
+        if(cmgwlifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1420,7 +1420,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
 {
     if(child_yang_name == "cmgwLifEntry")
     {
-        for(auto const & c : cmgwlifentry)
+        for(auto const & c : cmgwlifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1430,7 +1430,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry>();
         c->parent = this;
-        cmgwlifentry.push_back(c);
+        cmgwlifentry_.push_back(c);
         return c;
     }
 
@@ -1440,7 +1440,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmgwlifentry)
+    for (auto const & c : cmgwlifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1559,9 +1559,9 @@ CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::~Cmediagwcallcontrolconfig
 
 bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry_.size(); index++)
     {
-        if(cmediagwcallcontrolconfigentry[index]->has_data())
+        if(cmediagwcallcontrolconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1569,9 +1569,9 @@ bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry_.size(); index++)
     {
-        if(cmediagwcallcontrolconfigentry[index]->has_operation())
+        if(cmediagwcallcontrolconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1611,7 +1611,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
 {
     if(child_yang_name == "cMediaGwCallControlConfigEntry")
     {
-        for(auto const & c : cmediagwcallcontrolconfigentry)
+        for(auto const & c : cmediagwcallcontrolconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1621,7 +1621,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry>();
         c->parent = this;
-        cmediagwcallcontrolconfigentry.push_back(c);
+        cmediagwcallcontrolconfigentry_.push_back(c);
         return c;
     }
 
@@ -1631,7 +1631,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwcallcontrolconfigentry)
+    for (auto const & c : cmediagwcallcontrolconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1870,9 +1870,9 @@ CiscoMediaGatewayMib::Cmediagwrscstatstable::~Cmediagwrscstatstable()
 
 bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwrscstatsentry_.size(); index++)
     {
-        if(cmediagwrscstatsentry[index]->has_data())
+        if(cmediagwrscstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1880,9 +1880,9 @@ bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwrscstatsentry_.size(); index++)
     {
-        if(cmediagwrscstatsentry[index]->has_operation())
+        if(cmediagwrscstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1922,7 +1922,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
 {
     if(child_yang_name == "cMediaGwRscStatsEntry")
     {
-        for(auto const & c : cmediagwrscstatsentry)
+        for(auto const & c : cmediagwrscstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1932,7 +1932,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry>();
         c->parent = this;
-        cmediagwrscstatsentry.push_back(c);
+        cmediagwrscstatsentry_.push_back(c);
         return c;
     }
 
@@ -1942,7 +1942,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwrscstatsentry)
+    for (auto const & c : cmediagwrscstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }

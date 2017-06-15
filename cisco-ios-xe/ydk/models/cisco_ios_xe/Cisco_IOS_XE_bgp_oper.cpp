@@ -11,12 +11,12 @@ namespace Cisco_IOS_XE_bgp_oper {
 
 BgpState::BgpState()
     :
-    address_families(std::make_shared<BgpState::AddressFamilies>())
-	,neighbors(std::make_shared<BgpState::Neighbors>())
+    address_families_(std::make_shared<BgpState::AddressFamilies>())
+	,neighbors_(std::make_shared<BgpState::Neighbors>())
 {
-    address_families->parent = this;
+    address_families_->parent = this;
 
-    neighbors->parent = this;
+    neighbors_->parent = this;
 
     yang_name = "bgp-state"; yang_parent_name = "Cisco-IOS-XE-bgp-oper";
 }
@@ -27,15 +27,15 @@ BgpState::~BgpState()
 
 bool BgpState::has_data() const
 {
-    return (address_families !=  nullptr && address_families->has_data())
-	|| (neighbors !=  nullptr && neighbors->has_data());
+    return (address_families_ !=  nullptr && address_families_->has_data())
+	|| (neighbors_ !=  nullptr && neighbors_->has_data());
 }
 
 bool BgpState::has_operation() const
 {
     return is_set(operation)
-	|| (address_families !=  nullptr && address_families->has_operation())
-	|| (neighbors !=  nullptr && neighbors->has_operation());
+	|| (address_families_ !=  nullptr && address_families_->has_operation())
+	|| (neighbors_ !=  nullptr && neighbors_->has_operation());
 }
 
 std::string BgpState::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> BgpState::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "address-families")
     {
-        if(address_families == nullptr)
+        if(address_families_ == nullptr)
         {
-            address_families = std::make_shared<BgpState::AddressFamilies>();
+            address_families_ = std::make_shared<BgpState::AddressFamilies>();
         }
-        return address_families;
+        return address_families_;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors == nullptr)
+        if(neighbors_ == nullptr)
         {
-            neighbors = std::make_shared<BgpState::Neighbors>();
+            neighbors_ = std::make_shared<BgpState::Neighbors>();
         }
-        return neighbors;
+        return neighbors_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> BgpState::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> BgpState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_families != nullptr)
+    if(address_families_ != nullptr)
     {
-        children["address-families"] = address_families;
+        children["address-families"] = address_families_;
     }
 
-    if(neighbors != nullptr)
+    if(neighbors_ != nullptr)
     {
-        children["neighbors"] = neighbors;
+        children["neighbors"] = neighbors_;
     }
 
     return children;
@@ -139,9 +139,9 @@ BgpState::Neighbors::~Neighbors()
 
 bool BgpState::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor_.size(); index++)
     {
-        if(neighbor[index]->has_data())
+        if(neighbor_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool BgpState::Neighbors::has_data() const
 
 bool BgpState::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor_.size(); index++)
     {
-        if(neighbor[index]->has_operation())
+        if(neighbor_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> BgpState::Neighbors::get_child_by_name(const std::string
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
+        for(auto const & c : neighbor_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> BgpState::Neighbors::get_child_by_name(const std::string
         }
         auto c = std::make_shared<BgpState::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> BgpState::Neighbors::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> BgpState::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : neighbor)
+    for (auto const & c : neighbor_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -238,21 +238,21 @@ BgpState::Neighbors::Neighbor::Neighbor()
     session_state{YType::enumeration, "session-state"},
     up_time{YType::str, "up-time"}
     	,
-    bgp_neighbor_counters(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters>())
-	,connection(std::make_shared<BgpState::Neighbors::Neighbor::Connection>())
-	,negotiated_keepalive_timers(std::make_shared<BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers>())
-	,prefix_activity(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity>())
-	,transport(std::make_shared<BgpState::Neighbors::Neighbor::Transport>())
+    bgp_neighbor_counters_(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters>())
+	,connection_(std::make_shared<BgpState::Neighbors::Neighbor::Connection>())
+	,negotiated_keepalive_timers_(std::make_shared<BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers>())
+	,prefix_activity_(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity>())
+	,transport_(std::make_shared<BgpState::Neighbors::Neighbor::Transport>())
 {
-    bgp_neighbor_counters->parent = this;
+    bgp_neighbor_counters_->parent = this;
 
-    connection->parent = this;
+    connection_->parent = this;
 
-    negotiated_keepalive_timers->parent = this;
+    negotiated_keepalive_timers_->parent = this;
 
-    prefix_activity->parent = this;
+    prefix_activity_->parent = this;
 
-    transport->parent = this;
+    transport_->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -279,11 +279,11 @@ bool BgpState::Neighbors::Neighbor::has_data() const
 	|| link.is_set
 	|| session_state.is_set
 	|| up_time.is_set
-	|| (bgp_neighbor_counters !=  nullptr && bgp_neighbor_counters->has_data())
-	|| (connection !=  nullptr && connection->has_data())
-	|| (negotiated_keepalive_timers !=  nullptr && negotiated_keepalive_timers->has_data())
-	|| (prefix_activity !=  nullptr && prefix_activity->has_data())
-	|| (transport !=  nullptr && transport->has_data());
+	|| (bgp_neighbor_counters_ !=  nullptr && bgp_neighbor_counters_->has_data())
+	|| (connection_ !=  nullptr && connection_->has_data())
+	|| (negotiated_keepalive_timers_ !=  nullptr && negotiated_keepalive_timers_->has_data())
+	|| (prefix_activity_ !=  nullptr && prefix_activity_->has_data())
+	|| (transport_ !=  nullptr && transport_->has_data());
 }
 
 bool BgpState::Neighbors::Neighbor::has_operation() const
@@ -306,11 +306,11 @@ bool BgpState::Neighbors::Neighbor::has_operation() const
 	|| is_set(negotiated_cap.operation)
 	|| is_set(session_state.operation)
 	|| is_set(up_time.operation)
-	|| (bgp_neighbor_counters !=  nullptr && bgp_neighbor_counters->has_operation())
-	|| (connection !=  nullptr && connection->has_operation())
-	|| (negotiated_keepalive_timers !=  nullptr && negotiated_keepalive_timers->has_operation())
-	|| (prefix_activity !=  nullptr && prefix_activity->has_operation())
-	|| (transport !=  nullptr && transport->has_operation());
+	|| (bgp_neighbor_counters_ !=  nullptr && bgp_neighbor_counters_->has_operation())
+	|| (connection_ !=  nullptr && connection_->has_operation())
+	|| (negotiated_keepalive_timers_ !=  nullptr && negotiated_keepalive_timers_->has_operation())
+	|| (prefix_activity_ !=  nullptr && prefix_activity_->has_operation())
+	|| (transport_ !=  nullptr && transport_->has_operation());
 }
 
 std::string BgpState::Neighbors::Neighbor::get_segment_path() const
@@ -360,47 +360,47 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::get_child_by_name(const s
 {
     if(child_yang_name == "bgp-neighbor-counters")
     {
-        if(bgp_neighbor_counters == nullptr)
+        if(bgp_neighbor_counters_ == nullptr)
         {
-            bgp_neighbor_counters = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters>();
+            bgp_neighbor_counters_ = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters>();
         }
-        return bgp_neighbor_counters;
+        return bgp_neighbor_counters_;
     }
 
     if(child_yang_name == "connection")
     {
-        if(connection == nullptr)
+        if(connection_ == nullptr)
         {
-            connection = std::make_shared<BgpState::Neighbors::Neighbor::Connection>();
+            connection_ = std::make_shared<BgpState::Neighbors::Neighbor::Connection>();
         }
-        return connection;
+        return connection_;
     }
 
     if(child_yang_name == "negotiated-keepalive-timers")
     {
-        if(negotiated_keepalive_timers == nullptr)
+        if(negotiated_keepalive_timers_ == nullptr)
         {
-            negotiated_keepalive_timers = std::make_shared<BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers>();
+            negotiated_keepalive_timers_ = std::make_shared<BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers>();
         }
-        return negotiated_keepalive_timers;
+        return negotiated_keepalive_timers_;
     }
 
     if(child_yang_name == "prefix-activity")
     {
-        if(prefix_activity == nullptr)
+        if(prefix_activity_ == nullptr)
         {
-            prefix_activity = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity>();
+            prefix_activity_ = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity>();
         }
-        return prefix_activity;
+        return prefix_activity_;
     }
 
     if(child_yang_name == "transport")
     {
-        if(transport == nullptr)
+        if(transport_ == nullptr)
         {
-            transport = std::make_shared<BgpState::Neighbors::Neighbor::Transport>();
+            transport_ = std::make_shared<BgpState::Neighbors::Neighbor::Transport>();
         }
-        return transport;
+        return transport_;
     }
 
     return nullptr;
@@ -409,29 +409,29 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BgpState::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bgp_neighbor_counters != nullptr)
+    if(bgp_neighbor_counters_ != nullptr)
     {
-        children["bgp-neighbor-counters"] = bgp_neighbor_counters;
+        children["bgp-neighbor-counters"] = bgp_neighbor_counters_;
     }
 
-    if(connection != nullptr)
+    if(connection_ != nullptr)
     {
-        children["connection"] = connection;
+        children["connection"] = connection_;
     }
 
-    if(negotiated_keepalive_timers != nullptr)
+    if(negotiated_keepalive_timers_ != nullptr)
     {
-        children["negotiated-keepalive-timers"] = negotiated_keepalive_timers;
+        children["negotiated-keepalive-timers"] = negotiated_keepalive_timers_;
     }
 
-    if(prefix_activity != nullptr)
+    if(prefix_activity_ != nullptr)
     {
-        children["prefix-activity"] = prefix_activity;
+        children["prefix-activity"] = prefix_activity_;
     }
 
-    if(transport != nullptr)
+    if(transport_ != nullptr)
     {
-        children["transport"] = transport;
+        children["transport"] = transport_;
     }
 
     return children;
@@ -574,12 +574,12 @@ BgpState::Neighbors::Neighbor::BgpNeighborCounters::BgpNeighborCounters()
     inq_depth{YType::uint32, "inq-depth"},
     outq_depth{YType::uint32, "outq-depth"}
     	,
-    received(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received>())
-	,sent(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent>())
+    received_(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received>())
+	,sent_(std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent>())
 {
-    received->parent = this;
+    received_->parent = this;
 
-    sent->parent = this;
+    sent_->parent = this;
 
     yang_name = "bgp-neighbor-counters"; yang_parent_name = "neighbor";
 }
@@ -592,8 +592,8 @@ bool BgpState::Neighbors::Neighbor::BgpNeighborCounters::has_data() const
 {
     return inq_depth.is_set
 	|| outq_depth.is_set
-	|| (received !=  nullptr && received->has_data())
-	|| (sent !=  nullptr && sent->has_data());
+	|| (received_ !=  nullptr && received_->has_data())
+	|| (sent_ !=  nullptr && sent_->has_data());
 }
 
 bool BgpState::Neighbors::Neighbor::BgpNeighborCounters::has_operation() const
@@ -601,8 +601,8 @@ bool BgpState::Neighbors::Neighbor::BgpNeighborCounters::has_operation() const
     return is_set(operation)
 	|| is_set(inq_depth.operation)
 	|| is_set(outq_depth.operation)
-	|| (received !=  nullptr && received->has_operation())
-	|| (sent !=  nullptr && sent->has_operation());
+	|| (received_ !=  nullptr && received_->has_operation())
+	|| (sent_ !=  nullptr && sent_->has_operation());
 }
 
 std::string BgpState::Neighbors::Neighbor::BgpNeighborCounters::get_segment_path() const
@@ -641,20 +641,20 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::BgpNeighborCounters::get_
 {
     if(child_yang_name == "received")
     {
-        if(received == nullptr)
+        if(received_ == nullptr)
         {
-            received = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received>();
+            received_ = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received>();
         }
-        return received;
+        return received_;
     }
 
     if(child_yang_name == "sent")
     {
-        if(sent == nullptr)
+        if(sent_ == nullptr)
         {
-            sent = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent>();
+            sent_ = std::make_shared<BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent>();
         }
-        return sent;
+        return sent_;
     }
 
     return nullptr;
@@ -663,14 +663,14 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::BgpNeighborCounters::get_
 std::map<std::string, std::shared_ptr<Entity>> BgpState::Neighbors::Neighbor::BgpNeighborCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(received != nullptr)
+    if(received_ != nullptr)
     {
-        children["received"] = received;
+        children["received"] = received_;
     }
 
-    if(sent != nullptr)
+    if(sent_ != nullptr)
     {
-        children["sent"] = sent;
+        children["sent"] = sent_;
     }
 
     return children;
@@ -1122,12 +1122,12 @@ void BgpState::Neighbors::Neighbor::Transport::set_value(const std::string & val
 
 BgpState::Neighbors::Neighbor::PrefixActivity::PrefixActivity()
     :
-    received(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Received>())
-	,sent(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Sent>())
+    received_(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Received>())
+	,sent_(std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Sent>())
 {
-    received->parent = this;
+    received_->parent = this;
 
-    sent->parent = this;
+    sent_->parent = this;
 
     yang_name = "prefix-activity"; yang_parent_name = "neighbor";
 }
@@ -1138,15 +1138,15 @@ BgpState::Neighbors::Neighbor::PrefixActivity::~PrefixActivity()
 
 bool BgpState::Neighbors::Neighbor::PrefixActivity::has_data() const
 {
-    return (received !=  nullptr && received->has_data())
-	|| (sent !=  nullptr && sent->has_data());
+    return (received_ !=  nullptr && received_->has_data())
+	|| (sent_ !=  nullptr && sent_->has_data());
 }
 
 bool BgpState::Neighbors::Neighbor::PrefixActivity::has_operation() const
 {
     return is_set(operation)
-	|| (received !=  nullptr && received->has_operation())
-	|| (sent !=  nullptr && sent->has_operation());
+	|| (received_ !=  nullptr && received_->has_operation())
+	|| (sent_ !=  nullptr && sent_->has_operation());
 }
 
 std::string BgpState::Neighbors::Neighbor::PrefixActivity::get_segment_path() const
@@ -1183,20 +1183,20 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::PrefixActivity::get_child
 {
     if(child_yang_name == "received")
     {
-        if(received == nullptr)
+        if(received_ == nullptr)
         {
-            received = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Received>();
+            received_ = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Received>();
         }
-        return received;
+        return received_;
     }
 
     if(child_yang_name == "sent")
     {
-        if(sent == nullptr)
+        if(sent_ == nullptr)
         {
-            sent = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Sent>();
+            sent_ = std::make_shared<BgpState::Neighbors::Neighbor::PrefixActivity::Sent>();
         }
-        return sent;
+        return sent_;
     }
 
     return nullptr;
@@ -1205,14 +1205,14 @@ std::shared_ptr<Entity> BgpState::Neighbors::Neighbor::PrefixActivity::get_child
 std::map<std::string, std::shared_ptr<Entity>> BgpState::Neighbors::Neighbor::PrefixActivity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(received != nullptr)
+    if(received_ != nullptr)
     {
-        children["received"] = received;
+        children["received"] = received_;
     }
 
-    if(sent != nullptr)
+    if(sent_ != nullptr)
     {
-        children["sent"] = sent;
+        children["sent"] = sent_;
     }
 
     return children;
@@ -1457,9 +1457,9 @@ BgpState::AddressFamilies::~AddressFamilies()
 
 bool BgpState::AddressFamilies::has_data() const
 {
-    for (std::size_t index=0; index<address_family.size(); index++)
+    for (std::size_t index=0; index<address_family_.size(); index++)
     {
-        if(address_family[index]->has_data())
+        if(address_family_[index]->has_data())
             return true;
     }
     return false;
@@ -1467,9 +1467,9 @@ bool BgpState::AddressFamilies::has_data() const
 
 bool BgpState::AddressFamilies::has_operation() const
 {
-    for (std::size_t index=0; index<address_family.size(); index++)
+    for (std::size_t index=0; index<address_family_.size(); index++)
     {
-        if(address_family[index]->has_operation())
+        if(address_family_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1509,7 +1509,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::get_child_by_name(const std::
 {
     if(child_yang_name == "address-family")
     {
-        for(auto const & c : address_family)
+        for(auto const & c : address_family_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1519,7 +1519,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::get_child_by_name(const std::
         }
         auto c = std::make_shared<BgpState::AddressFamilies::AddressFamily>();
         c->parent = this;
-        address_family.push_back(c);
+        address_family_.push_back(c);
         return c;
     }
 
@@ -1529,7 +1529,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> BgpState::AddressFamilies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address_family)
+    for (auto const & c : address_family_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1550,27 +1550,27 @@ BgpState::AddressFamilies::AddressFamily::AddressFamily()
     routing_table_version{YType::uint64, "routing-table-version"},
     total_memory{YType::uint64, "total-memory"}
     	,
-    activities(std::make_shared<BgpState::AddressFamilies::AddressFamily::Activities>())
-	,as_path(std::make_shared<BgpState::AddressFamilies::AddressFamily::AsPath>())
-	,bgp_neighbor_summaries(std::make_shared<BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries>())
-	,filter_list(std::make_shared<BgpState::AddressFamilies::AddressFamily::FilterList>())
-	,path(std::make_shared<BgpState::AddressFamilies::AddressFamily::Path>())
-	,prefixes(std::make_shared<BgpState::AddressFamilies::AddressFamily::Prefixes>())
-	,route_map(std::make_shared<BgpState::AddressFamilies::AddressFamily::RouteMap>())
+    activities_(std::make_shared<BgpState::AddressFamilies::AddressFamily::Activities>())
+	,as_path_(std::make_shared<BgpState::AddressFamilies::AddressFamily::AsPath>())
+	,bgp_neighbor_summaries_(std::make_shared<BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries>())
+	,filter_list_(std::make_shared<BgpState::AddressFamilies::AddressFamily::FilterList>())
+	,path_(std::make_shared<BgpState::AddressFamilies::AddressFamily::Path>())
+	,prefixes_(std::make_shared<BgpState::AddressFamilies::AddressFamily::Prefixes>())
+	,route_map_(std::make_shared<BgpState::AddressFamilies::AddressFamily::RouteMap>())
 {
-    activities->parent = this;
+    activities_->parent = this;
 
-    as_path->parent = this;
+    as_path_->parent = this;
 
-    bgp_neighbor_summaries->parent = this;
+    bgp_neighbor_summaries_->parent = this;
 
-    filter_list->parent = this;
+    filter_list_->parent = this;
 
-    path->parent = this;
+    path_->parent = this;
 
-    prefixes->parent = this;
+    prefixes_->parent = this;
 
-    route_map->parent = this;
+    route_map_->parent = this;
 
     yang_name = "address-family"; yang_parent_name = "address-families";
 }
@@ -1587,13 +1587,13 @@ bool BgpState::AddressFamilies::AddressFamily::has_data() const
 	|| router_id.is_set
 	|| routing_table_version.is_set
 	|| total_memory.is_set
-	|| (activities !=  nullptr && activities->has_data())
-	|| (as_path !=  nullptr && as_path->has_data())
-	|| (bgp_neighbor_summaries !=  nullptr && bgp_neighbor_summaries->has_data())
-	|| (filter_list !=  nullptr && filter_list->has_data())
-	|| (path !=  nullptr && path->has_data())
-	|| (prefixes !=  nullptr && prefixes->has_data())
-	|| (route_map !=  nullptr && route_map->has_data());
+	|| (activities_ !=  nullptr && activities_->has_data())
+	|| (as_path_ !=  nullptr && as_path_->has_data())
+	|| (bgp_neighbor_summaries_ !=  nullptr && bgp_neighbor_summaries_->has_data())
+	|| (filter_list_ !=  nullptr && filter_list_->has_data())
+	|| (path_ !=  nullptr && path_->has_data())
+	|| (prefixes_ !=  nullptr && prefixes_->has_data())
+	|| (route_map_ !=  nullptr && route_map_->has_data());
 }
 
 bool BgpState::AddressFamilies::AddressFamily::has_operation() const
@@ -1605,13 +1605,13 @@ bool BgpState::AddressFamilies::AddressFamily::has_operation() const
 	|| is_set(router_id.operation)
 	|| is_set(routing_table_version.operation)
 	|| is_set(total_memory.operation)
-	|| (activities !=  nullptr && activities->has_operation())
-	|| (as_path !=  nullptr && as_path->has_operation())
-	|| (bgp_neighbor_summaries !=  nullptr && bgp_neighbor_summaries->has_operation())
-	|| (filter_list !=  nullptr && filter_list->has_operation())
-	|| (path !=  nullptr && path->has_operation())
-	|| (prefixes !=  nullptr && prefixes->has_operation())
-	|| (route_map !=  nullptr && route_map->has_operation());
+	|| (activities_ !=  nullptr && activities_->has_operation())
+	|| (as_path_ !=  nullptr && as_path_->has_operation())
+	|| (bgp_neighbor_summaries_ !=  nullptr && bgp_neighbor_summaries_->has_operation())
+	|| (filter_list_ !=  nullptr && filter_list_->has_operation())
+	|| (path_ !=  nullptr && path_->has_operation())
+	|| (prefixes_ !=  nullptr && prefixes_->has_operation())
+	|| (route_map_ !=  nullptr && route_map_->has_operation());
 }
 
 std::string BgpState::AddressFamilies::AddressFamily::get_segment_path() const
@@ -1654,65 +1654,65 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::AddressFamily::get_child_by_n
 {
     if(child_yang_name == "activities")
     {
-        if(activities == nullptr)
+        if(activities_ == nullptr)
         {
-            activities = std::make_shared<BgpState::AddressFamilies::AddressFamily::Activities>();
+            activities_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::Activities>();
         }
-        return activities;
+        return activities_;
     }
 
     if(child_yang_name == "as-path")
     {
-        if(as_path == nullptr)
+        if(as_path_ == nullptr)
         {
-            as_path = std::make_shared<BgpState::AddressFamilies::AddressFamily::AsPath>();
+            as_path_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::AsPath>();
         }
-        return as_path;
+        return as_path_;
     }
 
     if(child_yang_name == "bgp-neighbor-summaries")
     {
-        if(bgp_neighbor_summaries == nullptr)
+        if(bgp_neighbor_summaries_ == nullptr)
         {
-            bgp_neighbor_summaries = std::make_shared<BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries>();
+            bgp_neighbor_summaries_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries>();
         }
-        return bgp_neighbor_summaries;
+        return bgp_neighbor_summaries_;
     }
 
     if(child_yang_name == "filter-list")
     {
-        if(filter_list == nullptr)
+        if(filter_list_ == nullptr)
         {
-            filter_list = std::make_shared<BgpState::AddressFamilies::AddressFamily::FilterList>();
+            filter_list_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::FilterList>();
         }
-        return filter_list;
+        return filter_list_;
     }
 
     if(child_yang_name == "path")
     {
-        if(path == nullptr)
+        if(path_ == nullptr)
         {
-            path = std::make_shared<BgpState::AddressFamilies::AddressFamily::Path>();
+            path_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::Path>();
         }
-        return path;
+        return path_;
     }
 
     if(child_yang_name == "prefixes")
     {
-        if(prefixes == nullptr)
+        if(prefixes_ == nullptr)
         {
-            prefixes = std::make_shared<BgpState::AddressFamilies::AddressFamily::Prefixes>();
+            prefixes_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::Prefixes>();
         }
-        return prefixes;
+        return prefixes_;
     }
 
     if(child_yang_name == "route-map")
     {
-        if(route_map == nullptr)
+        if(route_map_ == nullptr)
         {
-            route_map = std::make_shared<BgpState::AddressFamilies::AddressFamily::RouteMap>();
+            route_map_ = std::make_shared<BgpState::AddressFamilies::AddressFamily::RouteMap>();
         }
-        return route_map;
+        return route_map_;
     }
 
     return nullptr;
@@ -1721,39 +1721,39 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::AddressFamily::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BgpState::AddressFamilies::AddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(activities != nullptr)
+    if(activities_ != nullptr)
     {
-        children["activities"] = activities;
+        children["activities"] = activities_;
     }
 
-    if(as_path != nullptr)
+    if(as_path_ != nullptr)
     {
-        children["as-path"] = as_path;
+        children["as-path"] = as_path_;
     }
 
-    if(bgp_neighbor_summaries != nullptr)
+    if(bgp_neighbor_summaries_ != nullptr)
     {
-        children["bgp-neighbor-summaries"] = bgp_neighbor_summaries;
+        children["bgp-neighbor-summaries"] = bgp_neighbor_summaries_;
     }
 
-    if(filter_list != nullptr)
+    if(filter_list_ != nullptr)
     {
-        children["filter-list"] = filter_list;
+        children["filter-list"] = filter_list_;
     }
 
-    if(path != nullptr)
+    if(path_ != nullptr)
     {
-        children["path"] = path;
+        children["path"] = path_;
     }
 
-    if(prefixes != nullptr)
+    if(prefixes_ != nullptr)
     {
-        children["prefixes"] = prefixes;
+        children["prefixes"] = prefixes_;
     }
 
-    if(route_map != nullptr)
+    if(route_map_ != nullptr)
     {
-        children["route-map"] = route_map;
+        children["route-map"] = route_map_;
     }
 
     return children;
@@ -2286,9 +2286,9 @@ BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::~BgpNeighborSumm
 
 bool BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_summary.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_summary_.size(); index++)
     {
-        if(bgp_neighbor_summary[index]->has_data())
+        if(bgp_neighbor_summary_[index]->has_data())
             return true;
     }
     return false;
@@ -2296,9 +2296,9 @@ bool BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_data() 
 
 bool BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_summary.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_summary_.size(); index++)
     {
-        if(bgp_neighbor_summary[index]->has_operation())
+        if(bgp_neighbor_summary_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2338,7 +2338,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::AddressFamily::BgpNeighborSum
 {
     if(child_yang_name == "bgp-neighbor-summary")
     {
-        for(auto const & c : bgp_neighbor_summary)
+        for(auto const & c : bgp_neighbor_summary_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2348,7 +2348,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::AddressFamily::BgpNeighborSum
         }
         auto c = std::make_shared<BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary>();
         c->parent = this;
-        bgp_neighbor_summary.push_back(c);
+        bgp_neighbor_summary_.push_back(c);
         return c;
     }
 
@@ -2358,7 +2358,7 @@ std::shared_ptr<Entity> BgpState::AddressFamilies::AddressFamily::BgpNeighborSum
 std::map<std::string, std::shared_ptr<Entity>> BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgp_neighbor_summary)
+    for (auto const & c : bgp_neighbor_summary_)
     {
         children[c->get_segment_path()] = c;
     }

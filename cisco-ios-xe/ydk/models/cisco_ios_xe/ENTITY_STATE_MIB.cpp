@@ -11,9 +11,9 @@ namespace ENTITY_STATE_MIB {
 
 EntityStateMib::EntityStateMib()
     :
-    entstatetable(std::make_shared<EntityStateMib::Entstatetable>())
+    entstatetable_(std::make_shared<EntityStateMib::Entstatetable>())
 {
-    entstatetable->parent = this;
+    entstatetable_->parent = this;
 
     yang_name = "ENTITY-STATE-MIB"; yang_parent_name = "ENTITY-STATE-MIB";
 }
@@ -24,13 +24,13 @@ EntityStateMib::~EntityStateMib()
 
 bool EntityStateMib::has_data() const
 {
-    return (entstatetable !=  nullptr && entstatetable->has_data());
+    return (entstatetable_ !=  nullptr && entstatetable_->has_data());
 }
 
 bool EntityStateMib::has_operation() const
 {
     return is_set(operation)
-	|| (entstatetable !=  nullptr && entstatetable->has_operation());
+	|| (entstatetable_ !=  nullptr && entstatetable_->has_operation());
 }
 
 std::string EntityStateMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> EntityStateMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "entStateTable")
     {
-        if(entstatetable == nullptr)
+        if(entstatetable_ == nullptr)
         {
-            entstatetable = std::make_shared<EntityStateMib::Entstatetable>();
+            entstatetable_ = std::make_shared<EntityStateMib::Entstatetable>();
         }
-        return entstatetable;
+        return entstatetable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> EntityStateMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(entstatetable != nullptr)
+    if(entstatetable_ != nullptr)
     {
-        children["entStateTable"] = entstatetable;
+        children["entStateTable"] = entstatetable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ EntityStateMib::Entstatetable::~Entstatetable()
 
 bool EntityStateMib::Entstatetable::has_data() const
 {
-    for (std::size_t index=0; index<entstateentry.size(); index++)
+    for (std::size_t index=0; index<entstateentry_.size(); index++)
     {
-        if(entstateentry[index]->has_data())
+        if(entstateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool EntityStateMib::Entstatetable::has_data() const
 
 bool EntityStateMib::Entstatetable::has_operation() const
 {
-    for (std::size_t index=0; index<entstateentry.size(); index++)
+    for (std::size_t index=0; index<entstateentry_.size(); index++)
     {
-        if(entstateentry[index]->has_operation())
+        if(entstateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const s
 {
     if(child_yang_name == "entStateEntry")
     {
-        for(auto const & c : entstateentry)
+        for(auto const & c : entstateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const s
         }
         auto c = std::make_shared<EntityStateMib::Entstatetable::Entstateentry>();
         c->parent = this;
-        entstateentry.push_back(c);
+        entstateentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::Entstatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entstateentry)
+    for (auto const & c : entstateentry_)
     {
         children[c->get_segment_path()] = c;
     }

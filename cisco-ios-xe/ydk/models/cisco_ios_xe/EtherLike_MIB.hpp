@@ -72,11 +72,11 @@ class EtherlikeMib : public Entity
         class Dot3Pausetable; //type: EtherlikeMib::Dot3Pausetable
         class Dot3Hcstatstable; //type: EtherlikeMib::Dot3Hcstatstable
 
-        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Colltable> dot3colltable;
-        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Controltable> dot3controltable;
-        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Hcstatstable> dot3hcstatstable;
-        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Pausetable> dot3pausetable;
-        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Statstable> dot3statstable;
+        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Colltable> dot3colltable_;
+        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Controltable> dot3controltable_;
+        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Hcstatstable> dot3hcstatstable_;
+        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Pausetable> dot3pausetable_;
+        std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Statstable> dot3statstable_;
         
 }; // EtherlikeMib
 
@@ -97,7 +97,7 @@ class EtherlikeMib::Dot3Statstable : public Entity
 
         class Dot3Statsentry; //type: EtherlikeMib::Dot3Statstable::Dot3Statsentry
 
-        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Statstable::Dot3Statsentry> > dot3statsentry;
+        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Statstable::Dot3Statsentry> > dot3statsentry_;
         
 }; // EtherlikeMib::Dot3Statstable
 
@@ -156,7 +156,7 @@ class EtherlikeMib::Dot3Colltable : public Entity
 
         class Dot3Collentry; //type: EtherlikeMib::Dot3Colltable::Dot3Collentry
 
-        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Colltable::Dot3Collentry> > dot3collentry;
+        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Colltable::Dot3Collentry> > dot3collentry_;
         
 }; // EtherlikeMib::Dot3Colltable
 
@@ -199,7 +199,7 @@ class EtherlikeMib::Dot3Controltable : public Entity
 
         class Dot3Controlentry; //type: EtherlikeMib::Dot3Controltable::Dot3Controlentry
 
-        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Controltable::Dot3Controlentry> > dot3controlentry;
+        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Controltable::Dot3Controlentry> > dot3controlentry_;
         
 }; // EtherlikeMib::Dot3Controltable
 
@@ -243,7 +243,7 @@ class EtherlikeMib::Dot3Pausetable : public Entity
 
         class Dot3Pauseentry; //type: EtherlikeMib::Dot3Pausetable::Dot3Pauseentry
 
-        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Pausetable::Dot3Pauseentry> > dot3pauseentry;
+        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Pausetable::Dot3Pauseentry> > dot3pauseentry_;
         
 }; // EtherlikeMib::Dot3Pausetable
 
@@ -292,7 +292,7 @@ class EtherlikeMib::Dot3Hcstatstable : public Entity
 
         class Dot3Hcstatsentry; //type: EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry
 
-        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry> > dot3hcstatsentry;
+        std::vector<std::shared_ptr<EtherLike_MIB::EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry> > dot3hcstatsentry_;
         
 }; // EtherlikeMib::Dot3Hcstatstable
 

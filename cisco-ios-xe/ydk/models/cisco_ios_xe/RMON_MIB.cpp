@@ -20,60 +20,60 @@ Rmoneventsv2Identity::~Rmoneventsv2Identity()
 
 RmonMib::RmonMib()
     :
-    alarmtable(std::make_shared<RmonMib::Alarmtable>())
-	,buffercontroltable(std::make_shared<RmonMib::Buffercontroltable>())
-	,capturebuffertable(std::make_shared<RmonMib::Capturebuffertable>())
-	,channeltable(std::make_shared<RmonMib::Channeltable>())
-	,etherhistorytable(std::make_shared<RmonMib::Etherhistorytable>())
-	,etherstatstable(std::make_shared<RmonMib::Etherstatstable>())
-	,eventtable(std::make_shared<RmonMib::Eventtable>())
-	,filtertable(std::make_shared<RmonMib::Filtertable>())
-	,historycontroltable(std::make_shared<RmonMib::Historycontroltable>())
-	,hostcontroltable(std::make_shared<RmonMib::Hostcontroltable>())
-	,hosttable(std::make_shared<RmonMib::Hosttable>())
-	,hosttimetable(std::make_shared<RmonMib::Hosttimetable>())
-	,hosttopncontroltable(std::make_shared<RmonMib::Hosttopncontroltable>())
-	,hosttopntable(std::make_shared<RmonMib::Hosttopntable>())
-	,logtable(std::make_shared<RmonMib::Logtable>())
-	,matrixcontroltable(std::make_shared<RmonMib::Matrixcontroltable>())
-	,matrixdstable(std::make_shared<RmonMib::Matrixdstable>())
-	,matrixsdtable(std::make_shared<RmonMib::Matrixsdtable>())
+    alarmtable_(std::make_shared<RmonMib::Alarmtable>())
+	,buffercontroltable_(std::make_shared<RmonMib::Buffercontroltable>())
+	,capturebuffertable_(std::make_shared<RmonMib::Capturebuffertable>())
+	,channeltable_(std::make_shared<RmonMib::Channeltable>())
+	,etherhistorytable_(std::make_shared<RmonMib::Etherhistorytable>())
+	,etherstatstable_(std::make_shared<RmonMib::Etherstatstable>())
+	,eventtable_(std::make_shared<RmonMib::Eventtable>())
+	,filtertable_(std::make_shared<RmonMib::Filtertable>())
+	,historycontroltable_(std::make_shared<RmonMib::Historycontroltable>())
+	,hostcontroltable_(std::make_shared<RmonMib::Hostcontroltable>())
+	,hosttable_(std::make_shared<RmonMib::Hosttable>())
+	,hosttimetable_(std::make_shared<RmonMib::Hosttimetable>())
+	,hosttopncontroltable_(std::make_shared<RmonMib::Hosttopncontroltable>())
+	,hosttopntable_(std::make_shared<RmonMib::Hosttopntable>())
+	,logtable_(std::make_shared<RmonMib::Logtable>())
+	,matrixcontroltable_(std::make_shared<RmonMib::Matrixcontroltable>())
+	,matrixdstable_(std::make_shared<RmonMib::Matrixdstable>())
+	,matrixsdtable_(std::make_shared<RmonMib::Matrixsdtable>())
 {
-    alarmtable->parent = this;
+    alarmtable_->parent = this;
 
-    buffercontroltable->parent = this;
+    buffercontroltable_->parent = this;
 
-    capturebuffertable->parent = this;
+    capturebuffertable_->parent = this;
 
-    channeltable->parent = this;
+    channeltable_->parent = this;
 
-    etherhistorytable->parent = this;
+    etherhistorytable_->parent = this;
 
-    etherstatstable->parent = this;
+    etherstatstable_->parent = this;
 
-    eventtable->parent = this;
+    eventtable_->parent = this;
 
-    filtertable->parent = this;
+    filtertable_->parent = this;
 
-    historycontroltable->parent = this;
+    historycontroltable_->parent = this;
 
-    hostcontroltable->parent = this;
+    hostcontroltable_->parent = this;
 
-    hosttable->parent = this;
+    hosttable_->parent = this;
 
-    hosttimetable->parent = this;
+    hosttimetable_->parent = this;
 
-    hosttopncontroltable->parent = this;
+    hosttopncontroltable_->parent = this;
 
-    hosttopntable->parent = this;
+    hosttopntable_->parent = this;
 
-    logtable->parent = this;
+    logtable_->parent = this;
 
-    matrixcontroltable->parent = this;
+    matrixcontroltable_->parent = this;
 
-    matrixdstable->parent = this;
+    matrixdstable_->parent = this;
 
-    matrixsdtable->parent = this;
+    matrixsdtable_->parent = this;
 
     yang_name = "RMON-MIB"; yang_parent_name = "RMON-MIB";
 }
@@ -84,47 +84,47 @@ RmonMib::~RmonMib()
 
 bool RmonMib::has_data() const
 {
-    return (alarmtable !=  nullptr && alarmtable->has_data())
-	|| (buffercontroltable !=  nullptr && buffercontroltable->has_data())
-	|| (capturebuffertable !=  nullptr && capturebuffertable->has_data())
-	|| (channeltable !=  nullptr && channeltable->has_data())
-	|| (etherhistorytable !=  nullptr && etherhistorytable->has_data())
-	|| (etherstatstable !=  nullptr && etherstatstable->has_data())
-	|| (eventtable !=  nullptr && eventtable->has_data())
-	|| (filtertable !=  nullptr && filtertable->has_data())
-	|| (historycontroltable !=  nullptr && historycontroltable->has_data())
-	|| (hostcontroltable !=  nullptr && hostcontroltable->has_data())
-	|| (hosttable !=  nullptr && hosttable->has_data())
-	|| (hosttimetable !=  nullptr && hosttimetable->has_data())
-	|| (hosttopncontroltable !=  nullptr && hosttopncontroltable->has_data())
-	|| (hosttopntable !=  nullptr && hosttopntable->has_data())
-	|| (logtable !=  nullptr && logtable->has_data())
-	|| (matrixcontroltable !=  nullptr && matrixcontroltable->has_data())
-	|| (matrixdstable !=  nullptr && matrixdstable->has_data())
-	|| (matrixsdtable !=  nullptr && matrixsdtable->has_data());
+    return (alarmtable_ !=  nullptr && alarmtable_->has_data())
+	|| (buffercontroltable_ !=  nullptr && buffercontroltable_->has_data())
+	|| (capturebuffertable_ !=  nullptr && capturebuffertable_->has_data())
+	|| (channeltable_ !=  nullptr && channeltable_->has_data())
+	|| (etherhistorytable_ !=  nullptr && etherhistorytable_->has_data())
+	|| (etherstatstable_ !=  nullptr && etherstatstable_->has_data())
+	|| (eventtable_ !=  nullptr && eventtable_->has_data())
+	|| (filtertable_ !=  nullptr && filtertable_->has_data())
+	|| (historycontroltable_ !=  nullptr && historycontroltable_->has_data())
+	|| (hostcontroltable_ !=  nullptr && hostcontroltable_->has_data())
+	|| (hosttable_ !=  nullptr && hosttable_->has_data())
+	|| (hosttimetable_ !=  nullptr && hosttimetable_->has_data())
+	|| (hosttopncontroltable_ !=  nullptr && hosttopncontroltable_->has_data())
+	|| (hosttopntable_ !=  nullptr && hosttopntable_->has_data())
+	|| (logtable_ !=  nullptr && logtable_->has_data())
+	|| (matrixcontroltable_ !=  nullptr && matrixcontroltable_->has_data())
+	|| (matrixdstable_ !=  nullptr && matrixdstable_->has_data())
+	|| (matrixsdtable_ !=  nullptr && matrixsdtable_->has_data());
 }
 
 bool RmonMib::has_operation() const
 {
     return is_set(operation)
-	|| (alarmtable !=  nullptr && alarmtable->has_operation())
-	|| (buffercontroltable !=  nullptr && buffercontroltable->has_operation())
-	|| (capturebuffertable !=  nullptr && capturebuffertable->has_operation())
-	|| (channeltable !=  nullptr && channeltable->has_operation())
-	|| (etherhistorytable !=  nullptr && etherhistorytable->has_operation())
-	|| (etherstatstable !=  nullptr && etherstatstable->has_operation())
-	|| (eventtable !=  nullptr && eventtable->has_operation())
-	|| (filtertable !=  nullptr && filtertable->has_operation())
-	|| (historycontroltable !=  nullptr && historycontroltable->has_operation())
-	|| (hostcontroltable !=  nullptr && hostcontroltable->has_operation())
-	|| (hosttable !=  nullptr && hosttable->has_operation())
-	|| (hosttimetable !=  nullptr && hosttimetable->has_operation())
-	|| (hosttopncontroltable !=  nullptr && hosttopncontroltable->has_operation())
-	|| (hosttopntable !=  nullptr && hosttopntable->has_operation())
-	|| (logtable !=  nullptr && logtable->has_operation())
-	|| (matrixcontroltable !=  nullptr && matrixcontroltable->has_operation())
-	|| (matrixdstable !=  nullptr && matrixdstable->has_operation())
-	|| (matrixsdtable !=  nullptr && matrixsdtable->has_operation());
+	|| (alarmtable_ !=  nullptr && alarmtable_->has_operation())
+	|| (buffercontroltable_ !=  nullptr && buffercontroltable_->has_operation())
+	|| (capturebuffertable_ !=  nullptr && capturebuffertable_->has_operation())
+	|| (channeltable_ !=  nullptr && channeltable_->has_operation())
+	|| (etherhistorytable_ !=  nullptr && etherhistorytable_->has_operation())
+	|| (etherstatstable_ !=  nullptr && etherstatstable_->has_operation())
+	|| (eventtable_ !=  nullptr && eventtable_->has_operation())
+	|| (filtertable_ !=  nullptr && filtertable_->has_operation())
+	|| (historycontroltable_ !=  nullptr && historycontroltable_->has_operation())
+	|| (hostcontroltable_ !=  nullptr && hostcontroltable_->has_operation())
+	|| (hosttable_ !=  nullptr && hosttable_->has_operation())
+	|| (hosttimetable_ !=  nullptr && hosttimetable_->has_operation())
+	|| (hosttopncontroltable_ !=  nullptr && hosttopncontroltable_->has_operation())
+	|| (hosttopntable_ !=  nullptr && hosttopntable_->has_operation())
+	|| (logtable_ !=  nullptr && logtable_->has_operation())
+	|| (matrixcontroltable_ !=  nullptr && matrixcontroltable_->has_operation())
+	|| (matrixdstable_ !=  nullptr && matrixdstable_->has_operation())
+	|| (matrixsdtable_ !=  nullptr && matrixsdtable_->has_operation());
 }
 
 std::string RmonMib::get_segment_path() const
@@ -158,164 +158,164 @@ std::shared_ptr<Entity> RmonMib::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "alarmTable")
     {
-        if(alarmtable == nullptr)
+        if(alarmtable_ == nullptr)
         {
-            alarmtable = std::make_shared<RmonMib::Alarmtable>();
+            alarmtable_ = std::make_shared<RmonMib::Alarmtable>();
         }
-        return alarmtable;
+        return alarmtable_;
     }
 
     if(child_yang_name == "bufferControlTable")
     {
-        if(buffercontroltable == nullptr)
+        if(buffercontroltable_ == nullptr)
         {
-            buffercontroltable = std::make_shared<RmonMib::Buffercontroltable>();
+            buffercontroltable_ = std::make_shared<RmonMib::Buffercontroltable>();
         }
-        return buffercontroltable;
+        return buffercontroltable_;
     }
 
     if(child_yang_name == "captureBufferTable")
     {
-        if(capturebuffertable == nullptr)
+        if(capturebuffertable_ == nullptr)
         {
-            capturebuffertable = std::make_shared<RmonMib::Capturebuffertable>();
+            capturebuffertable_ = std::make_shared<RmonMib::Capturebuffertable>();
         }
-        return capturebuffertable;
+        return capturebuffertable_;
     }
 
     if(child_yang_name == "channelTable")
     {
-        if(channeltable == nullptr)
+        if(channeltable_ == nullptr)
         {
-            channeltable = std::make_shared<RmonMib::Channeltable>();
+            channeltable_ = std::make_shared<RmonMib::Channeltable>();
         }
-        return channeltable;
+        return channeltable_;
     }
 
     if(child_yang_name == "etherHistoryTable")
     {
-        if(etherhistorytable == nullptr)
+        if(etherhistorytable_ == nullptr)
         {
-            etherhistorytable = std::make_shared<RmonMib::Etherhistorytable>();
+            etherhistorytable_ = std::make_shared<RmonMib::Etherhistorytable>();
         }
-        return etherhistorytable;
+        return etherhistorytable_;
     }
 
     if(child_yang_name == "etherStatsTable")
     {
-        if(etherstatstable == nullptr)
+        if(etherstatstable_ == nullptr)
         {
-            etherstatstable = std::make_shared<RmonMib::Etherstatstable>();
+            etherstatstable_ = std::make_shared<RmonMib::Etherstatstable>();
         }
-        return etherstatstable;
+        return etherstatstable_;
     }
 
     if(child_yang_name == "eventTable")
     {
-        if(eventtable == nullptr)
+        if(eventtable_ == nullptr)
         {
-            eventtable = std::make_shared<RmonMib::Eventtable>();
+            eventtable_ = std::make_shared<RmonMib::Eventtable>();
         }
-        return eventtable;
+        return eventtable_;
     }
 
     if(child_yang_name == "filterTable")
     {
-        if(filtertable == nullptr)
+        if(filtertable_ == nullptr)
         {
-            filtertable = std::make_shared<RmonMib::Filtertable>();
+            filtertable_ = std::make_shared<RmonMib::Filtertable>();
         }
-        return filtertable;
+        return filtertable_;
     }
 
     if(child_yang_name == "historyControlTable")
     {
-        if(historycontroltable == nullptr)
+        if(historycontroltable_ == nullptr)
         {
-            historycontroltable = std::make_shared<RmonMib::Historycontroltable>();
+            historycontroltable_ = std::make_shared<RmonMib::Historycontroltable>();
         }
-        return historycontroltable;
+        return historycontroltable_;
     }
 
     if(child_yang_name == "hostControlTable")
     {
-        if(hostcontroltable == nullptr)
+        if(hostcontroltable_ == nullptr)
         {
-            hostcontroltable = std::make_shared<RmonMib::Hostcontroltable>();
+            hostcontroltable_ = std::make_shared<RmonMib::Hostcontroltable>();
         }
-        return hostcontroltable;
+        return hostcontroltable_;
     }
 
     if(child_yang_name == "hostTable")
     {
-        if(hosttable == nullptr)
+        if(hosttable_ == nullptr)
         {
-            hosttable = std::make_shared<RmonMib::Hosttable>();
+            hosttable_ = std::make_shared<RmonMib::Hosttable>();
         }
-        return hosttable;
+        return hosttable_;
     }
 
     if(child_yang_name == "hostTimeTable")
     {
-        if(hosttimetable == nullptr)
+        if(hosttimetable_ == nullptr)
         {
-            hosttimetable = std::make_shared<RmonMib::Hosttimetable>();
+            hosttimetable_ = std::make_shared<RmonMib::Hosttimetable>();
         }
-        return hosttimetable;
+        return hosttimetable_;
     }
 
     if(child_yang_name == "hostTopNControlTable")
     {
-        if(hosttopncontroltable == nullptr)
+        if(hosttopncontroltable_ == nullptr)
         {
-            hosttopncontroltable = std::make_shared<RmonMib::Hosttopncontroltable>();
+            hosttopncontroltable_ = std::make_shared<RmonMib::Hosttopncontroltable>();
         }
-        return hosttopncontroltable;
+        return hosttopncontroltable_;
     }
 
     if(child_yang_name == "hostTopNTable")
     {
-        if(hosttopntable == nullptr)
+        if(hosttopntable_ == nullptr)
         {
-            hosttopntable = std::make_shared<RmonMib::Hosttopntable>();
+            hosttopntable_ = std::make_shared<RmonMib::Hosttopntable>();
         }
-        return hosttopntable;
+        return hosttopntable_;
     }
 
     if(child_yang_name == "logTable")
     {
-        if(logtable == nullptr)
+        if(logtable_ == nullptr)
         {
-            logtable = std::make_shared<RmonMib::Logtable>();
+            logtable_ = std::make_shared<RmonMib::Logtable>();
         }
-        return logtable;
+        return logtable_;
     }
 
     if(child_yang_name == "matrixControlTable")
     {
-        if(matrixcontroltable == nullptr)
+        if(matrixcontroltable_ == nullptr)
         {
-            matrixcontroltable = std::make_shared<RmonMib::Matrixcontroltable>();
+            matrixcontroltable_ = std::make_shared<RmonMib::Matrixcontroltable>();
         }
-        return matrixcontroltable;
+        return matrixcontroltable_;
     }
 
     if(child_yang_name == "matrixDSTable")
     {
-        if(matrixdstable == nullptr)
+        if(matrixdstable_ == nullptr)
         {
-            matrixdstable = std::make_shared<RmonMib::Matrixdstable>();
+            matrixdstable_ = std::make_shared<RmonMib::Matrixdstable>();
         }
-        return matrixdstable;
+        return matrixdstable_;
     }
 
     if(child_yang_name == "matrixSDTable")
     {
-        if(matrixsdtable == nullptr)
+        if(matrixsdtable_ == nullptr)
         {
-            matrixsdtable = std::make_shared<RmonMib::Matrixsdtable>();
+            matrixsdtable_ = std::make_shared<RmonMib::Matrixsdtable>();
         }
-        return matrixsdtable;
+        return matrixsdtable_;
     }
 
     return nullptr;
@@ -324,94 +324,94 @@ std::shared_ptr<Entity> RmonMib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(alarmtable != nullptr)
+    if(alarmtable_ != nullptr)
     {
-        children["alarmTable"] = alarmtable;
+        children["alarmTable"] = alarmtable_;
     }
 
-    if(buffercontroltable != nullptr)
+    if(buffercontroltable_ != nullptr)
     {
-        children["bufferControlTable"] = buffercontroltable;
+        children["bufferControlTable"] = buffercontroltable_;
     }
 
-    if(capturebuffertable != nullptr)
+    if(capturebuffertable_ != nullptr)
     {
-        children["captureBufferTable"] = capturebuffertable;
+        children["captureBufferTable"] = capturebuffertable_;
     }
 
-    if(channeltable != nullptr)
+    if(channeltable_ != nullptr)
     {
-        children["channelTable"] = channeltable;
+        children["channelTable"] = channeltable_;
     }
 
-    if(etherhistorytable != nullptr)
+    if(etherhistorytable_ != nullptr)
     {
-        children["etherHistoryTable"] = etherhistorytable;
+        children["etherHistoryTable"] = etherhistorytable_;
     }
 
-    if(etherstatstable != nullptr)
+    if(etherstatstable_ != nullptr)
     {
-        children["etherStatsTable"] = etherstatstable;
+        children["etherStatsTable"] = etherstatstable_;
     }
 
-    if(eventtable != nullptr)
+    if(eventtable_ != nullptr)
     {
-        children["eventTable"] = eventtable;
+        children["eventTable"] = eventtable_;
     }
 
-    if(filtertable != nullptr)
+    if(filtertable_ != nullptr)
     {
-        children["filterTable"] = filtertable;
+        children["filterTable"] = filtertable_;
     }
 
-    if(historycontroltable != nullptr)
+    if(historycontroltable_ != nullptr)
     {
-        children["historyControlTable"] = historycontroltable;
+        children["historyControlTable"] = historycontroltable_;
     }
 
-    if(hostcontroltable != nullptr)
+    if(hostcontroltable_ != nullptr)
     {
-        children["hostControlTable"] = hostcontroltable;
+        children["hostControlTable"] = hostcontroltable_;
     }
 
-    if(hosttable != nullptr)
+    if(hosttable_ != nullptr)
     {
-        children["hostTable"] = hosttable;
+        children["hostTable"] = hosttable_;
     }
 
-    if(hosttimetable != nullptr)
+    if(hosttimetable_ != nullptr)
     {
-        children["hostTimeTable"] = hosttimetable;
+        children["hostTimeTable"] = hosttimetable_;
     }
 
-    if(hosttopncontroltable != nullptr)
+    if(hosttopncontroltable_ != nullptr)
     {
-        children["hostTopNControlTable"] = hosttopncontroltable;
+        children["hostTopNControlTable"] = hosttopncontroltable_;
     }
 
-    if(hosttopntable != nullptr)
+    if(hosttopntable_ != nullptr)
     {
-        children["hostTopNTable"] = hosttopntable;
+        children["hostTopNTable"] = hosttopntable_;
     }
 
-    if(logtable != nullptr)
+    if(logtable_ != nullptr)
     {
-        children["logTable"] = logtable;
+        children["logTable"] = logtable_;
     }
 
-    if(matrixcontroltable != nullptr)
+    if(matrixcontroltable_ != nullptr)
     {
-        children["matrixControlTable"] = matrixcontroltable;
+        children["matrixControlTable"] = matrixcontroltable_;
     }
 
-    if(matrixdstable != nullptr)
+    if(matrixdstable_ != nullptr)
     {
-        children["matrixDSTable"] = matrixdstable;
+        children["matrixDSTable"] = matrixdstable_;
     }
 
-    if(matrixsdtable != nullptr)
+    if(matrixsdtable_ != nullptr)
     {
-        children["matrixSDTable"] = matrixsdtable;
+        children["matrixSDTable"] = matrixsdtable_;
     }
 
     return children;
@@ -452,9 +452,9 @@ RmonMib::Etherstatstable::~Etherstatstable()
 
 bool RmonMib::Etherstatstable::has_data() const
 {
-    for (std::size_t index=0; index<etherstatsentry.size(); index++)
+    for (std::size_t index=0; index<etherstatsentry_.size(); index++)
     {
-        if(etherstatsentry[index]->has_data())
+        if(etherstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -462,9 +462,9 @@ bool RmonMib::Etherstatstable::has_data() const
 
 bool RmonMib::Etherstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<etherstatsentry.size(); index++)
+    for (std::size_t index=0; index<etherstatsentry_.size(); index++)
     {
-        if(etherstatsentry[index]->has_operation())
+        if(etherstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -504,7 +504,7 @@ std::shared_ptr<Entity> RmonMib::Etherstatstable::get_child_by_name(const std::s
 {
     if(child_yang_name == "etherStatsEntry")
     {
-        for(auto const & c : etherstatsentry)
+        for(auto const & c : etherstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -514,7 +514,7 @@ std::shared_ptr<Entity> RmonMib::Etherstatstable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<RmonMib::Etherstatstable::Etherstatsentry>();
         c->parent = this;
-        etherstatsentry.push_back(c);
+        etherstatsentry_.push_back(c);
         return c;
     }
 
@@ -524,7 +524,7 @@ std::shared_ptr<Entity> RmonMib::Etherstatstable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Etherstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherstatsentry)
+    for (auto const & c : etherstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -779,9 +779,9 @@ RmonMib::Historycontroltable::~Historycontroltable()
 
 bool RmonMib::Historycontroltable::has_data() const
 {
-    for (std::size_t index=0; index<historycontrolentry.size(); index++)
+    for (std::size_t index=0; index<historycontrolentry_.size(); index++)
     {
-        if(historycontrolentry[index]->has_data())
+        if(historycontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -789,9 +789,9 @@ bool RmonMib::Historycontroltable::has_data() const
 
 bool RmonMib::Historycontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<historycontrolentry.size(); index++)
+    for (std::size_t index=0; index<historycontrolentry_.size(); index++)
     {
-        if(historycontrolentry[index]->has_operation())
+        if(historycontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -831,7 +831,7 @@ std::shared_ptr<Entity> RmonMib::Historycontroltable::get_child_by_name(const st
 {
     if(child_yang_name == "historyControlEntry")
     {
-        for(auto const & c : historycontrolentry)
+        for(auto const & c : historycontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -841,7 +841,7 @@ std::shared_ptr<Entity> RmonMib::Historycontroltable::get_child_by_name(const st
         }
         auto c = std::make_shared<RmonMib::Historycontroltable::Historycontrolentry>();
         c->parent = this;
-        historycontrolentry.push_back(c);
+        historycontrolentry_.push_back(c);
         return c;
     }
 
@@ -851,7 +851,7 @@ std::shared_ptr<Entity> RmonMib::Historycontroltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Historycontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : historycontrolentry)
+    for (auto const & c : historycontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -994,9 +994,9 @@ RmonMib::Etherhistorytable::~Etherhistorytable()
 
 bool RmonMib::Etherhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<etherhistoryentry.size(); index++)
+    for (std::size_t index=0; index<etherhistoryentry_.size(); index++)
     {
-        if(etherhistoryentry[index]->has_data())
+        if(etherhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1004,9 +1004,9 @@ bool RmonMib::Etherhistorytable::has_data() const
 
 bool RmonMib::Etherhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<etherhistoryentry.size(); index++)
+    for (std::size_t index=0; index<etherhistoryentry_.size(); index++)
     {
-        if(etherhistoryentry[index]->has_operation())
+        if(etherhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1046,7 +1046,7 @@ std::shared_ptr<Entity> RmonMib::Etherhistorytable::get_child_by_name(const std:
 {
     if(child_yang_name == "etherHistoryEntry")
     {
-        for(auto const & c : etherhistoryentry)
+        for(auto const & c : etherhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1056,7 +1056,7 @@ std::shared_ptr<Entity> RmonMib::Etherhistorytable::get_child_by_name(const std:
         }
         auto c = std::make_shared<RmonMib::Etherhistorytable::Etherhistoryentry>();
         c->parent = this;
-        etherhistoryentry.push_back(c);
+        etherhistoryentry_.push_back(c);
         return c;
     }
 
@@ -1066,7 +1066,7 @@ std::shared_ptr<Entity> RmonMib::Etherhistorytable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Etherhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherhistoryentry)
+    for (auto const & c : etherhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1273,9 +1273,9 @@ RmonMib::Alarmtable::~Alarmtable()
 
 bool RmonMib::Alarmtable::has_data() const
 {
-    for (std::size_t index=0; index<alarmentry.size(); index++)
+    for (std::size_t index=0; index<alarmentry_.size(); index++)
     {
-        if(alarmentry[index]->has_data())
+        if(alarmentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1283,9 +1283,9 @@ bool RmonMib::Alarmtable::has_data() const
 
 bool RmonMib::Alarmtable::has_operation() const
 {
-    for (std::size_t index=0; index<alarmentry.size(); index++)
+    for (std::size_t index=0; index<alarmentry_.size(); index++)
     {
-        if(alarmentry[index]->has_operation())
+        if(alarmentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1325,7 +1325,7 @@ std::shared_ptr<Entity> RmonMib::Alarmtable::get_child_by_name(const std::string
 {
     if(child_yang_name == "alarmEntry")
     {
-        for(auto const & c : alarmentry)
+        for(auto const & c : alarmentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1335,7 +1335,7 @@ std::shared_ptr<Entity> RmonMib::Alarmtable::get_child_by_name(const std::string
         }
         auto c = std::make_shared<RmonMib::Alarmtable::Alarmentry>();
         c->parent = this;
-        alarmentry.push_back(c);
+        alarmentry_.push_back(c);
         return c;
     }
 
@@ -1345,7 +1345,7 @@ std::shared_ptr<Entity> RmonMib::Alarmtable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Alarmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : alarmentry)
+    for (auto const & c : alarmentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1528,9 +1528,9 @@ RmonMib::Hostcontroltable::~Hostcontroltable()
 
 bool RmonMib::Hostcontroltable::has_data() const
 {
-    for (std::size_t index=0; index<hostcontrolentry.size(); index++)
+    for (std::size_t index=0; index<hostcontrolentry_.size(); index++)
     {
-        if(hostcontrolentry[index]->has_data())
+        if(hostcontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1538,9 +1538,9 @@ bool RmonMib::Hostcontroltable::has_data() const
 
 bool RmonMib::Hostcontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<hostcontrolentry.size(); index++)
+    for (std::size_t index=0; index<hostcontrolentry_.size(); index++)
     {
-        if(hostcontrolentry[index]->has_operation())
+        if(hostcontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1580,7 +1580,7 @@ std::shared_ptr<Entity> RmonMib::Hostcontroltable::get_child_by_name(const std::
 {
     if(child_yang_name == "hostControlEntry")
     {
-        for(auto const & c : hostcontrolentry)
+        for(auto const & c : hostcontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1590,7 +1590,7 @@ std::shared_ptr<Entity> RmonMib::Hostcontroltable::get_child_by_name(const std::
         }
         auto c = std::make_shared<RmonMib::Hostcontroltable::Hostcontrolentry>();
         c->parent = this;
-        hostcontrolentry.push_back(c);
+        hostcontrolentry_.push_back(c);
         return c;
     }
 
@@ -1600,7 +1600,7 @@ std::shared_ptr<Entity> RmonMib::Hostcontroltable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Hostcontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hostcontrolentry)
+    for (auto const & c : hostcontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1735,9 +1735,9 @@ RmonMib::Hosttable::~Hosttable()
 
 bool RmonMib::Hosttable::has_data() const
 {
-    for (std::size_t index=0; index<hostentry.size(); index++)
+    for (std::size_t index=0; index<hostentry_.size(); index++)
     {
-        if(hostentry[index]->has_data())
+        if(hostentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1745,9 +1745,9 @@ bool RmonMib::Hosttable::has_data() const
 
 bool RmonMib::Hosttable::has_operation() const
 {
-    for (std::size_t index=0; index<hostentry.size(); index++)
+    for (std::size_t index=0; index<hostentry_.size(); index++)
     {
-        if(hostentry[index]->has_operation())
+        if(hostentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1787,7 +1787,7 @@ std::shared_ptr<Entity> RmonMib::Hosttable::get_child_by_name(const std::string 
 {
     if(child_yang_name == "hostEntry")
     {
-        for(auto const & c : hostentry)
+        for(auto const & c : hostentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1797,7 +1797,7 @@ std::shared_ptr<Entity> RmonMib::Hosttable::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<RmonMib::Hosttable::Hostentry>();
         c->parent = this;
-        hostentry.push_back(c);
+        hostentry_.push_back(c);
         return c;
     }
 
@@ -1807,7 +1807,7 @@ std::shared_ptr<Entity> RmonMib::Hosttable::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Hosttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hostentry)
+    for (auto const & c : hostentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1974,9 +1974,9 @@ RmonMib::Hosttimetable::~Hosttimetable()
 
 bool RmonMib::Hosttimetable::has_data() const
 {
-    for (std::size_t index=0; index<hosttimeentry.size(); index++)
+    for (std::size_t index=0; index<hosttimeentry_.size(); index++)
     {
-        if(hosttimeentry[index]->has_data())
+        if(hosttimeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1984,9 +1984,9 @@ bool RmonMib::Hosttimetable::has_data() const
 
 bool RmonMib::Hosttimetable::has_operation() const
 {
-    for (std::size_t index=0; index<hosttimeentry.size(); index++)
+    for (std::size_t index=0; index<hosttimeentry_.size(); index++)
     {
-        if(hosttimeentry[index]->has_operation())
+        if(hosttimeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2026,7 +2026,7 @@ std::shared_ptr<Entity> RmonMib::Hosttimetable::get_child_by_name(const std::str
 {
     if(child_yang_name == "hostTimeEntry")
     {
-        for(auto const & c : hosttimeentry)
+        for(auto const & c : hosttimeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2036,7 +2036,7 @@ std::shared_ptr<Entity> RmonMib::Hosttimetable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<RmonMib::Hosttimetable::Hosttimeentry>();
         c->parent = this;
-        hosttimeentry.push_back(c);
+        hosttimeentry_.push_back(c);
         return c;
     }
 
@@ -2046,7 +2046,7 @@ std::shared_ptr<Entity> RmonMib::Hosttimetable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Hosttimetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hosttimeentry)
+    for (auto const & c : hosttimeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2213,9 +2213,9 @@ RmonMib::Hosttopncontroltable::~Hosttopncontroltable()
 
 bool RmonMib::Hosttopncontroltable::has_data() const
 {
-    for (std::size_t index=0; index<hosttopncontrolentry.size(); index++)
+    for (std::size_t index=0; index<hosttopncontrolentry_.size(); index++)
     {
-        if(hosttopncontrolentry[index]->has_data())
+        if(hosttopncontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2223,9 +2223,9 @@ bool RmonMib::Hosttopncontroltable::has_data() const
 
 bool RmonMib::Hosttopncontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<hosttopncontrolentry.size(); index++)
+    for (std::size_t index=0; index<hosttopncontrolentry_.size(); index++)
     {
-        if(hosttopncontrolentry[index]->has_operation())
+        if(hosttopncontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2265,7 +2265,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopncontroltable::get_child_by_name(const s
 {
     if(child_yang_name == "hostTopNControlEntry")
     {
-        for(auto const & c : hosttopncontrolentry)
+        for(auto const & c : hosttopncontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2275,7 +2275,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopncontroltable::get_child_by_name(const s
         }
         auto c = std::make_shared<RmonMib::Hosttopncontroltable::Hosttopncontrolentry>();
         c->parent = this;
-        hosttopncontrolentry.push_back(c);
+        hosttopncontrolentry_.push_back(c);
         return c;
     }
 
@@ -2285,7 +2285,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopncontroltable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Hosttopncontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hosttopncontrolentry)
+    for (auto const & c : hosttopncontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2452,9 +2452,9 @@ RmonMib::Hosttopntable::~Hosttopntable()
 
 bool RmonMib::Hosttopntable::has_data() const
 {
-    for (std::size_t index=0; index<hosttopnentry.size(); index++)
+    for (std::size_t index=0; index<hosttopnentry_.size(); index++)
     {
-        if(hosttopnentry[index]->has_data())
+        if(hosttopnentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2462,9 +2462,9 @@ bool RmonMib::Hosttopntable::has_data() const
 
 bool RmonMib::Hosttopntable::has_operation() const
 {
-    for (std::size_t index=0; index<hosttopnentry.size(); index++)
+    for (std::size_t index=0; index<hosttopnentry_.size(); index++)
     {
-        if(hosttopnentry[index]->has_operation())
+        if(hosttopnentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2504,7 +2504,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopntable::get_child_by_name(const std::str
 {
     if(child_yang_name == "hostTopNEntry")
     {
-        for(auto const & c : hosttopnentry)
+        for(auto const & c : hosttopnentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2514,7 +2514,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopntable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<RmonMib::Hosttopntable::Hosttopnentry>();
         c->parent = this;
-        hosttopnentry.push_back(c);
+        hosttopnentry_.push_back(c);
         return c;
     }
 
@@ -2524,7 +2524,7 @@ std::shared_ptr<Entity> RmonMib::Hosttopntable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Hosttopntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hosttopnentry)
+    for (auto const & c : hosttopnentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2643,9 +2643,9 @@ RmonMib::Matrixcontroltable::~Matrixcontroltable()
 
 bool RmonMib::Matrixcontroltable::has_data() const
 {
-    for (std::size_t index=0; index<matrixcontrolentry.size(); index++)
+    for (std::size_t index=0; index<matrixcontrolentry_.size(); index++)
     {
-        if(matrixcontrolentry[index]->has_data())
+        if(matrixcontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2653,9 +2653,9 @@ bool RmonMib::Matrixcontroltable::has_data() const
 
 bool RmonMib::Matrixcontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<matrixcontrolentry.size(); index++)
+    for (std::size_t index=0; index<matrixcontrolentry_.size(); index++)
     {
-        if(matrixcontrolentry[index]->has_operation())
+        if(matrixcontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2695,7 +2695,7 @@ std::shared_ptr<Entity> RmonMib::Matrixcontroltable::get_child_by_name(const std
 {
     if(child_yang_name == "matrixControlEntry")
     {
-        for(auto const & c : matrixcontrolentry)
+        for(auto const & c : matrixcontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2705,7 +2705,7 @@ std::shared_ptr<Entity> RmonMib::Matrixcontroltable::get_child_by_name(const std
         }
         auto c = std::make_shared<RmonMib::Matrixcontroltable::Matrixcontrolentry>();
         c->parent = this;
-        matrixcontrolentry.push_back(c);
+        matrixcontrolentry_.push_back(c);
         return c;
     }
 
@@ -2715,7 +2715,7 @@ std::shared_ptr<Entity> RmonMib::Matrixcontroltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Matrixcontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : matrixcontrolentry)
+    for (auto const & c : matrixcontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2850,9 +2850,9 @@ RmonMib::Matrixsdtable::~Matrixsdtable()
 
 bool RmonMib::Matrixsdtable::has_data() const
 {
-    for (std::size_t index=0; index<matrixsdentry.size(); index++)
+    for (std::size_t index=0; index<matrixsdentry_.size(); index++)
     {
-        if(matrixsdentry[index]->has_data())
+        if(matrixsdentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2860,9 +2860,9 @@ bool RmonMib::Matrixsdtable::has_data() const
 
 bool RmonMib::Matrixsdtable::has_operation() const
 {
-    for (std::size_t index=0; index<matrixsdentry.size(); index++)
+    for (std::size_t index=0; index<matrixsdentry_.size(); index++)
     {
-        if(matrixsdentry[index]->has_operation())
+        if(matrixsdentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2902,7 +2902,7 @@ std::shared_ptr<Entity> RmonMib::Matrixsdtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "matrixSDEntry")
     {
-        for(auto const & c : matrixsdentry)
+        for(auto const & c : matrixsdentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2912,7 +2912,7 @@ std::shared_ptr<Entity> RmonMib::Matrixsdtable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<RmonMib::Matrixsdtable::Matrixsdentry>();
         c->parent = this;
-        matrixsdentry.push_back(c);
+        matrixsdentry_.push_back(c);
         return c;
     }
 
@@ -2922,7 +2922,7 @@ std::shared_ptr<Entity> RmonMib::Matrixsdtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Matrixsdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : matrixsdentry)
+    for (auto const & c : matrixsdentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3057,9 +3057,9 @@ RmonMib::Matrixdstable::~Matrixdstable()
 
 bool RmonMib::Matrixdstable::has_data() const
 {
-    for (std::size_t index=0; index<matrixdsentry.size(); index++)
+    for (std::size_t index=0; index<matrixdsentry_.size(); index++)
     {
-        if(matrixdsentry[index]->has_data())
+        if(matrixdsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3067,9 +3067,9 @@ bool RmonMib::Matrixdstable::has_data() const
 
 bool RmonMib::Matrixdstable::has_operation() const
 {
-    for (std::size_t index=0; index<matrixdsentry.size(); index++)
+    for (std::size_t index=0; index<matrixdsentry_.size(); index++)
     {
-        if(matrixdsentry[index]->has_operation())
+        if(matrixdsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3109,7 +3109,7 @@ std::shared_ptr<Entity> RmonMib::Matrixdstable::get_child_by_name(const std::str
 {
     if(child_yang_name == "matrixDSEntry")
     {
-        for(auto const & c : matrixdsentry)
+        for(auto const & c : matrixdsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3119,7 +3119,7 @@ std::shared_ptr<Entity> RmonMib::Matrixdstable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<RmonMib::Matrixdstable::Matrixdsentry>();
         c->parent = this;
-        matrixdsentry.push_back(c);
+        matrixdsentry_.push_back(c);
         return c;
     }
 
@@ -3129,7 +3129,7 @@ std::shared_ptr<Entity> RmonMib::Matrixdstable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Matrixdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : matrixdsentry)
+    for (auto const & c : matrixdsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3264,9 +3264,9 @@ RmonMib::Filtertable::~Filtertable()
 
 bool RmonMib::Filtertable::has_data() const
 {
-    for (std::size_t index=0; index<filterentry.size(); index++)
+    for (std::size_t index=0; index<filterentry_.size(); index++)
     {
-        if(filterentry[index]->has_data())
+        if(filterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3274,9 +3274,9 @@ bool RmonMib::Filtertable::has_data() const
 
 bool RmonMib::Filtertable::has_operation() const
 {
-    for (std::size_t index=0; index<filterentry.size(); index++)
+    for (std::size_t index=0; index<filterentry_.size(); index++)
     {
-        if(filterentry[index]->has_operation())
+        if(filterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3316,7 +3316,7 @@ std::shared_ptr<Entity> RmonMib::Filtertable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "filterEntry")
     {
-        for(auto const & c : filterentry)
+        for(auto const & c : filterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3326,7 +3326,7 @@ std::shared_ptr<Entity> RmonMib::Filtertable::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<RmonMib::Filtertable::Filterentry>();
         c->parent = this;
-        filterentry.push_back(c);
+        filterentry_.push_back(c);
         return c;
     }
 
@@ -3336,7 +3336,7 @@ std::shared_ptr<Entity> RmonMib::Filtertable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Filtertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : filterentry)
+    for (auto const & c : filterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3511,9 +3511,9 @@ RmonMib::Channeltable::~Channeltable()
 
 bool RmonMib::Channeltable::has_data() const
 {
-    for (std::size_t index=0; index<channelentry.size(); index++)
+    for (std::size_t index=0; index<channelentry_.size(); index++)
     {
-        if(channelentry[index]->has_data())
+        if(channelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3521,9 +3521,9 @@ bool RmonMib::Channeltable::has_data() const
 
 bool RmonMib::Channeltable::has_operation() const
 {
-    for (std::size_t index=0; index<channelentry.size(); index++)
+    for (std::size_t index=0; index<channelentry_.size(); index++)
     {
-        if(channelentry[index]->has_operation())
+        if(channelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3563,7 +3563,7 @@ std::shared_ptr<Entity> RmonMib::Channeltable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "channelEntry")
     {
-        for(auto const & c : channelentry)
+        for(auto const & c : channelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3573,7 +3573,7 @@ std::shared_ptr<Entity> RmonMib::Channeltable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<RmonMib::Channeltable::Channelentry>();
         c->parent = this;
-        channelentry.push_back(c);
+        channelentry_.push_back(c);
         return c;
     }
 
@@ -3583,7 +3583,7 @@ std::shared_ptr<Entity> RmonMib::Channeltable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Channeltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : channelentry)
+    for (auto const & c : channelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3766,9 +3766,9 @@ RmonMib::Buffercontroltable::~Buffercontroltable()
 
 bool RmonMib::Buffercontroltable::has_data() const
 {
-    for (std::size_t index=0; index<buffercontrolentry.size(); index++)
+    for (std::size_t index=0; index<buffercontrolentry_.size(); index++)
     {
-        if(buffercontrolentry[index]->has_data())
+        if(buffercontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3776,9 +3776,9 @@ bool RmonMib::Buffercontroltable::has_data() const
 
 bool RmonMib::Buffercontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<buffercontrolentry.size(); index++)
+    for (std::size_t index=0; index<buffercontrolentry_.size(); index++)
     {
-        if(buffercontrolentry[index]->has_operation())
+        if(buffercontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3818,7 +3818,7 @@ std::shared_ptr<Entity> RmonMib::Buffercontroltable::get_child_by_name(const std
 {
     if(child_yang_name == "bufferControlEntry")
     {
-        for(auto const & c : buffercontrolentry)
+        for(auto const & c : buffercontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3828,7 +3828,7 @@ std::shared_ptr<Entity> RmonMib::Buffercontroltable::get_child_by_name(const std
         }
         auto c = std::make_shared<RmonMib::Buffercontroltable::Buffercontrolentry>();
         c->parent = this;
-        buffercontrolentry.push_back(c);
+        buffercontrolentry_.push_back(c);
         return c;
     }
 
@@ -3838,7 +3838,7 @@ std::shared_ptr<Entity> RmonMib::Buffercontroltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Buffercontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : buffercontrolentry)
+    for (auto const & c : buffercontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4029,9 +4029,9 @@ RmonMib::Capturebuffertable::~Capturebuffertable()
 
 bool RmonMib::Capturebuffertable::has_data() const
 {
-    for (std::size_t index=0; index<capturebufferentry.size(); index++)
+    for (std::size_t index=0; index<capturebufferentry_.size(); index++)
     {
-        if(capturebufferentry[index]->has_data())
+        if(capturebufferentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4039,9 +4039,9 @@ bool RmonMib::Capturebuffertable::has_data() const
 
 bool RmonMib::Capturebuffertable::has_operation() const
 {
-    for (std::size_t index=0; index<capturebufferentry.size(); index++)
+    for (std::size_t index=0; index<capturebufferentry_.size(); index++)
     {
-        if(capturebufferentry[index]->has_operation())
+        if(capturebufferentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4081,7 +4081,7 @@ std::shared_ptr<Entity> RmonMib::Capturebuffertable::get_child_by_name(const std
 {
     if(child_yang_name == "captureBufferEntry")
     {
-        for(auto const & c : capturebufferentry)
+        for(auto const & c : capturebufferentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4091,7 +4091,7 @@ std::shared_ptr<Entity> RmonMib::Capturebuffertable::get_child_by_name(const std
         }
         auto c = std::make_shared<RmonMib::Capturebuffertable::Capturebufferentry>();
         c->parent = this;
-        capturebufferentry.push_back(c);
+        capturebufferentry_.push_back(c);
         return c;
     }
 
@@ -4101,7 +4101,7 @@ std::shared_ptr<Entity> RmonMib::Capturebuffertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Capturebuffertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : capturebufferentry)
+    for (auto const & c : capturebufferentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4244,9 +4244,9 @@ RmonMib::Eventtable::~Eventtable()
 
 bool RmonMib::Eventtable::has_data() const
 {
-    for (std::size_t index=0; index<evententry.size(); index++)
+    for (std::size_t index=0; index<evententry_.size(); index++)
     {
-        if(evententry[index]->has_data())
+        if(evententry_[index]->has_data())
             return true;
     }
     return false;
@@ -4254,9 +4254,9 @@ bool RmonMib::Eventtable::has_data() const
 
 bool RmonMib::Eventtable::has_operation() const
 {
-    for (std::size_t index=0; index<evententry.size(); index++)
+    for (std::size_t index=0; index<evententry_.size(); index++)
     {
-        if(evententry[index]->has_operation())
+        if(evententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4296,7 +4296,7 @@ std::shared_ptr<Entity> RmonMib::Eventtable::get_child_by_name(const std::string
 {
     if(child_yang_name == "eventEntry")
     {
-        for(auto const & c : evententry)
+        for(auto const & c : evententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4306,7 +4306,7 @@ std::shared_ptr<Entity> RmonMib::Eventtable::get_child_by_name(const std::string
         }
         auto c = std::make_shared<RmonMib::Eventtable::Evententry>();
         c->parent = this;
-        evententry.push_back(c);
+        evententry_.push_back(c);
         return c;
     }
 
@@ -4316,7 +4316,7 @@ std::shared_ptr<Entity> RmonMib::Eventtable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Eventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : evententry)
+    for (auto const & c : evententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4459,9 +4459,9 @@ RmonMib::Logtable::~Logtable()
 
 bool RmonMib::Logtable::has_data() const
 {
-    for (std::size_t index=0; index<logentry.size(); index++)
+    for (std::size_t index=0; index<logentry_.size(); index++)
     {
-        if(logentry[index]->has_data())
+        if(logentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4469,9 +4469,9 @@ bool RmonMib::Logtable::has_data() const
 
 bool RmonMib::Logtable::has_operation() const
 {
-    for (std::size_t index=0; index<logentry.size(); index++)
+    for (std::size_t index=0; index<logentry_.size(); index++)
     {
-        if(logentry[index]->has_operation())
+        if(logentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4511,7 +4511,7 @@ std::shared_ptr<Entity> RmonMib::Logtable::get_child_by_name(const std::string &
 {
     if(child_yang_name == "logEntry")
     {
-        for(auto const & c : logentry)
+        for(auto const & c : logentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4521,7 +4521,7 @@ std::shared_ptr<Entity> RmonMib::Logtable::get_child_by_name(const std::string &
         }
         auto c = std::make_shared<RmonMib::Logtable::Logentry>();
         c->parent = this;
-        logentry.push_back(c);
+        logentry_.push_back(c);
         return c;
     }
 
@@ -4531,7 +4531,7 @@ std::shared_ptr<Entity> RmonMib::Logtable::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> RmonMib::Logtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : logentry)
+    for (auto const & c : logentry_)
     {
         children[c->get_segment_path()] = c;
     }

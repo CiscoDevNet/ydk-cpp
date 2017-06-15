@@ -33,9 +33,9 @@ class IntegratedServicesMib : public Entity
         class Intsrvifattribtable; //type: IntegratedServicesMib::Intsrvifattribtable
         class Intsrvflowtable; //type: IntegratedServicesMib::Intsrvflowtable
 
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable> intsrvflowtable;
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvgenobjects> intsrvgenobjects;
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable> intsrvifattribtable;
+        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable> intsrvflowtable_;
+        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvgenobjects> intsrvgenobjects_;
+        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable> intsrvifattribtable_;
         
 }; // IntegratedServicesMib
 
@@ -75,7 +75,7 @@ class IntegratedServicesMib::Intsrvifattribtable : public Entity
 
         class Intsrvifattribentry; //type: IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry
 
-        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
+        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry_;
         
 }; // IntegratedServicesMib::Intsrvifattribtable
 
@@ -122,7 +122,7 @@ class IntegratedServicesMib::Intsrvflowtable : public Entity
 
         class Intsrvflowentry; //type: IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry
 
-        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
+        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry_;
         
 }; // IntegratedServicesMib::Intsrvflowtable
 

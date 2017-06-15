@@ -37,13 +37,13 @@ class MplsLsrStdMib : public Entity
         class Mplslabelstacktable; //type: MplsLsrStdMib::Mplslabelstacktable
         class Mplsinsegmentmaptable; //type: MplsLsrStdMib::Mplsinsegmentmaptable
 
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmentmaptable> mplsinsegmentmaptable;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmenttable> mplsinsegmenttable;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinterfacetable> mplsinterfacetable;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslabelstacktable> mplslabelstacktable;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslsrobjects> mplslsrobjects;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsoutsegmenttable> mplsoutsegmenttable;
-        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsxctable> mplsxctable;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmentmaptable> mplsinsegmentmaptable_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmenttable> mplsinsegmenttable_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinterfacetable> mplsinterfacetable_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslabelstacktable> mplslabelstacktable_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslsrobjects> mplslsrobjects_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsoutsegmenttable> mplsoutsegmenttable_;
+        std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsxctable> mplsxctable_;
         
 }; // MplsLsrStdMib
 
@@ -88,7 +88,7 @@ class MplsLsrStdMib::Mplsinterfacetable : public Entity
 
         class Mplsinterfaceentry; //type: MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry> > mplsinterfaceentry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry> > mplsinterfaceentry_;
         
 }; // MplsLsrStdMib::Mplsinterfacetable
 
@@ -139,7 +139,7 @@ class MplsLsrStdMib::Mplsinsegmenttable : public Entity
 
         class Mplsinsegmententry; //type: MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry> > mplsinsegmententry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry> > mplsinsegmententry_;
         
 }; // MplsLsrStdMib::Mplsinsegmenttable
 
@@ -195,7 +195,7 @@ class MplsLsrStdMib::Mplsoutsegmenttable : public Entity
 
         class Mplsoutsegmententry; //type: MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry> > mplsoutsegmententry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry> > mplsoutsegmententry_;
         
 }; // MplsLsrStdMib::Mplsoutsegmenttable
 
@@ -252,7 +252,7 @@ class MplsLsrStdMib::Mplsxctable : public Entity
 
         class Mplsxcentry; //type: MplsLsrStdMib::Mplsxctable::Mplsxcentry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsxctable::Mplsxcentry> > mplsxcentry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsxctable::Mplsxcentry> > mplsxcentry_;
         
 }; // MplsLsrStdMib::Mplsxctable
 
@@ -303,7 +303,7 @@ class MplsLsrStdMib::Mplslabelstacktable : public Entity
 
         class Mplslabelstackentry; //type: MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry> > mplslabelstackentry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry> > mplslabelstackentry_;
         
 }; // MplsLsrStdMib::Mplslabelstacktable
 
@@ -348,7 +348,7 @@ class MplsLsrStdMib::Mplsinsegmentmaptable : public Entity
 
         class Mplsinsegmentmapentry; //type: MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry
 
-        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry> > mplsinsegmentmapentry;
+        std::vector<std::shared_ptr<MPLS_LSR_STD_MIB::MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry> > mplsinsegmentmapentry_;
         
 }; // MplsLsrStdMib::Mplsinsegmentmaptable
 

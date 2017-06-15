@@ -11,33 +11,33 @@ namespace PIM_MIB {
 
 PimMib::PimMib()
     :
-    pim(std::make_shared<PimMib::Pim>())
-	,pimcandidaterptable(std::make_shared<PimMib::Pimcandidaterptable>())
-	,pimcomponenttable(std::make_shared<PimMib::Pimcomponenttable>())
-	,piminterfacetable(std::make_shared<PimMib::Piminterfacetable>())
-	,pimipmroutenexthoptable(std::make_shared<PimMib::Pimipmroutenexthoptable>())
-	,pimipmroutetable(std::make_shared<PimMib::Pimipmroutetable>())
-	,pimneighbortable(std::make_shared<PimMib::Pimneighbortable>())
-	,pimrpsettable(std::make_shared<PimMib::Pimrpsettable>())
-	,pimrptable(std::make_shared<PimMib::Pimrptable>())
+    pim_(std::make_shared<PimMib::Pim>())
+	,pimcandidaterptable_(std::make_shared<PimMib::Pimcandidaterptable>())
+	,pimcomponenttable_(std::make_shared<PimMib::Pimcomponenttable>())
+	,piminterfacetable_(std::make_shared<PimMib::Piminterfacetable>())
+	,pimipmroutenexthoptable_(std::make_shared<PimMib::Pimipmroutenexthoptable>())
+	,pimipmroutetable_(std::make_shared<PimMib::Pimipmroutetable>())
+	,pimneighbortable_(std::make_shared<PimMib::Pimneighbortable>())
+	,pimrpsettable_(std::make_shared<PimMib::Pimrpsettable>())
+	,pimrptable_(std::make_shared<PimMib::Pimrptable>())
 {
-    pim->parent = this;
+    pim_->parent = this;
 
-    pimcandidaterptable->parent = this;
+    pimcandidaterptable_->parent = this;
 
-    pimcomponenttable->parent = this;
+    pimcomponenttable_->parent = this;
 
-    piminterfacetable->parent = this;
+    piminterfacetable_->parent = this;
 
-    pimipmroutenexthoptable->parent = this;
+    pimipmroutenexthoptable_->parent = this;
 
-    pimipmroutetable->parent = this;
+    pimipmroutetable_->parent = this;
 
-    pimneighbortable->parent = this;
+    pimneighbortable_->parent = this;
 
-    pimrpsettable->parent = this;
+    pimrpsettable_->parent = this;
 
-    pimrptable->parent = this;
+    pimrptable_->parent = this;
 
     yang_name = "PIM-MIB"; yang_parent_name = "PIM-MIB";
 }
@@ -48,29 +48,29 @@ PimMib::~PimMib()
 
 bool PimMib::has_data() const
 {
-    return (pim !=  nullptr && pim->has_data())
-	|| (pimcandidaterptable !=  nullptr && pimcandidaterptable->has_data())
-	|| (pimcomponenttable !=  nullptr && pimcomponenttable->has_data())
-	|| (piminterfacetable !=  nullptr && piminterfacetable->has_data())
-	|| (pimipmroutenexthoptable !=  nullptr && pimipmroutenexthoptable->has_data())
-	|| (pimipmroutetable !=  nullptr && pimipmroutetable->has_data())
-	|| (pimneighbortable !=  nullptr && pimneighbortable->has_data())
-	|| (pimrpsettable !=  nullptr && pimrpsettable->has_data())
-	|| (pimrptable !=  nullptr && pimrptable->has_data());
+    return (pim_ !=  nullptr && pim_->has_data())
+	|| (pimcandidaterptable_ !=  nullptr && pimcandidaterptable_->has_data())
+	|| (pimcomponenttable_ !=  nullptr && pimcomponenttable_->has_data())
+	|| (piminterfacetable_ !=  nullptr && piminterfacetable_->has_data())
+	|| (pimipmroutenexthoptable_ !=  nullptr && pimipmroutenexthoptable_->has_data())
+	|| (pimipmroutetable_ !=  nullptr && pimipmroutetable_->has_data())
+	|| (pimneighbortable_ !=  nullptr && pimneighbortable_->has_data())
+	|| (pimrpsettable_ !=  nullptr && pimrpsettable_->has_data())
+	|| (pimrptable_ !=  nullptr && pimrptable_->has_data());
 }
 
 bool PimMib::has_operation() const
 {
     return is_set(operation)
-	|| (pim !=  nullptr && pim->has_operation())
-	|| (pimcandidaterptable !=  nullptr && pimcandidaterptable->has_operation())
-	|| (pimcomponenttable !=  nullptr && pimcomponenttable->has_operation())
-	|| (piminterfacetable !=  nullptr && piminterfacetable->has_operation())
-	|| (pimipmroutenexthoptable !=  nullptr && pimipmroutenexthoptable->has_operation())
-	|| (pimipmroutetable !=  nullptr && pimipmroutetable->has_operation())
-	|| (pimneighbortable !=  nullptr && pimneighbortable->has_operation())
-	|| (pimrpsettable !=  nullptr && pimrpsettable->has_operation())
-	|| (pimrptable !=  nullptr && pimrptable->has_operation());
+	|| (pim_ !=  nullptr && pim_->has_operation())
+	|| (pimcandidaterptable_ !=  nullptr && pimcandidaterptable_->has_operation())
+	|| (pimcomponenttable_ !=  nullptr && pimcomponenttable_->has_operation())
+	|| (piminterfacetable_ !=  nullptr && piminterfacetable_->has_operation())
+	|| (pimipmroutenexthoptable_ !=  nullptr && pimipmroutenexthoptable_->has_operation())
+	|| (pimipmroutetable_ !=  nullptr && pimipmroutetable_->has_operation())
+	|| (pimneighbortable_ !=  nullptr && pimneighbortable_->has_operation())
+	|| (pimrpsettable_ !=  nullptr && pimrpsettable_->has_operation())
+	|| (pimrptable_ !=  nullptr && pimrptable_->has_operation());
 }
 
 std::string PimMib::get_segment_path() const
@@ -104,83 +104,83 @@ std::shared_ptr<Entity> PimMib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "pim")
     {
-        if(pim == nullptr)
+        if(pim_ == nullptr)
         {
-            pim = std::make_shared<PimMib::Pim>();
+            pim_ = std::make_shared<PimMib::Pim>();
         }
-        return pim;
+        return pim_;
     }
 
     if(child_yang_name == "pimCandidateRPTable")
     {
-        if(pimcandidaterptable == nullptr)
+        if(pimcandidaterptable_ == nullptr)
         {
-            pimcandidaterptable = std::make_shared<PimMib::Pimcandidaterptable>();
+            pimcandidaterptable_ = std::make_shared<PimMib::Pimcandidaterptable>();
         }
-        return pimcandidaterptable;
+        return pimcandidaterptable_;
     }
 
     if(child_yang_name == "pimComponentTable")
     {
-        if(pimcomponenttable == nullptr)
+        if(pimcomponenttable_ == nullptr)
         {
-            pimcomponenttable = std::make_shared<PimMib::Pimcomponenttable>();
+            pimcomponenttable_ = std::make_shared<PimMib::Pimcomponenttable>();
         }
-        return pimcomponenttable;
+        return pimcomponenttable_;
     }
 
     if(child_yang_name == "pimInterfaceTable")
     {
-        if(piminterfacetable == nullptr)
+        if(piminterfacetable_ == nullptr)
         {
-            piminterfacetable = std::make_shared<PimMib::Piminterfacetable>();
+            piminterfacetable_ = std::make_shared<PimMib::Piminterfacetable>();
         }
-        return piminterfacetable;
+        return piminterfacetable_;
     }
 
     if(child_yang_name == "pimIpMRouteNextHopTable")
     {
-        if(pimipmroutenexthoptable == nullptr)
+        if(pimipmroutenexthoptable_ == nullptr)
         {
-            pimipmroutenexthoptable = std::make_shared<PimMib::Pimipmroutenexthoptable>();
+            pimipmroutenexthoptable_ = std::make_shared<PimMib::Pimipmroutenexthoptable>();
         }
-        return pimipmroutenexthoptable;
+        return pimipmroutenexthoptable_;
     }
 
     if(child_yang_name == "pimIpMRouteTable")
     {
-        if(pimipmroutetable == nullptr)
+        if(pimipmroutetable_ == nullptr)
         {
-            pimipmroutetable = std::make_shared<PimMib::Pimipmroutetable>();
+            pimipmroutetable_ = std::make_shared<PimMib::Pimipmroutetable>();
         }
-        return pimipmroutetable;
+        return pimipmroutetable_;
     }
 
     if(child_yang_name == "pimNeighborTable")
     {
-        if(pimneighbortable == nullptr)
+        if(pimneighbortable_ == nullptr)
         {
-            pimneighbortable = std::make_shared<PimMib::Pimneighbortable>();
+            pimneighbortable_ = std::make_shared<PimMib::Pimneighbortable>();
         }
-        return pimneighbortable;
+        return pimneighbortable_;
     }
 
     if(child_yang_name == "pimRPSetTable")
     {
-        if(pimrpsettable == nullptr)
+        if(pimrpsettable_ == nullptr)
         {
-            pimrpsettable = std::make_shared<PimMib::Pimrpsettable>();
+            pimrpsettable_ = std::make_shared<PimMib::Pimrpsettable>();
         }
-        return pimrpsettable;
+        return pimrpsettable_;
     }
 
     if(child_yang_name == "pimRPTable")
     {
-        if(pimrptable == nullptr)
+        if(pimrptable_ == nullptr)
         {
-            pimrptable = std::make_shared<PimMib::Pimrptable>();
+            pimrptable_ = std::make_shared<PimMib::Pimrptable>();
         }
-        return pimrptable;
+        return pimrptable_;
     }
 
     return nullptr;
@@ -189,49 +189,49 @@ std::shared_ptr<Entity> PimMib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> PimMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(pim != nullptr)
+    if(pim_ != nullptr)
     {
-        children["pim"] = pim;
+        children["pim"] = pim_;
     }
 
-    if(pimcandidaterptable != nullptr)
+    if(pimcandidaterptable_ != nullptr)
     {
-        children["pimCandidateRPTable"] = pimcandidaterptable;
+        children["pimCandidateRPTable"] = pimcandidaterptable_;
     }
 
-    if(pimcomponenttable != nullptr)
+    if(pimcomponenttable_ != nullptr)
     {
-        children["pimComponentTable"] = pimcomponenttable;
+        children["pimComponentTable"] = pimcomponenttable_;
     }
 
-    if(piminterfacetable != nullptr)
+    if(piminterfacetable_ != nullptr)
     {
-        children["pimInterfaceTable"] = piminterfacetable;
+        children["pimInterfaceTable"] = piminterfacetable_;
     }
 
-    if(pimipmroutenexthoptable != nullptr)
+    if(pimipmroutenexthoptable_ != nullptr)
     {
-        children["pimIpMRouteNextHopTable"] = pimipmroutenexthoptable;
+        children["pimIpMRouteNextHopTable"] = pimipmroutenexthoptable_;
     }
 
-    if(pimipmroutetable != nullptr)
+    if(pimipmroutetable_ != nullptr)
     {
-        children["pimIpMRouteTable"] = pimipmroutetable;
+        children["pimIpMRouteTable"] = pimipmroutetable_;
     }
 
-    if(pimneighbortable != nullptr)
+    if(pimneighbortable_ != nullptr)
     {
-        children["pimNeighborTable"] = pimneighbortable;
+        children["pimNeighborTable"] = pimneighbortable_;
     }
 
-    if(pimrpsettable != nullptr)
+    if(pimrpsettable_ != nullptr)
     {
-        children["pimRPSetTable"] = pimrpsettable;
+        children["pimRPSetTable"] = pimrpsettable_;
     }
 
-    if(pimrptable != nullptr)
+    if(pimrptable_ != nullptr)
     {
-        children["pimRPTable"] = pimrptable;
+        children["pimRPTable"] = pimrptable_;
     }
 
     return children;
@@ -344,9 +344,9 @@ PimMib::Piminterfacetable::~Piminterfacetable()
 
 bool PimMib::Piminterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<piminterfaceentry.size(); index++)
+    for (std::size_t index=0; index<piminterfaceentry_.size(); index++)
     {
-        if(piminterfaceentry[index]->has_data())
+        if(piminterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -354,9 +354,9 @@ bool PimMib::Piminterfacetable::has_data() const
 
 bool PimMib::Piminterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<piminterfaceentry.size(); index++)
+    for (std::size_t index=0; index<piminterfaceentry_.size(); index++)
     {
-        if(piminterfaceentry[index]->has_operation())
+        if(piminterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -396,7 +396,7 @@ std::shared_ptr<Entity> PimMib::Piminterfacetable::get_child_by_name(const std::
 {
     if(child_yang_name == "pimInterfaceEntry")
     {
-        for(auto const & c : piminterfaceentry)
+        for(auto const & c : piminterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -406,7 +406,7 @@ std::shared_ptr<Entity> PimMib::Piminterfacetable::get_child_by_name(const std::
         }
         auto c = std::make_shared<PimMib::Piminterfacetable::Piminterfaceentry>();
         c->parent = this;
-        piminterfaceentry.push_back(c);
+        piminterfaceentry_.push_back(c);
         return c;
     }
 
@@ -416,7 +416,7 @@ std::shared_ptr<Entity> PimMib::Piminterfacetable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Piminterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : piminterfaceentry)
+    for (auto const & c : piminterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -575,9 +575,9 @@ PimMib::Pimneighbortable::~Pimneighbortable()
 
 bool PimMib::Pimneighbortable::has_data() const
 {
-    for (std::size_t index=0; index<pimneighborentry.size(); index++)
+    for (std::size_t index=0; index<pimneighborentry_.size(); index++)
     {
-        if(pimneighborentry[index]->has_data())
+        if(pimneighborentry_[index]->has_data())
             return true;
     }
     return false;
@@ -585,9 +585,9 @@ bool PimMib::Pimneighbortable::has_data() const
 
 bool PimMib::Pimneighbortable::has_operation() const
 {
-    for (std::size_t index=0; index<pimneighborentry.size(); index++)
+    for (std::size_t index=0; index<pimneighborentry_.size(); index++)
     {
-        if(pimneighborentry[index]->has_operation())
+        if(pimneighborentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -627,7 +627,7 @@ std::shared_ptr<Entity> PimMib::Pimneighbortable::get_child_by_name(const std::s
 {
     if(child_yang_name == "pimNeighborEntry")
     {
-        for(auto const & c : pimneighborentry)
+        for(auto const & c : pimneighborentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -637,7 +637,7 @@ std::shared_ptr<Entity> PimMib::Pimneighbortable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<PimMib::Pimneighbortable::Pimneighborentry>();
         c->parent = this;
-        pimneighborentry.push_back(c);
+        pimneighborentry_.push_back(c);
         return c;
     }
 
@@ -647,7 +647,7 @@ std::shared_ptr<Entity> PimMib::Pimneighbortable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimneighbortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimneighborentry)
+    for (auto const & c : pimneighborentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -774,9 +774,9 @@ PimMib::Pimipmroutetable::~Pimipmroutetable()
 
 bool PimMib::Pimipmroutetable::has_data() const
 {
-    for (std::size_t index=0; index<pimipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<pimipmrouteentry_.size(); index++)
     {
-        if(pimipmrouteentry[index]->has_data())
+        if(pimipmrouteentry_[index]->has_data())
             return true;
     }
     return false;
@@ -784,9 +784,9 @@ bool PimMib::Pimipmroutetable::has_data() const
 
 bool PimMib::Pimipmroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<pimipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<pimipmrouteentry_.size(); index++)
     {
-        if(pimipmrouteentry[index]->has_operation())
+        if(pimipmrouteentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -826,7 +826,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutetable::get_child_by_name(const std::s
 {
     if(child_yang_name == "pimIpMRouteEntry")
     {
-        for(auto const & c : pimipmrouteentry)
+        for(auto const & c : pimipmrouteentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -836,7 +836,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutetable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<PimMib::Pimipmroutetable::Pimipmrouteentry>();
         c->parent = this;
-        pimipmrouteentry.push_back(c);
+        pimipmrouteentry_.push_back(c);
         return c;
     }
 
@@ -846,7 +846,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutetable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimipmroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimipmrouteentry)
+    for (auto const & c : pimipmrouteentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -997,9 +997,9 @@ PimMib::Pimrptable::~Pimrptable()
 
 bool PimMib::Pimrptable::has_data() const
 {
-    for (std::size_t index=0; index<pimrpentry.size(); index++)
+    for (std::size_t index=0; index<pimrpentry_.size(); index++)
     {
-        if(pimrpentry[index]->has_data())
+        if(pimrpentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1007,9 +1007,9 @@ bool PimMib::Pimrptable::has_data() const
 
 bool PimMib::Pimrptable::has_operation() const
 {
-    for (std::size_t index=0; index<pimrpentry.size(); index++)
+    for (std::size_t index=0; index<pimrpentry_.size(); index++)
     {
-        if(pimrpentry[index]->has_operation())
+        if(pimrpentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1049,7 +1049,7 @@ std::shared_ptr<Entity> PimMib::Pimrptable::get_child_by_name(const std::string 
 {
     if(child_yang_name == "pimRPEntry")
     {
-        for(auto const & c : pimrpentry)
+        for(auto const & c : pimrpentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1059,7 +1059,7 @@ std::shared_ptr<Entity> PimMib::Pimrptable::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<PimMib::Pimrptable::Pimrpentry>();
         c->parent = this;
-        pimrpentry.push_back(c);
+        pimrpentry_.push_back(c);
         return c;
     }
 
@@ -1069,7 +1069,7 @@ std::shared_ptr<Entity> PimMib::Pimrptable::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimrptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimrpentry)
+    for (auto const & c : pimrpentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1204,9 +1204,9 @@ PimMib::Pimrpsettable::~Pimrpsettable()
 
 bool PimMib::Pimrpsettable::has_data() const
 {
-    for (std::size_t index=0; index<pimrpsetentry.size(); index++)
+    for (std::size_t index=0; index<pimrpsetentry_.size(); index++)
     {
-        if(pimrpsetentry[index]->has_data())
+        if(pimrpsetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1214,9 +1214,9 @@ bool PimMib::Pimrpsettable::has_data() const
 
 bool PimMib::Pimrpsettable::has_operation() const
 {
-    for (std::size_t index=0; index<pimrpsetentry.size(); index++)
+    for (std::size_t index=0; index<pimrpsetentry_.size(); index++)
     {
-        if(pimrpsetentry[index]->has_operation())
+        if(pimrpsetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1256,7 +1256,7 @@ std::shared_ptr<Entity> PimMib::Pimrpsettable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "pimRPSetEntry")
     {
-        for(auto const & c : pimrpsetentry)
+        for(auto const & c : pimrpsetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1266,7 +1266,7 @@ std::shared_ptr<Entity> PimMib::Pimrpsettable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<PimMib::Pimrpsettable::Pimrpsetentry>();
         c->parent = this;
-        pimrpsetentry.push_back(c);
+        pimrpsetentry_.push_back(c);
         return c;
     }
 
@@ -1276,7 +1276,7 @@ std::shared_ptr<Entity> PimMib::Pimrpsettable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimrpsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimrpsetentry)
+    for (auto const & c : pimrpsetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1411,9 +1411,9 @@ PimMib::Pimipmroutenexthoptable::~Pimipmroutenexthoptable()
 
 bool PimMib::Pimipmroutenexthoptable::has_data() const
 {
-    for (std::size_t index=0; index<pimipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<pimipmroutenexthopentry_.size(); index++)
     {
-        if(pimipmroutenexthopentry[index]->has_data())
+        if(pimipmroutenexthopentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1421,9 +1421,9 @@ bool PimMib::Pimipmroutenexthoptable::has_data() const
 
 bool PimMib::Pimipmroutenexthoptable::has_operation() const
 {
-    for (std::size_t index=0; index<pimipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<pimipmroutenexthopentry_.size(); index++)
     {
-        if(pimipmroutenexthopentry[index]->has_operation())
+        if(pimipmroutenexthopentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1463,7 +1463,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutenexthoptable::get_child_by_name(const
 {
     if(child_yang_name == "pimIpMRouteNextHopEntry")
     {
-        for(auto const & c : pimipmroutenexthopentry)
+        for(auto const & c : pimipmroutenexthopentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1473,7 +1473,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutenexthoptable::get_child_by_name(const
         }
         auto c = std::make_shared<PimMib::Pimipmroutenexthoptable::Pimipmroutenexthopentry>();
         c->parent = this;
-        pimipmroutenexthopentry.push_back(c);
+        pimipmroutenexthopentry_.push_back(c);
         return c;
     }
 
@@ -1483,7 +1483,7 @@ std::shared_ptr<Entity> PimMib::Pimipmroutenexthoptable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimipmroutenexthoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimipmroutenexthopentry)
+    for (auto const & c : pimipmroutenexthopentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1618,9 +1618,9 @@ PimMib::Pimcandidaterptable::~Pimcandidaterptable()
 
 bool PimMib::Pimcandidaterptable::has_data() const
 {
-    for (std::size_t index=0; index<pimcandidaterpentry.size(); index++)
+    for (std::size_t index=0; index<pimcandidaterpentry_.size(); index++)
     {
-        if(pimcandidaterpentry[index]->has_data())
+        if(pimcandidaterpentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1628,9 +1628,9 @@ bool PimMib::Pimcandidaterptable::has_data() const
 
 bool PimMib::Pimcandidaterptable::has_operation() const
 {
-    for (std::size_t index=0; index<pimcandidaterpentry.size(); index++)
+    for (std::size_t index=0; index<pimcandidaterpentry_.size(); index++)
     {
-        if(pimcandidaterpentry[index]->has_operation())
+        if(pimcandidaterpentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1670,7 +1670,7 @@ std::shared_ptr<Entity> PimMib::Pimcandidaterptable::get_child_by_name(const std
 {
     if(child_yang_name == "pimCandidateRPEntry")
     {
-        for(auto const & c : pimcandidaterpentry)
+        for(auto const & c : pimcandidaterpentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1680,7 +1680,7 @@ std::shared_ptr<Entity> PimMib::Pimcandidaterptable::get_child_by_name(const std
         }
         auto c = std::make_shared<PimMib::Pimcandidaterptable::Pimcandidaterpentry>();
         c->parent = this;
-        pimcandidaterpentry.push_back(c);
+        pimcandidaterpentry_.push_back(c);
         return c;
     }
 
@@ -1690,7 +1690,7 @@ std::shared_ptr<Entity> PimMib::Pimcandidaterptable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimcandidaterptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimcandidaterpentry)
+    for (auto const & c : pimcandidaterpentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1809,9 +1809,9 @@ PimMib::Pimcomponenttable::~Pimcomponenttable()
 
 bool PimMib::Pimcomponenttable::has_data() const
 {
-    for (std::size_t index=0; index<pimcomponententry.size(); index++)
+    for (std::size_t index=0; index<pimcomponententry_.size(); index++)
     {
-        if(pimcomponententry[index]->has_data())
+        if(pimcomponententry_[index]->has_data())
             return true;
     }
     return false;
@@ -1819,9 +1819,9 @@ bool PimMib::Pimcomponenttable::has_data() const
 
 bool PimMib::Pimcomponenttable::has_operation() const
 {
-    for (std::size_t index=0; index<pimcomponententry.size(); index++)
+    for (std::size_t index=0; index<pimcomponententry_.size(); index++)
     {
-        if(pimcomponententry[index]->has_operation())
+        if(pimcomponententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1861,7 +1861,7 @@ std::shared_ptr<Entity> PimMib::Pimcomponenttable::get_child_by_name(const std::
 {
     if(child_yang_name == "pimComponentEntry")
     {
-        for(auto const & c : pimcomponententry)
+        for(auto const & c : pimcomponententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1871,7 +1871,7 @@ std::shared_ptr<Entity> PimMib::Pimcomponenttable::get_child_by_name(const std::
         }
         auto c = std::make_shared<PimMib::Pimcomponenttable::Pimcomponententry>();
         c->parent = this;
-        pimcomponententry.push_back(c);
+        pimcomponententry_.push_back(c);
         return c;
     }
 
@@ -1881,7 +1881,7 @@ std::shared_ptr<Entity> PimMib::Pimcomponenttable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> PimMib::Pimcomponenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pimcomponententry)
+    for (auto const & c : pimcomponententry_)
     {
         children[c->get_segment_path()] = c;
     }

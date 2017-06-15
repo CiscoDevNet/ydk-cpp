@@ -11,18 +11,18 @@ namespace BGP4_MIB {
 
 Bgp4Mib::Bgp4Mib()
     :
-    bgp(std::make_shared<Bgp4Mib::Bgp>())
-	,bgp4pathattrtable(std::make_shared<Bgp4Mib::Bgp4Pathattrtable>())
-	,bgppeertable(std::make_shared<Bgp4Mib::Bgppeertable>())
-	,bgprcvdpathattrtable(std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>())
+    bgp4pathattrtable_(std::make_shared<Bgp4Mib::Bgp4Pathattrtable>())
+	,bgp_(std::make_shared<Bgp4Mib::Bgp>())
+	,bgppeertable_(std::make_shared<Bgp4Mib::Bgppeertable>())
+	,bgprcvdpathattrtable_(std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>())
 {
-    bgp->parent = this;
+    bgp4pathattrtable_->parent = this;
 
-    bgp4pathattrtable->parent = this;
+    bgp_->parent = this;
 
-    bgppeertable->parent = this;
+    bgppeertable_->parent = this;
 
-    bgprcvdpathattrtable->parent = this;
+    bgprcvdpathattrtable_->parent = this;
 
     yang_name = "BGP4-MIB"; yang_parent_name = "BGP4-MIB";
 }
@@ -33,19 +33,19 @@ Bgp4Mib::~Bgp4Mib()
 
 bool Bgp4Mib::has_data() const
 {
-    return (bgp !=  nullptr && bgp->has_data())
-	|| (bgp4pathattrtable !=  nullptr && bgp4pathattrtable->has_data())
-	|| (bgppeertable !=  nullptr && bgppeertable->has_data())
-	|| (bgprcvdpathattrtable !=  nullptr && bgprcvdpathattrtable->has_data());
+    return (bgp4pathattrtable_ !=  nullptr && bgp4pathattrtable_->has_data())
+	|| (bgp_ !=  nullptr && bgp_->has_data())
+	|| (bgppeertable_ !=  nullptr && bgppeertable_->has_data())
+	|| (bgprcvdpathattrtable_ !=  nullptr && bgprcvdpathattrtable_->has_data());
 }
 
 bool Bgp4Mib::has_operation() const
 {
     return is_set(operation)
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (bgp4pathattrtable !=  nullptr && bgp4pathattrtable->has_operation())
-	|| (bgppeertable !=  nullptr && bgppeertable->has_operation())
-	|| (bgprcvdpathattrtable !=  nullptr && bgprcvdpathattrtable->has_operation());
+	|| (bgp4pathattrtable_ !=  nullptr && bgp4pathattrtable_->has_operation())
+	|| (bgp_ !=  nullptr && bgp_->has_operation())
+	|| (bgppeertable_ !=  nullptr && bgppeertable_->has_operation())
+	|| (bgprcvdpathattrtable_ !=  nullptr && bgprcvdpathattrtable_->has_operation());
 }
 
 std::string Bgp4Mib::get_segment_path() const
@@ -77,40 +77,40 @@ const EntityPath Bgp4Mib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp4Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bgp")
-    {
-        if(bgp == nullptr)
-        {
-            bgp = std::make_shared<Bgp4Mib::Bgp>();
-        }
-        return bgp;
-    }
-
     if(child_yang_name == "bgp4PathAttrTable")
     {
-        if(bgp4pathattrtable == nullptr)
+        if(bgp4pathattrtable_ == nullptr)
         {
-            bgp4pathattrtable = std::make_shared<Bgp4Mib::Bgp4Pathattrtable>();
+            bgp4pathattrtable_ = std::make_shared<Bgp4Mib::Bgp4Pathattrtable>();
         }
-        return bgp4pathattrtable;
+        return bgp4pathattrtable_;
+    }
+
+    if(child_yang_name == "bgp")
+    {
+        if(bgp_ == nullptr)
+        {
+            bgp_ = std::make_shared<Bgp4Mib::Bgp>();
+        }
+        return bgp_;
     }
 
     if(child_yang_name == "bgpPeerTable")
     {
-        if(bgppeertable == nullptr)
+        if(bgppeertable_ == nullptr)
         {
-            bgppeertable = std::make_shared<Bgp4Mib::Bgppeertable>();
+            bgppeertable_ = std::make_shared<Bgp4Mib::Bgppeertable>();
         }
-        return bgppeertable;
+        return bgppeertable_;
     }
 
     if(child_yang_name == "bgpRcvdPathAttrTable")
     {
-        if(bgprcvdpathattrtable == nullptr)
+        if(bgprcvdpathattrtable_ == nullptr)
         {
-            bgprcvdpathattrtable = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>();
+            bgprcvdpathattrtable_ = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>();
         }
-        return bgprcvdpathattrtable;
+        return bgprcvdpathattrtable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> Bgp4Mib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bgp != nullptr)
+    if(bgp4pathattrtable_ != nullptr)
     {
-        children["bgp"] = bgp;
+        children["bgp4PathAttrTable"] = bgp4pathattrtable_;
     }
 
-    if(bgp4pathattrtable != nullptr)
+    if(bgp_ != nullptr)
     {
-        children["bgp4PathAttrTable"] = bgp4pathattrtable;
+        children["bgp"] = bgp_;
     }
 
-    if(bgppeertable != nullptr)
+    if(bgppeertable_ != nullptr)
     {
-        children["bgpPeerTable"] = bgppeertable;
+        children["bgpPeerTable"] = bgppeertable_;
     }
 
-    if(bgprcvdpathattrtable != nullptr)
+    if(bgprcvdpathattrtable_ != nullptr)
     {
-        children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable;
+        children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable_;
     }
 
     return children;
@@ -265,9 +265,9 @@ Bgp4Mib::Bgppeertable::~Bgppeertable()
 
 bool Bgp4Mib::Bgppeertable::has_data() const
 {
-    for (std::size_t index=0; index<bgppeerentry.size(); index++)
+    for (std::size_t index=0; index<bgppeerentry_.size(); index++)
     {
-        if(bgppeerentry[index]->has_data())
+        if(bgppeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -275,9 +275,9 @@ bool Bgp4Mib::Bgppeertable::has_data() const
 
 bool Bgp4Mib::Bgppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppeerentry.size(); index++)
+    for (std::size_t index=0; index<bgppeerentry_.size(); index++)
     {
-        if(bgppeerentry[index]->has_operation())
+        if(bgppeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -317,7 +317,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "bgpPeerEntry")
     {
-        for(auto const & c : bgppeerentry)
+        for(auto const & c : bgppeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -327,7 +327,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<Bgp4Mib::Bgppeertable::Bgppeerentry>();
         c->parent = this;
-        bgppeerentry.push_back(c);
+        bgppeerentry_.push_back(c);
         return c;
     }
 
@@ -337,7 +337,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgppeerentry)
+    for (auto const & c : bgppeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -680,9 +680,9 @@ Bgp4Mib::Bgprcvdpathattrtable::~Bgprcvdpathattrtable()
 
 bool Bgp4Mib::Bgprcvdpathattrtable::has_data() const
 {
-    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgppathattrentry_.size(); index++)
     {
-        if(bgppathattrentry[index]->has_data())
+        if(bgppathattrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -690,9 +690,9 @@ bool Bgp4Mib::Bgprcvdpathattrtable::has_data() const
 
 bool Bgp4Mib::Bgprcvdpathattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgppathattrentry_.size(); index++)
     {
-        if(bgppathattrentry[index]->has_operation())
+        if(bgppathattrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -732,7 +732,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
 {
     if(child_yang_name == "bgpPathAttrEntry")
     {
-        for(auto const & c : bgppathattrentry)
+        for(auto const & c : bgppathattrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -742,7 +742,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
         }
         auto c = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry>();
         c->parent = this;
-        bgppathattrentry.push_back(c);
+        bgppathattrentry_.push_back(c);
         return c;
     }
 
@@ -752,7 +752,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgprcvdpathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgppathattrentry)
+    for (auto const & c : bgppathattrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -887,9 +887,9 @@ Bgp4Mib::Bgp4Pathattrtable::~Bgp4Pathattrtable()
 
 bool Bgp4Mib::Bgp4Pathattrtable::has_data() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgp4pathattrentry_.size(); index++)
     {
-        if(bgp4pathattrentry[index]->has_data())
+        if(bgp4pathattrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -897,9 +897,9 @@ bool Bgp4Mib::Bgp4Pathattrtable::has_data() const
 
 bool Bgp4Mib::Bgp4Pathattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgp4pathattrentry_.size(); index++)
     {
-        if(bgp4pathattrentry[index]->has_operation())
+        if(bgp4pathattrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -939,7 +939,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
 {
     if(child_yang_name == "bgp4PathAttrEntry")
     {
-        for(auto const & c : bgp4pathattrentry)
+        for(auto const & c : bgp4pathattrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -949,7 +949,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
         }
         auto c = std::make_shared<Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry>();
         c->parent = this;
-        bgp4pathattrentry.push_back(c);
+        bgp4pathattrentry_.push_back(c);
         return c;
     }
 
@@ -959,7 +959,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgp4Pathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgp4pathattrentry)
+    for (auto const & c : bgp4pathattrentry_)
     {
         children[c->get_segment_path()] = c;
     }

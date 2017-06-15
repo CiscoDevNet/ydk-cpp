@@ -11,9 +11,9 @@ namespace SNMP_PROXY_MIB {
 
 SnmpProxyMib::SnmpProxyMib()
     :
-    snmpproxytable(std::make_shared<SnmpProxyMib::Snmpproxytable>())
+    snmpproxytable_(std::make_shared<SnmpProxyMib::Snmpproxytable>())
 {
-    snmpproxytable->parent = this;
+    snmpproxytable_->parent = this;
 
     yang_name = "SNMP-PROXY-MIB"; yang_parent_name = "SNMP-PROXY-MIB";
 }
@@ -24,13 +24,13 @@ SnmpProxyMib::~SnmpProxyMib()
 
 bool SnmpProxyMib::has_data() const
 {
-    return (snmpproxytable !=  nullptr && snmpproxytable->has_data());
+    return (snmpproxytable_ !=  nullptr && snmpproxytable_->has_data());
 }
 
 bool SnmpProxyMib::has_operation() const
 {
     return is_set(operation)
-	|| (snmpproxytable !=  nullptr && snmpproxytable->has_operation());
+	|| (snmpproxytable_ !=  nullptr && snmpproxytable_->has_operation());
 }
 
 std::string SnmpProxyMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> SnmpProxyMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "snmpProxyTable")
     {
-        if(snmpproxytable == nullptr)
+        if(snmpproxytable_ == nullptr)
         {
-            snmpproxytable = std::make_shared<SnmpProxyMib::Snmpproxytable>();
+            snmpproxytable_ = std::make_shared<SnmpProxyMib::Snmpproxytable>();
         }
-        return snmpproxytable;
+        return snmpproxytable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> SnmpProxyMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmpproxytable != nullptr)
+    if(snmpproxytable_ != nullptr)
     {
-        children["snmpProxyTable"] = snmpproxytable;
+        children["snmpProxyTable"] = snmpproxytable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ SnmpProxyMib::Snmpproxytable::~Snmpproxytable()
 
 bool SnmpProxyMib::Snmpproxytable::has_data() const
 {
-    for (std::size_t index=0; index<snmpproxyentry.size(); index++)
+    for (std::size_t index=0; index<snmpproxyentry_.size(); index++)
     {
-        if(snmpproxyentry[index]->has_data())
+        if(snmpproxyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool SnmpProxyMib::Snmpproxytable::has_data() const
 
 bool SnmpProxyMib::Snmpproxytable::has_operation() const
 {
-    for (std::size_t index=0; index<snmpproxyentry.size(); index++)
+    for (std::size_t index=0; index<snmpproxyentry_.size(); index++)
     {
-        if(snmpproxyentry[index]->has_operation())
+        if(snmpproxyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const st
 {
     if(child_yang_name == "snmpProxyEntry")
     {
-        for(auto const & c : snmpproxyentry)
+        for(auto const & c : snmpproxyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const st
         }
         auto c = std::make_shared<SnmpProxyMib::Snmpproxytable::Snmpproxyentry>();
         c->parent = this;
-        snmpproxyentry.push_back(c);
+        snmpproxyentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> SnmpProxyMib::Snmpproxytable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> SnmpProxyMib::Snmpproxytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : snmpproxyentry)
+    for (auto const & c : snmpproxyentry_)
     {
         children[c->get_segment_path()] = c;
     }

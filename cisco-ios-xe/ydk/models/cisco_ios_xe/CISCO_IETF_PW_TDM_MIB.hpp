@@ -36,12 +36,12 @@ class CiscoIetfPwTdmMib : public Entity
         class Cpwctdmperfintervaltable; //type: CiscoIetfPwTdmMib::Cpwctdmperfintervaltable
         class Cpwctdmperf1Dayintervaltable; //type: CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable
 
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable> cpwctdmcfgtable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmobjects> cpwctdmobjects;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable> cpwctdmperf1dayintervaltable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable> cpwctdmperfcurrenttable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable> cpwctdmperfintervaltable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable> cpwctdmtable;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable> cpwctdmcfgtable_;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmobjects> cpwctdmobjects_;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable> cpwctdmperf1dayintervaltable_;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable> cpwctdmperfcurrenttable_;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable> cpwctdmperfintervaltable_;
+        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable> cpwctdmtable_;
         
 }; // CiscoIetfPwTdmMib
 
@@ -81,7 +81,7 @@ class CiscoIetfPwTdmMib::Cpwctdmtable : public Entity
 
         class Cpwctdmentry; //type: CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry> > cpwctdmentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry> > cpwctdmentry_;
         
 }; // CiscoIetfPwTdmMib::Cpwctdmtable
 
@@ -133,7 +133,7 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable : public Entity
 
         class Cpwctdmcfgentry; //type: CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry> > cpwctdmcfgentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry> > cpwctdmcfgentry_;
         
 }; // CiscoIetfPwTdmMib::Cpwctdmcfgtable
 
@@ -194,7 +194,7 @@ class CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable : public Entity
 
         class Cpwctdmperfcurrententry; //type: CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry> > cpwctdmperfcurrententry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry> > cpwctdmperfcurrententry_;
         
 }; // CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable
 
@@ -244,7 +244,7 @@ class CiscoIetfPwTdmMib::Cpwctdmperfintervaltable : public Entity
 
         class Cpwctdmperfintervalentry; //type: CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry> > cpwctdmperfintervalentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry> > cpwctdmperfintervalentry_;
         
 }; // CiscoIetfPwTdmMib::Cpwctdmperfintervaltable
 
@@ -297,7 +297,7 @@ class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable : public Entity
 
         class Cpwctdmperf1Dayintervalentry; //type: CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry> > cpwctdmperf1dayintervalentry;
+        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry> > cpwctdmperf1dayintervalentry_;
         
 }; // CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable
 

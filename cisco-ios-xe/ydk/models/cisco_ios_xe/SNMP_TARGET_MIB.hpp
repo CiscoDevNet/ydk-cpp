@@ -33,9 +33,9 @@ class SnmpTargetMib : public Entity
         class Snmptargetaddrtable; //type: SnmpTargetMib::Snmptargetaddrtable
         class Snmptargetparamstable; //type: SnmpTargetMib::Snmptargetparamstable
 
-        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetaddrtable> snmptargetaddrtable;
-        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetobjects> snmptargetobjects;
-        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetparamstable> snmptargetparamstable;
+        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetaddrtable> snmptargetaddrtable_;
+        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetobjects> snmptargetobjects_;
+        std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetparamstable> snmptargetparamstable_;
         
 }; // SnmpTargetMib
 
@@ -77,7 +77,7 @@ class SnmpTargetMib::Snmptargetaddrtable : public Entity
 
         class Snmptargetaddrentry; //type: SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry
 
-        std::vector<std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry> > snmptargetaddrentry;
+        std::vector<std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry> > snmptargetaddrentry_;
         
 }; // SnmpTargetMib::Snmptargetaddrtable
 
@@ -125,7 +125,7 @@ class SnmpTargetMib::Snmptargetparamstable : public Entity
 
         class Snmptargetparamsentry; //type: SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry
 
-        std::vector<std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry> > snmptargetparamsentry;
+        std::vector<std::shared_ptr<SNMP_TARGET_MIB::SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry> > snmptargetparamsentry_;
         
 }; // SnmpTargetMib::Snmptargetparamstable
 

@@ -32,8 +32,8 @@ class CiscoFtpClientMib : public Entity
         class Cfcrequest; //type: CiscoFtpClientMib::Cfcrequest
         class Cfcrequesttable; //type: CiscoFtpClientMib::Cfcrequesttable
 
-        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequest> cfcrequest;
-        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable> cfcrequesttable;
+        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequest> cfcrequest_;
+        std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable> cfcrequesttable_;
         
 }; // CiscoFtpClientMib
 
@@ -76,7 +76,7 @@ class CiscoFtpClientMib::Cfcrequesttable : public Entity
 
         class Cfcrequestentry; //type: CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry
 
-        std::vector<std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry> > cfcrequestentry;
+        std::vector<std::shared_ptr<CISCO_FTP_CLIENT_MIB::CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry> > cfcrequestentry_;
         
 }; // CiscoFtpClientMib::Cfcrequesttable
 

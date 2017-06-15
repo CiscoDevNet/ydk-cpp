@@ -33,10 +33,10 @@ class CiscoEnhancedMempoolMib : public Entity
         class Cempmembufferpooltable; //type: CiscoEnhancedMempoolMib::Cempmembufferpooltable
         class Cempmembuffercachepooltable; //type: CiscoEnhancedMempoolMib::Cempmembuffercachepooltable
 
-        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembuffercachepooltable> cempmembuffercachepooltable;
-        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembufferpooltable> cempmembufferpooltable;
-        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmempooltable> cempmempooltable;
-        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempnotificationconfig> cempnotificationconfig;
+        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembuffercachepooltable> cempmembuffercachepooltable_;
+        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembufferpooltable> cempmembufferpooltable_;
+        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmempooltable> cempmempooltable_;
+        std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempnotificationconfig> cempnotificationconfig_;
         
 }; // CiscoEnhancedMempoolMib
 
@@ -76,7 +76,7 @@ class CiscoEnhancedMempoolMib::Cempmempooltable : public Entity
 
         class Cempmempoolentry; //type: CiscoEnhancedMempoolMib::Cempmempooltable::Cempmempoolentry
 
-        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmempooltable::Cempmempoolentry> > cempmempoolentry;
+        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmempooltable::Cempmempoolentry> > cempmempoolentry_;
         
 }; // CiscoEnhancedMempoolMib::Cempmempooltable
 
@@ -145,7 +145,7 @@ class CiscoEnhancedMempoolMib::Cempmembufferpooltable : public Entity
 
         class Cempmembufferpoolentry; //type: CiscoEnhancedMempoolMib::Cempmembufferpooltable::Cempmembufferpoolentry
 
-        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembufferpooltable::Cempmembufferpoolentry> > cempmembufferpoolentry;
+        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembufferpooltable::Cempmembufferpoolentry> > cempmembufferpoolentry_;
         
 }; // CiscoEnhancedMempoolMib::Cempmembufferpooltable
 
@@ -208,7 +208,7 @@ class CiscoEnhancedMempoolMib::Cempmembuffercachepooltable : public Entity
 
         class Cempmembuffercachepoolentry; //type: CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::Cempmembuffercachepoolentry
 
-        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::Cempmembuffercachepoolentry> > cempmembuffercachepoolentry;
+        std::vector<std::shared_ptr<CISCO_ENHANCED_MEMPOOL_MIB::CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::Cempmembuffercachepoolentry> > cempmembuffercachepoolentry_;
         
 }; // CiscoEnhancedMempoolMib::Cempmembuffercachepooltable
 

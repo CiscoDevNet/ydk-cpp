@@ -35,11 +35,11 @@ class CiscoBulkFileMib : public Entity
         class Cbfdefineobjecttable; //type: CiscoBulkFileMib::Cbfdefineobjecttable
         class Cbfstatusfiletable; //type: CiscoBulkFileMib::Cbfstatusfiletable
 
-        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefine> cbfdefine;
-        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefinefiletable> cbfdefinefiletable;
-        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefineobjecttable> cbfdefineobjecttable;
-        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatus> cbfstatus;
-        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatusfiletable> cbfstatusfiletable;
+        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefine> cbfdefine_;
+        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefinefiletable> cbfdefinefiletable_;
+        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefineobjecttable> cbfdefineobjecttable_;
+        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatus> cbfstatus_;
+        std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatusfiletable> cbfstatusfiletable_;
         
 }; // CiscoBulkFileMib
 
@@ -108,7 +108,7 @@ class CiscoBulkFileMib::Cbfdefinefiletable : public Entity
 
         class Cbfdefinefileentry; //type: CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry
 
-        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry> > cbfdefinefileentry;
+        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry> > cbfdefinefileentry_;
         
 }; // CiscoBulkFileMib::Cbfdefinefiletable
 
@@ -157,7 +157,7 @@ class CiscoBulkFileMib::Cbfdefineobjecttable : public Entity
 
         class Cbfdefineobjectentry; //type: CiscoBulkFileMib::Cbfdefineobjecttable::Cbfdefineobjectentry
 
-        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefineobjecttable::Cbfdefineobjectentry> > cbfdefineobjectentry;
+        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfdefineobjecttable::Cbfdefineobjectentry> > cbfdefineobjectentry_;
         
 }; // CiscoBulkFileMib::Cbfdefineobjecttable
 
@@ -206,7 +206,7 @@ class CiscoBulkFileMib::Cbfstatusfiletable : public Entity
 
         class Cbfstatusfileentry; //type: CiscoBulkFileMib::Cbfstatusfiletable::Cbfstatusfileentry
 
-        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatusfiletable::Cbfstatusfileentry> > cbfstatusfileentry;
+        std::vector<std::shared_ptr<CISCO_BULK_FILE_MIB::CiscoBulkFileMib::Cbfstatusfiletable::Cbfstatusfileentry> > cbfstatusfileentry_;
         
 }; // CiscoBulkFileMib::Cbfstatusfiletable
 
@@ -239,7 +239,7 @@ class CiscoBulkFileMib::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilesto
 {
     public:
         static const Enum::YLeaf ephemeral;
-        static const Enum::YLeaf volatile;
+        static const Enum::YLeaf volatile_;
         static const Enum::YLeaf permanent;
 
 };

@@ -30,7 +30,7 @@ class CiscoUbeMib : public Entity
 
         class Ciscoubemibobjects; //type: CiscoUbeMib::Ciscoubemibobjects
 
-        std::shared_ptr<CISCO_UBE_MIB::CiscoUbeMib::Ciscoubemibobjects> ciscoubemibobjects;
+        std::shared_ptr<CISCO_UBE_MIB::CiscoUbeMib::Ciscoubemibobjects> ciscoubemibobjects_;
         
 }; // CiscoUbeMib
 

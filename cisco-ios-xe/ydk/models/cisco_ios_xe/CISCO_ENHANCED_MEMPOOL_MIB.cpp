@@ -11,18 +11,18 @@ namespace CISCO_ENHANCED_MEMPOOL_MIB {
 
 CiscoEnhancedMempoolMib::CiscoEnhancedMempoolMib()
     :
-    cempmembuffercachepooltable(std::make_shared<CiscoEnhancedMempoolMib::Cempmembuffercachepooltable>())
-	,cempmembufferpooltable(std::make_shared<CiscoEnhancedMempoolMib::Cempmembufferpooltable>())
-	,cempmempooltable(std::make_shared<CiscoEnhancedMempoolMib::Cempmempooltable>())
-	,cempnotificationconfig(std::make_shared<CiscoEnhancedMempoolMib::Cempnotificationconfig>())
+    cempmembuffercachepooltable_(std::make_shared<CiscoEnhancedMempoolMib::Cempmembuffercachepooltable>())
+	,cempmembufferpooltable_(std::make_shared<CiscoEnhancedMempoolMib::Cempmembufferpooltable>())
+	,cempmempooltable_(std::make_shared<CiscoEnhancedMempoolMib::Cempmempooltable>())
+	,cempnotificationconfig_(std::make_shared<CiscoEnhancedMempoolMib::Cempnotificationconfig>())
 {
-    cempmembuffercachepooltable->parent = this;
+    cempmembuffercachepooltable_->parent = this;
 
-    cempmembufferpooltable->parent = this;
+    cempmembufferpooltable_->parent = this;
 
-    cempmempooltable->parent = this;
+    cempmempooltable_->parent = this;
 
-    cempnotificationconfig->parent = this;
+    cempnotificationconfig_->parent = this;
 
     yang_name = "CISCO-ENHANCED-MEMPOOL-MIB"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB";
 }
@@ -33,19 +33,19 @@ CiscoEnhancedMempoolMib::~CiscoEnhancedMempoolMib()
 
 bool CiscoEnhancedMempoolMib::has_data() const
 {
-    return (cempmembuffercachepooltable !=  nullptr && cempmembuffercachepooltable->has_data())
-	|| (cempmembufferpooltable !=  nullptr && cempmembufferpooltable->has_data())
-	|| (cempmempooltable !=  nullptr && cempmempooltable->has_data())
-	|| (cempnotificationconfig !=  nullptr && cempnotificationconfig->has_data());
+    return (cempmembuffercachepooltable_ !=  nullptr && cempmembuffercachepooltable_->has_data())
+	|| (cempmembufferpooltable_ !=  nullptr && cempmembufferpooltable_->has_data())
+	|| (cempmempooltable_ !=  nullptr && cempmempooltable_->has_data())
+	|| (cempnotificationconfig_ !=  nullptr && cempnotificationconfig_->has_data());
 }
 
 bool CiscoEnhancedMempoolMib::has_operation() const
 {
     return is_set(operation)
-	|| (cempmembuffercachepooltable !=  nullptr && cempmembuffercachepooltable->has_operation())
-	|| (cempmembufferpooltable !=  nullptr && cempmembufferpooltable->has_operation())
-	|| (cempmempooltable !=  nullptr && cempmempooltable->has_operation())
-	|| (cempnotificationconfig !=  nullptr && cempnotificationconfig->has_operation());
+	|| (cempmembuffercachepooltable_ !=  nullptr && cempmembuffercachepooltable_->has_operation())
+	|| (cempmembufferpooltable_ !=  nullptr && cempmembufferpooltable_->has_operation())
+	|| (cempmempooltable_ !=  nullptr && cempmempooltable_->has_operation())
+	|| (cempnotificationconfig_ !=  nullptr && cempnotificationconfig_->has_operation());
 }
 
 std::string CiscoEnhancedMempoolMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::get_child_by_name(const std::st
 {
     if(child_yang_name == "cempMemBufferCachePoolTable")
     {
-        if(cempmembuffercachepooltable == nullptr)
+        if(cempmembuffercachepooltable_ == nullptr)
         {
-            cempmembuffercachepooltable = std::make_shared<CiscoEnhancedMempoolMib::Cempmembuffercachepooltable>();
+            cempmembuffercachepooltable_ = std::make_shared<CiscoEnhancedMempoolMib::Cempmembuffercachepooltable>();
         }
-        return cempmembuffercachepooltable;
+        return cempmembuffercachepooltable_;
     }
 
     if(child_yang_name == "cempMemBufferPoolTable")
     {
-        if(cempmembufferpooltable == nullptr)
+        if(cempmembufferpooltable_ == nullptr)
         {
-            cempmembufferpooltable = std::make_shared<CiscoEnhancedMempoolMib::Cempmembufferpooltable>();
+            cempmembufferpooltable_ = std::make_shared<CiscoEnhancedMempoolMib::Cempmembufferpooltable>();
         }
-        return cempmembufferpooltable;
+        return cempmembufferpooltable_;
     }
 
     if(child_yang_name == "cempMemPoolTable")
     {
-        if(cempmempooltable == nullptr)
+        if(cempmempooltable_ == nullptr)
         {
-            cempmempooltable = std::make_shared<CiscoEnhancedMempoolMib::Cempmempooltable>();
+            cempmempooltable_ = std::make_shared<CiscoEnhancedMempoolMib::Cempmempooltable>();
         }
-        return cempmempooltable;
+        return cempmempooltable_;
     }
 
     if(child_yang_name == "cempNotificationConfig")
     {
-        if(cempnotificationconfig == nullptr)
+        if(cempnotificationconfig_ == nullptr)
         {
-            cempnotificationconfig = std::make_shared<CiscoEnhancedMempoolMib::Cempnotificationconfig>();
+            cempnotificationconfig_ = std::make_shared<CiscoEnhancedMempoolMib::Cempnotificationconfig>();
         }
-        return cempnotificationconfig;
+        return cempnotificationconfig_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnhancedMempoolMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cempmembuffercachepooltable != nullptr)
+    if(cempmembuffercachepooltable_ != nullptr)
     {
-        children["cempMemBufferCachePoolTable"] = cempmembuffercachepooltable;
+        children["cempMemBufferCachePoolTable"] = cempmembuffercachepooltable_;
     }
 
-    if(cempmembufferpooltable != nullptr)
+    if(cempmembufferpooltable_ != nullptr)
     {
-        children["cempMemBufferPoolTable"] = cempmembufferpooltable;
+        children["cempMemBufferPoolTable"] = cempmembufferpooltable_;
     }
 
-    if(cempmempooltable != nullptr)
+    if(cempmempooltable_ != nullptr)
     {
-        children["cempMemPoolTable"] = cempmempooltable;
+        children["cempMemPoolTable"] = cempmempooltable_;
     }
 
-    if(cempnotificationconfig != nullptr)
+    if(cempnotificationconfig_ != nullptr)
     {
-        children["cempNotificationConfig"] = cempnotificationconfig;
+        children["cempNotificationConfig"] = cempnotificationconfig_;
     }
 
     return children;
@@ -249,9 +249,9 @@ CiscoEnhancedMempoolMib::Cempmempooltable::~Cempmempooltable()
 
 bool CiscoEnhancedMempoolMib::Cempmempooltable::has_data() const
 {
-    for (std::size_t index=0; index<cempmempoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmempoolentry_.size(); index++)
     {
-        if(cempmempoolentry[index]->has_data())
+        if(cempmempoolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -259,9 +259,9 @@ bool CiscoEnhancedMempoolMib::Cempmempooltable::has_data() const
 
 bool CiscoEnhancedMempoolMib::Cempmempooltable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmempoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmempoolentry_.size(); index++)
     {
-        if(cempmempoolentry[index]->has_operation())
+        if(cempmempoolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -301,7 +301,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmempooltable::get_child_by_
 {
     if(child_yang_name == "cempMemPoolEntry")
     {
-        for(auto const & c : cempmempoolentry)
+        for(auto const & c : cempmempoolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -311,7 +311,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmempooltable::get_child_by_
         }
         auto c = std::make_shared<CiscoEnhancedMempoolMib::Cempmempooltable::Cempmempoolentry>();
         c->parent = this;
-        cempmempoolentry.push_back(c);
+        cempmempoolentry_.push_back(c);
         return c;
     }
 
@@ -321,7 +321,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmempooltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnhancedMempoolMib::Cempmempooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cempmempoolentry)
+    for (auto const & c : cempmempoolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -640,9 +640,9 @@ CiscoEnhancedMempoolMib::Cempmembufferpooltable::~Cempmembufferpooltable()
 
 bool CiscoEnhancedMempoolMib::Cempmembufferpooltable::has_data() const
 {
-    for (std::size_t index=0; index<cempmembufferpoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembufferpoolentry_.size(); index++)
     {
-        if(cempmembufferpoolentry[index]->has_data())
+        if(cempmembufferpoolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -650,9 +650,9 @@ bool CiscoEnhancedMempoolMib::Cempmembufferpooltable::has_data() const
 
 bool CiscoEnhancedMempoolMib::Cempmembufferpooltable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmembufferpoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembufferpoolentry_.size(); index++)
     {
-        if(cempmembufferpoolentry[index]->has_operation())
+        if(cempmembufferpoolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -692,7 +692,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembufferpooltable::get_chi
 {
     if(child_yang_name == "cempMemBufferPoolEntry")
     {
-        for(auto const & c : cempmembufferpoolentry)
+        for(auto const & c : cempmembufferpoolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -702,7 +702,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembufferpooltable::get_chi
         }
         auto c = std::make_shared<CiscoEnhancedMempoolMib::Cempmembufferpooltable::Cempmembufferpoolentry>();
         c->parent = this;
-        cempmembufferpoolentry.push_back(c);
+        cempmembufferpoolentry_.push_back(c);
         return c;
     }
 
@@ -712,7 +712,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembufferpooltable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnhancedMempoolMib::Cempmembufferpooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cempmembufferpoolentry)
+    for (auto const & c : cempmembufferpoolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -983,9 +983,9 @@ CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::~Cempmembuffercachepooltab
 
 bool CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::has_data() const
 {
-    for (std::size_t index=0; index<cempmembuffercachepoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembuffercachepoolentry_.size(); index++)
     {
-        if(cempmembuffercachepoolentry[index]->has_data())
+        if(cempmembuffercachepoolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -993,9 +993,9 @@ bool CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::has_data() const
 
 bool CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmembuffercachepoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembuffercachepoolentry_.size(); index++)
     {
-        if(cempmembuffercachepoolentry[index]->has_operation())
+        if(cempmembuffercachepoolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1035,7 +1035,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::ge
 {
     if(child_yang_name == "cempMemBufferCachePoolEntry")
     {
-        for(auto const & c : cempmembuffercachepoolentry)
+        for(auto const & c : cempmembuffercachepoolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1045,7 +1045,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::ge
         }
         auto c = std::make_shared<CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::Cempmembuffercachepoolentry>();
         c->parent = this;
-        cempmembuffercachepoolentry.push_back(c);
+        cempmembuffercachepoolentry_.push_back(c);
         return c;
     }
 
@@ -1055,7 +1055,7 @@ std::shared_ptr<Entity> CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoEnhancedMempoolMib::Cempmembuffercachepooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cempmembuffercachepoolentry)
+    for (auto const & c : cempmembuffercachepoolentry_)
     {
         children[c->get_segment_path()] = c;
     }

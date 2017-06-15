@@ -32,8 +32,8 @@ class CiscoIpslaJitterMib : public Entity
         class Cipslaudpjittertmpltable; //type: CiscoIpslaJitterMib::Cipslaudpjittertmpltable
         class Cipslaicmpjittertmpltable; //type: CiscoIpslaJitterMib::Cipslaicmpjittertmpltable
 
-        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable;
-        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable> cipslaudpjittertmpltable;
+        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable_;
+        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable> cipslaudpjittertmpltable_;
         
 }; // CiscoIpslaJitterMib
 
@@ -54,7 +54,7 @@ class CiscoIpslaJitterMib::Cipslaudpjittertmpltable : public Entity
 
         class Cipslaudpjittertmplentry; //type: CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry> > cipslaudpjittertmplentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry> > cipslaudpjittertmplentry_;
         
 }; // CiscoIpslaJitterMib::Cipslaudpjittertmpltable
 
@@ -125,7 +125,7 @@ class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable : public Entity
 
         class Cipslaicmpjittertmplentry; //type: CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry;
+        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry_;
         
 }; // CiscoIpslaJitterMib::Cipslaicmpjittertmpltable
 

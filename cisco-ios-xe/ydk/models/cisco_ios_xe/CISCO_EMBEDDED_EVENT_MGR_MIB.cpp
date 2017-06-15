@@ -11,18 +11,18 @@ namespace CISCO_EMBEDDED_EVENT_MGR_MIB {
 
 CiscoEmbeddedEventMgrMib::CiscoEmbeddedEventMgrMib()
     :
-    ceemeventmaptable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>())
-	,ceemhistory(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>())
-	,ceemhistoryeventtable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>())
-	,ceemregisteredpolicytable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>())
+    ceemeventmaptable_(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>())
+	,ceemhistory_(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>())
+	,ceemhistoryeventtable_(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>())
+	,ceemregisteredpolicytable_(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>())
 {
-    ceemeventmaptable->parent = this;
+    ceemeventmaptable_->parent = this;
 
-    ceemhistory->parent = this;
+    ceemhistory_->parent = this;
 
-    ceemhistoryeventtable->parent = this;
+    ceemhistoryeventtable_->parent = this;
 
-    ceemregisteredpolicytable->parent = this;
+    ceemregisteredpolicytable_->parent = this;
 
     yang_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
 }
@@ -33,19 +33,19 @@ CiscoEmbeddedEventMgrMib::~CiscoEmbeddedEventMgrMib()
 
 bool CiscoEmbeddedEventMgrMib::has_data() const
 {
-    return (ceemeventmaptable !=  nullptr && ceemeventmaptable->has_data())
-	|| (ceemhistory !=  nullptr && ceemhistory->has_data())
-	|| (ceemhistoryeventtable !=  nullptr && ceemhistoryeventtable->has_data())
-	|| (ceemregisteredpolicytable !=  nullptr && ceemregisteredpolicytable->has_data());
+    return (ceemeventmaptable_ !=  nullptr && ceemeventmaptable_->has_data())
+	|| (ceemhistory_ !=  nullptr && ceemhistory_->has_data())
+	|| (ceemhistoryeventtable_ !=  nullptr && ceemhistoryeventtable_->has_data())
+	|| (ceemregisteredpolicytable_ !=  nullptr && ceemregisteredpolicytable_->has_data());
 }
 
 bool CiscoEmbeddedEventMgrMib::has_operation() const
 {
     return is_set(operation)
-	|| (ceemeventmaptable !=  nullptr && ceemeventmaptable->has_operation())
-	|| (ceemhistory !=  nullptr && ceemhistory->has_operation())
-	|| (ceemhistoryeventtable !=  nullptr && ceemhistoryeventtable->has_operation())
-	|| (ceemregisteredpolicytable !=  nullptr && ceemregisteredpolicytable->has_operation());
+	|| (ceemeventmaptable_ !=  nullptr && ceemeventmaptable_->has_operation())
+	|| (ceemhistory_ !=  nullptr && ceemhistory_->has_operation())
+	|| (ceemhistoryeventtable_ !=  nullptr && ceemhistoryeventtable_->has_operation())
+	|| (ceemregisteredpolicytable_ !=  nullptr && ceemregisteredpolicytable_->has_operation());
 }
 
 std::string CiscoEmbeddedEventMgrMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "ceemEventMapTable")
     {
-        if(ceemeventmaptable == nullptr)
+        if(ceemeventmaptable_ == nullptr)
         {
-            ceemeventmaptable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>();
+            ceemeventmaptable_ = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>();
         }
-        return ceemeventmaptable;
+        return ceemeventmaptable_;
     }
 
     if(child_yang_name == "ceemHistory")
     {
-        if(ceemhistory == nullptr)
+        if(ceemhistory_ == nullptr)
         {
-            ceemhistory = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>();
+            ceemhistory_ = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>();
         }
-        return ceemhistory;
+        return ceemhistory_;
     }
 
     if(child_yang_name == "ceemHistoryEventTable")
     {
-        if(ceemhistoryeventtable == nullptr)
+        if(ceemhistoryeventtable_ == nullptr)
         {
-            ceemhistoryeventtable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>();
+            ceemhistoryeventtable_ = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>();
         }
-        return ceemhistoryeventtable;
+        return ceemhistoryeventtable_;
     }
 
     if(child_yang_name == "ceemRegisteredPolicyTable")
     {
-        if(ceemregisteredpolicytable == nullptr)
+        if(ceemregisteredpolicytable_ == nullptr)
         {
-            ceemregisteredpolicytable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>();
+            ceemregisteredpolicytable_ = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>();
         }
-        return ceemregisteredpolicytable;
+        return ceemregisteredpolicytable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceemeventmaptable != nullptr)
+    if(ceemeventmaptable_ != nullptr)
     {
-        children["ceemEventMapTable"] = ceemeventmaptable;
+        children["ceemEventMapTable"] = ceemeventmaptable_;
     }
 
-    if(ceemhistory != nullptr)
+    if(ceemhistory_ != nullptr)
     {
-        children["ceemHistory"] = ceemhistory;
+        children["ceemHistory"] = ceemhistory_;
     }
 
-    if(ceemhistoryeventtable != nullptr)
+    if(ceemhistoryeventtable_ != nullptr)
     {
-        children["ceemHistoryEventTable"] = ceemhistoryeventtable;
+        children["ceemHistoryEventTable"] = ceemhistoryeventtable_;
     }
 
-    if(ceemregisteredpolicytable != nullptr)
+    if(ceemregisteredpolicytable_ != nullptr)
     {
-        children["ceemRegisteredPolicyTable"] = ceemregisteredpolicytable;
+        children["ceemRegisteredPolicyTable"] = ceemregisteredpolicytable_;
     }
 
     return children;
@@ -257,9 +257,9 @@ CiscoEmbeddedEventMgrMib::Ceemeventmaptable::~Ceemeventmaptable()
 
 bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_data() const
 {
-    for (std::size_t index=0; index<ceemeventmapentry.size(); index++)
+    for (std::size_t index=0; index<ceemeventmapentry_.size(); index++)
     {
-        if(ceemeventmapentry[index]->has_data())
+        if(ceemeventmapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -267,9 +267,9 @@ bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_data() const
 
 bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_operation() const
 {
-    for (std::size_t index=0; index<ceemeventmapentry.size(); index++)
+    for (std::size_t index=0; index<ceemeventmapentry_.size(); index++)
     {
-        if(ceemeventmapentry[index]->has_operation())
+        if(ceemeventmapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -309,7 +309,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_b
 {
     if(child_yang_name == "ceemEventMapEntry")
     {
-        for(auto const & c : ceemeventmapentry)
+        for(auto const & c : ceemeventmapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -319,7 +319,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_b
         }
         auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry>();
         c->parent = this;
-        ceemeventmapentry.push_back(c);
+        ceemeventmapentry_.push_back(c);
         return c;
     }
 
@@ -329,7 +329,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceemeventmapentry)
+    for (auto const & c : ceemeventmapentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -440,9 +440,9 @@ CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::~Ceemhistoryeventtable()
 
 bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_data() const
 {
-    for (std::size_t index=0; index<ceemhistoryevententry.size(); index++)
+    for (std::size_t index=0; index<ceemhistoryevententry_.size(); index++)
     {
-        if(ceemhistoryevententry[index]->has_data())
+        if(ceemhistoryevententry_[index]->has_data())
             return true;
     }
     return false;
@@ -450,9 +450,9 @@ bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_data() const
 
 bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceemhistoryevententry.size(); index++)
+    for (std::size_t index=0; index<ceemhistoryevententry_.size(); index++)
     {
-        if(ceemhistoryevententry[index]->has_operation())
+        if(ceemhistoryevententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -492,7 +492,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_chi
 {
     if(child_yang_name == "ceemHistoryEventEntry")
     {
-        for(auto const & c : ceemhistoryevententry)
+        for(auto const & c : ceemhistoryevententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -502,7 +502,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_chi
         }
         auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry>();
         c->parent = this;
-        ceemhistoryevententry.push_back(c);
+        ceemhistoryevententry_.push_back(c);
         return c;
     }
 
@@ -512,7 +512,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceemhistoryevententry)
+    for (auto const & c : ceemhistoryevententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -727,9 +727,9 @@ CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::~Ceemregisteredpolicytable(
 
 bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_data() const
 {
-    for (std::size_t index=0; index<ceemregisteredpolicyentry.size(); index++)
+    for (std::size_t index=0; index<ceemregisteredpolicyentry_.size(); index++)
     {
-        if(ceemregisteredpolicyentry[index]->has_data())
+        if(ceemregisteredpolicyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -737,9 +737,9 @@ bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_data() const
 
 bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_operation() const
 {
-    for (std::size_t index=0; index<ceemregisteredpolicyentry.size(); index++)
+    for (std::size_t index=0; index<ceemregisteredpolicyentry_.size(); index++)
     {
-        if(ceemregisteredpolicyentry[index]->has_operation())
+        if(ceemregisteredpolicyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -779,7 +779,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get
 {
     if(child_yang_name == "ceemRegisteredPolicyEntry")
     {
-        for(auto const & c : ceemregisteredpolicyentry)
+        for(auto const & c : ceemregisteredpolicyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -789,7 +789,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get
         }
         auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry>();
         c->parent = this;
-        ceemregisteredpolicyentry.push_back(c);
+        ceemregisteredpolicyentry_.push_back(c);
         return c;
     }
 
@@ -799,7 +799,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceemregisteredpolicyentry)
+    for (auto const & c : ceemregisteredpolicyentry_)
     {
         children[c->get_segment_path()] = c;
     }

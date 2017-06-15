@@ -11,27 +11,27 @@ namespace CISCO_DATA_COLLECTION_MIB {
 
 CiscoDataCollectionMib::CiscoDataCollectionMib()
     :
-    cdcdgbaseobjecttable(std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>())
-	,cdcdginstancetable(std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>())
-	,cdcdgtable(std::make_shared<CiscoDataCollectionMib::Cdcdgtable>())
-	,cdcfilexferconftable(std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>())
-	,cdcvfile(std::make_shared<CiscoDataCollectionMib::Cdcvfile>())
-	,cdcvfilemgmttable(std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>())
-	,cdcvfiletable(std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>())
+    cdcdgbaseobjecttable_(std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>())
+	,cdcdginstancetable_(std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>())
+	,cdcdgtable_(std::make_shared<CiscoDataCollectionMib::Cdcdgtable>())
+	,cdcfilexferconftable_(std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>())
+	,cdcvfile_(std::make_shared<CiscoDataCollectionMib::Cdcvfile>())
+	,cdcvfilemgmttable_(std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>())
+	,cdcvfiletable_(std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>())
 {
-    cdcdgbaseobjecttable->parent = this;
+    cdcdgbaseobjecttable_->parent = this;
 
-    cdcdginstancetable->parent = this;
+    cdcdginstancetable_->parent = this;
 
-    cdcdgtable->parent = this;
+    cdcdgtable_->parent = this;
 
-    cdcfilexferconftable->parent = this;
+    cdcfilexferconftable_->parent = this;
 
-    cdcvfile->parent = this;
+    cdcvfile_->parent = this;
 
-    cdcvfilemgmttable->parent = this;
+    cdcvfilemgmttable_->parent = this;
 
-    cdcvfiletable->parent = this;
+    cdcvfiletable_->parent = this;
 
     yang_name = "CISCO-DATA-COLLECTION-MIB"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB";
 }
@@ -42,25 +42,25 @@ CiscoDataCollectionMib::~CiscoDataCollectionMib()
 
 bool CiscoDataCollectionMib::has_data() const
 {
-    return (cdcdgbaseobjecttable !=  nullptr && cdcdgbaseobjecttable->has_data())
-	|| (cdcdginstancetable !=  nullptr && cdcdginstancetable->has_data())
-	|| (cdcdgtable !=  nullptr && cdcdgtable->has_data())
-	|| (cdcfilexferconftable !=  nullptr && cdcfilexferconftable->has_data())
-	|| (cdcvfile !=  nullptr && cdcvfile->has_data())
-	|| (cdcvfilemgmttable !=  nullptr && cdcvfilemgmttable->has_data())
-	|| (cdcvfiletable !=  nullptr && cdcvfiletable->has_data());
+    return (cdcdgbaseobjecttable_ !=  nullptr && cdcdgbaseobjecttable_->has_data())
+	|| (cdcdginstancetable_ !=  nullptr && cdcdginstancetable_->has_data())
+	|| (cdcdgtable_ !=  nullptr && cdcdgtable_->has_data())
+	|| (cdcfilexferconftable_ !=  nullptr && cdcfilexferconftable_->has_data())
+	|| (cdcvfile_ !=  nullptr && cdcvfile_->has_data())
+	|| (cdcvfilemgmttable_ !=  nullptr && cdcvfilemgmttable_->has_data())
+	|| (cdcvfiletable_ !=  nullptr && cdcvfiletable_->has_data());
 }
 
 bool CiscoDataCollectionMib::has_operation() const
 {
     return is_set(operation)
-	|| (cdcdgbaseobjecttable !=  nullptr && cdcdgbaseobjecttable->has_operation())
-	|| (cdcdginstancetable !=  nullptr && cdcdginstancetable->has_operation())
-	|| (cdcdgtable !=  nullptr && cdcdgtable->has_operation())
-	|| (cdcfilexferconftable !=  nullptr && cdcfilexferconftable->has_operation())
-	|| (cdcvfile !=  nullptr && cdcvfile->has_operation())
-	|| (cdcvfilemgmttable !=  nullptr && cdcvfilemgmttable->has_operation())
-	|| (cdcvfiletable !=  nullptr && cdcvfiletable->has_operation());
+	|| (cdcdgbaseobjecttable_ !=  nullptr && cdcdgbaseobjecttable_->has_operation())
+	|| (cdcdginstancetable_ !=  nullptr && cdcdginstancetable_->has_operation())
+	|| (cdcdgtable_ !=  nullptr && cdcdgtable_->has_operation())
+	|| (cdcfilexferconftable_ !=  nullptr && cdcfilexferconftable_->has_operation())
+	|| (cdcvfile_ !=  nullptr && cdcvfile_->has_operation())
+	|| (cdcvfilemgmttable_ !=  nullptr && cdcvfilemgmttable_->has_operation())
+	|| (cdcvfiletable_ !=  nullptr && cdcvfiletable_->has_operation());
 }
 
 std::string CiscoDataCollectionMib::get_segment_path() const
@@ -94,65 +94,65 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "cdcDGBaseObjectTable")
     {
-        if(cdcdgbaseobjecttable == nullptr)
+        if(cdcdgbaseobjecttable_ == nullptr)
         {
-            cdcdgbaseobjecttable = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>();
+            cdcdgbaseobjecttable_ = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>();
         }
-        return cdcdgbaseobjecttable;
+        return cdcdgbaseobjecttable_;
     }
 
     if(child_yang_name == "cdcDGInstanceTable")
     {
-        if(cdcdginstancetable == nullptr)
+        if(cdcdginstancetable_ == nullptr)
         {
-            cdcdginstancetable = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>();
+            cdcdginstancetable_ = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>();
         }
-        return cdcdginstancetable;
+        return cdcdginstancetable_;
     }
 
     if(child_yang_name == "cdcDGTable")
     {
-        if(cdcdgtable == nullptr)
+        if(cdcdgtable_ == nullptr)
         {
-            cdcdgtable = std::make_shared<CiscoDataCollectionMib::Cdcdgtable>();
+            cdcdgtable_ = std::make_shared<CiscoDataCollectionMib::Cdcdgtable>();
         }
-        return cdcdgtable;
+        return cdcdgtable_;
     }
 
     if(child_yang_name == "cdcFileXferConfTable")
     {
-        if(cdcfilexferconftable == nullptr)
+        if(cdcfilexferconftable_ == nullptr)
         {
-            cdcfilexferconftable = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>();
+            cdcfilexferconftable_ = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>();
         }
-        return cdcfilexferconftable;
+        return cdcfilexferconftable_;
     }
 
     if(child_yang_name == "cdcVFile")
     {
-        if(cdcvfile == nullptr)
+        if(cdcvfile_ == nullptr)
         {
-            cdcvfile = std::make_shared<CiscoDataCollectionMib::Cdcvfile>();
+            cdcvfile_ = std::make_shared<CiscoDataCollectionMib::Cdcvfile>();
         }
-        return cdcvfile;
+        return cdcvfile_;
     }
 
     if(child_yang_name == "cdcVFileMgmtTable")
     {
-        if(cdcvfilemgmttable == nullptr)
+        if(cdcvfilemgmttable_ == nullptr)
         {
-            cdcvfilemgmttable = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>();
+            cdcvfilemgmttable_ = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>();
         }
-        return cdcvfilemgmttable;
+        return cdcvfilemgmttable_;
     }
 
     if(child_yang_name == "cdcVFileTable")
     {
-        if(cdcvfiletable == nullptr)
+        if(cdcvfiletable_ == nullptr)
         {
-            cdcvfiletable = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>();
+            cdcvfiletable_ = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>();
         }
-        return cdcvfiletable;
+        return cdcvfiletable_;
     }
 
     return nullptr;
@@ -161,39 +161,39 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdcdgbaseobjecttable != nullptr)
+    if(cdcdgbaseobjecttable_ != nullptr)
     {
-        children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable;
+        children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable_;
     }
 
-    if(cdcdginstancetable != nullptr)
+    if(cdcdginstancetable_ != nullptr)
     {
-        children["cdcDGInstanceTable"] = cdcdginstancetable;
+        children["cdcDGInstanceTable"] = cdcdginstancetable_;
     }
 
-    if(cdcdgtable != nullptr)
+    if(cdcdgtable_ != nullptr)
     {
-        children["cdcDGTable"] = cdcdgtable;
+        children["cdcDGTable"] = cdcdgtable_;
     }
 
-    if(cdcfilexferconftable != nullptr)
+    if(cdcfilexferconftable_ != nullptr)
     {
-        children["cdcFileXferConfTable"] = cdcfilexferconftable;
+        children["cdcFileXferConfTable"] = cdcfilexferconftable_;
     }
 
-    if(cdcvfile != nullptr)
+    if(cdcvfile_ != nullptr)
     {
-        children["cdcVFile"] = cdcvfile;
+        children["cdcVFile"] = cdcvfile_;
     }
 
-    if(cdcvfilemgmttable != nullptr)
+    if(cdcvfilemgmttable_ != nullptr)
     {
-        children["cdcVFileMgmtTable"] = cdcvfilemgmttable;
+        children["cdcVFileMgmtTable"] = cdcvfilemgmttable_;
     }
 
-    if(cdcvfiletable != nullptr)
+    if(cdcvfiletable_ != nullptr)
     {
-        children["cdcVFileTable"] = cdcvfiletable;
+        children["cdcVFileTable"] = cdcvfiletable_;
     }
 
     return children;
@@ -314,9 +314,9 @@ CiscoDataCollectionMib::Cdcvfiletable::~Cdcvfiletable()
 
 bool CiscoDataCollectionMib::Cdcvfiletable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfileentry_.size(); index++)
     {
-        if(cdcvfileentry[index]->has_data())
+        if(cdcvfileentry_[index]->has_data())
             return true;
     }
     return false;
@@ -324,9 +324,9 @@ bool CiscoDataCollectionMib::Cdcvfiletable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfiletable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfileentry_.size(); index++)
     {
-        if(cdcvfileentry[index]->has_operation())
+        if(cdcvfileentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -366,7 +366,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
 {
     if(child_yang_name == "cdcVFileEntry")
     {
-        for(auto const & c : cdcvfileentry)
+        for(auto const & c : cdcvfileentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -376,7 +376,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry>();
         c->parent = this;
-        cdcvfileentry.push_back(c);
+        cdcvfileentry_.push_back(c);
         return c;
     }
 
@@ -386,7 +386,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcvfileentry)
+    for (auto const & c : cdcvfileentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -593,9 +593,9 @@ CiscoDataCollectionMib::Cdcvfilemgmttable::~Cdcvfilemgmttable()
 
 bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfilemgmtentry_.size(); index++)
     {
-        if(cdcvfilemgmtentry[index]->has_data())
+        if(cdcvfilemgmtentry_[index]->has_data())
             return true;
     }
     return false;
@@ -603,9 +603,9 @@ bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfilemgmtentry_.size(); index++)
     {
-        if(cdcvfilemgmtentry[index]->has_operation())
+        if(cdcvfilemgmtentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -645,7 +645,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
 {
     if(child_yang_name == "cdcVFileMgmtEntry")
     {
-        for(auto const & c : cdcvfilemgmtentry)
+        for(auto const & c : cdcvfilemgmtentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -655,7 +655,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry>();
         c->parent = this;
-        cdcvfilemgmtentry.push_back(c);
+        cdcvfilemgmtentry_.push_back(c);
         return c;
     }
 
@@ -665,7 +665,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilemgmttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcvfilemgmtentry)
+    for (auto const & c : cdcvfilemgmtentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -824,9 +824,9 @@ CiscoDataCollectionMib::Cdcdgtable::~Cdcdgtable()
 
 bool CiscoDataCollectionMib::Cdcdgtable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgentry_.size(); index++)
     {
-        if(cdcdgentry[index]->has_data())
+        if(cdcdgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -834,9 +834,9 @@ bool CiscoDataCollectionMib::Cdcdgtable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgentry_.size(); index++)
     {
-        if(cdcdgentry[index]->has_operation())
+        if(cdcdgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -876,7 +876,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
 {
     if(child_yang_name == "cdcDGEntry")
     {
-        for(auto const & c : cdcdgentry)
+        for(auto const & c : cdcdgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -886,7 +886,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry>();
         c->parent = this;
-        cdcdgentry.push_back(c);
+        cdcdgentry_.push_back(c);
         return c;
     }
 
@@ -896,7 +896,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdgentry)
+    for (auto const & c : cdcdgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1071,9 +1071,9 @@ CiscoDataCollectionMib::Cdcdgbaseobjecttable::~Cdcdgbaseobjecttable()
 
 bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgbaseobjectentry_.size(); index++)
     {
-        if(cdcdgbaseobjectentry[index]->has_data())
+        if(cdcdgbaseobjectentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1081,9 +1081,9 @@ bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgbaseobjectentry_.size(); index++)
     {
-        if(cdcdgbaseobjectentry[index]->has_operation())
+        if(cdcdgbaseobjectentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1123,7 +1123,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
 {
     if(child_yang_name == "cdcDGBaseObjectEntry")
     {
-        for(auto const & c : cdcdgbaseobjectentry)
+        for(auto const & c : cdcdgbaseobjectentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1133,7 +1133,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry>();
         c->parent = this;
-        cdcdgbaseobjectentry.push_back(c);
+        cdcdgbaseobjectentry_.push_back(c);
         return c;
     }
 
@@ -1143,7 +1143,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdgbaseobjectentry)
+    for (auto const & c : cdcdgbaseobjectentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1270,9 +1270,9 @@ CiscoDataCollectionMib::Cdcdginstancetable::~Cdcdginstancetable()
 
 bool CiscoDataCollectionMib::Cdcdginstancetable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
+    for (std::size_t index=0; index<cdcdginstanceentry_.size(); index++)
     {
-        if(cdcdginstanceentry[index]->has_data())
+        if(cdcdginstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1280,9 +1280,9 @@ bool CiscoDataCollectionMib::Cdcdginstancetable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdginstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
+    for (std::size_t index=0; index<cdcdginstanceentry_.size(); index++)
     {
-        if(cdcdginstanceentry[index]->has_operation())
+        if(cdcdginstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1322,7 +1322,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
 {
     if(child_yang_name == "cdcDGInstanceEntry")
     {
-        for(auto const & c : cdcdginstanceentry)
+        for(auto const & c : cdcdginstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1332,7 +1332,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry>();
         c->parent = this;
-        cdcdginstanceentry.push_back(c);
+        cdcdginstanceentry_.push_back(c);
         return c;
     }
 
@@ -1342,7 +1342,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdginstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdginstanceentry)
+    for (auto const & c : cdcdginstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1493,9 +1493,9 @@ CiscoDataCollectionMib::Cdcfilexferconftable::~Cdcfilexferconftable()
 
 bool CiscoDataCollectionMib::Cdcfilexferconftable::has_data() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
+    for (std::size_t index=0; index<cdcfilexferconfentry_.size(); index++)
     {
-        if(cdcfilexferconfentry[index]->has_data())
+        if(cdcfilexferconfentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1503,9 +1503,9 @@ bool CiscoDataCollectionMib::Cdcfilexferconftable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcfilexferconftable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
+    for (std::size_t index=0; index<cdcfilexferconfentry_.size(); index++)
     {
-        if(cdcfilexferconfentry[index]->has_operation())
+        if(cdcfilexferconfentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1545,7 +1545,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
 {
     if(child_yang_name == "cdcFileXferConfEntry")
     {
-        for(auto const & c : cdcfilexferconfentry)
+        for(auto const & c : cdcfilexferconfentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1555,7 +1555,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry>();
         c->parent = this;
-        cdcfilexferconfentry.push_back(c);
+        cdcfilexferconfentry_.push_back(c);
         return c;
     }
 
@@ -1565,7 +1565,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcfilexferconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcfilexferconfentry)
+    for (auto const & c : cdcfilexferconfentry_)
     {
         children[c->get_segment_path()] = c;
     }

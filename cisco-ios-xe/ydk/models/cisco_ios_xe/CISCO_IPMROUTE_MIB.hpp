@@ -32,8 +32,8 @@ class CiscoIpmrouteMib : public Entity
         class Ciscoipmroute; //type: CiscoIpmrouteMib::Ciscoipmroute
         class Ciscoipmrouteheartbeattable; //type: CiscoIpmrouteMib::Ciscoipmrouteheartbeattable
 
-        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmroute> ciscoipmroute;
-        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable> ciscoipmrouteheartbeattable;
+        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmroute> ciscoipmroute_;
+        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable> ciscoipmrouteheartbeattable_;
         
 }; // CiscoIpmrouteMib
 
@@ -73,7 +73,7 @@ class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable : public Entity
 
         class Ciscoipmrouteheartbeatentry; //type: CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
 
-        std::vector<std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry> > ciscoipmrouteheartbeatentry;
+        std::vector<std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry> > ciscoipmrouteheartbeatentry_;
         
 }; // CiscoIpmrouteMib::Ciscoipmrouteheartbeattable
 

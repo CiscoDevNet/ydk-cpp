@@ -11,18 +11,18 @@ namespace ETHER_WIS {
 
 EtherWis::EtherWis()
     :
-    etherwisdevicetable(std::make_shared<EtherWis::Etherwisdevicetable>())
-	,etherwisfarendpathcurrenttable(std::make_shared<EtherWis::Etherwisfarendpathcurrenttable>())
-	,etherwispathcurrenttable(std::make_shared<EtherWis::Etherwispathcurrenttable>())
-	,etherwissectioncurrenttable(std::make_shared<EtherWis::Etherwissectioncurrenttable>())
+    etherwisdevicetable_(std::make_shared<EtherWis::Etherwisdevicetable>())
+	,etherwisfarendpathcurrenttable_(std::make_shared<EtherWis::Etherwisfarendpathcurrenttable>())
+	,etherwispathcurrenttable_(std::make_shared<EtherWis::Etherwispathcurrenttable>())
+	,etherwissectioncurrenttable_(std::make_shared<EtherWis::Etherwissectioncurrenttable>())
 {
-    etherwisdevicetable->parent = this;
+    etherwisdevicetable_->parent = this;
 
-    etherwisfarendpathcurrenttable->parent = this;
+    etherwisfarendpathcurrenttable_->parent = this;
 
-    etherwispathcurrenttable->parent = this;
+    etherwispathcurrenttable_->parent = this;
 
-    etherwissectioncurrenttable->parent = this;
+    etherwissectioncurrenttable_->parent = this;
 
     yang_name = "ETHER-WIS"; yang_parent_name = "ETHER-WIS";
 }
@@ -33,19 +33,19 @@ EtherWis::~EtherWis()
 
 bool EtherWis::has_data() const
 {
-    return (etherwisdevicetable !=  nullptr && etherwisdevicetable->has_data())
-	|| (etherwisfarendpathcurrenttable !=  nullptr && etherwisfarendpathcurrenttable->has_data())
-	|| (etherwispathcurrenttable !=  nullptr && etherwispathcurrenttable->has_data())
-	|| (etherwissectioncurrenttable !=  nullptr && etherwissectioncurrenttable->has_data());
+    return (etherwisdevicetable_ !=  nullptr && etherwisdevicetable_->has_data())
+	|| (etherwisfarendpathcurrenttable_ !=  nullptr && etherwisfarendpathcurrenttable_->has_data())
+	|| (etherwispathcurrenttable_ !=  nullptr && etherwispathcurrenttable_->has_data())
+	|| (etherwissectioncurrenttable_ !=  nullptr && etherwissectioncurrenttable_->has_data());
 }
 
 bool EtherWis::has_operation() const
 {
     return is_set(operation)
-	|| (etherwisdevicetable !=  nullptr && etherwisdevicetable->has_operation())
-	|| (etherwisfarendpathcurrenttable !=  nullptr && etherwisfarendpathcurrenttable->has_operation())
-	|| (etherwispathcurrenttable !=  nullptr && etherwispathcurrenttable->has_operation())
-	|| (etherwissectioncurrenttable !=  nullptr && etherwissectioncurrenttable->has_operation());
+	|| (etherwisdevicetable_ !=  nullptr && etherwisdevicetable_->has_operation())
+	|| (etherwisfarendpathcurrenttable_ !=  nullptr && etherwisfarendpathcurrenttable_->has_operation())
+	|| (etherwispathcurrenttable_ !=  nullptr && etherwispathcurrenttable_->has_operation())
+	|| (etherwissectioncurrenttable_ !=  nullptr && etherwissectioncurrenttable_->has_operation());
 }
 
 std::string EtherWis::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> EtherWis::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "etherWisDeviceTable")
     {
-        if(etherwisdevicetable == nullptr)
+        if(etherwisdevicetable_ == nullptr)
         {
-            etherwisdevicetable = std::make_shared<EtherWis::Etherwisdevicetable>();
+            etherwisdevicetable_ = std::make_shared<EtherWis::Etherwisdevicetable>();
         }
-        return etherwisdevicetable;
+        return etherwisdevicetable_;
     }
 
     if(child_yang_name == "etherWisFarEndPathCurrentTable")
     {
-        if(etherwisfarendpathcurrenttable == nullptr)
+        if(etherwisfarendpathcurrenttable_ == nullptr)
         {
-            etherwisfarendpathcurrenttable = std::make_shared<EtherWis::Etherwisfarendpathcurrenttable>();
+            etherwisfarendpathcurrenttable_ = std::make_shared<EtherWis::Etherwisfarendpathcurrenttable>();
         }
-        return etherwisfarendpathcurrenttable;
+        return etherwisfarendpathcurrenttable_;
     }
 
     if(child_yang_name == "etherWisPathCurrentTable")
     {
-        if(etherwispathcurrenttable == nullptr)
+        if(etherwispathcurrenttable_ == nullptr)
         {
-            etherwispathcurrenttable = std::make_shared<EtherWis::Etherwispathcurrenttable>();
+            etherwispathcurrenttable_ = std::make_shared<EtherWis::Etherwispathcurrenttable>();
         }
-        return etherwispathcurrenttable;
+        return etherwispathcurrenttable_;
     }
 
     if(child_yang_name == "etherWisSectionCurrentTable")
     {
-        if(etherwissectioncurrenttable == nullptr)
+        if(etherwissectioncurrenttable_ == nullptr)
         {
-            etherwissectioncurrenttable = std::make_shared<EtherWis::Etherwissectioncurrenttable>();
+            etherwissectioncurrenttable_ = std::make_shared<EtherWis::Etherwissectioncurrenttable>();
         }
-        return etherwissectioncurrenttable;
+        return etherwissectioncurrenttable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> EtherWis::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> EtherWis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(etherwisdevicetable != nullptr)
+    if(etherwisdevicetable_ != nullptr)
     {
-        children["etherWisDeviceTable"] = etherwisdevicetable;
+        children["etherWisDeviceTable"] = etherwisdevicetable_;
     }
 
-    if(etherwisfarendpathcurrenttable != nullptr)
+    if(etherwisfarendpathcurrenttable_ != nullptr)
     {
-        children["etherWisFarEndPathCurrentTable"] = etherwisfarendpathcurrenttable;
+        children["etherWisFarEndPathCurrentTable"] = etherwisfarendpathcurrenttable_;
     }
 
-    if(etherwispathcurrenttable != nullptr)
+    if(etherwispathcurrenttable_ != nullptr)
     {
-        children["etherWisPathCurrentTable"] = etherwispathcurrenttable;
+        children["etherWisPathCurrentTable"] = etherwispathcurrenttable_;
     }
 
-    if(etherwissectioncurrenttable != nullptr)
+    if(etherwissectioncurrenttable_ != nullptr)
     {
-        children["etherWisSectionCurrentTable"] = etherwissectioncurrenttable;
+        children["etherWisSectionCurrentTable"] = etherwissectioncurrenttable_;
     }
 
     return children;
@@ -177,9 +177,9 @@ EtherWis::Etherwisdevicetable::~Etherwisdevicetable()
 
 bool EtherWis::Etherwisdevicetable::has_data() const
 {
-    for (std::size_t index=0; index<etherwisdeviceentry.size(); index++)
+    for (std::size_t index=0; index<etherwisdeviceentry_.size(); index++)
     {
-        if(etherwisdeviceentry[index]->has_data())
+        if(etherwisdeviceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -187,9 +187,9 @@ bool EtherWis::Etherwisdevicetable::has_data() const
 
 bool EtherWis::Etherwisdevicetable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwisdeviceentry.size(); index++)
+    for (std::size_t index=0; index<etherwisdeviceentry_.size(); index++)
     {
-        if(etherwisdeviceentry[index]->has_operation())
+        if(etherwisdeviceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisdevicetable::get_child_by_name(const s
 {
     if(child_yang_name == "etherWisDeviceEntry")
     {
-        for(auto const & c : etherwisdeviceentry)
+        for(auto const & c : etherwisdeviceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisdevicetable::get_child_by_name(const s
         }
         auto c = std::make_shared<EtherWis::Etherwisdevicetable::Etherwisdeviceentry>();
         c->parent = this;
-        etherwisdeviceentry.push_back(c);
+        etherwisdeviceentry_.push_back(c);
         return c;
     }
 
@@ -249,7 +249,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisdevicetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EtherWis::Etherwisdevicetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherwisdeviceentry)
+    for (auto const & c : etherwisdeviceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -368,9 +368,9 @@ EtherWis::Etherwissectioncurrenttable::~Etherwissectioncurrenttable()
 
 bool EtherWis::Etherwissectioncurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<etherwissectioncurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwissectioncurrententry_.size(); index++)
     {
-        if(etherwissectioncurrententry[index]->has_data())
+        if(etherwissectioncurrententry_[index]->has_data())
             return true;
     }
     return false;
@@ -378,9 +378,9 @@ bool EtherWis::Etherwissectioncurrenttable::has_data() const
 
 bool EtherWis::Etherwissectioncurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwissectioncurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwissectioncurrententry_.size(); index++)
     {
-        if(etherwissectioncurrententry[index]->has_operation())
+        if(etherwissectioncurrententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -420,7 +420,7 @@ std::shared_ptr<Entity> EtherWis::Etherwissectioncurrenttable::get_child_by_name
 {
     if(child_yang_name == "etherWisSectionCurrentEntry")
     {
-        for(auto const & c : etherwissectioncurrententry)
+        for(auto const & c : etherwissectioncurrententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -430,7 +430,7 @@ std::shared_ptr<Entity> EtherWis::Etherwissectioncurrenttable::get_child_by_name
         }
         auto c = std::make_shared<EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry>();
         c->parent = this;
-        etherwissectioncurrententry.push_back(c);
+        etherwissectioncurrententry_.push_back(c);
         return c;
     }
 
@@ -440,7 +440,7 @@ std::shared_ptr<Entity> EtherWis::Etherwissectioncurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> EtherWis::Etherwissectioncurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherwissectioncurrententry)
+    for (auto const & c : etherwissectioncurrententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -551,9 +551,9 @@ EtherWis::Etherwispathcurrenttable::~Etherwispathcurrenttable()
 
 bool EtherWis::Etherwispathcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<etherwispathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwispathcurrententry_.size(); index++)
     {
-        if(etherwispathcurrententry[index]->has_data())
+        if(etherwispathcurrententry_[index]->has_data())
             return true;
     }
     return false;
@@ -561,9 +561,9 @@ bool EtherWis::Etherwispathcurrenttable::has_data() const
 
 bool EtherWis::Etherwispathcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwispathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwispathcurrententry_.size(); index++)
     {
-        if(etherwispathcurrententry[index]->has_operation())
+        if(etherwispathcurrententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -603,7 +603,7 @@ std::shared_ptr<Entity> EtherWis::Etherwispathcurrenttable::get_child_by_name(co
 {
     if(child_yang_name == "etherWisPathCurrentEntry")
     {
-        for(auto const & c : etherwispathcurrententry)
+        for(auto const & c : etherwispathcurrententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -613,7 +613,7 @@ std::shared_ptr<Entity> EtherWis::Etherwispathcurrenttable::get_child_by_name(co
         }
         auto c = std::make_shared<EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry>();
         c->parent = this;
-        etherwispathcurrententry.push_back(c);
+        etherwispathcurrententry_.push_back(c);
         return c;
     }
 
@@ -623,7 +623,7 @@ std::shared_ptr<Entity> EtherWis::Etherwispathcurrenttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> EtherWis::Etherwispathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherwispathcurrententry)
+    for (auto const & c : etherwispathcurrententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -742,9 +742,9 @@ EtherWis::Etherwisfarendpathcurrenttable::~Etherwisfarendpathcurrenttable()
 
 bool EtherWis::Etherwisfarendpathcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<etherwisfarendpathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwisfarendpathcurrententry_.size(); index++)
     {
-        if(etherwisfarendpathcurrententry[index]->has_data())
+        if(etherwisfarendpathcurrententry_[index]->has_data())
             return true;
     }
     return false;
@@ -752,9 +752,9 @@ bool EtherWis::Etherwisfarendpathcurrenttable::has_data() const
 
 bool EtherWis::Etherwisfarendpathcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwisfarendpathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwisfarendpathcurrententry_.size(); index++)
     {
-        if(etherwisfarendpathcurrententry[index]->has_operation())
+        if(etherwisfarendpathcurrententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -794,7 +794,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisfarendpathcurrenttable::get_child_by_n
 {
     if(child_yang_name == "etherWisFarEndPathCurrentEntry")
     {
-        for(auto const & c : etherwisfarendpathcurrententry)
+        for(auto const & c : etherwisfarendpathcurrententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -804,7 +804,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisfarendpathcurrenttable::get_child_by_n
         }
         auto c = std::make_shared<EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry>();
         c->parent = this;
-        etherwisfarendpathcurrententry.push_back(c);
+        etherwisfarendpathcurrententry_.push_back(c);
         return c;
     }
 
@@ -814,7 +814,7 @@ std::shared_ptr<Entity> EtherWis::Etherwisfarendpathcurrenttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> EtherWis::Etherwisfarendpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : etherwisfarendpathcurrententry)
+    for (auto const & c : etherwisfarendpathcurrententry_)
     {
         children[c->get_segment_path()] = c;
     }

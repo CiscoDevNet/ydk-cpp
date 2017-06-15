@@ -11,12 +11,12 @@ namespace CISCO_VOICE_COMMON_DIAL_CONTROL_MIB {
 
 CiscoVoiceCommonDialControlMib::CiscoVoiceCommonDialControlMib()
     :
-    cvcommondccallactivetable(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>())
-	,cvcommondccallhistorytable(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>())
+    cvcommondccallactivetable_(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>())
+	,cvcommondccallhistorytable_(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>())
 {
-    cvcommondccallactivetable->parent = this;
+    cvcommondccallactivetable_->parent = this;
 
-    cvcommondccallhistorytable->parent = this;
+    cvcommondccallhistorytable_->parent = this;
 
     yang_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB";
 }
@@ -27,15 +27,15 @@ CiscoVoiceCommonDialControlMib::~CiscoVoiceCommonDialControlMib()
 
 bool CiscoVoiceCommonDialControlMib::has_data() const
 {
-    return (cvcommondccallactivetable !=  nullptr && cvcommondccallactivetable->has_data())
-	|| (cvcommondccallhistorytable !=  nullptr && cvcommondccallhistorytable->has_data());
+    return (cvcommondccallactivetable_ !=  nullptr && cvcommondccallactivetable_->has_data())
+	|| (cvcommondccallhistorytable_ !=  nullptr && cvcommondccallhistorytable_->has_data());
 }
 
 bool CiscoVoiceCommonDialControlMib::has_operation() const
 {
     return is_set(operation)
-	|| (cvcommondccallactivetable !=  nullptr && cvcommondccallactivetable->has_operation())
-	|| (cvcommondccallhistorytable !=  nullptr && cvcommondccallhistorytable->has_operation());
+	|| (cvcommondccallactivetable_ !=  nullptr && cvcommondccallactivetable_->has_operation())
+	|| (cvcommondccallhistorytable_ !=  nullptr && cvcommondccallhistorytable_->has_operation());
 }
 
 std::string CiscoVoiceCommonDialControlMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::get_child_by_name(const 
 {
     if(child_yang_name == "cvCommonDcCallActiveTable")
     {
-        if(cvcommondccallactivetable == nullptr)
+        if(cvcommondccallactivetable_ == nullptr)
         {
-            cvcommondccallactivetable = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>();
+            cvcommondccallactivetable_ = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>();
         }
-        return cvcommondccallactivetable;
+        return cvcommondccallactivetable_;
     }
 
     if(child_yang_name == "cvCommonDcCallHistoryTable")
     {
-        if(cvcommondccallhistorytable == nullptr)
+        if(cvcommondccallhistorytable_ == nullptr)
         {
-            cvcommondccallhistorytable = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>();
+            cvcommondccallhistorytable_ = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>();
         }
-        return cvcommondccallhistorytable;
+        return cvcommondccallhistorytable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cvcommondccallactivetable != nullptr)
+    if(cvcommondccallactivetable_ != nullptr)
     {
-        children["cvCommonDcCallActiveTable"] = cvcommondccallactivetable;
+        children["cvCommonDcCallActiveTable"] = cvcommondccallactivetable_;
     }
 
-    if(cvcommondccallhistorytable != nullptr)
+    if(cvcommondccallhistorytable_ != nullptr)
     {
-        children["cvCommonDcCallHistoryTable"] = cvcommondccallhistorytable;
+        children["cvCommonDcCallHistoryTable"] = cvcommondccallhistorytable_;
     }
 
     return children;
@@ -139,9 +139,9 @@ CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::~Cvcommondccallactive
 
 bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_data() const
 {
-    for (std::size_t index=0; index<cvcommondccallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvcommondccallactiveentry_.size(); index++)
     {
-        if(cvcommondccallactiveentry[index]->has_data())
+        if(cvcommondccallactiveentry_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_data() const
 
 bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcommondccallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvcommondccallactiveentry_.size(); index++)
     {
-        if(cvcommondccallactiveentry[index]->has_operation())
+        if(cvcommondccallactiveentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetabl
 {
     if(child_yang_name == "cvCommonDcCallActiveEntry")
     {
-        for(auto const & c : cvcommondccallactiveentry)
+        for(auto const & c : cvcommondccallactiveentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetabl
         }
         auto c = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry>();
         c->parent = this;
-        cvcommondccallactiveentry.push_back(c);
+        cvcommondccallactiveentry_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetabl
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcommondccallactiveentry)
+    for (auto const & c : cvcommondccallactiveentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -370,9 +370,9 @@ CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::~Cvcommondccallhisto
 
 bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<cvcommondccallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvcommondccallhistoryentry_.size(); index++)
     {
-        if(cvcommondccallhistoryentry[index]->has_data())
+        if(cvcommondccallhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -380,9 +380,9 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_data() cons
 
 bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcommondccallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvcommondccallhistoryentry_.size(); index++)
     {
-        if(cvcommondccallhistoryentry[index]->has_operation())
+        if(cvcommondccallhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -422,7 +422,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytab
 {
     if(child_yang_name == "cvCommonDcCallHistoryEntry")
     {
-        for(auto const & c : cvcommondccallhistoryentry)
+        for(auto const & c : cvcommondccallhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -432,7 +432,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytab
         }
         auto c = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry>();
         c->parent = this;
-        cvcommondccallhistoryentry.push_back(c);
+        cvcommondccallhistoryentry_.push_back(c);
         return c;
     }
 
@@ -442,7 +442,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytab
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvcommondccallhistoryentry)
+    for (auto const & c : cvcommondccallhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }

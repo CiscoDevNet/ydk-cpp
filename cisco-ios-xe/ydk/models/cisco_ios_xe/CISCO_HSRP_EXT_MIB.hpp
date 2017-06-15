@@ -34,10 +34,10 @@ class CiscoHsrpExtMib : public Entity
         class Chsrpextifstandbytable; //type: CiscoHsrpExtMib::Chsrpextifstandbytable
         class Chsrpextiftable; //type: CiscoHsrpExtMib::Chsrpextiftable
 
-        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextifstandbytable> chsrpextifstandbytable;
-        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftable> chsrpextiftable;
-        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftrackedtable> chsrpextiftrackedtable;
-        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextsecaddrtable> chsrpextsecaddrtable;
+        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextifstandbytable> chsrpextifstandbytable_;
+        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftable> chsrpextiftable_;
+        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftrackedtable> chsrpextiftrackedtable_;
+        std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextsecaddrtable> chsrpextsecaddrtable_;
         
 }; // CiscoHsrpExtMib
 
@@ -58,7 +58,7 @@ class CiscoHsrpExtMib::Chsrpextiftrackedtable : public Entity
 
         class Chsrpextiftrackedentry; //type: CiscoHsrpExtMib::Chsrpextiftrackedtable::Chsrpextiftrackedentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftrackedtable::Chsrpextiftrackedentry> > chsrpextiftrackedentry;
+        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftrackedtable::Chsrpextiftrackedentry> > chsrpextiftrackedentry_;
         
 }; // CiscoHsrpExtMib::Chsrpextiftrackedtable
 
@@ -105,7 +105,7 @@ class CiscoHsrpExtMib::Chsrpextsecaddrtable : public Entity
 
         class Chsrpextsecaddrentry; //type: CiscoHsrpExtMib::Chsrpextsecaddrtable::Chsrpextsecaddrentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextsecaddrtable::Chsrpextsecaddrentry> > chsrpextsecaddrentry;
+        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextsecaddrtable::Chsrpextsecaddrentry> > chsrpextsecaddrentry_;
         
 }; // CiscoHsrpExtMib::Chsrpextsecaddrtable
 
@@ -150,7 +150,7 @@ class CiscoHsrpExtMib::Chsrpextifstandbytable : public Entity
 
         class Chsrpextifstandbyentry; //type: CiscoHsrpExtMib::Chsrpextifstandbytable::Chsrpextifstandbyentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextifstandbytable::Chsrpextifstandbyentry> > chsrpextifstandbyentry;
+        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextifstandbytable::Chsrpextifstandbyentry> > chsrpextifstandbyentry_;
         
 }; // CiscoHsrpExtMib::Chsrpextifstandbytable
 
@@ -199,7 +199,7 @@ class CiscoHsrpExtMib::Chsrpextiftable : public Entity
 
         class Chsrpextifentry; //type: CiscoHsrpExtMib::Chsrpextiftable::Chsrpextifentry
 
-        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftable::Chsrpextifentry> > chsrpextifentry;
+        std::vector<std::shared_ptr<CISCO_HSRP_EXT_MIB::CiscoHsrpExtMib::Chsrpextiftable::Chsrpextifentry> > chsrpextifentry_;
         
 }; // CiscoHsrpExtMib::Chsrpextiftable
 

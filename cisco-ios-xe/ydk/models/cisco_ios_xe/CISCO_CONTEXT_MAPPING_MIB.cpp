@@ -11,18 +11,18 @@ namespace CISCO_CONTEXT_MAPPING_MIB {
 
 CiscoContextMappingMib::CiscoContextMappingMib()
     :
-    ccontextmappingbridgedomaintable(std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgedomaintable>())
-	,ccontextmappingbridgeinstancetable(std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgeinstancetable>())
-	,ccontextmappinglicensegrouptable(std::make_shared<CiscoContextMappingMib::Ccontextmappinglicensegrouptable>())
-	,ccontextmappingtable(std::make_shared<CiscoContextMappingMib::Ccontextmappingtable>())
+    ccontextmappingbridgedomaintable_(std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgedomaintable>())
+	,ccontextmappingbridgeinstancetable_(std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgeinstancetable>())
+	,ccontextmappinglicensegrouptable_(std::make_shared<CiscoContextMappingMib::Ccontextmappinglicensegrouptable>())
+	,ccontextmappingtable_(std::make_shared<CiscoContextMappingMib::Ccontextmappingtable>())
 {
-    ccontextmappingbridgedomaintable->parent = this;
+    ccontextmappingbridgedomaintable_->parent = this;
 
-    ccontextmappingbridgeinstancetable->parent = this;
+    ccontextmappingbridgeinstancetable_->parent = this;
 
-    ccontextmappinglicensegrouptable->parent = this;
+    ccontextmappinglicensegrouptable_->parent = this;
 
-    ccontextmappingtable->parent = this;
+    ccontextmappingtable_->parent = this;
 
     yang_name = "CISCO-CONTEXT-MAPPING-MIB"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB";
 }
@@ -33,19 +33,19 @@ CiscoContextMappingMib::~CiscoContextMappingMib()
 
 bool CiscoContextMappingMib::has_data() const
 {
-    return (ccontextmappingbridgedomaintable !=  nullptr && ccontextmappingbridgedomaintable->has_data())
-	|| (ccontextmappingbridgeinstancetable !=  nullptr && ccontextmappingbridgeinstancetable->has_data())
-	|| (ccontextmappinglicensegrouptable !=  nullptr && ccontextmappinglicensegrouptable->has_data())
-	|| (ccontextmappingtable !=  nullptr && ccontextmappingtable->has_data());
+    return (ccontextmappingbridgedomaintable_ !=  nullptr && ccontextmappingbridgedomaintable_->has_data())
+	|| (ccontextmappingbridgeinstancetable_ !=  nullptr && ccontextmappingbridgeinstancetable_->has_data())
+	|| (ccontextmappinglicensegrouptable_ !=  nullptr && ccontextmappinglicensegrouptable_->has_data())
+	|| (ccontextmappingtable_ !=  nullptr && ccontextmappingtable_->has_data());
 }
 
 bool CiscoContextMappingMib::has_operation() const
 {
     return is_set(operation)
-	|| (ccontextmappingbridgedomaintable !=  nullptr && ccontextmappingbridgedomaintable->has_operation())
-	|| (ccontextmappingbridgeinstancetable !=  nullptr && ccontextmappingbridgeinstancetable->has_operation())
-	|| (ccontextmappinglicensegrouptable !=  nullptr && ccontextmappinglicensegrouptable->has_operation())
-	|| (ccontextmappingtable !=  nullptr && ccontextmappingtable->has_operation());
+	|| (ccontextmappingbridgedomaintable_ !=  nullptr && ccontextmappingbridgedomaintable_->has_operation())
+	|| (ccontextmappingbridgeinstancetable_ !=  nullptr && ccontextmappingbridgeinstancetable_->has_operation())
+	|| (ccontextmappinglicensegrouptable_ !=  nullptr && ccontextmappinglicensegrouptable_->has_operation())
+	|| (ccontextmappingtable_ !=  nullptr && ccontextmappingtable_->has_operation());
 }
 
 std::string CiscoContextMappingMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoContextMappingMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "cContextMappingBridgeDomainTable")
     {
-        if(ccontextmappingbridgedomaintable == nullptr)
+        if(ccontextmappingbridgedomaintable_ == nullptr)
         {
-            ccontextmappingbridgedomaintable = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgedomaintable>();
+            ccontextmappingbridgedomaintable_ = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgedomaintable>();
         }
-        return ccontextmappingbridgedomaintable;
+        return ccontextmappingbridgedomaintable_;
     }
 
     if(child_yang_name == "cContextMappingBridgeInstanceTable")
     {
-        if(ccontextmappingbridgeinstancetable == nullptr)
+        if(ccontextmappingbridgeinstancetable_ == nullptr)
         {
-            ccontextmappingbridgeinstancetable = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgeinstancetable>();
+            ccontextmappingbridgeinstancetable_ = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgeinstancetable>();
         }
-        return ccontextmappingbridgeinstancetable;
+        return ccontextmappingbridgeinstancetable_;
     }
 
     if(child_yang_name == "cContextMappingLicenseGroupTable")
     {
-        if(ccontextmappinglicensegrouptable == nullptr)
+        if(ccontextmappinglicensegrouptable_ == nullptr)
         {
-            ccontextmappinglicensegrouptable = std::make_shared<CiscoContextMappingMib::Ccontextmappinglicensegrouptable>();
+            ccontextmappinglicensegrouptable_ = std::make_shared<CiscoContextMappingMib::Ccontextmappinglicensegrouptable>();
         }
-        return ccontextmappinglicensegrouptable;
+        return ccontextmappinglicensegrouptable_;
     }
 
     if(child_yang_name == "cContextMappingTable")
     {
-        if(ccontextmappingtable == nullptr)
+        if(ccontextmappingtable_ == nullptr)
         {
-            ccontextmappingtable = std::make_shared<CiscoContextMappingMib::Ccontextmappingtable>();
+            ccontextmappingtable_ = std::make_shared<CiscoContextMappingMib::Ccontextmappingtable>();
         }
-        return ccontextmappingtable;
+        return ccontextmappingtable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoContextMappingMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoContextMappingMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ccontextmappingbridgedomaintable != nullptr)
+    if(ccontextmappingbridgedomaintable_ != nullptr)
     {
-        children["cContextMappingBridgeDomainTable"] = ccontextmappingbridgedomaintable;
+        children["cContextMappingBridgeDomainTable"] = ccontextmappingbridgedomaintable_;
     }
 
-    if(ccontextmappingbridgeinstancetable != nullptr)
+    if(ccontextmappingbridgeinstancetable_ != nullptr)
     {
-        children["cContextMappingBridgeInstanceTable"] = ccontextmappingbridgeinstancetable;
+        children["cContextMappingBridgeInstanceTable"] = ccontextmappingbridgeinstancetable_;
     }
 
-    if(ccontextmappinglicensegrouptable != nullptr)
+    if(ccontextmappinglicensegrouptable_ != nullptr)
     {
-        children["cContextMappingLicenseGroupTable"] = ccontextmappinglicensegrouptable;
+        children["cContextMappingLicenseGroupTable"] = ccontextmappinglicensegrouptable_;
     }
 
-    if(ccontextmappingtable != nullptr)
+    if(ccontextmappingtable_ != nullptr)
     {
-        children["cContextMappingTable"] = ccontextmappingtable;
+        children["cContextMappingTable"] = ccontextmappingtable_;
     }
 
     return children;
@@ -177,9 +177,9 @@ CiscoContextMappingMib::Ccontextmappingtable::~Ccontextmappingtable()
 
 bool CiscoContextMappingMib::Ccontextmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingentry_.size(); index++)
     {
-        if(ccontextmappingentry[index]->has_data())
+        if(ccontextmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -187,9 +187,9 @@ bool CiscoContextMappingMib::Ccontextmappingtable::has_data() const
 
 bool CiscoContextMappingMib::Ccontextmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingentry_.size(); index++)
     {
-        if(ccontextmappingentry[index]->has_operation())
+        if(ccontextmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingtable::get_child_
 {
     if(child_yang_name == "cContextMappingEntry")
     {
-        for(auto const & c : ccontextmappingentry)
+        for(auto const & c : ccontextmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingtable::get_child_
         }
         auto c = std::make_shared<CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry>();
         c->parent = this;
-        ccontextmappingentry.push_back(c);
+        ccontextmappingentry_.push_back(c);
         return c;
     }
 
@@ -249,7 +249,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoContextMappingMib::Ccontextmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccontextmappingentry)
+    for (auto const & c : ccontextmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -384,9 +384,9 @@ CiscoContextMappingMib::Ccontextmappingbridgedomaintable::~Ccontextmappingbridge
 
 bool CiscoContextMappingMib::Ccontextmappingbridgedomaintable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgedomainentry_.size(); index++)
     {
-        if(ccontextmappingbridgedomainentry[index]->has_data())
+        if(ccontextmappingbridgedomainentry_[index]->has_data())
             return true;
     }
     return false;
@@ -394,9 +394,9 @@ bool CiscoContextMappingMib::Ccontextmappingbridgedomaintable::has_data() const
 
 bool CiscoContextMappingMib::Ccontextmappingbridgedomaintable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgedomainentry_.size(); index++)
     {
-        if(ccontextmappingbridgedomainentry[index]->has_operation())
+        if(ccontextmappingbridgedomainentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -436,7 +436,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgedomaintable
 {
     if(child_yang_name == "cContextMappingBridgeDomainEntry")
     {
-        for(auto const & c : ccontextmappingbridgedomainentry)
+        for(auto const & c : ccontextmappingbridgedomainentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -446,7 +446,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgedomaintable
         }
         auto c = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry>();
         c->parent = this;
-        ccontextmappingbridgedomainentry.push_back(c);
+        ccontextmappingbridgedomainentry_.push_back(c);
         return c;
     }
 
@@ -456,7 +456,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgedomaintable
 std::map<std::string, std::shared_ptr<Entity>> CiscoContextMappingMib::Ccontextmappingbridgedomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccontextmappingbridgedomainentry)
+    for (auto const & c : ccontextmappingbridgedomainentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -575,9 +575,9 @@ CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::~Ccontextmappingbrid
 
 bool CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry_.size(); index++)
     {
-        if(ccontextmappingbridgeinstanceentry[index]->has_data())
+        if(ccontextmappingbridgeinstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -585,9 +585,9 @@ bool CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::has_data() cons
 
 bool CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry_.size(); index++)
     {
-        if(ccontextmappingbridgeinstanceentry[index]->has_operation())
+        if(ccontextmappingbridgeinstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -627,7 +627,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgeinstancetab
 {
     if(child_yang_name == "cContextMappingBridgeInstanceEntry")
     {
-        for(auto const & c : ccontextmappingbridgeinstanceentry)
+        for(auto const & c : ccontextmappingbridgeinstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -637,7 +637,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgeinstancetab
         }
         auto c = std::make_shared<CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry>();
         c->parent = this;
-        ccontextmappingbridgeinstanceentry.push_back(c);
+        ccontextmappingbridgeinstanceentry_.push_back(c);
         return c;
     }
 
@@ -647,7 +647,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappingbridgeinstancetab
 std::map<std::string, std::shared_ptr<Entity>> CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccontextmappingbridgeinstanceentry)
+    for (auto const & c : ccontextmappingbridgeinstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -766,9 +766,9 @@ CiscoContextMappingMib::Ccontextmappinglicensegrouptable::~Ccontextmappinglicens
 
 bool CiscoContextMappingMib::Ccontextmappinglicensegrouptable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappinglicensegroupentry_.size(); index++)
     {
-        if(ccontextmappinglicensegroupentry[index]->has_data())
+        if(ccontextmappinglicensegroupentry_[index]->has_data())
             return true;
     }
     return false;
@@ -776,9 +776,9 @@ bool CiscoContextMappingMib::Ccontextmappinglicensegrouptable::has_data() const
 
 bool CiscoContextMappingMib::Ccontextmappinglicensegrouptable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappinglicensegroupentry_.size(); index++)
     {
-        if(ccontextmappinglicensegroupentry[index]->has_operation())
+        if(ccontextmappinglicensegroupentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -818,7 +818,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 {
     if(child_yang_name == "cContextMappingLicenseGroupEntry")
     {
-        for(auto const & c : ccontextmappinglicensegroupentry)
+        for(auto const & c : ccontextmappinglicensegroupentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -828,7 +828,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappinglicensegrouptable
         }
         auto c = std::make_shared<CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry>();
         c->parent = this;
-        ccontextmappinglicensegroupentry.push_back(c);
+        ccontextmappinglicensegroupentry_.push_back(c);
         return c;
     }
 
@@ -838,7 +838,7 @@ std::shared_ptr<Entity> CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 std::map<std::string, std::shared_ptr<Entity>> CiscoContextMappingMib::Ccontextmappinglicensegrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccontextmappinglicensegroupentry)
+    for (auto const & c : ccontextmappinglicensegroupentry_)
     {
         children[c->get_segment_path()] = c;
     }

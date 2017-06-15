@@ -33,10 +33,10 @@ class Bgp4Mib : public Entity
         class Bgprcvdpathattrtable; //type: Bgp4Mib::Bgprcvdpathattrtable
         class Bgp4Pathattrtable; //type: Bgp4Mib::Bgp4Pathattrtable
 
-        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp> bgp;
-        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp4Pathattrtable> bgp4pathattrtable;
-        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgppeertable> bgppeertable;
-        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgprcvdpathattrtable> bgprcvdpathattrtable;
+        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp4Pathattrtable> bgp4pathattrtable_;
+        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp> bgp_;
+        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgppeertable> bgppeertable_;
+        std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgprcvdpathattrtable> bgprcvdpathattrtable_;
         
 }; // Bgp4Mib
 
@@ -78,7 +78,7 @@ class Bgp4Mib::Bgppeertable : public Entity
 
         class Bgppeerentry; //type: Bgp4Mib::Bgppeertable::Bgppeerentry
 
-        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgppeertable::Bgppeerentry> > bgppeerentry;
+        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgppeertable::Bgppeerentry> > bgppeerentry_;
         
 }; // Bgp4Mib::Bgppeertable
 
@@ -152,7 +152,7 @@ class Bgp4Mib::Bgprcvdpathattrtable : public Entity
 
         class Bgppathattrentry; //type: Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry
 
-        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry> > bgppathattrentry;
+        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry> > bgppathattrentry_;
         
 }; // Bgp4Mib::Bgprcvdpathattrtable
 
@@ -198,7 +198,7 @@ class Bgp4Mib::Bgp4Pathattrtable : public Entity
 
         class Bgp4Pathattrentry; //type: Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry
 
-        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry> > bgp4pathattrentry;
+        std::vector<std::shared_ptr<BGP4_MIB::Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry> > bgp4pathattrentry_;
         
 }; // Bgp4Mib::Bgp4Pathattrtable
 

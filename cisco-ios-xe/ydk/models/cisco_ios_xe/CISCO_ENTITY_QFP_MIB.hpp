@@ -35,12 +35,12 @@ class CiscoEntityQfpMib : public Entity
         class Ceqfpmemoryresourcetable; //type: CiscoEntityQfpMib::Ceqfpmemoryresourcetable
         class Ceqfpthroughputtable; //type: CiscoEntityQfpMib::Ceqfpthroughputtable
 
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpmemoryresourcetable> ceqfpmemoryresourcetable;
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpsystemtable> ceqfpsystemtable;
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpthroughputtable> ceqfpthroughputtable;
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfputilizationtable> ceqfputilizationtable;
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ciscoentityqfp> ciscoentityqfp;
-        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ciscoentityqfpnotif> ciscoentityqfpnotif;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpmemoryresourcetable> ceqfpmemoryresourcetable_;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpsystemtable> ceqfpsystemtable_;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpthroughputtable> ceqfpthroughputtable_;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfputilizationtable> ceqfputilizationtable_;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ciscoentityqfp> ciscoentityqfp_;
+        std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ciscoentityqfpnotif> ciscoentityqfpnotif_;
         
 }; // CiscoEntityQfpMib
 
@@ -107,7 +107,7 @@ class CiscoEntityQfpMib::Ceqfpsystemtable : public Entity
 
         class Ceqfpsystementry; //type: CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry> > ceqfpsystementry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry> > ceqfpsystementry_;
         
 }; // CiscoEntityQfpMib::Ceqfpsystemtable
 
@@ -154,7 +154,7 @@ class CiscoEntityQfpMib::Ceqfputilizationtable : public Entity
 
         class Ceqfputilizationentry; //type: CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry> > ceqfputilizationentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry> > ceqfputilizationentry_;
         
 }; // CiscoEntityQfpMib::Ceqfputilizationtable
 
@@ -209,7 +209,7 @@ class CiscoEntityQfpMib::Ceqfpmemoryresourcetable : public Entity
 
         class Ceqfpmemoryresourceentry; //type: CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry> > ceqfpmemoryresourceentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry> > ceqfpmemoryresourceentry_;
         
 }; // CiscoEntityQfpMib::Ceqfpmemoryresourcetable
 
@@ -265,7 +265,7 @@ class CiscoEntityQfpMib::Ceqfpthroughputtable : public Entity
 
         class Ceqfpthroughputentry; //type: CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry> > ceqfpthroughputentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_QFP_MIB::CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry> > ceqfpthroughputentry_;
         
 }; // CiscoEntityQfpMib::Ceqfpthroughputtable
 

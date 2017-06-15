@@ -11,27 +11,27 @@ namespace MPLS_LSR_STD_MIB {
 
 MplsLsrStdMib::MplsLsrStdMib()
     :
-    mplsinsegmentmaptable(std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>())
-	,mplsinsegmenttable(std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>())
-	,mplsinterfacetable(std::make_shared<MplsLsrStdMib::Mplsinterfacetable>())
-	,mplslabelstacktable(std::make_shared<MplsLsrStdMib::Mplslabelstacktable>())
-	,mplslsrobjects(std::make_shared<MplsLsrStdMib::Mplslsrobjects>())
-	,mplsoutsegmenttable(std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>())
-	,mplsxctable(std::make_shared<MplsLsrStdMib::Mplsxctable>())
+    mplsinsegmentmaptable_(std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>())
+	,mplsinsegmenttable_(std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>())
+	,mplsinterfacetable_(std::make_shared<MplsLsrStdMib::Mplsinterfacetable>())
+	,mplslabelstacktable_(std::make_shared<MplsLsrStdMib::Mplslabelstacktable>())
+	,mplslsrobjects_(std::make_shared<MplsLsrStdMib::Mplslsrobjects>())
+	,mplsoutsegmenttable_(std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>())
+	,mplsxctable_(std::make_shared<MplsLsrStdMib::Mplsxctable>())
 {
-    mplsinsegmentmaptable->parent = this;
+    mplsinsegmentmaptable_->parent = this;
 
-    mplsinsegmenttable->parent = this;
+    mplsinsegmenttable_->parent = this;
 
-    mplsinterfacetable->parent = this;
+    mplsinterfacetable_->parent = this;
 
-    mplslabelstacktable->parent = this;
+    mplslabelstacktable_->parent = this;
 
-    mplslsrobjects->parent = this;
+    mplslsrobjects_->parent = this;
 
-    mplsoutsegmenttable->parent = this;
+    mplsoutsegmenttable_->parent = this;
 
-    mplsxctable->parent = this;
+    mplsxctable_->parent = this;
 
     yang_name = "MPLS-LSR-STD-MIB"; yang_parent_name = "MPLS-LSR-STD-MIB";
 }
@@ -42,25 +42,25 @@ MplsLsrStdMib::~MplsLsrStdMib()
 
 bool MplsLsrStdMib::has_data() const
 {
-    return (mplsinsegmentmaptable !=  nullptr && mplsinsegmentmaptable->has_data())
-	|| (mplsinsegmenttable !=  nullptr && mplsinsegmenttable->has_data())
-	|| (mplsinterfacetable !=  nullptr && mplsinterfacetable->has_data())
-	|| (mplslabelstacktable !=  nullptr && mplslabelstacktable->has_data())
-	|| (mplslsrobjects !=  nullptr && mplslsrobjects->has_data())
-	|| (mplsoutsegmenttable !=  nullptr && mplsoutsegmenttable->has_data())
-	|| (mplsxctable !=  nullptr && mplsxctable->has_data());
+    return (mplsinsegmentmaptable_ !=  nullptr && mplsinsegmentmaptable_->has_data())
+	|| (mplsinsegmenttable_ !=  nullptr && mplsinsegmenttable_->has_data())
+	|| (mplsinterfacetable_ !=  nullptr && mplsinterfacetable_->has_data())
+	|| (mplslabelstacktable_ !=  nullptr && mplslabelstacktable_->has_data())
+	|| (mplslsrobjects_ !=  nullptr && mplslsrobjects_->has_data())
+	|| (mplsoutsegmenttable_ !=  nullptr && mplsoutsegmenttable_->has_data())
+	|| (mplsxctable_ !=  nullptr && mplsxctable_->has_data());
 }
 
 bool MplsLsrStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (mplsinsegmentmaptable !=  nullptr && mplsinsegmentmaptable->has_operation())
-	|| (mplsinsegmenttable !=  nullptr && mplsinsegmenttable->has_operation())
-	|| (mplsinterfacetable !=  nullptr && mplsinterfacetable->has_operation())
-	|| (mplslabelstacktable !=  nullptr && mplslabelstacktable->has_operation())
-	|| (mplslsrobjects !=  nullptr && mplslsrobjects->has_operation())
-	|| (mplsoutsegmenttable !=  nullptr && mplsoutsegmenttable->has_operation())
-	|| (mplsxctable !=  nullptr && mplsxctable->has_operation());
+	|| (mplsinsegmentmaptable_ !=  nullptr && mplsinsegmentmaptable_->has_operation())
+	|| (mplsinsegmenttable_ !=  nullptr && mplsinsegmenttable_->has_operation())
+	|| (mplsinterfacetable_ !=  nullptr && mplsinterfacetable_->has_operation())
+	|| (mplslabelstacktable_ !=  nullptr && mplslabelstacktable_->has_operation())
+	|| (mplslsrobjects_ !=  nullptr && mplslsrobjects_->has_operation())
+	|| (mplsoutsegmenttable_ !=  nullptr && mplsoutsegmenttable_->has_operation())
+	|| (mplsxctable_ !=  nullptr && mplsxctable_->has_operation());
 }
 
 std::string MplsLsrStdMib::get_segment_path() const
@@ -94,65 +94,65 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "mplsInSegmentMapTable")
     {
-        if(mplsinsegmentmaptable == nullptr)
+        if(mplsinsegmentmaptable_ == nullptr)
         {
-            mplsinsegmentmaptable = std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>();
+            mplsinsegmentmaptable_ = std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>();
         }
-        return mplsinsegmentmaptable;
+        return mplsinsegmentmaptable_;
     }
 
     if(child_yang_name == "mplsInSegmentTable")
     {
-        if(mplsinsegmenttable == nullptr)
+        if(mplsinsegmenttable_ == nullptr)
         {
-            mplsinsegmenttable = std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>();
+            mplsinsegmenttable_ = std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>();
         }
-        return mplsinsegmenttable;
+        return mplsinsegmenttable_;
     }
 
     if(child_yang_name == "mplsInterfaceTable")
     {
-        if(mplsinterfacetable == nullptr)
+        if(mplsinterfacetable_ == nullptr)
         {
-            mplsinterfacetable = std::make_shared<MplsLsrStdMib::Mplsinterfacetable>();
+            mplsinterfacetable_ = std::make_shared<MplsLsrStdMib::Mplsinterfacetable>();
         }
-        return mplsinterfacetable;
+        return mplsinterfacetable_;
     }
 
     if(child_yang_name == "mplsLabelStackTable")
     {
-        if(mplslabelstacktable == nullptr)
+        if(mplslabelstacktable_ == nullptr)
         {
-            mplslabelstacktable = std::make_shared<MplsLsrStdMib::Mplslabelstacktable>();
+            mplslabelstacktable_ = std::make_shared<MplsLsrStdMib::Mplslabelstacktable>();
         }
-        return mplslabelstacktable;
+        return mplslabelstacktable_;
     }
 
     if(child_yang_name == "mplsLsrObjects")
     {
-        if(mplslsrobjects == nullptr)
+        if(mplslsrobjects_ == nullptr)
         {
-            mplslsrobjects = std::make_shared<MplsLsrStdMib::Mplslsrobjects>();
+            mplslsrobjects_ = std::make_shared<MplsLsrStdMib::Mplslsrobjects>();
         }
-        return mplslsrobjects;
+        return mplslsrobjects_;
     }
 
     if(child_yang_name == "mplsOutSegmentTable")
     {
-        if(mplsoutsegmenttable == nullptr)
+        if(mplsoutsegmenttable_ == nullptr)
         {
-            mplsoutsegmenttable = std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>();
+            mplsoutsegmenttable_ = std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>();
         }
-        return mplsoutsegmenttable;
+        return mplsoutsegmenttable_;
     }
 
     if(child_yang_name == "mplsXCTable")
     {
-        if(mplsxctable == nullptr)
+        if(mplsxctable_ == nullptr)
         {
-            mplsxctable = std::make_shared<MplsLsrStdMib::Mplsxctable>();
+            mplsxctable_ = std::make_shared<MplsLsrStdMib::Mplsxctable>();
         }
-        return mplsxctable;
+        return mplsxctable_;
     }
 
     return nullptr;
@@ -161,39 +161,39 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsinsegmentmaptable != nullptr)
+    if(mplsinsegmentmaptable_ != nullptr)
     {
-        children["mplsInSegmentMapTable"] = mplsinsegmentmaptable;
+        children["mplsInSegmentMapTable"] = mplsinsegmentmaptable_;
     }
 
-    if(mplsinsegmenttable != nullptr)
+    if(mplsinsegmenttable_ != nullptr)
     {
-        children["mplsInSegmentTable"] = mplsinsegmenttable;
+        children["mplsInSegmentTable"] = mplsinsegmenttable_;
     }
 
-    if(mplsinterfacetable != nullptr)
+    if(mplsinterfacetable_ != nullptr)
     {
-        children["mplsInterfaceTable"] = mplsinterfacetable;
+        children["mplsInterfaceTable"] = mplsinterfacetable_;
     }
 
-    if(mplslabelstacktable != nullptr)
+    if(mplslabelstacktable_ != nullptr)
     {
-        children["mplsLabelStackTable"] = mplslabelstacktable;
+        children["mplsLabelStackTable"] = mplslabelstacktable_;
     }
 
-    if(mplslsrobjects != nullptr)
+    if(mplslsrobjects_ != nullptr)
     {
-        children["mplsLsrObjects"] = mplslsrobjects;
+        children["mplsLsrObjects"] = mplslsrobjects_;
     }
 
-    if(mplsoutsegmenttable != nullptr)
+    if(mplsoutsegmenttable_ != nullptr)
     {
-        children["mplsOutSegmentTable"] = mplsoutsegmenttable;
+        children["mplsOutSegmentTable"] = mplsoutsegmenttable_;
     }
 
-    if(mplsxctable != nullptr)
+    if(mplsxctable_ != nullptr)
     {
-        children["mplsXCTable"] = mplsxctable;
+        children["mplsXCTable"] = mplsxctable_;
     }
 
     return children;
@@ -346,9 +346,9 @@ MplsLsrStdMib::Mplsinterfacetable::~Mplsinterfacetable()
 
 bool MplsLsrStdMib::Mplsinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<mplsinterfaceentry_.size(); index++)
     {
-        if(mplsinterfaceentry[index]->has_data())
+        if(mplsinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -356,9 +356,9 @@ bool MplsLsrStdMib::Mplsinterfacetable::has_data() const
 
 bool MplsLsrStdMib::Mplsinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<mplsinterfaceentry_.size(); index++)
     {
-        if(mplsinterfaceentry[index]->has_operation())
+        if(mplsinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -398,7 +398,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::get_child_by_name(con
 {
     if(child_yang_name == "mplsInterfaceEntry")
     {
-        for(auto const & c : mplsinterfaceentry)
+        for(auto const & c : mplsinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -408,7 +408,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry>();
         c->parent = this;
-        mplsinterfaceentry.push_back(c);
+        mplsinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -418,7 +418,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinterfaceentry)
+    for (auto const & c : mplsinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -601,9 +601,9 @@ MplsLsrStdMib::Mplsinsegmenttable::~Mplsinsegmenttable()
 
 bool MplsLsrStdMib::Mplsinsegmenttable::has_data() const
 {
-    for (std::size_t index=0; index<mplsinsegmententry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmententry_.size(); index++)
     {
-        if(mplsinsegmententry[index]->has_data())
+        if(mplsinsegmententry_[index]->has_data())
             return true;
     }
     return false;
@@ -611,9 +611,9 @@ bool MplsLsrStdMib::Mplsinsegmenttable::has_data() const
 
 bool MplsLsrStdMib::Mplsinsegmenttable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsinsegmententry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmententry_.size(); index++)
     {
-        if(mplsinsegmententry[index]->has_operation())
+        if(mplsinsegmententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -653,7 +653,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(con
 {
     if(child_yang_name == "mplsInSegmentEntry")
     {
-        for(auto const & c : mplsinsegmententry)
+        for(auto const & c : mplsinsegmententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -663,7 +663,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry>();
         c->parent = this;
-        mplsinsegmententry.push_back(c);
+        mplsinsegmententry_.push_back(c);
         return c;
     }
 
@@ -673,7 +673,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinsegmententry)
+    for (auto const & c : mplsinsegmententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -896,9 +896,9 @@ MplsLsrStdMib::Mplsoutsegmenttable::~Mplsoutsegmenttable()
 
 bool MplsLsrStdMib::Mplsoutsegmenttable::has_data() const
 {
-    for (std::size_t index=0; index<mplsoutsegmententry.size(); index++)
+    for (std::size_t index=0; index<mplsoutsegmententry_.size(); index++)
     {
-        if(mplsoutsegmententry[index]->has_data())
+        if(mplsoutsegmententry_[index]->has_data())
             return true;
     }
     return false;
@@ -906,9 +906,9 @@ bool MplsLsrStdMib::Mplsoutsegmenttable::has_data() const
 
 bool MplsLsrStdMib::Mplsoutsegmenttable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsoutsegmententry.size(); index++)
+    for (std::size_t index=0; index<mplsoutsegmententry_.size(); index++)
     {
-        if(mplsoutsegmententry[index]->has_operation())
+        if(mplsoutsegmententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -948,7 +948,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(co
 {
     if(child_yang_name == "mplsOutSegmentEntry")
     {
-        for(auto const & c : mplsoutsegmententry)
+        for(auto const & c : mplsoutsegmententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -958,7 +958,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(co
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry>();
         c->parent = this;
-        mplsoutsegmententry.push_back(c);
+        mplsoutsegmententry_.push_back(c);
         return c;
     }
 
@@ -968,7 +968,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsoutsegmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsoutsegmententry)
+    for (auto const & c : mplsoutsegmententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1199,9 +1199,9 @@ MplsLsrStdMib::Mplsxctable::~Mplsxctable()
 
 bool MplsLsrStdMib::Mplsxctable::has_data() const
 {
-    for (std::size_t index=0; index<mplsxcentry.size(); index++)
+    for (std::size_t index=0; index<mplsxcentry_.size(); index++)
     {
-        if(mplsxcentry[index]->has_data())
+        if(mplsxcentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1209,9 +1209,9 @@ bool MplsLsrStdMib::Mplsxctable::has_data() const
 
 bool MplsLsrStdMib::Mplsxctable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsxcentry.size(); index++)
+    for (std::size_t index=0; index<mplsxcentry_.size(); index++)
     {
-        if(mplsxcentry[index]->has_operation())
+        if(mplsxcentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1251,7 +1251,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std:
 {
     if(child_yang_name == "mplsXCEntry")
     {
-        for(auto const & c : mplsxcentry)
+        for(auto const & c : mplsxcentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1261,7 +1261,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std:
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplsxctable::Mplsxcentry>();
         c->parent = this;
-        mplsxcentry.push_back(c);
+        mplsxcentry_.push_back(c);
         return c;
     }
 
@@ -1271,7 +1271,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsxctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsxcentry)
+    for (auto const & c : mplsxcentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1438,9 +1438,9 @@ MplsLsrStdMib::Mplslabelstacktable::~Mplslabelstacktable()
 
 bool MplsLsrStdMib::Mplslabelstacktable::has_data() const
 {
-    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
+    for (std::size_t index=0; index<mplslabelstackentry_.size(); index++)
     {
-        if(mplslabelstackentry[index]->has_data())
+        if(mplslabelstackentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1448,9 +1448,9 @@ bool MplsLsrStdMib::Mplslabelstacktable::has_data() const
 
 bool MplsLsrStdMib::Mplslabelstacktable::has_operation() const
 {
-    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
+    for (std::size_t index=0; index<mplslabelstackentry_.size(); index++)
     {
-        if(mplslabelstackentry[index]->has_operation())
+        if(mplslabelstackentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1490,7 +1490,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplslabelstacktable::get_child_by_name(co
 {
     if(child_yang_name == "mplsLabelStackEntry")
     {
-        for(auto const & c : mplslabelstackentry)
+        for(auto const & c : mplslabelstackentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1500,7 +1500,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplslabelstacktable::get_child_by_name(co
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry>();
         c->parent = this;
-        mplslabelstackentry.push_back(c);
+        mplslabelstackentry_.push_back(c);
         return c;
     }
 
@@ -1510,7 +1510,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplslabelstacktable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplslabelstacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplslabelstackentry)
+    for (auto const & c : mplslabelstackentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1645,9 +1645,9 @@ MplsLsrStdMib::Mplsinsegmentmaptable::~Mplsinsegmentmaptable()
 
 bool MplsLsrStdMib::Mplsinsegmentmaptable::has_data() const
 {
-    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmentmapentry_.size(); index++)
     {
-        if(mplsinsegmentmapentry[index]->has_data())
+        if(mplsinsegmentmapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1655,9 +1655,9 @@ bool MplsLsrStdMib::Mplsinsegmentmaptable::has_data() const
 
 bool MplsLsrStdMib::Mplsinsegmentmaptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmentmapentry_.size(); index++)
     {
-        if(mplsinsegmentmapentry[index]->has_operation())
+        if(mplsinsegmentmapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1697,7 +1697,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmentmaptable::get_child_by_name(
 {
     if(child_yang_name == "mplsInSegmentMapEntry")
     {
-        for(auto const & c : mplsinsegmentmapentry)
+        for(auto const & c : mplsinsegmentmapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1707,7 +1707,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmentmaptable::get_child_by_name(
         }
         auto c = std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry>();
         c->parent = this;
-        mplsinsegmentmapentry.push_back(c);
+        mplsinsegmentmapentry_.push_back(c);
         return c;
     }
 
@@ -1717,7 +1717,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmentmaptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmentmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinsegmentmapentry)
+    for (auto const & c : mplsinsegmentmapentry_)
     {
         children[c->get_segment_path()] = c;
     }

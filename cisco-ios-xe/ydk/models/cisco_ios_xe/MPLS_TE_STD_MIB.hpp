@@ -38,14 +38,14 @@ class MplsTeStdMib : public Entity
         class Mplstunnelchoptable; //type: MplsTeStdMib::Mplstunnelchoptable
         class Mplstunnelcrldprestable; //type: MplsTeStdMib::Mplstunnelcrldprestable
 
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplsteobjects> mplsteobjects;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstescalars> mplstescalars;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelarhoptable> mplstunnelarhoptable;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelchoptable> mplstunnelchoptable;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelcrldprestable> mplstunnelcrldprestable;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelhoptable> mplstunnelhoptable;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelresourcetable> mplstunnelresourcetable;
-        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunneltable> mplstunneltable;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplsteobjects> mplsteobjects_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstescalars> mplstescalars_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelarhoptable> mplstunnelarhoptable_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelchoptable> mplstunnelchoptable_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelcrldprestable> mplstunnelcrldprestable_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelhoptable> mplstunnelhoptable_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelresourcetable> mplstunnelresourcetable_;
+        std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunneltable> mplstunneltable_;
         
 }; // MplsTeStdMib
 
@@ -111,7 +111,7 @@ class MplsTeStdMib::Mplstunneltable : public Entity
 
         class Mplstunnelentry; //type: MplsTeStdMib::Mplstunneltable::Mplstunnelentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunneltable::Mplstunnelentry> > mplstunnelentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunneltable::Mplstunnelentry> > mplstunnelentry_;
         
 }; // MplsTeStdMib::Mplstunneltable
 
@@ -196,7 +196,7 @@ class MplsTeStdMib::Mplstunnelhoptable : public Entity
 
         class Mplstunnelhopentry; //type: MplsTeStdMib::Mplstunnelhoptable::Mplstunnelhopentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelhoptable::Mplstunnelhopentry> > mplstunnelhopentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelhoptable::Mplstunnelhopentry> > mplstunnelhopentry_;
         
 }; // MplsTeStdMib::Mplstunnelhoptable
 
@@ -252,7 +252,7 @@ class MplsTeStdMib::Mplstunnelresourcetable : public Entity
 
         class Mplstunnelresourceentry; //type: MplsTeStdMib::Mplstunnelresourcetable::Mplstunnelresourceentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelresourcetable::Mplstunnelresourceentry> > mplstunnelresourceentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelresourcetable::Mplstunnelresourceentry> > mplstunnelresourceentry_;
         
 }; // MplsTeStdMib::Mplstunnelresourcetable
 
@@ -302,7 +302,7 @@ class MplsTeStdMib::Mplstunnelarhoptable : public Entity
 
         class Mplstunnelarhopentry; //type: MplsTeStdMib::Mplstunnelarhoptable::Mplstunnelarhopentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelarhoptable::Mplstunnelarhopentry> > mplstunnelarhopentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelarhoptable::Mplstunnelarhopentry> > mplstunnelarhopentry_;
         
 }; // MplsTeStdMib::Mplstunnelarhoptable
 
@@ -347,7 +347,7 @@ class MplsTeStdMib::Mplstunnelchoptable : public Entity
 
         class Mplstunnelchopentry; //type: MplsTeStdMib::Mplstunnelchoptable::Mplstunnelchopentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelchoptable::Mplstunnelchopentry> > mplstunnelchopentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelchoptable::Mplstunnelchopentry> > mplstunnelchopentry_;
         
 }; // MplsTeStdMib::Mplstunnelchoptable
 
@@ -396,7 +396,7 @@ class MplsTeStdMib::Mplstunnelcrldprestable : public Entity
 
         class Mplstunnelcrldpresentry; //type: MplsTeStdMib::Mplstunnelcrldprestable::Mplstunnelcrldpresentry
 
-        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelcrldprestable::Mplstunnelcrldpresentry> > mplstunnelcrldpresentry;
+        std::vector<std::shared_ptr<MPLS_TE_STD_MIB::MplsTeStdMib::Mplstunnelcrldprestable::Mplstunnelcrldpresentry> > mplstunnelcrldpresentry_;
         
 }; // MplsTeStdMib::Mplstunnelcrldprestable
 

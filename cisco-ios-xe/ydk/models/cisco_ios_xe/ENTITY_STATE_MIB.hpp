@@ -31,7 +31,7 @@ class EntityStateMib : public Entity
 
         class Entstatetable; //type: EntityStateMib::Entstatetable
 
-        std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable> entstatetable;
+        std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable> entstatetable_;
         
 }; // EntityStateMib
 
@@ -52,7 +52,7 @@ class EntityStateMib::Entstatetable : public Entity
 
         class Entstateentry; //type: EntityStateMib::Entstatetable::Entstateentry
 
-        std::vector<std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable::Entstateentry> > entstateentry;
+        std::vector<std::shared_ptr<ENTITY_STATE_MIB::EntityStateMib::Entstatetable::Entstateentry> > entstateentry_;
         
 }; // EntityStateMib::Entstatetable
 

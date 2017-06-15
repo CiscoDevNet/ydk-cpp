@@ -11,18 +11,18 @@ namespace CISCO_HSRP_EXT_MIB {
 
 CiscoHsrpExtMib::CiscoHsrpExtMib()
     :
-    chsrpextifstandbytable(std::make_shared<CiscoHsrpExtMib::Chsrpextifstandbytable>())
-	,chsrpextiftable(std::make_shared<CiscoHsrpExtMib::Chsrpextiftable>())
-	,chsrpextiftrackedtable(std::make_shared<CiscoHsrpExtMib::Chsrpextiftrackedtable>())
-	,chsrpextsecaddrtable(std::make_shared<CiscoHsrpExtMib::Chsrpextsecaddrtable>())
+    chsrpextifstandbytable_(std::make_shared<CiscoHsrpExtMib::Chsrpextifstandbytable>())
+	,chsrpextiftable_(std::make_shared<CiscoHsrpExtMib::Chsrpextiftable>())
+	,chsrpextiftrackedtable_(std::make_shared<CiscoHsrpExtMib::Chsrpextiftrackedtable>())
+	,chsrpextsecaddrtable_(std::make_shared<CiscoHsrpExtMib::Chsrpextsecaddrtable>())
 {
-    chsrpextifstandbytable->parent = this;
+    chsrpextifstandbytable_->parent = this;
 
-    chsrpextiftable->parent = this;
+    chsrpextiftable_->parent = this;
 
-    chsrpextiftrackedtable->parent = this;
+    chsrpextiftrackedtable_->parent = this;
 
-    chsrpextsecaddrtable->parent = this;
+    chsrpextsecaddrtable_->parent = this;
 
     yang_name = "CISCO-HSRP-EXT-MIB"; yang_parent_name = "CISCO-HSRP-EXT-MIB";
 }
@@ -33,19 +33,19 @@ CiscoHsrpExtMib::~CiscoHsrpExtMib()
 
 bool CiscoHsrpExtMib::has_data() const
 {
-    return (chsrpextifstandbytable !=  nullptr && chsrpextifstandbytable->has_data())
-	|| (chsrpextiftable !=  nullptr && chsrpextiftable->has_data())
-	|| (chsrpextiftrackedtable !=  nullptr && chsrpextiftrackedtable->has_data())
-	|| (chsrpextsecaddrtable !=  nullptr && chsrpextsecaddrtable->has_data());
+    return (chsrpextifstandbytable_ !=  nullptr && chsrpextifstandbytable_->has_data())
+	|| (chsrpextiftable_ !=  nullptr && chsrpextiftable_->has_data())
+	|| (chsrpextiftrackedtable_ !=  nullptr && chsrpextiftrackedtable_->has_data())
+	|| (chsrpextsecaddrtable_ !=  nullptr && chsrpextsecaddrtable_->has_data());
 }
 
 bool CiscoHsrpExtMib::has_operation() const
 {
     return is_set(operation)
-	|| (chsrpextifstandbytable !=  nullptr && chsrpextifstandbytable->has_operation())
-	|| (chsrpextiftable !=  nullptr && chsrpextiftable->has_operation())
-	|| (chsrpextiftrackedtable !=  nullptr && chsrpextiftrackedtable->has_operation())
-	|| (chsrpextsecaddrtable !=  nullptr && chsrpextsecaddrtable->has_operation());
+	|| (chsrpextifstandbytable_ !=  nullptr && chsrpextifstandbytable_->has_operation())
+	|| (chsrpextiftable_ !=  nullptr && chsrpextiftable_->has_operation())
+	|| (chsrpextiftrackedtable_ !=  nullptr && chsrpextiftrackedtable_->has_operation())
+	|| (chsrpextsecaddrtable_ !=  nullptr && chsrpextsecaddrtable_->has_operation());
 }
 
 std::string CiscoHsrpExtMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "cHsrpExtIfStandbyTable")
     {
-        if(chsrpextifstandbytable == nullptr)
+        if(chsrpextifstandbytable_ == nullptr)
         {
-            chsrpextifstandbytable = std::make_shared<CiscoHsrpExtMib::Chsrpextifstandbytable>();
+            chsrpextifstandbytable_ = std::make_shared<CiscoHsrpExtMib::Chsrpextifstandbytable>();
         }
-        return chsrpextifstandbytable;
+        return chsrpextifstandbytable_;
     }
 
     if(child_yang_name == "cHsrpExtIfTable")
     {
-        if(chsrpextiftable == nullptr)
+        if(chsrpextiftable_ == nullptr)
         {
-            chsrpextiftable = std::make_shared<CiscoHsrpExtMib::Chsrpextiftable>();
+            chsrpextiftable_ = std::make_shared<CiscoHsrpExtMib::Chsrpextiftable>();
         }
-        return chsrpextiftable;
+        return chsrpextiftable_;
     }
 
     if(child_yang_name == "cHsrpExtIfTrackedTable")
     {
-        if(chsrpextiftrackedtable == nullptr)
+        if(chsrpextiftrackedtable_ == nullptr)
         {
-            chsrpextiftrackedtable = std::make_shared<CiscoHsrpExtMib::Chsrpextiftrackedtable>();
+            chsrpextiftrackedtable_ = std::make_shared<CiscoHsrpExtMib::Chsrpextiftrackedtable>();
         }
-        return chsrpextiftrackedtable;
+        return chsrpextiftrackedtable_;
     }
 
     if(child_yang_name == "cHsrpExtSecAddrTable")
     {
-        if(chsrpextsecaddrtable == nullptr)
+        if(chsrpextsecaddrtable_ == nullptr)
         {
-            chsrpextsecaddrtable = std::make_shared<CiscoHsrpExtMib::Chsrpextsecaddrtable>();
+            chsrpextsecaddrtable_ = std::make_shared<CiscoHsrpExtMib::Chsrpextsecaddrtable>();
         }
-        return chsrpextsecaddrtable;
+        return chsrpextsecaddrtable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpExtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(chsrpextifstandbytable != nullptr)
+    if(chsrpextifstandbytable_ != nullptr)
     {
-        children["cHsrpExtIfStandbyTable"] = chsrpextifstandbytable;
+        children["cHsrpExtIfStandbyTable"] = chsrpextifstandbytable_;
     }
 
-    if(chsrpextiftable != nullptr)
+    if(chsrpextiftable_ != nullptr)
     {
-        children["cHsrpExtIfTable"] = chsrpextiftable;
+        children["cHsrpExtIfTable"] = chsrpextiftable_;
     }
 
-    if(chsrpextiftrackedtable != nullptr)
+    if(chsrpextiftrackedtable_ != nullptr)
     {
-        children["cHsrpExtIfTrackedTable"] = chsrpextiftrackedtable;
+        children["cHsrpExtIfTrackedTable"] = chsrpextiftrackedtable_;
     }
 
-    if(chsrpextsecaddrtable != nullptr)
+    if(chsrpextsecaddrtable_ != nullptr)
     {
-        children["cHsrpExtSecAddrTable"] = chsrpextsecaddrtable;
+        children["cHsrpExtSecAddrTable"] = chsrpextsecaddrtable_;
     }
 
     return children;
@@ -177,9 +177,9 @@ CiscoHsrpExtMib::Chsrpextiftrackedtable::~Chsrpextiftrackedtable()
 
 bool CiscoHsrpExtMib::Chsrpextiftrackedtable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextiftrackedentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextiftrackedentry_.size(); index++)
     {
-        if(chsrpextiftrackedentry[index]->has_data())
+        if(chsrpextiftrackedentry_[index]->has_data())
             return true;
     }
     return false;
@@ -187,9 +187,9 @@ bool CiscoHsrpExtMib::Chsrpextiftrackedtable::has_data() const
 
 bool CiscoHsrpExtMib::Chsrpextiftrackedtable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextiftrackedentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextiftrackedentry_.size(); index++)
     {
-        if(chsrpextiftrackedentry[index]->has_operation())
+        if(chsrpextiftrackedentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftrackedtable::get_child_by_na
 {
     if(child_yang_name == "cHsrpExtIfTrackedEntry")
     {
-        for(auto const & c : chsrpextiftrackedentry)
+        for(auto const & c : chsrpextiftrackedentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftrackedtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoHsrpExtMib::Chsrpextiftrackedtable::Chsrpextiftrackedentry>();
         c->parent = this;
-        chsrpextiftrackedentry.push_back(c);
+        chsrpextiftrackedentry_.push_back(c);
         return c;
     }
 
@@ -249,7 +249,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftrackedtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpExtMib::Chsrpextiftrackedtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : chsrpextiftrackedentry)
+    for (auto const & c : chsrpextiftrackedentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -384,9 +384,9 @@ CiscoHsrpExtMib::Chsrpextsecaddrtable::~Chsrpextsecaddrtable()
 
 bool CiscoHsrpExtMib::Chsrpextsecaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextsecaddrentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextsecaddrentry_.size(); index++)
     {
-        if(chsrpextsecaddrentry[index]->has_data())
+        if(chsrpextsecaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -394,9 +394,9 @@ bool CiscoHsrpExtMib::Chsrpextsecaddrtable::has_data() const
 
 bool CiscoHsrpExtMib::Chsrpextsecaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextsecaddrentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextsecaddrentry_.size(); index++)
     {
-        if(chsrpextsecaddrentry[index]->has_operation())
+        if(chsrpextsecaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -436,7 +436,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextsecaddrtable::get_child_by_name
 {
     if(child_yang_name == "cHsrpExtSecAddrEntry")
     {
-        for(auto const & c : chsrpextsecaddrentry)
+        for(auto const & c : chsrpextsecaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -446,7 +446,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextsecaddrtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoHsrpExtMib::Chsrpextsecaddrtable::Chsrpextsecaddrentry>();
         c->parent = this;
-        chsrpextsecaddrentry.push_back(c);
+        chsrpextsecaddrentry_.push_back(c);
         return c;
     }
 
@@ -456,7 +456,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextsecaddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpExtMib::Chsrpextsecaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : chsrpextsecaddrentry)
+    for (auto const & c : chsrpextsecaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -575,9 +575,9 @@ CiscoHsrpExtMib::Chsrpextifstandbytable::~Chsrpextifstandbytable()
 
 bool CiscoHsrpExtMib::Chsrpextifstandbytable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextifstandbyentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifstandbyentry_.size(); index++)
     {
-        if(chsrpextifstandbyentry[index]->has_data())
+        if(chsrpextifstandbyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -585,9 +585,9 @@ bool CiscoHsrpExtMib::Chsrpextifstandbytable::has_data() const
 
 bool CiscoHsrpExtMib::Chsrpextifstandbytable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextifstandbyentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifstandbyentry_.size(); index++)
     {
-        if(chsrpextifstandbyentry[index]->has_operation())
+        if(chsrpextifstandbyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -627,7 +627,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextifstandbytable::get_child_by_na
 {
     if(child_yang_name == "cHsrpExtIfStandbyEntry")
     {
-        for(auto const & c : chsrpextifstandbyentry)
+        for(auto const & c : chsrpextifstandbyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -637,7 +637,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextifstandbytable::get_child_by_na
         }
         auto c = std::make_shared<CiscoHsrpExtMib::Chsrpextifstandbytable::Chsrpextifstandbyentry>();
         c->parent = this;
-        chsrpextifstandbyentry.push_back(c);
+        chsrpextifstandbyentry_.push_back(c);
         return c;
     }
 
@@ -647,7 +647,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextifstandbytable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpExtMib::Chsrpextifstandbytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : chsrpextifstandbyentry)
+    for (auto const & c : chsrpextifstandbyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -798,9 +798,9 @@ CiscoHsrpExtMib::Chsrpextiftable::~Chsrpextiftable()
 
 bool CiscoHsrpExtMib::Chsrpextiftable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextifentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifentry_.size(); index++)
     {
-        if(chsrpextifentry[index]->has_data())
+        if(chsrpextifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -808,9 +808,9 @@ bool CiscoHsrpExtMib::Chsrpextiftable::has_data() const
 
 bool CiscoHsrpExtMib::Chsrpextiftable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextifentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifentry_.size(); index++)
     {
-        if(chsrpextifentry[index]->has_operation())
+        if(chsrpextifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -850,7 +850,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftable::get_child_by_name(cons
 {
     if(child_yang_name == "cHsrpExtIfEntry")
     {
-        for(auto const & c : chsrpextifentry)
+        for(auto const & c : chsrpextifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -860,7 +860,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoHsrpExtMib::Chsrpextiftable::Chsrpextifentry>();
         c->parent = this;
-        chsrpextifentry.push_back(c);
+        chsrpextifentry_.push_back(c);
         return c;
     }
 
@@ -870,7 +870,7 @@ std::shared_ptr<Entity> CiscoHsrpExtMib::Chsrpextiftable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoHsrpExtMib::Chsrpextiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : chsrpextifentry)
+    for (auto const & c : chsrpextifentry_)
     {
         children[c->get_segment_path()] = c;
     }

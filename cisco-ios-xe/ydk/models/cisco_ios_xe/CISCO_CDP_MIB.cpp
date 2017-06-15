@@ -11,21 +11,21 @@ namespace CISCO_CDP_MIB {
 
 CiscoCdpMib::CiscoCdpMib()
     :
-    cdpcachetable(std::make_shared<CiscoCdpMib::Cdpcachetable>())
-	,cdpctaddresstable(std::make_shared<CiscoCdpMib::Cdpctaddresstable>())
-	,cdpglobal(std::make_shared<CiscoCdpMib::Cdpglobal>())
-	,cdpinterfaceexttable(std::make_shared<CiscoCdpMib::Cdpinterfaceexttable>())
-	,cdpinterfacetable(std::make_shared<CiscoCdpMib::Cdpinterfacetable>())
+    cdpcachetable_(std::make_shared<CiscoCdpMib::Cdpcachetable>())
+	,cdpctaddresstable_(std::make_shared<CiscoCdpMib::Cdpctaddresstable>())
+	,cdpglobal_(std::make_shared<CiscoCdpMib::Cdpglobal>())
+	,cdpinterfaceexttable_(std::make_shared<CiscoCdpMib::Cdpinterfaceexttable>())
+	,cdpinterfacetable_(std::make_shared<CiscoCdpMib::Cdpinterfacetable>())
 {
-    cdpcachetable->parent = this;
+    cdpcachetable_->parent = this;
 
-    cdpctaddresstable->parent = this;
+    cdpctaddresstable_->parent = this;
 
-    cdpglobal->parent = this;
+    cdpglobal_->parent = this;
 
-    cdpinterfaceexttable->parent = this;
+    cdpinterfaceexttable_->parent = this;
 
-    cdpinterfacetable->parent = this;
+    cdpinterfacetable_->parent = this;
 
     yang_name = "CISCO-CDP-MIB"; yang_parent_name = "CISCO-CDP-MIB";
 }
@@ -36,21 +36,21 @@ CiscoCdpMib::~CiscoCdpMib()
 
 bool CiscoCdpMib::has_data() const
 {
-    return (cdpcachetable !=  nullptr && cdpcachetable->has_data())
-	|| (cdpctaddresstable !=  nullptr && cdpctaddresstable->has_data())
-	|| (cdpglobal !=  nullptr && cdpglobal->has_data())
-	|| (cdpinterfaceexttable !=  nullptr && cdpinterfaceexttable->has_data())
-	|| (cdpinterfacetable !=  nullptr && cdpinterfacetable->has_data());
+    return (cdpcachetable_ !=  nullptr && cdpcachetable_->has_data())
+	|| (cdpctaddresstable_ !=  nullptr && cdpctaddresstable_->has_data())
+	|| (cdpglobal_ !=  nullptr && cdpglobal_->has_data())
+	|| (cdpinterfaceexttable_ !=  nullptr && cdpinterfaceexttable_->has_data())
+	|| (cdpinterfacetable_ !=  nullptr && cdpinterfacetable_->has_data());
 }
 
 bool CiscoCdpMib::has_operation() const
 {
     return is_set(operation)
-	|| (cdpcachetable !=  nullptr && cdpcachetable->has_operation())
-	|| (cdpctaddresstable !=  nullptr && cdpctaddresstable->has_operation())
-	|| (cdpglobal !=  nullptr && cdpglobal->has_operation())
-	|| (cdpinterfaceexttable !=  nullptr && cdpinterfaceexttable->has_operation())
-	|| (cdpinterfacetable !=  nullptr && cdpinterfacetable->has_operation());
+	|| (cdpcachetable_ !=  nullptr && cdpcachetable_->has_operation())
+	|| (cdpctaddresstable_ !=  nullptr && cdpctaddresstable_->has_operation())
+	|| (cdpglobal_ !=  nullptr && cdpglobal_->has_operation())
+	|| (cdpinterfaceexttable_ !=  nullptr && cdpinterfaceexttable_->has_operation())
+	|| (cdpinterfacetable_ !=  nullptr && cdpinterfacetable_->has_operation());
 }
 
 std::string CiscoCdpMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> CiscoCdpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "cdpCacheTable")
     {
-        if(cdpcachetable == nullptr)
+        if(cdpcachetable_ == nullptr)
         {
-            cdpcachetable = std::make_shared<CiscoCdpMib::Cdpcachetable>();
+            cdpcachetable_ = std::make_shared<CiscoCdpMib::Cdpcachetable>();
         }
-        return cdpcachetable;
+        return cdpcachetable_;
     }
 
     if(child_yang_name == "cdpCtAddressTable")
     {
-        if(cdpctaddresstable == nullptr)
+        if(cdpctaddresstable_ == nullptr)
         {
-            cdpctaddresstable = std::make_shared<CiscoCdpMib::Cdpctaddresstable>();
+            cdpctaddresstable_ = std::make_shared<CiscoCdpMib::Cdpctaddresstable>();
         }
-        return cdpctaddresstable;
+        return cdpctaddresstable_;
     }
 
     if(child_yang_name == "cdpGlobal")
     {
-        if(cdpglobal == nullptr)
+        if(cdpglobal_ == nullptr)
         {
-            cdpglobal = std::make_shared<CiscoCdpMib::Cdpglobal>();
+            cdpglobal_ = std::make_shared<CiscoCdpMib::Cdpglobal>();
         }
-        return cdpglobal;
+        return cdpglobal_;
     }
 
     if(child_yang_name == "cdpInterfaceExtTable")
     {
-        if(cdpinterfaceexttable == nullptr)
+        if(cdpinterfaceexttable_ == nullptr)
         {
-            cdpinterfaceexttable = std::make_shared<CiscoCdpMib::Cdpinterfaceexttable>();
+            cdpinterfaceexttable_ = std::make_shared<CiscoCdpMib::Cdpinterfaceexttable>();
         }
-        return cdpinterfaceexttable;
+        return cdpinterfaceexttable_;
     }
 
     if(child_yang_name == "cdpInterfaceTable")
     {
-        if(cdpinterfacetable == nullptr)
+        if(cdpinterfacetable_ == nullptr)
         {
-            cdpinterfacetable = std::make_shared<CiscoCdpMib::Cdpinterfacetable>();
+            cdpinterfacetable_ = std::make_shared<CiscoCdpMib::Cdpinterfacetable>();
         }
-        return cdpinterfacetable;
+        return cdpinterfacetable_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> CiscoCdpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoCdpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdpcachetable != nullptr)
+    if(cdpcachetable_ != nullptr)
     {
-        children["cdpCacheTable"] = cdpcachetable;
+        children["cdpCacheTable"] = cdpcachetable_;
     }
 
-    if(cdpctaddresstable != nullptr)
+    if(cdpctaddresstable_ != nullptr)
     {
-        children["cdpCtAddressTable"] = cdpctaddresstable;
+        children["cdpCtAddressTable"] = cdpctaddresstable_;
     }
 
-    if(cdpglobal != nullptr)
+    if(cdpglobal_ != nullptr)
     {
-        children["cdpGlobal"] = cdpglobal;
+        children["cdpGlobal"] = cdpglobal_;
     }
 
-    if(cdpinterfaceexttable != nullptr)
+    if(cdpinterfaceexttable_ != nullptr)
     {
-        children["cdpInterfaceExtTable"] = cdpinterfaceexttable;
+        children["cdpInterfaceExtTable"] = cdpinterfaceexttable_;
     }
 
-    if(cdpinterfacetable != nullptr)
+    if(cdpinterfacetable_ != nullptr)
     {
-        children["cdpInterfaceTable"] = cdpinterfacetable;
+        children["cdpInterfaceTable"] = cdpinterfacetable_;
     }
 
     return children;
@@ -316,9 +316,9 @@ CiscoCdpMib::Cdpinterfacetable::~Cdpinterfacetable()
 
 bool CiscoCdpMib::Cdpinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<cdpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceentry_.size(); index++)
     {
-        if(cdpinterfaceentry[index]->has_data())
+        if(cdpinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -326,9 +326,9 @@ bool CiscoCdpMib::Cdpinterfacetable::has_data() const
 
 bool CiscoCdpMib::Cdpinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceentry_.size(); index++)
     {
-        if(cdpinterfaceentry[index]->has_operation())
+        if(cdpinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -368,7 +368,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfacetable::get_child_by_name(const 
 {
     if(child_yang_name == "cdpInterfaceEntry")
     {
-        for(auto const & c : cdpinterfaceentry)
+        for(auto const & c : cdpinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -378,7 +378,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfacetable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoCdpMib::Cdpinterfacetable::Cdpinterfaceentry>();
         c->parent = this;
-        cdpinterfaceentry.push_back(c);
+        cdpinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -388,7 +388,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfacetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoCdpMib::Cdpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdpinterfaceentry)
+    for (auto const & c : cdpinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -523,9 +523,9 @@ CiscoCdpMib::Cdpinterfaceexttable::~Cdpinterfaceexttable()
 
 bool CiscoCdpMib::Cdpinterfaceexttable::has_data() const
 {
-    for (std::size_t index=0; index<cdpinterfaceextentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceextentry_.size(); index++)
     {
-        if(cdpinterfaceextentry[index]->has_data())
+        if(cdpinterfaceextentry_[index]->has_data())
             return true;
     }
     return false;
@@ -533,9 +533,9 @@ bool CiscoCdpMib::Cdpinterfaceexttable::has_data() const
 
 bool CiscoCdpMib::Cdpinterfaceexttable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpinterfaceextentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceextentry_.size(); index++)
     {
-        if(cdpinterfaceextentry[index]->has_operation())
+        if(cdpinterfaceextentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -575,7 +575,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfaceexttable::get_child_by_name(con
 {
     if(child_yang_name == "cdpInterfaceExtEntry")
     {
-        for(auto const & c : cdpinterfaceextentry)
+        for(auto const & c : cdpinterfaceextentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -585,7 +585,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfaceexttable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoCdpMib::Cdpinterfaceexttable::Cdpinterfaceextentry>();
         c->parent = this;
-        cdpinterfaceextentry.push_back(c);
+        cdpinterfaceextentry_.push_back(c);
         return c;
     }
 
@@ -595,7 +595,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpinterfaceexttable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoCdpMib::Cdpinterfaceexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdpinterfaceextentry)
+    for (auto const & c : cdpinterfaceextentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -706,9 +706,9 @@ CiscoCdpMib::Cdpcachetable::~Cdpcachetable()
 
 bool CiscoCdpMib::Cdpcachetable::has_data() const
 {
-    for (std::size_t index=0; index<cdpcacheentry.size(); index++)
+    for (std::size_t index=0; index<cdpcacheentry_.size(); index++)
     {
-        if(cdpcacheentry[index]->has_data())
+        if(cdpcacheentry_[index]->has_data())
             return true;
     }
     return false;
@@ -716,9 +716,9 @@ bool CiscoCdpMib::Cdpcachetable::has_data() const
 
 bool CiscoCdpMib::Cdpcachetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpcacheentry.size(); index++)
+    for (std::size_t index=0; index<cdpcacheentry_.size(); index++)
     {
-        if(cdpcacheentry[index]->has_operation())
+        if(cdpcacheentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -758,7 +758,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpcachetable::get_child_by_name(const std:
 {
     if(child_yang_name == "cdpCacheEntry")
     {
-        for(auto const & c : cdpcacheentry)
+        for(auto const & c : cdpcacheentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -768,7 +768,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpcachetable::get_child_by_name(const std:
         }
         auto c = std::make_shared<CiscoCdpMib::Cdpcachetable::Cdpcacheentry>();
         c->parent = this;
-        cdpcacheentry.push_back(c);
+        cdpcacheentry_.push_back(c);
         return c;
     }
 
@@ -778,7 +778,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpcachetable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CiscoCdpMib::Cdpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdpcacheentry)
+    for (auto const & c : cdpcacheentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1057,9 +1057,9 @@ CiscoCdpMib::Cdpctaddresstable::~Cdpctaddresstable()
 
 bool CiscoCdpMib::Cdpctaddresstable::has_data() const
 {
-    for (std::size_t index=0; index<cdpctaddressentry.size(); index++)
+    for (std::size_t index=0; index<cdpctaddressentry_.size(); index++)
     {
-        if(cdpctaddressentry[index]->has_data())
+        if(cdpctaddressentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1067,9 +1067,9 @@ bool CiscoCdpMib::Cdpctaddresstable::has_data() const
 
 bool CiscoCdpMib::Cdpctaddresstable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpctaddressentry.size(); index++)
+    for (std::size_t index=0; index<cdpctaddressentry_.size(); index++)
     {
-        if(cdpctaddressentry[index]->has_operation())
+        if(cdpctaddressentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1109,7 +1109,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpctaddresstable::get_child_by_name(const 
 {
     if(child_yang_name == "cdpCtAddressEntry")
     {
-        for(auto const & c : cdpctaddressentry)
+        for(auto const & c : cdpctaddressentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1119,7 +1119,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpctaddresstable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoCdpMib::Cdpctaddresstable::Cdpctaddressentry>();
         c->parent = this;
-        cdpctaddressentry.push_back(c);
+        cdpctaddressentry_.push_back(c);
         return c;
     }
 
@@ -1129,7 +1129,7 @@ std::shared_ptr<Entity> CiscoCdpMib::Cdpctaddresstable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoCdpMib::Cdpctaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdpctaddressentry)
+    for (auto const & c : cdpctaddressentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,36 +11,36 @@ namespace CISCO_IPSEC_MIB {
 
 CiscoIpsecMib::CiscoIpsecMib()
     :
-    cipscryptomapsetiftable(std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>())
-	,cipsdynamiccryptomapsettable(std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>())
-	,cipsipsecglobals(std::make_shared<CiscoIpsecMib::Cipsipsecglobals>())
-	,cipsipsecstatistics(std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>())
-	,cipsisakmpgroup(std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>())
-	,cipsisakmppolicytable(std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>())
-	,cipsstaticcryptomapsettable(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>())
-	,cipsstaticcryptomaptable(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>())
-	,cipssyscapacitygroup(std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>())
-	,cipstrapcntlgroup(std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>())
+    cipscryptomapsetiftable_(std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>())
+	,cipsdynamiccryptomapsettable_(std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>())
+	,cipsipsecglobals_(std::make_shared<CiscoIpsecMib::Cipsipsecglobals>())
+	,cipsipsecstatistics_(std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>())
+	,cipsisakmpgroup_(std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>())
+	,cipsisakmppolicytable_(std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>())
+	,cipsstaticcryptomapsettable_(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>())
+	,cipsstaticcryptomaptable_(std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>())
+	,cipssyscapacitygroup_(std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>())
+	,cipstrapcntlgroup_(std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>())
 {
-    cipscryptomapsetiftable->parent = this;
+    cipscryptomapsetiftable_->parent = this;
 
-    cipsdynamiccryptomapsettable->parent = this;
+    cipsdynamiccryptomapsettable_->parent = this;
 
-    cipsipsecglobals->parent = this;
+    cipsipsecglobals_->parent = this;
 
-    cipsipsecstatistics->parent = this;
+    cipsipsecstatistics_->parent = this;
 
-    cipsisakmpgroup->parent = this;
+    cipsisakmpgroup_->parent = this;
 
-    cipsisakmppolicytable->parent = this;
+    cipsisakmppolicytable_->parent = this;
 
-    cipsstaticcryptomapsettable->parent = this;
+    cipsstaticcryptomapsettable_->parent = this;
 
-    cipsstaticcryptomaptable->parent = this;
+    cipsstaticcryptomaptable_->parent = this;
 
-    cipssyscapacitygroup->parent = this;
+    cipssyscapacitygroup_->parent = this;
 
-    cipstrapcntlgroup->parent = this;
+    cipstrapcntlgroup_->parent = this;
 
     yang_name = "CISCO-IPSEC-MIB"; yang_parent_name = "CISCO-IPSEC-MIB";
 }
@@ -51,31 +51,31 @@ CiscoIpsecMib::~CiscoIpsecMib()
 
 bool CiscoIpsecMib::has_data() const
 {
-    return (cipscryptomapsetiftable !=  nullptr && cipscryptomapsetiftable->has_data())
-	|| (cipsdynamiccryptomapsettable !=  nullptr && cipsdynamiccryptomapsettable->has_data())
-	|| (cipsipsecglobals !=  nullptr && cipsipsecglobals->has_data())
-	|| (cipsipsecstatistics !=  nullptr && cipsipsecstatistics->has_data())
-	|| (cipsisakmpgroup !=  nullptr && cipsisakmpgroup->has_data())
-	|| (cipsisakmppolicytable !=  nullptr && cipsisakmppolicytable->has_data())
-	|| (cipsstaticcryptomapsettable !=  nullptr && cipsstaticcryptomapsettable->has_data())
-	|| (cipsstaticcryptomaptable !=  nullptr && cipsstaticcryptomaptable->has_data())
-	|| (cipssyscapacitygroup !=  nullptr && cipssyscapacitygroup->has_data())
-	|| (cipstrapcntlgroup !=  nullptr && cipstrapcntlgroup->has_data());
+    return (cipscryptomapsetiftable_ !=  nullptr && cipscryptomapsetiftable_->has_data())
+	|| (cipsdynamiccryptomapsettable_ !=  nullptr && cipsdynamiccryptomapsettable_->has_data())
+	|| (cipsipsecglobals_ !=  nullptr && cipsipsecglobals_->has_data())
+	|| (cipsipsecstatistics_ !=  nullptr && cipsipsecstatistics_->has_data())
+	|| (cipsisakmpgroup_ !=  nullptr && cipsisakmpgroup_->has_data())
+	|| (cipsisakmppolicytable_ !=  nullptr && cipsisakmppolicytable_->has_data())
+	|| (cipsstaticcryptomapsettable_ !=  nullptr && cipsstaticcryptomapsettable_->has_data())
+	|| (cipsstaticcryptomaptable_ !=  nullptr && cipsstaticcryptomaptable_->has_data())
+	|| (cipssyscapacitygroup_ !=  nullptr && cipssyscapacitygroup_->has_data())
+	|| (cipstrapcntlgroup_ !=  nullptr && cipstrapcntlgroup_->has_data());
 }
 
 bool CiscoIpsecMib::has_operation() const
 {
     return is_set(operation)
-	|| (cipscryptomapsetiftable !=  nullptr && cipscryptomapsetiftable->has_operation())
-	|| (cipsdynamiccryptomapsettable !=  nullptr && cipsdynamiccryptomapsettable->has_operation())
-	|| (cipsipsecglobals !=  nullptr && cipsipsecglobals->has_operation())
-	|| (cipsipsecstatistics !=  nullptr && cipsipsecstatistics->has_operation())
-	|| (cipsisakmpgroup !=  nullptr && cipsisakmpgroup->has_operation())
-	|| (cipsisakmppolicytable !=  nullptr && cipsisakmppolicytable->has_operation())
-	|| (cipsstaticcryptomapsettable !=  nullptr && cipsstaticcryptomapsettable->has_operation())
-	|| (cipsstaticcryptomaptable !=  nullptr && cipsstaticcryptomaptable->has_operation())
-	|| (cipssyscapacitygroup !=  nullptr && cipssyscapacitygroup->has_operation())
-	|| (cipstrapcntlgroup !=  nullptr && cipstrapcntlgroup->has_operation());
+	|| (cipscryptomapsetiftable_ !=  nullptr && cipscryptomapsetiftable_->has_operation())
+	|| (cipsdynamiccryptomapsettable_ !=  nullptr && cipsdynamiccryptomapsettable_->has_operation())
+	|| (cipsipsecglobals_ !=  nullptr && cipsipsecglobals_->has_operation())
+	|| (cipsipsecstatistics_ !=  nullptr && cipsipsecstatistics_->has_operation())
+	|| (cipsisakmpgroup_ !=  nullptr && cipsisakmpgroup_->has_operation())
+	|| (cipsisakmppolicytable_ !=  nullptr && cipsisakmppolicytable_->has_operation())
+	|| (cipsstaticcryptomapsettable_ !=  nullptr && cipsstaticcryptomapsettable_->has_operation())
+	|| (cipsstaticcryptomaptable_ !=  nullptr && cipsstaticcryptomaptable_->has_operation())
+	|| (cipssyscapacitygroup_ !=  nullptr && cipssyscapacitygroup_->has_operation())
+	|| (cipstrapcntlgroup_ !=  nullptr && cipstrapcntlgroup_->has_operation());
 }
 
 std::string CiscoIpsecMib::get_segment_path() const
@@ -109,92 +109,92 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "cipsCryptomapSetIfTable")
     {
-        if(cipscryptomapsetiftable == nullptr)
+        if(cipscryptomapsetiftable_ == nullptr)
         {
-            cipscryptomapsetiftable = std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>();
+            cipscryptomapsetiftable_ = std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable>();
         }
-        return cipscryptomapsetiftable;
+        return cipscryptomapsetiftable_;
     }
 
     if(child_yang_name == "cipsDynamicCryptomapSetTable")
     {
-        if(cipsdynamiccryptomapsettable == nullptr)
+        if(cipsdynamiccryptomapsettable_ == nullptr)
         {
-            cipsdynamiccryptomapsettable = std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>();
+            cipsdynamiccryptomapsettable_ = std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable>();
         }
-        return cipsdynamiccryptomapsettable;
+        return cipsdynamiccryptomapsettable_;
     }
 
     if(child_yang_name == "cipsIPsecGlobals")
     {
-        if(cipsipsecglobals == nullptr)
+        if(cipsipsecglobals_ == nullptr)
         {
-            cipsipsecglobals = std::make_shared<CiscoIpsecMib::Cipsipsecglobals>();
+            cipsipsecglobals_ = std::make_shared<CiscoIpsecMib::Cipsipsecglobals>();
         }
-        return cipsipsecglobals;
+        return cipsipsecglobals_;
     }
 
     if(child_yang_name == "cipsIPsecStatistics")
     {
-        if(cipsipsecstatistics == nullptr)
+        if(cipsipsecstatistics_ == nullptr)
         {
-            cipsipsecstatistics = std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>();
+            cipsipsecstatistics_ = std::make_shared<CiscoIpsecMib::Cipsipsecstatistics>();
         }
-        return cipsipsecstatistics;
+        return cipsipsecstatistics_;
     }
 
     if(child_yang_name == "cipsIsakmpGroup")
     {
-        if(cipsisakmpgroup == nullptr)
+        if(cipsisakmpgroup_ == nullptr)
         {
-            cipsisakmpgroup = std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>();
+            cipsisakmpgroup_ = std::make_shared<CiscoIpsecMib::Cipsisakmpgroup>();
         }
-        return cipsisakmpgroup;
+        return cipsisakmpgroup_;
     }
 
     if(child_yang_name == "cipsIsakmpPolicyTable")
     {
-        if(cipsisakmppolicytable == nullptr)
+        if(cipsisakmppolicytable_ == nullptr)
         {
-            cipsisakmppolicytable = std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>();
+            cipsisakmppolicytable_ = std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable>();
         }
-        return cipsisakmppolicytable;
+        return cipsisakmppolicytable_;
     }
 
     if(child_yang_name == "cipsStaticCryptomapSetTable")
     {
-        if(cipsstaticcryptomapsettable == nullptr)
+        if(cipsstaticcryptomapsettable_ == nullptr)
         {
-            cipsstaticcryptomapsettable = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>();
+            cipsstaticcryptomapsettable_ = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable>();
         }
-        return cipsstaticcryptomapsettable;
+        return cipsstaticcryptomapsettable_;
     }
 
     if(child_yang_name == "cipsStaticCryptomapTable")
     {
-        if(cipsstaticcryptomaptable == nullptr)
+        if(cipsstaticcryptomaptable_ == nullptr)
         {
-            cipsstaticcryptomaptable = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>();
+            cipsstaticcryptomaptable_ = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable>();
         }
-        return cipsstaticcryptomaptable;
+        return cipsstaticcryptomaptable_;
     }
 
     if(child_yang_name == "cipsSysCapacityGroup")
     {
-        if(cipssyscapacitygroup == nullptr)
+        if(cipssyscapacitygroup_ == nullptr)
         {
-            cipssyscapacitygroup = std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>();
+            cipssyscapacitygroup_ = std::make_shared<CiscoIpsecMib::Cipssyscapacitygroup>();
         }
-        return cipssyscapacitygroup;
+        return cipssyscapacitygroup_;
     }
 
     if(child_yang_name == "cipsTrapCntlGroup")
     {
-        if(cipstrapcntlgroup == nullptr)
+        if(cipstrapcntlgroup_ == nullptr)
         {
-            cipstrapcntlgroup = std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>();
+            cipstrapcntlgroup_ = std::make_shared<CiscoIpsecMib::Cipstrapcntlgroup>();
         }
-        return cipstrapcntlgroup;
+        return cipstrapcntlgroup_;
     }
 
     return nullptr;
@@ -203,54 +203,54 @@ std::shared_ptr<Entity> CiscoIpsecMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cipscryptomapsetiftable != nullptr)
+    if(cipscryptomapsetiftable_ != nullptr)
     {
-        children["cipsCryptomapSetIfTable"] = cipscryptomapsetiftable;
+        children["cipsCryptomapSetIfTable"] = cipscryptomapsetiftable_;
     }
 
-    if(cipsdynamiccryptomapsettable != nullptr)
+    if(cipsdynamiccryptomapsettable_ != nullptr)
     {
-        children["cipsDynamicCryptomapSetTable"] = cipsdynamiccryptomapsettable;
+        children["cipsDynamicCryptomapSetTable"] = cipsdynamiccryptomapsettable_;
     }
 
-    if(cipsipsecglobals != nullptr)
+    if(cipsipsecglobals_ != nullptr)
     {
-        children["cipsIPsecGlobals"] = cipsipsecglobals;
+        children["cipsIPsecGlobals"] = cipsipsecglobals_;
     }
 
-    if(cipsipsecstatistics != nullptr)
+    if(cipsipsecstatistics_ != nullptr)
     {
-        children["cipsIPsecStatistics"] = cipsipsecstatistics;
+        children["cipsIPsecStatistics"] = cipsipsecstatistics_;
     }
 
-    if(cipsisakmpgroup != nullptr)
+    if(cipsisakmpgroup_ != nullptr)
     {
-        children["cipsIsakmpGroup"] = cipsisakmpgroup;
+        children["cipsIsakmpGroup"] = cipsisakmpgroup_;
     }
 
-    if(cipsisakmppolicytable != nullptr)
+    if(cipsisakmppolicytable_ != nullptr)
     {
-        children["cipsIsakmpPolicyTable"] = cipsisakmppolicytable;
+        children["cipsIsakmpPolicyTable"] = cipsisakmppolicytable_;
     }
 
-    if(cipsstaticcryptomapsettable != nullptr)
+    if(cipsstaticcryptomapsettable_ != nullptr)
     {
-        children["cipsStaticCryptomapSetTable"] = cipsstaticcryptomapsettable;
+        children["cipsStaticCryptomapSetTable"] = cipsstaticcryptomapsettable_;
     }
 
-    if(cipsstaticcryptomaptable != nullptr)
+    if(cipsstaticcryptomaptable_ != nullptr)
     {
-        children["cipsStaticCryptomapTable"] = cipsstaticcryptomaptable;
+        children["cipsStaticCryptomapTable"] = cipsstaticcryptomaptable_;
     }
 
-    if(cipssyscapacitygroup != nullptr)
+    if(cipssyscapacitygroup_ != nullptr)
     {
-        children["cipsSysCapacityGroup"] = cipssyscapacitygroup;
+        children["cipsSysCapacityGroup"] = cipssyscapacitygroup_;
     }
 
-    if(cipstrapcntlgroup != nullptr)
+    if(cipstrapcntlgroup_ != nullptr)
     {
-        children["cipsTrapCntlGroup"] = cipstrapcntlgroup;
+        children["cipsTrapCntlGroup"] = cipstrapcntlgroup_;
     }
 
     return children;
@@ -787,9 +787,9 @@ CiscoIpsecMib::Cipsisakmppolicytable::~Cipsisakmppolicytable()
 
 bool CiscoIpsecMib::Cipsisakmppolicytable::has_data() const
 {
-    for (std::size_t index=0; index<cipsisakmppolicyentry.size(); index++)
+    for (std::size_t index=0; index<cipsisakmppolicyentry_.size(); index++)
     {
-        if(cipsisakmppolicyentry[index]->has_data())
+        if(cipsisakmppolicyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -797,9 +797,9 @@ bool CiscoIpsecMib::Cipsisakmppolicytable::has_data() const
 
 bool CiscoIpsecMib::Cipsisakmppolicytable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsisakmppolicyentry.size(); index++)
+    for (std::size_t index=0; index<cipsisakmppolicyentry_.size(); index++)
     {
-        if(cipsisakmppolicyentry[index]->has_operation())
+        if(cipsisakmppolicyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -839,7 +839,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(
 {
     if(child_yang_name == "cipsIsakmpPolicyEntry")
     {
-        for(auto const & c : cipsisakmppolicyentry)
+        for(auto const & c : cipsisakmppolicyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -849,7 +849,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoIpsecMib::Cipsisakmppolicytable::Cipsisakmppolicyentry>();
         c->parent = this;
-        cipsisakmppolicyentry.push_back(c);
+        cipsisakmppolicyentry_.push_back(c);
         return c;
     }
 
@@ -859,7 +859,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsisakmppolicytable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsisakmppolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsisakmppolicyentry)
+    for (auto const & c : cipsisakmppolicyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -994,9 +994,9 @@ CiscoIpsecMib::Cipsstaticcryptomapsettable::~Cipsstaticcryptomapsettable()
 
 bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_data() const
 {
-    for (std::size_t index=0; index<cipsstaticcryptomapsetentry.size(); index++)
+    for (std::size_t index=0; index<cipsstaticcryptomapsetentry_.size(); index++)
     {
-        if(cipsstaticcryptomapsetentry[index]->has_data())
+        if(cipsstaticcryptomapsetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1004,9 +1004,9 @@ bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_data() const
 
 bool CiscoIpsecMib::Cipsstaticcryptomapsettable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsstaticcryptomapsetentry.size(); index++)
+    for (std::size_t index=0; index<cipsstaticcryptomapsetentry_.size(); index++)
     {
-        if(cipsstaticcryptomapsetentry[index]->has_operation())
+        if(cipsstaticcryptomapsetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1046,7 +1046,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by
 {
     if(child_yang_name == "cipsStaticCryptomapSetEntry")
     {
-        for(auto const & c : cipsstaticcryptomapsetentry)
+        for(auto const & c : cipsstaticcryptomapsetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1056,7 +1056,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by
         }
         auto c = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry>();
         c->parent = this;
-        cipsstaticcryptomapsetentry.push_back(c);
+        cipsstaticcryptomapsetentry_.push_back(c);
         return c;
     }
 
@@ -1066,7 +1066,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomapsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsstaticcryptomapsetentry)
+    for (auto const & c : cipsstaticcryptomapsetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1217,9 +1217,9 @@ CiscoIpsecMib::Cipsdynamiccryptomapsettable::~Cipsdynamiccryptomapsettable()
 
 bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_data() const
 {
-    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
+    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry_.size(); index++)
     {
-        if(cipsdynamiccryptomapsetentry[index]->has_data())
+        if(cipsdynamiccryptomapsetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1227,9 +1227,9 @@ bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_data() const
 
 bool CiscoIpsecMib::Cipsdynamiccryptomapsettable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry.size(); index++)
+    for (std::size_t index=0; index<cipsdynamiccryptomapsetentry_.size(); index++)
     {
-        if(cipsdynamiccryptomapsetentry[index]->has_operation())
+        if(cipsdynamiccryptomapsetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1269,7 +1269,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_child_b
 {
     if(child_yang_name == "cipsDynamicCryptomapSetEntry")
     {
-        for(auto const & c : cipsdynamiccryptomapsetentry)
+        for(auto const & c : cipsdynamiccryptomapsetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1279,7 +1279,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_child_b
         }
         auto c = std::make_shared<CiscoIpsecMib::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry>();
         c->parent = this;
-        cipsdynamiccryptomapsetentry.push_back(c);
+        cipsdynamiccryptomapsetentry_.push_back(c);
         return c;
     }
 
@@ -1289,7 +1289,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsdynamiccryptomapsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsdynamiccryptomapsetentry)
+    for (auto const & c : cipsdynamiccryptomapsetentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1400,9 +1400,9 @@ CiscoIpsecMib::Cipsstaticcryptomaptable::~Cipsstaticcryptomaptable()
 
 bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_data() const
 {
-    for (std::size_t index=0; index<cipsstaticcryptomapentry.size(); index++)
+    for (std::size_t index=0; index<cipsstaticcryptomapentry_.size(); index++)
     {
-        if(cipsstaticcryptomapentry[index]->has_data())
+        if(cipsstaticcryptomapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1410,9 +1410,9 @@ bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_data() const
 
 bool CiscoIpsecMib::Cipsstaticcryptomaptable::has_operation() const
 {
-    for (std::size_t index=0; index<cipsstaticcryptomapentry.size(); index++)
+    for (std::size_t index=0; index<cipsstaticcryptomapentry_.size(); index++)
     {
-        if(cipsstaticcryptomapentry[index]->has_operation())
+        if(cipsstaticcryptomapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1452,7 +1452,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_na
 {
     if(child_yang_name == "cipsStaticCryptomapEntry")
     {
-        for(auto const & c : cipsstaticcryptomapentry)
+        for(auto const & c : cipsstaticcryptomapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1462,7 +1462,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIpsecMib::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry>();
         c->parent = this;
-        cipsstaticcryptomapentry.push_back(c);
+        cipsstaticcryptomapentry_.push_back(c);
         return c;
     }
 
@@ -1472,7 +1472,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipsstaticcryptomaptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipsstaticcryptomaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipsstaticcryptomapentry)
+    for (auto const & c : cipsstaticcryptomapentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1639,9 +1639,9 @@ CiscoIpsecMib::Cipscryptomapsetiftable::~Cipscryptomapsetiftable()
 
 bool CiscoIpsecMib::Cipscryptomapsetiftable::has_data() const
 {
-    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
+    for (std::size_t index=0; index<cipscryptomapsetifentry_.size(); index++)
     {
-        if(cipscryptomapsetifentry[index]->has_data())
+        if(cipscryptomapsetifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1649,9 +1649,9 @@ bool CiscoIpsecMib::Cipscryptomapsetiftable::has_data() const
 
 bool CiscoIpsecMib::Cipscryptomapsetiftable::has_operation() const
 {
-    for (std::size_t index=0; index<cipscryptomapsetifentry.size(); index++)
+    for (std::size_t index=0; index<cipscryptomapsetifentry_.size(); index++)
     {
-        if(cipscryptomapsetifentry[index]->has_operation())
+        if(cipscryptomapsetifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1691,7 +1691,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipscryptomapsetiftable::get_child_by_nam
 {
     if(child_yang_name == "cipsCryptomapSetIfEntry")
     {
-        for(auto const & c : cipscryptomapsetifentry)
+        for(auto const & c : cipscryptomapsetifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1701,7 +1701,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipscryptomapsetiftable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoIpsecMib::Cipscryptomapsetiftable::Cipscryptomapsetifentry>();
         c->parent = this;
-        cipscryptomapsetifentry.push_back(c);
+        cipscryptomapsetifentry_.push_back(c);
         return c;
     }
 
@@ -1711,7 +1711,7 @@ std::shared_ptr<Entity> CiscoIpsecMib::Cipscryptomapsetiftable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpsecMib::Cipscryptomapsetiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipscryptomapsetifentry)
+    for (auto const & c : cipscryptomapsetifentry_)
     {
         children[c->get_segment_path()] = c;
     }

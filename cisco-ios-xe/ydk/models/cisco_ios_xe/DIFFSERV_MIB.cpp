@@ -101,72 +101,72 @@ DiffservtbparamtrtcmawareIdentity::~DiffservtbparamtrtcmawareIdentity()
 
 DiffservMib::DiffservMib()
     :
-    diffservaction(std::make_shared<DiffservMib::Diffservaction>())
-	,diffservactiontable(std::make_shared<DiffservMib::Diffservactiontable>())
-	,diffservalgdrop(std::make_shared<DiffservMib::Diffservalgdrop>())
-	,diffservalgdroptable(std::make_shared<DiffservMib::Diffservalgdroptable>())
-	,diffservclassifier(std::make_shared<DiffservMib::Diffservclassifier>())
-	,diffservclfrelementtable(std::make_shared<DiffservMib::Diffservclfrelementtable>())
-	,diffservclfrtable(std::make_shared<DiffservMib::Diffservclfrtable>())
-	,diffservcountacttable(std::make_shared<DiffservMib::Diffservcountacttable>())
-	,diffservdatapathtable(std::make_shared<DiffservMib::Diffservdatapathtable>())
-	,diffservdscpmarkacttable(std::make_shared<DiffservMib::Diffservdscpmarkacttable>())
-	,diffservmaxratetable(std::make_shared<DiffservMib::Diffservmaxratetable>())
-	,diffservmeter(std::make_shared<DiffservMib::Diffservmeter>())
-	,diffservmetertable(std::make_shared<DiffservMib::Diffservmetertable>())
-	,diffservminratetable(std::make_shared<DiffservMib::Diffservminratetable>())
-	,diffservmultifieldclfrtable(std::make_shared<DiffservMib::Diffservmultifieldclfrtable>())
-	,diffservqtable(std::make_shared<DiffservMib::Diffservqtable>())
-	,diffservqueue(std::make_shared<DiffservMib::Diffservqueue>())
-	,diffservrandomdroptable(std::make_shared<DiffservMib::Diffservrandomdroptable>())
-	,diffservscheduler(std::make_shared<DiffservMib::Diffservscheduler>())
-	,diffservschedulertable(std::make_shared<DiffservMib::Diffservschedulertable>())
-	,diffservtbparam(std::make_shared<DiffservMib::Diffservtbparam>())
-	,diffservtbparamtable(std::make_shared<DiffservMib::Diffservtbparamtable>())
+    diffservaction_(std::make_shared<DiffservMib::Diffservaction>())
+	,diffservactiontable_(std::make_shared<DiffservMib::Diffservactiontable>())
+	,diffservalgdrop_(std::make_shared<DiffservMib::Diffservalgdrop>())
+	,diffservalgdroptable_(std::make_shared<DiffservMib::Diffservalgdroptable>())
+	,diffservclassifier_(std::make_shared<DiffservMib::Diffservclassifier>())
+	,diffservclfrelementtable_(std::make_shared<DiffservMib::Diffservclfrelementtable>())
+	,diffservclfrtable_(std::make_shared<DiffservMib::Diffservclfrtable>())
+	,diffservcountacttable_(std::make_shared<DiffservMib::Diffservcountacttable>())
+	,diffservdatapathtable_(std::make_shared<DiffservMib::Diffservdatapathtable>())
+	,diffservdscpmarkacttable_(std::make_shared<DiffservMib::Diffservdscpmarkacttable>())
+	,diffservmaxratetable_(std::make_shared<DiffservMib::Diffservmaxratetable>())
+	,diffservmeter_(std::make_shared<DiffservMib::Diffservmeter>())
+	,diffservmetertable_(std::make_shared<DiffservMib::Diffservmetertable>())
+	,diffservminratetable_(std::make_shared<DiffservMib::Diffservminratetable>())
+	,diffservmultifieldclfrtable_(std::make_shared<DiffservMib::Diffservmultifieldclfrtable>())
+	,diffservqtable_(std::make_shared<DiffservMib::Diffservqtable>())
+	,diffservqueue_(std::make_shared<DiffservMib::Diffservqueue>())
+	,diffservrandomdroptable_(std::make_shared<DiffservMib::Diffservrandomdroptable>())
+	,diffservscheduler_(std::make_shared<DiffservMib::Diffservscheduler>())
+	,diffservschedulertable_(std::make_shared<DiffservMib::Diffservschedulertable>())
+	,diffservtbparam_(std::make_shared<DiffservMib::Diffservtbparam>())
+	,diffservtbparamtable_(std::make_shared<DiffservMib::Diffservtbparamtable>())
 {
-    diffservaction->parent = this;
+    diffservaction_->parent = this;
 
-    diffservactiontable->parent = this;
+    diffservactiontable_->parent = this;
 
-    diffservalgdrop->parent = this;
+    diffservalgdrop_->parent = this;
 
-    diffservalgdroptable->parent = this;
+    diffservalgdroptable_->parent = this;
 
-    diffservclassifier->parent = this;
+    diffservclassifier_->parent = this;
 
-    diffservclfrelementtable->parent = this;
+    diffservclfrelementtable_->parent = this;
 
-    diffservclfrtable->parent = this;
+    diffservclfrtable_->parent = this;
 
-    diffservcountacttable->parent = this;
+    diffservcountacttable_->parent = this;
 
-    diffservdatapathtable->parent = this;
+    diffservdatapathtable_->parent = this;
 
-    diffservdscpmarkacttable->parent = this;
+    diffservdscpmarkacttable_->parent = this;
 
-    diffservmaxratetable->parent = this;
+    diffservmaxratetable_->parent = this;
 
-    diffservmeter->parent = this;
+    diffservmeter_->parent = this;
 
-    diffservmetertable->parent = this;
+    diffservmetertable_->parent = this;
 
-    diffservminratetable->parent = this;
+    diffservminratetable_->parent = this;
 
-    diffservmultifieldclfrtable->parent = this;
+    diffservmultifieldclfrtable_->parent = this;
 
-    diffservqtable->parent = this;
+    diffservqtable_->parent = this;
 
-    diffservqueue->parent = this;
+    diffservqueue_->parent = this;
 
-    diffservrandomdroptable->parent = this;
+    diffservrandomdroptable_->parent = this;
 
-    diffservscheduler->parent = this;
+    diffservscheduler_->parent = this;
 
-    diffservschedulertable->parent = this;
+    diffservschedulertable_->parent = this;
 
-    diffservtbparam->parent = this;
+    diffservtbparam_->parent = this;
 
-    diffservtbparamtable->parent = this;
+    diffservtbparamtable_->parent = this;
 
     yang_name = "DIFFSERV-MIB"; yang_parent_name = "DIFFSERV-MIB";
 }
@@ -177,55 +177,55 @@ DiffservMib::~DiffservMib()
 
 bool DiffservMib::has_data() const
 {
-    return (diffservaction !=  nullptr && diffservaction->has_data())
-	|| (diffservactiontable !=  nullptr && diffservactiontable->has_data())
-	|| (diffservalgdrop !=  nullptr && diffservalgdrop->has_data())
-	|| (diffservalgdroptable !=  nullptr && diffservalgdroptable->has_data())
-	|| (diffservclassifier !=  nullptr && diffservclassifier->has_data())
-	|| (diffservclfrelementtable !=  nullptr && diffservclfrelementtable->has_data())
-	|| (diffservclfrtable !=  nullptr && diffservclfrtable->has_data())
-	|| (diffservcountacttable !=  nullptr && diffservcountacttable->has_data())
-	|| (diffservdatapathtable !=  nullptr && diffservdatapathtable->has_data())
-	|| (diffservdscpmarkacttable !=  nullptr && diffservdscpmarkacttable->has_data())
-	|| (diffservmaxratetable !=  nullptr && diffservmaxratetable->has_data())
-	|| (diffservmeter !=  nullptr && diffservmeter->has_data())
-	|| (diffservmetertable !=  nullptr && diffservmetertable->has_data())
-	|| (diffservminratetable !=  nullptr && diffservminratetable->has_data())
-	|| (diffservmultifieldclfrtable !=  nullptr && diffservmultifieldclfrtable->has_data())
-	|| (diffservqtable !=  nullptr && diffservqtable->has_data())
-	|| (diffservqueue !=  nullptr && diffservqueue->has_data())
-	|| (diffservrandomdroptable !=  nullptr && diffservrandomdroptable->has_data())
-	|| (diffservscheduler !=  nullptr && diffservscheduler->has_data())
-	|| (diffservschedulertable !=  nullptr && diffservschedulertable->has_data())
-	|| (diffservtbparam !=  nullptr && diffservtbparam->has_data())
-	|| (diffservtbparamtable !=  nullptr && diffservtbparamtable->has_data());
+    return (diffservaction_ !=  nullptr && diffservaction_->has_data())
+	|| (diffservactiontable_ !=  nullptr && diffservactiontable_->has_data())
+	|| (diffservalgdrop_ !=  nullptr && diffservalgdrop_->has_data())
+	|| (diffservalgdroptable_ !=  nullptr && diffservalgdroptable_->has_data())
+	|| (diffservclassifier_ !=  nullptr && diffservclassifier_->has_data())
+	|| (diffservclfrelementtable_ !=  nullptr && diffservclfrelementtable_->has_data())
+	|| (diffservclfrtable_ !=  nullptr && diffservclfrtable_->has_data())
+	|| (diffservcountacttable_ !=  nullptr && diffservcountacttable_->has_data())
+	|| (diffservdatapathtable_ !=  nullptr && diffservdatapathtable_->has_data())
+	|| (diffservdscpmarkacttable_ !=  nullptr && diffservdscpmarkacttable_->has_data())
+	|| (diffservmaxratetable_ !=  nullptr && diffservmaxratetable_->has_data())
+	|| (diffservmeter_ !=  nullptr && diffservmeter_->has_data())
+	|| (diffservmetertable_ !=  nullptr && diffservmetertable_->has_data())
+	|| (diffservminratetable_ !=  nullptr && diffservminratetable_->has_data())
+	|| (diffservmultifieldclfrtable_ !=  nullptr && diffservmultifieldclfrtable_->has_data())
+	|| (diffservqtable_ !=  nullptr && diffservqtable_->has_data())
+	|| (diffservqueue_ !=  nullptr && diffservqueue_->has_data())
+	|| (diffservrandomdroptable_ !=  nullptr && diffservrandomdroptable_->has_data())
+	|| (diffservscheduler_ !=  nullptr && diffservscheduler_->has_data())
+	|| (diffservschedulertable_ !=  nullptr && diffservschedulertable_->has_data())
+	|| (diffservtbparam_ !=  nullptr && diffservtbparam_->has_data())
+	|| (diffservtbparamtable_ !=  nullptr && diffservtbparamtable_->has_data());
 }
 
 bool DiffservMib::has_operation() const
 {
     return is_set(operation)
-	|| (diffservaction !=  nullptr && diffservaction->has_operation())
-	|| (diffservactiontable !=  nullptr && diffservactiontable->has_operation())
-	|| (diffservalgdrop !=  nullptr && diffservalgdrop->has_operation())
-	|| (diffservalgdroptable !=  nullptr && diffservalgdroptable->has_operation())
-	|| (diffservclassifier !=  nullptr && diffservclassifier->has_operation())
-	|| (diffservclfrelementtable !=  nullptr && diffservclfrelementtable->has_operation())
-	|| (diffservclfrtable !=  nullptr && diffservclfrtable->has_operation())
-	|| (diffservcountacttable !=  nullptr && diffservcountacttable->has_operation())
-	|| (diffservdatapathtable !=  nullptr && diffservdatapathtable->has_operation())
-	|| (diffservdscpmarkacttable !=  nullptr && diffservdscpmarkacttable->has_operation())
-	|| (diffservmaxratetable !=  nullptr && diffservmaxratetable->has_operation())
-	|| (diffservmeter !=  nullptr && diffservmeter->has_operation())
-	|| (diffservmetertable !=  nullptr && diffservmetertable->has_operation())
-	|| (diffservminratetable !=  nullptr && diffservminratetable->has_operation())
-	|| (diffservmultifieldclfrtable !=  nullptr && diffservmultifieldclfrtable->has_operation())
-	|| (diffservqtable !=  nullptr && diffservqtable->has_operation())
-	|| (diffservqueue !=  nullptr && diffservqueue->has_operation())
-	|| (diffservrandomdroptable !=  nullptr && diffservrandomdroptable->has_operation())
-	|| (diffservscheduler !=  nullptr && diffservscheduler->has_operation())
-	|| (diffservschedulertable !=  nullptr && diffservschedulertable->has_operation())
-	|| (diffservtbparam !=  nullptr && diffservtbparam->has_operation())
-	|| (diffservtbparamtable !=  nullptr && diffservtbparamtable->has_operation());
+	|| (diffservaction_ !=  nullptr && diffservaction_->has_operation())
+	|| (diffservactiontable_ !=  nullptr && diffservactiontable_->has_operation())
+	|| (diffservalgdrop_ !=  nullptr && diffservalgdrop_->has_operation())
+	|| (diffservalgdroptable_ !=  nullptr && diffservalgdroptable_->has_operation())
+	|| (diffservclassifier_ !=  nullptr && diffservclassifier_->has_operation())
+	|| (diffservclfrelementtable_ !=  nullptr && diffservclfrelementtable_->has_operation())
+	|| (diffservclfrtable_ !=  nullptr && diffservclfrtable_->has_operation())
+	|| (diffservcountacttable_ !=  nullptr && diffservcountacttable_->has_operation())
+	|| (diffservdatapathtable_ !=  nullptr && diffservdatapathtable_->has_operation())
+	|| (diffservdscpmarkacttable_ !=  nullptr && diffservdscpmarkacttable_->has_operation())
+	|| (diffservmaxratetable_ !=  nullptr && diffservmaxratetable_->has_operation())
+	|| (diffservmeter_ !=  nullptr && diffservmeter_->has_operation())
+	|| (diffservmetertable_ !=  nullptr && diffservmetertable_->has_operation())
+	|| (diffservminratetable_ !=  nullptr && diffservminratetable_->has_operation())
+	|| (diffservmultifieldclfrtable_ !=  nullptr && diffservmultifieldclfrtable_->has_operation())
+	|| (diffservqtable_ !=  nullptr && diffservqtable_->has_operation())
+	|| (diffservqueue_ !=  nullptr && diffservqueue_->has_operation())
+	|| (diffservrandomdroptable_ !=  nullptr && diffservrandomdroptable_->has_operation())
+	|| (diffservscheduler_ !=  nullptr && diffservscheduler_->has_operation())
+	|| (diffservschedulertable_ !=  nullptr && diffservschedulertable_->has_operation())
+	|| (diffservtbparam_ !=  nullptr && diffservtbparam_->has_operation())
+	|| (diffservtbparamtable_ !=  nullptr && diffservtbparamtable_->has_operation());
 }
 
 std::string DiffservMib::get_segment_path() const
@@ -259,200 +259,200 @@ std::shared_ptr<Entity> DiffservMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "diffServAction")
     {
-        if(diffservaction == nullptr)
+        if(diffservaction_ == nullptr)
         {
-            diffservaction = std::make_shared<DiffservMib::Diffservaction>();
+            diffservaction_ = std::make_shared<DiffservMib::Diffservaction>();
         }
-        return diffservaction;
+        return diffservaction_;
     }
 
     if(child_yang_name == "diffServActionTable")
     {
-        if(diffservactiontable == nullptr)
+        if(diffservactiontable_ == nullptr)
         {
-            diffservactiontable = std::make_shared<DiffservMib::Diffservactiontable>();
+            diffservactiontable_ = std::make_shared<DiffservMib::Diffservactiontable>();
         }
-        return diffservactiontable;
+        return diffservactiontable_;
     }
 
     if(child_yang_name == "diffServAlgDrop")
     {
-        if(diffservalgdrop == nullptr)
+        if(diffservalgdrop_ == nullptr)
         {
-            diffservalgdrop = std::make_shared<DiffservMib::Diffservalgdrop>();
+            diffservalgdrop_ = std::make_shared<DiffservMib::Diffservalgdrop>();
         }
-        return diffservalgdrop;
+        return diffservalgdrop_;
     }
 
     if(child_yang_name == "diffServAlgDropTable")
     {
-        if(diffservalgdroptable == nullptr)
+        if(diffservalgdroptable_ == nullptr)
         {
-            diffservalgdroptable = std::make_shared<DiffservMib::Diffservalgdroptable>();
+            diffservalgdroptable_ = std::make_shared<DiffservMib::Diffservalgdroptable>();
         }
-        return diffservalgdroptable;
+        return diffservalgdroptable_;
     }
 
     if(child_yang_name == "diffServClassifier")
     {
-        if(diffservclassifier == nullptr)
+        if(diffservclassifier_ == nullptr)
         {
-            diffservclassifier = std::make_shared<DiffservMib::Diffservclassifier>();
+            diffservclassifier_ = std::make_shared<DiffservMib::Diffservclassifier>();
         }
-        return diffservclassifier;
+        return diffservclassifier_;
     }
 
     if(child_yang_name == "diffServClfrElementTable")
     {
-        if(diffservclfrelementtable == nullptr)
+        if(diffservclfrelementtable_ == nullptr)
         {
-            diffservclfrelementtable = std::make_shared<DiffservMib::Diffservclfrelementtable>();
+            diffservclfrelementtable_ = std::make_shared<DiffservMib::Diffservclfrelementtable>();
         }
-        return diffservclfrelementtable;
+        return diffservclfrelementtable_;
     }
 
     if(child_yang_name == "diffServClfrTable")
     {
-        if(diffservclfrtable == nullptr)
+        if(diffservclfrtable_ == nullptr)
         {
-            diffservclfrtable = std::make_shared<DiffservMib::Diffservclfrtable>();
+            diffservclfrtable_ = std::make_shared<DiffservMib::Diffservclfrtable>();
         }
-        return diffservclfrtable;
+        return diffservclfrtable_;
     }
 
     if(child_yang_name == "diffServCountActTable")
     {
-        if(diffservcountacttable == nullptr)
+        if(diffservcountacttable_ == nullptr)
         {
-            diffservcountacttable = std::make_shared<DiffservMib::Diffservcountacttable>();
+            diffservcountacttable_ = std::make_shared<DiffservMib::Diffservcountacttable>();
         }
-        return diffservcountacttable;
+        return diffservcountacttable_;
     }
 
     if(child_yang_name == "diffServDataPathTable")
     {
-        if(diffservdatapathtable == nullptr)
+        if(diffservdatapathtable_ == nullptr)
         {
-            diffservdatapathtable = std::make_shared<DiffservMib::Diffservdatapathtable>();
+            diffservdatapathtable_ = std::make_shared<DiffservMib::Diffservdatapathtable>();
         }
-        return diffservdatapathtable;
+        return diffservdatapathtable_;
     }
 
     if(child_yang_name == "diffServDscpMarkActTable")
     {
-        if(diffservdscpmarkacttable == nullptr)
+        if(diffservdscpmarkacttable_ == nullptr)
         {
-            diffservdscpmarkacttable = std::make_shared<DiffservMib::Diffservdscpmarkacttable>();
+            diffservdscpmarkacttable_ = std::make_shared<DiffservMib::Diffservdscpmarkacttable>();
         }
-        return diffservdscpmarkacttable;
+        return diffservdscpmarkacttable_;
     }
 
     if(child_yang_name == "diffServMaxRateTable")
     {
-        if(diffservmaxratetable == nullptr)
+        if(diffservmaxratetable_ == nullptr)
         {
-            diffservmaxratetable = std::make_shared<DiffservMib::Diffservmaxratetable>();
+            diffservmaxratetable_ = std::make_shared<DiffservMib::Diffservmaxratetable>();
         }
-        return diffservmaxratetable;
+        return diffservmaxratetable_;
     }
 
     if(child_yang_name == "diffServMeter")
     {
-        if(diffservmeter == nullptr)
+        if(diffservmeter_ == nullptr)
         {
-            diffservmeter = std::make_shared<DiffservMib::Diffservmeter>();
+            diffservmeter_ = std::make_shared<DiffservMib::Diffservmeter>();
         }
-        return diffservmeter;
+        return diffservmeter_;
     }
 
     if(child_yang_name == "diffServMeterTable")
     {
-        if(diffservmetertable == nullptr)
+        if(diffservmetertable_ == nullptr)
         {
-            diffservmetertable = std::make_shared<DiffservMib::Diffservmetertable>();
+            diffservmetertable_ = std::make_shared<DiffservMib::Diffservmetertable>();
         }
-        return diffservmetertable;
+        return diffservmetertable_;
     }
 
     if(child_yang_name == "diffServMinRateTable")
     {
-        if(diffservminratetable == nullptr)
+        if(diffservminratetable_ == nullptr)
         {
-            diffservminratetable = std::make_shared<DiffservMib::Diffservminratetable>();
+            diffservminratetable_ = std::make_shared<DiffservMib::Diffservminratetable>();
         }
-        return diffservminratetable;
+        return diffservminratetable_;
     }
 
     if(child_yang_name == "diffServMultiFieldClfrTable")
     {
-        if(diffservmultifieldclfrtable == nullptr)
+        if(diffservmultifieldclfrtable_ == nullptr)
         {
-            diffservmultifieldclfrtable = std::make_shared<DiffservMib::Diffservmultifieldclfrtable>();
+            diffservmultifieldclfrtable_ = std::make_shared<DiffservMib::Diffservmultifieldclfrtable>();
         }
-        return diffservmultifieldclfrtable;
+        return diffservmultifieldclfrtable_;
     }
 
     if(child_yang_name == "diffServQTable")
     {
-        if(diffservqtable == nullptr)
+        if(diffservqtable_ == nullptr)
         {
-            diffservqtable = std::make_shared<DiffservMib::Diffservqtable>();
+            diffservqtable_ = std::make_shared<DiffservMib::Diffservqtable>();
         }
-        return diffservqtable;
+        return diffservqtable_;
     }
 
     if(child_yang_name == "diffServQueue")
     {
-        if(diffservqueue == nullptr)
+        if(diffservqueue_ == nullptr)
         {
-            diffservqueue = std::make_shared<DiffservMib::Diffservqueue>();
+            diffservqueue_ = std::make_shared<DiffservMib::Diffservqueue>();
         }
-        return diffservqueue;
+        return diffservqueue_;
     }
 
     if(child_yang_name == "diffServRandomDropTable")
     {
-        if(diffservrandomdroptable == nullptr)
+        if(diffservrandomdroptable_ == nullptr)
         {
-            diffservrandomdroptable = std::make_shared<DiffservMib::Diffservrandomdroptable>();
+            diffservrandomdroptable_ = std::make_shared<DiffservMib::Diffservrandomdroptable>();
         }
-        return diffservrandomdroptable;
+        return diffservrandomdroptable_;
     }
 
     if(child_yang_name == "diffServScheduler")
     {
-        if(diffservscheduler == nullptr)
+        if(diffservscheduler_ == nullptr)
         {
-            diffservscheduler = std::make_shared<DiffservMib::Diffservscheduler>();
+            diffservscheduler_ = std::make_shared<DiffservMib::Diffservscheduler>();
         }
-        return diffservscheduler;
+        return diffservscheduler_;
     }
 
     if(child_yang_name == "diffServSchedulerTable")
     {
-        if(diffservschedulertable == nullptr)
+        if(diffservschedulertable_ == nullptr)
         {
-            diffservschedulertable = std::make_shared<DiffservMib::Diffservschedulertable>();
+            diffservschedulertable_ = std::make_shared<DiffservMib::Diffservschedulertable>();
         }
-        return diffservschedulertable;
+        return diffservschedulertable_;
     }
 
     if(child_yang_name == "diffServTBParam")
     {
-        if(diffservtbparam == nullptr)
+        if(diffservtbparam_ == nullptr)
         {
-            diffservtbparam = std::make_shared<DiffservMib::Diffservtbparam>();
+            diffservtbparam_ = std::make_shared<DiffservMib::Diffservtbparam>();
         }
-        return diffservtbparam;
+        return diffservtbparam_;
     }
 
     if(child_yang_name == "diffServTBParamTable")
     {
-        if(diffservtbparamtable == nullptr)
+        if(diffservtbparamtable_ == nullptr)
         {
-            diffservtbparamtable = std::make_shared<DiffservMib::Diffservtbparamtable>();
+            diffservtbparamtable_ = std::make_shared<DiffservMib::Diffservtbparamtable>();
         }
-        return diffservtbparamtable;
+        return diffservtbparamtable_;
     }
 
     return nullptr;
@@ -461,114 +461,114 @@ std::shared_ptr<Entity> DiffservMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(diffservaction != nullptr)
+    if(diffservaction_ != nullptr)
     {
-        children["diffServAction"] = diffservaction;
+        children["diffServAction"] = diffservaction_;
     }
 
-    if(diffservactiontable != nullptr)
+    if(diffservactiontable_ != nullptr)
     {
-        children["diffServActionTable"] = diffservactiontable;
+        children["diffServActionTable"] = diffservactiontable_;
     }
 
-    if(diffservalgdrop != nullptr)
+    if(diffservalgdrop_ != nullptr)
     {
-        children["diffServAlgDrop"] = diffservalgdrop;
+        children["diffServAlgDrop"] = diffservalgdrop_;
     }
 
-    if(diffservalgdroptable != nullptr)
+    if(diffservalgdroptable_ != nullptr)
     {
-        children["diffServAlgDropTable"] = diffservalgdroptable;
+        children["diffServAlgDropTable"] = diffservalgdroptable_;
     }
 
-    if(diffservclassifier != nullptr)
+    if(diffservclassifier_ != nullptr)
     {
-        children["diffServClassifier"] = diffservclassifier;
+        children["diffServClassifier"] = diffservclassifier_;
     }
 
-    if(diffservclfrelementtable != nullptr)
+    if(diffservclfrelementtable_ != nullptr)
     {
-        children["diffServClfrElementTable"] = diffservclfrelementtable;
+        children["diffServClfrElementTable"] = diffservclfrelementtable_;
     }
 
-    if(diffservclfrtable != nullptr)
+    if(diffservclfrtable_ != nullptr)
     {
-        children["diffServClfrTable"] = diffservclfrtable;
+        children["diffServClfrTable"] = diffservclfrtable_;
     }
 
-    if(diffservcountacttable != nullptr)
+    if(diffservcountacttable_ != nullptr)
     {
-        children["diffServCountActTable"] = diffservcountacttable;
+        children["diffServCountActTable"] = diffservcountacttable_;
     }
 
-    if(diffservdatapathtable != nullptr)
+    if(diffservdatapathtable_ != nullptr)
     {
-        children["diffServDataPathTable"] = diffservdatapathtable;
+        children["diffServDataPathTable"] = diffservdatapathtable_;
     }
 
-    if(diffservdscpmarkacttable != nullptr)
+    if(diffservdscpmarkacttable_ != nullptr)
     {
-        children["diffServDscpMarkActTable"] = diffservdscpmarkacttable;
+        children["diffServDscpMarkActTable"] = diffservdscpmarkacttable_;
     }
 
-    if(diffservmaxratetable != nullptr)
+    if(diffservmaxratetable_ != nullptr)
     {
-        children["diffServMaxRateTable"] = diffservmaxratetable;
+        children["diffServMaxRateTable"] = diffservmaxratetable_;
     }
 
-    if(diffservmeter != nullptr)
+    if(diffservmeter_ != nullptr)
     {
-        children["diffServMeter"] = diffservmeter;
+        children["diffServMeter"] = diffservmeter_;
     }
 
-    if(diffservmetertable != nullptr)
+    if(diffservmetertable_ != nullptr)
     {
-        children["diffServMeterTable"] = diffservmetertable;
+        children["diffServMeterTable"] = diffservmetertable_;
     }
 
-    if(diffservminratetable != nullptr)
+    if(diffservminratetable_ != nullptr)
     {
-        children["diffServMinRateTable"] = diffservminratetable;
+        children["diffServMinRateTable"] = diffservminratetable_;
     }
 
-    if(diffservmultifieldclfrtable != nullptr)
+    if(diffservmultifieldclfrtable_ != nullptr)
     {
-        children["diffServMultiFieldClfrTable"] = diffservmultifieldclfrtable;
+        children["diffServMultiFieldClfrTable"] = diffservmultifieldclfrtable_;
     }
 
-    if(diffservqtable != nullptr)
+    if(diffservqtable_ != nullptr)
     {
-        children["diffServQTable"] = diffservqtable;
+        children["diffServQTable"] = diffservqtable_;
     }
 
-    if(diffservqueue != nullptr)
+    if(diffservqueue_ != nullptr)
     {
-        children["diffServQueue"] = diffservqueue;
+        children["diffServQueue"] = diffservqueue_;
     }
 
-    if(diffservrandomdroptable != nullptr)
+    if(diffservrandomdroptable_ != nullptr)
     {
-        children["diffServRandomDropTable"] = diffservrandomdroptable;
+        children["diffServRandomDropTable"] = diffservrandomdroptable_;
     }
 
-    if(diffservscheduler != nullptr)
+    if(diffservscheduler_ != nullptr)
     {
-        children["diffServScheduler"] = diffservscheduler;
+        children["diffServScheduler"] = diffservscheduler_;
     }
 
-    if(diffservschedulertable != nullptr)
+    if(diffservschedulertable_ != nullptr)
     {
-        children["diffServSchedulerTable"] = diffservschedulertable;
+        children["diffServSchedulerTable"] = diffservschedulertable_;
     }
 
-    if(diffservtbparam != nullptr)
+    if(diffservtbparam_ != nullptr)
     {
-        children["diffServTBParam"] = diffservtbparam;
+        children["diffServTBParam"] = diffservtbparam_;
     }
 
-    if(diffservtbparamtable != nullptr)
+    if(diffservtbparamtable_ != nullptr)
     {
-        children["diffServTBParamTable"] = diffservtbparamtable;
+        children["diffServTBParamTable"] = diffservtbparamtable_;
     }
 
     return children;
@@ -1161,9 +1161,9 @@ DiffservMib::Diffservdatapathtable::~Diffservdatapathtable()
 
 bool DiffservMib::Diffservdatapathtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservdatapathentry.size(); index++)
+    for (std::size_t index=0; index<diffservdatapathentry_.size(); index++)
     {
-        if(diffservdatapathentry[index]->has_data())
+        if(diffservdatapathentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1171,9 +1171,9 @@ bool DiffservMib::Diffservdatapathtable::has_data() const
 
 bool DiffservMib::Diffservdatapathtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservdatapathentry.size(); index++)
+    for (std::size_t index=0; index<diffservdatapathentry_.size(); index++)
     {
-        if(diffservdatapathentry[index]->has_operation())
+        if(diffservdatapathentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1213,7 +1213,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdatapathtable::get_child_by_name(co
 {
     if(child_yang_name == "diffServDataPathEntry")
     {
-        for(auto const & c : diffservdatapathentry)
+        for(auto const & c : diffservdatapathentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1223,7 +1223,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdatapathtable::get_child_by_name(co
         }
         auto c = std::make_shared<DiffservMib::Diffservdatapathtable::Diffservdatapathentry>();
         c->parent = this;
-        diffservdatapathentry.push_back(c);
+        diffservdatapathentry_.push_back(c);
         return c;
     }
 
@@ -1233,7 +1233,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdatapathtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservdatapathtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservdatapathentry)
+    for (auto const & c : diffservdatapathentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1360,9 +1360,9 @@ DiffservMib::Diffservclfrtable::~Diffservclfrtable()
 
 bool DiffservMib::Diffservclfrtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrentry_.size(); index++)
     {
-        if(diffservclfrentry[index]->has_data())
+        if(diffservclfrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1370,9 +1370,9 @@ bool DiffservMib::Diffservclfrtable::has_data() const
 
 bool DiffservMib::Diffservclfrtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrentry_.size(); index++)
     {
-        if(diffservclfrentry[index]->has_operation())
+        if(diffservclfrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1412,7 +1412,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrtable::get_child_by_name(const 
 {
     if(child_yang_name == "diffServClfrEntry")
     {
-        for(auto const & c : diffservclfrentry)
+        for(auto const & c : diffservclfrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1422,7 +1422,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrtable::get_child_by_name(const 
         }
         auto c = std::make_shared<DiffservMib::Diffservclfrtable::Diffservclfrentry>();
         c->parent = this;
-        diffservclfrentry.push_back(c);
+        diffservclfrentry_.push_back(c);
         return c;
     }
 
@@ -1432,7 +1432,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservclfrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservclfrentry)
+    for (auto const & c : diffservclfrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1543,9 +1543,9 @@ DiffservMib::Diffservclfrelementtable::~Diffservclfrelementtable()
 
 bool DiffservMib::Diffservclfrelementtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservclfrelemententry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrelemententry_.size(); index++)
     {
-        if(diffservclfrelemententry[index]->has_data())
+        if(diffservclfrelemententry_[index]->has_data())
             return true;
     }
     return false;
@@ -1553,9 +1553,9 @@ bool DiffservMib::Diffservclfrelementtable::has_data() const
 
 bool DiffservMib::Diffservclfrelementtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservclfrelemententry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrelemententry_.size(); index++)
     {
-        if(diffservclfrelemententry[index]->has_operation())
+        if(diffservclfrelemententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1595,7 +1595,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrelementtable::get_child_by_name
 {
     if(child_yang_name == "diffServClfrElementEntry")
     {
-        for(auto const & c : diffservclfrelemententry)
+        for(auto const & c : diffservclfrelemententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1605,7 +1605,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrelementtable::get_child_by_name
         }
         auto c = std::make_shared<DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry>();
         c->parent = this;
-        diffservclfrelemententry.push_back(c);
+        diffservclfrelemententry_.push_back(c);
         return c;
     }
 
@@ -1615,7 +1615,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservclfrelementtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservclfrelementtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservclfrelemententry)
+    for (auto const & c : diffservclfrelemententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1758,9 +1758,9 @@ DiffservMib::Diffservmultifieldclfrtable::~Diffservmultifieldclfrtable()
 
 bool DiffservMib::Diffservmultifieldclfrtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmultifieldclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservmultifieldclfrentry_.size(); index++)
     {
-        if(diffservmultifieldclfrentry[index]->has_data())
+        if(diffservmultifieldclfrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1768,9 +1768,9 @@ bool DiffservMib::Diffservmultifieldclfrtable::has_data() const
 
 bool DiffservMib::Diffservmultifieldclfrtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmultifieldclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservmultifieldclfrentry_.size(); index++)
     {
-        if(diffservmultifieldclfrentry[index]->has_operation())
+        if(diffservmultifieldclfrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1810,7 +1810,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmultifieldclfrtable::get_child_by_n
 {
     if(child_yang_name == "diffServMultiFieldClfrEntry")
     {
-        for(auto const & c : diffservmultifieldclfrentry)
+        for(auto const & c : diffservmultifieldclfrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1820,7 +1820,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmultifieldclfrtable::get_child_by_n
         }
         auto c = std::make_shared<DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry>();
         c->parent = this;
-        diffservmultifieldclfrentry.push_back(c);
+        diffservmultifieldclfrentry_.push_back(c);
         return c;
     }
 
@@ -1830,7 +1830,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmultifieldclfrtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservmultifieldclfrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservmultifieldclfrentry)
+    for (auto const & c : diffservmultifieldclfrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2037,9 +2037,9 @@ DiffservMib::Diffservmetertable::~Diffservmetertable()
 
 bool DiffservMib::Diffservmetertable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmeterentry.size(); index++)
+    for (std::size_t index=0; index<diffservmeterentry_.size(); index++)
     {
-        if(diffservmeterentry[index]->has_data())
+        if(diffservmeterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2047,9 +2047,9 @@ bool DiffservMib::Diffservmetertable::has_data() const
 
 bool DiffservMib::Diffservmetertable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmeterentry.size(); index++)
+    for (std::size_t index=0; index<diffservmeterentry_.size(); index++)
     {
-        if(diffservmeterentry[index]->has_operation())
+        if(diffservmeterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2089,7 +2089,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmetertable::get_child_by_name(const
 {
     if(child_yang_name == "diffServMeterEntry")
     {
-        for(auto const & c : diffservmeterentry)
+        for(auto const & c : diffservmeterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2099,7 +2099,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmetertable::get_child_by_name(const
         }
         auto c = std::make_shared<DiffservMib::Diffservmetertable::Diffservmeterentry>();
         c->parent = this;
-        diffservmeterentry.push_back(c);
+        diffservmeterentry_.push_back(c);
         return c;
     }
 
@@ -2109,7 +2109,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmetertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservmetertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservmeterentry)
+    for (auto const & c : diffservmeterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2244,9 +2244,9 @@ DiffservMib::Diffservtbparamtable::~Diffservtbparamtable()
 
 bool DiffservMib::Diffservtbparamtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservtbparamentry.size(); index++)
+    for (std::size_t index=0; index<diffservtbparamentry_.size(); index++)
     {
-        if(diffservtbparamentry[index]->has_data())
+        if(diffservtbparamentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2254,9 +2254,9 @@ bool DiffservMib::Diffservtbparamtable::has_data() const
 
 bool DiffservMib::Diffservtbparamtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservtbparamentry.size(); index++)
+    for (std::size_t index=0; index<diffservtbparamentry_.size(); index++)
     {
-        if(diffservtbparamentry[index]->has_operation())
+        if(diffservtbparamentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2296,7 +2296,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservtbparamtable::get_child_by_name(con
 {
     if(child_yang_name == "diffServTBParamEntry")
     {
-        for(auto const & c : diffservtbparamentry)
+        for(auto const & c : diffservtbparamentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2306,7 +2306,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservtbparamtable::get_child_by_name(con
         }
         auto c = std::make_shared<DiffservMib::Diffservtbparamtable::Diffservtbparamentry>();
         c->parent = this;
-        diffservtbparamentry.push_back(c);
+        diffservtbparamentry_.push_back(c);
         return c;
     }
 
@@ -2316,7 +2316,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservtbparamtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservtbparamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservtbparamentry)
+    for (auto const & c : diffservtbparamentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2459,9 +2459,9 @@ DiffservMib::Diffservactiontable::~Diffservactiontable()
 
 bool DiffservMib::Diffservactiontable::has_data() const
 {
-    for (std::size_t index=0; index<diffservactionentry.size(); index++)
+    for (std::size_t index=0; index<diffservactionentry_.size(); index++)
     {
-        if(diffservactionentry[index]->has_data())
+        if(diffservactionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2469,9 +2469,9 @@ bool DiffservMib::Diffservactiontable::has_data() const
 
 bool DiffservMib::Diffservactiontable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservactionentry.size(); index++)
+    for (std::size_t index=0; index<diffservactionentry_.size(); index++)
     {
-        if(diffservactionentry[index]->has_operation())
+        if(diffservactionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2511,7 +2511,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservactiontable::get_child_by_name(cons
 {
     if(child_yang_name == "diffServActionEntry")
     {
-        for(auto const & c : diffservactionentry)
+        for(auto const & c : diffservactionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2521,7 +2521,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservactiontable::get_child_by_name(cons
         }
         auto c = std::make_shared<DiffservMib::Diffservactiontable::Diffservactionentry>();
         c->parent = this;
-        diffservactionentry.push_back(c);
+        diffservactionentry_.push_back(c);
         return c;
     }
 
@@ -2531,7 +2531,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservactiontable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservactionentry)
+    for (auto const & c : diffservactionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2666,9 +2666,9 @@ DiffservMib::Diffservdscpmarkacttable::~Diffservdscpmarkacttable()
 
 bool DiffservMib::Diffservdscpmarkacttable::has_data() const
 {
-    for (std::size_t index=0; index<diffservdscpmarkactentry.size(); index++)
+    for (std::size_t index=0; index<diffservdscpmarkactentry_.size(); index++)
     {
-        if(diffservdscpmarkactentry[index]->has_data())
+        if(diffservdscpmarkactentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2676,9 +2676,9 @@ bool DiffservMib::Diffservdscpmarkacttable::has_data() const
 
 bool DiffservMib::Diffservdscpmarkacttable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservdscpmarkactentry.size(); index++)
+    for (std::size_t index=0; index<diffservdscpmarkactentry_.size(); index++)
     {
-        if(diffservdscpmarkactentry[index]->has_operation())
+        if(diffservdscpmarkactentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2718,7 +2718,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdscpmarkacttable::get_child_by_name
 {
     if(child_yang_name == "diffServDscpMarkActEntry")
     {
-        for(auto const & c : diffservdscpmarkactentry)
+        for(auto const & c : diffservdscpmarkactentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2728,7 +2728,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdscpmarkacttable::get_child_by_name
         }
         auto c = std::make_shared<DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry>();
         c->parent = this;
-        diffservdscpmarkactentry.push_back(c);
+        diffservdscpmarkactentry_.push_back(c);
         return c;
     }
 
@@ -2738,7 +2738,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservdscpmarkacttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservdscpmarkacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservdscpmarkactentry)
+    for (auto const & c : diffservdscpmarkactentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2833,9 +2833,9 @@ DiffservMib::Diffservcountacttable::~Diffservcountacttable()
 
 bool DiffservMib::Diffservcountacttable::has_data() const
 {
-    for (std::size_t index=0; index<diffservcountactentry.size(); index++)
+    for (std::size_t index=0; index<diffservcountactentry_.size(); index++)
     {
-        if(diffservcountactentry[index]->has_data())
+        if(diffservcountactentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2843,9 +2843,9 @@ bool DiffservMib::Diffservcountacttable::has_data() const
 
 bool DiffservMib::Diffservcountacttable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservcountactentry.size(); index++)
+    for (std::size_t index=0; index<diffservcountactentry_.size(); index++)
     {
-        if(diffservcountactentry[index]->has_operation())
+        if(diffservcountactentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2885,7 +2885,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservcountacttable::get_child_by_name(co
 {
     if(child_yang_name == "diffServCountActEntry")
     {
-        for(auto const & c : diffservcountactentry)
+        for(auto const & c : diffservcountactentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2895,7 +2895,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservcountacttable::get_child_by_name(co
         }
         auto c = std::make_shared<DiffservMib::Diffservcountacttable::Diffservcountactentry>();
         c->parent = this;
-        diffservcountactentry.push_back(c);
+        diffservcountactentry_.push_back(c);
         return c;
     }
 
@@ -2905,7 +2905,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservcountacttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservcountacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservcountactentry)
+    for (auto const & c : diffservcountactentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3032,9 +3032,9 @@ DiffservMib::Diffservalgdroptable::~Diffservalgdroptable()
 
 bool DiffservMib::Diffservalgdroptable::has_data() const
 {
-    for (std::size_t index=0; index<diffservalgdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservalgdropentry_.size(); index++)
     {
-        if(diffservalgdropentry[index]->has_data())
+        if(diffservalgdropentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3042,9 +3042,9 @@ bool DiffservMib::Diffservalgdroptable::has_data() const
 
 bool DiffservMib::Diffservalgdroptable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservalgdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservalgdropentry_.size(); index++)
     {
-        if(diffservalgdropentry[index]->has_operation())
+        if(diffservalgdropentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3084,7 +3084,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservalgdroptable::get_child_by_name(con
 {
     if(child_yang_name == "diffServAlgDropEntry")
     {
-        for(auto const & c : diffservalgdropentry)
+        for(auto const & c : diffservalgdropentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3094,7 +3094,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservalgdroptable::get_child_by_name(con
         }
         auto c = std::make_shared<DiffservMib::Diffservalgdroptable::Diffservalgdropentry>();
         c->parent = this;
-        diffservalgdropentry.push_back(c);
+        diffservalgdropentry_.push_back(c);
         return c;
     }
 
@@ -3104,7 +3104,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservalgdroptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservalgdroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservalgdropentry)
+    for (auto const & c : diffservalgdropentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3287,9 +3287,9 @@ DiffservMib::Diffservrandomdroptable::~Diffservrandomdroptable()
 
 bool DiffservMib::Diffservrandomdroptable::has_data() const
 {
-    for (std::size_t index=0; index<diffservrandomdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservrandomdropentry_.size(); index++)
     {
-        if(diffservrandomdropentry[index]->has_data())
+        if(diffservrandomdropentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3297,9 +3297,9 @@ bool DiffservMib::Diffservrandomdroptable::has_data() const
 
 bool DiffservMib::Diffservrandomdroptable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservrandomdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservrandomdropentry_.size(); index++)
     {
-        if(diffservrandomdropentry[index]->has_operation())
+        if(diffservrandomdropentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3339,7 +3339,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservrandomdroptable::get_child_by_name(
 {
     if(child_yang_name == "diffServRandomDropEntry")
     {
-        for(auto const & c : diffservrandomdropentry)
+        for(auto const & c : diffservrandomdropentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3349,7 +3349,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservrandomdroptable::get_child_by_name(
         }
         auto c = std::make_shared<DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry>();
         c->parent = this;
-        diffservrandomdropentry.push_back(c);
+        diffservrandomdropentry_.push_back(c);
         return c;
     }
 
@@ -3359,7 +3359,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservrandomdroptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservrandomdroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservrandomdropentry)
+    for (auto const & c : diffservrandomdropentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3526,9 +3526,9 @@ DiffservMib::Diffservqtable::~Diffservqtable()
 
 bool DiffservMib::Diffservqtable::has_data() const
 {
-    for (std::size_t index=0; index<diffservqentry.size(); index++)
+    for (std::size_t index=0; index<diffservqentry_.size(); index++)
     {
-        if(diffservqentry[index]->has_data())
+        if(diffservqentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3536,9 +3536,9 @@ bool DiffservMib::Diffservqtable::has_data() const
 
 bool DiffservMib::Diffservqtable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservqentry.size(); index++)
+    for (std::size_t index=0; index<diffservqentry_.size(); index++)
     {
-        if(diffservqentry[index]->has_operation())
+        if(diffservqentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3578,7 +3578,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservqtable::get_child_by_name(const std
 {
     if(child_yang_name == "diffServQEntry")
     {
-        for(auto const & c : diffservqentry)
+        for(auto const & c : diffservqentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3588,7 +3588,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservqtable::get_child_by_name(const std
         }
         auto c = std::make_shared<DiffservMib::Diffservqtable::Diffservqentry>();
         c->parent = this;
-        diffservqentry.push_back(c);
+        diffservqentry_.push_back(c);
         return c;
     }
 
@@ -3598,7 +3598,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservqtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservqtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservqentry)
+    for (auto const & c : diffservqentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3733,9 +3733,9 @@ DiffservMib::Diffservschedulertable::~Diffservschedulertable()
 
 bool DiffservMib::Diffservschedulertable::has_data() const
 {
-    for (std::size_t index=0; index<diffservschedulerentry.size(); index++)
+    for (std::size_t index=0; index<diffservschedulerentry_.size(); index++)
     {
-        if(diffservschedulerentry[index]->has_data())
+        if(diffservschedulerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3743,9 +3743,9 @@ bool DiffservMib::Diffservschedulertable::has_data() const
 
 bool DiffservMib::Diffservschedulertable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservschedulerentry.size(); index++)
+    for (std::size_t index=0; index<diffservschedulerentry_.size(); index++)
     {
-        if(diffservschedulerentry[index]->has_operation())
+        if(diffservschedulerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3785,7 +3785,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservschedulertable::get_child_by_name(c
 {
     if(child_yang_name == "diffServSchedulerEntry")
     {
-        for(auto const & c : diffservschedulerentry)
+        for(auto const & c : diffservschedulerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3795,7 +3795,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservschedulertable::get_child_by_name(c
         }
         auto c = std::make_shared<DiffservMib::Diffservschedulertable::Diffservschedulerentry>();
         c->parent = this;
-        diffservschedulerentry.push_back(c);
+        diffservschedulerentry_.push_back(c);
         return c;
     }
 
@@ -3805,7 +3805,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservschedulertable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservschedulertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservschedulerentry)
+    for (auto const & c : diffservschedulerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3948,9 +3948,9 @@ DiffservMib::Diffservminratetable::~Diffservminratetable()
 
 bool DiffservMib::Diffservminratetable::has_data() const
 {
-    for (std::size_t index=0; index<diffservminrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservminrateentry_.size(); index++)
     {
-        if(diffservminrateentry[index]->has_data())
+        if(diffservminrateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3958,9 +3958,9 @@ bool DiffservMib::Diffservminratetable::has_data() const
 
 bool DiffservMib::Diffservminratetable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservminrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservminrateentry_.size(); index++)
     {
-        if(diffservminrateentry[index]->has_operation())
+        if(diffservminrateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4000,7 +4000,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservminratetable::get_child_by_name(con
 {
     if(child_yang_name == "diffServMinRateEntry")
     {
-        for(auto const & c : diffservminrateentry)
+        for(auto const & c : diffservminrateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4010,7 +4010,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservminratetable::get_child_by_name(con
         }
         auto c = std::make_shared<DiffservMib::Diffservminratetable::Diffservminrateentry>();
         c->parent = this;
-        diffservminrateentry.push_back(c);
+        diffservminrateentry_.push_back(c);
         return c;
     }
 
@@ -4020,7 +4020,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservminratetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservminratetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservminrateentry)
+    for (auto const & c : diffservminrateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4155,9 +4155,9 @@ DiffservMib::Diffservmaxratetable::~Diffservmaxratetable()
 
 bool DiffservMib::Diffservmaxratetable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmaxrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservmaxrateentry_.size(); index++)
     {
-        if(diffservmaxrateentry[index]->has_data())
+        if(diffservmaxrateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4165,9 +4165,9 @@ bool DiffservMib::Diffservmaxratetable::has_data() const
 
 bool DiffservMib::Diffservmaxratetable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmaxrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservmaxrateentry_.size(); index++)
     {
-        if(diffservmaxrateentry[index]->has_operation())
+        if(diffservmaxrateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4207,7 +4207,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmaxratetable::get_child_by_name(con
 {
     if(child_yang_name == "diffServMaxRateEntry")
     {
-        for(auto const & c : diffservmaxrateentry)
+        for(auto const & c : diffservmaxrateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4217,7 +4217,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmaxratetable::get_child_by_name(con
         }
         auto c = std::make_shared<DiffservMib::Diffservmaxratetable::Diffservmaxrateentry>();
         c->parent = this;
-        diffservmaxrateentry.push_back(c);
+        diffservmaxrateentry_.push_back(c);
         return c;
     }
 
@@ -4227,7 +4227,7 @@ std::shared_ptr<Entity> DiffservMib::Diffservmaxratetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DiffservMib::Diffservmaxratetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffservmaxrateentry)
+    for (auto const & c : diffservmaxrateentry_)
     {
         children[c->get_segment_path()] = c;
     }

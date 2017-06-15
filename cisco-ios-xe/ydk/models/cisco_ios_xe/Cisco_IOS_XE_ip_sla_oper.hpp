@@ -30,7 +30,7 @@ class IpSlaStats : public Entity
 
         class SlaOperEntry; //type: IpSlaStats::SlaOperEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry> > sla_oper_entry;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry> > sla_oper_entry_;
         
 }; // IpSlaStats
 
@@ -59,9 +59,9 @@ class IpSlaStats::SlaOperEntry : public Entity
         class MeasureStats; //type: IpSlaStats::SlaOperEntry::MeasureStats
         class Stats; //type: IpSlaStats::SlaOperEntry::Stats
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::MeasureStats> measure_stats;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo> rtt_info;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats> stats;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::MeasureStats> measure_stats_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo> rtt_info_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats> stats_;
         
 }; // IpSlaStats::SlaOperEntry
 
@@ -83,8 +83,8 @@ class IpSlaStats::SlaOperEntry::RttInfo : public Entity
         class LatestRtt; //type: IpSlaStats::SlaOperEntry::RttInfo::LatestRtt
         class TimeToLive; //type: IpSlaStats::SlaOperEntry::RttInfo::TimeToLive
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo::LatestRtt> latest_rtt;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo::TimeToLive> time_to_live;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo::LatestRtt> latest_rtt_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::RttInfo::TimeToLive> time_to_live_;
         
 }; // IpSlaStats::SlaOperEntry::RttInfo
 
@@ -174,13 +174,13 @@ class IpSlaStats::SlaOperEntry::Stats : public Entity
         class IcmpPacketLoss; //type: IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss
         class VoiceScore; //type: IpSlaStats::SlaOperEntry::Stats::VoiceScore
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss> icmp_packet_loss;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter> jitter;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency> oneway_latency;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OverThreshold> over_threshold;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss> packet_loss;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Rtt> rtt;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::VoiceScore> voice_score;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss> icmp_packet_loss_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter> jitter_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency> oneway_latency_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OverThreshold> over_threshold_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss> packet_loss_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Rtt> rtt_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::VoiceScore> voice_score_;
         
 }; // IpSlaStats::SlaOperEntry::Stats
 
@@ -202,7 +202,7 @@ class IpSlaStats::SlaOperEntry::Stats::Rtt : public Entity
         YLeaf rtt_count; //type: uint32
         class SlaTimeValues; //type: IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues> sla_time_values;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues> sla_time_values_;
         
 }; // IpSlaStats::SlaOperEntry::Stats::Rtt
 
@@ -247,8 +247,8 @@ class IpSlaStats::SlaOperEntry::Stats::OnewayLatency : public Entity
         class Sd; //type: IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd
         class Ds; //type: IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds> ds;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd> sd;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds> ds_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd> sd_;
         
 }; // IpSlaStats::SlaOperEntry::Stats::OnewayLatency
 
@@ -316,8 +316,8 @@ class IpSlaStats::SlaOperEntry::Stats::Jitter : public Entity
         class Sd; //type: IpSlaStats::SlaOperEntry::Stats::Jitter::Sd
         class Ds; //type: IpSlaStats::SlaOperEntry::Stats::Jitter::Ds
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter::Ds> ds;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter::Sd> sd;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter::Ds> ds_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::Jitter::Sd> sd_;
         
 }; // IpSlaStats::SlaOperEntry::Stats::Jitter
 
@@ -410,8 +410,8 @@ class IpSlaStats::SlaOperEntry::Stats::PacketLoss : public Entity
         class SdLoss; //type: IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss
         class DsLoss; //type: IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss
 
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss> ds_loss;
-        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss> sd_loss;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss> ds_loss_;
+        std::shared_ptr<Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss> sd_loss_;
         
 }; // IpSlaStats::SlaOperEntry::Stats::PacketLoss
 

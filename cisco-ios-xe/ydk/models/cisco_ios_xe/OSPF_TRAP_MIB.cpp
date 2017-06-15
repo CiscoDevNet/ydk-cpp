@@ -11,9 +11,9 @@ namespace OSPF_TRAP_MIB {
 
 OspfTrapMib::OspfTrapMib()
     :
-    ospftrapcontrol(std::make_shared<OspfTrapMib::Ospftrapcontrol>())
+    ospftrapcontrol_(std::make_shared<OspfTrapMib::Ospftrapcontrol>())
 {
-    ospftrapcontrol->parent = this;
+    ospftrapcontrol_->parent = this;
 
     yang_name = "OSPF-TRAP-MIB"; yang_parent_name = "OSPF-TRAP-MIB";
 }
@@ -24,13 +24,13 @@ OspfTrapMib::~OspfTrapMib()
 
 bool OspfTrapMib::has_data() const
 {
-    return (ospftrapcontrol !=  nullptr && ospftrapcontrol->has_data());
+    return (ospftrapcontrol_ !=  nullptr && ospftrapcontrol_->has_data());
 }
 
 bool OspfTrapMib::has_operation() const
 {
     return is_set(operation)
-	|| (ospftrapcontrol !=  nullptr && ospftrapcontrol->has_operation());
+	|| (ospftrapcontrol_ !=  nullptr && ospftrapcontrol_->has_operation());
 }
 
 std::string OspfTrapMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> OspfTrapMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ospfTrapControl")
     {
-        if(ospftrapcontrol == nullptr)
+        if(ospftrapcontrol_ == nullptr)
         {
-            ospftrapcontrol = std::make_shared<OspfTrapMib::Ospftrapcontrol>();
+            ospftrapcontrol_ = std::make_shared<OspfTrapMib::Ospftrapcontrol>();
         }
-        return ospftrapcontrol;
+        return ospftrapcontrol_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> OspfTrapMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> OspfTrapMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ospftrapcontrol != nullptr)
+    if(ospftrapcontrol_ != nullptr)
     {
-        children["ospfTrapControl"] = ospftrapcontrol;
+        children["ospfTrapControl"] = ospftrapcontrol_;
     }
 
     return children;

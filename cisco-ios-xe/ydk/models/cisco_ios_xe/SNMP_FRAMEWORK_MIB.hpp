@@ -50,7 +50,7 @@ class SnmpFrameworkMib : public Entity
 
         class Snmpengine; //type: SnmpFrameworkMib::Snmpengine
 
-        std::shared_ptr<SNMP_FRAMEWORK_MIB::SnmpFrameworkMib::Snmpengine> snmpengine;
+        std::shared_ptr<SNMP_FRAMEWORK_MIB::SnmpFrameworkMib::Snmpengine> snmpengine_;
         
 }; // SnmpFrameworkMib
 

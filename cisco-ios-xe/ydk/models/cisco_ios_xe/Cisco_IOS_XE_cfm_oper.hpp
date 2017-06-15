@@ -30,7 +30,7 @@ class CfmStatistics : public Entity
 
         class CfmMeps; //type: CfmStatistics::CfmMeps
 
-        std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps> cfm_meps;
+        std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps> cfm_meps_;
         
 }; // CfmStatistics
 
@@ -51,7 +51,7 @@ class CfmStatistics::CfmMeps : public Entity
 
         class CfmMep; //type: CfmStatistics::CfmMeps::CfmMep
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps::CfmMep> > cfm_mep;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps::CfmMep> > cfm_mep_;
         
 }; // CfmStatistics::CfmMeps
 
@@ -82,7 +82,7 @@ class CfmStatistics::CfmMeps::CfmMep : public Entity
         YLeaf lbr_received_bad; //type: uint64
         class LastCleared; //type: CfmStatistics::CfmMeps::CfmMep::LastCleared
 
-        std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps::CfmMep::LastCleared> last_cleared;
+        std::shared_ptr<Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps::CfmMep::LastCleared> last_cleared_;
         
 }; // CfmStatistics::CfmMeps::CfmMep
 

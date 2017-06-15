@@ -32,9 +32,9 @@ class CiscoDialControlMib : public Entity
         class Ccallhistorytable; //type: CiscoDialControlMib::Ccallhistorytable
         class Ccallhistoryiectable; //type: CiscoDialControlMib::Ccallhistoryiectable
 
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable> ccallhistoryiectable;
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable> ccallhistorytable;
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Cpeerglobalconfiguration> cpeerglobalconfiguration;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable> ccallhistoryiectable_;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable> ccallhistorytable_;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Cpeerglobalconfiguration> cpeerglobalconfiguration_;
         
 }; // CiscoDialControlMib
 
@@ -75,7 +75,7 @@ class CiscoDialControlMib::Ccallhistorytable : public Entity
 
         class Ccallhistoryentry; //type: CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry> > ccallhistoryentry;
+        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry> > ccallhistoryentry_;
         
 }; // CiscoDialControlMib::Ccallhistorytable
 
@@ -138,7 +138,7 @@ class CiscoDialControlMib::Ccallhistoryiectable : public Entity
 
         class Ccallhistoryiecentry; //type: CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry
 
-        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry> > ccallhistoryiecentry;
+        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry> > ccallhistoryiecentry_;
         
 }; // CiscoDialControlMib::Ccallhistoryiectable
 

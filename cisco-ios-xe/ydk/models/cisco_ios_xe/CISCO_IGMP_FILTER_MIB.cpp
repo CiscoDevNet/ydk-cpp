@@ -11,18 +11,18 @@ namespace CISCO_IGMP_FILTER_MIB {
 
 CiscoIgmpFilterMib::CiscoIgmpFilterMib()
     :
-    cigmpfiltereditor(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>())
-	,cigmpfiltergeneral(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>())
-	,cigmpfilterinterfacetable(std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>())
-	,cigmpfiltertable(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>())
+    cigmpfiltereditor_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>())
+	,cigmpfiltergeneral_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>())
+	,cigmpfilterinterfacetable_(std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>())
+	,cigmpfiltertable_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>())
 {
-    cigmpfiltereditor->parent = this;
+    cigmpfiltereditor_->parent = this;
 
-    cigmpfiltergeneral->parent = this;
+    cigmpfiltergeneral_->parent = this;
 
-    cigmpfilterinterfacetable->parent = this;
+    cigmpfilterinterfacetable_->parent = this;
 
-    cigmpfiltertable->parent = this;
+    cigmpfiltertable_->parent = this;
 
     yang_name = "CISCO-IGMP-FILTER-MIB"; yang_parent_name = "CISCO-IGMP-FILTER-MIB";
 }
@@ -33,19 +33,19 @@ CiscoIgmpFilterMib::~CiscoIgmpFilterMib()
 
 bool CiscoIgmpFilterMib::has_data() const
 {
-    return (cigmpfiltereditor !=  nullptr && cigmpfiltereditor->has_data())
-	|| (cigmpfiltergeneral !=  nullptr && cigmpfiltergeneral->has_data())
-	|| (cigmpfilterinterfacetable !=  nullptr && cigmpfilterinterfacetable->has_data())
-	|| (cigmpfiltertable !=  nullptr && cigmpfiltertable->has_data());
+    return (cigmpfiltereditor_ !=  nullptr && cigmpfiltereditor_->has_data())
+	|| (cigmpfiltergeneral_ !=  nullptr && cigmpfiltergeneral_->has_data())
+	|| (cigmpfilterinterfacetable_ !=  nullptr && cigmpfilterinterfacetable_->has_data())
+	|| (cigmpfiltertable_ !=  nullptr && cigmpfiltertable_->has_data());
 }
 
 bool CiscoIgmpFilterMib::has_operation() const
 {
     return is_set(operation)
-	|| (cigmpfiltereditor !=  nullptr && cigmpfiltereditor->has_operation())
-	|| (cigmpfiltergeneral !=  nullptr && cigmpfiltergeneral->has_operation())
-	|| (cigmpfilterinterfacetable !=  nullptr && cigmpfilterinterfacetable->has_operation())
-	|| (cigmpfiltertable !=  nullptr && cigmpfiltertable->has_operation());
+	|| (cigmpfiltereditor_ !=  nullptr && cigmpfiltereditor_->has_operation())
+	|| (cigmpfiltergeneral_ !=  nullptr && cigmpfiltergeneral_->has_operation())
+	|| (cigmpfilterinterfacetable_ !=  nullptr && cigmpfilterinterfacetable_->has_operation())
+	|| (cigmpfiltertable_ !=  nullptr && cigmpfiltertable_->has_operation());
 }
 
 std::string CiscoIgmpFilterMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "cIgmpFilterEditor")
     {
-        if(cigmpfiltereditor == nullptr)
+        if(cigmpfiltereditor_ == nullptr)
         {
-            cigmpfiltereditor = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>();
+            cigmpfiltereditor_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>();
         }
-        return cigmpfiltereditor;
+        return cigmpfiltereditor_;
     }
 
     if(child_yang_name == "cIgmpFilterGeneral")
     {
-        if(cigmpfiltergeneral == nullptr)
+        if(cigmpfiltergeneral_ == nullptr)
         {
-            cigmpfiltergeneral = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>();
+            cigmpfiltergeneral_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>();
         }
-        return cigmpfiltergeneral;
+        return cigmpfiltergeneral_;
     }
 
     if(child_yang_name == "cIgmpFilterInterfaceTable")
     {
-        if(cigmpfilterinterfacetable == nullptr)
+        if(cigmpfilterinterfacetable_ == nullptr)
         {
-            cigmpfilterinterfacetable = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>();
+            cigmpfilterinterfacetable_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>();
         }
-        return cigmpfilterinterfacetable;
+        return cigmpfilterinterfacetable_;
     }
 
     if(child_yang_name == "cIgmpFilterTable")
     {
-        if(cigmpfiltertable == nullptr)
+        if(cigmpfiltertable_ == nullptr)
         {
-            cigmpfiltertable = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>();
+            cigmpfiltertable_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>();
         }
-        return cigmpfiltertable;
+        return cigmpfiltertable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cigmpfiltereditor != nullptr)
+    if(cigmpfiltereditor_ != nullptr)
     {
-        children["cIgmpFilterEditor"] = cigmpfiltereditor;
+        children["cIgmpFilterEditor"] = cigmpfiltereditor_;
     }
 
-    if(cigmpfiltergeneral != nullptr)
+    if(cigmpfiltergeneral_ != nullptr)
     {
-        children["cIgmpFilterGeneral"] = cigmpfiltergeneral;
+        children["cIgmpFilterGeneral"] = cigmpfiltergeneral_;
     }
 
-    if(cigmpfilterinterfacetable != nullptr)
+    if(cigmpfilterinterfacetable_ != nullptr)
     {
-        children["cIgmpFilterInterfaceTable"] = cigmpfilterinterfacetable;
+        children["cIgmpFilterInterfaceTable"] = cigmpfilterinterfacetable_;
     }
 
-    if(cigmpfiltertable != nullptr)
+    if(cigmpfiltertable_ != nullptr)
     {
-        children["cIgmpFilterTable"] = cigmpfiltertable;
+        children["cIgmpFilterTable"] = cigmpfiltertable_;
     }
 
     return children;
@@ -393,9 +393,9 @@ CiscoIgmpFilterMib::Cigmpfiltertable::~Cigmpfiltertable()
 
 bool CiscoIgmpFilterMib::Cigmpfiltertable::has_data() const
 {
-    for (std::size_t index=0; index<cigmpfilterentry.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterentry_.size(); index++)
     {
-        if(cigmpfilterentry[index]->has_data())
+        if(cigmpfilterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -403,9 +403,9 @@ bool CiscoIgmpFilterMib::Cigmpfiltertable::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfiltertable::has_operation() const
 {
-    for (std::size_t index=0; index<cigmpfilterentry.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterentry_.size(); index++)
     {
-        if(cigmpfilterentry[index]->has_operation())
+        if(cigmpfilterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -445,7 +445,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
 {
     if(child_yang_name == "cIgmpFilterEntry")
     {
-        for(auto const & c : cigmpfilterentry)
+        for(auto const & c : cigmpfilterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -455,7 +455,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry>();
         c->parent = this;
-        cigmpfilterentry.push_back(c);
+        cigmpfilterentry_.push_back(c);
         return c;
     }
 
@@ -465,7 +465,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfiltertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cigmpfilterentry)
+    for (auto const & c : cigmpfilterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -600,9 +600,9 @@ CiscoIgmpFilterMib::Cigmpfilterinterfacetable::~Cigmpfilterinterfacetable()
 
 bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<cigmpfilterinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterinterfaceentry_.size(); index++)
     {
-        if(cigmpfilterinterfaceentry[index]->has_data())
+        if(cigmpfilterinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -610,9 +610,9 @@ bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<cigmpfilterinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterinterfaceentry_.size(); index++)
     {
-        if(cigmpfilterinterfaceentry[index]->has_operation())
+        if(cigmpfilterinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -652,7 +652,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
 {
     if(child_yang_name == "cIgmpFilterInterfaceEntry")
     {
-        for(auto const & c : cigmpfilterinterfaceentry)
+        for(auto const & c : cigmpfilterinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -662,7 +662,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
         }
         auto c = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry>();
         c->parent = this;
-        cigmpfilterinterfaceentry.push_back(c);
+        cigmpfilterinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -672,7 +672,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cigmpfilterinterfaceentry)
+    for (auto const & c : cigmpfilterinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }

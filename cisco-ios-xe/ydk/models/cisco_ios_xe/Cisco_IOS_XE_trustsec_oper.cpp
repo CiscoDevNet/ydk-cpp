@@ -11,15 +11,15 @@ namespace Cisco_IOS_XE_trustsec_oper {
 
 TrustsecState::TrustsecState()
     :
-    cts_rolebased_policies(std::make_shared<TrustsecState::CtsRolebasedPolicies>())
-	,cts_rolebased_sgtmaps(std::make_shared<TrustsecState::CtsRolebasedSgtmaps>())
-	,cts_sxp_connections(std::make_shared<TrustsecState::CtsSxpConnections>())
+    cts_rolebased_policies_(std::make_shared<TrustsecState::CtsRolebasedPolicies>())
+	,cts_rolebased_sgtmaps_(std::make_shared<TrustsecState::CtsRolebasedSgtmaps>())
+	,cts_sxp_connections_(std::make_shared<TrustsecState::CtsSxpConnections>())
 {
-    cts_rolebased_policies->parent = this;
+    cts_rolebased_policies_->parent = this;
 
-    cts_rolebased_sgtmaps->parent = this;
+    cts_rolebased_sgtmaps_->parent = this;
 
-    cts_sxp_connections->parent = this;
+    cts_sxp_connections_->parent = this;
 
     yang_name = "trustsec-state"; yang_parent_name = "Cisco-IOS-XE-trustsec-oper";
 }
@@ -30,17 +30,17 @@ TrustsecState::~TrustsecState()
 
 bool TrustsecState::has_data() const
 {
-    return (cts_rolebased_policies !=  nullptr && cts_rolebased_policies->has_data())
-	|| (cts_rolebased_sgtmaps !=  nullptr && cts_rolebased_sgtmaps->has_data())
-	|| (cts_sxp_connections !=  nullptr && cts_sxp_connections->has_data());
+    return (cts_rolebased_policies_ !=  nullptr && cts_rolebased_policies_->has_data())
+	|| (cts_rolebased_sgtmaps_ !=  nullptr && cts_rolebased_sgtmaps_->has_data())
+	|| (cts_sxp_connections_ !=  nullptr && cts_sxp_connections_->has_data());
 }
 
 bool TrustsecState::has_operation() const
 {
     return is_set(operation)
-	|| (cts_rolebased_policies !=  nullptr && cts_rolebased_policies->has_operation())
-	|| (cts_rolebased_sgtmaps !=  nullptr && cts_rolebased_sgtmaps->has_operation())
-	|| (cts_sxp_connections !=  nullptr && cts_sxp_connections->has_operation());
+	|| (cts_rolebased_policies_ !=  nullptr && cts_rolebased_policies_->has_operation())
+	|| (cts_rolebased_sgtmaps_ !=  nullptr && cts_rolebased_sgtmaps_->has_operation())
+	|| (cts_sxp_connections_ !=  nullptr && cts_sxp_connections_->has_operation());
 }
 
 std::string TrustsecState::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> TrustsecState::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "cts-rolebased-policies")
     {
-        if(cts_rolebased_policies == nullptr)
+        if(cts_rolebased_policies_ == nullptr)
         {
-            cts_rolebased_policies = std::make_shared<TrustsecState::CtsRolebasedPolicies>();
+            cts_rolebased_policies_ = std::make_shared<TrustsecState::CtsRolebasedPolicies>();
         }
-        return cts_rolebased_policies;
+        return cts_rolebased_policies_;
     }
 
     if(child_yang_name == "cts-rolebased-sgtmaps")
     {
-        if(cts_rolebased_sgtmaps == nullptr)
+        if(cts_rolebased_sgtmaps_ == nullptr)
         {
-            cts_rolebased_sgtmaps = std::make_shared<TrustsecState::CtsRolebasedSgtmaps>();
+            cts_rolebased_sgtmaps_ = std::make_shared<TrustsecState::CtsRolebasedSgtmaps>();
         }
-        return cts_rolebased_sgtmaps;
+        return cts_rolebased_sgtmaps_;
     }
 
     if(child_yang_name == "cts-sxp-connections")
     {
-        if(cts_sxp_connections == nullptr)
+        if(cts_sxp_connections_ == nullptr)
         {
-            cts_sxp_connections = std::make_shared<TrustsecState::CtsSxpConnections>();
+            cts_sxp_connections_ = std::make_shared<TrustsecState::CtsSxpConnections>();
         }
-        return cts_sxp_connections;
+        return cts_sxp_connections_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> TrustsecState::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cts_rolebased_policies != nullptr)
+    if(cts_rolebased_policies_ != nullptr)
     {
-        children["cts-rolebased-policies"] = cts_rolebased_policies;
+        children["cts-rolebased-policies"] = cts_rolebased_policies_;
     }
 
-    if(cts_rolebased_sgtmaps != nullptr)
+    if(cts_rolebased_sgtmaps_ != nullptr)
     {
-        children["cts-rolebased-sgtmaps"] = cts_rolebased_sgtmaps;
+        children["cts-rolebased-sgtmaps"] = cts_rolebased_sgtmaps_;
     }
 
-    if(cts_sxp_connections != nullptr)
+    if(cts_sxp_connections_ != nullptr)
     {
-        children["cts-sxp-connections"] = cts_sxp_connections;
+        children["cts-sxp-connections"] = cts_sxp_connections_;
     }
 
     return children;
@@ -158,9 +158,9 @@ TrustsecState::CtsRolebasedSgtmaps::~CtsRolebasedSgtmaps()
 
 bool TrustsecState::CtsRolebasedSgtmaps::has_data() const
 {
-    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
+    for (std::size_t index=0; index<cts_rolebased_sgtmap_.size(); index++)
     {
-        if(cts_rolebased_sgtmap[index]->has_data())
+        if(cts_rolebased_sgtmap_[index]->has_data())
             return true;
     }
     return false;
@@ -168,9 +168,9 @@ bool TrustsecState::CtsRolebasedSgtmaps::has_data() const
 
 bool TrustsecState::CtsRolebasedSgtmaps::has_operation() const
 {
-    for (std::size_t index=0; index<cts_rolebased_sgtmap.size(); index++)
+    for (std::size_t index=0; index<cts_rolebased_sgtmap_.size(); index++)
     {
-        if(cts_rolebased_sgtmap[index]->has_operation())
+        if(cts_rolebased_sgtmap_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -210,7 +210,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(co
 {
     if(child_yang_name == "cts-rolebased-sgtmap")
     {
-        for(auto const & c : cts_rolebased_sgtmap)
+        for(auto const & c : cts_rolebased_sgtmap_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(co
         }
         auto c = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
         c->parent = this;
-        cts_rolebased_sgtmap.push_back(c);
+        cts_rolebased_sgtmap_.push_back(c);
         return c;
     }
 
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cts_rolebased_sgtmap)
+    for (auto const & c : cts_rolebased_sgtmap_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -349,9 +349,9 @@ TrustsecState::CtsRolebasedPolicies::~CtsRolebasedPolicies()
 
 bool TrustsecState::CtsRolebasedPolicies::has_data() const
 {
-    for (std::size_t index=0; index<cts_rolebased_policy.size(); index++)
+    for (std::size_t index=0; index<cts_rolebased_policy_.size(); index++)
     {
-        if(cts_rolebased_policy[index]->has_data())
+        if(cts_rolebased_policy_[index]->has_data())
             return true;
     }
     return false;
@@ -359,9 +359,9 @@ bool TrustsecState::CtsRolebasedPolicies::has_data() const
 
 bool TrustsecState::CtsRolebasedPolicies::has_operation() const
 {
-    for (std::size_t index=0; index<cts_rolebased_policy.size(); index++)
+    for (std::size_t index=0; index<cts_rolebased_policy_.size(); index++)
     {
-        if(cts_rolebased_policy[index]->has_operation())
+        if(cts_rolebased_policy_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -401,7 +401,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(c
 {
     if(child_yang_name == "cts-rolebased-policy")
     {
-        for(auto const & c : cts_rolebased_policy)
+        for(auto const & c : cts_rolebased_policy_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -411,7 +411,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(c
         }
         auto c = std::make_shared<TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy>();
         c->parent = this;
-        cts_rolebased_policy.push_back(c);
+        cts_rolebased_policy_.push_back(c);
         return c;
     }
 
@@ -421,7 +421,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedPolicies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cts_rolebased_policy)
+    for (auto const & c : cts_rolebased_policy_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -628,9 +628,9 @@ TrustsecState::CtsSxpConnections::~CtsSxpConnections()
 
 bool TrustsecState::CtsSxpConnections::has_data() const
 {
-    for (std::size_t index=0; index<cts_sxp_connection.size(); index++)
+    for (std::size_t index=0; index<cts_sxp_connection_.size(); index++)
     {
-        if(cts_sxp_connection[index]->has_data())
+        if(cts_sxp_connection_[index]->has_data())
             return true;
     }
     return false;
@@ -638,9 +638,9 @@ bool TrustsecState::CtsSxpConnections::has_data() const
 
 bool TrustsecState::CtsSxpConnections::has_operation() const
 {
-    for (std::size_t index=0; index<cts_sxp_connection.size(); index++)
+    for (std::size_t index=0; index<cts_sxp_connection_.size(); index++)
     {
-        if(cts_sxp_connection[index]->has_operation())
+        if(cts_sxp_connection_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -680,7 +680,7 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(cons
 {
     if(child_yang_name == "cts-sxp-connection")
     {
-        for(auto const & c : cts_sxp_connection)
+        for(auto const & c : cts_sxp_connection_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -690,7 +690,7 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(cons
         }
         auto c = std::make_shared<TrustsecState::CtsSxpConnections::CtsSxpConnection>();
         c->parent = this;
-        cts_sxp_connection.push_back(c);
+        cts_sxp_connection_.push_back(c);
         return c;
     }
 
@@ -700,7 +700,7 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsSxpConnections::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cts_sxp_connection)
+    for (auto const & c : cts_sxp_connection_)
     {
         children[c->get_segment_path()] = c;
     }

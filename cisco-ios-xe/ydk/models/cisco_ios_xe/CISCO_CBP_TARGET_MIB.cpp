@@ -11,12 +11,12 @@ namespace CISCO_CBP_TARGET_MIB {
 
 CiscoCbpTargetMib::CiscoCbpTargetMib()
     :
-    ccbpttargetattachcfg(std::make_shared<CiscoCbpTargetMib::Ccbpttargetattachcfg>())
-	,ccbpttargettable(std::make_shared<CiscoCbpTargetMib::Ccbpttargettable>())
+    ccbpttargetattachcfg_(std::make_shared<CiscoCbpTargetMib::Ccbpttargetattachcfg>())
+	,ccbpttargettable_(std::make_shared<CiscoCbpTargetMib::Ccbpttargettable>())
 {
-    ccbpttargetattachcfg->parent = this;
+    ccbpttargetattachcfg_->parent = this;
 
-    ccbpttargettable->parent = this;
+    ccbpttargettable_->parent = this;
 
     yang_name = "CISCO-CBP-TARGET-MIB"; yang_parent_name = "CISCO-CBP-TARGET-MIB";
 }
@@ -27,15 +27,15 @@ CiscoCbpTargetMib::~CiscoCbpTargetMib()
 
 bool CiscoCbpTargetMib::has_data() const
 {
-    return (ccbpttargetattachcfg !=  nullptr && ccbpttargetattachcfg->has_data())
-	|| (ccbpttargettable !=  nullptr && ccbpttargettable->has_data());
+    return (ccbpttargetattachcfg_ !=  nullptr && ccbpttargetattachcfg_->has_data())
+	|| (ccbpttargettable_ !=  nullptr && ccbpttargettable_->has_data());
 }
 
 bool CiscoCbpTargetMib::has_operation() const
 {
     return is_set(operation)
-	|| (ccbpttargetattachcfg !=  nullptr && ccbpttargetattachcfg->has_operation())
-	|| (ccbpttargettable !=  nullptr && ccbpttargettable->has_operation());
+	|| (ccbpttargetattachcfg_ !=  nullptr && ccbpttargetattachcfg_->has_operation())
+	|| (ccbpttargettable_ !=  nullptr && ccbpttargettable_->has_operation());
 }
 
 std::string CiscoCbpTargetMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoCbpTargetMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "ccbptTargetAttachCfg")
     {
-        if(ccbpttargetattachcfg == nullptr)
+        if(ccbpttargetattachcfg_ == nullptr)
         {
-            ccbpttargetattachcfg = std::make_shared<CiscoCbpTargetMib::Ccbpttargetattachcfg>();
+            ccbpttargetattachcfg_ = std::make_shared<CiscoCbpTargetMib::Ccbpttargetattachcfg>();
         }
-        return ccbpttargetattachcfg;
+        return ccbpttargetattachcfg_;
     }
 
     if(child_yang_name == "ccbptTargetTable")
     {
-        if(ccbpttargettable == nullptr)
+        if(ccbpttargettable_ == nullptr)
         {
-            ccbpttargettable = std::make_shared<CiscoCbpTargetMib::Ccbpttargettable>();
+            ccbpttargettable_ = std::make_shared<CiscoCbpTargetMib::Ccbpttargettable>();
         }
-        return ccbpttargettable;
+        return ccbpttargettable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoCbpTargetMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoCbpTargetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ccbpttargetattachcfg != nullptr)
+    if(ccbpttargetattachcfg_ != nullptr)
     {
-        children["ccbptTargetAttachCfg"] = ccbpttargetattachcfg;
+        children["ccbptTargetAttachCfg"] = ccbpttargetattachcfg_;
     }
 
-    if(ccbpttargettable != nullptr)
+    if(ccbpttargettable_ != nullptr)
     {
-        children["ccbptTargetTable"] = ccbpttargettable;
+        children["ccbptTargetTable"] = ccbpttargettable_;
     }
 
     return children;
@@ -219,9 +219,9 @@ CiscoCbpTargetMib::Ccbpttargettable::~Ccbpttargettable()
 
 bool CiscoCbpTargetMib::Ccbpttargettable::has_data() const
 {
-    for (std::size_t index=0; index<ccbpttargetentry.size(); index++)
+    for (std::size_t index=0; index<ccbpttargetentry_.size(); index++)
     {
-        if(ccbpttargetentry[index]->has_data())
+        if(ccbpttargetentry_[index]->has_data())
             return true;
     }
     return false;
@@ -229,9 +229,9 @@ bool CiscoCbpTargetMib::Ccbpttargettable::has_data() const
 
 bool CiscoCbpTargetMib::Ccbpttargettable::has_operation() const
 {
-    for (std::size_t index=0; index<ccbpttargetentry.size(); index++)
+    for (std::size_t index=0; index<ccbpttargetentry_.size(); index++)
     {
-        if(ccbpttargetentry[index]->has_operation())
+        if(ccbpttargetentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -271,7 +271,7 @@ std::shared_ptr<Entity> CiscoCbpTargetMib::Ccbpttargettable::get_child_by_name(c
 {
     if(child_yang_name == "ccbptTargetEntry")
     {
-        for(auto const & c : ccbpttargetentry)
+        for(auto const & c : ccbpttargetentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -281,7 +281,7 @@ std::shared_ptr<Entity> CiscoCbpTargetMib::Ccbpttargettable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry>();
         c->parent = this;
-        ccbpttargetentry.push_back(c);
+        ccbpttargetentry_.push_back(c);
         return c;
     }
 
@@ -291,7 +291,7 @@ std::shared_ptr<Entity> CiscoCbpTargetMib::Ccbpttargettable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoCbpTargetMib::Ccbpttargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccbpttargetentry)
+    for (auto const & c : ccbpttargetentry_)
     {
         children[c->get_segment_path()] = c;
     }

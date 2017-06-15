@@ -11,9 +11,9 @@ namespace CISCO_PING_MIB {
 
 CiscoPingMib::CiscoPingMib()
     :
-    ciscopingtable(std::make_shared<CiscoPingMib::Ciscopingtable>())
+    ciscopingtable_(std::make_shared<CiscoPingMib::Ciscopingtable>())
 {
-    ciscopingtable->parent = this;
+    ciscopingtable_->parent = this;
 
     yang_name = "CISCO-PING-MIB"; yang_parent_name = "CISCO-PING-MIB";
 }
@@ -24,13 +24,13 @@ CiscoPingMib::~CiscoPingMib()
 
 bool CiscoPingMib::has_data() const
 {
-    return (ciscopingtable !=  nullptr && ciscopingtable->has_data());
+    return (ciscopingtable_ !=  nullptr && ciscopingtable_->has_data());
 }
 
 bool CiscoPingMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscopingtable !=  nullptr && ciscopingtable->has_operation());
+	|| (ciscopingtable_ !=  nullptr && ciscopingtable_->has_operation());
 }
 
 std::string CiscoPingMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoPingMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "ciscoPingTable")
     {
-        if(ciscopingtable == nullptr)
+        if(ciscopingtable_ == nullptr)
         {
-            ciscopingtable = std::make_shared<CiscoPingMib::Ciscopingtable>();
+            ciscopingtable_ = std::make_shared<CiscoPingMib::Ciscopingtable>();
         }
-        return ciscopingtable;
+        return ciscopingtable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoPingMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoPingMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscopingtable != nullptr)
+    if(ciscopingtable_ != nullptr)
     {
-        children["ciscoPingTable"] = ciscopingtable;
+        children["ciscoPingTable"] = ciscopingtable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoPingMib::Ciscopingtable::~Ciscopingtable()
 
 bool CiscoPingMib::Ciscopingtable::has_data() const
 {
-    for (std::size_t index=0; index<ciscopingentry.size(); index++)
+    for (std::size_t index=0; index<ciscopingentry_.size(); index++)
     {
-        if(ciscopingentry[index]->has_data())
+        if(ciscopingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoPingMib::Ciscopingtable::has_data() const
 
 bool CiscoPingMib::Ciscopingtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscopingentry.size(); index++)
+    for (std::size_t index=0; index<ciscopingentry_.size(); index++)
     {
-        if(ciscopingentry[index]->has_operation())
+        if(ciscopingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoPingMib::Ciscopingtable::get_child_by_name(const st
 {
     if(child_yang_name == "ciscoPingEntry")
     {
-        for(auto const & c : ciscopingentry)
+        for(auto const & c : ciscopingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoPingMib::Ciscopingtable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoPingMib::Ciscopingtable::Ciscopingentry>();
         c->parent = this;
-        ciscopingentry.push_back(c);
+        ciscopingentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoPingMib::Ciscopingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoPingMib::Ciscopingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscopingentry)
+    for (auto const & c : ciscopingentry_)
     {
         children[c->get_segment_path()] = c;
     }

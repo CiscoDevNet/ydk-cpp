@@ -11,18 +11,18 @@ namespace SNMPv2_MIB {
 
 Snmpv2Mib::Snmpv2Mib()
     :
-    snmp(std::make_shared<Snmpv2Mib::Snmp>())
-	,snmpset(std::make_shared<Snmpv2Mib::Snmpset>())
-	,sysortable(std::make_shared<Snmpv2Mib::Sysortable>())
-	,system(std::make_shared<Snmpv2Mib::System>())
+    snmp_(std::make_shared<Snmpv2Mib::Snmp>())
+	,snmpset_(std::make_shared<Snmpv2Mib::Snmpset>())
+	,sysortable_(std::make_shared<Snmpv2Mib::Sysortable>())
+	,system_(std::make_shared<Snmpv2Mib::System>())
 {
-    snmp->parent = this;
+    snmp_->parent = this;
 
-    snmpset->parent = this;
+    snmpset_->parent = this;
 
-    sysortable->parent = this;
+    sysortable_->parent = this;
 
-    system->parent = this;
+    system_->parent = this;
 
     yang_name = "SNMPv2-MIB"; yang_parent_name = "SNMPv2-MIB";
 }
@@ -33,19 +33,19 @@ Snmpv2Mib::~Snmpv2Mib()
 
 bool Snmpv2Mib::has_data() const
 {
-    return (snmp !=  nullptr && snmp->has_data())
-	|| (snmpset !=  nullptr && snmpset->has_data())
-	|| (sysortable !=  nullptr && sysortable->has_data())
-	|| (system !=  nullptr && system->has_data());
+    return (snmp_ !=  nullptr && snmp_->has_data())
+	|| (snmpset_ !=  nullptr && snmpset_->has_data())
+	|| (sysortable_ !=  nullptr && sysortable_->has_data())
+	|| (system_ !=  nullptr && system_->has_data());
 }
 
 bool Snmpv2Mib::has_operation() const
 {
     return is_set(operation)
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (snmpset !=  nullptr && snmpset->has_operation())
-	|| (sysortable !=  nullptr && sysortable->has_operation())
-	|| (system !=  nullptr && system->has_operation());
+	|| (snmp_ !=  nullptr && snmp_->has_operation())
+	|| (snmpset_ !=  nullptr && snmpset_->has_operation())
+	|| (sysortable_ !=  nullptr && sysortable_->has_operation())
+	|| (system_ !=  nullptr && system_->has_operation());
 }
 
 std::string Snmpv2Mib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "snmp")
     {
-        if(snmp == nullptr)
+        if(snmp_ == nullptr)
         {
-            snmp = std::make_shared<Snmpv2Mib::Snmp>();
+            snmp_ = std::make_shared<Snmpv2Mib::Snmp>();
         }
-        return snmp;
+        return snmp_;
     }
 
     if(child_yang_name == "snmpSet")
     {
-        if(snmpset == nullptr)
+        if(snmpset_ == nullptr)
         {
-            snmpset = std::make_shared<Snmpv2Mib::Snmpset>();
+            snmpset_ = std::make_shared<Snmpv2Mib::Snmpset>();
         }
-        return snmpset;
+        return snmpset_;
     }
 
     if(child_yang_name == "sysORTable")
     {
-        if(sysortable == nullptr)
+        if(sysortable_ == nullptr)
         {
-            sysortable = std::make_shared<Snmpv2Mib::Sysortable>();
+            sysortable_ = std::make_shared<Snmpv2Mib::Sysortable>();
         }
-        return sysortable;
+        return sysortable_;
     }
 
     if(child_yang_name == "system")
     {
-        if(system == nullptr)
+        if(system_ == nullptr)
         {
-            system = std::make_shared<Snmpv2Mib::System>();
+            system_ = std::make_shared<Snmpv2Mib::System>();
         }
-        return system;
+        return system_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmp != nullptr)
+    if(snmp_ != nullptr)
     {
-        children["snmp"] = snmp;
+        children["snmp"] = snmp_;
     }
 
-    if(snmpset != nullptr)
+    if(snmpset_ != nullptr)
     {
-        children["snmpSet"] = snmpset;
+        children["snmpSet"] = snmpset_;
     }
 
-    if(sysortable != nullptr)
+    if(sysortable_ != nullptr)
     {
-        children["sysORTable"] = sysortable;
+        children["sysORTable"] = sysortable_;
     }
 
-    if(system != nullptr)
+    if(system_ != nullptr)
     {
-        children["system"] = system;
+        children["system"] = system_;
     }
 
     return children;
@@ -681,9 +681,9 @@ Snmpv2Mib::Sysortable::~Sysortable()
 
 bool Snmpv2Mib::Sysortable::has_data() const
 {
-    for (std::size_t index=0; index<sysorentry.size(); index++)
+    for (std::size_t index=0; index<sysorentry_.size(); index++)
     {
-        if(sysorentry[index]->has_data())
+        if(sysorentry_[index]->has_data())
             return true;
     }
     return false;
@@ -691,9 +691,9 @@ bool Snmpv2Mib::Sysortable::has_data() const
 
 bool Snmpv2Mib::Sysortable::has_operation() const
 {
-    for (std::size_t index=0; index<sysorentry.size(); index++)
+    for (std::size_t index=0; index<sysorentry_.size(); index++)
     {
-        if(sysorentry[index]->has_operation())
+        if(sysorentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -733,7 +733,7 @@ std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "sysOREntry")
     {
-        for(auto const & c : sysorentry)
+        for(auto const & c : sysorentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -743,7 +743,7 @@ std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<Snmpv2Mib::Sysortable::Sysorentry>();
         c->parent = this;
-        sysorentry.push_back(c);
+        sysorentry_.push_back(c);
         return c;
     }
 
@@ -753,7 +753,7 @@ std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Sysortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sysorentry)
+    for (auto const & c : sysorentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,21 +11,21 @@ namespace CISCO_SYSLOG_MIB {
 
 CiscoSyslogMib::CiscoSyslogMib()
     :
-    clogbasic(std::make_shared<CiscoSyslogMib::Clogbasic>())
-	,cloghistory(std::make_shared<CiscoSyslogMib::Cloghistory>())
-	,cloghistorytable(std::make_shared<CiscoSyslogMib::Cloghistorytable>())
-	,clogserver(std::make_shared<CiscoSyslogMib::Clogserver>())
-	,clogserverconfigtable(std::make_shared<CiscoSyslogMib::Clogserverconfigtable>())
+    clogbasic_(std::make_shared<CiscoSyslogMib::Clogbasic>())
+	,cloghistory_(std::make_shared<CiscoSyslogMib::Cloghistory>())
+	,cloghistorytable_(std::make_shared<CiscoSyslogMib::Cloghistorytable>())
+	,clogserver_(std::make_shared<CiscoSyslogMib::Clogserver>())
+	,clogserverconfigtable_(std::make_shared<CiscoSyslogMib::Clogserverconfigtable>())
 {
-    clogbasic->parent = this;
+    clogbasic_->parent = this;
 
-    cloghistory->parent = this;
+    cloghistory_->parent = this;
 
-    cloghistorytable->parent = this;
+    cloghistorytable_->parent = this;
 
-    clogserver->parent = this;
+    clogserver_->parent = this;
 
-    clogserverconfigtable->parent = this;
+    clogserverconfigtable_->parent = this;
 
     yang_name = "CISCO-SYSLOG-MIB"; yang_parent_name = "CISCO-SYSLOG-MIB";
 }
@@ -36,21 +36,21 @@ CiscoSyslogMib::~CiscoSyslogMib()
 
 bool CiscoSyslogMib::has_data() const
 {
-    return (clogbasic !=  nullptr && clogbasic->has_data())
-	|| (cloghistory !=  nullptr && cloghistory->has_data())
-	|| (cloghistorytable !=  nullptr && cloghistorytable->has_data())
-	|| (clogserver !=  nullptr && clogserver->has_data())
-	|| (clogserverconfigtable !=  nullptr && clogserverconfigtable->has_data());
+    return (clogbasic_ !=  nullptr && clogbasic_->has_data())
+	|| (cloghistory_ !=  nullptr && cloghistory_->has_data())
+	|| (cloghistorytable_ !=  nullptr && cloghistorytable_->has_data())
+	|| (clogserver_ !=  nullptr && clogserver_->has_data())
+	|| (clogserverconfigtable_ !=  nullptr && clogserverconfigtable_->has_data());
 }
 
 bool CiscoSyslogMib::has_operation() const
 {
     return is_set(operation)
-	|| (clogbasic !=  nullptr && clogbasic->has_operation())
-	|| (cloghistory !=  nullptr && cloghistory->has_operation())
-	|| (cloghistorytable !=  nullptr && cloghistorytable->has_operation())
-	|| (clogserver !=  nullptr && clogserver->has_operation())
-	|| (clogserverconfigtable !=  nullptr && clogserverconfigtable->has_operation());
+	|| (clogbasic_ !=  nullptr && clogbasic_->has_operation())
+	|| (cloghistory_ !=  nullptr && cloghistory_->has_operation())
+	|| (cloghistorytable_ !=  nullptr && cloghistorytable_->has_operation())
+	|| (clogserver_ !=  nullptr && clogserver_->has_operation())
+	|| (clogserverconfigtable_ !=  nullptr && clogserverconfigtable_->has_operation());
 }
 
 std::string CiscoSyslogMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> CiscoSyslogMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "clogBasic")
     {
-        if(clogbasic == nullptr)
+        if(clogbasic_ == nullptr)
         {
-            clogbasic = std::make_shared<CiscoSyslogMib::Clogbasic>();
+            clogbasic_ = std::make_shared<CiscoSyslogMib::Clogbasic>();
         }
-        return clogbasic;
+        return clogbasic_;
     }
 
     if(child_yang_name == "clogHistory")
     {
-        if(cloghistory == nullptr)
+        if(cloghistory_ == nullptr)
         {
-            cloghistory = std::make_shared<CiscoSyslogMib::Cloghistory>();
+            cloghistory_ = std::make_shared<CiscoSyslogMib::Cloghistory>();
         }
-        return cloghistory;
+        return cloghistory_;
     }
 
     if(child_yang_name == "clogHistoryTable")
     {
-        if(cloghistorytable == nullptr)
+        if(cloghistorytable_ == nullptr)
         {
-            cloghistorytable = std::make_shared<CiscoSyslogMib::Cloghistorytable>();
+            cloghistorytable_ = std::make_shared<CiscoSyslogMib::Cloghistorytable>();
         }
-        return cloghistorytable;
+        return cloghistorytable_;
     }
 
     if(child_yang_name == "clogServer")
     {
-        if(clogserver == nullptr)
+        if(clogserver_ == nullptr)
         {
-            clogserver = std::make_shared<CiscoSyslogMib::Clogserver>();
+            clogserver_ = std::make_shared<CiscoSyslogMib::Clogserver>();
         }
-        return clogserver;
+        return clogserver_;
     }
 
     if(child_yang_name == "clogServerConfigTable")
     {
-        if(clogserverconfigtable == nullptr)
+        if(clogserverconfigtable_ == nullptr)
         {
-            clogserverconfigtable = std::make_shared<CiscoSyslogMib::Clogserverconfigtable>();
+            clogserverconfigtable_ = std::make_shared<CiscoSyslogMib::Clogserverconfigtable>();
         }
-        return clogserverconfigtable;
+        return clogserverconfigtable_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> CiscoSyslogMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoSyslogMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(clogbasic != nullptr)
+    if(clogbasic_ != nullptr)
     {
-        children["clogBasic"] = clogbasic;
+        children["clogBasic"] = clogbasic_;
     }
 
-    if(cloghistory != nullptr)
+    if(cloghistory_ != nullptr)
     {
-        children["clogHistory"] = cloghistory;
+        children["clogHistory"] = cloghistory_;
     }
 
-    if(cloghistorytable != nullptr)
+    if(cloghistorytable_ != nullptr)
     {
-        children["clogHistoryTable"] = cloghistorytable;
+        children["clogHistoryTable"] = cloghistorytable_;
     }
 
-    if(clogserver != nullptr)
+    if(clogserver_ != nullptr)
     {
-        children["clogServer"] = clogserver;
+        children["clogServer"] = clogserver_;
     }
 
-    if(clogserverconfigtable != nullptr)
+    if(clogserverconfigtable_ != nullptr)
     {
-        children["clogServerConfigTable"] = clogserverconfigtable;
+        children["clogServerConfigTable"] = clogserverconfigtable_;
     }
 
     return children;
@@ -468,9 +468,9 @@ CiscoSyslogMib::Cloghistorytable::~Cloghistorytable()
 
 bool CiscoSyslogMib::Cloghistorytable::has_data() const
 {
-    for (std::size_t index=0; index<cloghistoryentry.size(); index++)
+    for (std::size_t index=0; index<cloghistoryentry_.size(); index++)
     {
-        if(cloghistoryentry[index]->has_data())
+        if(cloghistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -478,9 +478,9 @@ bool CiscoSyslogMib::Cloghistorytable::has_data() const
 
 bool CiscoSyslogMib::Cloghistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<cloghistoryentry.size(); index++)
+    for (std::size_t index=0; index<cloghistoryentry_.size(); index++)
     {
-        if(cloghistoryentry[index]->has_operation())
+        if(cloghistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -520,7 +520,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Cloghistorytable::get_child_by_name(cons
 {
     if(child_yang_name == "clogHistoryEntry")
     {
-        for(auto const & c : cloghistoryentry)
+        for(auto const & c : cloghistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -530,7 +530,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Cloghistorytable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoSyslogMib::Cloghistorytable::Cloghistoryentry>();
         c->parent = this;
-        cloghistoryentry.push_back(c);
+        cloghistoryentry_.push_back(c);
         return c;
     }
 
@@ -540,7 +540,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Cloghistorytable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoSyslogMib::Cloghistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cloghistoryentry)
+    for (auto const & c : cloghistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -675,9 +675,9 @@ CiscoSyslogMib::Clogserverconfigtable::~Clogserverconfigtable()
 
 bool CiscoSyslogMib::Clogserverconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<clogserverconfigentry.size(); index++)
+    for (std::size_t index=0; index<clogserverconfigentry_.size(); index++)
     {
-        if(clogserverconfigentry[index]->has_data())
+        if(clogserverconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -685,9 +685,9 @@ bool CiscoSyslogMib::Clogserverconfigtable::has_data() const
 
 bool CiscoSyslogMib::Clogserverconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<clogserverconfigentry.size(); index++)
+    for (std::size_t index=0; index<clogserverconfigentry_.size(); index++)
     {
-        if(clogserverconfigentry[index]->has_operation())
+        if(clogserverconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -727,7 +727,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Clogserverconfigtable::get_child_by_name
 {
     if(child_yang_name == "clogServerConfigEntry")
     {
-        for(auto const & c : clogserverconfigentry)
+        for(auto const & c : clogserverconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -737,7 +737,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Clogserverconfigtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry>();
         c->parent = this;
-        clogserverconfigentry.push_back(c);
+        clogserverconfigentry_.push_back(c);
         return c;
     }
 
@@ -747,7 +747,7 @@ std::shared_ptr<Entity> CiscoSyslogMib::Clogserverconfigtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoSyslogMib::Clogserverconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : clogserverconfigentry)
+    for (auto const & c : clogserverconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }

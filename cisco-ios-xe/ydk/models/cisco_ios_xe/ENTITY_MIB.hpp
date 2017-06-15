@@ -35,12 +35,12 @@ class EntityMib : public Entity
         class Entaliasmappingtable; //type: EntityMib::Entaliasmappingtable
         class Entphysicalcontainstable; //type: EntityMib::Entphysicalcontainstable
 
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entaliasmappingtable> entaliasmappingtable;
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entitygeneral> entitygeneral;
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entlogicaltable> entlogicaltable;
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entlpmappingtable> entlpmappingtable;
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicalcontainstable> entphysicalcontainstable;
-        std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicaltable> entphysicaltable;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entaliasmappingtable> entaliasmappingtable_;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entitygeneral> entitygeneral_;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entlogicaltable> entlogicaltable_;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entlpmappingtable> entlpmappingtable_;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicalcontainstable> entphysicalcontainstable_;
+        std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicaltable> entphysicaltable_;
         
 }; // EntityMib
 
@@ -80,7 +80,7 @@ class EntityMib::Entphysicaltable : public Entity
 
         class Entphysicalentry; //type: EntityMib::Entphysicaltable::Entphysicalentry
 
-        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry> > entphysicalentry;
+        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry> > entphysicalentry_;
         
 }; // EntityMib::Entphysicaltable
 
@@ -138,7 +138,7 @@ class EntityMib::Entlogicaltable : public Entity
 
         class Entlogicalentry; //type: EntityMib::Entlogicaltable::Entlogicalentry
 
-        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entlogicaltable::Entlogicalentry> > entlogicalentry;
+        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entlogicaltable::Entlogicalentry> > entlogicalentry_;
         
 }; // EntityMib::Entlogicaltable
 
@@ -185,7 +185,7 @@ class EntityMib::Entlpmappingtable : public Entity
 
         class Entlpmappingentry; //type: EntityMib::Entlpmappingtable::Entlpmappingentry
 
-        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entlpmappingtable::Entlpmappingentry> > entlpmappingentry;
+        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entlpmappingtable::Entlpmappingentry> > entlpmappingentry_;
         
 }; // EntityMib::Entlpmappingtable
 
@@ -227,7 +227,7 @@ class EntityMib::Entaliasmappingtable : public Entity
 
         class Entaliasmappingentry; //type: EntityMib::Entaliasmappingtable::Entaliasmappingentry
 
-        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entaliasmappingtable::Entaliasmappingentry> > entaliasmappingentry;
+        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entaliasmappingtable::Entaliasmappingentry> > entaliasmappingentry_;
         
 }; // EntityMib::Entaliasmappingtable
 
@@ -270,7 +270,7 @@ class EntityMib::Entphysicalcontainstable : public Entity
 
         class Entphysicalcontainsentry; //type: EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry
 
-        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry> > entphysicalcontainsentry;
+        std::vector<std::shared_ptr<ENTITY_MIB::EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry> > entphysicalcontainsentry_;
         
 }; // EntityMib::Entphysicalcontainstable
 

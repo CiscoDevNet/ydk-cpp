@@ -42,18 +42,18 @@ class CiscoSubscriberSessionMib : public Entity
         class Csubjobqueuetable; //type: CiscoSubscriberSessionMib::Csubjobqueuetable
         class Csubjobreporttable; //type: CiscoSubscriberSessionMib::Csubjobreporttable
 
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsinttable> csubaggstatsinttable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatstable> csubaggstatstable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsthreshtable> csubaggstatsthreshtable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggthresh> csubaggthresh;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjob> csubjob;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobmatchparamstable> csubjobmatchparamstable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueryparamstable> csubjobqueryparamstable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueuetable> csubjobqueuetable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobreporttable> csubjobreporttable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobtable> csubjobtable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessionbytypetable> csubsessionbytypetable;
-        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessiontable> csubsessiontable;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsinttable> csubaggstatsinttable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatstable> csubaggstatstable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsthreshtable> csubaggstatsthreshtable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggthresh> csubaggthresh_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjob> csubjob_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobmatchparamstable> csubjobmatchparamstable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueryparamstable> csubjobqueryparamstable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueuetable> csubjobqueuetable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobreporttable> csubjobreporttable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobtable> csubjobtable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessionbytypetable> csubsessionbytypetable_;
+        std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessiontable> csubsessiontable_;
         
 }; // CiscoSubscriberSessionMib
 
@@ -117,7 +117,7 @@ class CiscoSubscriberSessionMib::Csubsessiontable : public Entity
 
         class Csubsessionentry; //type: CiscoSubscriberSessionMib::Csubsessiontable::Csubsessionentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessiontable::Csubsessionentry> > csubsessionentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessiontable::Csubsessionentry> > csubsessionentry_;
         
 }; // CiscoSubscriberSessionMib::Csubsessiontable
 
@@ -196,7 +196,7 @@ class CiscoSubscriberSessionMib::Csubsessionbytypetable : public Entity
 
         class Csubsessionbytypeentry; //type: CiscoSubscriberSessionMib::Csubsessionbytypetable::Csubsessionbytypeentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessionbytypetable::Csubsessionbytypeentry> > csubsessionbytypeentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubsessionbytypetable::Csubsessionbytypeentry> > csubsessionbytypeentry_;
         
 }; // CiscoSubscriberSessionMib::Csubsessionbytypetable
 
@@ -237,7 +237,7 @@ class CiscoSubscriberSessionMib::Csubaggstatstable : public Entity
 
         class Csubaggstatsentry; //type: CiscoSubscriberSessionMib::Csubaggstatstable::Csubaggstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatstable::Csubaggstatsentry> > csubaggstatsentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatstable::Csubaggstatsentry> > csubaggstatsentry_;
         
 }; // CiscoSubscriberSessionMib::Csubaggstatstable
 
@@ -313,7 +313,7 @@ class CiscoSubscriberSessionMib::Csubaggstatsinttable : public Entity
 
         class Csubaggstatsintentry; //type: CiscoSubscriberSessionMib::Csubaggstatsinttable::Csubaggstatsintentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsinttable::Csubaggstatsintentry> > csubaggstatsintentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsinttable::Csubaggstatsintentry> > csubaggstatsintentry_;
         
 }; // CiscoSubscriberSessionMib::Csubaggstatsinttable
 
@@ -363,7 +363,7 @@ class CiscoSubscriberSessionMib::Csubaggstatsthreshtable : public Entity
 
         class Csubaggstatsthreshentry; //type: CiscoSubscriberSessionMib::Csubaggstatsthreshtable::Csubaggstatsthreshentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsthreshtable::Csubaggstatsthreshentry> > csubaggstatsthreshentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubaggstatsthreshtable::Csubaggstatsthreshentry> > csubaggstatsthreshentry_;
         
 }; // CiscoSubscriberSessionMib::Csubaggstatsthreshtable
 
@@ -406,7 +406,7 @@ class CiscoSubscriberSessionMib::Csubjobtable : public Entity
 
         class Csubjobentry; //type: CiscoSubscriberSessionMib::Csubjobtable::Csubjobentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobtable::Csubjobentry> > csubjobentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobtable::Csubjobentry> > csubjobentry_;
         
 }; // CiscoSubscriberSessionMib::Csubjobtable
 
@@ -458,7 +458,7 @@ class CiscoSubscriberSessionMib::Csubjobmatchparamstable : public Entity
 
         class Csubjobmatchparamsentry; //type: CiscoSubscriberSessionMib::Csubjobmatchparamstable::Csubjobmatchparamsentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobmatchparamstable::Csubjobmatchparamsentry> > csubjobmatchparamsentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobmatchparamstable::Csubjobmatchparamsentry> > csubjobmatchparamsentry_;
         
 }; // CiscoSubscriberSessionMib::Csubjobmatchparamstable
 
@@ -529,7 +529,7 @@ class CiscoSubscriberSessionMib::Csubjobqueryparamstable : public Entity
 
         class Csubjobqueryparamsentry; //type: CiscoSubscriberSessionMib::Csubjobqueryparamstable::Csubjobqueryparamsentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueryparamstable::Csubjobqueryparamsentry> > csubjobqueryparamsentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueryparamstable::Csubjobqueryparamsentry> > csubjobqueryparamsentry_;
         
 }; // CiscoSubscriberSessionMib::Csubjobqueryparamstable
 
@@ -574,7 +574,7 @@ class CiscoSubscriberSessionMib::Csubjobqueuetable : public Entity
 
         class Csubjobqueueentry; //type: CiscoSubscriberSessionMib::Csubjobqueuetable::Csubjobqueueentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueuetable::Csubjobqueueentry> > csubjobqueueentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobqueuetable::Csubjobqueueentry> > csubjobqueueentry_;
         
 }; // CiscoSubscriberSessionMib::Csubjobqueuetable
 
@@ -615,7 +615,7 @@ class CiscoSubscriberSessionMib::Csubjobreporttable : public Entity
 
         class Csubjobreportentry; //type: CiscoSubscriberSessionMib::Csubjobreporttable::Csubjobreportentry
 
-        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobreporttable::Csubjobreportentry> > csubjobreportentry;
+        std::vector<std::shared_ptr<CISCO_SUBSCRIBER_SESSION_MIB::CiscoSubscriberSessionMib::Csubjobreporttable::Csubjobreportentry> > csubjobreportentry_;
         
 }; // CiscoSubscriberSessionMib::Csubjobreporttable
 

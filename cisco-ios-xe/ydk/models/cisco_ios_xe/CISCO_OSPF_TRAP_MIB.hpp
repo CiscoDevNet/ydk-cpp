@@ -30,7 +30,7 @@ class CiscoOspfTrapMib : public Entity
 
         class Cospftrapcontrol; //type: CiscoOspfTrapMib::Cospftrapcontrol
 
-        std::shared_ptr<CISCO_OSPF_TRAP_MIB::CiscoOspfTrapMib::Cospftrapcontrol> cospftrapcontrol;
+        std::shared_ptr<CISCO_OSPF_TRAP_MIB::CiscoOspfTrapMib::Cospftrapcontrol> cospftrapcontrol_;
         
 }; // CiscoOspfTrapMib
 

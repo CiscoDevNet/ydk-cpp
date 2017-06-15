@@ -20,9 +20,9 @@ IpSlaStats::~IpSlaStats()
 
 bool IpSlaStats::has_data() const
 {
-    for (std::size_t index=0; index<sla_oper_entry.size(); index++)
+    for (std::size_t index=0; index<sla_oper_entry_.size(); index++)
     {
-        if(sla_oper_entry[index]->has_data())
+        if(sla_oper_entry_[index]->has_data())
             return true;
     }
     return false;
@@ -30,9 +30,9 @@ bool IpSlaStats::has_data() const
 
 bool IpSlaStats::has_operation() const
 {
-    for (std::size_t index=0; index<sla_oper_entry.size(); index++)
+    for (std::size_t index=0; index<sla_oper_entry_.size(); index++)
     {
-        if(sla_oper_entry[index]->has_operation())
+        if(sla_oper_entry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -69,7 +69,7 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "sla-oper-entry")
     {
-        for(auto const & c : sla_oper_entry)
+        for(auto const & c : sla_oper_entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
         }
         auto c = std::make_shared<IpSlaStats::SlaOperEntry>();
         c->parent = this;
-        sla_oper_entry.push_back(c);
+        sla_oper_entry_.push_back(c);
         return c;
     }
 
@@ -89,7 +89,7 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sla_oper_entry)
+    for (auto const & c : sla_oper_entry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -130,15 +130,15 @@ IpSlaStats::SlaOperEntry::SlaOperEntry()
     oper_type{YType::enumeration, "oper-type"},
     success_count{YType::uint32, "success-count"}
     	,
-    measure_stats(std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>())
-	,rtt_info(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo>())
-	,stats(std::make_shared<IpSlaStats::SlaOperEntry::Stats>())
+    measure_stats_(std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>())
+	,rtt_info_(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo>())
+	,stats_(std::make_shared<IpSlaStats::SlaOperEntry::Stats>())
 {
-    measure_stats->parent = this;
+    measure_stats_->parent = this;
 
-    rtt_info->parent = this;
+    rtt_info_->parent = this;
 
-    stats->parent = this;
+    stats_->parent = this;
 
     yang_name = "sla-oper-entry"; yang_parent_name = "ip-sla-stats";
 }
@@ -155,9 +155,9 @@ bool IpSlaStats::SlaOperEntry::has_data() const
 	|| latest_return_code.is_set
 	|| oper_type.is_set
 	|| success_count.is_set
-	|| (measure_stats !=  nullptr && measure_stats->has_data())
-	|| (rtt_info !=  nullptr && rtt_info->has_data())
-	|| (stats !=  nullptr && stats->has_data());
+	|| (measure_stats_ !=  nullptr && measure_stats_->has_data())
+	|| (rtt_info_ !=  nullptr && rtt_info_->has_data())
+	|| (stats_ !=  nullptr && stats_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::has_operation() const
@@ -169,9 +169,9 @@ bool IpSlaStats::SlaOperEntry::has_operation() const
 	|| is_set(latest_return_code.operation)
 	|| is_set(oper_type.operation)
 	|| is_set(success_count.operation)
-	|| (measure_stats !=  nullptr && measure_stats->has_operation())
-	|| (rtt_info !=  nullptr && rtt_info->has_operation())
-	|| (stats !=  nullptr && stats->has_operation());
+	|| (measure_stats_ !=  nullptr && measure_stats_->has_operation())
+	|| (rtt_info_ !=  nullptr && rtt_info_->has_operation())
+	|| (stats_ !=  nullptr && stats_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::get_segment_path() const
@@ -214,29 +214,29 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::s
 {
     if(child_yang_name == "measure-stats")
     {
-        if(measure_stats == nullptr)
+        if(measure_stats_ == nullptr)
         {
-            measure_stats = std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>();
+            measure_stats_ = std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>();
         }
-        return measure_stats;
+        return measure_stats_;
     }
 
     if(child_yang_name == "rtt-info")
     {
-        if(rtt_info == nullptr)
+        if(rtt_info_ == nullptr)
         {
-            rtt_info = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo>();
+            rtt_info_ = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo>();
         }
-        return rtt_info;
+        return rtt_info_;
     }
 
     if(child_yang_name == "stats")
     {
-        if(stats == nullptr)
+        if(stats_ == nullptr)
         {
-            stats = std::make_shared<IpSlaStats::SlaOperEntry::Stats>();
+            stats_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats>();
         }
-        return stats;
+        return stats_;
     }
 
     return nullptr;
@@ -245,19 +245,19 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(measure_stats != nullptr)
+    if(measure_stats_ != nullptr)
     {
-        children["measure-stats"] = measure_stats;
+        children["measure-stats"] = measure_stats_;
     }
 
-    if(rtt_info != nullptr)
+    if(rtt_info_ != nullptr)
     {
-        children["rtt-info"] = rtt_info;
+        children["rtt-info"] = rtt_info_;
     }
 
-    if(stats != nullptr)
+    if(stats_ != nullptr)
     {
-        children["stats"] = stats;
+        children["stats"] = stats_;
     }
 
     return children;
@@ -293,12 +293,12 @@ void IpSlaStats::SlaOperEntry::set_value(const std::string & value_path, std::st
 
 IpSlaStats::SlaOperEntry::RttInfo::RttInfo()
     :
-    latest_rtt(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::LatestRtt>())
-	,time_to_live(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>())
+    latest_rtt_(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::LatestRtt>())
+	,time_to_live_(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>())
 {
-    latest_rtt->parent = this;
+    latest_rtt_->parent = this;
 
-    time_to_live->parent = this;
+    time_to_live_->parent = this;
 
     yang_name = "rtt-info"; yang_parent_name = "sla-oper-entry";
 }
@@ -309,15 +309,15 @@ IpSlaStats::SlaOperEntry::RttInfo::~RttInfo()
 
 bool IpSlaStats::SlaOperEntry::RttInfo::has_data() const
 {
-    return (latest_rtt !=  nullptr && latest_rtt->has_data())
-	|| (time_to_live !=  nullptr && time_to_live->has_data());
+    return (latest_rtt_ !=  nullptr && latest_rtt_->has_data())
+	|| (time_to_live_ !=  nullptr && time_to_live_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::RttInfo::has_operation() const
 {
     return is_set(operation)
-	|| (latest_rtt !=  nullptr && latest_rtt->has_operation())
-	|| (time_to_live !=  nullptr && time_to_live->has_operation());
+	|| (latest_rtt_ !=  nullptr && latest_rtt_->has_operation())
+	|| (time_to_live_ !=  nullptr && time_to_live_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::RttInfo::get_segment_path() const
@@ -354,20 +354,20 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(con
 {
     if(child_yang_name == "latest-rtt")
     {
-        if(latest_rtt == nullptr)
+        if(latest_rtt_ == nullptr)
         {
-            latest_rtt = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::LatestRtt>();
+            latest_rtt_ = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::LatestRtt>();
         }
-        return latest_rtt;
+        return latest_rtt_;
     }
 
     if(child_yang_name == "time-to-live")
     {
-        if(time_to_live == nullptr)
+        if(time_to_live_ == nullptr)
         {
-            time_to_live = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>();
+            time_to_live_ = std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>();
         }
-        return time_to_live;
+        return time_to_live_;
     }
 
     return nullptr;
@@ -376,14 +376,14 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(latest_rtt != nullptr)
+    if(latest_rtt_ != nullptr)
     {
-        children["latest-rtt"] = latest_rtt;
+        children["latest-rtt"] = latest_rtt_;
     }
 
-    if(time_to_live != nullptr)
+    if(time_to_live_ != nullptr)
     {
-        children["time-to-live"] = time_to_live;
+        children["time-to-live"] = time_to_live_;
     }
 
     return children;
@@ -659,27 +659,27 @@ void IpSlaStats::SlaOperEntry::MeasureStats::set_value(const std::string & value
 
 IpSlaStats::SlaOperEntry::Stats::Stats()
     :
-    icmp_packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>())
-	,jitter(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>())
-	,oneway_latency(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>())
-	,over_threshold(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>())
-	,packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>())
-	,rtt(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt>())
-	,voice_score(std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>())
+    icmp_packet_loss_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>())
+	,jitter_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>())
+	,oneway_latency_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>())
+	,over_threshold_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>())
+	,packet_loss_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>())
+	,rtt_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt>())
+	,voice_score_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>())
 {
-    icmp_packet_loss->parent = this;
+    icmp_packet_loss_->parent = this;
 
-    jitter->parent = this;
+    jitter_->parent = this;
 
-    oneway_latency->parent = this;
+    oneway_latency_->parent = this;
 
-    over_threshold->parent = this;
+    over_threshold_->parent = this;
 
-    packet_loss->parent = this;
+    packet_loss_->parent = this;
 
-    rtt->parent = this;
+    rtt_->parent = this;
 
-    voice_score->parent = this;
+    voice_score_->parent = this;
 
     yang_name = "stats"; yang_parent_name = "sla-oper-entry";
 }
@@ -690,25 +690,25 @@ IpSlaStats::SlaOperEntry::Stats::~Stats()
 
 bool IpSlaStats::SlaOperEntry::Stats::has_data() const
 {
-    return (icmp_packet_loss !=  nullptr && icmp_packet_loss->has_data())
-	|| (jitter !=  nullptr && jitter->has_data())
-	|| (oneway_latency !=  nullptr && oneway_latency->has_data())
-	|| (over_threshold !=  nullptr && over_threshold->has_data())
-	|| (packet_loss !=  nullptr && packet_loss->has_data())
-	|| (rtt !=  nullptr && rtt->has_data())
-	|| (voice_score !=  nullptr && voice_score->has_data());
+    return (icmp_packet_loss_ !=  nullptr && icmp_packet_loss_->has_data())
+	|| (jitter_ !=  nullptr && jitter_->has_data())
+	|| (oneway_latency_ !=  nullptr && oneway_latency_->has_data())
+	|| (over_threshold_ !=  nullptr && over_threshold_->has_data())
+	|| (packet_loss_ !=  nullptr && packet_loss_->has_data())
+	|| (rtt_ !=  nullptr && rtt_->has_data())
+	|| (voice_score_ !=  nullptr && voice_score_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::Stats::has_operation() const
 {
     return is_set(operation)
-	|| (icmp_packet_loss !=  nullptr && icmp_packet_loss->has_operation())
-	|| (jitter !=  nullptr && jitter->has_operation())
-	|| (oneway_latency !=  nullptr && oneway_latency->has_operation())
-	|| (over_threshold !=  nullptr && over_threshold->has_operation())
-	|| (packet_loss !=  nullptr && packet_loss->has_operation())
-	|| (rtt !=  nullptr && rtt->has_operation())
-	|| (voice_score !=  nullptr && voice_score->has_operation());
+	|| (icmp_packet_loss_ !=  nullptr && icmp_packet_loss_->has_operation())
+	|| (jitter_ !=  nullptr && jitter_->has_operation())
+	|| (oneway_latency_ !=  nullptr && oneway_latency_->has_operation())
+	|| (over_threshold_ !=  nullptr && over_threshold_->has_operation())
+	|| (packet_loss_ !=  nullptr && packet_loss_->has_operation())
+	|| (rtt_ !=  nullptr && rtt_->has_operation())
+	|| (voice_score_ !=  nullptr && voice_score_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::Stats::get_segment_path() const
@@ -745,65 +745,65 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const
 {
     if(child_yang_name == "icmp-packet-loss")
     {
-        if(icmp_packet_loss == nullptr)
+        if(icmp_packet_loss_ == nullptr)
         {
-            icmp_packet_loss = std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>();
+            icmp_packet_loss_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>();
         }
-        return icmp_packet_loss;
+        return icmp_packet_loss_;
     }
 
     if(child_yang_name == "jitter")
     {
-        if(jitter == nullptr)
+        if(jitter_ == nullptr)
         {
-            jitter = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>();
+            jitter_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>();
         }
-        return jitter;
+        return jitter_;
     }
 
     if(child_yang_name == "oneway-latency")
     {
-        if(oneway_latency == nullptr)
+        if(oneway_latency_ == nullptr)
         {
-            oneway_latency = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>();
+            oneway_latency_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>();
         }
-        return oneway_latency;
+        return oneway_latency_;
     }
 
     if(child_yang_name == "over-threshold")
     {
-        if(over_threshold == nullptr)
+        if(over_threshold_ == nullptr)
         {
-            over_threshold = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>();
+            over_threshold_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>();
         }
-        return over_threshold;
+        return over_threshold_;
     }
 
     if(child_yang_name == "packet-loss")
     {
-        if(packet_loss == nullptr)
+        if(packet_loss_ == nullptr)
         {
-            packet_loss = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>();
+            packet_loss_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>();
         }
-        return packet_loss;
+        return packet_loss_;
     }
 
     if(child_yang_name == "rtt")
     {
-        if(rtt == nullptr)
+        if(rtt_ == nullptr)
         {
-            rtt = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt>();
+            rtt_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt>();
         }
-        return rtt;
+        return rtt_;
     }
 
     if(child_yang_name == "voice-score")
     {
-        if(voice_score == nullptr)
+        if(voice_score_ == nullptr)
         {
-            voice_score = std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>();
+            voice_score_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>();
         }
-        return voice_score;
+        return voice_score_;
     }
 
     return nullptr;
@@ -812,39 +812,39 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(icmp_packet_loss != nullptr)
+    if(icmp_packet_loss_ != nullptr)
     {
-        children["icmp-packet-loss"] = icmp_packet_loss;
+        children["icmp-packet-loss"] = icmp_packet_loss_;
     }
 
-    if(jitter != nullptr)
+    if(jitter_ != nullptr)
     {
-        children["jitter"] = jitter;
+        children["jitter"] = jitter_;
     }
 
-    if(oneway_latency != nullptr)
+    if(oneway_latency_ != nullptr)
     {
-        children["oneway-latency"] = oneway_latency;
+        children["oneway-latency"] = oneway_latency_;
     }
 
-    if(over_threshold != nullptr)
+    if(over_threshold_ != nullptr)
     {
-        children["over-threshold"] = over_threshold;
+        children["over-threshold"] = over_threshold_;
     }
 
-    if(packet_loss != nullptr)
+    if(packet_loss_ != nullptr)
     {
-        children["packet-loss"] = packet_loss;
+        children["packet-loss"] = packet_loss_;
     }
 
-    if(rtt != nullptr)
+    if(rtt_ != nullptr)
     {
-        children["rtt"] = rtt;
+        children["rtt"] = rtt_;
     }
 
-    if(voice_score != nullptr)
+    if(voice_score_ != nullptr)
     {
-        children["voice-score"] = voice_score;
+        children["voice-score"] = voice_score_;
     }
 
     return children;
@@ -858,9 +858,9 @@ IpSlaStats::SlaOperEntry::Stats::Rtt::Rtt()
     :
     rtt_count{YType::uint32, "rtt-count"}
     	,
-    sla_time_values(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues>())
+    sla_time_values_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues>())
 {
-    sla_time_values->parent = this;
+    sla_time_values_->parent = this;
 
     yang_name = "rtt"; yang_parent_name = "stats";
 }
@@ -872,14 +872,14 @@ IpSlaStats::SlaOperEntry::Stats::Rtt::~Rtt()
 bool IpSlaStats::SlaOperEntry::Stats::Rtt::has_data() const
 {
     return rtt_count.is_set
-	|| (sla_time_values !=  nullptr && sla_time_values->has_data());
+	|| (sla_time_values_ !=  nullptr && sla_time_values_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::Stats::Rtt::has_operation() const
 {
     return is_set(operation)
 	|| is_set(rtt_count.operation)
-	|| (sla_time_values !=  nullptr && sla_time_values->has_operation());
+	|| (sla_time_values_ !=  nullptr && sla_time_values_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::Stats::Rtt::get_segment_path() const
@@ -917,11 +917,11 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(
 {
     if(child_yang_name == "sla-time-values")
     {
-        if(sla_time_values == nullptr)
+        if(sla_time_values_ == nullptr)
         {
-            sla_time_values = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues>();
+            sla_time_values_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues>();
         }
-        return sla_time_values;
+        return sla_time_values_;
     }
 
     return nullptr;
@@ -930,9 +930,9 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(sla_time_values != nullptr)
+    if(sla_time_values_ != nullptr)
     {
-        children["sla-time-values"] = sla_time_values;
+        children["sla-time-values"] = sla_time_values_;
     }
 
     return children;
@@ -1046,12 +1046,12 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::OnewayLatency()
     :
     sample_count{YType::uint32, "sample-count"}
     	,
-    ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>())
-	,sd(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd>())
+    ds_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>())
+	,sd_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd>())
 {
-    ds->parent = this;
+    ds_->parent = this;
 
-    sd->parent = this;
+    sd_->parent = this;
 
     yang_name = "oneway-latency"; yang_parent_name = "stats";
 }
@@ -1063,16 +1063,16 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::~OnewayLatency()
 bool IpSlaStats::SlaOperEntry::Stats::OnewayLatency::has_data() const
 {
     return sample_count.is_set
-	|| (ds !=  nullptr && ds->has_data())
-	|| (sd !=  nullptr && sd->has_data());
+	|| (ds_ !=  nullptr && ds_->has_data())
+	|| (sd_ !=  nullptr && sd_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::Stats::OnewayLatency::has_operation() const
 {
     return is_set(operation)
 	|| is_set(sample_count.operation)
-	|| (ds !=  nullptr && ds->has_operation())
-	|| (sd !=  nullptr && sd->has_operation());
+	|| (ds_ !=  nullptr && ds_->has_operation())
+	|| (sd_ !=  nullptr && sd_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_segment_path() const
@@ -1110,20 +1110,20 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_chil
 {
     if(child_yang_name == "ds")
     {
-        if(ds == nullptr)
+        if(ds_ == nullptr)
         {
-            ds = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>();
+            ds_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>();
         }
-        return ds;
+        return ds_;
     }
 
     if(child_yang_name == "sd")
     {
-        if(sd == nullptr)
+        if(sd_ == nullptr)
         {
-            sd = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd>();
+            sd_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd>();
         }
-        return sd;
+        return sd_;
     }
 
     return nullptr;
@@ -1132,14 +1132,14 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_chil
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ds != nullptr)
+    if(ds_ != nullptr)
     {
-        children["ds"] = ds;
+        children["ds"] = ds_;
     }
 
-    if(sd != nullptr)
+    if(sd_ != nullptr)
     {
-        children["sd"] = sd;
+        children["sd"] = sd_;
     }
 
     return children;
@@ -1350,12 +1350,12 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Jitter()
     ds_sample_count{YType::uint32, "ds-sample-count"},
     sd_sample_count{YType::uint32, "sd-sample-count"}
     	,
-    ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>())
-	,sd(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Sd>())
+    ds_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>())
+	,sd_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Sd>())
 {
-    ds->parent = this;
+    ds_->parent = this;
 
-    sd->parent = this;
+    sd_->parent = this;
 
     yang_name = "jitter"; yang_parent_name = "stats";
 }
@@ -1368,8 +1368,8 @@ bool IpSlaStats::SlaOperEntry::Stats::Jitter::has_data() const
 {
     return ds_sample_count.is_set
 	|| sd_sample_count.is_set
-	|| (ds !=  nullptr && ds->has_data())
-	|| (sd !=  nullptr && sd->has_data());
+	|| (ds_ !=  nullptr && ds_->has_data())
+	|| (sd_ !=  nullptr && sd_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::Stats::Jitter::has_operation() const
@@ -1377,8 +1377,8 @@ bool IpSlaStats::SlaOperEntry::Stats::Jitter::has_operation() const
     return is_set(operation)
 	|| is_set(ds_sample_count.operation)
 	|| is_set(sd_sample_count.operation)
-	|| (ds !=  nullptr && ds->has_operation())
-	|| (sd !=  nullptr && sd->has_operation());
+	|| (ds_ !=  nullptr && ds_->has_operation())
+	|| (sd_ !=  nullptr && sd_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::Stats::Jitter::get_segment_path() const
@@ -1417,20 +1417,20 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_na
 {
     if(child_yang_name == "ds")
     {
-        if(ds == nullptr)
+        if(ds_ == nullptr)
         {
-            ds = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>();
+            ds_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>();
         }
-        return ds;
+        return ds_;
     }
 
     if(child_yang_name == "sd")
     {
-        if(sd == nullptr)
+        if(sd_ == nullptr)
         {
-            sd = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Sd>();
+            sd_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Sd>();
         }
-        return sd;
+        return sd_;
     }
 
     return nullptr;
@@ -1439,14 +1439,14 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ds != nullptr)
+    if(ds_ != nullptr)
     {
-        children["ds"] = ds;
+        children["ds"] = ds_;
     }
 
-    if(sd != nullptr)
+    if(sd_ != nullptr)
     {
-        children["sd"] = sd;
+        children["sd"] = sd_;
     }
 
     return children;
@@ -1746,12 +1746,12 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::PacketLoss()
     skipped_packets{YType::uint32, "skipped-packets"},
     unprocessed_packets{YType::uint32, "unprocessed-packets"}
     	,
-    ds_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>())
-	,sd_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss>())
+    ds_loss_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>())
+	,sd_loss_(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss>())
 {
-    ds_loss->parent = this;
+    ds_loss_->parent = this;
 
-    sd_loss->parent = this;
+    sd_loss_->parent = this;
 
     yang_name = "packet-loss"; yang_parent_name = "stats";
 }
@@ -1769,8 +1769,8 @@ bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::has_data() const
 	|| sd_count.is_set
 	|| skipped_packets.is_set
 	|| unprocessed_packets.is_set
-	|| (ds_loss !=  nullptr && ds_loss->has_data())
-	|| (sd_loss !=  nullptr && sd_loss->has_data());
+	|| (ds_loss_ !=  nullptr && ds_loss_->has_data())
+	|| (sd_loss_ !=  nullptr && sd_loss_->has_data());
 }
 
 bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::has_operation() const
@@ -1783,8 +1783,8 @@ bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::has_operation() const
 	|| is_set(sd_count.operation)
 	|| is_set(skipped_packets.operation)
 	|| is_set(unprocessed_packets.operation)
-	|| (ds_loss !=  nullptr && ds_loss->has_operation())
-	|| (sd_loss !=  nullptr && sd_loss->has_operation());
+	|| (ds_loss_ !=  nullptr && ds_loss_->has_operation())
+	|| (sd_loss_ !=  nullptr && sd_loss_->has_operation());
 }
 
 std::string IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_segment_path() const
@@ -1828,20 +1828,20 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_b
 {
     if(child_yang_name == "ds-loss")
     {
-        if(ds_loss == nullptr)
+        if(ds_loss_ == nullptr)
         {
-            ds_loss = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>();
+            ds_loss_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>();
         }
-        return ds_loss;
+        return ds_loss_;
     }
 
     if(child_yang_name == "sd-loss")
     {
-        if(sd_loss == nullptr)
+        if(sd_loss_ == nullptr)
         {
-            sd_loss = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss>();
+            sd_loss_ = std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss>();
         }
-        return sd_loss;
+        return sd_loss_;
     }
 
     return nullptr;
@@ -1850,14 +1850,14 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ds_loss != nullptr)
+    if(ds_loss_ != nullptr)
     {
-        children["ds-loss"] = ds_loss;
+        children["ds-loss"] = ds_loss_;
     }
 
-    if(sd_loss != nullptr)
+    if(sd_loss_ != nullptr)
     {
-        children["sd-loss"] = sd_loss;
+        children["sd-loss"] = sd_loss_;
     }
 
     return children;

@@ -31,7 +31,7 @@ class MplsLdpGenericStdMib : public Entity
 
         class Mplsldpentitygenericlrtable; //type: MplsLdpGenericStdMib::Mplsldpentitygenericlrtable
 
-        std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable> mplsldpentitygenericlrtable;
+        std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable> mplsldpentitygenericlrtable_;
         
 }; // MplsLdpGenericStdMib
 
@@ -52,7 +52,7 @@ class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable : public Entity
 
         class Mplsldpentitygenericlrentry; //type: MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry> > mplsldpentitygenericlrentry;
+        std::vector<std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry> > mplsldpentitygenericlrentry_;
         
 }; // MplsLdpGenericStdMib::Mplsldpentitygenericlrtable
 

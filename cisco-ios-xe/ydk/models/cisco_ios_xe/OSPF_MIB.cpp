@@ -11,57 +11,57 @@ namespace OSPF_MIB {
 
 OspfMib::OspfMib()
     :
-    ospfareaaggregatetable(std::make_shared<OspfMib::Ospfareaaggregatetable>())
-	,ospfarealsacounttable(std::make_shared<OspfMib::Ospfarealsacounttable>())
-	,ospfarearangetable(std::make_shared<OspfMib::Ospfarearangetable>())
-	,ospfareatable(std::make_shared<OspfMib::Ospfareatable>())
-	,ospfaslsdbtable(std::make_shared<OspfMib::Ospfaslsdbtable>())
-	,ospfextlsdbtable(std::make_shared<OspfMib::Ospfextlsdbtable>())
-	,ospfgeneralgroup(std::make_shared<OspfMib::Ospfgeneralgroup>())
-	,ospfhosttable(std::make_shared<OspfMib::Ospfhosttable>())
-	,ospfifmetrictable(std::make_shared<OspfMib::Ospfifmetrictable>())
-	,ospfiftable(std::make_shared<OspfMib::Ospfiftable>())
-	,ospflocallsdbtable(std::make_shared<OspfMib::Ospflocallsdbtable>())
-	,ospflsdbtable(std::make_shared<OspfMib::Ospflsdbtable>())
-	,ospfnbrtable(std::make_shared<OspfMib::Ospfnbrtable>())
-	,ospfstubareatable(std::make_shared<OspfMib::Ospfstubareatable>())
-	,ospfvirtiftable(std::make_shared<OspfMib::Ospfvirtiftable>())
-	,ospfvirtlocallsdbtable(std::make_shared<OspfMib::Ospfvirtlocallsdbtable>())
-	,ospfvirtnbrtable(std::make_shared<OspfMib::Ospfvirtnbrtable>())
+    ospfareaaggregatetable_(std::make_shared<OspfMib::Ospfareaaggregatetable>())
+	,ospfarealsacounttable_(std::make_shared<OspfMib::Ospfarealsacounttable>())
+	,ospfarearangetable_(std::make_shared<OspfMib::Ospfarearangetable>())
+	,ospfareatable_(std::make_shared<OspfMib::Ospfareatable>())
+	,ospfaslsdbtable_(std::make_shared<OspfMib::Ospfaslsdbtable>())
+	,ospfextlsdbtable_(std::make_shared<OspfMib::Ospfextlsdbtable>())
+	,ospfgeneralgroup_(std::make_shared<OspfMib::Ospfgeneralgroup>())
+	,ospfhosttable_(std::make_shared<OspfMib::Ospfhosttable>())
+	,ospfifmetrictable_(std::make_shared<OspfMib::Ospfifmetrictable>())
+	,ospfiftable_(std::make_shared<OspfMib::Ospfiftable>())
+	,ospflocallsdbtable_(std::make_shared<OspfMib::Ospflocallsdbtable>())
+	,ospflsdbtable_(std::make_shared<OspfMib::Ospflsdbtable>())
+	,ospfnbrtable_(std::make_shared<OspfMib::Ospfnbrtable>())
+	,ospfstubareatable_(std::make_shared<OspfMib::Ospfstubareatable>())
+	,ospfvirtiftable_(std::make_shared<OspfMib::Ospfvirtiftable>())
+	,ospfvirtlocallsdbtable_(std::make_shared<OspfMib::Ospfvirtlocallsdbtable>())
+	,ospfvirtnbrtable_(std::make_shared<OspfMib::Ospfvirtnbrtable>())
 {
-    ospfareaaggregatetable->parent = this;
+    ospfareaaggregatetable_->parent = this;
 
-    ospfarealsacounttable->parent = this;
+    ospfarealsacounttable_->parent = this;
 
-    ospfarearangetable->parent = this;
+    ospfarearangetable_->parent = this;
 
-    ospfareatable->parent = this;
+    ospfareatable_->parent = this;
 
-    ospfaslsdbtable->parent = this;
+    ospfaslsdbtable_->parent = this;
 
-    ospfextlsdbtable->parent = this;
+    ospfextlsdbtable_->parent = this;
 
-    ospfgeneralgroup->parent = this;
+    ospfgeneralgroup_->parent = this;
 
-    ospfhosttable->parent = this;
+    ospfhosttable_->parent = this;
 
-    ospfifmetrictable->parent = this;
+    ospfifmetrictable_->parent = this;
 
-    ospfiftable->parent = this;
+    ospfiftable_->parent = this;
 
-    ospflocallsdbtable->parent = this;
+    ospflocallsdbtable_->parent = this;
 
-    ospflsdbtable->parent = this;
+    ospflsdbtable_->parent = this;
 
-    ospfnbrtable->parent = this;
+    ospfnbrtable_->parent = this;
 
-    ospfstubareatable->parent = this;
+    ospfstubareatable_->parent = this;
 
-    ospfvirtiftable->parent = this;
+    ospfvirtiftable_->parent = this;
 
-    ospfvirtlocallsdbtable->parent = this;
+    ospfvirtlocallsdbtable_->parent = this;
 
-    ospfvirtnbrtable->parent = this;
+    ospfvirtnbrtable_->parent = this;
 
     yang_name = "OSPF-MIB"; yang_parent_name = "OSPF-MIB";
 }
@@ -72,45 +72,45 @@ OspfMib::~OspfMib()
 
 bool OspfMib::has_data() const
 {
-    return (ospfareaaggregatetable !=  nullptr && ospfareaaggregatetable->has_data())
-	|| (ospfarealsacounttable !=  nullptr && ospfarealsacounttable->has_data())
-	|| (ospfarearangetable !=  nullptr && ospfarearangetable->has_data())
-	|| (ospfareatable !=  nullptr && ospfareatable->has_data())
-	|| (ospfaslsdbtable !=  nullptr && ospfaslsdbtable->has_data())
-	|| (ospfextlsdbtable !=  nullptr && ospfextlsdbtable->has_data())
-	|| (ospfgeneralgroup !=  nullptr && ospfgeneralgroup->has_data())
-	|| (ospfhosttable !=  nullptr && ospfhosttable->has_data())
-	|| (ospfifmetrictable !=  nullptr && ospfifmetrictable->has_data())
-	|| (ospfiftable !=  nullptr && ospfiftable->has_data())
-	|| (ospflocallsdbtable !=  nullptr && ospflocallsdbtable->has_data())
-	|| (ospflsdbtable !=  nullptr && ospflsdbtable->has_data())
-	|| (ospfnbrtable !=  nullptr && ospfnbrtable->has_data())
-	|| (ospfstubareatable !=  nullptr && ospfstubareatable->has_data())
-	|| (ospfvirtiftable !=  nullptr && ospfvirtiftable->has_data())
-	|| (ospfvirtlocallsdbtable !=  nullptr && ospfvirtlocallsdbtable->has_data())
-	|| (ospfvirtnbrtable !=  nullptr && ospfvirtnbrtable->has_data());
+    return (ospfareaaggregatetable_ !=  nullptr && ospfareaaggregatetable_->has_data())
+	|| (ospfarealsacounttable_ !=  nullptr && ospfarealsacounttable_->has_data())
+	|| (ospfarearangetable_ !=  nullptr && ospfarearangetable_->has_data())
+	|| (ospfareatable_ !=  nullptr && ospfareatable_->has_data())
+	|| (ospfaslsdbtable_ !=  nullptr && ospfaslsdbtable_->has_data())
+	|| (ospfextlsdbtable_ !=  nullptr && ospfextlsdbtable_->has_data())
+	|| (ospfgeneralgroup_ !=  nullptr && ospfgeneralgroup_->has_data())
+	|| (ospfhosttable_ !=  nullptr && ospfhosttable_->has_data())
+	|| (ospfifmetrictable_ !=  nullptr && ospfifmetrictable_->has_data())
+	|| (ospfiftable_ !=  nullptr && ospfiftable_->has_data())
+	|| (ospflocallsdbtable_ !=  nullptr && ospflocallsdbtable_->has_data())
+	|| (ospflsdbtable_ !=  nullptr && ospflsdbtable_->has_data())
+	|| (ospfnbrtable_ !=  nullptr && ospfnbrtable_->has_data())
+	|| (ospfstubareatable_ !=  nullptr && ospfstubareatable_->has_data())
+	|| (ospfvirtiftable_ !=  nullptr && ospfvirtiftable_->has_data())
+	|| (ospfvirtlocallsdbtable_ !=  nullptr && ospfvirtlocallsdbtable_->has_data())
+	|| (ospfvirtnbrtable_ !=  nullptr && ospfvirtnbrtable_->has_data());
 }
 
 bool OspfMib::has_operation() const
 {
     return is_set(operation)
-	|| (ospfareaaggregatetable !=  nullptr && ospfareaaggregatetable->has_operation())
-	|| (ospfarealsacounttable !=  nullptr && ospfarealsacounttable->has_operation())
-	|| (ospfarearangetable !=  nullptr && ospfarearangetable->has_operation())
-	|| (ospfareatable !=  nullptr && ospfareatable->has_operation())
-	|| (ospfaslsdbtable !=  nullptr && ospfaslsdbtable->has_operation())
-	|| (ospfextlsdbtable !=  nullptr && ospfextlsdbtable->has_operation())
-	|| (ospfgeneralgroup !=  nullptr && ospfgeneralgroup->has_operation())
-	|| (ospfhosttable !=  nullptr && ospfhosttable->has_operation())
-	|| (ospfifmetrictable !=  nullptr && ospfifmetrictable->has_operation())
-	|| (ospfiftable !=  nullptr && ospfiftable->has_operation())
-	|| (ospflocallsdbtable !=  nullptr && ospflocallsdbtable->has_operation())
-	|| (ospflsdbtable !=  nullptr && ospflsdbtable->has_operation())
-	|| (ospfnbrtable !=  nullptr && ospfnbrtable->has_operation())
-	|| (ospfstubareatable !=  nullptr && ospfstubareatable->has_operation())
-	|| (ospfvirtiftable !=  nullptr && ospfvirtiftable->has_operation())
-	|| (ospfvirtlocallsdbtable !=  nullptr && ospfvirtlocallsdbtable->has_operation())
-	|| (ospfvirtnbrtable !=  nullptr && ospfvirtnbrtable->has_operation());
+	|| (ospfareaaggregatetable_ !=  nullptr && ospfareaaggregatetable_->has_operation())
+	|| (ospfarealsacounttable_ !=  nullptr && ospfarealsacounttable_->has_operation())
+	|| (ospfarearangetable_ !=  nullptr && ospfarearangetable_->has_operation())
+	|| (ospfareatable_ !=  nullptr && ospfareatable_->has_operation())
+	|| (ospfaslsdbtable_ !=  nullptr && ospfaslsdbtable_->has_operation())
+	|| (ospfextlsdbtable_ !=  nullptr && ospfextlsdbtable_->has_operation())
+	|| (ospfgeneralgroup_ !=  nullptr && ospfgeneralgroup_->has_operation())
+	|| (ospfhosttable_ !=  nullptr && ospfhosttable_->has_operation())
+	|| (ospfifmetrictable_ !=  nullptr && ospfifmetrictable_->has_operation())
+	|| (ospfiftable_ !=  nullptr && ospfiftable_->has_operation())
+	|| (ospflocallsdbtable_ !=  nullptr && ospflocallsdbtable_->has_operation())
+	|| (ospflsdbtable_ !=  nullptr && ospflsdbtable_->has_operation())
+	|| (ospfnbrtable_ !=  nullptr && ospfnbrtable_->has_operation())
+	|| (ospfstubareatable_ !=  nullptr && ospfstubareatable_->has_operation())
+	|| (ospfvirtiftable_ !=  nullptr && ospfvirtiftable_->has_operation())
+	|| (ospfvirtlocallsdbtable_ !=  nullptr && ospfvirtlocallsdbtable_->has_operation())
+	|| (ospfvirtnbrtable_ !=  nullptr && ospfvirtnbrtable_->has_operation());
 }
 
 std::string OspfMib::get_segment_path() const
@@ -144,155 +144,155 @@ std::shared_ptr<Entity> OspfMib::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "ospfAreaAggregateTable")
     {
-        if(ospfareaaggregatetable == nullptr)
+        if(ospfareaaggregatetable_ == nullptr)
         {
-            ospfareaaggregatetable = std::make_shared<OspfMib::Ospfareaaggregatetable>();
+            ospfareaaggregatetable_ = std::make_shared<OspfMib::Ospfareaaggregatetable>();
         }
-        return ospfareaaggregatetable;
+        return ospfareaaggregatetable_;
     }
 
     if(child_yang_name == "ospfAreaLsaCountTable")
     {
-        if(ospfarealsacounttable == nullptr)
+        if(ospfarealsacounttable_ == nullptr)
         {
-            ospfarealsacounttable = std::make_shared<OspfMib::Ospfarealsacounttable>();
+            ospfarealsacounttable_ = std::make_shared<OspfMib::Ospfarealsacounttable>();
         }
-        return ospfarealsacounttable;
+        return ospfarealsacounttable_;
     }
 
     if(child_yang_name == "ospfAreaRangeTable")
     {
-        if(ospfarearangetable == nullptr)
+        if(ospfarearangetable_ == nullptr)
         {
-            ospfarearangetable = std::make_shared<OspfMib::Ospfarearangetable>();
+            ospfarearangetable_ = std::make_shared<OspfMib::Ospfarearangetable>();
         }
-        return ospfarearangetable;
+        return ospfarearangetable_;
     }
 
     if(child_yang_name == "ospfAreaTable")
     {
-        if(ospfareatable == nullptr)
+        if(ospfareatable_ == nullptr)
         {
-            ospfareatable = std::make_shared<OspfMib::Ospfareatable>();
+            ospfareatable_ = std::make_shared<OspfMib::Ospfareatable>();
         }
-        return ospfareatable;
+        return ospfareatable_;
     }
 
     if(child_yang_name == "ospfAsLsdbTable")
     {
-        if(ospfaslsdbtable == nullptr)
+        if(ospfaslsdbtable_ == nullptr)
         {
-            ospfaslsdbtable = std::make_shared<OspfMib::Ospfaslsdbtable>();
+            ospfaslsdbtable_ = std::make_shared<OspfMib::Ospfaslsdbtable>();
         }
-        return ospfaslsdbtable;
+        return ospfaslsdbtable_;
     }
 
     if(child_yang_name == "ospfExtLsdbTable")
     {
-        if(ospfextlsdbtable == nullptr)
+        if(ospfextlsdbtable_ == nullptr)
         {
-            ospfextlsdbtable = std::make_shared<OspfMib::Ospfextlsdbtable>();
+            ospfextlsdbtable_ = std::make_shared<OspfMib::Ospfextlsdbtable>();
         }
-        return ospfextlsdbtable;
+        return ospfextlsdbtable_;
     }
 
     if(child_yang_name == "ospfGeneralGroup")
     {
-        if(ospfgeneralgroup == nullptr)
+        if(ospfgeneralgroup_ == nullptr)
         {
-            ospfgeneralgroup = std::make_shared<OspfMib::Ospfgeneralgroup>();
+            ospfgeneralgroup_ = std::make_shared<OspfMib::Ospfgeneralgroup>();
         }
-        return ospfgeneralgroup;
+        return ospfgeneralgroup_;
     }
 
     if(child_yang_name == "ospfHostTable")
     {
-        if(ospfhosttable == nullptr)
+        if(ospfhosttable_ == nullptr)
         {
-            ospfhosttable = std::make_shared<OspfMib::Ospfhosttable>();
+            ospfhosttable_ = std::make_shared<OspfMib::Ospfhosttable>();
         }
-        return ospfhosttable;
+        return ospfhosttable_;
     }
 
     if(child_yang_name == "ospfIfMetricTable")
     {
-        if(ospfifmetrictable == nullptr)
+        if(ospfifmetrictable_ == nullptr)
         {
-            ospfifmetrictable = std::make_shared<OspfMib::Ospfifmetrictable>();
+            ospfifmetrictable_ = std::make_shared<OspfMib::Ospfifmetrictable>();
         }
-        return ospfifmetrictable;
+        return ospfifmetrictable_;
     }
 
     if(child_yang_name == "ospfIfTable")
     {
-        if(ospfiftable == nullptr)
+        if(ospfiftable_ == nullptr)
         {
-            ospfiftable = std::make_shared<OspfMib::Ospfiftable>();
+            ospfiftable_ = std::make_shared<OspfMib::Ospfiftable>();
         }
-        return ospfiftable;
+        return ospfiftable_;
     }
 
     if(child_yang_name == "ospfLocalLsdbTable")
     {
-        if(ospflocallsdbtable == nullptr)
+        if(ospflocallsdbtable_ == nullptr)
         {
-            ospflocallsdbtable = std::make_shared<OspfMib::Ospflocallsdbtable>();
+            ospflocallsdbtable_ = std::make_shared<OspfMib::Ospflocallsdbtable>();
         }
-        return ospflocallsdbtable;
+        return ospflocallsdbtable_;
     }
 
     if(child_yang_name == "ospfLsdbTable")
     {
-        if(ospflsdbtable == nullptr)
+        if(ospflsdbtable_ == nullptr)
         {
-            ospflsdbtable = std::make_shared<OspfMib::Ospflsdbtable>();
+            ospflsdbtable_ = std::make_shared<OspfMib::Ospflsdbtable>();
         }
-        return ospflsdbtable;
+        return ospflsdbtable_;
     }
 
     if(child_yang_name == "ospfNbrTable")
     {
-        if(ospfnbrtable == nullptr)
+        if(ospfnbrtable_ == nullptr)
         {
-            ospfnbrtable = std::make_shared<OspfMib::Ospfnbrtable>();
+            ospfnbrtable_ = std::make_shared<OspfMib::Ospfnbrtable>();
         }
-        return ospfnbrtable;
+        return ospfnbrtable_;
     }
 
     if(child_yang_name == "ospfStubAreaTable")
     {
-        if(ospfstubareatable == nullptr)
+        if(ospfstubareatable_ == nullptr)
         {
-            ospfstubareatable = std::make_shared<OspfMib::Ospfstubareatable>();
+            ospfstubareatable_ = std::make_shared<OspfMib::Ospfstubareatable>();
         }
-        return ospfstubareatable;
+        return ospfstubareatable_;
     }
 
     if(child_yang_name == "ospfVirtIfTable")
     {
-        if(ospfvirtiftable == nullptr)
+        if(ospfvirtiftable_ == nullptr)
         {
-            ospfvirtiftable = std::make_shared<OspfMib::Ospfvirtiftable>();
+            ospfvirtiftable_ = std::make_shared<OspfMib::Ospfvirtiftable>();
         }
-        return ospfvirtiftable;
+        return ospfvirtiftable_;
     }
 
     if(child_yang_name == "ospfVirtLocalLsdbTable")
     {
-        if(ospfvirtlocallsdbtable == nullptr)
+        if(ospfvirtlocallsdbtable_ == nullptr)
         {
-            ospfvirtlocallsdbtable = std::make_shared<OspfMib::Ospfvirtlocallsdbtable>();
+            ospfvirtlocallsdbtable_ = std::make_shared<OspfMib::Ospfvirtlocallsdbtable>();
         }
-        return ospfvirtlocallsdbtable;
+        return ospfvirtlocallsdbtable_;
     }
 
     if(child_yang_name == "ospfVirtNbrTable")
     {
-        if(ospfvirtnbrtable == nullptr)
+        if(ospfvirtnbrtable_ == nullptr)
         {
-            ospfvirtnbrtable = std::make_shared<OspfMib::Ospfvirtnbrtable>();
+            ospfvirtnbrtable_ = std::make_shared<OspfMib::Ospfvirtnbrtable>();
         }
-        return ospfvirtnbrtable;
+        return ospfvirtnbrtable_;
     }
 
     return nullptr;
@@ -301,89 +301,89 @@ std::shared_ptr<Entity> OspfMib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ospfareaaggregatetable != nullptr)
+    if(ospfareaaggregatetable_ != nullptr)
     {
-        children["ospfAreaAggregateTable"] = ospfareaaggregatetable;
+        children["ospfAreaAggregateTable"] = ospfareaaggregatetable_;
     }
 
-    if(ospfarealsacounttable != nullptr)
+    if(ospfarealsacounttable_ != nullptr)
     {
-        children["ospfAreaLsaCountTable"] = ospfarealsacounttable;
+        children["ospfAreaLsaCountTable"] = ospfarealsacounttable_;
     }
 
-    if(ospfarearangetable != nullptr)
+    if(ospfarearangetable_ != nullptr)
     {
-        children["ospfAreaRangeTable"] = ospfarearangetable;
+        children["ospfAreaRangeTable"] = ospfarearangetable_;
     }
 
-    if(ospfareatable != nullptr)
+    if(ospfareatable_ != nullptr)
     {
-        children["ospfAreaTable"] = ospfareatable;
+        children["ospfAreaTable"] = ospfareatable_;
     }
 
-    if(ospfaslsdbtable != nullptr)
+    if(ospfaslsdbtable_ != nullptr)
     {
-        children["ospfAsLsdbTable"] = ospfaslsdbtable;
+        children["ospfAsLsdbTable"] = ospfaslsdbtable_;
     }
 
-    if(ospfextlsdbtable != nullptr)
+    if(ospfextlsdbtable_ != nullptr)
     {
-        children["ospfExtLsdbTable"] = ospfextlsdbtable;
+        children["ospfExtLsdbTable"] = ospfextlsdbtable_;
     }
 
-    if(ospfgeneralgroup != nullptr)
+    if(ospfgeneralgroup_ != nullptr)
     {
-        children["ospfGeneralGroup"] = ospfgeneralgroup;
+        children["ospfGeneralGroup"] = ospfgeneralgroup_;
     }
 
-    if(ospfhosttable != nullptr)
+    if(ospfhosttable_ != nullptr)
     {
-        children["ospfHostTable"] = ospfhosttable;
+        children["ospfHostTable"] = ospfhosttable_;
     }
 
-    if(ospfifmetrictable != nullptr)
+    if(ospfifmetrictable_ != nullptr)
     {
-        children["ospfIfMetricTable"] = ospfifmetrictable;
+        children["ospfIfMetricTable"] = ospfifmetrictable_;
     }
 
-    if(ospfiftable != nullptr)
+    if(ospfiftable_ != nullptr)
     {
-        children["ospfIfTable"] = ospfiftable;
+        children["ospfIfTable"] = ospfiftable_;
     }
 
-    if(ospflocallsdbtable != nullptr)
+    if(ospflocallsdbtable_ != nullptr)
     {
-        children["ospfLocalLsdbTable"] = ospflocallsdbtable;
+        children["ospfLocalLsdbTable"] = ospflocallsdbtable_;
     }
 
-    if(ospflsdbtable != nullptr)
+    if(ospflsdbtable_ != nullptr)
     {
-        children["ospfLsdbTable"] = ospflsdbtable;
+        children["ospfLsdbTable"] = ospflsdbtable_;
     }
 
-    if(ospfnbrtable != nullptr)
+    if(ospfnbrtable_ != nullptr)
     {
-        children["ospfNbrTable"] = ospfnbrtable;
+        children["ospfNbrTable"] = ospfnbrtable_;
     }
 
-    if(ospfstubareatable != nullptr)
+    if(ospfstubareatable_ != nullptr)
     {
-        children["ospfStubAreaTable"] = ospfstubareatable;
+        children["ospfStubAreaTable"] = ospfstubareatable_;
     }
 
-    if(ospfvirtiftable != nullptr)
+    if(ospfvirtiftable_ != nullptr)
     {
-        children["ospfVirtIfTable"] = ospfvirtiftable;
+        children["ospfVirtIfTable"] = ospfvirtiftable_;
     }
 
-    if(ospfvirtlocallsdbtable != nullptr)
+    if(ospfvirtlocallsdbtable_ != nullptr)
     {
-        children["ospfVirtLocalLsdbTable"] = ospfvirtlocallsdbtable;
+        children["ospfVirtLocalLsdbTable"] = ospfvirtlocallsdbtable_;
     }
 
-    if(ospfvirtnbrtable != nullptr)
+    if(ospfvirtnbrtable_ != nullptr)
     {
-        children["ospfVirtNbrTable"] = ospfvirtnbrtable;
+        children["ospfVirtNbrTable"] = ospfvirtnbrtable_;
     }
 
     return children;
@@ -712,9 +712,9 @@ OspfMib::Ospfareatable::~Ospfareatable()
 
 bool OspfMib::Ospfareatable::has_data() const
 {
-    for (std::size_t index=0; index<ospfareaentry.size(); index++)
+    for (std::size_t index=0; index<ospfareaentry_.size(); index++)
     {
-        if(ospfareaentry[index]->has_data())
+        if(ospfareaentry_[index]->has_data())
             return true;
     }
     return false;
@@ -722,9 +722,9 @@ bool OspfMib::Ospfareatable::has_data() const
 
 bool OspfMib::Ospfareatable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfareaentry.size(); index++)
+    for (std::size_t index=0; index<ospfareaentry_.size(); index++)
     {
-        if(ospfareaentry[index]->has_operation())
+        if(ospfareaentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -764,7 +764,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareatable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfAreaEntry")
     {
-        for(auto const & c : ospfareaentry)
+        for(auto const & c : ospfareaentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -774,7 +774,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareatable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<OspfMib::Ospfareatable::Ospfareaentry>();
         c->parent = this;
-        ospfareaentry.push_back(c);
+        ospfareaentry_.push_back(c);
         return c;
     }
 
@@ -784,7 +784,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareatable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfareatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfareaentry)
+    for (auto const & c : ospfareaentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1023,9 +1023,9 @@ OspfMib::Ospfstubareatable::~Ospfstubareatable()
 
 bool OspfMib::Ospfstubareatable::has_data() const
 {
-    for (std::size_t index=0; index<ospfstubareaentry.size(); index++)
+    for (std::size_t index=0; index<ospfstubareaentry_.size(); index++)
     {
-        if(ospfstubareaentry[index]->has_data())
+        if(ospfstubareaentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1033,9 +1033,9 @@ bool OspfMib::Ospfstubareatable::has_data() const
 
 bool OspfMib::Ospfstubareatable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfstubareaentry.size(); index++)
+    for (std::size_t index=0; index<ospfstubareaentry_.size(); index++)
     {
-        if(ospfstubareaentry[index]->has_operation())
+        if(ospfstubareaentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1075,7 +1075,7 @@ std::shared_ptr<Entity> OspfMib::Ospfstubareatable::get_child_by_name(const std:
 {
     if(child_yang_name == "ospfStubAreaEntry")
     {
-        for(auto const & c : ospfstubareaentry)
+        for(auto const & c : ospfstubareaentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1085,7 +1085,7 @@ std::shared_ptr<Entity> OspfMib::Ospfstubareatable::get_child_by_name(const std:
         }
         auto c = std::make_shared<OspfMib::Ospfstubareatable::Ospfstubareaentry>();
         c->parent = this;
-        ospfstubareaentry.push_back(c);
+        ospfstubareaentry_.push_back(c);
         return c;
     }
 
@@ -1095,7 +1095,7 @@ std::shared_ptr<Entity> OspfMib::Ospfstubareatable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfstubareatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfstubareaentry)
+    for (auto const & c : ospfstubareaentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1222,9 +1222,9 @@ OspfMib::Ospflsdbtable::~Ospflsdbtable()
 
 bool OspfMib::Ospflsdbtable::has_data() const
 {
-    for (std::size_t index=0; index<ospflsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospflsdbentry_.size(); index++)
     {
-        if(ospflsdbentry[index]->has_data())
+        if(ospflsdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1232,9 +1232,9 @@ bool OspfMib::Ospflsdbtable::has_data() const
 
 bool OspfMib::Ospflsdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospflsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospflsdbentry_.size(); index++)
     {
-        if(ospflsdbentry[index]->has_operation())
+        if(ospflsdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1274,7 +1274,7 @@ std::shared_ptr<Entity> OspfMib::Ospflsdbtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfLsdbEntry")
     {
-        for(auto const & c : ospflsdbentry)
+        for(auto const & c : ospflsdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1284,7 +1284,7 @@ std::shared_ptr<Entity> OspfMib::Ospflsdbtable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<OspfMib::Ospflsdbtable::Ospflsdbentry>();
         c->parent = this;
-        ospflsdbentry.push_back(c);
+        ospflsdbentry_.push_back(c);
         return c;
     }
 
@@ -1294,7 +1294,7 @@ std::shared_ptr<Entity> OspfMib::Ospflsdbtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospflsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospflsdbentry)
+    for (auto const & c : ospflsdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1445,9 +1445,9 @@ OspfMib::Ospfarearangetable::~Ospfarearangetable()
 
 bool OspfMib::Ospfarearangetable::has_data() const
 {
-    for (std::size_t index=0; index<ospfarearangeentry.size(); index++)
+    for (std::size_t index=0; index<ospfarearangeentry_.size(); index++)
     {
-        if(ospfarearangeentry[index]->has_data())
+        if(ospfarearangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1455,9 +1455,9 @@ bool OspfMib::Ospfarearangetable::has_data() const
 
 bool OspfMib::Ospfarearangetable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfarearangeentry.size(); index++)
+    for (std::size_t index=0; index<ospfarearangeentry_.size(); index++)
     {
-        if(ospfarearangeentry[index]->has_operation())
+        if(ospfarearangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1497,7 +1497,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarearangetable::get_child_by_name(const std
 {
     if(child_yang_name == "ospfAreaRangeEntry")
     {
-        for(auto const & c : ospfarearangeentry)
+        for(auto const & c : ospfarearangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1507,7 +1507,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarearangetable::get_child_by_name(const std
         }
         auto c = std::make_shared<OspfMib::Ospfarearangetable::Ospfarearangeentry>();
         c->parent = this;
-        ospfarearangeentry.push_back(c);
+        ospfarearangeentry_.push_back(c);
         return c;
     }
 
@@ -1517,7 +1517,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarearangetable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfarearangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfarearangeentry)
+    for (auto const & c : ospfarearangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1644,9 +1644,9 @@ OspfMib::Ospfhosttable::~Ospfhosttable()
 
 bool OspfMib::Ospfhosttable::has_data() const
 {
-    for (std::size_t index=0; index<ospfhostentry.size(); index++)
+    for (std::size_t index=0; index<ospfhostentry_.size(); index++)
     {
-        if(ospfhostentry[index]->has_data())
+        if(ospfhostentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1654,9 +1654,9 @@ bool OspfMib::Ospfhosttable::has_data() const
 
 bool OspfMib::Ospfhosttable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfhostentry.size(); index++)
+    for (std::size_t index=0; index<ospfhostentry_.size(); index++)
     {
-        if(ospfhostentry[index]->has_operation())
+        if(ospfhostentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1696,7 +1696,7 @@ std::shared_ptr<Entity> OspfMib::Ospfhosttable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfHostEntry")
     {
-        for(auto const & c : ospfhostentry)
+        for(auto const & c : ospfhostentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1706,7 +1706,7 @@ std::shared_ptr<Entity> OspfMib::Ospfhosttable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<OspfMib::Ospfhosttable::Ospfhostentry>();
         c->parent = this;
-        ospfhostentry.push_back(c);
+        ospfhostentry_.push_back(c);
         return c;
     }
 
@@ -1716,7 +1716,7 @@ std::shared_ptr<Entity> OspfMib::Ospfhosttable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfhosttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfhostentry)
+    for (auto const & c : ospfhostentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1851,9 +1851,9 @@ OspfMib::Ospfiftable::~Ospfiftable()
 
 bool OspfMib::Ospfiftable::has_data() const
 {
-    for (std::size_t index=0; index<ospfifentry.size(); index++)
+    for (std::size_t index=0; index<ospfifentry_.size(); index++)
     {
-        if(ospfifentry[index]->has_data())
+        if(ospfifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1861,9 +1861,9 @@ bool OspfMib::Ospfiftable::has_data() const
 
 bool OspfMib::Ospfiftable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfifentry.size(); index++)
+    for (std::size_t index=0; index<ospfifentry_.size(); index++)
     {
-        if(ospfifentry[index]->has_operation())
+        if(ospfifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1903,7 +1903,7 @@ std::shared_ptr<Entity> OspfMib::Ospfiftable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "ospfIfEntry")
     {
-        for(auto const & c : ospfifentry)
+        for(auto const & c : ospfifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1913,7 +1913,7 @@ std::shared_ptr<Entity> OspfMib::Ospfiftable::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<OspfMib::Ospfiftable::Ospfifentry>();
         c->parent = this;
-        ospfifentry.push_back(c);
+        ospfifentry_.push_back(c);
         return c;
     }
 
@@ -1923,7 +1923,7 @@ std::shared_ptr<Entity> OspfMib::Ospfiftable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfifentry)
+    for (auto const & c : ospfifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2218,9 +2218,9 @@ OspfMib::Ospfifmetrictable::~Ospfifmetrictable()
 
 bool OspfMib::Ospfifmetrictable::has_data() const
 {
-    for (std::size_t index=0; index<ospfifmetricentry.size(); index++)
+    for (std::size_t index=0; index<ospfifmetricentry_.size(); index++)
     {
-        if(ospfifmetricentry[index]->has_data())
+        if(ospfifmetricentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2228,9 +2228,9 @@ bool OspfMib::Ospfifmetrictable::has_data() const
 
 bool OspfMib::Ospfifmetrictable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfifmetricentry.size(); index++)
+    for (std::size_t index=0; index<ospfifmetricentry_.size(); index++)
     {
-        if(ospfifmetricentry[index]->has_operation())
+        if(ospfifmetricentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2270,7 +2270,7 @@ std::shared_ptr<Entity> OspfMib::Ospfifmetrictable::get_child_by_name(const std:
 {
     if(child_yang_name == "ospfIfMetricEntry")
     {
-        for(auto const & c : ospfifmetricentry)
+        for(auto const & c : ospfifmetricentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2280,7 +2280,7 @@ std::shared_ptr<Entity> OspfMib::Ospfifmetrictable::get_child_by_name(const std:
         }
         auto c = std::make_shared<OspfMib::Ospfifmetrictable::Ospfifmetricentry>();
         c->parent = this;
-        ospfifmetricentry.push_back(c);
+        ospfifmetricentry_.push_back(c);
         return c;
     }
 
@@ -2290,7 +2290,7 @@ std::shared_ptr<Entity> OspfMib::Ospfifmetrictable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfifmetrictable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfifmetricentry)
+    for (auto const & c : ospfifmetricentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2417,9 +2417,9 @@ OspfMib::Ospfvirtiftable::~Ospfvirtiftable()
 
 bool OspfMib::Ospfvirtiftable::has_data() const
 {
-    for (std::size_t index=0; index<ospfvirtifentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtifentry_.size(); index++)
     {
-        if(ospfvirtifentry[index]->has_data())
+        if(ospfvirtifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2427,9 +2427,9 @@ bool OspfMib::Ospfvirtiftable::has_data() const
 
 bool OspfMib::Ospfvirtiftable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfvirtifentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtifentry_.size(); index++)
     {
-        if(ospfvirtifentry[index]->has_operation())
+        if(ospfvirtifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2469,7 +2469,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtiftable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ospfVirtIfEntry")
     {
-        for(auto const & c : ospfvirtifentry)
+        for(auto const & c : ospfvirtifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2479,7 +2479,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtiftable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<OspfMib::Ospfvirtiftable::Ospfvirtifentry>();
         c->parent = this;
-        ospfvirtifentry.push_back(c);
+        ospfvirtifentry_.push_back(c);
         return c;
     }
 
@@ -2489,7 +2489,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtiftable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfvirtiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfvirtifentry)
+    for (auto const & c : ospfvirtifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2696,9 +2696,9 @@ OspfMib::Ospfnbrtable::~Ospfnbrtable()
 
 bool OspfMib::Ospfnbrtable::has_data() const
 {
-    for (std::size_t index=0; index<ospfnbrentry.size(); index++)
+    for (std::size_t index=0; index<ospfnbrentry_.size(); index++)
     {
-        if(ospfnbrentry[index]->has_data())
+        if(ospfnbrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2706,9 +2706,9 @@ bool OspfMib::Ospfnbrtable::has_data() const
 
 bool OspfMib::Ospfnbrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfnbrentry.size(); index++)
+    for (std::size_t index=0; index<ospfnbrentry_.size(); index++)
     {
-        if(ospfnbrentry[index]->has_operation())
+        if(ospfnbrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2748,7 +2748,7 @@ std::shared_ptr<Entity> OspfMib::Ospfnbrtable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ospfNbrEntry")
     {
-        for(auto const & c : ospfnbrentry)
+        for(auto const & c : ospfnbrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2758,7 +2758,7 @@ std::shared_ptr<Entity> OspfMib::Ospfnbrtable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<OspfMib::Ospfnbrtable::Ospfnbrentry>();
         c->parent = this;
-        ospfnbrentry.push_back(c);
+        ospfnbrentry_.push_back(c);
         return c;
     }
 
@@ -2768,7 +2768,7 @@ std::shared_ptr<Entity> OspfMib::Ospfnbrtable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfnbrentry)
+    for (auto const & c : ospfnbrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2967,9 +2967,9 @@ OspfMib::Ospfvirtnbrtable::~Ospfvirtnbrtable()
 
 bool OspfMib::Ospfvirtnbrtable::has_data() const
 {
-    for (std::size_t index=0; index<ospfvirtnbrentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtnbrentry_.size(); index++)
     {
-        if(ospfvirtnbrentry[index]->has_data())
+        if(ospfvirtnbrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2977,9 +2977,9 @@ bool OspfMib::Ospfvirtnbrtable::has_data() const
 
 bool OspfMib::Ospfvirtnbrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfvirtnbrentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtnbrentry_.size(); index++)
     {
-        if(ospfvirtnbrentry[index]->has_operation())
+        if(ospfvirtnbrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3019,7 +3019,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtnbrtable::get_child_by_name(const std::
 {
     if(child_yang_name == "ospfVirtNbrEntry")
     {
-        for(auto const & c : ospfvirtnbrentry)
+        for(auto const & c : ospfvirtnbrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3029,7 +3029,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtnbrtable::get_child_by_name(const std::
         }
         auto c = std::make_shared<OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry>();
         c->parent = this;
-        ospfvirtnbrentry.push_back(c);
+        ospfvirtnbrentry_.push_back(c);
         return c;
     }
 
@@ -3039,7 +3039,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtnbrtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfvirtnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfvirtnbrentry)
+    for (auto const & c : ospfvirtnbrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3214,9 +3214,9 @@ OspfMib::Ospfextlsdbtable::~Ospfextlsdbtable()
 
 bool OspfMib::Ospfextlsdbtable::has_data() const
 {
-    for (std::size_t index=0; index<ospfextlsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfextlsdbentry_.size(); index++)
     {
-        if(ospfextlsdbentry[index]->has_data())
+        if(ospfextlsdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3224,9 +3224,9 @@ bool OspfMib::Ospfextlsdbtable::has_data() const
 
 bool OspfMib::Ospfextlsdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfextlsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfextlsdbentry_.size(); index++)
     {
-        if(ospfextlsdbentry[index]->has_operation())
+        if(ospfextlsdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3266,7 +3266,7 @@ std::shared_ptr<Entity> OspfMib::Ospfextlsdbtable::get_child_by_name(const std::
 {
     if(child_yang_name == "ospfExtLsdbEntry")
     {
-        for(auto const & c : ospfextlsdbentry)
+        for(auto const & c : ospfextlsdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3276,7 +3276,7 @@ std::shared_ptr<Entity> OspfMib::Ospfextlsdbtable::get_child_by_name(const std::
         }
         auto c = std::make_shared<OspfMib::Ospfextlsdbtable::Ospfextlsdbentry>();
         c->parent = this;
-        ospfextlsdbentry.push_back(c);
+        ospfextlsdbentry_.push_back(c);
         return c;
     }
 
@@ -3286,7 +3286,7 @@ std::shared_ptr<Entity> OspfMib::Ospfextlsdbtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfextlsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfextlsdbentry)
+    for (auto const & c : ospfextlsdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3429,9 +3429,9 @@ OspfMib::Ospfareaaggregatetable::~Ospfareaaggregatetable()
 
 bool OspfMib::Ospfareaaggregatetable::has_data() const
 {
-    for (std::size_t index=0; index<ospfareaaggregateentry.size(); index++)
+    for (std::size_t index=0; index<ospfareaaggregateentry_.size(); index++)
     {
-        if(ospfareaaggregateentry[index]->has_data())
+        if(ospfareaaggregateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3439,9 +3439,9 @@ bool OspfMib::Ospfareaaggregatetable::has_data() const
 
 bool OspfMib::Ospfareaaggregatetable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfareaaggregateentry.size(); index++)
+    for (std::size_t index=0; index<ospfareaaggregateentry_.size(); index++)
     {
-        if(ospfareaaggregateentry[index]->has_operation())
+        if(ospfareaaggregateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3481,7 +3481,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareaaggregatetable::get_child_by_name(const
 {
     if(child_yang_name == "ospfAreaAggregateEntry")
     {
-        for(auto const & c : ospfareaaggregateentry)
+        for(auto const & c : ospfareaaggregateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3491,7 +3491,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareaaggregatetable::get_child_by_name(const
         }
         auto c = std::make_shared<OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry>();
         c->parent = this;
-        ospfareaaggregateentry.push_back(c);
+        ospfareaaggregateentry_.push_back(c);
         return c;
     }
 
@@ -3501,7 +3501,7 @@ std::shared_ptr<Entity> OspfMib::Ospfareaaggregatetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfareaaggregatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfareaaggregateentry)
+    for (auto const & c : ospfareaaggregateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3644,9 +3644,9 @@ OspfMib::Ospflocallsdbtable::~Ospflocallsdbtable()
 
 bool OspfMib::Ospflocallsdbtable::has_data() const
 {
-    for (std::size_t index=0; index<ospflocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospflocallsdbentry_.size(); index++)
     {
-        if(ospflocallsdbentry[index]->has_data())
+        if(ospflocallsdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3654,9 +3654,9 @@ bool OspfMib::Ospflocallsdbtable::has_data() const
 
 bool OspfMib::Ospflocallsdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospflocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospflocallsdbentry_.size(); index++)
     {
-        if(ospflocallsdbentry[index]->has_operation())
+        if(ospflocallsdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3696,7 +3696,7 @@ std::shared_ptr<Entity> OspfMib::Ospflocallsdbtable::get_child_by_name(const std
 {
     if(child_yang_name == "ospfLocalLsdbEntry")
     {
-        for(auto const & c : ospflocallsdbentry)
+        for(auto const & c : ospflocallsdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3706,7 +3706,7 @@ std::shared_ptr<Entity> OspfMib::Ospflocallsdbtable::get_child_by_name(const std
         }
         auto c = std::make_shared<OspfMib::Ospflocallsdbtable::Ospflocallsdbentry>();
         c->parent = this;
-        ospflocallsdbentry.push_back(c);
+        ospflocallsdbentry_.push_back(c);
         return c;
     }
 
@@ -3716,7 +3716,7 @@ std::shared_ptr<Entity> OspfMib::Ospflocallsdbtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospflocallsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospflocallsdbentry)
+    for (auto const & c : ospflocallsdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3875,9 +3875,9 @@ OspfMib::Ospfvirtlocallsdbtable::~Ospfvirtlocallsdbtable()
 
 bool OspfMib::Ospfvirtlocallsdbtable::has_data() const
 {
-    for (std::size_t index=0; index<ospfvirtlocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtlocallsdbentry_.size(); index++)
     {
-        if(ospfvirtlocallsdbentry[index]->has_data())
+        if(ospfvirtlocallsdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3885,9 +3885,9 @@ bool OspfMib::Ospfvirtlocallsdbtable::has_data() const
 
 bool OspfMib::Ospfvirtlocallsdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfvirtlocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfvirtlocallsdbentry_.size(); index++)
     {
-        if(ospfvirtlocallsdbentry[index]->has_operation())
+        if(ospfvirtlocallsdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3927,7 +3927,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtlocallsdbtable::get_child_by_name(const
 {
     if(child_yang_name == "ospfVirtLocalLsdbEntry")
     {
-        for(auto const & c : ospfvirtlocallsdbentry)
+        for(auto const & c : ospfvirtlocallsdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3937,7 +3937,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtlocallsdbtable::get_child_by_name(const
         }
         auto c = std::make_shared<OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry>();
         c->parent = this;
-        ospfvirtlocallsdbentry.push_back(c);
+        ospfvirtlocallsdbentry_.push_back(c);
         return c;
     }
 
@@ -3947,7 +3947,7 @@ std::shared_ptr<Entity> OspfMib::Ospfvirtlocallsdbtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfvirtlocallsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfvirtlocallsdbentry)
+    for (auto const & c : ospfvirtlocallsdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4106,9 +4106,9 @@ OspfMib::Ospfaslsdbtable::~Ospfaslsdbtable()
 
 bool OspfMib::Ospfaslsdbtable::has_data() const
 {
-    for (std::size_t index=0; index<ospfaslsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfaslsdbentry_.size(); index++)
     {
-        if(ospfaslsdbentry[index]->has_data())
+        if(ospfaslsdbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4116,9 +4116,9 @@ bool OspfMib::Ospfaslsdbtable::has_data() const
 
 bool OspfMib::Ospfaslsdbtable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfaslsdbentry.size(); index++)
+    for (std::size_t index=0; index<ospfaslsdbentry_.size(); index++)
     {
-        if(ospfaslsdbentry[index]->has_operation())
+        if(ospfaslsdbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4158,7 +4158,7 @@ std::shared_ptr<Entity> OspfMib::Ospfaslsdbtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ospfAsLsdbEntry")
     {
-        for(auto const & c : ospfaslsdbentry)
+        for(auto const & c : ospfaslsdbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4168,7 +4168,7 @@ std::shared_ptr<Entity> OspfMib::Ospfaslsdbtable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<OspfMib::Ospfaslsdbtable::Ospfaslsdbentry>();
         c->parent = this;
-        ospfaslsdbentry.push_back(c);
+        ospfaslsdbentry_.push_back(c);
         return c;
     }
 
@@ -4178,7 +4178,7 @@ std::shared_ptr<Entity> OspfMib::Ospfaslsdbtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfaslsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfaslsdbentry)
+    for (auto const & c : ospfaslsdbentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4321,9 +4321,9 @@ OspfMib::Ospfarealsacounttable::~Ospfarealsacounttable()
 
 bool OspfMib::Ospfarealsacounttable::has_data() const
 {
-    for (std::size_t index=0; index<ospfarealsacountentry.size(); index++)
+    for (std::size_t index=0; index<ospfarealsacountentry_.size(); index++)
     {
-        if(ospfarealsacountentry[index]->has_data())
+        if(ospfarealsacountentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4331,9 +4331,9 @@ bool OspfMib::Ospfarealsacounttable::has_data() const
 
 bool OspfMib::Ospfarealsacounttable::has_operation() const
 {
-    for (std::size_t index=0; index<ospfarealsacountentry.size(); index++)
+    for (std::size_t index=0; index<ospfarealsacountentry_.size(); index++)
     {
-        if(ospfarealsacountentry[index]->has_operation())
+        if(ospfarealsacountentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4373,7 +4373,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarealsacounttable::get_child_by_name(const 
 {
     if(child_yang_name == "ospfAreaLsaCountEntry")
     {
-        for(auto const & c : ospfarealsacountentry)
+        for(auto const & c : ospfarealsacountentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4383,7 +4383,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarealsacounttable::get_child_by_name(const 
         }
         auto c = std::make_shared<OspfMib::Ospfarealsacounttable::Ospfarealsacountentry>();
         c->parent = this;
-        ospfarealsacountentry.push_back(c);
+        ospfarealsacountentry_.push_back(c);
         return c;
     }
 
@@ -4393,7 +4393,7 @@ std::shared_ptr<Entity> OspfMib::Ospfarealsacounttable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> OspfMib::Ospfarealsacounttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ospfarealsacountentry)
+    for (auto const & c : ospfarealsacountentry_)
     {
         children[c->get_segment_path()] = c;
     }

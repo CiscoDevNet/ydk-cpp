@@ -11,9 +11,9 @@ namespace Cisco_IOS_XE_bfd_oper {
 
 BfdState::BfdState()
     :
-    sessions(std::make_shared<BfdState::Sessions>())
+    sessions_(std::make_shared<BfdState::Sessions>())
 {
-    sessions->parent = this;
+    sessions_->parent = this;
 
     yang_name = "bfd-state"; yang_parent_name = "Cisco-IOS-XE-bfd-oper";
 }
@@ -24,13 +24,13 @@ BfdState::~BfdState()
 
 bool BfdState::has_data() const
 {
-    return (sessions !=  nullptr && sessions->has_data());
+    return (sessions_ !=  nullptr && sessions_->has_data());
 }
 
 bool BfdState::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && sessions->has_operation());
+	|| (sessions_ !=  nullptr && sessions_->has_operation());
 }
 
 std::string BfdState::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> BfdState::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "sessions")
     {
-        if(sessions == nullptr)
+        if(sessions_ == nullptr)
         {
-            sessions = std::make_shared<BfdState::Sessions>();
+            sessions_ = std::make_shared<BfdState::Sessions>();
         }
-        return sessions;
+        return sessions_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> BfdState::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> BfdState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(sessions != nullptr)
+    if(sessions_ != nullptr)
     {
-        children["sessions"] = sessions;
+        children["sessions"] = sessions_;
     }
 
     return children;
@@ -120,9 +120,9 @@ BfdState::Sessions::~Sessions()
 
 bool BfdState::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session_.size(); index++)
     {
-        if(session[index]->has_data())
+        if(session_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool BfdState::Sessions::has_data() const
 
 bool BfdState::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session_.size(); index++)
     {
-        if(session[index]->has_operation())
+        if(session_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string 
 {
     if(child_yang_name == "session")
     {
-        for(auto const & c : session)
+        for(auto const & c : session_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<BfdState::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : session)
+    for (auto const & c : session_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -208,21 +208,21 @@ BfdState::Sessions::Session::Session()
     :
     type{YType::enumeration, "type"}
     	,
-    bfd_circuits(std::make_shared<BfdState::Sessions::Session::BfdCircuits>())
-	,bfd_mhop_nbrs(std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs>())
-	,bfd_mhop_vrf_nbrs(std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs>())
-	,bfd_nbrs(std::make_shared<BfdState::Sessions::Session::BfdNbrs>())
-	,bfd_tunnel_paths(std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths>())
+    bfd_circuits_(std::make_shared<BfdState::Sessions::Session::BfdCircuits>())
+	,bfd_mhop_nbrs_(std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs>())
+	,bfd_mhop_vrf_nbrs_(std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs>())
+	,bfd_nbrs_(std::make_shared<BfdState::Sessions::Session::BfdNbrs>())
+	,bfd_tunnel_paths_(std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths>())
 {
-    bfd_circuits->parent = this;
+    bfd_circuits_->parent = this;
 
-    bfd_mhop_nbrs->parent = this;
+    bfd_mhop_nbrs_->parent = this;
 
-    bfd_mhop_vrf_nbrs->parent = this;
+    bfd_mhop_vrf_nbrs_->parent = this;
 
-    bfd_nbrs->parent = this;
+    bfd_nbrs_->parent = this;
 
-    bfd_tunnel_paths->parent = this;
+    bfd_tunnel_paths_->parent = this;
 
     yang_name = "session"; yang_parent_name = "sessions";
 }
@@ -234,22 +234,22 @@ BfdState::Sessions::Session::~Session()
 bool BfdState::Sessions::Session::has_data() const
 {
     return type.is_set
-	|| (bfd_circuits !=  nullptr && bfd_circuits->has_data())
-	|| (bfd_mhop_nbrs !=  nullptr && bfd_mhop_nbrs->has_data())
-	|| (bfd_mhop_vrf_nbrs !=  nullptr && bfd_mhop_vrf_nbrs->has_data())
-	|| (bfd_nbrs !=  nullptr && bfd_nbrs->has_data())
-	|| (bfd_tunnel_paths !=  nullptr && bfd_tunnel_paths->has_data());
+	|| (bfd_circuits_ !=  nullptr && bfd_circuits_->has_data())
+	|| (bfd_mhop_nbrs_ !=  nullptr && bfd_mhop_nbrs_->has_data())
+	|| (bfd_mhop_vrf_nbrs_ !=  nullptr && bfd_mhop_vrf_nbrs_->has_data())
+	|| (bfd_nbrs_ !=  nullptr && bfd_nbrs_->has_data())
+	|| (bfd_tunnel_paths_ !=  nullptr && bfd_tunnel_paths_->has_data());
 }
 
 bool BfdState::Sessions::Session::has_operation() const
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (bfd_circuits !=  nullptr && bfd_circuits->has_operation())
-	|| (bfd_mhop_nbrs !=  nullptr && bfd_mhop_nbrs->has_operation())
-	|| (bfd_mhop_vrf_nbrs !=  nullptr && bfd_mhop_vrf_nbrs->has_operation())
-	|| (bfd_nbrs !=  nullptr && bfd_nbrs->has_operation())
-	|| (bfd_tunnel_paths !=  nullptr && bfd_tunnel_paths->has_operation());
+	|| (bfd_circuits_ !=  nullptr && bfd_circuits_->has_operation())
+	|| (bfd_mhop_nbrs_ !=  nullptr && bfd_mhop_nbrs_->has_operation())
+	|| (bfd_mhop_vrf_nbrs_ !=  nullptr && bfd_mhop_vrf_nbrs_->has_operation())
+	|| (bfd_nbrs_ !=  nullptr && bfd_nbrs_->has_operation())
+	|| (bfd_tunnel_paths_ !=  nullptr && bfd_tunnel_paths_->has_operation());
 }
 
 std::string BfdState::Sessions::Session::get_segment_path() const
@@ -287,47 +287,47 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::get_child_by_name(const std
 {
     if(child_yang_name == "bfd-circuits")
     {
-        if(bfd_circuits == nullptr)
+        if(bfd_circuits_ == nullptr)
         {
-            bfd_circuits = std::make_shared<BfdState::Sessions::Session::BfdCircuits>();
+            bfd_circuits_ = std::make_shared<BfdState::Sessions::Session::BfdCircuits>();
         }
-        return bfd_circuits;
+        return bfd_circuits_;
     }
 
     if(child_yang_name == "bfd-mhop-nbrs")
     {
-        if(bfd_mhop_nbrs == nullptr)
+        if(bfd_mhop_nbrs_ == nullptr)
         {
-            bfd_mhop_nbrs = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs>();
+            bfd_mhop_nbrs_ = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs>();
         }
-        return bfd_mhop_nbrs;
+        return bfd_mhop_nbrs_;
     }
 
     if(child_yang_name == "bfd-mhop-vrf-nbrs")
     {
-        if(bfd_mhop_vrf_nbrs == nullptr)
+        if(bfd_mhop_vrf_nbrs_ == nullptr)
         {
-            bfd_mhop_vrf_nbrs = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs>();
+            bfd_mhop_vrf_nbrs_ = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs>();
         }
-        return bfd_mhop_vrf_nbrs;
+        return bfd_mhop_vrf_nbrs_;
     }
 
     if(child_yang_name == "bfd-nbrs")
     {
-        if(bfd_nbrs == nullptr)
+        if(bfd_nbrs_ == nullptr)
         {
-            bfd_nbrs = std::make_shared<BfdState::Sessions::Session::BfdNbrs>();
+            bfd_nbrs_ = std::make_shared<BfdState::Sessions::Session::BfdNbrs>();
         }
-        return bfd_nbrs;
+        return bfd_nbrs_;
     }
 
     if(child_yang_name == "bfd-tunnel-paths")
     {
-        if(bfd_tunnel_paths == nullptr)
+        if(bfd_tunnel_paths_ == nullptr)
         {
-            bfd_tunnel_paths = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths>();
+            bfd_tunnel_paths_ = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths>();
         }
-        return bfd_tunnel_paths;
+        return bfd_tunnel_paths_;
     }
 
     return nullptr;
@@ -336,29 +336,29 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_circuits != nullptr)
+    if(bfd_circuits_ != nullptr)
     {
-        children["bfd-circuits"] = bfd_circuits;
+        children["bfd-circuits"] = bfd_circuits_;
     }
 
-    if(bfd_mhop_nbrs != nullptr)
+    if(bfd_mhop_nbrs_ != nullptr)
     {
-        children["bfd-mhop-nbrs"] = bfd_mhop_nbrs;
+        children["bfd-mhop-nbrs"] = bfd_mhop_nbrs_;
     }
 
-    if(bfd_mhop_vrf_nbrs != nullptr)
+    if(bfd_mhop_vrf_nbrs_ != nullptr)
     {
-        children["bfd-mhop-vrf-nbrs"] = bfd_mhop_vrf_nbrs;
+        children["bfd-mhop-vrf-nbrs"] = bfd_mhop_vrf_nbrs_;
     }
 
-    if(bfd_nbrs != nullptr)
+    if(bfd_nbrs_ != nullptr)
     {
-        children["bfd-nbrs"] = bfd_nbrs;
+        children["bfd-nbrs"] = bfd_nbrs_;
     }
 
-    if(bfd_tunnel_paths != nullptr)
+    if(bfd_tunnel_paths_ != nullptr)
     {
-        children["bfd-tunnel-paths"] = bfd_tunnel_paths;
+        children["bfd-tunnel-paths"] = bfd_tunnel_paths_;
     }
 
     return children;
@@ -383,9 +383,9 @@ BfdState::Sessions::Session::BfdTunnelPaths::~BfdTunnelPaths()
 
 bool BfdState::Sessions::Session::BfdTunnelPaths::has_data() const
 {
-    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
+    for (std::size_t index=0; index<bfd_tunnel_path_.size(); index++)
     {
-        if(bfd_tunnel_path[index]->has_data())
+        if(bfd_tunnel_path_[index]->has_data())
             return true;
     }
     return false;
@@ -393,9 +393,9 @@ bool BfdState::Sessions::Session::BfdTunnelPaths::has_data() const
 
 bool BfdState::Sessions::Session::BfdTunnelPaths::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
+    for (std::size_t index=0; index<bfd_tunnel_path_.size(); index++)
     {
-        if(bfd_tunnel_path[index]->has_operation())
+        if(bfd_tunnel_path_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -435,7 +435,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_b
 {
     if(child_yang_name == "bfd-tunnel-path")
     {
-        for(auto const & c : bfd_tunnel_path)
+        for(auto const & c : bfd_tunnel_path_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -445,7 +445,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_b
         }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
         c->parent = this;
-        bfd_tunnel_path.push_back(c);
+        bfd_tunnel_path_.push_back(c);
         return c;
     }
 
@@ -455,7 +455,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_tunnel_path)
+    for (auto const & c : bfd_tunnel_path_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -590,9 +590,9 @@ BfdState::Sessions::Session::BfdCircuits::~BfdCircuits()
 
 bool BfdState::Sessions::Session::BfdCircuits::has_data() const
 {
-    for (std::size_t index=0; index<bfd_circuit.size(); index++)
+    for (std::size_t index=0; index<bfd_circuit_.size(); index++)
     {
-        if(bfd_circuit[index]->has_data())
+        if(bfd_circuit_[index]->has_data())
             return true;
     }
     return false;
@@ -600,9 +600,9 @@ bool BfdState::Sessions::Session::BfdCircuits::has_data() const
 
 bool BfdState::Sessions::Session::BfdCircuits::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_circuit.size(); index++)
+    for (std::size_t index=0; index<bfd_circuit_.size(); index++)
     {
-        if(bfd_circuit[index]->has_operation())
+        if(bfd_circuit_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -642,7 +642,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_n
 {
     if(child_yang_name == "bfd-circuit")
     {
-        for(auto const & c : bfd_circuit)
+        for(auto const & c : bfd_circuit_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -652,7 +652,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_n
         }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdCircuits::BfdCircuit>();
         c->parent = this;
-        bfd_circuit.push_back(c);
+        bfd_circuit_.push_back(c);
         return c;
     }
 
@@ -662,7 +662,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_circuit)
+    for (auto const & c : bfd_circuit_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -797,9 +797,9 @@ BfdState::Sessions::Session::BfdNbrs::~BfdNbrs()
 
 bool BfdState::Sessions::Session::BfdNbrs::has_data() const
 {
-    for (std::size_t index=0; index<bfd_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_nbr_.size(); index++)
     {
-        if(bfd_nbr[index]->has_data())
+        if(bfd_nbr_[index]->has_data())
             return true;
     }
     return false;
@@ -807,9 +807,9 @@ bool BfdState::Sessions::Session::BfdNbrs::has_data() const
 
 bool BfdState::Sessions::Session::BfdNbrs::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_nbr_.size(); index++)
     {
-        if(bfd_nbr[index]->has_operation())
+        if(bfd_nbr_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -849,7 +849,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(
 {
     if(child_yang_name == "bfd-nbr")
     {
-        for(auto const & c : bfd_nbr)
+        for(auto const & c : bfd_nbr_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -859,7 +859,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(
         }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
         c->parent = this;
-        bfd_nbr.push_back(c);
+        bfd_nbr_.push_back(c);
         return c;
     }
 
@@ -869,7 +869,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_nbr)
+    for (auto const & c : bfd_nbr_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1004,9 +1004,9 @@ BfdState::Sessions::Session::BfdMhopNbrs::~BfdMhopNbrs()
 
 bool BfdState::Sessions::Session::BfdMhopNbrs::has_data() const
 {
-    for (std::size_t index=0; index<bfd_mhop_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_mhop_nbr_.size(); index++)
     {
-        if(bfd_mhop_nbr[index]->has_data())
+        if(bfd_mhop_nbr_[index]->has_data())
             return true;
     }
     return false;
@@ -1014,9 +1014,9 @@ bool BfdState::Sessions::Session::BfdMhopNbrs::has_data() const
 
 bool BfdState::Sessions::Session::BfdMhopNbrs::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_mhop_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_mhop_nbr_.size(); index++)
     {
-        if(bfd_mhop_nbr[index]->has_operation())
+        if(bfd_mhop_nbr_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1056,7 +1056,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_n
 {
     if(child_yang_name == "bfd-mhop-nbr")
     {
-        for(auto const & c : bfd_mhop_nbr)
+        for(auto const & c : bfd_mhop_nbr_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1066,7 +1066,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_n
         }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr>();
         c->parent = this;
-        bfd_mhop_nbr.push_back(c);
+        bfd_mhop_nbr_.push_back(c);
         return c;
     }
 
@@ -1076,7 +1076,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_mhop_nbr)
+    for (auto const & c : bfd_mhop_nbr_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1203,9 +1203,9 @@ BfdState::Sessions::Session::BfdMhopVrfNbrs::~BfdMhopVrfNbrs()
 
 bool BfdState::Sessions::Session::BfdMhopVrfNbrs::has_data() const
 {
-    for (std::size_t index=0; index<bfd_mhop_vrf_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_mhop_vrf_nbr_.size(); index++)
     {
-        if(bfd_mhop_vrf_nbr[index]->has_data())
+        if(bfd_mhop_vrf_nbr_[index]->has_data())
             return true;
     }
     return false;
@@ -1213,9 +1213,9 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::has_data() const
 
 bool BfdState::Sessions::Session::BfdMhopVrfNbrs::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_mhop_vrf_nbr.size(); index++)
+    for (std::size_t index=0; index<bfd_mhop_vrf_nbr_.size(); index++)
     {
-        if(bfd_mhop_vrf_nbr[index]->has_operation())
+        if(bfd_mhop_vrf_nbr_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1255,7 +1255,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_b
 {
     if(child_yang_name == "bfd-mhop-vrf-nbr")
     {
-        for(auto const & c : bfd_mhop_vrf_nbr)
+        for(auto const & c : bfd_mhop_vrf_nbr_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1265,7 +1265,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_b
         }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr>();
         c->parent = this;
-        bfd_mhop_vrf_nbr.push_back(c);
+        bfd_mhop_vrf_nbr_.push_back(c);
         return c;
     }
 
@@ -1275,7 +1275,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_mhop_vrf_nbr)
+    for (auto const & c : bfd_mhop_vrf_nbr_)
     {
         children[c->get_segment_path()] = c;
     }

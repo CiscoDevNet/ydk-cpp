@@ -11,24 +11,24 @@ namespace EXPRESSION_MIB {
 
 ExpressionMib::ExpressionMib()
     :
-    expexpressiontable(std::make_shared<ExpressionMib::Expexpressiontable>())
-	,expnames(std::make_shared<ExpressionMib::Expnames>())
-	,expnametable(std::make_shared<ExpressionMib::Expnametable>())
-	,expobjecttable(std::make_shared<ExpressionMib::Expobjecttable>())
-	,expresource(std::make_shared<ExpressionMib::Expresource>())
-	,expvaluetable(std::make_shared<ExpressionMib::Expvaluetable>())
+    expexpressiontable_(std::make_shared<ExpressionMib::Expexpressiontable>())
+	,expnames_(std::make_shared<ExpressionMib::Expnames>())
+	,expnametable_(std::make_shared<ExpressionMib::Expnametable>())
+	,expobjecttable_(std::make_shared<ExpressionMib::Expobjecttable>())
+	,expresource_(std::make_shared<ExpressionMib::Expresource>())
+	,expvaluetable_(std::make_shared<ExpressionMib::Expvaluetable>())
 {
-    expexpressiontable->parent = this;
+    expexpressiontable_->parent = this;
 
-    expnames->parent = this;
+    expnames_->parent = this;
 
-    expnametable->parent = this;
+    expnametable_->parent = this;
 
-    expobjecttable->parent = this;
+    expobjecttable_->parent = this;
 
-    expresource->parent = this;
+    expresource_->parent = this;
 
-    expvaluetable->parent = this;
+    expvaluetable_->parent = this;
 
     yang_name = "EXPRESSION-MIB"; yang_parent_name = "EXPRESSION-MIB";
 }
@@ -39,23 +39,23 @@ ExpressionMib::~ExpressionMib()
 
 bool ExpressionMib::has_data() const
 {
-    return (expexpressiontable !=  nullptr && expexpressiontable->has_data())
-	|| (expnames !=  nullptr && expnames->has_data())
-	|| (expnametable !=  nullptr && expnametable->has_data())
-	|| (expobjecttable !=  nullptr && expobjecttable->has_data())
-	|| (expresource !=  nullptr && expresource->has_data())
-	|| (expvaluetable !=  nullptr && expvaluetable->has_data());
+    return (expexpressiontable_ !=  nullptr && expexpressiontable_->has_data())
+	|| (expnames_ !=  nullptr && expnames_->has_data())
+	|| (expnametable_ !=  nullptr && expnametable_->has_data())
+	|| (expobjecttable_ !=  nullptr && expobjecttable_->has_data())
+	|| (expresource_ !=  nullptr && expresource_->has_data())
+	|| (expvaluetable_ !=  nullptr && expvaluetable_->has_data());
 }
 
 bool ExpressionMib::has_operation() const
 {
     return is_set(operation)
-	|| (expexpressiontable !=  nullptr && expexpressiontable->has_operation())
-	|| (expnames !=  nullptr && expnames->has_operation())
-	|| (expnametable !=  nullptr && expnametable->has_operation())
-	|| (expobjecttable !=  nullptr && expobjecttable->has_operation())
-	|| (expresource !=  nullptr && expresource->has_operation())
-	|| (expvaluetable !=  nullptr && expvaluetable->has_operation());
+	|| (expexpressiontable_ !=  nullptr && expexpressiontable_->has_operation())
+	|| (expnames_ !=  nullptr && expnames_->has_operation())
+	|| (expnametable_ !=  nullptr && expnametable_->has_operation())
+	|| (expobjecttable_ !=  nullptr && expobjecttable_->has_operation())
+	|| (expresource_ !=  nullptr && expresource_->has_operation())
+	|| (expvaluetable_ !=  nullptr && expvaluetable_->has_operation());
 }
 
 std::string ExpressionMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "expExpressionTable")
     {
-        if(expexpressiontable == nullptr)
+        if(expexpressiontable_ == nullptr)
         {
-            expexpressiontable = std::make_shared<ExpressionMib::Expexpressiontable>();
+            expexpressiontable_ = std::make_shared<ExpressionMib::Expexpressiontable>();
         }
-        return expexpressiontable;
+        return expexpressiontable_;
     }
 
     if(child_yang_name == "expNames")
     {
-        if(expnames == nullptr)
+        if(expnames_ == nullptr)
         {
-            expnames = std::make_shared<ExpressionMib::Expnames>();
+            expnames_ = std::make_shared<ExpressionMib::Expnames>();
         }
-        return expnames;
+        return expnames_;
     }
 
     if(child_yang_name == "expNameTable")
     {
-        if(expnametable == nullptr)
+        if(expnametable_ == nullptr)
         {
-            expnametable = std::make_shared<ExpressionMib::Expnametable>();
+            expnametable_ = std::make_shared<ExpressionMib::Expnametable>();
         }
-        return expnametable;
+        return expnametable_;
     }
 
     if(child_yang_name == "expObjectTable")
     {
-        if(expobjecttable == nullptr)
+        if(expobjecttable_ == nullptr)
         {
-            expobjecttable = std::make_shared<ExpressionMib::Expobjecttable>();
+            expobjecttable_ = std::make_shared<ExpressionMib::Expobjecttable>();
         }
-        return expobjecttable;
+        return expobjecttable_;
     }
 
     if(child_yang_name == "expResource")
     {
-        if(expresource == nullptr)
+        if(expresource_ == nullptr)
         {
-            expresource = std::make_shared<ExpressionMib::Expresource>();
+            expresource_ = std::make_shared<ExpressionMib::Expresource>();
         }
-        return expresource;
+        return expresource_;
     }
 
     if(child_yang_name == "expValueTable")
     {
-        if(expvaluetable == nullptr)
+        if(expvaluetable_ == nullptr)
         {
-            expvaluetable = std::make_shared<ExpressionMib::Expvaluetable>();
+            expvaluetable_ = std::make_shared<ExpressionMib::Expvaluetable>();
         }
-        return expvaluetable;
+        return expvaluetable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(expexpressiontable != nullptr)
+    if(expexpressiontable_ != nullptr)
     {
-        children["expExpressionTable"] = expexpressiontable;
+        children["expExpressionTable"] = expexpressiontable_;
     }
 
-    if(expnames != nullptr)
+    if(expnames_ != nullptr)
     {
-        children["expNames"] = expnames;
+        children["expNames"] = expnames_;
     }
 
-    if(expnametable != nullptr)
+    if(expnametable_ != nullptr)
     {
-        children["expNameTable"] = expnametable;
+        children["expNameTable"] = expnametable_;
     }
 
-    if(expobjecttable != nullptr)
+    if(expobjecttable_ != nullptr)
     {
-        children["expObjectTable"] = expobjecttable;
+        children["expObjectTable"] = expobjecttable_;
     }
 
-    if(expresource != nullptr)
+    if(expresource_ != nullptr)
     {
-        children["expResource"] = expresource;
+        children["expResource"] = expresource_;
     }
 
-    if(expvaluetable != nullptr)
+    if(expvaluetable_ != nullptr)
     {
-        children["expValueTable"] = expvaluetable;
+        children["expValueTable"] = expvaluetable_;
     }
 
     return children;
@@ -399,9 +399,9 @@ ExpressionMib::Expnametable::~Expnametable()
 
 bool ExpressionMib::Expnametable::has_data() const
 {
-    for (std::size_t index=0; index<expnameentry.size(); index++)
+    for (std::size_t index=0; index<expnameentry_.size(); index++)
     {
-        if(expnameentry[index]->has_data())
+        if(expnameentry_[index]->has_data())
             return true;
     }
     return false;
@@ -409,9 +409,9 @@ bool ExpressionMib::Expnametable::has_data() const
 
 bool ExpressionMib::Expnametable::has_operation() const
 {
-    for (std::size_t index=0; index<expnameentry.size(); index++)
+    for (std::size_t index=0; index<expnameentry_.size(); index++)
     {
-        if(expnameentry[index]->has_operation())
+        if(expnameentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -451,7 +451,7 @@ std::shared_ptr<Entity> ExpressionMib::Expnametable::get_child_by_name(const std
 {
     if(child_yang_name == "expNameEntry")
     {
-        for(auto const & c : expnameentry)
+        for(auto const & c : expnameentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -461,7 +461,7 @@ std::shared_ptr<Entity> ExpressionMib::Expnametable::get_child_by_name(const std
         }
         auto c = std::make_shared<ExpressionMib::Expnametable::Expnameentry>();
         c->parent = this;
-        expnameentry.push_back(c);
+        expnameentry_.push_back(c);
         return c;
     }
 
@@ -471,7 +471,7 @@ std::shared_ptr<Entity> ExpressionMib::Expnametable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expnametable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : expnameentry)
+    for (auto const & c : expnameentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -582,9 +582,9 @@ ExpressionMib::Expexpressiontable::~Expexpressiontable()
 
 bool ExpressionMib::Expexpressiontable::has_data() const
 {
-    for (std::size_t index=0; index<expexpressionentry.size(); index++)
+    for (std::size_t index=0; index<expexpressionentry_.size(); index++)
     {
-        if(expexpressionentry[index]->has_data())
+        if(expexpressionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -592,9 +592,9 @@ bool ExpressionMib::Expexpressiontable::has_data() const
 
 bool ExpressionMib::Expexpressiontable::has_operation() const
 {
-    for (std::size_t index=0; index<expexpressionentry.size(); index++)
+    for (std::size_t index=0; index<expexpressionentry_.size(); index++)
     {
-        if(expexpressionentry[index]->has_operation())
+        if(expexpressionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -634,7 +634,7 @@ std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(con
 {
     if(child_yang_name == "expExpressionEntry")
     {
-        for(auto const & c : expexpressionentry)
+        for(auto const & c : expexpressionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -644,7 +644,7 @@ std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(con
         }
         auto c = std::make_shared<ExpressionMib::Expexpressiontable::Expexpressionentry>();
         c->parent = this;
-        expexpressionentry.push_back(c);
+        expexpressionentry_.push_back(c);
         return c;
     }
 
@@ -654,7 +654,7 @@ std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expexpressiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : expexpressionentry)
+    for (auto const & c : expexpressionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -845,9 +845,9 @@ ExpressionMib::Expobjecttable::~Expobjecttable()
 
 bool ExpressionMib::Expobjecttable::has_data() const
 {
-    for (std::size_t index=0; index<expobjectentry.size(); index++)
+    for (std::size_t index=0; index<expobjectentry_.size(); index++)
     {
-        if(expobjectentry[index]->has_data())
+        if(expobjectentry_[index]->has_data())
             return true;
     }
     return false;
@@ -855,9 +855,9 @@ bool ExpressionMib::Expobjecttable::has_data() const
 
 bool ExpressionMib::Expobjecttable::has_operation() const
 {
-    for (std::size_t index=0; index<expobjectentry.size(); index++)
+    for (std::size_t index=0; index<expobjectentry_.size(); index++)
     {
-        if(expobjectentry[index]->has_operation())
+        if(expobjectentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -897,7 +897,7 @@ std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const s
 {
     if(child_yang_name == "expObjectEntry")
     {
-        for(auto const & c : expobjectentry)
+        for(auto const & c : expobjectentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -907,7 +907,7 @@ std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const s
         }
         auto c = std::make_shared<ExpressionMib::Expobjecttable::Expobjectentry>();
         c->parent = this;
-        expobjectentry.push_back(c);
+        expobjectentry_.push_back(c);
         return c;
     }
 
@@ -917,7 +917,7 @@ std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : expobjectentry)
+    for (auto const & c : expobjectentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1092,9 +1092,9 @@ ExpressionMib::Expvaluetable::~Expvaluetable()
 
 bool ExpressionMib::Expvaluetable::has_data() const
 {
-    for (std::size_t index=0; index<expvalueentry.size(); index++)
+    for (std::size_t index=0; index<expvalueentry_.size(); index++)
     {
-        if(expvalueentry[index]->has_data())
+        if(expvalueentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1102,9 +1102,9 @@ bool ExpressionMib::Expvaluetable::has_data() const
 
 bool ExpressionMib::Expvaluetable::has_operation() const
 {
-    for (std::size_t index=0; index<expvalueentry.size(); index++)
+    for (std::size_t index=0; index<expvalueentry_.size(); index++)
     {
-        if(expvalueentry[index]->has_operation())
+        if(expvalueentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1144,7 +1144,7 @@ std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const st
 {
     if(child_yang_name == "expValueEntry")
     {
-        for(auto const & c : expvalueentry)
+        for(auto const & c : expvalueentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1154,7 +1154,7 @@ std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const st
         }
         auto c = std::make_shared<ExpressionMib::Expvaluetable::Expvalueentry>();
         c->parent = this;
-        expvalueentry.push_back(c);
+        expvalueentry_.push_back(c);
         return c;
     }
 
@@ -1164,7 +1164,7 @@ std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : expvalueentry)
+    for (auto const & c : expvalueentry_)
     {
         children[c->get_segment_path()] = c;
     }

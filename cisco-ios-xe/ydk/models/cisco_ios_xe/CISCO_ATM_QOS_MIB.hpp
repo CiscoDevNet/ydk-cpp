@@ -34,10 +34,10 @@ class CiscoAtmQosMib : public Entity
         class Caqqueuingparamstable; //type: CiscoAtmQosMib::Caqqueuingparamstable
         class Caqqueuingparamsclasstable; //type: CiscoAtmQosMib::Caqqueuingparamsclasstable
 
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable> caqqueuingparamsclasstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable> caqqueuingparamstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable> caqvccparamstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable> caqvpcparamstable;
+        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable> caqqueuingparamsclasstable_;
+        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable> caqqueuingparamstable_;
+        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable> caqvccparamstable_;
+        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable> caqvpcparamstable_;
         
 }; // CiscoAtmQosMib
 
@@ -58,7 +58,7 @@ class CiscoAtmQosMib::Caqvccparamstable : public Entity
 
         class Caqvccparamsentry; //type: CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry> > caqvccparamsentry;
+        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry> > caqvccparamsentry_;
         
 }; // CiscoAtmQosMib::Caqvccparamstable
 
@@ -131,7 +131,7 @@ class CiscoAtmQosMib::Caqvpcparamstable : public Entity
 
         class Caqvpcparamsentry; //type: CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry> > caqvpcparamsentry;
+        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry> > caqvpcparamsentry_;
         
 }; // CiscoAtmQosMib::Caqvpcparamstable
 
@@ -184,7 +184,7 @@ class CiscoAtmQosMib::Caqqueuingparamstable : public Entity
 
         class Caqqueuingparamsentry; //type: CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry> > caqqueuingparamsentry;
+        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry> > caqqueuingparamsentry_;
         
 }; // CiscoAtmQosMib::Caqqueuingparamstable
 
@@ -230,7 +230,7 @@ class CiscoAtmQosMib::Caqqueuingparamsclasstable : public Entity
 
         class Caqqueuingparamsclassentry; //type: CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry> > caqqueuingparamsclassentry;
+        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry> > caqqueuingparamsclassentry_;
         
 }; // CiscoAtmQosMib::Caqqueuingparamsclasstable
 

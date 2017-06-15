@@ -11,18 +11,18 @@ namespace CISCO_IETF_FRR_MIB {
 
 CiscoIetfFrrMib::CiscoIetfFrrMib()
     :
-    cmplsfrrconsttable(std::make_shared<CiscoIetfFrrMib::Cmplsfrrconsttable>())
-	,cmplsfrrfacroutedbtable(std::make_shared<CiscoIetfFrrMib::Cmplsfrrfacroutedbtable>())
-	,cmplsfrrlogtable(std::make_shared<CiscoIetfFrrMib::Cmplsfrrlogtable>())
-	,cmplsfrrscalars(std::make_shared<CiscoIetfFrrMib::Cmplsfrrscalars>())
+    cmplsfrrconsttable_(std::make_shared<CiscoIetfFrrMib::Cmplsfrrconsttable>())
+	,cmplsfrrfacroutedbtable_(std::make_shared<CiscoIetfFrrMib::Cmplsfrrfacroutedbtable>())
+	,cmplsfrrlogtable_(std::make_shared<CiscoIetfFrrMib::Cmplsfrrlogtable>())
+	,cmplsfrrscalars_(std::make_shared<CiscoIetfFrrMib::Cmplsfrrscalars>())
 {
-    cmplsfrrconsttable->parent = this;
+    cmplsfrrconsttable_->parent = this;
 
-    cmplsfrrfacroutedbtable->parent = this;
+    cmplsfrrfacroutedbtable_->parent = this;
 
-    cmplsfrrlogtable->parent = this;
+    cmplsfrrlogtable_->parent = this;
 
-    cmplsfrrscalars->parent = this;
+    cmplsfrrscalars_->parent = this;
 
     yang_name = "CISCO-IETF-FRR-MIB"; yang_parent_name = "CISCO-IETF-FRR-MIB";
 }
@@ -33,19 +33,19 @@ CiscoIetfFrrMib::~CiscoIetfFrrMib()
 
 bool CiscoIetfFrrMib::has_data() const
 {
-    return (cmplsfrrconsttable !=  nullptr && cmplsfrrconsttable->has_data())
-	|| (cmplsfrrfacroutedbtable !=  nullptr && cmplsfrrfacroutedbtable->has_data())
-	|| (cmplsfrrlogtable !=  nullptr && cmplsfrrlogtable->has_data())
-	|| (cmplsfrrscalars !=  nullptr && cmplsfrrscalars->has_data());
+    return (cmplsfrrconsttable_ !=  nullptr && cmplsfrrconsttable_->has_data())
+	|| (cmplsfrrfacroutedbtable_ !=  nullptr && cmplsfrrfacroutedbtable_->has_data())
+	|| (cmplsfrrlogtable_ !=  nullptr && cmplsfrrlogtable_->has_data())
+	|| (cmplsfrrscalars_ !=  nullptr && cmplsfrrscalars_->has_data());
 }
 
 bool CiscoIetfFrrMib::has_operation() const
 {
     return is_set(operation)
-	|| (cmplsfrrconsttable !=  nullptr && cmplsfrrconsttable->has_operation())
-	|| (cmplsfrrfacroutedbtable !=  nullptr && cmplsfrrfacroutedbtable->has_operation())
-	|| (cmplsfrrlogtable !=  nullptr && cmplsfrrlogtable->has_operation())
-	|| (cmplsfrrscalars !=  nullptr && cmplsfrrscalars->has_operation());
+	|| (cmplsfrrconsttable_ !=  nullptr && cmplsfrrconsttable_->has_operation())
+	|| (cmplsfrrfacroutedbtable_ !=  nullptr && cmplsfrrfacroutedbtable_->has_operation())
+	|| (cmplsfrrlogtable_ !=  nullptr && cmplsfrrlogtable_->has_operation())
+	|| (cmplsfrrscalars_ !=  nullptr && cmplsfrrscalars_->has_operation());
 }
 
 std::string CiscoIetfFrrMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "cmplsFrrConstTable")
     {
-        if(cmplsfrrconsttable == nullptr)
+        if(cmplsfrrconsttable_ == nullptr)
         {
-            cmplsfrrconsttable = std::make_shared<CiscoIetfFrrMib::Cmplsfrrconsttable>();
+            cmplsfrrconsttable_ = std::make_shared<CiscoIetfFrrMib::Cmplsfrrconsttable>();
         }
-        return cmplsfrrconsttable;
+        return cmplsfrrconsttable_;
     }
 
     if(child_yang_name == "cmplsFrrFacRouteDBTable")
     {
-        if(cmplsfrrfacroutedbtable == nullptr)
+        if(cmplsfrrfacroutedbtable_ == nullptr)
         {
-            cmplsfrrfacroutedbtable = std::make_shared<CiscoIetfFrrMib::Cmplsfrrfacroutedbtable>();
+            cmplsfrrfacroutedbtable_ = std::make_shared<CiscoIetfFrrMib::Cmplsfrrfacroutedbtable>();
         }
-        return cmplsfrrfacroutedbtable;
+        return cmplsfrrfacroutedbtable_;
     }
 
     if(child_yang_name == "cmplsFrrLogTable")
     {
-        if(cmplsfrrlogtable == nullptr)
+        if(cmplsfrrlogtable_ == nullptr)
         {
-            cmplsfrrlogtable = std::make_shared<CiscoIetfFrrMib::Cmplsfrrlogtable>();
+            cmplsfrrlogtable_ = std::make_shared<CiscoIetfFrrMib::Cmplsfrrlogtable>();
         }
-        return cmplsfrrlogtable;
+        return cmplsfrrlogtable_;
     }
 
     if(child_yang_name == "cmplsFrrScalars")
     {
-        if(cmplsfrrscalars == nullptr)
+        if(cmplsfrrscalars_ == nullptr)
         {
-            cmplsfrrscalars = std::make_shared<CiscoIetfFrrMib::Cmplsfrrscalars>();
+            cmplsfrrscalars_ = std::make_shared<CiscoIetfFrrMib::Cmplsfrrscalars>();
         }
-        return cmplsfrrscalars;
+        return cmplsfrrscalars_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfFrrMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmplsfrrconsttable != nullptr)
+    if(cmplsfrrconsttable_ != nullptr)
     {
-        children["cmplsFrrConstTable"] = cmplsfrrconsttable;
+        children["cmplsFrrConstTable"] = cmplsfrrconsttable_;
     }
 
-    if(cmplsfrrfacroutedbtable != nullptr)
+    if(cmplsfrrfacroutedbtable_ != nullptr)
     {
-        children["cmplsFrrFacRouteDBTable"] = cmplsfrrfacroutedbtable;
+        children["cmplsFrrFacRouteDBTable"] = cmplsfrrfacroutedbtable_;
     }
 
-    if(cmplsfrrlogtable != nullptr)
+    if(cmplsfrrlogtable_ != nullptr)
     {
-        children["cmplsFrrLogTable"] = cmplsfrrlogtable;
+        children["cmplsFrrLogTable"] = cmplsfrrlogtable_;
     }
 
-    if(cmplsfrrscalars != nullptr)
+    if(cmplsfrrscalars_ != nullptr)
     {
-        children["cmplsFrrScalars"] = cmplsfrrscalars;
+        children["cmplsFrrScalars"] = cmplsfrrscalars_;
     }
 
     return children;
@@ -353,9 +353,9 @@ CiscoIetfFrrMib::Cmplsfrrconsttable::~Cmplsfrrconsttable()
 
 bool CiscoIetfFrrMib::Cmplsfrrconsttable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrconstentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrconstentry_.size(); index++)
     {
-        if(cmplsfrrconstentry[index]->has_data())
+        if(cmplsfrrconstentry_[index]->has_data())
             return true;
     }
     return false;
@@ -363,9 +363,9 @@ bool CiscoIetfFrrMib::Cmplsfrrconsttable::has_data() const
 
 bool CiscoIetfFrrMib::Cmplsfrrconsttable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrconstentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrconstentry_.size(); index++)
     {
-        if(cmplsfrrconstentry[index]->has_operation())
+        if(cmplsfrrconstentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -405,7 +405,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrconsttable::get_child_by_name(c
 {
     if(child_yang_name == "cmplsFrrConstEntry")
     {
-        for(auto const & c : cmplsfrrconstentry)
+        for(auto const & c : cmplsfrrconstentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -415,7 +415,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrconsttable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoIetfFrrMib::Cmplsfrrconsttable::Cmplsfrrconstentry>();
         c->parent = this;
-        cmplsfrrconstentry.push_back(c);
+        cmplsfrrconstentry_.push_back(c);
         return c;
     }
 
@@ -425,7 +425,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrconsttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfFrrMib::Cmplsfrrconsttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmplsfrrconstentry)
+    for (auto const & c : cmplsfrrconstentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -616,9 +616,9 @@ CiscoIetfFrrMib::Cmplsfrrlogtable::~Cmplsfrrlogtable()
 
 bool CiscoIetfFrrMib::Cmplsfrrlogtable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrlogentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrlogentry_.size(); index++)
     {
-        if(cmplsfrrlogentry[index]->has_data())
+        if(cmplsfrrlogentry_[index]->has_data())
             return true;
     }
     return false;
@@ -626,9 +626,9 @@ bool CiscoIetfFrrMib::Cmplsfrrlogtable::has_data() const
 
 bool CiscoIetfFrrMib::Cmplsfrrlogtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrlogentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrlogentry_.size(); index++)
     {
-        if(cmplsfrrlogentry[index]->has_operation())
+        if(cmplsfrrlogentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -668,7 +668,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrlogtable::get_child_by_name(con
 {
     if(child_yang_name == "cmplsFrrLogEntry")
     {
-        for(auto const & c : cmplsfrrlogentry)
+        for(auto const & c : cmplsfrrlogentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -678,7 +678,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrlogtable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoIetfFrrMib::Cmplsfrrlogtable::Cmplsfrrlogentry>();
         c->parent = this;
-        cmplsfrrlogentry.push_back(c);
+        cmplsfrrlogentry_.push_back(c);
         return c;
     }
 
@@ -688,7 +688,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrlogtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfFrrMib::Cmplsfrrlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmplsfrrlogentry)
+    for (auto const & c : cmplsfrrlogentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -823,9 +823,9 @@ CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::~Cmplsfrrfacroutedbtable()
 
 bool CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrfacroutedbentry_.size(); index++)
     {
-        if(cmplsfrrfacroutedbentry[index]->has_data())
+        if(cmplsfrrfacroutedbentry_[index]->has_data())
             return true;
     }
     return false;
@@ -833,9 +833,9 @@ bool CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::has_data() const
 
 bool CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrfacroutedbentry_.size(); index++)
     {
-        if(cmplsfrrfacroutedbentry[index]->has_operation())
+        if(cmplsfrrfacroutedbentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -875,7 +875,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::get_child_by_n
 {
     if(child_yang_name == "cmplsFrrFacRouteDBEntry")
     {
-        for(auto const & c : cmplsfrrfacroutedbentry)
+        for(auto const & c : cmplsfrrfacroutedbentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -885,7 +885,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::get_child_by_n
         }
         auto c = std::make_shared<CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry>();
         c->parent = this;
-        cmplsfrrfacroutedbentry.push_back(c);
+        cmplsfrrfacroutedbentry_.push_back(c);
         return c;
     }
 
@@ -895,7 +895,7 @@ std::shared_ptr<Entity> CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfFrrMib::Cmplsfrrfacroutedbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmplsfrrfacroutedbentry)
+    for (auto const & c : cmplsfrrfacroutedbentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -37,13 +37,13 @@ class CiscoOspfMib : public Entity
         class Cospfshamlinknbrtable; //type: CiscoOspfMib::Cospfshamlinknbrtable
         class Cospfshamlinkstable; //type: CiscoOspfMib::Cospfshamlinkstable
 
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfgeneralgroup> cospfgeneralgroup;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable> cospflocallsdbtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable> cospflsdbtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable> cospfshamlinknbrtable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable> cospfshamlinkstable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable> cospfshamlinktable;
-        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable> cospfvirtlocallsdbtable;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfgeneralgroup> cospfgeneralgroup_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable> cospflocallsdbtable_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable> cospflsdbtable_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable> cospfshamlinknbrtable_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable> cospfshamlinkstable_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable> cospfshamlinktable_;
+        std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable> cospfvirtlocallsdbtable_;
         
 }; // CiscoOspfMib
 
@@ -87,7 +87,7 @@ class CiscoOspfMib::Cospflsdbtable : public Entity
 
         class Cospflsdbentry; //type: CiscoOspfMib::Cospflsdbtable::Cospflsdbentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable::Cospflsdbentry> > cospflsdbentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflsdbtable::Cospflsdbentry> > cospflsdbentry_;
         
 }; // CiscoOspfMib::Cospflsdbtable
 
@@ -138,7 +138,7 @@ class CiscoOspfMib::Cospfshamlinktable : public Entity
 
         class Cospfshamlinkentry; //type: CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry> > cospfshamlinkentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinktable::Cospfshamlinkentry> > cospfshamlinkentry_;
         
 }; // CiscoOspfMib::Cospfshamlinktable
 
@@ -187,7 +187,7 @@ class CiscoOspfMib::Cospflocallsdbtable : public Entity
 
         class Cospflocallsdbentry; //type: CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry> > cospflocallsdbentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospflocallsdbtable::Cospflocallsdbentry> > cospflocallsdbentry_;
         
 }; // CiscoOspfMib::Cospflocallsdbtable
 
@@ -236,7 +236,7 @@ class CiscoOspfMib::Cospfvirtlocallsdbtable : public Entity
 
         class Cospfvirtlocallsdbentry; //type: CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry> > cospfvirtlocallsdbentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry> > cospfvirtlocallsdbentry_;
         
 }; // CiscoOspfMib::Cospfvirtlocallsdbtable
 
@@ -285,7 +285,7 @@ class CiscoOspfMib::Cospfshamlinknbrtable : public Entity
 
         class Cospfshamlinknbrentry; //type: CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry> > cospfshamlinknbrentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinknbrtable::Cospfshamlinknbrentry> > cospfshamlinknbrentry_;
         
 }; // CiscoOspfMib::Cospfshamlinknbrtable
 
@@ -337,7 +337,7 @@ class CiscoOspfMib::Cospfshamlinkstable : public Entity
 
         class Cospfshamlinksentry; //type: CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry
 
-        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry> > cospfshamlinksentry;
+        std::vector<std::shared_ptr<CISCO_OSPF_MIB::CiscoOspfMib::Cospfshamlinkstable::Cospfshamlinksentry> > cospfshamlinksentry_;
         
 }; // CiscoOspfMib::Cospfshamlinkstable
 

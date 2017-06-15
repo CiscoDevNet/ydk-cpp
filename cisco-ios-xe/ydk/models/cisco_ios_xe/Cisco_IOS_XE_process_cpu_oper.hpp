@@ -30,7 +30,7 @@ class CpuUsage : public Entity
 
         class CpuUtilization; //type: CpuUsage::CpuUtilization
 
-        std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization> cpu_utilization;
+        std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization> cpu_utilization_;
         
 }; // CpuUsage
 
@@ -55,7 +55,7 @@ class CpuUsage::CpuUtilization : public Entity
         YLeaf five_minutes; //type: uint8
         class CpuUsageProcesses; //type: CpuUsage::CpuUtilization::CpuUsageProcesses
 
-        std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization::CpuUsageProcesses> cpu_usage_processes;
+        std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization::CpuUsageProcesses> cpu_usage_processes_;
         
 }; // CpuUsage::CpuUtilization
 
@@ -76,7 +76,7 @@ class CpuUsage::CpuUtilization::CpuUsageProcesses : public Entity
 
         class CpuUsageProcess; //type: CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess> > cpu_usage_process;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess> > cpu_usage_process_;
         
 }; // CpuUsage::CpuUtilization::CpuUsageProcesses
 

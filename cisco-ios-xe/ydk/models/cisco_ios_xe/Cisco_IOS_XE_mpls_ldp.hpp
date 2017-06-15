@@ -130,8 +130,8 @@ class MplsLdp : public Entity
         class MplsLdpState; //type: MplsLdp::MplsLdpState
         class MplsLdpConfig; //type: MplsLdp::MplsLdpConfig
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig> mpls_ldp_config;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState> mpls_ldp_state;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig> mpls_ldp_config_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState> mpls_ldp_state_;
         
 }; // MplsLdp
 
@@ -166,21 +166,21 @@ class MplsLdp::MplsLdpState : public Entity
         class Neighbors; //type: MplsLdp::MplsLdpState::Neighbors
         class LabelRanges; //type: MplsLdp::MplsLdpState::LabelRanges
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::BackoffParameters> backoff_parameters;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings> bindings;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::BindingsSummary> bindings_summary;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Capabilities> capabilities;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery> discovery;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding> forwarding;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary> forwarding_summary;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::GracefulRestart> graceful_restart;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll> icpm_summary_all;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::LabelRanges> label_ranges;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors> neighbors;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::NsrSummaryAll> nsr_summary_all;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::OperSummary> oper_summary;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Parameters> parameters;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs> vrfs;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::BackoffParameters> backoff_parameters_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings> bindings_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::BindingsSummary> bindings_summary_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Capabilities> capabilities_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery> discovery_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding> forwarding_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary> forwarding_summary_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::GracefulRestart> graceful_restart_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll> icpm_summary_all_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::LabelRanges> label_ranges_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors> neighbors_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::NsrSummaryAll> nsr_summary_all_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::OperSummary> oper_summary_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Parameters> parameters_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs> vrfs_;
         
 }; // MplsLdp::MplsLdpState
 
@@ -208,7 +208,7 @@ class MplsLdp::MplsLdpState::OperSummary : public Entity
         YLeaf no_of_ipv4_rib_tbl_reg; //type: uint32
         class Common; //type: MplsLdp::MplsLdpState::OperSummary::Common
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::OperSummary::Common> common;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::OperSummary::Common> common_;
         
 }; // MplsLdp::MplsLdpState::OperSummary
 
@@ -259,8 +259,8 @@ class MplsLdp::MplsLdpState::ForwardingSummary : public Entity
         class Pfxs; //type: MplsLdp::MplsLdpState::ForwardingSummary::Pfxs
         class Nhs; //type: MplsLdp::MplsLdpState::ForwardingSummary::Nhs
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Nhs> nhs;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs> pfxs;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Nhs> nhs_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs> pfxs_;
         
 }; // MplsLdp::MplsLdpState::ForwardingSummary
 
@@ -286,9 +286,9 @@ class MplsLdp::MplsLdpState::ForwardingSummary::Pfxs : public Entity
         class LabeledPfxsPrimary; //type: MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary
         class LabeledPfxsBackup; //type: MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr> labeled_pfxs_aggr;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup> labeled_pfxs_backup;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary> labeled_pfxs_primary;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr> labeled_pfxs_aggr_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup> labeled_pfxs_backup_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary> labeled_pfxs_primary_;
         
 }; // MplsLdp::MplsLdpState::ForwardingSummary::Pfxs
 
@@ -455,8 +455,8 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll : public Entity
         class IcpmRgidTableInfo; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
         class IcpmSessionTable; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo> icpm_rgid_table_info;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable> icpm_session_table;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo> icpm_rgid_table_info_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable> icpm_session_table_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll
 
@@ -477,7 +477,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo : public Entity
 
         class RedGroup; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup> > red_group;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup> > red_group_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 
@@ -499,7 +499,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup : publi
         YLeaf rg_id; //type: uint32
         class IcpmProtocols; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols> > icpm_protocols;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols> > icpm_protocols_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup
 
@@ -521,7 +521,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPr
         YLeaf icpm_type; //type: IcpmTypeIdentity
         class RedunGroups; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups> > redun_groups;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups> > redun_groups_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols
 
@@ -546,7 +546,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPr
         YLeaf state; //type: string
         class IccpApps; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups
 
@@ -588,7 +588,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable : public Entity
 
         class SessionTable; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable> > session_table;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable> > session_table_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable
 
@@ -610,7 +610,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable : pu
         YLeaf session_id; //type: uint32
         class IcpmProtocols; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols> > icpm_protocols;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols> > icpm_protocols_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable
 
@@ -632,7 +632,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icp
         YLeaf icpm_type; //type: IcpmTypeIdentity
         class RedunGroups; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups> > redun_groups;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups> > redun_groups_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols
 
@@ -657,7 +657,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icp
         YLeaf state; //type: string
         class IccpApps; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps_;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups
 
@@ -713,7 +713,7 @@ class MplsLdp::MplsLdpState::Parameters : public Entity
         YLeafList feature; //type: list of  string
         class AddressFamilyParameter; //type: MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter> > address_family_parameter;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter> > address_family_parameter_;
         
 }; // MplsLdp::MplsLdpState::Parameters
 
@@ -756,7 +756,7 @@ class MplsLdp::MplsLdpState::Capabilities : public Entity
 
         class Capability; //type: MplsLdp::MplsLdpState::Capabilities::Capability
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Capabilities::Capability> > capability;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Capabilities::Capability> > capability_;
         
 }; // MplsLdp::MplsLdpState::Capabilities
 
@@ -845,7 +845,7 @@ class MplsLdp::MplsLdpState::Vrfs : public Entity
 
         class Vrf; //type: MplsLdp::MplsLdpState::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf> > vrf;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf> > vrf_;
         
 }; // MplsLdp::MplsLdpState::Vrfs
 
@@ -868,8 +868,8 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf : public Entity
         class VrfSummary; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary
         class Afs; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs> afs;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary> vrf_summary;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs> afs_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary> vrf_summary_;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf
 
@@ -917,7 +917,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs : public Entity
 
         class Af; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af> > af;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af> > af_;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs
 
@@ -940,8 +940,8 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af : public Entity
         class InterfaceSummary; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary
         class Igp; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp> igp;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary> interface_summary;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp> igp_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary> interface_summary_;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af
 
@@ -988,7 +988,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp : public Entity
 
         class Sync; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync> > sync;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync> > sync_;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp
 
@@ -1015,7 +1015,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync : public Entity
         YLeaf igp_sync_down_reason; //type: IgpSyncDownReasonIdentity
         class Peers; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers> > peers;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers> > peers_;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync
 
@@ -1059,9 +1059,9 @@ class MplsLdp::MplsLdpState::Discovery : public Entity
         class LinkHelloState; //type: MplsLdp::MplsLdpState::Discovery::LinkHelloState
         class TargetedHellos; //type: MplsLdp::MplsLdpState::Discovery::TargetedHellos
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::DiscoveryStats> discovery_stats;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::LinkHelloState> link_hello_state;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::TargetedHellos> targeted_hellos;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::DiscoveryStats> discovery_stats_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::LinkHelloState> link_hello_state_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::TargetedHellos> targeted_hellos_;
         
 }; // MplsLdp::MplsLdpState::Discovery
 
@@ -1106,7 +1106,7 @@ class MplsLdp::MplsLdpState::Discovery::LinkHelloState : public Entity
 
         class LinkHellos; //type: MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos> > link_hellos;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos> > link_hellos_;
         
 }; // MplsLdp::MplsLdpState::Discovery::LinkHelloState
 
@@ -1159,7 +1159,7 @@ class MplsLdp::MplsLdpState::Discovery::TargetedHellos : public Entity
         YLeaf targeted_hello_hold_time; //type: uint32
         class TargetedHello; //type: MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello> > targeted_hello;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello> > targeted_hello_;
         
 }; // MplsLdp::MplsLdpState::Discovery::TargetedHellos
 
@@ -1207,8 +1207,8 @@ class MplsLdp::MplsLdpState::Forwarding : public Entity
         class ForwardingVrfSumms; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms
         class ForwardingDetail; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail> > forwarding_detail;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms> forwarding_vrf_summs;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail> > forwarding_detail_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms> forwarding_vrf_summs_;
         
 }; // MplsLdp::MplsLdpState::Forwarding
 
@@ -1229,7 +1229,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms : public Entity
 
         class ForwardingVrfSumm; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm> > forwarding_vrf_summ;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm> > forwarding_vrf_summ_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms
 
@@ -1254,8 +1254,8 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm :
         class Pfxs; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs
         class Nhs; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs> nhs;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs> pfxs;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs> nhs_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs> pfxs_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm
 
@@ -1281,9 +1281,9 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::
         class LabeledPfxsPrimary; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary
         class LabeledPfxsBackup; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr> labeled_pfxs_aggr;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup> labeled_pfxs_backup;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary> labeled_pfxs_primary;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr> labeled_pfxs_aggr_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup> labeled_pfxs_backup_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary> labeled_pfxs_primary_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs
 
@@ -1397,8 +1397,8 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail : public Entity
         class Route; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route
         class Paths; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths> > paths;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route> route;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths> > paths_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route> route_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail
 
@@ -1451,8 +1451,8 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths : public Entity
         class Routing; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing
         class Mpls; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls> mpls;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing> routing;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls> mpls_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing> routing_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths
 
@@ -1504,8 +1504,8 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls : public 
         class MplsOutgoingInfo; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo
         class RemoteLfa; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo> mpls_outgoing_info;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa> remote_lfa;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo> mpls_outgoing_info_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa> remote_lfa_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls
 
@@ -1531,7 +1531,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutg
         YLeaf is_stale; //type: boolean
         class NexthopPeerLdpIdent; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent> nexthop_peer_ldp_ident;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent> nexthop_peer_ldp_ident_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo
 
@@ -1573,7 +1573,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLf
         YLeaf has_remote_lfa_bkup; //type: boolean
         class MplsOutgoingInfo; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo> mpls_outgoing_info;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo> mpls_outgoing_info_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 
@@ -1599,7 +1599,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLf
         YLeaf is_stale; //type: boolean
         class NexthopPeerLdpIdent; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent> nexthop_peer_ldp_ident;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent> nexthop_peer_ldp_ident_;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo
 
@@ -1641,8 +1641,8 @@ class MplsLdp::MplsLdpState::Bindings : public Entity
         class BindingsSumAfs; //type: MplsLdp::MplsLdpState::Bindings::BindingsSumAfs
         class Binding; //type: MplsLdp::MplsLdpState::Bindings::Binding
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding> > binding;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs> bindings_sum_afs;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding> > binding_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs> bindings_sum_afs_;
         
 }; // MplsLdp::MplsLdpState::Bindings
 
@@ -1663,7 +1663,7 @@ class MplsLdp::MplsLdpState::Bindings::BindingsSumAfs : public Entity
 
         class BindingSumAf; //type: MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf> > binding_sum_af;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf> > binding_sum_af_;
         
 }; // MplsLdp::MplsLdpState::Bindings::BindingsSumAfs
 
@@ -1729,8 +1729,8 @@ class MplsLdp::MplsLdpState::Bindings::Binding : public Entity
         class RemoteBinding; //type: MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding
         class PeersAdvertisedTo; //type: MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo> > peers_advertised_to;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding> > remote_binding;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo> > peers_advertised_to_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding> > remote_binding_;
         
 }; // MplsLdp::MplsLdpState::Bindings::Binding
 
@@ -1753,7 +1753,7 @@ class MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding : public Entity
         YLeaf is_stale; //type: boolean
         class AssigningPeerLdpIdent; //type: MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent> assigning_peer_ldp_ident;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent> assigning_peer_ldp_ident_;
         
 }; // MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding
 
@@ -1818,11 +1818,11 @@ class MplsLdp::MplsLdpState::Neighbors : public Entity
         class Backoffs; //type: MplsLdp::MplsLdpState::Neighbors::Backoffs
         class NsrNbrDetail; //type: MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Backoffs> backoffs;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NbrAdjs> > nbr_adjs;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor> > neighbor;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail> nsr_nbr_detail;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo> stats_info;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Backoffs> backoffs_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NbrAdjs> > nbr_adjs_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor> > neighbor_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail> nsr_nbr_detail_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo> stats_info_;
         
 }; // MplsLdp::MplsLdpState::Neighbors
 
@@ -1873,10 +1873,10 @@ class MplsLdp::MplsLdpState::Neighbors::Neighbor : public Entity
         class TcpInformation; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation
         class Capabilities; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities> capabilities;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency> graceful_restart_adjacency;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats> nbr_stats;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation> tcp_information;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities> capabilities_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency> graceful_restart_adjacency_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats> nbr_stats_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation> tcp_information_;
                 class SessionRoleEnum;
 
 }; // MplsLdp::MplsLdpState::Neighbors::Neighbor
@@ -1976,8 +1976,8 @@ class MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities : public Entity
         class SentCaps; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps
         class ReceivedCaps; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps> > received_caps;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps> > sent_caps;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps> > received_caps_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps> > sent_caps_;
         
 }; // MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
 
@@ -2080,8 +2080,8 @@ class MplsLdp::MplsLdpState::Neighbors::StatsInfo : public Entity
         class MessageOut; //type: MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut
         class MessageIn; //type: MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn> message_in;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut> message_out;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn> message_in_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut> message_out_;
         
 }; // MplsLdp::MplsLdpState::Neighbors::StatsInfo
 
@@ -2204,7 +2204,7 @@ class MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail : public Entity
         YLeaf path_vector_limit; //type: int32
         class NbrSess; //type: MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess> nbr_sess;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess> nbr_sess_;
         
 }; // MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail
 
@@ -2252,7 +2252,7 @@ class MplsLdp::MplsLdpState::LabelRanges : public Entity
 
         class LabelRange; //type: MplsLdp::MplsLdpState::LabelRanges::LabelRange
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::LabelRanges::LabelRange> > label_range;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::LabelRanges::LabelRange> > label_range_;
         
 }; // MplsLdp::MplsLdpState::LabelRanges
 
@@ -2303,17 +2303,17 @@ class MplsLdp::MplsLdpConfig : public Entity
         class Routing; //type: MplsLdp::MplsLdpConfig::Routing
         class DualStack; //type: MplsLdp::MplsLdpConfig::DualStack
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery> discovery;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::DualStack> dual_stack;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg> global_cfg;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GracefulRestart> graceful_restart;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces> interfaces;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg> label_cfg;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging> logging;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::NbrTable> nbr_table;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Passwords> passwords;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Routing> routing;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Session> session;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery> discovery_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::DualStack> dual_stack_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg> global_cfg_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GracefulRestart> graceful_restart_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces> interfaces_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg> label_cfg_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging> logging_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::NbrTable> nbr_table_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Passwords> passwords_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Routing> routing_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Session> session_;
         
 }; // MplsLdp::MplsLdpConfig
 
@@ -2349,9 +2349,9 @@ class MplsLdp::MplsLdpConfig::GlobalCfg : public Entity
         class Session; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session
         class PerAf; //type: MplsLdp::MplsLdpConfig::GlobalCfg::PerAf
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf> per_af;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::RouterId> > router_id;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session> session;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf> per_af_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::RouterId> > router_id_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session> session_;
                 class AdminStatusEnum;
         class ProtocolEnum;
 
@@ -2402,8 +2402,8 @@ class MplsLdp::MplsLdpConfig::GlobalCfg::Session : public Entity
         class DownstreamOnDemand; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand
         class Protection; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand> > downstream_on_demand;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection> protection;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand> > downstream_on_demand_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection> protection_;
         
 }; // MplsLdp::MplsLdpConfig::GlobalCfg::Session
 
@@ -2467,7 +2467,7 @@ class MplsLdp::MplsLdpConfig::GlobalCfg::PerAf : public Entity
 
         class AfCfg; //type: MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg> > af_cfg;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg> > af_cfg_;
         
 }; // MplsLdp::MplsLdpConfig::GlobalCfg::PerAf
 
@@ -2513,7 +2513,7 @@ class MplsLdp::MplsLdpConfig::NbrTable : public Entity
 
         class NbrCfg; //type: MplsLdp::MplsLdpConfig::NbrTable::NbrCfg
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::NbrTable::NbrCfg> > nbr_cfg;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::NbrTable::NbrCfg> > nbr_cfg_;
         
 }; // MplsLdp::MplsLdpConfig::NbrTable
 
@@ -2562,7 +2562,7 @@ class MplsLdp::MplsLdpConfig::Passwords : public Entity
 
         class Password; //type: MplsLdp::MplsLdpConfig::Passwords::Password
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Passwords::Password> > password;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Passwords::Password> > password_;
         
 }; // MplsLdp::MplsLdpConfig::Passwords
 
@@ -2629,7 +2629,7 @@ class MplsLdp::MplsLdpConfig::LabelCfg : public Entity
 
         class LabelAfCfg; //type: MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg> > label_af_cfg;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg> > label_af_cfg_;
         
 }; // MplsLdp::MplsLdpConfig::LabelCfg
 
@@ -2654,7 +2654,7 @@ class MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg : public Entity
         YLeaf host_route_enable; //type: boolean
         class AdvtFilter; //type: MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter> > advt_filter;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter> > advt_filter_;
         
 }; // MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg
 
@@ -2701,9 +2701,9 @@ class MplsLdp::MplsLdpConfig::Discovery : public Entity
         class TargetedHello; //type: MplsLdp::MplsLdpConfig::Discovery::TargetedHello
         class IntTransAddrs; //type: MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs> int_trans_addrs;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::LinkHello> link_hello;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::TargetedHello> targeted_hello;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs> int_trans_addrs_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::LinkHello> link_hello_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::TargetedHello> targeted_hello_;
         
 }; // MplsLdp::MplsLdpConfig::Discovery
 
@@ -2747,7 +2747,7 @@ class MplsLdp::MplsLdpConfig::Discovery::TargetedHello : public Entity
         YLeaf enable; //type: boolean
         class Accept; //type: MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept> accept;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept> accept_;
         
 }; // MplsLdp::MplsLdpConfig::Discovery::TargetedHello
 
@@ -2788,7 +2788,7 @@ class MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs : public Entity
 
         class IntTransAddr; //type: MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr> > int_trans_addr;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr> > int_trans_addr_;
         
 }; // MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs
 
@@ -2837,7 +2837,7 @@ class MplsLdp::MplsLdpConfig::GracefulRestart : public Entity
         YLeaf nbr_liveness; //type: uint32
         class Helper; //type: MplsLdp::MplsLdpConfig::GracefulRestart::Helper
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GracefulRestart::Helper> > helper;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GracefulRestart::Helper> > helper_;
         
 }; // MplsLdp::MplsLdpConfig::GracefulRestart
 
@@ -2883,7 +2883,7 @@ class MplsLdp::MplsLdpConfig::Logging : public Entity
         YLeaf session_protection; //type: boolean
         class Password; //type: MplsLdp::MplsLdpConfig::Logging::Password
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password> password;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password> password_;
         
 }; // MplsLdp::MplsLdpConfig::Logging
 
@@ -2905,8 +2905,8 @@ class MplsLdp::MplsLdpConfig::Logging::Password : public Entity
         class ConfigMsg; //type: MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg
         class RolloverMsg; //type: MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg> config_msg;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg> rollover_msg;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg> config_msg_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg> rollover_msg_;
         
 }; // MplsLdp::MplsLdpConfig::Logging::Password
 
@@ -2967,7 +2967,7 @@ class MplsLdp::MplsLdpConfig::Interfaces : public Entity
 
         class Interface; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface> > interface_;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces
 
@@ -2996,7 +2996,7 @@ class MplsLdp::MplsLdpConfig::Interfaces::Interface : public Entity
         YLeaf disable_delay; //type: empty
         class Afs; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs> afs;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs> afs_;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces::Interface
 
@@ -3017,7 +3017,7 @@ class MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs : public Entity
 
         class Af; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af> > af;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af> > af_;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs
 
@@ -3041,7 +3041,7 @@ class MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af : public Entity
         YLeaf autoconfig_disable; //type: boolean
         class BgpRedist; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist> bgp_redist;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist> bgp_redist_;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af
 
@@ -3084,7 +3084,7 @@ class MplsLdp::MplsLdpConfig::Routing : public Entity
 
         class RoutingInst; //type: MplsLdp::MplsLdpConfig::Routing::RoutingInst
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Routing::RoutingInst> > routing_inst;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Routing::RoutingInst> > routing_inst_;
         
 }; // MplsLdp::MplsLdpConfig::Routing
 
@@ -3153,8 +3153,8 @@ class ClearMsgCountersRpc : public Entity
         class Input; //type: ClearMsgCountersRpc::Input
         class Output; //type: ClearMsgCountersRpc::Output
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearMsgCountersRpc::Input> input;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearMsgCountersRpc::Output> output;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearMsgCountersRpc::Input> input_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearMsgCountersRpc::Output> output_;
         
 }; // ClearMsgCountersRpc
 
@@ -3219,8 +3219,8 @@ class RestartNeighborRpc : public Entity
         class Input; //type: RestartNeighborRpc::Input
         class Output; //type: RestartNeighborRpc::Output
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::RestartNeighborRpc::Input> input;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::RestartNeighborRpc::Output> output;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::RestartNeighborRpc::Input> input_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::RestartNeighborRpc::Output> output_;
         
 }; // RestartNeighborRpc
 
@@ -3285,8 +3285,8 @@ class ClearForwardingRpc : public Entity
         class Input; //type: ClearForwardingRpc::Input
         class Output; //type: ClearForwardingRpc::Output
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearForwardingRpc::Input> input;
-        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearForwardingRpc::Output> output;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearForwardingRpc::Input> input_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_ldp::ClearForwardingRpc::Output> output_;
         
 }; // ClearForwardingRpc
 

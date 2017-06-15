@@ -32,8 +32,8 @@ class IgmpStdMib : public Entity
         class Igmpinterfacetable; //type: IgmpStdMib::Igmpinterfacetable
         class Igmpcachetable; //type: IgmpStdMib::Igmpcachetable
 
-        std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpcachetable> igmpcachetable;
-        std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpinterfacetable> igmpinterfacetable;
+        std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpcachetable> igmpcachetable_;
+        std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpinterfacetable> igmpinterfacetable_;
         
 }; // IgmpStdMib
 
@@ -54,7 +54,7 @@ class IgmpStdMib::Igmpinterfacetable : public Entity
 
         class Igmpinterfaceentry; //type: IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry
 
-        std::vector<std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry> > igmpinterfaceentry;
+        std::vector<std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry> > igmpinterfaceentry_;
         
 }; // IgmpStdMib::Igmpinterfacetable
 
@@ -108,7 +108,7 @@ class IgmpStdMib::Igmpcachetable : public Entity
 
         class Igmpcacheentry; //type: IgmpStdMib::Igmpcachetable::Igmpcacheentry
 
-        std::vector<std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpcachetable::Igmpcacheentry> > igmpcacheentry;
+        std::vector<std::shared_ptr<IGMP_STD_MIB::IgmpStdMib::Igmpcachetable::Igmpcacheentry> > igmpcacheentry_;
         
 }; // IgmpStdMib::Igmpcachetable
 

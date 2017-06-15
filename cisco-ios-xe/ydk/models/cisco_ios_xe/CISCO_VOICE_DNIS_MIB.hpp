@@ -32,8 +32,8 @@ class CiscoVoiceDnisMib : public Entity
         class Cvdnismappingtable; //type: CiscoVoiceDnisMib::Cvdnismappingtable
         class Cvdnisnodetable; //type: CiscoVoiceDnisMib::Cvdnisnodetable
 
-        std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnismappingtable> cvdnismappingtable;
-        std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnisnodetable> cvdnisnodetable;
+        std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnismappingtable> cvdnismappingtable_;
+        std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnisnodetable> cvdnisnodetable_;
         
 }; // CiscoVoiceDnisMib
 
@@ -54,7 +54,7 @@ class CiscoVoiceDnisMib::Cvdnismappingtable : public Entity
 
         class Cvdnismappingentry; //type: CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry> > cvdnismappingentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry> > cvdnismappingentry_;
         
 }; // CiscoVoiceDnisMib::Cvdnismappingtable
 
@@ -99,7 +99,7 @@ class CiscoVoiceDnisMib::Cvdnisnodetable : public Entity
 
         class Cvdnisnodeentry; //type: CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry> > cvdnisnodeentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DNIS_MIB::CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry> > cvdnisnodeentry_;
         
 }; // CiscoVoiceDnisMib::Cvdnisnodetable
 

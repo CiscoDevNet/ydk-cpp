@@ -11,15 +11,15 @@ namespace SNMP_TARGET_MIB {
 
 SnmpTargetMib::SnmpTargetMib()
     :
-    snmptargetaddrtable(std::make_shared<SnmpTargetMib::Snmptargetaddrtable>())
-	,snmptargetobjects(std::make_shared<SnmpTargetMib::Snmptargetobjects>())
-	,snmptargetparamstable(std::make_shared<SnmpTargetMib::Snmptargetparamstable>())
+    snmptargetaddrtable_(std::make_shared<SnmpTargetMib::Snmptargetaddrtable>())
+	,snmptargetobjects_(std::make_shared<SnmpTargetMib::Snmptargetobjects>())
+	,snmptargetparamstable_(std::make_shared<SnmpTargetMib::Snmptargetparamstable>())
 {
-    snmptargetaddrtable->parent = this;
+    snmptargetaddrtable_->parent = this;
 
-    snmptargetobjects->parent = this;
+    snmptargetobjects_->parent = this;
 
-    snmptargetparamstable->parent = this;
+    snmptargetparamstable_->parent = this;
 
     yang_name = "SNMP-TARGET-MIB"; yang_parent_name = "SNMP-TARGET-MIB";
 }
@@ -30,17 +30,17 @@ SnmpTargetMib::~SnmpTargetMib()
 
 bool SnmpTargetMib::has_data() const
 {
-    return (snmptargetaddrtable !=  nullptr && snmptargetaddrtable->has_data())
-	|| (snmptargetobjects !=  nullptr && snmptargetobjects->has_data())
-	|| (snmptargetparamstable !=  nullptr && snmptargetparamstable->has_data());
+    return (snmptargetaddrtable_ !=  nullptr && snmptargetaddrtable_->has_data())
+	|| (snmptargetobjects_ !=  nullptr && snmptargetobjects_->has_data())
+	|| (snmptargetparamstable_ !=  nullptr && snmptargetparamstable_->has_data());
 }
 
 bool SnmpTargetMib::has_operation() const
 {
     return is_set(operation)
-	|| (snmptargetaddrtable !=  nullptr && snmptargetaddrtable->has_operation())
-	|| (snmptargetobjects !=  nullptr && snmptargetobjects->has_operation())
-	|| (snmptargetparamstable !=  nullptr && snmptargetparamstable->has_operation());
+	|| (snmptargetaddrtable_ !=  nullptr && snmptargetaddrtable_->has_operation())
+	|| (snmptargetobjects_ !=  nullptr && snmptargetobjects_->has_operation())
+	|| (snmptargetparamstable_ !=  nullptr && snmptargetparamstable_->has_operation());
 }
 
 std::string SnmpTargetMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> SnmpTargetMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "snmpTargetAddrTable")
     {
-        if(snmptargetaddrtable == nullptr)
+        if(snmptargetaddrtable_ == nullptr)
         {
-            snmptargetaddrtable = std::make_shared<SnmpTargetMib::Snmptargetaddrtable>();
+            snmptargetaddrtable_ = std::make_shared<SnmpTargetMib::Snmptargetaddrtable>();
         }
-        return snmptargetaddrtable;
+        return snmptargetaddrtable_;
     }
 
     if(child_yang_name == "snmpTargetObjects")
     {
-        if(snmptargetobjects == nullptr)
+        if(snmptargetobjects_ == nullptr)
         {
-            snmptargetobjects = std::make_shared<SnmpTargetMib::Snmptargetobjects>();
+            snmptargetobjects_ = std::make_shared<SnmpTargetMib::Snmptargetobjects>();
         }
-        return snmptargetobjects;
+        return snmptargetobjects_;
     }
 
     if(child_yang_name == "snmpTargetParamsTable")
     {
-        if(snmptargetparamstable == nullptr)
+        if(snmptargetparamstable_ == nullptr)
         {
-            snmptargetparamstable = std::make_shared<SnmpTargetMib::Snmptargetparamstable>();
+            snmptargetparamstable_ = std::make_shared<SnmpTargetMib::Snmptargetparamstable>();
         }
-        return snmptargetparamstable;
+        return snmptargetparamstable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> SnmpTargetMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmptargetaddrtable != nullptr)
+    if(snmptargetaddrtable_ != nullptr)
     {
-        children["snmpTargetAddrTable"] = snmptargetaddrtable;
+        children["snmpTargetAddrTable"] = snmptargetaddrtable_;
     }
 
-    if(snmptargetobjects != nullptr)
+    if(snmptargetobjects_ != nullptr)
     {
-        children["snmpTargetObjects"] = snmptargetobjects;
+        children["snmpTargetObjects"] = snmptargetobjects_;
     }
 
-    if(snmptargetparamstable != nullptr)
+    if(snmptargetparamstable_ != nullptr)
     {
-        children["snmpTargetParamsTable"] = snmptargetparamstable;
+        children["snmpTargetParamsTable"] = snmptargetparamstable_;
     }
 
     return children;
@@ -246,9 +246,9 @@ SnmpTargetMib::Snmptargetaddrtable::~Snmptargetaddrtable()
 
 bool SnmpTargetMib::Snmptargetaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetaddrentry_.size(); index++)
     {
-        if(snmptargetaddrentry[index]->has_data())
+        if(snmptargetaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -256,9 +256,9 @@ bool SnmpTargetMib::Snmptargetaddrtable::has_data() const
 
 bool SnmpTargetMib::Snmptargetaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetaddrentry_.size(); index++)
     {
-        if(snmptargetaddrentry[index]->has_operation())
+        if(snmptargetaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -298,7 +298,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
 {
     if(child_yang_name == "snmpTargetAddrEntry")
     {
-        for(auto const & c : snmptargetaddrentry)
+        for(auto const & c : snmptargetaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -308,7 +308,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
         }
         auto c = std::make_shared<SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry>();
         c->parent = this;
-        snmptargetaddrentry.push_back(c);
+        snmptargetaddrentry_.push_back(c);
         return c;
     }
 
@@ -318,7 +318,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : snmptargetaddrentry)
+    for (auto const & c : snmptargetaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -477,9 +477,9 @@ SnmpTargetMib::Snmptargetparamstable::~Snmptargetparamstable()
 
 bool SnmpTargetMib::Snmptargetparamstable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetparamsentry_.size(); index++)
     {
-        if(snmptargetparamsentry[index]->has_data())
+        if(snmptargetparamsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -487,9 +487,9 @@ bool SnmpTargetMib::Snmptargetparamstable::has_data() const
 
 bool SnmpTargetMib::Snmptargetparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetparamsentry_.size(); index++)
     {
-        if(snmptargetparamsentry[index]->has_operation())
+        if(snmptargetparamsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -529,7 +529,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
 {
     if(child_yang_name == "snmpTargetParamsEntry")
     {
-        for(auto const & c : snmptargetparamsentry)
+        for(auto const & c : snmptargetparamsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -539,7 +539,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
         }
         auto c = std::make_shared<SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry>();
         c->parent = this;
-        snmptargetparamsentry.push_back(c);
+        snmptargetparamsentry_.push_back(c);
         return c;
     }
 
@@ -549,7 +549,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : snmptargetparamsentry)
+    for (auto const & c : snmptargetparamsentry_)
     {
         children[c->get_segment_path()] = c;
     }

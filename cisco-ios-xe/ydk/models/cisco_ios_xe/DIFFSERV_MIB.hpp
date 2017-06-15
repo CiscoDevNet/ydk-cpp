@@ -143,28 +143,28 @@ class DiffservMib : public Entity
         class Diffservminratetable; //type: DiffservMib::Diffservminratetable
         class Diffservmaxratetable; //type: DiffservMib::Diffservmaxratetable
 
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservaction> diffservaction;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable> diffservactiontable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdrop> diffservalgdrop;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable> diffservalgdroptable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclassifier> diffservclassifier;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable> diffservclfrelementtable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable> diffservclfrtable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable> diffservcountacttable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable> diffservdatapathtable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable> diffservdscpmarkacttable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable> diffservmaxratetable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmeter> diffservmeter;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable> diffservmetertable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable> diffservminratetable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable> diffservmultifieldclfrtable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable> diffservqtable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqueue> diffservqueue;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable> diffservrandomdroptable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservscheduler> diffservscheduler;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable> diffservschedulertable;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparam> diffservtbparam;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable> diffservtbparamtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservaction> diffservaction_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable> diffservactiontable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdrop> diffservalgdrop_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable> diffservalgdroptable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclassifier> diffservclassifier_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable> diffservclfrelementtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable> diffservclfrtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable> diffservcountacttable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable> diffservdatapathtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable> diffservdscpmarkacttable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable> diffservmaxratetable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmeter> diffservmeter_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable> diffservmetertable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable> diffservminratetable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable> diffservmultifieldclfrtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable> diffservqtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqueue> diffservqueue_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable> diffservrandomdroptable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservscheduler> diffservscheduler_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable> diffservschedulertable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparam> diffservtbparam_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable> diffservtbparamtable_;
         
 }; // DiffservMib
 
@@ -324,7 +324,7 @@ class DiffservMib::Diffservdatapathtable : public Entity
 
         class Diffservdatapathentry; //type: DiffservMib::Diffservdatapathtable::Diffservdatapathentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable::Diffservdatapathentry> > diffservdatapathentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable::Diffservdatapathentry> > diffservdatapathentry_;
         
 }; // DiffservMib::Diffservdatapathtable
 
@@ -369,7 +369,7 @@ class DiffservMib::Diffservclfrtable : public Entity
 
         class Diffservclfrentry; //type: DiffservMib::Diffservclfrtable::Diffservclfrentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable::Diffservclfrentry> > diffservclfrentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable::Diffservclfrentry> > diffservclfrentry_;
         
 }; // DiffservMib::Diffservclfrtable
 
@@ -411,7 +411,7 @@ class DiffservMib::Diffservclfrelementtable : public Entity
 
         class Diffservclfrelemententry; //type: DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry> > diffservclfrelemententry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry> > diffservclfrelemententry_;
         
 }; // DiffservMib::Diffservclfrelementtable
 
@@ -458,7 +458,7 @@ class DiffservMib::Diffservmultifieldclfrtable : public Entity
 
         class Diffservmultifieldclfrentry; //type: DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry> > diffservmultifieldclfrentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry> > diffservmultifieldclfrentry_;
         
 }; // DiffservMib::Diffservmultifieldclfrtable
 
@@ -512,7 +512,7 @@ class DiffservMib::Diffservmetertable : public Entity
 
         class Diffservmeterentry; //type: DiffservMib::Diffservmetertable::Diffservmeterentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable::Diffservmeterentry> > diffservmeterentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable::Diffservmeterentry> > diffservmeterentry_;
         
 }; // DiffservMib::Diffservmetertable
 
@@ -557,7 +557,7 @@ class DiffservMib::Diffservtbparamtable : public Entity
 
         class Diffservtbparamentry; //type: DiffservMib::Diffservtbparamtable::Diffservtbparamentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable::Diffservtbparamentry> > diffservtbparamentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable::Diffservtbparamentry> > diffservtbparamentry_;
         
 }; // DiffservMib::Diffservtbparamtable
 
@@ -603,7 +603,7 @@ class DiffservMib::Diffservactiontable : public Entity
 
         class Diffservactionentry; //type: DiffservMib::Diffservactiontable::Diffservactionentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable::Diffservactionentry> > diffservactionentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable::Diffservactionentry> > diffservactionentry_;
         
 }; // DiffservMib::Diffservactiontable
 
@@ -648,7 +648,7 @@ class DiffservMib::Diffservdscpmarkacttable : public Entity
 
         class Diffservdscpmarkactentry; //type: DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry> > diffservdscpmarkactentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry> > diffservdscpmarkactentry_;
         
 }; // DiffservMib::Diffservdscpmarkacttable
 
@@ -688,7 +688,7 @@ class DiffservMib::Diffservcountacttable : public Entity
 
         class Diffservcountactentry; //type: DiffservMib::Diffservcountacttable::Diffservcountactentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable::Diffservcountactentry> > diffservcountactentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable::Diffservcountactentry> > diffservcountactentry_;
         
 }; // DiffservMib::Diffservcountacttable
 
@@ -732,7 +732,7 @@ class DiffservMib::Diffservalgdroptable : public Entity
 
         class Diffservalgdropentry; //type: DiffservMib::Diffservalgdroptable::Diffservalgdropentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable::Diffservalgdropentry> > diffservalgdropentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable::Diffservalgdropentry> > diffservalgdropentry_;
         
 }; // DiffservMib::Diffservalgdroptable
 
@@ -784,7 +784,7 @@ class DiffservMib::Diffservrandomdroptable : public Entity
 
         class Diffservrandomdropentry; //type: DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry> > diffservrandomdropentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry> > diffservrandomdropentry_;
         
 }; // DiffservMib::Diffservrandomdroptable
 
@@ -833,7 +833,7 @@ class DiffservMib::Diffservqtable : public Entity
 
         class Diffservqentry; //type: DiffservMib::Diffservqtable::Diffservqentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable::Diffservqentry> > diffservqentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable::Diffservqentry> > diffservqentry_;
         
 }; // DiffservMib::Diffservqtable
 
@@ -878,7 +878,7 @@ class DiffservMib::Diffservschedulertable : public Entity
 
         class Diffservschedulerentry; //type: DiffservMib::Diffservschedulertable::Diffservschedulerentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable::Diffservschedulerentry> > diffservschedulerentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable::Diffservschedulerentry> > diffservschedulerentry_;
         
 }; // DiffservMib::Diffservschedulertable
 
@@ -924,7 +924,7 @@ class DiffservMib::Diffservminratetable : public Entity
 
         class Diffservminrateentry; //type: DiffservMib::Diffservminratetable::Diffservminrateentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable::Diffservminrateentry> > diffservminrateentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable::Diffservminrateentry> > diffservminrateentry_;
         
 }; // DiffservMib::Diffservminratetable
 
@@ -969,7 +969,7 @@ class DiffservMib::Diffservmaxratetable : public Entity
 
         class Diffservmaxrateentry; //type: DiffservMib::Diffservmaxratetable::Diffservmaxrateentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable::Diffservmaxrateentry> > diffservmaxrateentry;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable::Diffservmaxrateentry> > diffservmaxrateentry_;
         
 }; // DiffservMib::Diffservmaxratetable
 

@@ -32,8 +32,8 @@ class CiscoConfigCopyMib : public Entity
         class Cccopytable; //type: CiscoConfigCopyMib::Cccopytable
         class Cccopyerrortable; //type: CiscoConfigCopyMib::Cccopyerrortable
 
-        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable> cccopyerrortable;
-        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable> cccopytable;
+        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable> cccopyerrortable_;
+        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable> cccopytable_;
         
 }; // CiscoConfigCopyMib
 
@@ -54,7 +54,7 @@ class CiscoConfigCopyMib::Cccopytable : public Entity
 
         class Cccopyentry; //type: CiscoConfigCopyMib::Cccopytable::Cccopyentry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable::Cccopyentry> > cccopyentry;
+        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable::Cccopyentry> > cccopyentry_;
         
 }; // CiscoConfigCopyMib::Cccopytable
 
@@ -109,7 +109,7 @@ class CiscoConfigCopyMib::Cccopyerrortable : public Entity
 
         class Cccopyerrorentry; //type: CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry> > cccopyerrorentry;
+        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry> > cccopyerrorentry_;
         
 }; // CiscoConfigCopyMib::Cccopyerrortable
 

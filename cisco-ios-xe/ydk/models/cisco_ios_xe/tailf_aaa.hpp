@@ -31,8 +31,8 @@ class Aaa : public Entity
         class Authentication; //type: Aaa::Authentication
         class Ios; //type: Aaa::Ios
 
-        std::shared_ptr<tailf_aaa::Aaa::Authentication> authentication;
-        std::shared_ptr<tailf_aaa::Aaa::Ios> ios; // presence node
+        std::shared_ptr<tailf_aaa::Aaa::Authentication> authentication_;
+        std::shared_ptr<tailf_aaa::Aaa::Ios> ios_; // presence node
         
 }; // Aaa
 
@@ -53,7 +53,7 @@ class Aaa::Authentication : public Entity
 
         class Users; //type: Aaa::Authentication::Users
 
-        std::shared_ptr<tailf_aaa::Aaa::Authentication::Users> users;
+        std::shared_ptr<tailf_aaa::Aaa::Authentication::Users> users_;
         
 }; // Aaa::Authentication
 
@@ -74,7 +74,7 @@ class Aaa::Authentication::Users : public Entity
 
         class User; //type: Aaa::Authentication::Users::User
 
-        std::vector<std::shared_ptr<tailf_aaa::Aaa::Authentication::Users::User> > user;
+        std::vector<std::shared_ptr<tailf_aaa::Aaa::Authentication::Users::User> > user_;
         
 }; // Aaa::Authentication::Users
 
@@ -120,8 +120,8 @@ class Aaa::Ios : public Entity
         class Level; //type: Aaa::Ios::Level
         class Privilege; //type: Aaa::Ios::Privilege
 
-        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Level> > level;
-        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege> > privilege;
+        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Level> > level_;
+        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege> > privilege_;
         
 }; // Aaa::Ios
 
@@ -165,7 +165,7 @@ class Aaa::Ios::Privilege : public Entity
         YLeaf mode; //type: one of string, enumeration
         class Level; //type: Aaa::Ios::Privilege::Level
 
-        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege::Level> > level;
+        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege::Level> > level_;
         
 }; // Aaa::Ios::Privilege
 
@@ -187,7 +187,7 @@ class Aaa::Ios::Privilege::Level : public Entity
         YLeaf nr; //type: int32
         class Command; //type: Aaa::Ios::Privilege::Level::Command
 
-        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege::Level::Command> > command;
+        std::vector<std::shared_ptr<tailf_aaa::Aaa::Ios::Privilege::Level::Command> > command_;
         
 }; // Aaa::Ios::Privilege::Level
 
@@ -287,8 +287,8 @@ class User : public Entity
         class Alias; //type: User::Alias
         class Session; //type: User::Session
 
-        std::vector<std::shared_ptr<tailf_aaa::User::Alias> > alias;
-        std::shared_ptr<tailf_aaa::User::Session> session;
+        std::vector<std::shared_ptr<tailf_aaa::User::Alias> > alias_;
+        std::shared_ptr<tailf_aaa::User::Session> session_;
         
 }; // User
 

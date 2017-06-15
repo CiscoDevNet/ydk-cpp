@@ -56,15 +56,15 @@ PwSequencingTypeIdentity::~PwSequencingTypeIdentity()
 
 PseudowireConfig::PseudowireConfig()
     :
-    global(std::make_shared<PseudowireConfig::Global>())
-	,pw_static_oam_classes(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
-	,pw_templates(std::make_shared<PseudowireConfig::PwTemplates>())
+    global_(std::make_shared<PseudowireConfig::Global>())
+	,pw_static_oam_classes_(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
+	,pw_templates_(std::make_shared<PseudowireConfig::PwTemplates>())
 {
-    global->parent = this;
+    global_->parent = this;
 
-    pw_static_oam_classes->parent = this;
+    pw_static_oam_classes_->parent = this;
 
-    pw_templates->parent = this;
+    pw_templates_->parent = this;
 
     yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw";
 }
@@ -75,17 +75,17 @@ PseudowireConfig::~PseudowireConfig()
 
 bool PseudowireConfig::has_data() const
 {
-    return (global !=  nullptr && global->has_data())
-	|| (pw_static_oam_classes !=  nullptr && pw_static_oam_classes->has_data())
-	|| (pw_templates !=  nullptr && pw_templates->has_data());
+    return (global_ !=  nullptr && global_->has_data())
+	|| (pw_static_oam_classes_ !=  nullptr && pw_static_oam_classes_->has_data())
+	|| (pw_templates_ !=  nullptr && pw_templates_->has_data());
 }
 
 bool PseudowireConfig::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && global->has_operation())
-	|| (pw_static_oam_classes !=  nullptr && pw_static_oam_classes->has_operation())
-	|| (pw_templates !=  nullptr && pw_templates->has_operation());
+	|| (global_ !=  nullptr && global_->has_operation())
+	|| (pw_static_oam_classes_ !=  nullptr && pw_static_oam_classes_->has_operation())
+	|| (pw_templates_ !=  nullptr && pw_templates_->has_operation());
 }
 
 std::string PseudowireConfig::get_segment_path() const
@@ -119,29 +119,29 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "global")
     {
-        if(global == nullptr)
+        if(global_ == nullptr)
         {
-            global = std::make_shared<PseudowireConfig::Global>();
+            global_ = std::make_shared<PseudowireConfig::Global>();
         }
-        return global;
+        return global_;
     }
 
     if(child_yang_name == "pw-static-oam-classes")
     {
-        if(pw_static_oam_classes == nullptr)
+        if(pw_static_oam_classes_ == nullptr)
         {
-            pw_static_oam_classes = std::make_shared<PseudowireConfig::PwStaticOamClasses>();
+            pw_static_oam_classes_ = std::make_shared<PseudowireConfig::PwStaticOamClasses>();
         }
-        return pw_static_oam_classes;
+        return pw_static_oam_classes_;
     }
 
     if(child_yang_name == "pw-templates")
     {
-        if(pw_templates == nullptr)
+        if(pw_templates_ == nullptr)
         {
-            pw_templates = std::make_shared<PseudowireConfig::PwTemplates>();
+            pw_templates_ = std::make_shared<PseudowireConfig::PwTemplates>();
         }
-        return pw_templates;
+        return pw_templates_;
     }
 
     return nullptr;
@@ -150,19 +150,19 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(global != nullptr)
+    if(global_ != nullptr)
     {
-        children["global"] = global;
+        children["global"] = global_;
     }
 
-    if(pw_static_oam_classes != nullptr)
+    if(pw_static_oam_classes_ != nullptr)
     {
-        children["pw-static-oam-classes"] = pw_static_oam_classes;
+        children["pw-static-oam-classes"] = pw_static_oam_classes_;
     }
 
-    if(pw_templates != nullptr)
+    if(pw_templates_ != nullptr)
     {
-        children["pw-templates"] = pw_templates;
+        children["pw-templates"] = pw_templates_;
     }
 
     return children;
@@ -323,9 +323,9 @@ PseudowireConfig::PwTemplates::~PwTemplates()
 
 bool PseudowireConfig::PwTemplates::has_data() const
 {
-    for (std::size_t index=0; index<pw_template.size(); index++)
+    for (std::size_t index=0; index<pw_template_.size(); index++)
     {
-        if(pw_template[index]->has_data())
+        if(pw_template_[index]->has_data())
             return true;
     }
     return false;
@@ -333,9 +333,9 @@ bool PseudowireConfig::PwTemplates::has_data() const
 
 bool PseudowireConfig::PwTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<pw_template.size(); index++)
+    for (std::size_t index=0; index<pw_template_.size(); index++)
     {
-        if(pw_template[index]->has_operation())
+        if(pw_template_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -375,7 +375,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 {
     if(child_yang_name == "pw-template")
     {
-        for(auto const & c : pw_template)
+        for(auto const & c : pw_template_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -385,7 +385,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
         }
         auto c = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
         c->parent = this;
-        pw_template.push_back(c);
+        pw_template_.push_back(c);
         return c;
     }
 
@@ -395,7 +395,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pw_template)
+    for (auto const & c : pw_template_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -419,27 +419,27 @@ PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
     tag_rewrite_ingress_vlan{YType::uint16, "tag-rewrite-ingress-vlan"},
     vc_type{YType::identityref, "vc-type"}
     	,
-    load_balance(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>())
-	,port_profile_spec(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
-	,preferred_path(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
-	,sequencing(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
-	,status(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
-	,switchover_delay(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
-	,vccv(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
+    load_balance_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>())
+	,port_profile_spec_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
+	,preferred_path_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
+	,sequencing_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
+	,status_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
+	,switchover_delay_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
+	,vccv_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
 {
-    load_balance->parent = this;
+    load_balance_->parent = this;
 
-    port_profile_spec->parent = this;
+    port_profile_spec_->parent = this;
 
-    preferred_path->parent = this;
+    preferred_path_->parent = this;
 
-    sequencing->parent = this;
+    sequencing_->parent = this;
 
-    status->parent = this;
+    status_->parent = this;
 
-    switchover_delay->parent = this;
+    switchover_delay_->parent = this;
 
-    vccv->parent = this;
+    vccv_->parent = this;
 
     yang_name = "pw-template"; yang_parent_name = "pw-templates";
 }
@@ -459,13 +459,13 @@ bool PseudowireConfig::PwTemplates::PwTemplate::has_data() const
 	|| switching_tlv.is_set
 	|| tag_rewrite_ingress_vlan.is_set
 	|| vc_type.is_set
-	|| (load_balance !=  nullptr && load_balance->has_data())
-	|| (port_profile_spec !=  nullptr && port_profile_spec->has_data())
-	|| (preferred_path !=  nullptr && preferred_path->has_data())
-	|| (sequencing !=  nullptr && sequencing->has_data())
-	|| (status !=  nullptr && status->has_data())
-	|| (switchover_delay !=  nullptr && switchover_delay->has_data())
-	|| (vccv !=  nullptr && vccv->has_data());
+	|| (load_balance_ !=  nullptr && load_balance_->has_data())
+	|| (port_profile_spec_ !=  nullptr && port_profile_spec_->has_data())
+	|| (preferred_path_ !=  nullptr && preferred_path_->has_data())
+	|| (sequencing_ !=  nullptr && sequencing_->has_data())
+	|| (status_ !=  nullptr && status_->has_data())
+	|| (switchover_delay_ !=  nullptr && switchover_delay_->has_data())
+	|| (vccv_ !=  nullptr && vccv_->has_data());
 }
 
 bool PseudowireConfig::PwTemplates::PwTemplate::has_operation() const
@@ -480,13 +480,13 @@ bool PseudowireConfig::PwTemplates::PwTemplate::has_operation() const
 	|| is_set(switching_tlv.operation)
 	|| is_set(tag_rewrite_ingress_vlan.operation)
 	|| is_set(vc_type.operation)
-	|| (load_balance !=  nullptr && load_balance->has_operation())
-	|| (port_profile_spec !=  nullptr && port_profile_spec->has_operation())
-	|| (preferred_path !=  nullptr && preferred_path->has_operation())
-	|| (sequencing !=  nullptr && sequencing->has_operation())
-	|| (status !=  nullptr && status->has_operation())
-	|| (switchover_delay !=  nullptr && switchover_delay->has_operation())
-	|| (vccv !=  nullptr && vccv->has_operation());
+	|| (load_balance_ !=  nullptr && load_balance_->has_operation())
+	|| (port_profile_spec_ !=  nullptr && port_profile_spec_->has_operation())
+	|| (preferred_path_ !=  nullptr && preferred_path_->has_operation())
+	|| (sequencing_ !=  nullptr && sequencing_->has_operation())
+	|| (status_ !=  nullptr && status_->has_operation())
+	|| (switchover_delay_ !=  nullptr && switchover_delay_->has_operation())
+	|| (vccv_ !=  nullptr && vccv_->has_operation());
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::get_segment_path() const
@@ -532,65 +532,65 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
 {
     if(child_yang_name == "load-balance")
     {
-        if(load_balance == nullptr)
+        if(load_balance_ == nullptr)
         {
-            load_balance = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>();
+            load_balance_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>();
         }
-        return load_balance;
+        return load_balance_;
     }
 
     if(child_yang_name == "port-profile-spec")
     {
-        if(port_profile_spec == nullptr)
+        if(port_profile_spec_ == nullptr)
         {
-            port_profile_spec = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>();
+            port_profile_spec_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>();
         }
-        return port_profile_spec;
+        return port_profile_spec_;
     }
 
     if(child_yang_name == "preferred-path")
     {
-        if(preferred_path == nullptr)
+        if(preferred_path_ == nullptr)
         {
-            preferred_path = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>();
+            preferred_path_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>();
         }
-        return preferred_path;
+        return preferred_path_;
     }
 
     if(child_yang_name == "sequencing")
     {
-        if(sequencing == nullptr)
+        if(sequencing_ == nullptr)
         {
-            sequencing = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>();
+            sequencing_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>();
         }
-        return sequencing;
+        return sequencing_;
     }
 
     if(child_yang_name == "status")
     {
-        if(status == nullptr)
+        if(status_ == nullptr)
         {
-            status = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>();
+            status_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>();
         }
-        return status;
+        return status_;
     }
 
     if(child_yang_name == "switchover-delay")
     {
-        if(switchover_delay == nullptr)
+        if(switchover_delay_ == nullptr)
         {
-            switchover_delay = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>();
+            switchover_delay_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>();
         }
-        return switchover_delay;
+        return switchover_delay_;
     }
 
     if(child_yang_name == "vccv")
     {
-        if(vccv == nullptr)
+        if(vccv_ == nullptr)
         {
-            vccv = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>();
+            vccv_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>();
         }
-        return vccv;
+        return vccv_;
     }
 
     return nullptr;
@@ -599,39 +599,39 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(load_balance != nullptr)
+    if(load_balance_ != nullptr)
     {
-        children["load-balance"] = load_balance;
+        children["load-balance"] = load_balance_;
     }
 
-    if(port_profile_spec != nullptr)
+    if(port_profile_spec_ != nullptr)
     {
-        children["port-profile-spec"] = port_profile_spec;
+        children["port-profile-spec"] = port_profile_spec_;
     }
 
-    if(preferred_path != nullptr)
+    if(preferred_path_ != nullptr)
     {
-        children["preferred-path"] = preferred_path;
+        children["preferred-path"] = preferred_path_;
     }
 
-    if(sequencing != nullptr)
+    if(sequencing_ != nullptr)
     {
-        children["sequencing"] = sequencing;
+        children["sequencing"] = sequencing_;
     }
 
-    if(status != nullptr)
+    if(status_ != nullptr)
     {
-        children["status"] = status;
+        children["status"] = status_;
     }
 
-    if(switchover_delay != nullptr)
+    if(switchover_delay_ != nullptr)
     {
-        children["switchover-delay"] = switchover_delay;
+        children["switchover-delay"] = switchover_delay_;
     }
 
-    if(vccv != nullptr)
+    if(vccv_ != nullptr)
     {
-        children["vccv"] = vccv;
+        children["vccv"] = vccv_;
     }
 
     return children;
@@ -682,9 +682,9 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::LoadBalance()
     ethernet{YType::identityref, "ethernet"},
     ip{YType::identityref, "ip"}
     	,
-    flow_label(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>())
+    flow_label_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>())
 {
-    flow_label->parent = this;
+    flow_label_->parent = this;
 
     yang_name = "load-balance"; yang_parent_name = "pw-template";
 }
@@ -697,7 +697,7 @@ bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_data() const
 {
     return ethernet.is_set
 	|| ip.is_set
-	|| (flow_label !=  nullptr && flow_label->has_data());
+	|| (flow_label_ !=  nullptr && flow_label_->has_data());
 }
 
 bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_operation() const
@@ -705,7 +705,7 @@ bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_operation() con
     return is_set(operation)
 	|| is_set(ethernet.operation)
 	|| is_set(ip.operation)
-	|| (flow_label !=  nullptr && flow_label->has_operation());
+	|| (flow_label_ !=  nullptr && flow_label_->has_operation());
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_segment_path() const
@@ -744,11 +744,11 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 {
     if(child_yang_name == "flow-label")
     {
-        if(flow_label == nullptr)
+        if(flow_label_ == nullptr)
         {
-            flow_label = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>();
+            flow_label_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>();
         }
-        return flow_label;
+        return flow_label_;
     }
 
     return nullptr;
@@ -757,9 +757,9 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(flow_label != nullptr)
+    if(flow_label_ != nullptr)
     {
-        children["flow-label"] = flow_label;
+        children["flow-label"] = flow_label_;
     }
 
     return children;
@@ -1428,9 +1428,9 @@ PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
 
 bool PseudowireConfig::PwStaticOamClasses::has_data() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    for (std::size_t index=0; index<pw_static_oam_class_.size(); index++)
     {
-        if(pw_static_oam_class[index]->has_data())
+        if(pw_static_oam_class_[index]->has_data())
             return true;
     }
     return false;
@@ -1438,9 +1438,9 @@ bool PseudowireConfig::PwStaticOamClasses::has_data() const
 
 bool PseudowireConfig::PwStaticOamClasses::has_operation() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    for (std::size_t index=0; index<pw_static_oam_class_.size(); index++)
     {
-        if(pw_static_oam_class[index]->has_operation())
+        if(pw_static_oam_class_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1480,7 +1480,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 {
     if(child_yang_name == "pw-static-oam-class")
     {
-        for(auto const & c : pw_static_oam_class)
+        for(auto const & c : pw_static_oam_class_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1490,7 +1490,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
         }
         auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
         c->parent = this;
-        pw_static_oam_class.push_back(c);
+        pw_static_oam_class_.push_back(c);
         return c;
     }
 
@@ -1500,7 +1500,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pw_static_oam_class)
+    for (auto const & c : pw_static_oam_class_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1627,9 +1627,9 @@ PseudowireState::~PseudowireState()
 
 bool PseudowireState::has_data() const
 {
-    for (std::size_t index=0; index<pseudowires.size(); index++)
+    for (std::size_t index=0; index<pseudowires_.size(); index++)
     {
-        if(pseudowires[index]->has_data())
+        if(pseudowires_[index]->has_data())
             return true;
     }
     return false;
@@ -1637,9 +1637,9 @@ bool PseudowireState::has_data() const
 
 bool PseudowireState::has_operation() const
 {
-    for (std::size_t index=0; index<pseudowires.size(); index++)
+    for (std::size_t index=0; index<pseudowires_.size(); index++)
     {
-        if(pseudowires[index]->has_operation())
+        if(pseudowires_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1676,7 +1676,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "pseudowires")
     {
-        for(auto const & c : pseudowires)
+        for(auto const & c : pseudowires_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1686,7 +1686,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
         }
         auto c = std::make_shared<PseudowireState::Pseudowires>();
         c->parent = this;
-        pseudowires.push_back(c);
+        pseudowires_.push_back(c);
         return c;
     }
 
@@ -1696,7 +1696,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pseudowires)
+    for (auto const & c : pseudowires_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1750,9 +1750,9 @@ PseudowireState::Pseudowires::Pseudowires()
     vc_remote_if_mtu{YType::uint32, "vc-remote-if-mtu"},
     vc_type{YType::identityref, "vc-type"}
     	,
-    statistics(std::make_shared<PseudowireState::Pseudowires::Statistics>())
+    statistics_(std::make_shared<PseudowireState::Pseudowires::Statistics>())
 {
-    statistics->parent = this;
+    statistics_->parent = this;
 
     yang_name = "pseudowires"; yang_parent_name = "pseudowire-state";
 }
@@ -1782,7 +1782,7 @@ bool PseudowireState::Pseudowires::has_data() const
 	|| vc_remote_group_id.is_set
 	|| vc_remote_if_mtu.is_set
 	|| vc_type.is_set
-	|| (statistics !=  nullptr && statistics->has_data());
+	|| (statistics_ !=  nullptr && statistics_->has_data());
 }
 
 bool PseudowireState::Pseudowires::has_operation() const
@@ -1807,7 +1807,7 @@ bool PseudowireState::Pseudowires::has_operation() const
 	|| is_set(vc_remote_group_id.operation)
 	|| is_set(vc_remote_if_mtu.operation)
 	|| is_set(vc_type.operation)
-	|| (statistics !=  nullptr && statistics->has_operation());
+	|| (statistics_ !=  nullptr && statistics_->has_operation());
 }
 
 std::string PseudowireState::Pseudowires::get_segment_path() const
@@ -1863,11 +1863,11 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
 {
     if(child_yang_name == "statistics")
     {
-        if(statistics == nullptr)
+        if(statistics_ == nullptr)
         {
-            statistics = std::make_shared<PseudowireState::Pseudowires::Statistics>();
+            statistics_ = std::make_shared<PseudowireState::Pseudowires::Statistics>();
         }
-        return statistics;
+        return statistics_;
     }
 
     return nullptr;
@@ -1876,9 +1876,9 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(statistics != nullptr)
+    if(statistics_ != nullptr)
     {
-        children["statistics"] = statistics;
+        children["statistics"] = statistics_;
     }
 
     return children;

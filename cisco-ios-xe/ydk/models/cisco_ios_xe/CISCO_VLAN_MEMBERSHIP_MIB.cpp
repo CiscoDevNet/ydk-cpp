@@ -11,33 +11,33 @@ namespace CISCO_VLAN_MEMBERSHIP_MIB {
 
 CiscoVlanMembershipMib::CiscoVlanMembershipMib()
     :
-    vmmembership(std::make_shared<CiscoVlanMembershipMib::Vmmembership>())
-	,vmmembershipsummaryexttable(std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummaryexttable>())
-	,vmmembershipsummarytable(std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummarytable>())
-	,vmmembershiptable(std::make_shared<CiscoVlanMembershipMib::Vmmembershiptable>())
-	,vmstatistics(std::make_shared<CiscoVlanMembershipMib::Vmstatistics>())
-	,vmstatus(std::make_shared<CiscoVlanMembershipMib::Vmstatus>())
-	,vmvmps(std::make_shared<CiscoVlanMembershipMib::Vmvmps>())
-	,vmvmpstable(std::make_shared<CiscoVlanMembershipMib::Vmvmpstable>())
-	,vmvoicevlantable(std::make_shared<CiscoVlanMembershipMib::Vmvoicevlantable>())
+    vmmembership_(std::make_shared<CiscoVlanMembershipMib::Vmmembership>())
+	,vmmembershipsummaryexttable_(std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummaryexttable>())
+	,vmmembershipsummarytable_(std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummarytable>())
+	,vmmembershiptable_(std::make_shared<CiscoVlanMembershipMib::Vmmembershiptable>())
+	,vmstatistics_(std::make_shared<CiscoVlanMembershipMib::Vmstatistics>())
+	,vmstatus_(std::make_shared<CiscoVlanMembershipMib::Vmstatus>())
+	,vmvmps_(std::make_shared<CiscoVlanMembershipMib::Vmvmps>())
+	,vmvmpstable_(std::make_shared<CiscoVlanMembershipMib::Vmvmpstable>())
+	,vmvoicevlantable_(std::make_shared<CiscoVlanMembershipMib::Vmvoicevlantable>())
 {
-    vmmembership->parent = this;
+    vmmembership_->parent = this;
 
-    vmmembershipsummaryexttable->parent = this;
+    vmmembershipsummaryexttable_->parent = this;
 
-    vmmembershipsummarytable->parent = this;
+    vmmembershipsummarytable_->parent = this;
 
-    vmmembershiptable->parent = this;
+    vmmembershiptable_->parent = this;
 
-    vmstatistics->parent = this;
+    vmstatistics_->parent = this;
 
-    vmstatus->parent = this;
+    vmstatus_->parent = this;
 
-    vmvmps->parent = this;
+    vmvmps_->parent = this;
 
-    vmvmpstable->parent = this;
+    vmvmpstable_->parent = this;
 
-    vmvoicevlantable->parent = this;
+    vmvoicevlantable_->parent = this;
 
     yang_name = "CISCO-VLAN-MEMBERSHIP-MIB"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB";
 }
@@ -48,29 +48,29 @@ CiscoVlanMembershipMib::~CiscoVlanMembershipMib()
 
 bool CiscoVlanMembershipMib::has_data() const
 {
-    return (vmmembership !=  nullptr && vmmembership->has_data())
-	|| (vmmembershipsummaryexttable !=  nullptr && vmmembershipsummaryexttable->has_data())
-	|| (vmmembershipsummarytable !=  nullptr && vmmembershipsummarytable->has_data())
-	|| (vmmembershiptable !=  nullptr && vmmembershiptable->has_data())
-	|| (vmstatistics !=  nullptr && vmstatistics->has_data())
-	|| (vmstatus !=  nullptr && vmstatus->has_data())
-	|| (vmvmps !=  nullptr && vmvmps->has_data())
-	|| (vmvmpstable !=  nullptr && vmvmpstable->has_data())
-	|| (vmvoicevlantable !=  nullptr && vmvoicevlantable->has_data());
+    return (vmmembership_ !=  nullptr && vmmembership_->has_data())
+	|| (vmmembershipsummaryexttable_ !=  nullptr && vmmembershipsummaryexttable_->has_data())
+	|| (vmmembershipsummarytable_ !=  nullptr && vmmembershipsummarytable_->has_data())
+	|| (vmmembershiptable_ !=  nullptr && vmmembershiptable_->has_data())
+	|| (vmstatistics_ !=  nullptr && vmstatistics_->has_data())
+	|| (vmstatus_ !=  nullptr && vmstatus_->has_data())
+	|| (vmvmps_ !=  nullptr && vmvmps_->has_data())
+	|| (vmvmpstable_ !=  nullptr && vmvmpstable_->has_data())
+	|| (vmvoicevlantable_ !=  nullptr && vmvoicevlantable_->has_data());
 }
 
 bool CiscoVlanMembershipMib::has_operation() const
 {
     return is_set(operation)
-	|| (vmmembership !=  nullptr && vmmembership->has_operation())
-	|| (vmmembershipsummaryexttable !=  nullptr && vmmembershipsummaryexttable->has_operation())
-	|| (vmmembershipsummarytable !=  nullptr && vmmembershipsummarytable->has_operation())
-	|| (vmmembershiptable !=  nullptr && vmmembershiptable->has_operation())
-	|| (vmstatistics !=  nullptr && vmstatistics->has_operation())
-	|| (vmstatus !=  nullptr && vmstatus->has_operation())
-	|| (vmvmps !=  nullptr && vmvmps->has_operation())
-	|| (vmvmpstable !=  nullptr && vmvmpstable->has_operation())
-	|| (vmvoicevlantable !=  nullptr && vmvoicevlantable->has_operation());
+	|| (vmmembership_ !=  nullptr && vmmembership_->has_operation())
+	|| (vmmembershipsummaryexttable_ !=  nullptr && vmmembershipsummaryexttable_->has_operation())
+	|| (vmmembershipsummarytable_ !=  nullptr && vmmembershipsummarytable_->has_operation())
+	|| (vmmembershiptable_ !=  nullptr && vmmembershiptable_->has_operation())
+	|| (vmstatistics_ !=  nullptr && vmstatistics_->has_operation())
+	|| (vmstatus_ !=  nullptr && vmstatus_->has_operation())
+	|| (vmvmps_ !=  nullptr && vmvmps_->has_operation())
+	|| (vmvmpstable_ !=  nullptr && vmvmpstable_->has_operation())
+	|| (vmvoicevlantable_ !=  nullptr && vmvoicevlantable_->has_operation());
 }
 
 std::string CiscoVlanMembershipMib::get_segment_path() const
@@ -104,83 +104,83 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "vmMembership")
     {
-        if(vmmembership == nullptr)
+        if(vmmembership_ == nullptr)
         {
-            vmmembership = std::make_shared<CiscoVlanMembershipMib::Vmmembership>();
+            vmmembership_ = std::make_shared<CiscoVlanMembershipMib::Vmmembership>();
         }
-        return vmmembership;
+        return vmmembership_;
     }
 
     if(child_yang_name == "vmMembershipSummaryExtTable")
     {
-        if(vmmembershipsummaryexttable == nullptr)
+        if(vmmembershipsummaryexttable_ == nullptr)
         {
-            vmmembershipsummaryexttable = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummaryexttable>();
+            vmmembershipsummaryexttable_ = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummaryexttable>();
         }
-        return vmmembershipsummaryexttable;
+        return vmmembershipsummaryexttable_;
     }
 
     if(child_yang_name == "vmMembershipSummaryTable")
     {
-        if(vmmembershipsummarytable == nullptr)
+        if(vmmembershipsummarytable_ == nullptr)
         {
-            vmmembershipsummarytable = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummarytable>();
+            vmmembershipsummarytable_ = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummarytable>();
         }
-        return vmmembershipsummarytable;
+        return vmmembershipsummarytable_;
     }
 
     if(child_yang_name == "vmMembershipTable")
     {
-        if(vmmembershiptable == nullptr)
+        if(vmmembershiptable_ == nullptr)
         {
-            vmmembershiptable = std::make_shared<CiscoVlanMembershipMib::Vmmembershiptable>();
+            vmmembershiptable_ = std::make_shared<CiscoVlanMembershipMib::Vmmembershiptable>();
         }
-        return vmmembershiptable;
+        return vmmembershiptable_;
     }
 
     if(child_yang_name == "vmStatistics")
     {
-        if(vmstatistics == nullptr)
+        if(vmstatistics_ == nullptr)
         {
-            vmstatistics = std::make_shared<CiscoVlanMembershipMib::Vmstatistics>();
+            vmstatistics_ = std::make_shared<CiscoVlanMembershipMib::Vmstatistics>();
         }
-        return vmstatistics;
+        return vmstatistics_;
     }
 
     if(child_yang_name == "vmStatus")
     {
-        if(vmstatus == nullptr)
+        if(vmstatus_ == nullptr)
         {
-            vmstatus = std::make_shared<CiscoVlanMembershipMib::Vmstatus>();
+            vmstatus_ = std::make_shared<CiscoVlanMembershipMib::Vmstatus>();
         }
-        return vmstatus;
+        return vmstatus_;
     }
 
     if(child_yang_name == "vmVmps")
     {
-        if(vmvmps == nullptr)
+        if(vmvmps_ == nullptr)
         {
-            vmvmps = std::make_shared<CiscoVlanMembershipMib::Vmvmps>();
+            vmvmps_ = std::make_shared<CiscoVlanMembershipMib::Vmvmps>();
         }
-        return vmvmps;
+        return vmvmps_;
     }
 
     if(child_yang_name == "vmVmpsTable")
     {
-        if(vmvmpstable == nullptr)
+        if(vmvmpstable_ == nullptr)
         {
-            vmvmpstable = std::make_shared<CiscoVlanMembershipMib::Vmvmpstable>();
+            vmvmpstable_ = std::make_shared<CiscoVlanMembershipMib::Vmvmpstable>();
         }
-        return vmvmpstable;
+        return vmvmpstable_;
     }
 
     if(child_yang_name == "vmVoiceVlanTable")
     {
-        if(vmvoicevlantable == nullptr)
+        if(vmvoicevlantable_ == nullptr)
         {
-            vmvoicevlantable = std::make_shared<CiscoVlanMembershipMib::Vmvoicevlantable>();
+            vmvoicevlantable_ = std::make_shared<CiscoVlanMembershipMib::Vmvoicevlantable>();
         }
-        return vmvoicevlantable;
+        return vmvoicevlantable_;
     }
 
     return nullptr;
@@ -189,49 +189,49 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(vmmembership != nullptr)
+    if(vmmembership_ != nullptr)
     {
-        children["vmMembership"] = vmmembership;
+        children["vmMembership"] = vmmembership_;
     }
 
-    if(vmmembershipsummaryexttable != nullptr)
+    if(vmmembershipsummaryexttable_ != nullptr)
     {
-        children["vmMembershipSummaryExtTable"] = vmmembershipsummaryexttable;
+        children["vmMembershipSummaryExtTable"] = vmmembershipsummaryexttable_;
     }
 
-    if(vmmembershipsummarytable != nullptr)
+    if(vmmembershipsummarytable_ != nullptr)
     {
-        children["vmMembershipSummaryTable"] = vmmembershipsummarytable;
+        children["vmMembershipSummaryTable"] = vmmembershipsummarytable_;
     }
 
-    if(vmmembershiptable != nullptr)
+    if(vmmembershiptable_ != nullptr)
     {
-        children["vmMembershipTable"] = vmmembershiptable;
+        children["vmMembershipTable"] = vmmembershiptable_;
     }
 
-    if(vmstatistics != nullptr)
+    if(vmstatistics_ != nullptr)
     {
-        children["vmStatistics"] = vmstatistics;
+        children["vmStatistics"] = vmstatistics_;
     }
 
-    if(vmstatus != nullptr)
+    if(vmstatus_ != nullptr)
     {
-        children["vmStatus"] = vmstatus;
+        children["vmStatus"] = vmstatus_;
     }
 
-    if(vmvmps != nullptr)
+    if(vmvmps_ != nullptr)
     {
-        children["vmVmps"] = vmvmps;
+        children["vmVmps"] = vmvmps_;
     }
 
-    if(vmvmpstable != nullptr)
+    if(vmvmpstable_ != nullptr)
     {
-        children["vmVmpsTable"] = vmvmpstable;
+        children["vmVmpsTable"] = vmvmpstable_;
     }
 
-    if(vmvoicevlantable != nullptr)
+    if(vmvoicevlantable_ != nullptr)
     {
-        children["vmVoiceVlanTable"] = vmvoicevlantable;
+        children["vmVoiceVlanTable"] = vmvoicevlantable_;
     }
 
     return children;
@@ -656,9 +656,9 @@ CiscoVlanMembershipMib::Vmvmpstable::~Vmvmpstable()
 
 bool CiscoVlanMembershipMib::Vmvmpstable::has_data() const
 {
-    for (std::size_t index=0; index<vmvmpsentry.size(); index++)
+    for (std::size_t index=0; index<vmvmpsentry_.size(); index++)
     {
-        if(vmvmpsentry[index]->has_data())
+        if(vmvmpsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -666,9 +666,9 @@ bool CiscoVlanMembershipMib::Vmvmpstable::has_data() const
 
 bool CiscoVlanMembershipMib::Vmvmpstable::has_operation() const
 {
-    for (std::size_t index=0; index<vmvmpsentry.size(); index++)
+    for (std::size_t index=0; index<vmvmpsentry_.size(); index++)
     {
-        if(vmvmpsentry[index]->has_operation())
+        if(vmvmpsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -708,7 +708,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvmpstable::get_child_by_name(c
 {
     if(child_yang_name == "vmVmpsEntry")
     {
-        for(auto const & c : vmvmpsentry)
+        for(auto const & c : vmvmpsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -718,7 +718,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvmpstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoVlanMembershipMib::Vmvmpstable::Vmvmpsentry>();
         c->parent = this;
-        vmvmpsentry.push_back(c);
+        vmvmpsentry_.push_back(c);
         return c;
     }
 
@@ -728,7 +728,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvmpstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::Vmvmpstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vmvmpsentry)
+    for (auto const & c : vmvmpsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -839,9 +839,9 @@ CiscoVlanMembershipMib::Vmmembershipsummarytable::~Vmmembershipsummarytable()
 
 bool CiscoVlanMembershipMib::Vmmembershipsummarytable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryentry_.size(); index++)
     {
-        if(vmmembershipsummaryentry[index]->has_data())
+        if(vmmembershipsummaryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -849,9 +849,9 @@ bool CiscoVlanMembershipMib::Vmmembershipsummarytable::has_data() const
 
 bool CiscoVlanMembershipMib::Vmmembershipsummarytable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryentry_.size(); index++)
     {
-        if(vmmembershipsummaryentry[index]->has_operation())
+        if(vmmembershipsummaryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -891,7 +891,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummarytable::get_ch
 {
     if(child_yang_name == "vmMembershipSummaryEntry")
     {
-        for(auto const & c : vmmembershipsummaryentry)
+        for(auto const & c : vmmembershipsummaryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -901,7 +901,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummarytable::get_ch
         }
         auto c = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummarytable::Vmmembershipsummaryentry>();
         c->parent = this;
-        vmmembershipsummaryentry.push_back(c);
+        vmmembershipsummaryentry_.push_back(c);
         return c;
     }
 
@@ -911,7 +911,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummarytable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::Vmmembershipsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vmmembershipsummaryentry)
+    for (auto const & c : vmmembershipsummaryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1022,9 +1022,9 @@ CiscoVlanMembershipMib::Vmmembershiptable::~Vmmembershiptable()
 
 bool CiscoVlanMembershipMib::Vmmembershiptable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipentry_.size(); index++)
     {
-        if(vmmembershipentry[index]->has_data())
+        if(vmmembershipentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1032,9 +1032,9 @@ bool CiscoVlanMembershipMib::Vmmembershiptable::has_data() const
 
 bool CiscoVlanMembershipMib::Vmmembershiptable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipentry_.size(); index++)
     {
-        if(vmmembershipentry[index]->has_operation())
+        if(vmmembershipentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1074,7 +1074,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershiptable::get_child_by_
 {
     if(child_yang_name == "vmMembershipEntry")
     {
-        for(auto const & c : vmmembershipentry)
+        for(auto const & c : vmmembershipentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1084,7 +1084,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershiptable::get_child_by_
         }
         auto c = std::make_shared<CiscoVlanMembershipMib::Vmmembershiptable::Vmmembershipentry>();
         c->parent = this;
-        vmmembershipentry.push_back(c);
+        vmmembershipentry_.push_back(c);
         return c;
     }
 
@@ -1094,7 +1094,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershiptable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::Vmmembershiptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vmmembershipentry)
+    for (auto const & c : vmmembershipentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1245,9 +1245,9 @@ CiscoVlanMembershipMib::Vmmembershipsummaryexttable::~Vmmembershipsummaryexttabl
 
 bool CiscoVlanMembershipMib::Vmmembershipsummaryexttable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryextentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryextentry_.size(); index++)
     {
-        if(vmmembershipsummaryextentry[index]->has_data())
+        if(vmmembershipsummaryextentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1255,9 +1255,9 @@ bool CiscoVlanMembershipMib::Vmmembershipsummaryexttable::has_data() const
 
 bool CiscoVlanMembershipMib::Vmmembershipsummaryexttable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryextentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryextentry_.size(); index++)
     {
-        if(vmmembershipsummaryextentry[index]->has_operation())
+        if(vmmembershipsummaryextentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1297,7 +1297,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummaryexttable::get
 {
     if(child_yang_name == "vmMembershipSummaryExtEntry")
     {
-        for(auto const & c : vmmembershipsummaryextentry)
+        for(auto const & c : vmmembershipsummaryextentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1307,7 +1307,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummaryexttable::get
         }
         auto c = std::make_shared<CiscoVlanMembershipMib::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry>();
         c->parent = this;
-        vmmembershipsummaryextentry.push_back(c);
+        vmmembershipsummaryextentry_.push_back(c);
         return c;
     }
 
@@ -1317,7 +1317,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmmembershipsummaryexttable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::Vmmembershipsummaryexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vmmembershipsummaryextentry)
+    for (auto const & c : vmmembershipsummaryextentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1428,9 +1428,9 @@ CiscoVlanMembershipMib::Vmvoicevlantable::~Vmvoicevlantable()
 
 bool CiscoVlanMembershipMib::Vmvoicevlantable::has_data() const
 {
-    for (std::size_t index=0; index<vmvoicevlanentry.size(); index++)
+    for (std::size_t index=0; index<vmvoicevlanentry_.size(); index++)
     {
-        if(vmvoicevlanentry[index]->has_data())
+        if(vmvoicevlanentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1438,9 +1438,9 @@ bool CiscoVlanMembershipMib::Vmvoicevlantable::has_data() const
 
 bool CiscoVlanMembershipMib::Vmvoicevlantable::has_operation() const
 {
-    for (std::size_t index=0; index<vmvoicevlanentry.size(); index++)
+    for (std::size_t index=0; index<vmvoicevlanentry_.size(); index++)
     {
-        if(vmvoicevlanentry[index]->has_operation())
+        if(vmvoicevlanentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1480,7 +1480,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvoicevlantable::get_child_by_n
 {
     if(child_yang_name == "vmVoiceVlanEntry")
     {
-        for(auto const & c : vmvoicevlanentry)
+        for(auto const & c : vmvoicevlanentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1490,7 +1490,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvoicevlantable::get_child_by_n
         }
         auto c = std::make_shared<CiscoVlanMembershipMib::Vmvoicevlantable::Vmvoicevlanentry>();
         c->parent = this;
-        vmvoicevlanentry.push_back(c);
+        vmvoicevlanentry_.push_back(c);
         return c;
     }
 
@@ -1500,7 +1500,7 @@ std::shared_ptr<Entity> CiscoVlanMembershipMib::Vmvoicevlantable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoVlanMembershipMib::Vmvoicevlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vmvoicevlanentry)
+    for (auto const & c : vmvoicevlanentry_)
     {
         children[c->get_segment_path()] = c;
     }

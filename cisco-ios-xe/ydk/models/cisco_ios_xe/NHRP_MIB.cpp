@@ -11,39 +11,39 @@ namespace NHRP_MIB {
 
 NhrpMib::NhrpMib()
     :
-    nhrpcachetable(std::make_shared<NhrpMib::Nhrpcachetable>())
-	,nhrpclientnhstable(std::make_shared<NhrpMib::Nhrpclientnhstable>())
-	,nhrpclientregistrationtable(std::make_shared<NhrpMib::Nhrpclientregistrationtable>())
-	,nhrpclientstattable(std::make_shared<NhrpMib::Nhrpclientstattable>())
-	,nhrpclienttable(std::make_shared<NhrpMib::Nhrpclienttable>())
-	,nhrpgeneralobjects(std::make_shared<NhrpMib::Nhrpgeneralobjects>())
-	,nhrppurgereqtable(std::make_shared<NhrpMib::Nhrppurgereqtable>())
-	,nhrpservercachetable(std::make_shared<NhrpMib::Nhrpservercachetable>())
-	,nhrpservernhctable(std::make_shared<NhrpMib::Nhrpservernhctable>())
-	,nhrpserverstattable(std::make_shared<NhrpMib::Nhrpserverstattable>())
-	,nhrpservertable(std::make_shared<NhrpMib::Nhrpservertable>())
+    nhrpcachetable_(std::make_shared<NhrpMib::Nhrpcachetable>())
+	,nhrpclientnhstable_(std::make_shared<NhrpMib::Nhrpclientnhstable>())
+	,nhrpclientregistrationtable_(std::make_shared<NhrpMib::Nhrpclientregistrationtable>())
+	,nhrpclientstattable_(std::make_shared<NhrpMib::Nhrpclientstattable>())
+	,nhrpclienttable_(std::make_shared<NhrpMib::Nhrpclienttable>())
+	,nhrpgeneralobjects_(std::make_shared<NhrpMib::Nhrpgeneralobjects>())
+	,nhrppurgereqtable_(std::make_shared<NhrpMib::Nhrppurgereqtable>())
+	,nhrpservercachetable_(std::make_shared<NhrpMib::Nhrpservercachetable>())
+	,nhrpservernhctable_(std::make_shared<NhrpMib::Nhrpservernhctable>())
+	,nhrpserverstattable_(std::make_shared<NhrpMib::Nhrpserverstattable>())
+	,nhrpservertable_(std::make_shared<NhrpMib::Nhrpservertable>())
 {
-    nhrpcachetable->parent = this;
+    nhrpcachetable_->parent = this;
 
-    nhrpclientnhstable->parent = this;
+    nhrpclientnhstable_->parent = this;
 
-    nhrpclientregistrationtable->parent = this;
+    nhrpclientregistrationtable_->parent = this;
 
-    nhrpclientstattable->parent = this;
+    nhrpclientstattable_->parent = this;
 
-    nhrpclienttable->parent = this;
+    nhrpclienttable_->parent = this;
 
-    nhrpgeneralobjects->parent = this;
+    nhrpgeneralobjects_->parent = this;
 
-    nhrppurgereqtable->parent = this;
+    nhrppurgereqtable_->parent = this;
 
-    nhrpservercachetable->parent = this;
+    nhrpservercachetable_->parent = this;
 
-    nhrpservernhctable->parent = this;
+    nhrpservernhctable_->parent = this;
 
-    nhrpserverstattable->parent = this;
+    nhrpserverstattable_->parent = this;
 
-    nhrpservertable->parent = this;
+    nhrpservertable_->parent = this;
 
     yang_name = "NHRP-MIB"; yang_parent_name = "NHRP-MIB";
 }
@@ -54,33 +54,33 @@ NhrpMib::~NhrpMib()
 
 bool NhrpMib::has_data() const
 {
-    return (nhrpcachetable !=  nullptr && nhrpcachetable->has_data())
-	|| (nhrpclientnhstable !=  nullptr && nhrpclientnhstable->has_data())
-	|| (nhrpclientregistrationtable !=  nullptr && nhrpclientregistrationtable->has_data())
-	|| (nhrpclientstattable !=  nullptr && nhrpclientstattable->has_data())
-	|| (nhrpclienttable !=  nullptr && nhrpclienttable->has_data())
-	|| (nhrpgeneralobjects !=  nullptr && nhrpgeneralobjects->has_data())
-	|| (nhrppurgereqtable !=  nullptr && nhrppurgereqtable->has_data())
-	|| (nhrpservercachetable !=  nullptr && nhrpservercachetable->has_data())
-	|| (nhrpservernhctable !=  nullptr && nhrpservernhctable->has_data())
-	|| (nhrpserverstattable !=  nullptr && nhrpserverstattable->has_data())
-	|| (nhrpservertable !=  nullptr && nhrpservertable->has_data());
+    return (nhrpcachetable_ !=  nullptr && nhrpcachetable_->has_data())
+	|| (nhrpclientnhstable_ !=  nullptr && nhrpclientnhstable_->has_data())
+	|| (nhrpclientregistrationtable_ !=  nullptr && nhrpclientregistrationtable_->has_data())
+	|| (nhrpclientstattable_ !=  nullptr && nhrpclientstattable_->has_data())
+	|| (nhrpclienttable_ !=  nullptr && nhrpclienttable_->has_data())
+	|| (nhrpgeneralobjects_ !=  nullptr && nhrpgeneralobjects_->has_data())
+	|| (nhrppurgereqtable_ !=  nullptr && nhrppurgereqtable_->has_data())
+	|| (nhrpservercachetable_ !=  nullptr && nhrpservercachetable_->has_data())
+	|| (nhrpservernhctable_ !=  nullptr && nhrpservernhctable_->has_data())
+	|| (nhrpserverstattable_ !=  nullptr && nhrpserverstattable_->has_data())
+	|| (nhrpservertable_ !=  nullptr && nhrpservertable_->has_data());
 }
 
 bool NhrpMib::has_operation() const
 {
     return is_set(operation)
-	|| (nhrpcachetable !=  nullptr && nhrpcachetable->has_operation())
-	|| (nhrpclientnhstable !=  nullptr && nhrpclientnhstable->has_operation())
-	|| (nhrpclientregistrationtable !=  nullptr && nhrpclientregistrationtable->has_operation())
-	|| (nhrpclientstattable !=  nullptr && nhrpclientstattable->has_operation())
-	|| (nhrpclienttable !=  nullptr && nhrpclienttable->has_operation())
-	|| (nhrpgeneralobjects !=  nullptr && nhrpgeneralobjects->has_operation())
-	|| (nhrppurgereqtable !=  nullptr && nhrppurgereqtable->has_operation())
-	|| (nhrpservercachetable !=  nullptr && nhrpservercachetable->has_operation())
-	|| (nhrpservernhctable !=  nullptr && nhrpservernhctable->has_operation())
-	|| (nhrpserverstattable !=  nullptr && nhrpserverstattable->has_operation())
-	|| (nhrpservertable !=  nullptr && nhrpservertable->has_operation());
+	|| (nhrpcachetable_ !=  nullptr && nhrpcachetable_->has_operation())
+	|| (nhrpclientnhstable_ !=  nullptr && nhrpclientnhstable_->has_operation())
+	|| (nhrpclientregistrationtable_ !=  nullptr && nhrpclientregistrationtable_->has_operation())
+	|| (nhrpclientstattable_ !=  nullptr && nhrpclientstattable_->has_operation())
+	|| (nhrpclienttable_ !=  nullptr && nhrpclienttable_->has_operation())
+	|| (nhrpgeneralobjects_ !=  nullptr && nhrpgeneralobjects_->has_operation())
+	|| (nhrppurgereqtable_ !=  nullptr && nhrppurgereqtable_->has_operation())
+	|| (nhrpservercachetable_ !=  nullptr && nhrpservercachetable_->has_operation())
+	|| (nhrpservernhctable_ !=  nullptr && nhrpservernhctable_->has_operation())
+	|| (nhrpserverstattable_ !=  nullptr && nhrpserverstattable_->has_operation())
+	|| (nhrpservertable_ !=  nullptr && nhrpservertable_->has_operation());
 }
 
 std::string NhrpMib::get_segment_path() const
@@ -114,101 +114,101 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "nhrpCacheTable")
     {
-        if(nhrpcachetable == nullptr)
+        if(nhrpcachetable_ == nullptr)
         {
-            nhrpcachetable = std::make_shared<NhrpMib::Nhrpcachetable>();
+            nhrpcachetable_ = std::make_shared<NhrpMib::Nhrpcachetable>();
         }
-        return nhrpcachetable;
+        return nhrpcachetable_;
     }
 
     if(child_yang_name == "nhrpClientNhsTable")
     {
-        if(nhrpclientnhstable == nullptr)
+        if(nhrpclientnhstable_ == nullptr)
         {
-            nhrpclientnhstable = std::make_shared<NhrpMib::Nhrpclientnhstable>();
+            nhrpclientnhstable_ = std::make_shared<NhrpMib::Nhrpclientnhstable>();
         }
-        return nhrpclientnhstable;
+        return nhrpclientnhstable_;
     }
 
     if(child_yang_name == "nhrpClientRegistrationTable")
     {
-        if(nhrpclientregistrationtable == nullptr)
+        if(nhrpclientregistrationtable_ == nullptr)
         {
-            nhrpclientregistrationtable = std::make_shared<NhrpMib::Nhrpclientregistrationtable>();
+            nhrpclientregistrationtable_ = std::make_shared<NhrpMib::Nhrpclientregistrationtable>();
         }
-        return nhrpclientregistrationtable;
+        return nhrpclientregistrationtable_;
     }
 
     if(child_yang_name == "nhrpClientStatTable")
     {
-        if(nhrpclientstattable == nullptr)
+        if(nhrpclientstattable_ == nullptr)
         {
-            nhrpclientstattable = std::make_shared<NhrpMib::Nhrpclientstattable>();
+            nhrpclientstattable_ = std::make_shared<NhrpMib::Nhrpclientstattable>();
         }
-        return nhrpclientstattable;
+        return nhrpclientstattable_;
     }
 
     if(child_yang_name == "nhrpClientTable")
     {
-        if(nhrpclienttable == nullptr)
+        if(nhrpclienttable_ == nullptr)
         {
-            nhrpclienttable = std::make_shared<NhrpMib::Nhrpclienttable>();
+            nhrpclienttable_ = std::make_shared<NhrpMib::Nhrpclienttable>();
         }
-        return nhrpclienttable;
+        return nhrpclienttable_;
     }
 
     if(child_yang_name == "nhrpGeneralObjects")
     {
-        if(nhrpgeneralobjects == nullptr)
+        if(nhrpgeneralobjects_ == nullptr)
         {
-            nhrpgeneralobjects = std::make_shared<NhrpMib::Nhrpgeneralobjects>();
+            nhrpgeneralobjects_ = std::make_shared<NhrpMib::Nhrpgeneralobjects>();
         }
-        return nhrpgeneralobjects;
+        return nhrpgeneralobjects_;
     }
 
     if(child_yang_name == "nhrpPurgeReqTable")
     {
-        if(nhrppurgereqtable == nullptr)
+        if(nhrppurgereqtable_ == nullptr)
         {
-            nhrppurgereqtable = std::make_shared<NhrpMib::Nhrppurgereqtable>();
+            nhrppurgereqtable_ = std::make_shared<NhrpMib::Nhrppurgereqtable>();
         }
-        return nhrppurgereqtable;
+        return nhrppurgereqtable_;
     }
 
     if(child_yang_name == "nhrpServerCacheTable")
     {
-        if(nhrpservercachetable == nullptr)
+        if(nhrpservercachetable_ == nullptr)
         {
-            nhrpservercachetable = std::make_shared<NhrpMib::Nhrpservercachetable>();
+            nhrpservercachetable_ = std::make_shared<NhrpMib::Nhrpservercachetable>();
         }
-        return nhrpservercachetable;
+        return nhrpservercachetable_;
     }
 
     if(child_yang_name == "nhrpServerNhcTable")
     {
-        if(nhrpservernhctable == nullptr)
+        if(nhrpservernhctable_ == nullptr)
         {
-            nhrpservernhctable = std::make_shared<NhrpMib::Nhrpservernhctable>();
+            nhrpservernhctable_ = std::make_shared<NhrpMib::Nhrpservernhctable>();
         }
-        return nhrpservernhctable;
+        return nhrpservernhctable_;
     }
 
     if(child_yang_name == "nhrpServerStatTable")
     {
-        if(nhrpserverstattable == nullptr)
+        if(nhrpserverstattable_ == nullptr)
         {
-            nhrpserverstattable = std::make_shared<NhrpMib::Nhrpserverstattable>();
+            nhrpserverstattable_ = std::make_shared<NhrpMib::Nhrpserverstattable>();
         }
-        return nhrpserverstattable;
+        return nhrpserverstattable_;
     }
 
     if(child_yang_name == "nhrpServerTable")
     {
-        if(nhrpservertable == nullptr)
+        if(nhrpservertable_ == nullptr)
         {
-            nhrpservertable = std::make_shared<NhrpMib::Nhrpservertable>();
+            nhrpservertable_ = std::make_shared<NhrpMib::Nhrpservertable>();
         }
-        return nhrpservertable;
+        return nhrpservertable_;
     }
 
     return nullptr;
@@ -217,59 +217,59 @@ std::shared_ptr<Entity> NhrpMib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nhrpcachetable != nullptr)
+    if(nhrpcachetable_ != nullptr)
     {
-        children["nhrpCacheTable"] = nhrpcachetable;
+        children["nhrpCacheTable"] = nhrpcachetable_;
     }
 
-    if(nhrpclientnhstable != nullptr)
+    if(nhrpclientnhstable_ != nullptr)
     {
-        children["nhrpClientNhsTable"] = nhrpclientnhstable;
+        children["nhrpClientNhsTable"] = nhrpclientnhstable_;
     }
 
-    if(nhrpclientregistrationtable != nullptr)
+    if(nhrpclientregistrationtable_ != nullptr)
     {
-        children["nhrpClientRegistrationTable"] = nhrpclientregistrationtable;
+        children["nhrpClientRegistrationTable"] = nhrpclientregistrationtable_;
     }
 
-    if(nhrpclientstattable != nullptr)
+    if(nhrpclientstattable_ != nullptr)
     {
-        children["nhrpClientStatTable"] = nhrpclientstattable;
+        children["nhrpClientStatTable"] = nhrpclientstattable_;
     }
 
-    if(nhrpclienttable != nullptr)
+    if(nhrpclienttable_ != nullptr)
     {
-        children["nhrpClientTable"] = nhrpclienttable;
+        children["nhrpClientTable"] = nhrpclienttable_;
     }
 
-    if(nhrpgeneralobjects != nullptr)
+    if(nhrpgeneralobjects_ != nullptr)
     {
-        children["nhrpGeneralObjects"] = nhrpgeneralobjects;
+        children["nhrpGeneralObjects"] = nhrpgeneralobjects_;
     }
 
-    if(nhrppurgereqtable != nullptr)
+    if(nhrppurgereqtable_ != nullptr)
     {
-        children["nhrpPurgeReqTable"] = nhrppurgereqtable;
+        children["nhrpPurgeReqTable"] = nhrppurgereqtable_;
     }
 
-    if(nhrpservercachetable != nullptr)
+    if(nhrpservercachetable_ != nullptr)
     {
-        children["nhrpServerCacheTable"] = nhrpservercachetable;
+        children["nhrpServerCacheTable"] = nhrpservercachetable_;
     }
 
-    if(nhrpservernhctable != nullptr)
+    if(nhrpservernhctable_ != nullptr)
     {
-        children["nhrpServerNhcTable"] = nhrpservernhctable;
+        children["nhrpServerNhcTable"] = nhrpservernhctable_;
     }
 
-    if(nhrpserverstattable != nullptr)
+    if(nhrpserverstattable_ != nullptr)
     {
-        children["nhrpServerStatTable"] = nhrpserverstattable;
+        children["nhrpServerStatTable"] = nhrpserverstattable_;
     }
 
-    if(nhrpservertable != nullptr)
+    if(nhrpservertable_ != nullptr)
     {
-        children["nhrpServerTable"] = nhrpservertable;
+        children["nhrpServerTable"] = nhrpservertable_;
     }
 
     return children;
@@ -382,9 +382,9 @@ NhrpMib::Nhrpcachetable::~Nhrpcachetable()
 
 bool NhrpMib::Nhrpcachetable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpcacheentry.size(); index++)
+    for (std::size_t index=0; index<nhrpcacheentry_.size(); index++)
     {
-        if(nhrpcacheentry[index]->has_data())
+        if(nhrpcacheentry_[index]->has_data())
             return true;
     }
     return false;
@@ -392,9 +392,9 @@ bool NhrpMib::Nhrpcachetable::has_data() const
 
 bool NhrpMib::Nhrpcachetable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpcacheentry.size(); index++)
+    for (std::size_t index=0; index<nhrpcacheentry_.size(); index++)
     {
-        if(nhrpcacheentry[index]->has_operation())
+        if(nhrpcacheentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -434,7 +434,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::st
 {
     if(child_yang_name == "nhrpCacheEntry")
     {
-        for(auto const & c : nhrpcacheentry)
+        for(auto const & c : nhrpcacheentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -444,7 +444,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::st
         }
         auto c = std::make_shared<NhrpMib::Nhrpcachetable::Nhrpcacheentry>();
         c->parent = this;
-        nhrpcacheentry.push_back(c);
+        nhrpcacheentry_.push_back(c);
         return c;
     }
 
@@ -454,7 +454,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpcachetable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpcacheentry)
+    for (auto const & c : nhrpcacheentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -677,9 +677,9 @@ NhrpMib::Nhrppurgereqtable::~Nhrppurgereqtable()
 
 bool NhrpMib::Nhrppurgereqtable::has_data() const
 {
-    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
+    for (std::size_t index=0; index<nhrppurgereqentry_.size(); index++)
     {
-        if(nhrppurgereqentry[index]->has_data())
+        if(nhrppurgereqentry_[index]->has_data())
             return true;
     }
     return false;
@@ -687,9 +687,9 @@ bool NhrpMib::Nhrppurgereqtable::has_data() const
 
 bool NhrpMib::Nhrppurgereqtable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrppurgereqentry.size(); index++)
+    for (std::size_t index=0; index<nhrppurgereqentry_.size(); index++)
     {
-        if(nhrppurgereqentry[index]->has_operation())
+        if(nhrppurgereqentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -729,7 +729,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrppurgereqtable::get_child_by_name(const std:
 {
     if(child_yang_name == "nhrpPurgeReqEntry")
     {
-        for(auto const & c : nhrppurgereqentry)
+        for(auto const & c : nhrppurgereqentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -739,7 +739,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrppurgereqtable::get_child_by_name(const std:
         }
         auto c = std::make_shared<NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry>();
         c->parent = this;
-        nhrppurgereqentry.push_back(c);
+        nhrppurgereqentry_.push_back(c);
         return c;
     }
 
@@ -749,7 +749,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrppurgereqtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrppurgereqtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrppurgereqentry)
+    for (auto const & c : nhrppurgereqentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -884,9 +884,9 @@ NhrpMib::Nhrpclienttable::~Nhrpclienttable()
 
 bool NhrpMib::Nhrpclienttable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
+    for (std::size_t index=0; index<nhrpcliententry_.size(); index++)
     {
-        if(nhrpcliententry[index]->has_data())
+        if(nhrpcliententry_[index]->has_data())
             return true;
     }
     return false;
@@ -894,9 +894,9 @@ bool NhrpMib::Nhrpclienttable::has_data() const
 
 bool NhrpMib::Nhrpclienttable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpcliententry.size(); index++)
+    for (std::size_t index=0; index<nhrpcliententry_.size(); index++)
     {
-        if(nhrpcliententry[index]->has_operation())
+        if(nhrpcliententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -936,7 +936,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclienttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "nhrpClientEntry")
     {
-        for(auto const & c : nhrpcliententry)
+        for(auto const & c : nhrpcliententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -946,7 +946,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclienttable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<NhrpMib::Nhrpclienttable::Nhrpcliententry>();
         c->parent = this;
-        nhrpcliententry.push_back(c);
+        nhrpcliententry_.push_back(c);
         return c;
     }
 
@@ -956,7 +956,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclienttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpcliententry)
+    for (auto const & c : nhrpcliententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1163,9 +1163,9 @@ NhrpMib::Nhrpclientregistrationtable::~Nhrpclientregistrationtable()
 
 bool NhrpMib::Nhrpclientregistrationtable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientregistrationentry_.size(); index++)
     {
-        if(nhrpclientregistrationentry[index]->has_data())
+        if(nhrpclientregistrationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1173,9 +1173,9 @@ bool NhrpMib::Nhrpclientregistrationtable::has_data() const
 
 bool NhrpMib::Nhrpclientregistrationtable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpclientregistrationentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientregistrationentry_.size(); index++)
     {
-        if(nhrpclientregistrationentry[index]->has_operation())
+        if(nhrpclientregistrationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1215,7 +1215,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientregistrationtable::get_child_by_name(
 {
     if(child_yang_name == "nhrpClientRegistrationEntry")
     {
-        for(auto const & c : nhrpclientregistrationentry)
+        for(auto const & c : nhrpclientregistrationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1225,7 +1225,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientregistrationtable::get_child_by_name(
         }
         auto c = std::make_shared<NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry>();
         c->parent = this;
-        nhrpclientregistrationentry.push_back(c);
+        nhrpclientregistrationentry_.push_back(c);
         return c;
     }
 
@@ -1235,7 +1235,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientregistrationtable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientregistrationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpclientregistrationentry)
+    for (auto const & c : nhrpclientregistrationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1362,9 +1362,9 @@ NhrpMib::Nhrpclientnhstable::~Nhrpclientnhstable()
 
 bool NhrpMib::Nhrpclientnhstable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpclientnhsentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientnhsentry_.size(); index++)
     {
-        if(nhrpclientnhsentry[index]->has_data())
+        if(nhrpclientnhsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1372,9 +1372,9 @@ bool NhrpMib::Nhrpclientnhstable::has_data() const
 
 bool NhrpMib::Nhrpclientnhstable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpclientnhsentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientnhsentry_.size(); index++)
     {
-        if(nhrpclientnhsentry[index]->has_operation())
+        if(nhrpclientnhsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1414,7 +1414,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std
 {
     if(child_yang_name == "nhrpClientNhsEntry")
     {
-        for(auto const & c : nhrpclientnhsentry)
+        for(auto const & c : nhrpclientnhsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1424,7 +1424,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std
         }
         auto c = std::make_shared<NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry>();
         c->parent = this;
-        nhrpclientnhsentry.push_back(c);
+        nhrpclientnhsentry_.push_back(c);
         return c;
     }
 
@@ -1434,7 +1434,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientnhstable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientnhstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpclientnhsentry)
+    for (auto const & c : nhrpclientnhsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1593,9 +1593,9 @@ NhrpMib::Nhrpclientstattable::~Nhrpclientstattable()
 
 bool NhrpMib::Nhrpclientstattable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpclientstatentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientstatentry_.size(); index++)
     {
-        if(nhrpclientstatentry[index]->has_data())
+        if(nhrpclientstatentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1603,9 +1603,9 @@ bool NhrpMib::Nhrpclientstattable::has_data() const
 
 bool NhrpMib::Nhrpclientstattable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpclientstatentry.size(); index++)
+    for (std::size_t index=0; index<nhrpclientstatentry_.size(); index++)
     {
-        if(nhrpclientstatentry[index]->has_operation())
+        if(nhrpclientstatentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1645,7 +1645,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const st
 {
     if(child_yang_name == "nhrpClientStatEntry")
     {
-        for(auto const & c : nhrpclientstatentry)
+        for(auto const & c : nhrpclientstatentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1655,7 +1655,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const st
         }
         auto c = std::make_shared<NhrpMib::Nhrpclientstattable::Nhrpclientstatentry>();
         c->parent = this;
-        nhrpclientstatentry.push_back(c);
+        nhrpclientstatentry_.push_back(c);
         return c;
     }
 
@@ -1665,7 +1665,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpclientstattable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpclientstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpclientstatentry)
+    for (auto const & c : nhrpclientstatentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1960,9 +1960,9 @@ NhrpMib::Nhrpservertable::~Nhrpservertable()
 
 bool NhrpMib::Nhrpservertable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    for (std::size_t index=0; index<nhrpserverentry_.size(); index++)
     {
-        if(nhrpserverentry[index]->has_data())
+        if(nhrpserverentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1970,9 +1970,9 @@ bool NhrpMib::Nhrpservertable::has_data() const
 
 bool NhrpMib::Nhrpservertable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpserverentry.size(); index++)
+    for (std::size_t index=0; index<nhrpserverentry_.size(); index++)
     {
-        if(nhrpserverentry[index]->has_operation())
+        if(nhrpserverentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2012,7 +2012,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "nhrpServerEntry")
     {
-        for(auto const & c : nhrpserverentry)
+        for(auto const & c : nhrpserverentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2022,7 +2022,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservertable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<NhrpMib::Nhrpservertable::Nhrpserverentry>();
         c->parent = this;
-        nhrpserverentry.push_back(c);
+        nhrpserverentry_.push_back(c);
         return c;
     }
 
@@ -2032,7 +2032,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpserverentry)
+    for (auto const & c : nhrpserverentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2183,9 +2183,9 @@ NhrpMib::Nhrpservercachetable::~Nhrpservercachetable()
 
 bool NhrpMib::Nhrpservercachetable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpservercacheentry.size(); index++)
+    for (std::size_t index=0; index<nhrpservercacheentry_.size(); index++)
     {
-        if(nhrpservercacheentry[index]->has_data())
+        if(nhrpservercacheentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2193,9 +2193,9 @@ bool NhrpMib::Nhrpservercachetable::has_data() const
 
 bool NhrpMib::Nhrpservercachetable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpservercacheentry.size(); index++)
+    for (std::size_t index=0; index<nhrpservercacheentry_.size(); index++)
     {
-        if(nhrpservercacheentry[index]->has_operation())
+        if(nhrpservercacheentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2235,7 +2235,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const s
 {
     if(child_yang_name == "nhrpServerCacheEntry")
     {
-        for(auto const & c : nhrpservercacheentry)
+        for(auto const & c : nhrpservercacheentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2245,7 +2245,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const s
         }
         auto c = std::make_shared<NhrpMib::Nhrpservercachetable::Nhrpservercacheentry>();
         c->parent = this;
-        nhrpservercacheentry.push_back(c);
+        nhrpservercacheentry_.push_back(c);
         return c;
     }
 
@@ -2255,7 +2255,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservercachetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservercachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpservercacheentry)
+    for (auto const & c : nhrpservercacheentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2390,9 +2390,9 @@ NhrpMib::Nhrpservernhctable::~Nhrpservernhctable()
 
 bool NhrpMib::Nhrpservernhctable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpservernhcentry.size(); index++)
+    for (std::size_t index=0; index<nhrpservernhcentry_.size(); index++)
     {
-        if(nhrpservernhcentry[index]->has_data())
+        if(nhrpservernhcentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2400,9 +2400,9 @@ bool NhrpMib::Nhrpservernhctable::has_data() const
 
 bool NhrpMib::Nhrpservernhctable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpservernhcentry.size(); index++)
+    for (std::size_t index=0; index<nhrpservernhcentry_.size(); index++)
     {
-        if(nhrpservernhcentry[index]->has_operation())
+        if(nhrpservernhcentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2442,7 +2442,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std
 {
     if(child_yang_name == "nhrpServerNhcEntry")
     {
-        for(auto const & c : nhrpservernhcentry)
+        for(auto const & c : nhrpservernhcentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2452,7 +2452,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std
         }
         auto c = std::make_shared<NhrpMib::Nhrpservernhctable::Nhrpservernhcentry>();
         c->parent = this;
-        nhrpservernhcentry.push_back(c);
+        nhrpservernhcentry_.push_back(c);
         return c;
     }
 
@@ -2462,7 +2462,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpservernhctable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpservernhctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpservernhcentry)
+    for (auto const & c : nhrpservernhcentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2629,9 +2629,9 @@ NhrpMib::Nhrpserverstattable::~Nhrpserverstattable()
 
 bool NhrpMib::Nhrpserverstattable::has_data() const
 {
-    for (std::size_t index=0; index<nhrpserverstatentry.size(); index++)
+    for (std::size_t index=0; index<nhrpserverstatentry_.size(); index++)
     {
-        if(nhrpserverstatentry[index]->has_data())
+        if(nhrpserverstatentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2639,9 +2639,9 @@ bool NhrpMib::Nhrpserverstattable::has_data() const
 
 bool NhrpMib::Nhrpserverstattable::has_operation() const
 {
-    for (std::size_t index=0; index<nhrpserverstatentry.size(); index++)
+    for (std::size_t index=0; index<nhrpserverstatentry_.size(); index++)
     {
-        if(nhrpserverstatentry[index]->has_operation())
+        if(nhrpserverstatentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2681,7 +2681,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const st
 {
     if(child_yang_name == "nhrpServerStatEntry")
     {
-        for(auto const & c : nhrpserverstatentry)
+        for(auto const & c : nhrpserverstatentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2691,7 +2691,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const st
         }
         auto c = std::make_shared<NhrpMib::Nhrpserverstattable::Nhrpserverstatentry>();
         c->parent = this;
-        nhrpserverstatentry.push_back(c);
+        nhrpserverstatentry_.push_back(c);
         return c;
     }
 
@@ -2701,7 +2701,7 @@ std::shared_ptr<Entity> NhrpMib::Nhrpserverstattable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NhrpMib::Nhrpserverstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nhrpserverstatentry)
+    for (auto const & c : nhrpserverstatentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3106,7 +3106,7 @@ void NhrpMib::Nhrpserverstattable::Nhrpserverstatentry::set_value(const std::str
 }
 
 const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::other {1, "other"};
-const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::register {2, "register"};
+const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::register_ {2, "register"};
 const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::resolveAuthoritative {3, "resolveAuthoritative"};
 const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::resoveNonauthoritative {4, "resoveNonauthoritative"};
 const Enum::YLeaf NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum::transit {5, "transit"};

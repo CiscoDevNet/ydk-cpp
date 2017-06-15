@@ -11,96 +11,96 @@ namespace CISCO_STP_EXTENSIONS_MIB {
 
 CiscoStpExtensionsMib::CiscoStpExtensionsMib()
     :
-    stpxbackbonefastobjects(std::make_shared<CiscoStpExtensionsMib::Stpxbackbonefastobjects>())
-	,stpxbpduskewingobjects(std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingobjects>())
-	,stpxbpduskewingtable(std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingtable>())
-	,stpxfaststartobjects(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartobjects>())
-	,stpxfaststartopermodetable(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartopermodetable>())
-	,stpxfaststartporttable(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartporttable>())
-	,stpxinconsistencytable(std::make_shared<CiscoStpExtensionsMib::Stpxinconsistencytable>())
-	,stpxloopguardconfigtable(std::make_shared<CiscoStpExtensionsMib::Stpxloopguardconfigtable>())
-	,stpxloopguardobjects(std::make_shared<CiscoStpExtensionsMib::Stpxloopguardobjects>())
-	,stpxloopinconsistencytable(std::make_shared<CiscoStpExtensionsMib::Stpxloopinconsistencytable>())
-	,stpxmistpinstancetable(std::make_shared<CiscoStpExtensionsMib::Stpxmistpinstancetable>())
-	,stpxmistpobjects(std::make_shared<CiscoStpExtensionsMib::Stpxmistpobjects>())
-	,stpxmstinstanceedittable(std::make_shared<CiscoStpExtensionsMib::Stpxmstinstanceedittable>())
-	,stpxmstinstancetable(std::make_shared<CiscoStpExtensionsMib::Stpxmstinstancetable>())
-	,stpxmstobjects(std::make_shared<CiscoStpExtensionsMib::Stpxmstobjects>())
-	,stpxmstportroletable(std::make_shared<CiscoStpExtensionsMib::Stpxmstportroletable>())
-	,stpxmstporttable(std::make_shared<CiscoStpExtensionsMib::Stpxmstporttable>())
-	,stpxpvstvlantable(std::make_shared<CiscoStpExtensionsMib::Stpxpvstvlantable>())
-	,stpxrootguardconfigtable(std::make_shared<CiscoStpExtensionsMib::Stpxrootguardconfigtable>())
-	,stpxrootinconsistencytable(std::make_shared<CiscoStpExtensionsMib::Stpxrootinconsistencytable>())
-	,stpxrpvstporttable(std::make_shared<CiscoStpExtensionsMib::Stpxrpvstporttable>())
-	,stpxrstpobjects(std::make_shared<CiscoStpExtensionsMib::Stpxrstpobjects>())
-	,stpxrstpportroletable(std::make_shared<CiscoStpExtensionsMib::Stpxrstpportroletable>())
-	,stpxrstpporttable(std::make_shared<CiscoStpExtensionsMib::Stpxrstpporttable>())
-	,stpxsmstinstanceedittable(std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstanceedittable>())
-	,stpxsmstinstancetable(std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstancetable>())
-	,stpxsmstobjects(std::make_shared<CiscoStpExtensionsMib::Stpxsmstobjects>())
-	,stpxsmstporttable(std::make_shared<CiscoStpExtensionsMib::Stpxsmstporttable>())
-	,stpxspanningtreeobjects(std::make_shared<CiscoStpExtensionsMib::Stpxspanningtreeobjects>())
-	,stpxuplinkfastobjects(std::make_shared<CiscoStpExtensionsMib::Stpxuplinkfastobjects>())
+    stpxbackbonefastobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxbackbonefastobjects>())
+	,stpxbpduskewingobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingobjects>())
+	,stpxbpduskewingtable_(std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingtable>())
+	,stpxfaststartobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartobjects>())
+	,stpxfaststartopermodetable_(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartopermodetable>())
+	,stpxfaststartporttable_(std::make_shared<CiscoStpExtensionsMib::Stpxfaststartporttable>())
+	,stpxinconsistencytable_(std::make_shared<CiscoStpExtensionsMib::Stpxinconsistencytable>())
+	,stpxloopguardconfigtable_(std::make_shared<CiscoStpExtensionsMib::Stpxloopguardconfigtable>())
+	,stpxloopguardobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxloopguardobjects>())
+	,stpxloopinconsistencytable_(std::make_shared<CiscoStpExtensionsMib::Stpxloopinconsistencytable>())
+	,stpxmistpinstancetable_(std::make_shared<CiscoStpExtensionsMib::Stpxmistpinstancetable>())
+	,stpxmistpobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxmistpobjects>())
+	,stpxmstinstanceedittable_(std::make_shared<CiscoStpExtensionsMib::Stpxmstinstanceedittable>())
+	,stpxmstinstancetable_(std::make_shared<CiscoStpExtensionsMib::Stpxmstinstancetable>())
+	,stpxmstobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxmstobjects>())
+	,stpxmstportroletable_(std::make_shared<CiscoStpExtensionsMib::Stpxmstportroletable>())
+	,stpxmstporttable_(std::make_shared<CiscoStpExtensionsMib::Stpxmstporttable>())
+	,stpxpvstvlantable_(std::make_shared<CiscoStpExtensionsMib::Stpxpvstvlantable>())
+	,stpxrootguardconfigtable_(std::make_shared<CiscoStpExtensionsMib::Stpxrootguardconfigtable>())
+	,stpxrootinconsistencytable_(std::make_shared<CiscoStpExtensionsMib::Stpxrootinconsistencytable>())
+	,stpxrpvstporttable_(std::make_shared<CiscoStpExtensionsMib::Stpxrpvstporttable>())
+	,stpxrstpobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxrstpobjects>())
+	,stpxrstpportroletable_(std::make_shared<CiscoStpExtensionsMib::Stpxrstpportroletable>())
+	,stpxrstpporttable_(std::make_shared<CiscoStpExtensionsMib::Stpxrstpporttable>())
+	,stpxsmstinstanceedittable_(std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstanceedittable>())
+	,stpxsmstinstancetable_(std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstancetable>())
+	,stpxsmstobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxsmstobjects>())
+	,stpxsmstporttable_(std::make_shared<CiscoStpExtensionsMib::Stpxsmstporttable>())
+	,stpxspanningtreeobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxspanningtreeobjects>())
+	,stpxuplinkfastobjects_(std::make_shared<CiscoStpExtensionsMib::Stpxuplinkfastobjects>())
 {
-    stpxbackbonefastobjects->parent = this;
+    stpxbackbonefastobjects_->parent = this;
 
-    stpxbpduskewingobjects->parent = this;
+    stpxbpduskewingobjects_->parent = this;
 
-    stpxbpduskewingtable->parent = this;
+    stpxbpduskewingtable_->parent = this;
 
-    stpxfaststartobjects->parent = this;
+    stpxfaststartobjects_->parent = this;
 
-    stpxfaststartopermodetable->parent = this;
+    stpxfaststartopermodetable_->parent = this;
 
-    stpxfaststartporttable->parent = this;
+    stpxfaststartporttable_->parent = this;
 
-    stpxinconsistencytable->parent = this;
+    stpxinconsistencytable_->parent = this;
 
-    stpxloopguardconfigtable->parent = this;
+    stpxloopguardconfigtable_->parent = this;
 
-    stpxloopguardobjects->parent = this;
+    stpxloopguardobjects_->parent = this;
 
-    stpxloopinconsistencytable->parent = this;
+    stpxloopinconsistencytable_->parent = this;
 
-    stpxmistpinstancetable->parent = this;
+    stpxmistpinstancetable_->parent = this;
 
-    stpxmistpobjects->parent = this;
+    stpxmistpobjects_->parent = this;
 
-    stpxmstinstanceedittable->parent = this;
+    stpxmstinstanceedittable_->parent = this;
 
-    stpxmstinstancetable->parent = this;
+    stpxmstinstancetable_->parent = this;
 
-    stpxmstobjects->parent = this;
+    stpxmstobjects_->parent = this;
 
-    stpxmstportroletable->parent = this;
+    stpxmstportroletable_->parent = this;
 
-    stpxmstporttable->parent = this;
+    stpxmstporttable_->parent = this;
 
-    stpxpvstvlantable->parent = this;
+    stpxpvstvlantable_->parent = this;
 
-    stpxrootguardconfigtable->parent = this;
+    stpxrootguardconfigtable_->parent = this;
 
-    stpxrootinconsistencytable->parent = this;
+    stpxrootinconsistencytable_->parent = this;
 
-    stpxrpvstporttable->parent = this;
+    stpxrpvstporttable_->parent = this;
 
-    stpxrstpobjects->parent = this;
+    stpxrstpobjects_->parent = this;
 
-    stpxrstpportroletable->parent = this;
+    stpxrstpportroletable_->parent = this;
 
-    stpxrstpporttable->parent = this;
+    stpxrstpporttable_->parent = this;
 
-    stpxsmstinstanceedittable->parent = this;
+    stpxsmstinstanceedittable_->parent = this;
 
-    stpxsmstinstancetable->parent = this;
+    stpxsmstinstancetable_->parent = this;
 
-    stpxsmstobjects->parent = this;
+    stpxsmstobjects_->parent = this;
 
-    stpxsmstporttable->parent = this;
+    stpxsmstporttable_->parent = this;
 
-    stpxspanningtreeobjects->parent = this;
+    stpxspanningtreeobjects_->parent = this;
 
-    stpxuplinkfastobjects->parent = this;
+    stpxuplinkfastobjects_->parent = this;
 
     yang_name = "CISCO-STP-EXTENSIONS-MIB"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB";
 }
@@ -111,71 +111,71 @@ CiscoStpExtensionsMib::~CiscoStpExtensionsMib()
 
 bool CiscoStpExtensionsMib::has_data() const
 {
-    return (stpxbackbonefastobjects !=  nullptr && stpxbackbonefastobjects->has_data())
-	|| (stpxbpduskewingobjects !=  nullptr && stpxbpduskewingobjects->has_data())
-	|| (stpxbpduskewingtable !=  nullptr && stpxbpduskewingtable->has_data())
-	|| (stpxfaststartobjects !=  nullptr && stpxfaststartobjects->has_data())
-	|| (stpxfaststartopermodetable !=  nullptr && stpxfaststartopermodetable->has_data())
-	|| (stpxfaststartporttable !=  nullptr && stpxfaststartporttable->has_data())
-	|| (stpxinconsistencytable !=  nullptr && stpxinconsistencytable->has_data())
-	|| (stpxloopguardconfigtable !=  nullptr && stpxloopguardconfigtable->has_data())
-	|| (stpxloopguardobjects !=  nullptr && stpxloopguardobjects->has_data())
-	|| (stpxloopinconsistencytable !=  nullptr && stpxloopinconsistencytable->has_data())
-	|| (stpxmistpinstancetable !=  nullptr && stpxmistpinstancetable->has_data())
-	|| (stpxmistpobjects !=  nullptr && stpxmistpobjects->has_data())
-	|| (stpxmstinstanceedittable !=  nullptr && stpxmstinstanceedittable->has_data())
-	|| (stpxmstinstancetable !=  nullptr && stpxmstinstancetable->has_data())
-	|| (stpxmstobjects !=  nullptr && stpxmstobjects->has_data())
-	|| (stpxmstportroletable !=  nullptr && stpxmstportroletable->has_data())
-	|| (stpxmstporttable !=  nullptr && stpxmstporttable->has_data())
-	|| (stpxpvstvlantable !=  nullptr && stpxpvstvlantable->has_data())
-	|| (stpxrootguardconfigtable !=  nullptr && stpxrootguardconfigtable->has_data())
-	|| (stpxrootinconsistencytable !=  nullptr && stpxrootinconsistencytable->has_data())
-	|| (stpxrpvstporttable !=  nullptr && stpxrpvstporttable->has_data())
-	|| (stpxrstpobjects !=  nullptr && stpxrstpobjects->has_data())
-	|| (stpxrstpportroletable !=  nullptr && stpxrstpportroletable->has_data())
-	|| (stpxrstpporttable !=  nullptr && stpxrstpporttable->has_data())
-	|| (stpxsmstinstanceedittable !=  nullptr && stpxsmstinstanceedittable->has_data())
-	|| (stpxsmstinstancetable !=  nullptr && stpxsmstinstancetable->has_data())
-	|| (stpxsmstobjects !=  nullptr && stpxsmstobjects->has_data())
-	|| (stpxsmstporttable !=  nullptr && stpxsmstporttable->has_data())
-	|| (stpxspanningtreeobjects !=  nullptr && stpxspanningtreeobjects->has_data())
-	|| (stpxuplinkfastobjects !=  nullptr && stpxuplinkfastobjects->has_data());
+    return (stpxbackbonefastobjects_ !=  nullptr && stpxbackbonefastobjects_->has_data())
+	|| (stpxbpduskewingobjects_ !=  nullptr && stpxbpduskewingobjects_->has_data())
+	|| (stpxbpduskewingtable_ !=  nullptr && stpxbpduskewingtable_->has_data())
+	|| (stpxfaststartobjects_ !=  nullptr && stpxfaststartobjects_->has_data())
+	|| (stpxfaststartopermodetable_ !=  nullptr && stpxfaststartopermodetable_->has_data())
+	|| (stpxfaststartporttable_ !=  nullptr && stpxfaststartporttable_->has_data())
+	|| (stpxinconsistencytable_ !=  nullptr && stpxinconsistencytable_->has_data())
+	|| (stpxloopguardconfigtable_ !=  nullptr && stpxloopguardconfigtable_->has_data())
+	|| (stpxloopguardobjects_ !=  nullptr && stpxloopguardobjects_->has_data())
+	|| (stpxloopinconsistencytable_ !=  nullptr && stpxloopinconsistencytable_->has_data())
+	|| (stpxmistpinstancetable_ !=  nullptr && stpxmistpinstancetable_->has_data())
+	|| (stpxmistpobjects_ !=  nullptr && stpxmistpobjects_->has_data())
+	|| (stpxmstinstanceedittable_ !=  nullptr && stpxmstinstanceedittable_->has_data())
+	|| (stpxmstinstancetable_ !=  nullptr && stpxmstinstancetable_->has_data())
+	|| (stpxmstobjects_ !=  nullptr && stpxmstobjects_->has_data())
+	|| (stpxmstportroletable_ !=  nullptr && stpxmstportroletable_->has_data())
+	|| (stpxmstporttable_ !=  nullptr && stpxmstporttable_->has_data())
+	|| (stpxpvstvlantable_ !=  nullptr && stpxpvstvlantable_->has_data())
+	|| (stpxrootguardconfigtable_ !=  nullptr && stpxrootguardconfigtable_->has_data())
+	|| (stpxrootinconsistencytable_ !=  nullptr && stpxrootinconsistencytable_->has_data())
+	|| (stpxrpvstporttable_ !=  nullptr && stpxrpvstporttable_->has_data())
+	|| (stpxrstpobjects_ !=  nullptr && stpxrstpobjects_->has_data())
+	|| (stpxrstpportroletable_ !=  nullptr && stpxrstpportroletable_->has_data())
+	|| (stpxrstpporttable_ !=  nullptr && stpxrstpporttable_->has_data())
+	|| (stpxsmstinstanceedittable_ !=  nullptr && stpxsmstinstanceedittable_->has_data())
+	|| (stpxsmstinstancetable_ !=  nullptr && stpxsmstinstancetable_->has_data())
+	|| (stpxsmstobjects_ !=  nullptr && stpxsmstobjects_->has_data())
+	|| (stpxsmstporttable_ !=  nullptr && stpxsmstporttable_->has_data())
+	|| (stpxspanningtreeobjects_ !=  nullptr && stpxspanningtreeobjects_->has_data())
+	|| (stpxuplinkfastobjects_ !=  nullptr && stpxuplinkfastobjects_->has_data());
 }
 
 bool CiscoStpExtensionsMib::has_operation() const
 {
     return is_set(operation)
-	|| (stpxbackbonefastobjects !=  nullptr && stpxbackbonefastobjects->has_operation())
-	|| (stpxbpduskewingobjects !=  nullptr && stpxbpduskewingobjects->has_operation())
-	|| (stpxbpduskewingtable !=  nullptr && stpxbpduskewingtable->has_operation())
-	|| (stpxfaststartobjects !=  nullptr && stpxfaststartobjects->has_operation())
-	|| (stpxfaststartopermodetable !=  nullptr && stpxfaststartopermodetable->has_operation())
-	|| (stpxfaststartporttable !=  nullptr && stpxfaststartporttable->has_operation())
-	|| (stpxinconsistencytable !=  nullptr && stpxinconsistencytable->has_operation())
-	|| (stpxloopguardconfigtable !=  nullptr && stpxloopguardconfigtable->has_operation())
-	|| (stpxloopguardobjects !=  nullptr && stpxloopguardobjects->has_operation())
-	|| (stpxloopinconsistencytable !=  nullptr && stpxloopinconsistencytable->has_operation())
-	|| (stpxmistpinstancetable !=  nullptr && stpxmistpinstancetable->has_operation())
-	|| (stpxmistpobjects !=  nullptr && stpxmistpobjects->has_operation())
-	|| (stpxmstinstanceedittable !=  nullptr && stpxmstinstanceedittable->has_operation())
-	|| (stpxmstinstancetable !=  nullptr && stpxmstinstancetable->has_operation())
-	|| (stpxmstobjects !=  nullptr && stpxmstobjects->has_operation())
-	|| (stpxmstportroletable !=  nullptr && stpxmstportroletable->has_operation())
-	|| (stpxmstporttable !=  nullptr && stpxmstporttable->has_operation())
-	|| (stpxpvstvlantable !=  nullptr && stpxpvstvlantable->has_operation())
-	|| (stpxrootguardconfigtable !=  nullptr && stpxrootguardconfigtable->has_operation())
-	|| (stpxrootinconsistencytable !=  nullptr && stpxrootinconsistencytable->has_operation())
-	|| (stpxrpvstporttable !=  nullptr && stpxrpvstporttable->has_operation())
-	|| (stpxrstpobjects !=  nullptr && stpxrstpobjects->has_operation())
-	|| (stpxrstpportroletable !=  nullptr && stpxrstpportroletable->has_operation())
-	|| (stpxrstpporttable !=  nullptr && stpxrstpporttable->has_operation())
-	|| (stpxsmstinstanceedittable !=  nullptr && stpxsmstinstanceedittable->has_operation())
-	|| (stpxsmstinstancetable !=  nullptr && stpxsmstinstancetable->has_operation())
-	|| (stpxsmstobjects !=  nullptr && stpxsmstobjects->has_operation())
-	|| (stpxsmstporttable !=  nullptr && stpxsmstporttable->has_operation())
-	|| (stpxspanningtreeobjects !=  nullptr && stpxspanningtreeobjects->has_operation())
-	|| (stpxuplinkfastobjects !=  nullptr && stpxuplinkfastobjects->has_operation());
+	|| (stpxbackbonefastobjects_ !=  nullptr && stpxbackbonefastobjects_->has_operation())
+	|| (stpxbpduskewingobjects_ !=  nullptr && stpxbpduskewingobjects_->has_operation())
+	|| (stpxbpduskewingtable_ !=  nullptr && stpxbpduskewingtable_->has_operation())
+	|| (stpxfaststartobjects_ !=  nullptr && stpxfaststartobjects_->has_operation())
+	|| (stpxfaststartopermodetable_ !=  nullptr && stpxfaststartopermodetable_->has_operation())
+	|| (stpxfaststartporttable_ !=  nullptr && stpxfaststartporttable_->has_operation())
+	|| (stpxinconsistencytable_ !=  nullptr && stpxinconsistencytable_->has_operation())
+	|| (stpxloopguardconfigtable_ !=  nullptr && stpxloopguardconfigtable_->has_operation())
+	|| (stpxloopguardobjects_ !=  nullptr && stpxloopguardobjects_->has_operation())
+	|| (stpxloopinconsistencytable_ !=  nullptr && stpxloopinconsistencytable_->has_operation())
+	|| (stpxmistpinstancetable_ !=  nullptr && stpxmistpinstancetable_->has_operation())
+	|| (stpxmistpobjects_ !=  nullptr && stpxmistpobjects_->has_operation())
+	|| (stpxmstinstanceedittable_ !=  nullptr && stpxmstinstanceedittable_->has_operation())
+	|| (stpxmstinstancetable_ !=  nullptr && stpxmstinstancetable_->has_operation())
+	|| (stpxmstobjects_ !=  nullptr && stpxmstobjects_->has_operation())
+	|| (stpxmstportroletable_ !=  nullptr && stpxmstportroletable_->has_operation())
+	|| (stpxmstporttable_ !=  nullptr && stpxmstporttable_->has_operation())
+	|| (stpxpvstvlantable_ !=  nullptr && stpxpvstvlantable_->has_operation())
+	|| (stpxrootguardconfigtable_ !=  nullptr && stpxrootguardconfigtable_->has_operation())
+	|| (stpxrootinconsistencytable_ !=  nullptr && stpxrootinconsistencytable_->has_operation())
+	|| (stpxrpvstporttable_ !=  nullptr && stpxrpvstporttable_->has_operation())
+	|| (stpxrstpobjects_ !=  nullptr && stpxrstpobjects_->has_operation())
+	|| (stpxrstpportroletable_ !=  nullptr && stpxrstpportroletable_->has_operation())
+	|| (stpxrstpporttable_ !=  nullptr && stpxrstpporttable_->has_operation())
+	|| (stpxsmstinstanceedittable_ !=  nullptr && stpxsmstinstanceedittable_->has_operation())
+	|| (stpxsmstinstancetable_ !=  nullptr && stpxsmstinstancetable_->has_operation())
+	|| (stpxsmstobjects_ !=  nullptr && stpxsmstobjects_->has_operation())
+	|| (stpxsmstporttable_ !=  nullptr && stpxsmstporttable_->has_operation())
+	|| (stpxspanningtreeobjects_ !=  nullptr && stpxspanningtreeobjects_->has_operation())
+	|| (stpxuplinkfastobjects_ !=  nullptr && stpxuplinkfastobjects_->has_operation());
 }
 
 std::string CiscoStpExtensionsMib::get_segment_path() const
@@ -209,272 +209,272 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::get_child_by_name(const std::stri
 {
     if(child_yang_name == "stpxBackboneFastObjects")
     {
-        if(stpxbackbonefastobjects == nullptr)
+        if(stpxbackbonefastobjects_ == nullptr)
         {
-            stpxbackbonefastobjects = std::make_shared<CiscoStpExtensionsMib::Stpxbackbonefastobjects>();
+            stpxbackbonefastobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxbackbonefastobjects>();
         }
-        return stpxbackbonefastobjects;
+        return stpxbackbonefastobjects_;
     }
 
     if(child_yang_name == "stpxBpduSkewingObjects")
     {
-        if(stpxbpduskewingobjects == nullptr)
+        if(stpxbpduskewingobjects_ == nullptr)
         {
-            stpxbpduskewingobjects = std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingobjects>();
+            stpxbpduskewingobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingobjects>();
         }
-        return stpxbpduskewingobjects;
+        return stpxbpduskewingobjects_;
     }
 
     if(child_yang_name == "stpxBpduSkewingTable")
     {
-        if(stpxbpduskewingtable == nullptr)
+        if(stpxbpduskewingtable_ == nullptr)
         {
-            stpxbpduskewingtable = std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingtable>();
+            stpxbpduskewingtable_ = std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingtable>();
         }
-        return stpxbpduskewingtable;
+        return stpxbpduskewingtable_;
     }
 
     if(child_yang_name == "stpxFastStartObjects")
     {
-        if(stpxfaststartobjects == nullptr)
+        if(stpxfaststartobjects_ == nullptr)
         {
-            stpxfaststartobjects = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartobjects>();
+            stpxfaststartobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartobjects>();
         }
-        return stpxfaststartobjects;
+        return stpxfaststartobjects_;
     }
 
     if(child_yang_name == "stpxFastStartOperModeTable")
     {
-        if(stpxfaststartopermodetable == nullptr)
+        if(stpxfaststartopermodetable_ == nullptr)
         {
-            stpxfaststartopermodetable = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartopermodetable>();
+            stpxfaststartopermodetable_ = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartopermodetable>();
         }
-        return stpxfaststartopermodetable;
+        return stpxfaststartopermodetable_;
     }
 
     if(child_yang_name == "stpxFastStartPortTable")
     {
-        if(stpxfaststartporttable == nullptr)
+        if(stpxfaststartporttable_ == nullptr)
         {
-            stpxfaststartporttable = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartporttable>();
+            stpxfaststartporttable_ = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartporttable>();
         }
-        return stpxfaststartporttable;
+        return stpxfaststartporttable_;
     }
 
     if(child_yang_name == "stpxInconsistencyTable")
     {
-        if(stpxinconsistencytable == nullptr)
+        if(stpxinconsistencytable_ == nullptr)
         {
-            stpxinconsistencytable = std::make_shared<CiscoStpExtensionsMib::Stpxinconsistencytable>();
+            stpxinconsistencytable_ = std::make_shared<CiscoStpExtensionsMib::Stpxinconsistencytable>();
         }
-        return stpxinconsistencytable;
+        return stpxinconsistencytable_;
     }
 
     if(child_yang_name == "stpxLoopGuardConfigTable")
     {
-        if(stpxloopguardconfigtable == nullptr)
+        if(stpxloopguardconfigtable_ == nullptr)
         {
-            stpxloopguardconfigtable = std::make_shared<CiscoStpExtensionsMib::Stpxloopguardconfigtable>();
+            stpxloopguardconfigtable_ = std::make_shared<CiscoStpExtensionsMib::Stpxloopguardconfigtable>();
         }
-        return stpxloopguardconfigtable;
+        return stpxloopguardconfigtable_;
     }
 
     if(child_yang_name == "stpxLoopGuardObjects")
     {
-        if(stpxloopguardobjects == nullptr)
+        if(stpxloopguardobjects_ == nullptr)
         {
-            stpxloopguardobjects = std::make_shared<CiscoStpExtensionsMib::Stpxloopguardobjects>();
+            stpxloopguardobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxloopguardobjects>();
         }
-        return stpxloopguardobjects;
+        return stpxloopguardobjects_;
     }
 
     if(child_yang_name == "stpxLoopInconsistencyTable")
     {
-        if(stpxloopinconsistencytable == nullptr)
+        if(stpxloopinconsistencytable_ == nullptr)
         {
-            stpxloopinconsistencytable = std::make_shared<CiscoStpExtensionsMib::Stpxloopinconsistencytable>();
+            stpxloopinconsistencytable_ = std::make_shared<CiscoStpExtensionsMib::Stpxloopinconsistencytable>();
         }
-        return stpxloopinconsistencytable;
+        return stpxloopinconsistencytable_;
     }
 
     if(child_yang_name == "stpxMISTPInstanceTable")
     {
-        if(stpxmistpinstancetable == nullptr)
+        if(stpxmistpinstancetable_ == nullptr)
         {
-            stpxmistpinstancetable = std::make_shared<CiscoStpExtensionsMib::Stpxmistpinstancetable>();
+            stpxmistpinstancetable_ = std::make_shared<CiscoStpExtensionsMib::Stpxmistpinstancetable>();
         }
-        return stpxmistpinstancetable;
+        return stpxmistpinstancetable_;
     }
 
     if(child_yang_name == "stpxMISTPObjects")
     {
-        if(stpxmistpobjects == nullptr)
+        if(stpxmistpobjects_ == nullptr)
         {
-            stpxmistpobjects = std::make_shared<CiscoStpExtensionsMib::Stpxmistpobjects>();
+            stpxmistpobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxmistpobjects>();
         }
-        return stpxmistpobjects;
+        return stpxmistpobjects_;
     }
 
     if(child_yang_name == "stpxMSTInstanceEditTable")
     {
-        if(stpxmstinstanceedittable == nullptr)
+        if(stpxmstinstanceedittable_ == nullptr)
         {
-            stpxmstinstanceedittable = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstanceedittable>();
+            stpxmstinstanceedittable_ = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstanceedittable>();
         }
-        return stpxmstinstanceedittable;
+        return stpxmstinstanceedittable_;
     }
 
     if(child_yang_name == "stpxMSTInstanceTable")
     {
-        if(stpxmstinstancetable == nullptr)
+        if(stpxmstinstancetable_ == nullptr)
         {
-            stpxmstinstancetable = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstancetable>();
+            stpxmstinstancetable_ = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstancetable>();
         }
-        return stpxmstinstancetable;
+        return stpxmstinstancetable_;
     }
 
     if(child_yang_name == "stpxMSTObjects")
     {
-        if(stpxmstobjects == nullptr)
+        if(stpxmstobjects_ == nullptr)
         {
-            stpxmstobjects = std::make_shared<CiscoStpExtensionsMib::Stpxmstobjects>();
+            stpxmstobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxmstobjects>();
         }
-        return stpxmstobjects;
+        return stpxmstobjects_;
     }
 
     if(child_yang_name == "stpxMSTPortRoleTable")
     {
-        if(stpxmstportroletable == nullptr)
+        if(stpxmstportroletable_ == nullptr)
         {
-            stpxmstportroletable = std::make_shared<CiscoStpExtensionsMib::Stpxmstportroletable>();
+            stpxmstportroletable_ = std::make_shared<CiscoStpExtensionsMib::Stpxmstportroletable>();
         }
-        return stpxmstportroletable;
+        return stpxmstportroletable_;
     }
 
     if(child_yang_name == "stpxMSTPortTable")
     {
-        if(stpxmstporttable == nullptr)
+        if(stpxmstporttable_ == nullptr)
         {
-            stpxmstporttable = std::make_shared<CiscoStpExtensionsMib::Stpxmstporttable>();
+            stpxmstporttable_ = std::make_shared<CiscoStpExtensionsMib::Stpxmstporttable>();
         }
-        return stpxmstporttable;
+        return stpxmstporttable_;
     }
 
     if(child_yang_name == "stpxPVSTVlanTable")
     {
-        if(stpxpvstvlantable == nullptr)
+        if(stpxpvstvlantable_ == nullptr)
         {
-            stpxpvstvlantable = std::make_shared<CiscoStpExtensionsMib::Stpxpvstvlantable>();
+            stpxpvstvlantable_ = std::make_shared<CiscoStpExtensionsMib::Stpxpvstvlantable>();
         }
-        return stpxpvstvlantable;
+        return stpxpvstvlantable_;
     }
 
     if(child_yang_name == "stpxRootGuardConfigTable")
     {
-        if(stpxrootguardconfigtable == nullptr)
+        if(stpxrootguardconfigtable_ == nullptr)
         {
-            stpxrootguardconfigtable = std::make_shared<CiscoStpExtensionsMib::Stpxrootguardconfigtable>();
+            stpxrootguardconfigtable_ = std::make_shared<CiscoStpExtensionsMib::Stpxrootguardconfigtable>();
         }
-        return stpxrootguardconfigtable;
+        return stpxrootguardconfigtable_;
     }
 
     if(child_yang_name == "stpxRootInconsistencyTable")
     {
-        if(stpxrootinconsistencytable == nullptr)
+        if(stpxrootinconsistencytable_ == nullptr)
         {
-            stpxrootinconsistencytable = std::make_shared<CiscoStpExtensionsMib::Stpxrootinconsistencytable>();
+            stpxrootinconsistencytable_ = std::make_shared<CiscoStpExtensionsMib::Stpxrootinconsistencytable>();
         }
-        return stpxrootinconsistencytable;
+        return stpxrootinconsistencytable_;
     }
 
     if(child_yang_name == "stpxRPVSTPortTable")
     {
-        if(stpxrpvstporttable == nullptr)
+        if(stpxrpvstporttable_ == nullptr)
         {
-            stpxrpvstporttable = std::make_shared<CiscoStpExtensionsMib::Stpxrpvstporttable>();
+            stpxrpvstporttable_ = std::make_shared<CiscoStpExtensionsMib::Stpxrpvstporttable>();
         }
-        return stpxrpvstporttable;
+        return stpxrpvstporttable_;
     }
 
     if(child_yang_name == "stpxRSTPObjects")
     {
-        if(stpxrstpobjects == nullptr)
+        if(stpxrstpobjects_ == nullptr)
         {
-            stpxrstpobjects = std::make_shared<CiscoStpExtensionsMib::Stpxrstpobjects>();
+            stpxrstpobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxrstpobjects>();
         }
-        return stpxrstpobjects;
+        return stpxrstpobjects_;
     }
 
     if(child_yang_name == "stpxRSTPPortRoleTable")
     {
-        if(stpxrstpportroletable == nullptr)
+        if(stpxrstpportroletable_ == nullptr)
         {
-            stpxrstpportroletable = std::make_shared<CiscoStpExtensionsMib::Stpxrstpportroletable>();
+            stpxrstpportroletable_ = std::make_shared<CiscoStpExtensionsMib::Stpxrstpportroletable>();
         }
-        return stpxrstpportroletable;
+        return stpxrstpportroletable_;
     }
 
     if(child_yang_name == "stpxRSTPPortTable")
     {
-        if(stpxrstpporttable == nullptr)
+        if(stpxrstpporttable_ == nullptr)
         {
-            stpxrstpporttable = std::make_shared<CiscoStpExtensionsMib::Stpxrstpporttable>();
+            stpxrstpporttable_ = std::make_shared<CiscoStpExtensionsMib::Stpxrstpporttable>();
         }
-        return stpxrstpporttable;
+        return stpxrstpporttable_;
     }
 
     if(child_yang_name == "stpxSMSTInstanceEditTable")
     {
-        if(stpxsmstinstanceedittable == nullptr)
+        if(stpxsmstinstanceedittable_ == nullptr)
         {
-            stpxsmstinstanceedittable = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstanceedittable>();
+            stpxsmstinstanceedittable_ = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstanceedittable>();
         }
-        return stpxsmstinstanceedittable;
+        return stpxsmstinstanceedittable_;
     }
 
     if(child_yang_name == "stpxSMSTInstanceTable")
     {
-        if(stpxsmstinstancetable == nullptr)
+        if(stpxsmstinstancetable_ == nullptr)
         {
-            stpxsmstinstancetable = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstancetable>();
+            stpxsmstinstancetable_ = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstancetable>();
         }
-        return stpxsmstinstancetable;
+        return stpxsmstinstancetable_;
     }
 
     if(child_yang_name == "stpxSMSTObjects")
     {
-        if(stpxsmstobjects == nullptr)
+        if(stpxsmstobjects_ == nullptr)
         {
-            stpxsmstobjects = std::make_shared<CiscoStpExtensionsMib::Stpxsmstobjects>();
+            stpxsmstobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxsmstobjects>();
         }
-        return stpxsmstobjects;
+        return stpxsmstobjects_;
     }
 
     if(child_yang_name == "stpxSMSTPortTable")
     {
-        if(stpxsmstporttable == nullptr)
+        if(stpxsmstporttable_ == nullptr)
         {
-            stpxsmstporttable = std::make_shared<CiscoStpExtensionsMib::Stpxsmstporttable>();
+            stpxsmstporttable_ = std::make_shared<CiscoStpExtensionsMib::Stpxsmstporttable>();
         }
-        return stpxsmstporttable;
+        return stpxsmstporttable_;
     }
 
     if(child_yang_name == "stpxSpanningTreeObjects")
     {
-        if(stpxspanningtreeobjects == nullptr)
+        if(stpxspanningtreeobjects_ == nullptr)
         {
-            stpxspanningtreeobjects = std::make_shared<CiscoStpExtensionsMib::Stpxspanningtreeobjects>();
+            stpxspanningtreeobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxspanningtreeobjects>();
         }
-        return stpxspanningtreeobjects;
+        return stpxspanningtreeobjects_;
     }
 
     if(child_yang_name == "stpxUplinkFastObjects")
     {
-        if(stpxuplinkfastobjects == nullptr)
+        if(stpxuplinkfastobjects_ == nullptr)
         {
-            stpxuplinkfastobjects = std::make_shared<CiscoStpExtensionsMib::Stpxuplinkfastobjects>();
+            stpxuplinkfastobjects_ = std::make_shared<CiscoStpExtensionsMib::Stpxuplinkfastobjects>();
         }
-        return stpxuplinkfastobjects;
+        return stpxuplinkfastobjects_;
     }
 
     return nullptr;
@@ -483,154 +483,154 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(stpxbackbonefastobjects != nullptr)
+    if(stpxbackbonefastobjects_ != nullptr)
     {
-        children["stpxBackboneFastObjects"] = stpxbackbonefastobjects;
+        children["stpxBackboneFastObjects"] = stpxbackbonefastobjects_;
     }
 
-    if(stpxbpduskewingobjects != nullptr)
+    if(stpxbpduskewingobjects_ != nullptr)
     {
-        children["stpxBpduSkewingObjects"] = stpxbpduskewingobjects;
+        children["stpxBpduSkewingObjects"] = stpxbpduskewingobjects_;
     }
 
-    if(stpxbpduskewingtable != nullptr)
+    if(stpxbpduskewingtable_ != nullptr)
     {
-        children["stpxBpduSkewingTable"] = stpxbpduskewingtable;
+        children["stpxBpduSkewingTable"] = stpxbpduskewingtable_;
     }
 
-    if(stpxfaststartobjects != nullptr)
+    if(stpxfaststartobjects_ != nullptr)
     {
-        children["stpxFastStartObjects"] = stpxfaststartobjects;
+        children["stpxFastStartObjects"] = stpxfaststartobjects_;
     }
 
-    if(stpxfaststartopermodetable != nullptr)
+    if(stpxfaststartopermodetable_ != nullptr)
     {
-        children["stpxFastStartOperModeTable"] = stpxfaststartopermodetable;
+        children["stpxFastStartOperModeTable"] = stpxfaststartopermodetable_;
     }
 
-    if(stpxfaststartporttable != nullptr)
+    if(stpxfaststartporttable_ != nullptr)
     {
-        children["stpxFastStartPortTable"] = stpxfaststartporttable;
+        children["stpxFastStartPortTable"] = stpxfaststartporttable_;
     }
 
-    if(stpxinconsistencytable != nullptr)
+    if(stpxinconsistencytable_ != nullptr)
     {
-        children["stpxInconsistencyTable"] = stpxinconsistencytable;
+        children["stpxInconsistencyTable"] = stpxinconsistencytable_;
     }
 
-    if(stpxloopguardconfigtable != nullptr)
+    if(stpxloopguardconfigtable_ != nullptr)
     {
-        children["stpxLoopGuardConfigTable"] = stpxloopguardconfigtable;
+        children["stpxLoopGuardConfigTable"] = stpxloopguardconfigtable_;
     }
 
-    if(stpxloopguardobjects != nullptr)
+    if(stpxloopguardobjects_ != nullptr)
     {
-        children["stpxLoopGuardObjects"] = stpxloopguardobjects;
+        children["stpxLoopGuardObjects"] = stpxloopguardobjects_;
     }
 
-    if(stpxloopinconsistencytable != nullptr)
+    if(stpxloopinconsistencytable_ != nullptr)
     {
-        children["stpxLoopInconsistencyTable"] = stpxloopinconsistencytable;
+        children["stpxLoopInconsistencyTable"] = stpxloopinconsistencytable_;
     }
 
-    if(stpxmistpinstancetable != nullptr)
+    if(stpxmistpinstancetable_ != nullptr)
     {
-        children["stpxMISTPInstanceTable"] = stpxmistpinstancetable;
+        children["stpxMISTPInstanceTable"] = stpxmistpinstancetable_;
     }
 
-    if(stpxmistpobjects != nullptr)
+    if(stpxmistpobjects_ != nullptr)
     {
-        children["stpxMISTPObjects"] = stpxmistpobjects;
+        children["stpxMISTPObjects"] = stpxmistpobjects_;
     }
 
-    if(stpxmstinstanceedittable != nullptr)
+    if(stpxmstinstanceedittable_ != nullptr)
     {
-        children["stpxMSTInstanceEditTable"] = stpxmstinstanceedittable;
+        children["stpxMSTInstanceEditTable"] = stpxmstinstanceedittable_;
     }
 
-    if(stpxmstinstancetable != nullptr)
+    if(stpxmstinstancetable_ != nullptr)
     {
-        children["stpxMSTInstanceTable"] = stpxmstinstancetable;
+        children["stpxMSTInstanceTable"] = stpxmstinstancetable_;
     }
 
-    if(stpxmstobjects != nullptr)
+    if(stpxmstobjects_ != nullptr)
     {
-        children["stpxMSTObjects"] = stpxmstobjects;
+        children["stpxMSTObjects"] = stpxmstobjects_;
     }
 
-    if(stpxmstportroletable != nullptr)
+    if(stpxmstportroletable_ != nullptr)
     {
-        children["stpxMSTPortRoleTable"] = stpxmstportroletable;
+        children["stpxMSTPortRoleTable"] = stpxmstportroletable_;
     }
 
-    if(stpxmstporttable != nullptr)
+    if(stpxmstporttable_ != nullptr)
     {
-        children["stpxMSTPortTable"] = stpxmstporttable;
+        children["stpxMSTPortTable"] = stpxmstporttable_;
     }
 
-    if(stpxpvstvlantable != nullptr)
+    if(stpxpvstvlantable_ != nullptr)
     {
-        children["stpxPVSTVlanTable"] = stpxpvstvlantable;
+        children["stpxPVSTVlanTable"] = stpxpvstvlantable_;
     }
 
-    if(stpxrootguardconfigtable != nullptr)
+    if(stpxrootguardconfigtable_ != nullptr)
     {
-        children["stpxRootGuardConfigTable"] = stpxrootguardconfigtable;
+        children["stpxRootGuardConfigTable"] = stpxrootguardconfigtable_;
     }
 
-    if(stpxrootinconsistencytable != nullptr)
+    if(stpxrootinconsistencytable_ != nullptr)
     {
-        children["stpxRootInconsistencyTable"] = stpxrootinconsistencytable;
+        children["stpxRootInconsistencyTable"] = stpxrootinconsistencytable_;
     }
 
-    if(stpxrpvstporttable != nullptr)
+    if(stpxrpvstporttable_ != nullptr)
     {
-        children["stpxRPVSTPortTable"] = stpxrpvstporttable;
+        children["stpxRPVSTPortTable"] = stpxrpvstporttable_;
     }
 
-    if(stpxrstpobjects != nullptr)
+    if(stpxrstpobjects_ != nullptr)
     {
-        children["stpxRSTPObjects"] = stpxrstpobjects;
+        children["stpxRSTPObjects"] = stpxrstpobjects_;
     }
 
-    if(stpxrstpportroletable != nullptr)
+    if(stpxrstpportroletable_ != nullptr)
     {
-        children["stpxRSTPPortRoleTable"] = stpxrstpportroletable;
+        children["stpxRSTPPortRoleTable"] = stpxrstpportroletable_;
     }
 
-    if(stpxrstpporttable != nullptr)
+    if(stpxrstpporttable_ != nullptr)
     {
-        children["stpxRSTPPortTable"] = stpxrstpporttable;
+        children["stpxRSTPPortTable"] = stpxrstpporttable_;
     }
 
-    if(stpxsmstinstanceedittable != nullptr)
+    if(stpxsmstinstanceedittable_ != nullptr)
     {
-        children["stpxSMSTInstanceEditTable"] = stpxsmstinstanceedittable;
+        children["stpxSMSTInstanceEditTable"] = stpxsmstinstanceedittable_;
     }
 
-    if(stpxsmstinstancetable != nullptr)
+    if(stpxsmstinstancetable_ != nullptr)
     {
-        children["stpxSMSTInstanceTable"] = stpxsmstinstancetable;
+        children["stpxSMSTInstanceTable"] = stpxsmstinstancetable_;
     }
 
-    if(stpxsmstobjects != nullptr)
+    if(stpxsmstobjects_ != nullptr)
     {
-        children["stpxSMSTObjects"] = stpxsmstobjects;
+        children["stpxSMSTObjects"] = stpxsmstobjects_;
     }
 
-    if(stpxsmstporttable != nullptr)
+    if(stpxsmstporttable_ != nullptr)
     {
-        children["stpxSMSTPortTable"] = stpxsmstporttable;
+        children["stpxSMSTPortTable"] = stpxsmstporttable_;
     }
 
-    if(stpxspanningtreeobjects != nullptr)
+    if(stpxspanningtreeobjects_ != nullptr)
     {
-        children["stpxSpanningTreeObjects"] = stpxspanningtreeobjects;
+        children["stpxSpanningTreeObjects"] = stpxspanningtreeobjects_;
     }
 
-    if(stpxuplinkfastobjects != nullptr)
+    if(stpxuplinkfastobjects_ != nullptr)
     {
-        children["stpxUplinkFastObjects"] = stpxuplinkfastobjects;
+        children["stpxUplinkFastObjects"] = stpxuplinkfastobjects_;
     }
 
     return children;
@@ -1631,9 +1631,9 @@ CiscoStpExtensionsMib::Stpxpvstvlantable::~Stpxpvstvlantable()
 
 bool CiscoStpExtensionsMib::Stpxpvstvlantable::has_data() const
 {
-    for (std::size_t index=0; index<stpxpvstvlanentry.size(); index++)
+    for (std::size_t index=0; index<stpxpvstvlanentry_.size(); index++)
     {
-        if(stpxpvstvlanentry[index]->has_data())
+        if(stpxpvstvlanentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1641,9 +1641,9 @@ bool CiscoStpExtensionsMib::Stpxpvstvlantable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxpvstvlantable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxpvstvlanentry.size(); index++)
+    for (std::size_t index=0; index<stpxpvstvlanentry_.size(); index++)
     {
-        if(stpxpvstvlanentry[index]->has_operation())
+        if(stpxpvstvlanentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1683,7 +1683,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxpvstvlantable::get_child_by_n
 {
     if(child_yang_name == "stpxPVSTVlanEntry")
     {
-        for(auto const & c : stpxpvstvlanentry)
+        for(auto const & c : stpxpvstvlanentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1693,7 +1693,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxpvstvlantable::get_child_by_n
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxpvstvlantable::Stpxpvstvlanentry>();
         c->parent = this;
-        stpxpvstvlanentry.push_back(c);
+        stpxpvstvlanentry_.push_back(c);
         return c;
     }
 
@@ -1703,7 +1703,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxpvstvlantable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxpvstvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxpvstvlanentry)
+    for (auto const & c : stpxpvstvlanentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1806,9 +1806,9 @@ CiscoStpExtensionsMib::Stpxinconsistencytable::~Stpxinconsistencytable()
 
 bool CiscoStpExtensionsMib::Stpxinconsistencytable::has_data() const
 {
-    for (std::size_t index=0; index<stpxinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxinconsistencyentry_.size(); index++)
     {
-        if(stpxinconsistencyentry[index]->has_data())
+        if(stpxinconsistencyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1816,9 +1816,9 @@ bool CiscoStpExtensionsMib::Stpxinconsistencytable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxinconsistencytable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxinconsistencyentry_.size(); index++)
     {
-        if(stpxinconsistencyentry[index]->has_operation())
+        if(stpxinconsistencyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1858,7 +1858,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxinconsistencytable::get_child
 {
     if(child_yang_name == "stpxInconsistencyEntry")
     {
-        for(auto const & c : stpxinconsistencyentry)
+        for(auto const & c : stpxinconsistencyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1868,7 +1868,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxinconsistencytable::get_child
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxinconsistencytable::Stpxinconsistencyentry>();
         c->parent = this;
-        stpxinconsistencyentry.push_back(c);
+        stpxinconsistencyentry_.push_back(c);
         return c;
     }
 
@@ -1878,7 +1878,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxinconsistencytable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxinconsistencyentry)
+    for (auto const & c : stpxinconsistencyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1989,9 +1989,9 @@ CiscoStpExtensionsMib::Stpxrootguardconfigtable::~Stpxrootguardconfigtable()
 
 bool CiscoStpExtensionsMib::Stpxrootguardconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrootguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootguardconfigentry_.size(); index++)
     {
-        if(stpxrootguardconfigentry[index]->has_data())
+        if(stpxrootguardconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1999,9 +1999,9 @@ bool CiscoStpExtensionsMib::Stpxrootguardconfigtable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxrootguardconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrootguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootguardconfigentry_.size(); index++)
     {
-        if(stpxrootguardconfigentry[index]->has_operation())
+        if(stpxrootguardconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2041,7 +2041,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootguardconfigtable::get_chi
 {
     if(child_yang_name == "stpxRootGuardConfigEntry")
     {
-        for(auto const & c : stpxrootguardconfigentry)
+        for(auto const & c : stpxrootguardconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2051,7 +2051,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootguardconfigtable::get_chi
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxrootguardconfigtable::Stpxrootguardconfigentry>();
         c->parent = this;
-        stpxrootguardconfigentry.push_back(c);
+        stpxrootguardconfigentry_.push_back(c);
         return c;
     }
 
@@ -2061,7 +2061,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootguardconfigtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxrootguardconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxrootguardconfigentry)
+    for (auto const & c : stpxrootguardconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2164,9 +2164,9 @@ CiscoStpExtensionsMib::Stpxrootinconsistencytable::~Stpxrootinconsistencytable()
 
 bool CiscoStpExtensionsMib::Stpxrootinconsistencytable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrootinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootinconsistencyentry_.size(); index++)
     {
-        if(stpxrootinconsistencyentry[index]->has_data())
+        if(stpxrootinconsistencyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2174,9 +2174,9 @@ bool CiscoStpExtensionsMib::Stpxrootinconsistencytable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxrootinconsistencytable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrootinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootinconsistencyentry_.size(); index++)
     {
-        if(stpxrootinconsistencyentry[index]->has_operation())
+        if(stpxrootinconsistencyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2216,7 +2216,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootinconsistencytable::get_c
 {
     if(child_yang_name == "stpxRootInconsistencyEntry")
     {
-        for(auto const & c : stpxrootinconsistencyentry)
+        for(auto const & c : stpxrootinconsistencyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2226,7 +2226,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootinconsistencytable::get_c
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxrootinconsistencytable::Stpxrootinconsistencyentry>();
         c->parent = this;
-        stpxrootinconsistencyentry.push_back(c);
+        stpxrootinconsistencyentry_.push_back(c);
         return c;
     }
 
@@ -2236,7 +2236,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrootinconsistencytable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxrootinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxrootinconsistencyentry)
+    for (auto const & c : stpxrootinconsistencyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2347,9 +2347,9 @@ CiscoStpExtensionsMib::Stpxmistpinstancetable::~Stpxmistpinstancetable()
 
 bool CiscoStpExtensionsMib::Stpxmistpinstancetable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmistpinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmistpinstanceentry_.size(); index++)
     {
-        if(stpxmistpinstanceentry[index]->has_data())
+        if(stpxmistpinstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2357,9 +2357,9 @@ bool CiscoStpExtensionsMib::Stpxmistpinstancetable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxmistpinstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmistpinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmistpinstanceentry_.size(); index++)
     {
-        if(stpxmistpinstanceentry[index]->has_operation())
+        if(stpxmistpinstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2399,7 +2399,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmistpinstancetable::get_child
 {
     if(child_yang_name == "stpxMISTPInstanceEntry")
     {
-        for(auto const & c : stpxmistpinstanceentry)
+        for(auto const & c : stpxmistpinstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2409,7 +2409,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmistpinstancetable::get_child
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxmistpinstancetable::Stpxmistpinstanceentry>();
         c->parent = this;
-        stpxmistpinstanceentry.push_back(c);
+        stpxmistpinstanceentry_.push_back(c);
         return c;
     }
 
@@ -2419,7 +2419,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmistpinstancetable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxmistpinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxmistpinstanceentry)
+    for (auto const & c : stpxmistpinstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2554,9 +2554,9 @@ CiscoStpExtensionsMib::Stpxloopguardconfigtable::~Stpxloopguardconfigtable()
 
 bool CiscoStpExtensionsMib::Stpxloopguardconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<stpxloopguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopguardconfigentry_.size(); index++)
     {
-        if(stpxloopguardconfigentry[index]->has_data())
+        if(stpxloopguardconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2564,9 +2564,9 @@ bool CiscoStpExtensionsMib::Stpxloopguardconfigtable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxloopguardconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxloopguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopguardconfigentry_.size(); index++)
     {
-        if(stpxloopguardconfigentry[index]->has_operation())
+        if(stpxloopguardconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2606,7 +2606,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopguardconfigtable::get_chi
 {
     if(child_yang_name == "stpxLoopGuardConfigEntry")
     {
-        for(auto const & c : stpxloopguardconfigentry)
+        for(auto const & c : stpxloopguardconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2616,7 +2616,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopguardconfigtable::get_chi
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxloopguardconfigtable::Stpxloopguardconfigentry>();
         c->parent = this;
-        stpxloopguardconfigentry.push_back(c);
+        stpxloopguardconfigentry_.push_back(c);
         return c;
     }
 
@@ -2626,7 +2626,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopguardconfigtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxloopguardconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxloopguardconfigentry)
+    for (auto const & c : stpxloopguardconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2737,9 +2737,9 @@ CiscoStpExtensionsMib::Stpxloopinconsistencytable::~Stpxloopinconsistencytable()
 
 bool CiscoStpExtensionsMib::Stpxloopinconsistencytable::has_data() const
 {
-    for (std::size_t index=0; index<stpxloopinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopinconsistencyentry_.size(); index++)
     {
-        if(stpxloopinconsistencyentry[index]->has_data())
+        if(stpxloopinconsistencyentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2747,9 +2747,9 @@ bool CiscoStpExtensionsMib::Stpxloopinconsistencytable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxloopinconsistencytable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxloopinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopinconsistencyentry_.size(); index++)
     {
-        if(stpxloopinconsistencyentry[index]->has_operation())
+        if(stpxloopinconsistencyentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2789,7 +2789,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopinconsistencytable::get_c
 {
     if(child_yang_name == "stpxLoopInconsistencyEntry")
     {
-        for(auto const & c : stpxloopinconsistencyentry)
+        for(auto const & c : stpxloopinconsistencyentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2799,7 +2799,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopinconsistencytable::get_c
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxloopinconsistencytable::Stpxloopinconsistencyentry>();
         c->parent = this;
-        stpxloopinconsistencyentry.push_back(c);
+        stpxloopinconsistencyentry_.push_back(c);
         return c;
     }
 
@@ -2809,7 +2809,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxloopinconsistencytable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxloopinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxloopinconsistencyentry)
+    for (auto const & c : stpxloopinconsistencyentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2920,9 +2920,9 @@ CiscoStpExtensionsMib::Stpxfaststartporttable::~Stpxfaststartporttable()
 
 bool CiscoStpExtensionsMib::Stpxfaststartporttable::has_data() const
 {
-    for (std::size_t index=0; index<stpxfaststartportentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartportentry_.size(); index++)
     {
-        if(stpxfaststartportentry[index]->has_data())
+        if(stpxfaststartportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2930,9 +2930,9 @@ bool CiscoStpExtensionsMib::Stpxfaststartporttable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxfaststartporttable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxfaststartportentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartportentry_.size(); index++)
     {
-        if(stpxfaststartportentry[index]->has_operation())
+        if(stpxfaststartportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2972,7 +2972,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartporttable::get_child
 {
     if(child_yang_name == "stpxFastStartPortEntry")
     {
-        for(auto const & c : stpxfaststartportentry)
+        for(auto const & c : stpxfaststartportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2982,7 +2982,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartporttable::get_child
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartporttable::Stpxfaststartportentry>();
         c->parent = this;
-        stpxfaststartportentry.push_back(c);
+        stpxfaststartportentry_.push_back(c);
         return c;
     }
 
@@ -2992,7 +2992,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartporttable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxfaststartporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxfaststartportentry)
+    for (auto const & c : stpxfaststartportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3119,9 +3119,9 @@ CiscoStpExtensionsMib::Stpxfaststartopermodetable::~Stpxfaststartopermodetable()
 
 bool CiscoStpExtensionsMib::Stpxfaststartopermodetable::has_data() const
 {
-    for (std::size_t index=0; index<stpxfaststartopermodeentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartopermodeentry_.size(); index++)
     {
-        if(stpxfaststartopermodeentry[index]->has_data())
+        if(stpxfaststartopermodeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3129,9 +3129,9 @@ bool CiscoStpExtensionsMib::Stpxfaststartopermodetable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxfaststartopermodetable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxfaststartopermodeentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartopermodeentry_.size(); index++)
     {
-        if(stpxfaststartopermodeentry[index]->has_operation())
+        if(stpxfaststartopermodeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3171,7 +3171,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartopermodetable::get_c
 {
     if(child_yang_name == "stpxFastStartOperModeEntry")
     {
-        for(auto const & c : stpxfaststartopermodeentry)
+        for(auto const & c : stpxfaststartopermodeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3181,7 +3181,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartopermodetable::get_c
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxfaststartopermodetable::Stpxfaststartopermodeentry>();
         c->parent = this;
-        stpxfaststartopermodeentry.push_back(c);
+        stpxfaststartopermodeentry_.push_back(c);
         return c;
     }
 
@@ -3191,7 +3191,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxfaststartopermodetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxfaststartopermodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxfaststartopermodeentry)
+    for (auto const & c : stpxfaststartopermodeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3302,9 +3302,9 @@ CiscoStpExtensionsMib::Stpxbpduskewingtable::~Stpxbpduskewingtable()
 
 bool CiscoStpExtensionsMib::Stpxbpduskewingtable::has_data() const
 {
-    for (std::size_t index=0; index<stpxbpduskewingentry.size(); index++)
+    for (std::size_t index=0; index<stpxbpduskewingentry_.size(); index++)
     {
-        if(stpxbpduskewingentry[index]->has_data())
+        if(stpxbpduskewingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3312,9 +3312,9 @@ bool CiscoStpExtensionsMib::Stpxbpduskewingtable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxbpduskewingtable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxbpduskewingentry.size(); index++)
+    for (std::size_t index=0; index<stpxbpduskewingentry_.size(); index++)
     {
-        if(stpxbpduskewingentry[index]->has_operation())
+        if(stpxbpduskewingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3354,7 +3354,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxbpduskewingtable::get_child_b
 {
     if(child_yang_name == "stpxBpduSkewingEntry")
     {
-        for(auto const & c : stpxbpduskewingentry)
+        for(auto const & c : stpxbpduskewingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3364,7 +3364,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxbpduskewingtable::get_child_b
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxbpduskewingtable::Stpxbpduskewingentry>();
         c->parent = this;
-        stpxbpduskewingentry.push_back(c);
+        stpxbpduskewingentry_.push_back(c);
         return c;
     }
 
@@ -3374,7 +3374,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxbpduskewingtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxbpduskewingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxbpduskewingentry)
+    for (auto const & c : stpxbpduskewingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3501,9 +3501,9 @@ CiscoStpExtensionsMib::Stpxmstinstancetable::~Stpxmstinstancetable()
 
 bool CiscoStpExtensionsMib::Stpxmstinstancetable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceentry_.size(); index++)
     {
-        if(stpxmstinstanceentry[index]->has_data())
+        if(stpxmstinstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3511,9 +3511,9 @@ bool CiscoStpExtensionsMib::Stpxmstinstancetable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxmstinstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceentry_.size(); index++)
     {
-        if(stpxmstinstanceentry[index]->has_operation())
+        if(stpxmstinstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3553,7 +3553,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstancetable::get_child_b
 {
     if(child_yang_name == "stpxMSTInstanceEntry")
     {
-        for(auto const & c : stpxmstinstanceentry)
+        for(auto const & c : stpxmstinstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3563,7 +3563,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstancetable::get_child_b
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstancetable::Stpxmstinstanceentry>();
         c->parent = this;
-        stpxmstinstanceentry.push_back(c);
+        stpxmstinstanceentry_.push_back(c);
         return c;
     }
 
@@ -3573,7 +3573,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstancetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxmstinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxmstinstanceentry)
+    for (auto const & c : stpxmstinstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3708,9 +3708,9 @@ CiscoStpExtensionsMib::Stpxmstinstanceedittable::~Stpxmstinstanceedittable()
 
 bool CiscoStpExtensionsMib::Stpxmstinstanceedittable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceeditentry_.size(); index++)
     {
-        if(stpxmstinstanceeditentry[index]->has_data())
+        if(stpxmstinstanceeditentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3718,9 +3718,9 @@ bool CiscoStpExtensionsMib::Stpxmstinstanceedittable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxmstinstanceedittable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceeditentry_.size(); index++)
     {
-        if(stpxmstinstanceeditentry[index]->has_operation())
+        if(stpxmstinstanceeditentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3760,7 +3760,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstanceedittable::get_chi
 {
     if(child_yang_name == "stpxMSTInstanceEditEntry")
     {
-        for(auto const & c : stpxmstinstanceeditentry)
+        for(auto const & c : stpxmstinstanceeditentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3770,7 +3770,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstanceedittable::get_chi
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxmstinstanceedittable::Stpxmstinstanceeditentry>();
         c->parent = this;
-        stpxmstinstanceeditentry.push_back(c);
+        stpxmstinstanceeditentry_.push_back(c);
         return c;
     }
 
@@ -3780,7 +3780,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstinstanceedittable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxmstinstanceedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxmstinstanceeditentry)
+    for (auto const & c : stpxmstinstanceeditentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3907,9 +3907,9 @@ CiscoStpExtensionsMib::Stpxmstporttable::~Stpxmstporttable()
 
 bool CiscoStpExtensionsMib::Stpxmstporttable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportentry_.size(); index++)
     {
-        if(stpxmstportentry[index]->has_data())
+        if(stpxmstportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3917,9 +3917,9 @@ bool CiscoStpExtensionsMib::Stpxmstporttable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxmstporttable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportentry_.size(); index++)
     {
-        if(stpxmstportentry[index]->has_operation())
+        if(stpxmstportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3959,7 +3959,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstporttable::get_child_by_na
 {
     if(child_yang_name == "stpxMSTPortEntry")
     {
-        for(auto const & c : stpxmstportentry)
+        for(auto const & c : stpxmstportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3969,7 +3969,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstporttable::get_child_by_na
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxmstporttable::Stpxmstportentry>();
         c->parent = this;
-        stpxmstportentry.push_back(c);
+        stpxmstportentry_.push_back(c);
         return c;
     }
 
@@ -3979,7 +3979,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstporttable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxmstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxmstportentry)
+    for (auto const & c : stpxmstportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4106,9 +4106,9 @@ CiscoStpExtensionsMib::Stpxmstportroletable::~Stpxmstportroletable()
 
 bool CiscoStpExtensionsMib::Stpxmstportroletable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportroleentry_.size(); index++)
     {
-        if(stpxmstportroleentry[index]->has_data())
+        if(stpxmstportroleentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4116,9 +4116,9 @@ bool CiscoStpExtensionsMib::Stpxmstportroletable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxmstportroletable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportroleentry_.size(); index++)
     {
-        if(stpxmstportroleentry[index]->has_operation())
+        if(stpxmstportroleentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4158,7 +4158,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstportroletable::get_child_b
 {
     if(child_yang_name == "stpxMSTPortRoleEntry")
     {
-        for(auto const & c : stpxmstportroleentry)
+        for(auto const & c : stpxmstportroleentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4168,7 +4168,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstportroletable::get_child_b
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxmstportroletable::Stpxmstportroleentry>();
         c->parent = this;
-        stpxmstportroleentry.push_back(c);
+        stpxmstportroleentry_.push_back(c);
         return c;
     }
 
@@ -4178,7 +4178,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxmstportroletable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxmstportroletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxmstportroleentry)
+    for (auto const & c : stpxmstportroleentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4289,9 +4289,9 @@ CiscoStpExtensionsMib::Stpxrstpporttable::~Stpxrstpporttable()
 
 bool CiscoStpExtensionsMib::Stpxrstpporttable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrstpportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportentry_.size(); index++)
     {
-        if(stpxrstpportentry[index]->has_data())
+        if(stpxrstpportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4299,9 +4299,9 @@ bool CiscoStpExtensionsMib::Stpxrstpporttable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxrstpporttable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrstpportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportentry_.size(); index++)
     {
-        if(stpxrstpportentry[index]->has_operation())
+        if(stpxrstpportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4341,7 +4341,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpporttable::get_child_by_n
 {
     if(child_yang_name == "stpxRSTPPortEntry")
     {
-        for(auto const & c : stpxrstpportentry)
+        for(auto const & c : stpxrstpportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4351,7 +4351,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpporttable::get_child_by_n
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxrstpporttable::Stpxrstpportentry>();
         c->parent = this;
-        stpxrstpportentry.push_back(c);
+        stpxrstpportentry_.push_back(c);
         return c;
     }
 
@@ -4361,7 +4361,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpporttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxrstpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxrstpportentry)
+    for (auto const & c : stpxrstpportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4480,9 +4480,9 @@ CiscoStpExtensionsMib::Stpxrstpportroletable::~Stpxrstpportroletable()
 
 bool CiscoStpExtensionsMib::Stpxrstpportroletable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrstpportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportroleentry_.size(); index++)
     {
-        if(stpxrstpportroleentry[index]->has_data())
+        if(stpxrstpportroleentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4490,9 +4490,9 @@ bool CiscoStpExtensionsMib::Stpxrstpportroletable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxrstpportroletable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrstpportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportroleentry_.size(); index++)
     {
-        if(stpxrstpportroleentry[index]->has_operation())
+        if(stpxrstpportroleentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4532,7 +4532,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpportroletable::get_child_
 {
     if(child_yang_name == "stpxRSTPPortRoleEntry")
     {
-        for(auto const & c : stpxrstpportroleentry)
+        for(auto const & c : stpxrstpportroleentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4542,7 +4542,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpportroletable::get_child_
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxrstpportroletable::Stpxrstpportroleentry>();
         c->parent = this;
-        stpxrstpportroleentry.push_back(c);
+        stpxrstpportroleentry_.push_back(c);
         return c;
     }
 
@@ -4552,7 +4552,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrstpportroletable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxrstpportroletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxrstpportroleentry)
+    for (auto const & c : stpxrstpportroleentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4663,9 +4663,9 @@ CiscoStpExtensionsMib::Stpxrpvstporttable::~Stpxrpvstporttable()
 
 bool CiscoStpExtensionsMib::Stpxrpvstporttable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrpvstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrpvstportentry_.size(); index++)
     {
-        if(stpxrpvstportentry[index]->has_data())
+        if(stpxrpvstportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4673,9 +4673,9 @@ bool CiscoStpExtensionsMib::Stpxrpvstporttable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxrpvstporttable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrpvstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrpvstportentry_.size(); index++)
     {
-        if(stpxrpvstportentry[index]->has_operation())
+        if(stpxrpvstportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4715,7 +4715,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrpvstporttable::get_child_by_
 {
     if(child_yang_name == "stpxRPVSTPortEntry")
     {
-        for(auto const & c : stpxrpvstportentry)
+        for(auto const & c : stpxrpvstportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4725,7 +4725,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrpvstporttable::get_child_by_
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxrpvstporttable::Stpxrpvstportentry>();
         c->parent = this;
-        stpxrpvstportentry.push_back(c);
+        stpxrpvstportentry_.push_back(c);
         return c;
     }
 
@@ -4735,7 +4735,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxrpvstporttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxrpvstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxrpvstportentry)
+    for (auto const & c : stpxrpvstportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4846,9 +4846,9 @@ CiscoStpExtensionsMib::Stpxsmstinstancetable::~Stpxsmstinstancetable()
 
 bool CiscoStpExtensionsMib::Stpxsmstinstancetable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceentry_.size(); index++)
     {
-        if(stpxsmstinstanceentry[index]->has_data())
+        if(stpxsmstinstanceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4856,9 +4856,9 @@ bool CiscoStpExtensionsMib::Stpxsmstinstancetable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxsmstinstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceentry_.size(); index++)
     {
-        if(stpxsmstinstanceentry[index]->has_operation())
+        if(stpxsmstinstanceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4898,7 +4898,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstancetable::get_child_
 {
     if(child_yang_name == "stpxSMSTInstanceEntry")
     {
-        for(auto const & c : stpxsmstinstanceentry)
+        for(auto const & c : stpxsmstinstanceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4908,7 +4908,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstancetable::get_child_
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstancetable::Stpxsmstinstanceentry>();
         c->parent = this;
-        stpxsmstinstanceentry.push_back(c);
+        stpxsmstinstanceentry_.push_back(c);
         return c;
     }
 
@@ -4918,7 +4918,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstancetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxsmstinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxsmstinstanceentry)
+    for (auto const & c : stpxsmstinstanceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5053,9 +5053,9 @@ CiscoStpExtensionsMib::Stpxsmstinstanceedittable::~Stpxsmstinstanceedittable()
 
 bool CiscoStpExtensionsMib::Stpxsmstinstanceedittable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceeditentry_.size(); index++)
     {
-        if(stpxsmstinstanceeditentry[index]->has_data())
+        if(stpxsmstinstanceeditentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5063,9 +5063,9 @@ bool CiscoStpExtensionsMib::Stpxsmstinstanceedittable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxsmstinstanceedittable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceeditentry_.size(); index++)
     {
-        if(stpxsmstinstanceeditentry[index]->has_operation())
+        if(stpxsmstinstanceeditentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5105,7 +5105,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstanceedittable::get_ch
 {
     if(child_yang_name == "stpxSMSTInstanceEditEntry")
     {
-        for(auto const & c : stpxsmstinstanceeditentry)
+        for(auto const & c : stpxsmstinstanceeditentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5115,7 +5115,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstanceedittable::get_ch
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry>();
         c->parent = this;
-        stpxsmstinstanceeditentry.push_back(c);
+        stpxsmstinstanceeditentry_.push_back(c);
         return c;
     }
 
@@ -5125,7 +5125,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstinstanceedittable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxsmstinstanceedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxsmstinstanceeditentry)
+    for (auto const & c : stpxsmstinstanceeditentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5244,9 +5244,9 @@ CiscoStpExtensionsMib::Stpxsmstporttable::~Stpxsmstporttable()
 
 bool CiscoStpExtensionsMib::Stpxsmstporttable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstportentry_.size(); index++)
     {
-        if(stpxsmstportentry[index]->has_data())
+        if(stpxsmstportentry_[index]->has_data())
             return true;
     }
     return false;
@@ -5254,9 +5254,9 @@ bool CiscoStpExtensionsMib::Stpxsmstporttable::has_data() const
 
 bool CiscoStpExtensionsMib::Stpxsmstporttable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstportentry_.size(); index++)
     {
-        if(stpxsmstportentry[index]->has_operation())
+        if(stpxsmstportentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5296,7 +5296,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstporttable::get_child_by_n
 {
     if(child_yang_name == "stpxSMSTPortEntry")
     {
-        for(auto const & c : stpxsmstportentry)
+        for(auto const & c : stpxsmstportentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5306,7 +5306,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstporttable::get_child_by_n
         }
         auto c = std::make_shared<CiscoStpExtensionsMib::Stpxsmstporttable::Stpxsmstportentry>();
         c->parent = this;
-        stpxsmstportentry.push_back(c);
+        stpxsmstportentry_.push_back(c);
         return c;
     }
 
@@ -5316,7 +5316,7 @@ std::shared_ptr<Entity> CiscoStpExtensionsMib::Stpxsmstporttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoStpExtensionsMib::Stpxsmstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : stpxsmstportentry)
+    for (auto const & c : stpxsmstportentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5454,10 +5454,10 @@ const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::Stpxspanningtr
 const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreetypeEnum::mst {4, "mst"};
 const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreetypeEnum::rapidPvstPlus {5, "rapidPvstPlus"};
 
-const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostmodeEnum::short {1, "short"};
+const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostmodeEnum::short_ {1, "short"};
 const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostmodeEnum::long_ {2, "long"};
 
-const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostopermodeEnum::short {1, "short"};
+const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostopermodeEnum::short_ {1, "short"};
 const Enum::YLeaf CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostopermodeEnum::long_ {2, "long"};
 
 const Enum::YLeaf CiscoStpExtensionsMib::Stpxloopguardobjects::StpxloopguardglobaldefaultmodeEnum::enable {1, "enable"};

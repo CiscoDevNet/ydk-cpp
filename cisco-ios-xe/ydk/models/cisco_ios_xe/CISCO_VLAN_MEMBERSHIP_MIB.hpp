@@ -39,15 +39,15 @@ class CiscoVlanMembershipMib : public Entity
         class Vmmembershipsummaryexttable; //type: CiscoVlanMembershipMib::Vmmembershipsummaryexttable
         class Vmvoicevlantable; //type: CiscoVlanMembershipMib::Vmvoicevlantable
 
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembership> vmmembership;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummaryexttable> vmmembershipsummaryexttable;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummarytable> vmmembershipsummarytable;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershiptable> vmmembershiptable;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmstatistics> vmstatistics;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmstatus> vmstatus;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmps> vmvmps;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmpstable> vmvmpstable;
-        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvoicevlantable> vmvoicevlantable;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembership> vmmembership_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummaryexttable> vmmembershipsummaryexttable_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummarytable> vmmembershipsummarytable_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershiptable> vmmembershiptable_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmstatistics> vmstatistics_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmstatus> vmstatus_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmps> vmvmps_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmpstable> vmvmpstable_;
+        std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvoicevlantable> vmvoicevlantable_;
         
 }; // CiscoVlanMembershipMib
 
@@ -159,7 +159,7 @@ class CiscoVlanMembershipMib::Vmvmpstable : public Entity
 
         class Vmvmpsentry; //type: CiscoVlanMembershipMib::Vmvmpstable::Vmvmpsentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmpstable::Vmvmpsentry> > vmvmpsentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvmpstable::Vmvmpsentry> > vmvmpsentry_;
         
 }; // CiscoVlanMembershipMib::Vmvmpstable
 
@@ -201,7 +201,7 @@ class CiscoVlanMembershipMib::Vmmembershipsummarytable : public Entity
 
         class Vmmembershipsummaryentry; //type: CiscoVlanMembershipMib::Vmmembershipsummarytable::Vmmembershipsummaryentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummarytable::Vmmembershipsummaryentry> > vmmembershipsummaryentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummarytable::Vmmembershipsummaryentry> > vmmembershipsummaryentry_;
         
 }; // CiscoVlanMembershipMib::Vmmembershipsummarytable
 
@@ -243,7 +243,7 @@ class CiscoVlanMembershipMib::Vmmembershiptable : public Entity
 
         class Vmmembershipentry; //type: CiscoVlanMembershipMib::Vmmembershiptable::Vmmembershipentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershiptable::Vmmembershipentry> > vmmembershipentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershiptable::Vmmembershipentry> > vmmembershipentry_;
         
 }; // CiscoVlanMembershipMib::Vmmembershiptable
 
@@ -293,7 +293,7 @@ class CiscoVlanMembershipMib::Vmmembershipsummaryexttable : public Entity
 
         class Vmmembershipsummaryextentry; //type: CiscoVlanMembershipMib::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry> > vmmembershipsummaryextentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry> > vmmembershipsummaryextentry_;
         
 }; // CiscoVlanMembershipMib::Vmmembershipsummaryexttable
 
@@ -336,7 +336,7 @@ class CiscoVlanMembershipMib::Vmvoicevlantable : public Entity
 
         class Vmvoicevlanentry; //type: CiscoVlanMembershipMib::Vmvoicevlantable::Vmvoicevlanentry
 
-        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvoicevlantable::Vmvoicevlanentry> > vmvoicevlanentry;
+        std::vector<std::shared_ptr<CISCO_VLAN_MEMBERSHIP_MIB::CiscoVlanMembershipMib::Vmvoicevlantable::Vmvoicevlanentry> > vmvoicevlanentry_;
         
 }; // CiscoVlanMembershipMib::Vmvoicevlantable
 

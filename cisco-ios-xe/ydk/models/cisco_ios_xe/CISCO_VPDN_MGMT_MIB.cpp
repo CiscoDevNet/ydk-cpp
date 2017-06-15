@@ -11,42 +11,42 @@ namespace CISCO_VPDN_MGMT_MIB {
 
 CiscoVpdnMgmtMib::CiscoVpdnMgmtMib()
     :
-    ciscovpdnmgmtmibnotifs(std::make_shared<CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs>())
-	,cvpdnbundlechildtable(std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundlechildtable>())
-	,cvpdnbundletable(std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundletable>())
-	,cvpdnmultilinkinfo(std::make_shared<CiscoVpdnMgmtMib::Cvpdnmultilinkinfo>())
-	,cvpdnsessionattrtable(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsessionattrtable>())
-	,cvpdnsysteminfo(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsysteminfo>())
-	,cvpdnsystemtable(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsystemtable>())
-	,cvpdntemplatetable(std::make_shared<CiscoVpdnMgmtMib::Cvpdntemplatetable>())
-	,cvpdntunnelattrtable(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelattrtable>())
-	,cvpdntunnelsessiontable(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelsessiontable>())
-	,cvpdntunneltable(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunneltable>())
-	,cvpdnusertofailhistinfotable(std::make_shared<CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable>())
+    ciscovpdnmgmtmibnotifs_(std::make_shared<CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs>())
+	,cvpdnbundlechildtable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundlechildtable>())
+	,cvpdnbundletable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundletable>())
+	,cvpdnmultilinkinfo_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnmultilinkinfo>())
+	,cvpdnsessionattrtable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsessionattrtable>())
+	,cvpdnsysteminfo_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsysteminfo>())
+	,cvpdnsystemtable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnsystemtable>())
+	,cvpdntemplatetable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdntemplatetable>())
+	,cvpdntunnelattrtable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelattrtable>())
+	,cvpdntunnelsessiontable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelsessiontable>())
+	,cvpdntunneltable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdntunneltable>())
+	,cvpdnusertofailhistinfotable_(std::make_shared<CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable>())
 {
-    ciscovpdnmgmtmibnotifs->parent = this;
+    ciscovpdnmgmtmibnotifs_->parent = this;
 
-    cvpdnbundlechildtable->parent = this;
+    cvpdnbundlechildtable_->parent = this;
 
-    cvpdnbundletable->parent = this;
+    cvpdnbundletable_->parent = this;
 
-    cvpdnmultilinkinfo->parent = this;
+    cvpdnmultilinkinfo_->parent = this;
 
-    cvpdnsessionattrtable->parent = this;
+    cvpdnsessionattrtable_->parent = this;
 
-    cvpdnsysteminfo->parent = this;
+    cvpdnsysteminfo_->parent = this;
 
-    cvpdnsystemtable->parent = this;
+    cvpdnsystemtable_->parent = this;
 
-    cvpdntemplatetable->parent = this;
+    cvpdntemplatetable_->parent = this;
 
-    cvpdntunnelattrtable->parent = this;
+    cvpdntunnelattrtable_->parent = this;
 
-    cvpdntunnelsessiontable->parent = this;
+    cvpdntunnelsessiontable_->parent = this;
 
-    cvpdntunneltable->parent = this;
+    cvpdntunneltable_->parent = this;
 
-    cvpdnusertofailhistinfotable->parent = this;
+    cvpdnusertofailhistinfotable_->parent = this;
 
     yang_name = "CISCO-VPDN-MGMT-MIB"; yang_parent_name = "CISCO-VPDN-MGMT-MIB";
 }
@@ -57,35 +57,35 @@ CiscoVpdnMgmtMib::~CiscoVpdnMgmtMib()
 
 bool CiscoVpdnMgmtMib::has_data() const
 {
-    return (ciscovpdnmgmtmibnotifs !=  nullptr && ciscovpdnmgmtmibnotifs->has_data())
-	|| (cvpdnbundlechildtable !=  nullptr && cvpdnbundlechildtable->has_data())
-	|| (cvpdnbundletable !=  nullptr && cvpdnbundletable->has_data())
-	|| (cvpdnmultilinkinfo !=  nullptr && cvpdnmultilinkinfo->has_data())
-	|| (cvpdnsessionattrtable !=  nullptr && cvpdnsessionattrtable->has_data())
-	|| (cvpdnsysteminfo !=  nullptr && cvpdnsysteminfo->has_data())
-	|| (cvpdnsystemtable !=  nullptr && cvpdnsystemtable->has_data())
-	|| (cvpdntemplatetable !=  nullptr && cvpdntemplatetable->has_data())
-	|| (cvpdntunnelattrtable !=  nullptr && cvpdntunnelattrtable->has_data())
-	|| (cvpdntunnelsessiontable !=  nullptr && cvpdntunnelsessiontable->has_data())
-	|| (cvpdntunneltable !=  nullptr && cvpdntunneltable->has_data())
-	|| (cvpdnusertofailhistinfotable !=  nullptr && cvpdnusertofailhistinfotable->has_data());
+    return (ciscovpdnmgmtmibnotifs_ !=  nullptr && ciscovpdnmgmtmibnotifs_->has_data())
+	|| (cvpdnbundlechildtable_ !=  nullptr && cvpdnbundlechildtable_->has_data())
+	|| (cvpdnbundletable_ !=  nullptr && cvpdnbundletable_->has_data())
+	|| (cvpdnmultilinkinfo_ !=  nullptr && cvpdnmultilinkinfo_->has_data())
+	|| (cvpdnsessionattrtable_ !=  nullptr && cvpdnsessionattrtable_->has_data())
+	|| (cvpdnsysteminfo_ !=  nullptr && cvpdnsysteminfo_->has_data())
+	|| (cvpdnsystemtable_ !=  nullptr && cvpdnsystemtable_->has_data())
+	|| (cvpdntemplatetable_ !=  nullptr && cvpdntemplatetable_->has_data())
+	|| (cvpdntunnelattrtable_ !=  nullptr && cvpdntunnelattrtable_->has_data())
+	|| (cvpdntunnelsessiontable_ !=  nullptr && cvpdntunnelsessiontable_->has_data())
+	|| (cvpdntunneltable_ !=  nullptr && cvpdntunneltable_->has_data())
+	|| (cvpdnusertofailhistinfotable_ !=  nullptr && cvpdnusertofailhistinfotable_->has_data());
 }
 
 bool CiscoVpdnMgmtMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciscovpdnmgmtmibnotifs !=  nullptr && ciscovpdnmgmtmibnotifs->has_operation())
-	|| (cvpdnbundlechildtable !=  nullptr && cvpdnbundlechildtable->has_operation())
-	|| (cvpdnbundletable !=  nullptr && cvpdnbundletable->has_operation())
-	|| (cvpdnmultilinkinfo !=  nullptr && cvpdnmultilinkinfo->has_operation())
-	|| (cvpdnsessionattrtable !=  nullptr && cvpdnsessionattrtable->has_operation())
-	|| (cvpdnsysteminfo !=  nullptr && cvpdnsysteminfo->has_operation())
-	|| (cvpdnsystemtable !=  nullptr && cvpdnsystemtable->has_operation())
-	|| (cvpdntemplatetable !=  nullptr && cvpdntemplatetable->has_operation())
-	|| (cvpdntunnelattrtable !=  nullptr && cvpdntunnelattrtable->has_operation())
-	|| (cvpdntunnelsessiontable !=  nullptr && cvpdntunnelsessiontable->has_operation())
-	|| (cvpdntunneltable !=  nullptr && cvpdntunneltable->has_operation())
-	|| (cvpdnusertofailhistinfotable !=  nullptr && cvpdnusertofailhistinfotable->has_operation());
+	|| (ciscovpdnmgmtmibnotifs_ !=  nullptr && ciscovpdnmgmtmibnotifs_->has_operation())
+	|| (cvpdnbundlechildtable_ !=  nullptr && cvpdnbundlechildtable_->has_operation())
+	|| (cvpdnbundletable_ !=  nullptr && cvpdnbundletable_->has_operation())
+	|| (cvpdnmultilinkinfo_ !=  nullptr && cvpdnmultilinkinfo_->has_operation())
+	|| (cvpdnsessionattrtable_ !=  nullptr && cvpdnsessionattrtable_->has_operation())
+	|| (cvpdnsysteminfo_ !=  nullptr && cvpdnsysteminfo_->has_operation())
+	|| (cvpdnsystemtable_ !=  nullptr && cvpdnsystemtable_->has_operation())
+	|| (cvpdntemplatetable_ !=  nullptr && cvpdntemplatetable_->has_operation())
+	|| (cvpdntunnelattrtable_ !=  nullptr && cvpdntunnelattrtable_->has_operation())
+	|| (cvpdntunnelsessiontable_ !=  nullptr && cvpdntunnelsessiontable_->has_operation())
+	|| (cvpdntunneltable_ !=  nullptr && cvpdntunneltable_->has_operation())
+	|| (cvpdnusertofailhistinfotable_ !=  nullptr && cvpdnusertofailhistinfotable_->has_operation());
 }
 
 std::string CiscoVpdnMgmtMib::get_segment_path() const
@@ -119,110 +119,110 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "ciscoVpdnMgmtMIBNotifs")
     {
-        if(ciscovpdnmgmtmibnotifs == nullptr)
+        if(ciscovpdnmgmtmibnotifs_ == nullptr)
         {
-            ciscovpdnmgmtmibnotifs = std::make_shared<CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs>();
+            ciscovpdnmgmtmibnotifs_ = std::make_shared<CiscoVpdnMgmtMib::Ciscovpdnmgmtmibnotifs>();
         }
-        return ciscovpdnmgmtmibnotifs;
+        return ciscovpdnmgmtmibnotifs_;
     }
 
     if(child_yang_name == "cvpdnBundleChildTable")
     {
-        if(cvpdnbundlechildtable == nullptr)
+        if(cvpdnbundlechildtable_ == nullptr)
         {
-            cvpdnbundlechildtable = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundlechildtable>();
+            cvpdnbundlechildtable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundlechildtable>();
         }
-        return cvpdnbundlechildtable;
+        return cvpdnbundlechildtable_;
     }
 
     if(child_yang_name == "cvpdnBundleTable")
     {
-        if(cvpdnbundletable == nullptr)
+        if(cvpdnbundletable_ == nullptr)
         {
-            cvpdnbundletable = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundletable>();
+            cvpdnbundletable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundletable>();
         }
-        return cvpdnbundletable;
+        return cvpdnbundletable_;
     }
 
     if(child_yang_name == "cvpdnMultilinkInfo")
     {
-        if(cvpdnmultilinkinfo == nullptr)
+        if(cvpdnmultilinkinfo_ == nullptr)
         {
-            cvpdnmultilinkinfo = std::make_shared<CiscoVpdnMgmtMib::Cvpdnmultilinkinfo>();
+            cvpdnmultilinkinfo_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnmultilinkinfo>();
         }
-        return cvpdnmultilinkinfo;
+        return cvpdnmultilinkinfo_;
     }
 
     if(child_yang_name == "cvpdnSessionAttrTable")
     {
-        if(cvpdnsessionattrtable == nullptr)
+        if(cvpdnsessionattrtable_ == nullptr)
         {
-            cvpdnsessionattrtable = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsessionattrtable>();
+            cvpdnsessionattrtable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsessionattrtable>();
         }
-        return cvpdnsessionattrtable;
+        return cvpdnsessionattrtable_;
     }
 
     if(child_yang_name == "cvpdnSystemInfo")
     {
-        if(cvpdnsysteminfo == nullptr)
+        if(cvpdnsysteminfo_ == nullptr)
         {
-            cvpdnsysteminfo = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsysteminfo>();
+            cvpdnsysteminfo_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsysteminfo>();
         }
-        return cvpdnsysteminfo;
+        return cvpdnsysteminfo_;
     }
 
     if(child_yang_name == "cvpdnSystemTable")
     {
-        if(cvpdnsystemtable == nullptr)
+        if(cvpdnsystemtable_ == nullptr)
         {
-            cvpdnsystemtable = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsystemtable>();
+            cvpdnsystemtable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsystemtable>();
         }
-        return cvpdnsystemtable;
+        return cvpdnsystemtable_;
     }
 
     if(child_yang_name == "cvpdnTemplateTable")
     {
-        if(cvpdntemplatetable == nullptr)
+        if(cvpdntemplatetable_ == nullptr)
         {
-            cvpdntemplatetable = std::make_shared<CiscoVpdnMgmtMib::Cvpdntemplatetable>();
+            cvpdntemplatetable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdntemplatetable>();
         }
-        return cvpdntemplatetable;
+        return cvpdntemplatetable_;
     }
 
     if(child_yang_name == "cvpdnTunnelAttrTable")
     {
-        if(cvpdntunnelattrtable == nullptr)
+        if(cvpdntunnelattrtable_ == nullptr)
         {
-            cvpdntunnelattrtable = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelattrtable>();
+            cvpdntunnelattrtable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelattrtable>();
         }
-        return cvpdntunnelattrtable;
+        return cvpdntunnelattrtable_;
     }
 
     if(child_yang_name == "cvpdnTunnelSessionTable")
     {
-        if(cvpdntunnelsessiontable == nullptr)
+        if(cvpdntunnelsessiontable_ == nullptr)
         {
-            cvpdntunnelsessiontable = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelsessiontable>();
+            cvpdntunnelsessiontable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelsessiontable>();
         }
-        return cvpdntunnelsessiontable;
+        return cvpdntunnelsessiontable_;
     }
 
     if(child_yang_name == "cvpdnTunnelTable")
     {
-        if(cvpdntunneltable == nullptr)
+        if(cvpdntunneltable_ == nullptr)
         {
-            cvpdntunneltable = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunneltable>();
+            cvpdntunneltable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunneltable>();
         }
-        return cvpdntunneltable;
+        return cvpdntunneltable_;
     }
 
     if(child_yang_name == "cvpdnUserToFailHistInfoTable")
     {
-        if(cvpdnusertofailhistinfotable == nullptr)
+        if(cvpdnusertofailhistinfotable_ == nullptr)
         {
-            cvpdnusertofailhistinfotable = std::make_shared<CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable>();
+            cvpdnusertofailhistinfotable_ = std::make_shared<CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable>();
         }
-        return cvpdnusertofailhistinfotable;
+        return cvpdnusertofailhistinfotable_;
     }
 
     return nullptr;
@@ -231,64 +231,64 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscovpdnmgmtmibnotifs != nullptr)
+    if(ciscovpdnmgmtmibnotifs_ != nullptr)
     {
-        children["ciscoVpdnMgmtMIBNotifs"] = ciscovpdnmgmtmibnotifs;
+        children["ciscoVpdnMgmtMIBNotifs"] = ciscovpdnmgmtmibnotifs_;
     }
 
-    if(cvpdnbundlechildtable != nullptr)
+    if(cvpdnbundlechildtable_ != nullptr)
     {
-        children["cvpdnBundleChildTable"] = cvpdnbundlechildtable;
+        children["cvpdnBundleChildTable"] = cvpdnbundlechildtable_;
     }
 
-    if(cvpdnbundletable != nullptr)
+    if(cvpdnbundletable_ != nullptr)
     {
-        children["cvpdnBundleTable"] = cvpdnbundletable;
+        children["cvpdnBundleTable"] = cvpdnbundletable_;
     }
 
-    if(cvpdnmultilinkinfo != nullptr)
+    if(cvpdnmultilinkinfo_ != nullptr)
     {
-        children["cvpdnMultilinkInfo"] = cvpdnmultilinkinfo;
+        children["cvpdnMultilinkInfo"] = cvpdnmultilinkinfo_;
     }
 
-    if(cvpdnsessionattrtable != nullptr)
+    if(cvpdnsessionattrtable_ != nullptr)
     {
-        children["cvpdnSessionAttrTable"] = cvpdnsessionattrtable;
+        children["cvpdnSessionAttrTable"] = cvpdnsessionattrtable_;
     }
 
-    if(cvpdnsysteminfo != nullptr)
+    if(cvpdnsysteminfo_ != nullptr)
     {
-        children["cvpdnSystemInfo"] = cvpdnsysteminfo;
+        children["cvpdnSystemInfo"] = cvpdnsysteminfo_;
     }
 
-    if(cvpdnsystemtable != nullptr)
+    if(cvpdnsystemtable_ != nullptr)
     {
-        children["cvpdnSystemTable"] = cvpdnsystemtable;
+        children["cvpdnSystemTable"] = cvpdnsystemtable_;
     }
 
-    if(cvpdntemplatetable != nullptr)
+    if(cvpdntemplatetable_ != nullptr)
     {
-        children["cvpdnTemplateTable"] = cvpdntemplatetable;
+        children["cvpdnTemplateTable"] = cvpdntemplatetable_;
     }
 
-    if(cvpdntunnelattrtable != nullptr)
+    if(cvpdntunnelattrtable_ != nullptr)
     {
-        children["cvpdnTunnelAttrTable"] = cvpdntunnelattrtable;
+        children["cvpdnTunnelAttrTable"] = cvpdntunnelattrtable_;
     }
 
-    if(cvpdntunnelsessiontable != nullptr)
+    if(cvpdntunnelsessiontable_ != nullptr)
     {
-        children["cvpdnTunnelSessionTable"] = cvpdntunnelsessiontable;
+        children["cvpdnTunnelSessionTable"] = cvpdntunnelsessiontable_;
     }
 
-    if(cvpdntunneltable != nullptr)
+    if(cvpdntunneltable_ != nullptr)
     {
-        children["cvpdnTunnelTable"] = cvpdntunneltable;
+        children["cvpdnTunnelTable"] = cvpdntunneltable_;
     }
 
-    if(cvpdnusertofailhistinfotable != nullptr)
+    if(cvpdnusertofailhistinfotable_ != nullptr)
     {
-        children["cvpdnUserToFailHistInfoTable"] = cvpdnusertofailhistinfotable;
+        children["cvpdnUserToFailHistInfoTable"] = cvpdnusertofailhistinfotable_;
     }
 
     return children;
@@ -609,9 +609,9 @@ CiscoVpdnMgmtMib::Cvpdnsystemtable::~Cvpdnsystemtable()
 
 bool CiscoVpdnMgmtMib::Cvpdnsystemtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnsystementry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsystementry_.size(); index++)
     {
-        if(cvpdnsystementry[index]->has_data())
+        if(cvpdnsystementry_[index]->has_data())
             return true;
     }
     return false;
@@ -619,9 +619,9 @@ bool CiscoVpdnMgmtMib::Cvpdnsystemtable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdnsystemtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnsystementry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsystementry_.size(); index++)
     {
-        if(cvpdnsystementry[index]->has_operation())
+        if(cvpdnsystementry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -661,7 +661,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsystemtable::get_child_by_name(co
 {
     if(child_yang_name == "cvpdnSystemEntry")
     {
-        for(auto const & c : cvpdnsystementry)
+        for(auto const & c : cvpdnsystementry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -671,7 +671,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsystemtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsystemtable::Cvpdnsystementry>();
         c->parent = this;
-        cvpdnsystementry.push_back(c);
+        cvpdnsystementry_.push_back(c);
         return c;
     }
 
@@ -681,7 +681,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsystemtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdnsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdnsystementry)
+    for (auto const & c : cvpdnsystementry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -824,9 +824,9 @@ CiscoVpdnMgmtMib::Cvpdntunneltable::~Cvpdntunneltable()
 
 bool CiscoVpdnMgmtMib::Cvpdntunneltable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelentry_.size(); index++)
     {
-        if(cvpdntunnelentry[index]->has_data())
+        if(cvpdntunnelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -834,9 +834,9 @@ bool CiscoVpdnMgmtMib::Cvpdntunneltable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdntunneltable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelentry_.size(); index++)
     {
-        if(cvpdntunnelentry[index]->has_operation())
+        if(cvpdntunnelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -876,7 +876,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunneltable::get_child_by_name(co
 {
     if(child_yang_name == "cvpdnTunnelEntry")
     {
-        for(auto const & c : cvpdntunnelentry)
+        for(auto const & c : cvpdntunnelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -886,7 +886,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunneltable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunneltable::Cvpdntunnelentry>();
         c->parent = this;
-        cvpdntunnelentry.push_back(c);
+        cvpdntunnelentry_.push_back(c);
         return c;
     }
 
@@ -896,7 +896,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunneltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdntunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdntunnelentry)
+    for (auto const & c : cvpdntunnelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1103,9 +1103,9 @@ CiscoVpdnMgmtMib::Cvpdntunnelattrtable::~Cvpdntunnelattrtable()
 
 bool CiscoVpdnMgmtMib::Cvpdntunnelattrtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelattrentry_.size(); index++)
     {
-        if(cvpdntunnelattrentry[index]->has_data())
+        if(cvpdntunnelattrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1113,9 +1113,9 @@ bool CiscoVpdnMgmtMib::Cvpdntunnelattrtable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdntunnelattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelattrentry_.size(); index++)
     {
-        if(cvpdntunnelattrentry[index]->has_operation())
+        if(cvpdntunnelattrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1155,7 +1155,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelattrtable::get_child_by_nam
 {
     if(child_yang_name == "cvpdnTunnelAttrEntry")
     {
-        for(auto const & c : cvpdntunnelattrentry)
+        for(auto const & c : cvpdntunnelattrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1165,7 +1165,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelattrtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelattrtable::Cvpdntunnelattrentry>();
         c->parent = this;
-        cvpdntunnelattrentry.push_back(c);
+        cvpdntunnelattrentry_.push_back(c);
         return c;
     }
 
@@ -1175,7 +1175,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelattrtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdntunnelattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdntunnelattrentry)
+    for (auto const & c : cvpdntunnelattrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1438,9 +1438,9 @@ CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::~Cvpdntunnelsessiontable()
 
 bool CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelsessionentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelsessionentry_.size(); index++)
     {
-        if(cvpdntunnelsessionentry[index]->has_data())
+        if(cvpdntunnelsessionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1448,9 +1448,9 @@ bool CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelsessionentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelsessionentry_.size(); index++)
     {
-        if(cvpdntunnelsessionentry[index]->has_operation())
+        if(cvpdntunnelsessionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1490,7 +1490,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::get_child_by_
 {
     if(child_yang_name == "cvpdnTunnelSessionEntry")
     {
-        for(auto const & c : cvpdntunnelsessionentry)
+        for(auto const & c : cvpdntunnelsessionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1500,7 +1500,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::get_child_by_
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry>();
         c->parent = this;
-        cvpdntunnelsessionentry.push_back(c);
+        cvpdntunnelsessionentry_.push_back(c);
         return c;
     }
 
@@ -1510,7 +1510,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdntunnelsessiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdntunnelsessionentry)
+    for (auto const & c : cvpdntunnelsessionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1757,9 +1757,9 @@ CiscoVpdnMgmtMib::Cvpdnsessionattrtable::~Cvpdnsessionattrtable()
 
 bool CiscoVpdnMgmtMib::Cvpdnsessionattrtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnsessionattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsessionattrentry_.size(); index++)
     {
-        if(cvpdnsessionattrentry[index]->has_data())
+        if(cvpdnsessionattrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1767,9 +1767,9 @@ bool CiscoVpdnMgmtMib::Cvpdnsessionattrtable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdnsessionattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnsessionattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsessionattrentry_.size(); index++)
     {
-        if(cvpdnsessionattrentry[index]->has_operation())
+        if(cvpdnsessionattrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1809,7 +1809,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsessionattrtable::get_child_by_na
 {
     if(child_yang_name == "cvpdnSessionAttrEntry")
     {
-        for(auto const & c : cvpdnsessionattrentry)
+        for(auto const & c : cvpdnsessionattrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1819,7 +1819,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsessionattrtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdnsessionattrtable::Cvpdnsessionattrentry>();
         c->parent = this;
-        cvpdnsessionattrentry.push_back(c);
+        cvpdnsessionattrentry_.push_back(c);
         return c;
     }
 
@@ -1829,7 +1829,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnsessionattrtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdnsessionattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdnsessionattrentry)
+    for (auto const & c : cvpdnsessionattrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2124,9 +2124,9 @@ CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::~Cvpdnusertofailhistinfotable()
 
 bool CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry_.size(); index++)
     {
-        if(cvpdnusertofailhistinfoentry[index]->has_data())
+        if(cvpdnusertofailhistinfoentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2134,9 +2134,9 @@ bool CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry_.size(); index++)
     {
-        if(cvpdnusertofailhistinfoentry[index]->has_operation())
+        if(cvpdnusertofailhistinfoentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2176,7 +2176,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::get_chil
 {
     if(child_yang_name == "cvpdnUserToFailHistInfoEntry")
     {
-        for(auto const & c : cvpdnusertofailhistinfoentry)
+        for(auto const & c : cvpdnusertofailhistinfoentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2186,7 +2186,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::get_chil
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry>();
         c->parent = this;
-        cvpdnusertofailhistinfoentry.push_back(c);
+        cvpdnusertofailhistinfoentry_.push_back(c);
         return c;
     }
 
@@ -2196,7 +2196,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdnusertofailhistinfotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdnusertofailhistinfoentry)
+    for (auto const & c : cvpdnusertofailhistinfoentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2411,9 +2411,9 @@ CiscoVpdnMgmtMib::Cvpdntemplatetable::~Cvpdntemplatetable()
 
 bool CiscoVpdnMgmtMib::Cvpdntemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntemplateentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntemplateentry_.size(); index++)
     {
-        if(cvpdntemplateentry[index]->has_data())
+        if(cvpdntemplateentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2421,9 +2421,9 @@ bool CiscoVpdnMgmtMib::Cvpdntemplatetable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdntemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntemplateentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntemplateentry_.size(); index++)
     {
-        if(cvpdntemplateentry[index]->has_operation())
+        if(cvpdntemplateentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2463,7 +2463,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntemplatetable::get_child_by_name(
 {
     if(child_yang_name == "cvpdnTemplateEntry")
     {
-        for(auto const & c : cvpdntemplateentry)
+        for(auto const & c : cvpdntemplateentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2473,7 +2473,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntemplatetable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdntemplatetable::Cvpdntemplateentry>();
         c->parent = this;
-        cvpdntemplateentry.push_back(c);
+        cvpdntemplateentry_.push_back(c);
         return c;
     }
 
@@ -2483,7 +2483,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdntemplatetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdntemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdntemplateentry)
+    for (auto const & c : cvpdntemplateentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2586,9 +2586,9 @@ CiscoVpdnMgmtMib::Cvpdnbundletable::~Cvpdnbundletable()
 
 bool CiscoVpdnMgmtMib::Cvpdnbundletable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnbundleentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundleentry_.size(); index++)
     {
-        if(cvpdnbundleentry[index]->has_data())
+        if(cvpdnbundleentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2596,9 +2596,9 @@ bool CiscoVpdnMgmtMib::Cvpdnbundletable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdnbundletable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnbundleentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundleentry_.size(); index++)
     {
-        if(cvpdnbundleentry[index]->has_operation())
+        if(cvpdnbundleentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2638,7 +2638,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundletable::get_child_by_name(co
 {
     if(child_yang_name == "cvpdnBundleEntry")
     {
-        for(auto const & c : cvpdnbundleentry)
+        for(auto const & c : cvpdnbundleentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2648,7 +2648,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundletable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundletable::Cvpdnbundleentry>();
         c->parent = this;
-        cvpdnbundleentry.push_back(c);
+        cvpdnbundleentry_.push_back(c);
         return c;
     }
 
@@ -2658,7 +2658,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundletable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdnbundletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdnbundleentry)
+    for (auto const & c : cvpdnbundleentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2801,9 +2801,9 @@ CiscoVpdnMgmtMib::Cvpdnbundlechildtable::~Cvpdnbundlechildtable()
 
 bool CiscoVpdnMgmtMib::Cvpdnbundlechildtable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnbundlechildentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundlechildentry_.size(); index++)
     {
-        if(cvpdnbundlechildentry[index]->has_data())
+        if(cvpdnbundlechildentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2811,9 +2811,9 @@ bool CiscoVpdnMgmtMib::Cvpdnbundlechildtable::has_data() const
 
 bool CiscoVpdnMgmtMib::Cvpdnbundlechildtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnbundlechildentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundlechildentry_.size(); index++)
     {
-        if(cvpdnbundlechildentry[index]->has_operation())
+        if(cvpdnbundlechildentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2853,7 +2853,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundlechildtable::get_child_by_na
 {
     if(child_yang_name == "cvpdnBundleChildEntry")
     {
-        for(auto const & c : cvpdnbundlechildentry)
+        for(auto const & c : cvpdnbundlechildentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2863,7 +2863,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundlechildtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoVpdnMgmtMib::Cvpdnbundlechildtable::Cvpdnbundlechildentry>();
         c->parent = this;
-        cvpdnbundlechildentry.push_back(c);
+        cvpdnbundlechildentry_.push_back(c);
         return c;
     }
 
@@ -2873,7 +2873,7 @@ std::shared_ptr<Entity> CiscoVpdnMgmtMib::Cvpdnbundlechildtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoVpdnMgmtMib::Cvpdnbundlechildtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvpdnbundlechildentry)
+    for (auto const & c : cvpdnbundlechildentry_)
     {
         children[c->get_segment_path()] = c;
     }

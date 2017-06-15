@@ -11,42 +11,42 @@ namespace CISCO_ATM_PVCTRAP_EXTN_MIB {
 
 CiscoAtmPvctrapExtnMib::CiscoAtmPvctrapExtnMib()
     :
-    catmaisrdistatuschpvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable>())
-	,catmaisrdistatusuppvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable>())
-	,catmcurstatchangepvcltable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable>())
-	,catmcurstatusuppvcltable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable>())
-	,catmdownpvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable>())
-	,catmendccstatuschpvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable>())
-	,catmendccstatusuppvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable>())
-	,catmsegccstatuschpvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable>())
-	,catmsegccstatusuppvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable>())
-	,catmstatuschangepvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable>())
-	,catmstatusuppvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable>())
-	,catmuppvclrangetable(std::make_shared<CiscoAtmPvctrapExtnMib::Catmuppvclrangetable>())
+    catmaisrdistatuschpvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable>())
+	,catmaisrdistatusuppvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable>())
+	,catmcurstatchangepvcltable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable>())
+	,catmcurstatusuppvcltable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable>())
+	,catmdownpvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable>())
+	,catmendccstatuschpvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable>())
+	,catmendccstatusuppvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable>())
+	,catmsegccstatuschpvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable>())
+	,catmsegccstatusuppvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable>())
+	,catmstatuschangepvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable>())
+	,catmstatusuppvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable>())
+	,catmuppvclrangetable_(std::make_shared<CiscoAtmPvctrapExtnMib::Catmuppvclrangetable>())
 {
-    catmaisrdistatuschpvclrangetable->parent = this;
+    catmaisrdistatuschpvclrangetable_->parent = this;
 
-    catmaisrdistatusuppvclrangetable->parent = this;
+    catmaisrdistatusuppvclrangetable_->parent = this;
 
-    catmcurstatchangepvcltable->parent = this;
+    catmcurstatchangepvcltable_->parent = this;
 
-    catmcurstatusuppvcltable->parent = this;
+    catmcurstatusuppvcltable_->parent = this;
 
-    catmdownpvclrangetable->parent = this;
+    catmdownpvclrangetable_->parent = this;
 
-    catmendccstatuschpvclrangetable->parent = this;
+    catmendccstatuschpvclrangetable_->parent = this;
 
-    catmendccstatusuppvclrangetable->parent = this;
+    catmendccstatusuppvclrangetable_->parent = this;
 
-    catmsegccstatuschpvclrangetable->parent = this;
+    catmsegccstatuschpvclrangetable_->parent = this;
 
-    catmsegccstatusuppvclrangetable->parent = this;
+    catmsegccstatusuppvclrangetable_->parent = this;
 
-    catmstatuschangepvclrangetable->parent = this;
+    catmstatuschangepvclrangetable_->parent = this;
 
-    catmstatusuppvclrangetable->parent = this;
+    catmstatusuppvclrangetable_->parent = this;
 
-    catmuppvclrangetable->parent = this;
+    catmuppvclrangetable_->parent = this;
 
     yang_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB";
 }
@@ -57,35 +57,35 @@ CiscoAtmPvctrapExtnMib::~CiscoAtmPvctrapExtnMib()
 
 bool CiscoAtmPvctrapExtnMib::has_data() const
 {
-    return (catmaisrdistatuschpvclrangetable !=  nullptr && catmaisrdistatuschpvclrangetable->has_data())
-	|| (catmaisrdistatusuppvclrangetable !=  nullptr && catmaisrdistatusuppvclrangetable->has_data())
-	|| (catmcurstatchangepvcltable !=  nullptr && catmcurstatchangepvcltable->has_data())
-	|| (catmcurstatusuppvcltable !=  nullptr && catmcurstatusuppvcltable->has_data())
-	|| (catmdownpvclrangetable !=  nullptr && catmdownpvclrangetable->has_data())
-	|| (catmendccstatuschpvclrangetable !=  nullptr && catmendccstatuschpvclrangetable->has_data())
-	|| (catmendccstatusuppvclrangetable !=  nullptr && catmendccstatusuppvclrangetable->has_data())
-	|| (catmsegccstatuschpvclrangetable !=  nullptr && catmsegccstatuschpvclrangetable->has_data())
-	|| (catmsegccstatusuppvclrangetable !=  nullptr && catmsegccstatusuppvclrangetable->has_data())
-	|| (catmstatuschangepvclrangetable !=  nullptr && catmstatuschangepvclrangetable->has_data())
-	|| (catmstatusuppvclrangetable !=  nullptr && catmstatusuppvclrangetable->has_data())
-	|| (catmuppvclrangetable !=  nullptr && catmuppvclrangetable->has_data());
+    return (catmaisrdistatuschpvclrangetable_ !=  nullptr && catmaisrdistatuschpvclrangetable_->has_data())
+	|| (catmaisrdistatusuppvclrangetable_ !=  nullptr && catmaisrdistatusuppvclrangetable_->has_data())
+	|| (catmcurstatchangepvcltable_ !=  nullptr && catmcurstatchangepvcltable_->has_data())
+	|| (catmcurstatusuppvcltable_ !=  nullptr && catmcurstatusuppvcltable_->has_data())
+	|| (catmdownpvclrangetable_ !=  nullptr && catmdownpvclrangetable_->has_data())
+	|| (catmendccstatuschpvclrangetable_ !=  nullptr && catmendccstatuschpvclrangetable_->has_data())
+	|| (catmendccstatusuppvclrangetable_ !=  nullptr && catmendccstatusuppvclrangetable_->has_data())
+	|| (catmsegccstatuschpvclrangetable_ !=  nullptr && catmsegccstatuschpvclrangetable_->has_data())
+	|| (catmsegccstatusuppvclrangetable_ !=  nullptr && catmsegccstatusuppvclrangetable_->has_data())
+	|| (catmstatuschangepvclrangetable_ !=  nullptr && catmstatuschangepvclrangetable_->has_data())
+	|| (catmstatusuppvclrangetable_ !=  nullptr && catmstatusuppvclrangetable_->has_data())
+	|| (catmuppvclrangetable_ !=  nullptr && catmuppvclrangetable_->has_data());
 }
 
 bool CiscoAtmPvctrapExtnMib::has_operation() const
 {
     return is_set(operation)
-	|| (catmaisrdistatuschpvclrangetable !=  nullptr && catmaisrdistatuschpvclrangetable->has_operation())
-	|| (catmaisrdistatusuppvclrangetable !=  nullptr && catmaisrdistatusuppvclrangetable->has_operation())
-	|| (catmcurstatchangepvcltable !=  nullptr && catmcurstatchangepvcltable->has_operation())
-	|| (catmcurstatusuppvcltable !=  nullptr && catmcurstatusuppvcltable->has_operation())
-	|| (catmdownpvclrangetable !=  nullptr && catmdownpvclrangetable->has_operation())
-	|| (catmendccstatuschpvclrangetable !=  nullptr && catmendccstatuschpvclrangetable->has_operation())
-	|| (catmendccstatusuppvclrangetable !=  nullptr && catmendccstatusuppvclrangetable->has_operation())
-	|| (catmsegccstatuschpvclrangetable !=  nullptr && catmsegccstatuschpvclrangetable->has_operation())
-	|| (catmsegccstatusuppvclrangetable !=  nullptr && catmsegccstatusuppvclrangetable->has_operation())
-	|| (catmstatuschangepvclrangetable !=  nullptr && catmstatuschangepvclrangetable->has_operation())
-	|| (catmstatusuppvclrangetable !=  nullptr && catmstatusuppvclrangetable->has_operation())
-	|| (catmuppvclrangetable !=  nullptr && catmuppvclrangetable->has_operation());
+	|| (catmaisrdistatuschpvclrangetable_ !=  nullptr && catmaisrdistatuschpvclrangetable_->has_operation())
+	|| (catmaisrdistatusuppvclrangetable_ !=  nullptr && catmaisrdistatusuppvclrangetable_->has_operation())
+	|| (catmcurstatchangepvcltable_ !=  nullptr && catmcurstatchangepvcltable_->has_operation())
+	|| (catmcurstatusuppvcltable_ !=  nullptr && catmcurstatusuppvcltable_->has_operation())
+	|| (catmdownpvclrangetable_ !=  nullptr && catmdownpvclrangetable_->has_operation())
+	|| (catmendccstatuschpvclrangetable_ !=  nullptr && catmendccstatuschpvclrangetable_->has_operation())
+	|| (catmendccstatusuppvclrangetable_ !=  nullptr && catmendccstatusuppvclrangetable_->has_operation())
+	|| (catmsegccstatuschpvclrangetable_ !=  nullptr && catmsegccstatuschpvclrangetable_->has_operation())
+	|| (catmsegccstatusuppvclrangetable_ !=  nullptr && catmsegccstatusuppvclrangetable_->has_operation())
+	|| (catmstatuschangepvclrangetable_ !=  nullptr && catmstatuschangepvclrangetable_->has_operation())
+	|| (catmstatusuppvclrangetable_ !=  nullptr && catmstatusuppvclrangetable_->has_operation())
+	|| (catmuppvclrangetable_ !=  nullptr && catmuppvclrangetable_->has_operation());
 }
 
 std::string CiscoAtmPvctrapExtnMib::get_segment_path() const
@@ -119,110 +119,110 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "catmAISRDIStatusChPVclRangeTable")
     {
-        if(catmaisrdistatuschpvclrangetable == nullptr)
+        if(catmaisrdistatuschpvclrangetable_ == nullptr)
         {
-            catmaisrdistatuschpvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable>();
+            catmaisrdistatuschpvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable>();
         }
-        return catmaisrdistatuschpvclrangetable;
+        return catmaisrdistatuschpvclrangetable_;
     }
 
     if(child_yang_name == "catmAISRDIStatusUpPVclRangeTable")
     {
-        if(catmaisrdistatusuppvclrangetable == nullptr)
+        if(catmaisrdistatusuppvclrangetable_ == nullptr)
         {
-            catmaisrdistatusuppvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable>();
+            catmaisrdistatusuppvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable>();
         }
-        return catmaisrdistatusuppvclrangetable;
+        return catmaisrdistatusuppvclrangetable_;
     }
 
     if(child_yang_name == "catmCurStatChangePVclTable")
     {
-        if(catmcurstatchangepvcltable == nullptr)
+        if(catmcurstatchangepvcltable_ == nullptr)
         {
-            catmcurstatchangepvcltable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable>();
+            catmcurstatchangepvcltable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable>();
         }
-        return catmcurstatchangepvcltable;
+        return catmcurstatchangepvcltable_;
     }
 
     if(child_yang_name == "catmCurStatusUpPVclTable")
     {
-        if(catmcurstatusuppvcltable == nullptr)
+        if(catmcurstatusuppvcltable_ == nullptr)
         {
-            catmcurstatusuppvcltable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable>();
+            catmcurstatusuppvcltable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable>();
         }
-        return catmcurstatusuppvcltable;
+        return catmcurstatusuppvcltable_;
     }
 
     if(child_yang_name == "catmDownPVclRangeTable")
     {
-        if(catmdownpvclrangetable == nullptr)
+        if(catmdownpvclrangetable_ == nullptr)
         {
-            catmdownpvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable>();
+            catmdownpvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable>();
         }
-        return catmdownpvclrangetable;
+        return catmdownpvclrangetable_;
     }
 
     if(child_yang_name == "catmEndCCStatusChPVclRangeTable")
     {
-        if(catmendccstatuschpvclrangetable == nullptr)
+        if(catmendccstatuschpvclrangetable_ == nullptr)
         {
-            catmendccstatuschpvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable>();
+            catmendccstatuschpvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable>();
         }
-        return catmendccstatuschpvclrangetable;
+        return catmendccstatuschpvclrangetable_;
     }
 
     if(child_yang_name == "catmEndCCStatusUpPVclRangeTable")
     {
-        if(catmendccstatusuppvclrangetable == nullptr)
+        if(catmendccstatusuppvclrangetable_ == nullptr)
         {
-            catmendccstatusuppvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable>();
+            catmendccstatusuppvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable>();
         }
-        return catmendccstatusuppvclrangetable;
+        return catmendccstatusuppvclrangetable_;
     }
 
     if(child_yang_name == "catmSegCCStatusChPVclRangeTable")
     {
-        if(catmsegccstatuschpvclrangetable == nullptr)
+        if(catmsegccstatuschpvclrangetable_ == nullptr)
         {
-            catmsegccstatuschpvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable>();
+            catmsegccstatuschpvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable>();
         }
-        return catmsegccstatuschpvclrangetable;
+        return catmsegccstatuschpvclrangetable_;
     }
 
     if(child_yang_name == "catmSegCCStatusUpPVclRangeTable")
     {
-        if(catmsegccstatusuppvclrangetable == nullptr)
+        if(catmsegccstatusuppvclrangetable_ == nullptr)
         {
-            catmsegccstatusuppvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable>();
+            catmsegccstatusuppvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable>();
         }
-        return catmsegccstatusuppvclrangetable;
+        return catmsegccstatusuppvclrangetable_;
     }
 
     if(child_yang_name == "catmStatusChangePVclRangeTable")
     {
-        if(catmstatuschangepvclrangetable == nullptr)
+        if(catmstatuschangepvclrangetable_ == nullptr)
         {
-            catmstatuschangepvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable>();
+            catmstatuschangepvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable>();
         }
-        return catmstatuschangepvclrangetable;
+        return catmstatuschangepvclrangetable_;
     }
 
     if(child_yang_name == "catmStatusUpPVclRangeTable")
     {
-        if(catmstatusuppvclrangetable == nullptr)
+        if(catmstatusuppvclrangetable_ == nullptr)
         {
-            catmstatusuppvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable>();
+            catmstatusuppvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable>();
         }
-        return catmstatusuppvclrangetable;
+        return catmstatusuppvclrangetable_;
     }
 
     if(child_yang_name == "catmUpPVclRangeTable")
     {
-        if(catmuppvclrangetable == nullptr)
+        if(catmuppvclrangetable_ == nullptr)
         {
-            catmuppvclrangetable = std::make_shared<CiscoAtmPvctrapExtnMib::Catmuppvclrangetable>();
+            catmuppvclrangetable_ = std::make_shared<CiscoAtmPvctrapExtnMib::Catmuppvclrangetable>();
         }
-        return catmuppvclrangetable;
+        return catmuppvclrangetable_;
     }
 
     return nullptr;
@@ -231,64 +231,64 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(catmaisrdistatuschpvclrangetable != nullptr)
+    if(catmaisrdistatuschpvclrangetable_ != nullptr)
     {
-        children["catmAISRDIStatusChPVclRangeTable"] = catmaisrdistatuschpvclrangetable;
+        children["catmAISRDIStatusChPVclRangeTable"] = catmaisrdistatuschpvclrangetable_;
     }
 
-    if(catmaisrdistatusuppvclrangetable != nullptr)
+    if(catmaisrdistatusuppvclrangetable_ != nullptr)
     {
-        children["catmAISRDIStatusUpPVclRangeTable"] = catmaisrdistatusuppvclrangetable;
+        children["catmAISRDIStatusUpPVclRangeTable"] = catmaisrdistatusuppvclrangetable_;
     }
 
-    if(catmcurstatchangepvcltable != nullptr)
+    if(catmcurstatchangepvcltable_ != nullptr)
     {
-        children["catmCurStatChangePVclTable"] = catmcurstatchangepvcltable;
+        children["catmCurStatChangePVclTable"] = catmcurstatchangepvcltable_;
     }
 
-    if(catmcurstatusuppvcltable != nullptr)
+    if(catmcurstatusuppvcltable_ != nullptr)
     {
-        children["catmCurStatusUpPVclTable"] = catmcurstatusuppvcltable;
+        children["catmCurStatusUpPVclTable"] = catmcurstatusuppvcltable_;
     }
 
-    if(catmdownpvclrangetable != nullptr)
+    if(catmdownpvclrangetable_ != nullptr)
     {
-        children["catmDownPVclRangeTable"] = catmdownpvclrangetable;
+        children["catmDownPVclRangeTable"] = catmdownpvclrangetable_;
     }
 
-    if(catmendccstatuschpvclrangetable != nullptr)
+    if(catmendccstatuschpvclrangetable_ != nullptr)
     {
-        children["catmEndCCStatusChPVclRangeTable"] = catmendccstatuschpvclrangetable;
+        children["catmEndCCStatusChPVclRangeTable"] = catmendccstatuschpvclrangetable_;
     }
 
-    if(catmendccstatusuppvclrangetable != nullptr)
+    if(catmendccstatusuppvclrangetable_ != nullptr)
     {
-        children["catmEndCCStatusUpPVclRangeTable"] = catmendccstatusuppvclrangetable;
+        children["catmEndCCStatusUpPVclRangeTable"] = catmendccstatusuppvclrangetable_;
     }
 
-    if(catmsegccstatuschpvclrangetable != nullptr)
+    if(catmsegccstatuschpvclrangetable_ != nullptr)
     {
-        children["catmSegCCStatusChPVclRangeTable"] = catmsegccstatuschpvclrangetable;
+        children["catmSegCCStatusChPVclRangeTable"] = catmsegccstatuschpvclrangetable_;
     }
 
-    if(catmsegccstatusuppvclrangetable != nullptr)
+    if(catmsegccstatusuppvclrangetable_ != nullptr)
     {
-        children["catmSegCCStatusUpPVclRangeTable"] = catmsegccstatusuppvclrangetable;
+        children["catmSegCCStatusUpPVclRangeTable"] = catmsegccstatusuppvclrangetable_;
     }
 
-    if(catmstatuschangepvclrangetable != nullptr)
+    if(catmstatuschangepvclrangetable_ != nullptr)
     {
-        children["catmStatusChangePVclRangeTable"] = catmstatuschangepvclrangetable;
+        children["catmStatusChangePVclRangeTable"] = catmstatuschangepvclrangetable_;
     }
 
-    if(catmstatusuppvclrangetable != nullptr)
+    if(catmstatusuppvclrangetable_ != nullptr)
     {
-        children["catmStatusUpPVclRangeTable"] = catmstatusuppvclrangetable;
+        children["catmStatusUpPVclRangeTable"] = catmstatusuppvclrangetable_;
     }
 
-    if(catmuppvclrangetable != nullptr)
+    if(catmuppvclrangetable_ != nullptr)
     {
-        children["catmUpPVclRangeTable"] = catmuppvclrangetable;
+        children["catmUpPVclRangeTable"] = catmuppvclrangetable_;
     }
 
     return children;
@@ -329,9 +329,9 @@ CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::~Catmcurstatchangepvcltable(
 
 bool CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::has_data() const
 {
-    for (std::size_t index=0; index<catmcurstatchangepvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatchangepvclentry_.size(); index++)
     {
-        if(catmcurstatchangepvclentry[index]->has_data())
+        if(catmcurstatchangepvclentry_[index]->has_data())
             return true;
     }
     return false;
@@ -339,9 +339,9 @@ bool CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::has_operation() const
 {
-    for (std::size_t index=0; index<catmcurstatchangepvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatchangepvclentry_.size(); index++)
     {
-        if(catmcurstatchangepvclentry[index]->has_operation())
+        if(catmcurstatchangepvclentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -381,7 +381,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::get_
 {
     if(child_yang_name == "catmCurStatChangePVclEntry")
     {
-        for(auto const & c : catmcurstatchangepvclentry)
+        for(auto const & c : catmcurstatchangepvclentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -391,7 +391,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::get_
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry>();
         c->parent = this;
-        catmcurstatchangepvclentry.push_back(c);
+        catmcurstatchangepvclentry_.push_back(c);
         return c;
     }
 
@@ -401,7 +401,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmcurstatchangepvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmcurstatchangepvclentry)
+    for (auto const & c : catmcurstatchangepvclentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -632,9 +632,9 @@ CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::~Catmstatuschangepvclran
 
 bool CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatuschangepvclrangeentry_.size(); index++)
     {
-        if(catmstatuschangepvclrangeentry[index]->has_data())
+        if(catmstatuschangepvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -642,9 +642,9 @@ bool CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatuschangepvclrangeentry_.size(); index++)
     {
-        if(catmstatuschangepvclrangeentry[index]->has_operation())
+        if(catmstatuschangepvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -684,7 +684,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::
 {
     if(child_yang_name == "catmStatusChangePVclRangeEntry")
     {
-        for(auto const & c : catmstatuschangepvclrangeentry)
+        for(auto const & c : catmstatuschangepvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -694,7 +694,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry>();
         c->parent = this;
-        catmstatuschangepvclrangeentry.push_back(c);
+        catmstatuschangepvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -704,7 +704,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmstatuschangepvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmstatuschangepvclrangeentry)
+    for (auto const & c : catmstatuschangepvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -847,9 +847,9 @@ CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::~Catmsegccstatuschpvclr
 
 bool CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry_.size(); index++)
     {
-        if(catmsegccstatuschpvclrangeentry[index]->has_data())
+        if(catmsegccstatuschpvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -857,9 +857,9 @@ bool CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry_.size(); index++)
     {
-        if(catmsegccstatuschpvclrangeentry[index]->has_operation())
+        if(catmsegccstatuschpvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -899,7 +899,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable:
 {
     if(child_yang_name == "catmSegCCStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmsegccstatuschpvclrangeentry)
+        for(auto const & c : catmsegccstatuschpvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -909,7 +909,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable:
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry>();
         c->parent = this;
-        catmsegccstatuschpvclrangeentry.push_back(c);
+        catmsegccstatuschpvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -919,7 +919,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmsegccstatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmsegccstatuschpvclrangeentry)
+    for (auto const & c : catmsegccstatuschpvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1062,9 +1062,9 @@ CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::~Catmendccstatuschpvclr
 
 bool CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry_.size(); index++)
     {
-        if(catmendccstatuschpvclrangeentry[index]->has_data())
+        if(catmendccstatuschpvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1072,9 +1072,9 @@ bool CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry_.size(); index++)
     {
-        if(catmendccstatuschpvclrangeentry[index]->has_operation())
+        if(catmendccstatuschpvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1114,7 +1114,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable:
 {
     if(child_yang_name == "catmEndCCStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmendccstatuschpvclrangeentry)
+        for(auto const & c : catmendccstatuschpvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1124,7 +1124,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable:
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry>();
         c->parent = this;
-        catmendccstatuschpvclrangeentry.push_back(c);
+        catmendccstatuschpvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -1134,7 +1134,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmendccstatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmendccstatuschpvclrangeentry)
+    for (auto const & c : catmendccstatuschpvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1277,9 +1277,9 @@ CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::~Catmaisrdistatuschpvc
 
 bool CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry_.size(); index++)
     {
-        if(catmaisrdistatuschpvclrangeentry[index]->has_data())
+        if(catmaisrdistatuschpvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1287,9 +1287,9 @@ bool CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry_.size(); index++)
     {
-        if(catmaisrdistatuschpvclrangeentry[index]->has_operation())
+        if(catmaisrdistatuschpvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1329,7 +1329,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable
 {
     if(child_yang_name == "catmAISRDIStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmaisrdistatuschpvclrangeentry)
+        for(auto const & c : catmaisrdistatuschpvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1339,7 +1339,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry>();
         c->parent = this;
-        catmaisrdistatuschpvclrangeentry.push_back(c);
+        catmaisrdistatuschpvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -1349,7 +1349,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmaisrdistatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmaisrdistatuschpvclrangeentry)
+    for (auto const & c : catmaisrdistatuschpvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1492,9 +1492,9 @@ CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::~Catmdownpvclrangetable()
 
 bool CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmdownpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmdownpvclrangeentry_.size(); index++)
     {
-        if(catmdownpvclrangeentry[index]->has_data())
+        if(catmdownpvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1502,9 +1502,9 @@ bool CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmdownpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmdownpvclrangeentry_.size(); index++)
     {
-        if(catmdownpvclrangeentry[index]->has_operation())
+        if(catmdownpvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1544,7 +1544,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::get_chil
 {
     if(child_yang_name == "catmDownPVclRangeEntry")
     {
-        for(auto const & c : catmdownpvclrangeentry)
+        for(auto const & c : catmdownpvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1554,7 +1554,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::get_chil
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::Catmdownpvclrangeentry>();
         c->parent = this;
-        catmdownpvclrangeentry.push_back(c);
+        catmdownpvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -1564,7 +1564,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmdownpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmdownpvclrangeentry)
+    for (auto const & c : catmdownpvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1731,9 +1731,9 @@ CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::~Catmcurstatusuppvcltable()
 
 bool CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::has_data() const
 {
-    for (std::size_t index=0; index<catmcurstatusuppvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatusuppvclentry_.size(); index++)
     {
-        if(catmcurstatusuppvclentry[index]->has_data())
+        if(catmcurstatusuppvclentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1741,9 +1741,9 @@ bool CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::has_operation() const
 {
-    for (std::size_t index=0; index<catmcurstatusuppvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatusuppvclentry_.size(); index++)
     {
-        if(catmcurstatusuppvclentry[index]->has_operation())
+        if(catmcurstatusuppvclentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1783,7 +1783,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::get_ch
 {
     if(child_yang_name == "catmCurStatusUpPVclEntry")
     {
-        for(auto const & c : catmcurstatusuppvclentry)
+        for(auto const & c : catmcurstatusuppvclentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1793,7 +1793,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::get_ch
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry>();
         c->parent = this;
-        catmcurstatusuppvclentry.push_back(c);
+        catmcurstatusuppvclentry_.push_back(c);
         return c;
     }
 
@@ -1803,7 +1803,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmcurstatusuppvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmcurstatusuppvclentry)
+    for (auto const & c : catmcurstatusuppvclentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2034,9 +2034,9 @@ CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::~Catmstatusuppvclrangetable(
 
 bool CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmstatusuppvclrangeentry[index]->has_data())
+        if(catmstatusuppvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2044,9 +2044,9 @@ bool CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmstatusuppvclrangeentry[index]->has_operation())
+        if(catmstatusuppvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2086,7 +2086,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::get_
 {
     if(child_yang_name == "catmStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmstatusuppvclrangeentry)
+        for(auto const & c : catmstatusuppvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2096,7 +2096,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::get_
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry>();
         c->parent = this;
-        catmstatusuppvclrangeentry.push_back(c);
+        catmstatusuppvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -2106,7 +2106,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmstatusuppvclrangeentry)
+    for (auto const & c : catmstatusuppvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2249,9 +2249,9 @@ CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::~Catmsegccstatusuppvclr
 
 bool CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmsegccstatusuppvclrangeentry[index]->has_data())
+        if(catmsegccstatusuppvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2259,9 +2259,9 @@ bool CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmsegccstatusuppvclrangeentry[index]->has_operation())
+        if(catmsegccstatusuppvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2301,7 +2301,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable:
 {
     if(child_yang_name == "catmSegCCStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmsegccstatusuppvclrangeentry)
+        for(auto const & c : catmsegccstatusuppvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2311,7 +2311,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable:
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry>();
         c->parent = this;
-        catmsegccstatusuppvclrangeentry.push_back(c);
+        catmsegccstatusuppvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -2321,7 +2321,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmsegccstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmsegccstatusuppvclrangeentry)
+    for (auto const & c : catmsegccstatusuppvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2464,9 +2464,9 @@ CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::~Catmendccstatusuppvclr
 
 bool CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmendccstatusuppvclrangeentry[index]->has_data())
+        if(catmendccstatusuppvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2474,9 +2474,9 @@ bool CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry_.size(); index++)
     {
-        if(catmendccstatusuppvclrangeentry[index]->has_operation())
+        if(catmendccstatusuppvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2516,7 +2516,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable:
 {
     if(child_yang_name == "catmEndCCStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmendccstatusuppvclrangeentry)
+        for(auto const & c : catmendccstatusuppvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2526,7 +2526,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable:
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry>();
         c->parent = this;
-        catmendccstatusuppvclrangeentry.push_back(c);
+        catmendccstatusuppvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -2536,7 +2536,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmendccstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmendccstatusuppvclrangeentry)
+    for (auto const & c : catmendccstatusuppvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2679,9 +2679,9 @@ CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::~Catmaisrdistatusuppvc
 
 bool CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry_.size(); index++)
     {
-        if(catmaisrdistatusuppvclrangeentry[index]->has_data())
+        if(catmaisrdistatusuppvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2689,9 +2689,9 @@ bool CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry_.size(); index++)
     {
-        if(catmaisrdistatusuppvclrangeentry[index]->has_operation())
+        if(catmaisrdistatusuppvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2731,7 +2731,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable
 {
     if(child_yang_name == "catmAISRDIStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmaisrdistatusuppvclrangeentry)
+        for(auto const & c : catmaisrdistatusuppvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2741,7 +2741,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry>();
         c->parent = this;
-        catmaisrdistatusuppvclrangeentry.push_back(c);
+        catmaisrdistatusuppvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -2751,7 +2751,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmaisrdistatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmaisrdistatusuppvclrangeentry)
+    for (auto const & c : catmaisrdistatusuppvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2894,9 +2894,9 @@ CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::~Catmuppvclrangetable()
 
 bool CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::has_data() const
 {
-    for (std::size_t index=0; index<catmuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmuppvclrangeentry_.size(); index++)
     {
-        if(catmuppvclrangeentry[index]->has_data())
+        if(catmuppvclrangeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2904,9 +2904,9 @@ bool CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::has_data() const
 
 bool CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::has_operation() const
 {
-    for (std::size_t index=0; index<catmuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmuppvclrangeentry_.size(); index++)
     {
-        if(catmuppvclrangeentry[index]->has_operation())
+        if(catmuppvclrangeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2946,7 +2946,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::get_child_
 {
     if(child_yang_name == "catmUpPVclRangeEntry")
     {
-        for(auto const & c : catmuppvclrangeentry)
+        for(auto const & c : catmuppvclrangeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2956,7 +2956,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::get_child_
         }
         auto c = std::make_shared<CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::Catmuppvclrangeentry>();
         c->parent = this;
-        catmuppvclrangeentry.push_back(c);
+        catmuppvclrangeentry_.push_back(c);
         return c;
     }
 
@@ -2966,7 +2966,7 @@ std::shared_ptr<Entity> CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoAtmPvctrapExtnMib::Catmuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : catmuppvclrangeentry)
+    for (auto const & c : catmuppvclrangeentry_)
     {
         children[c->get_segment_path()] = c;
     }

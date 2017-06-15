@@ -35,11 +35,11 @@ class IfMib : public Entity
         class Ifstacktable; //type: IfMib::Ifstacktable
         class Ifrcvaddresstable; //type: IfMib::Ifrcvaddresstable
 
-        std::shared_ptr<IF_MIB::IfMib::Ifmibobjects> ifmibobjects;
-        std::shared_ptr<IF_MIB::IfMib::Ifrcvaddresstable> ifrcvaddresstable;
-        std::shared_ptr<IF_MIB::IfMib::Ifstacktable> ifstacktable;
-        std::shared_ptr<IF_MIB::IfMib::Iftable> iftable;
-        std::shared_ptr<IF_MIB::IfMib::Interfaces> interfaces;
+        std::shared_ptr<IF_MIB::IfMib::Ifmibobjects> ifmibobjects_;
+        std::shared_ptr<IF_MIB::IfMib::Ifrcvaddresstable> ifrcvaddresstable_;
+        std::shared_ptr<IF_MIB::IfMib::Ifstacktable> ifstacktable_;
+        std::shared_ptr<IF_MIB::IfMib::Iftable> iftable_;
+        std::shared_ptr<IF_MIB::IfMib::Interfaces> interfaces_;
         
 }; // IfMib
 
@@ -99,7 +99,7 @@ class IfMib::Iftable : public Entity
 
         class Ifentry; //type: IfMib::Iftable::Ifentry
 
-        std::vector<std::shared_ptr<IF_MIB::IfMib::Iftable::Ifentry> > ifentry;
+        std::vector<std::shared_ptr<IF_MIB::IfMib::Iftable::Ifentry> > ifentry_;
         
 }; // IfMib::Iftable
 
@@ -190,7 +190,7 @@ class IfMib::Ifstacktable : public Entity
 
         class Ifstackentry; //type: IfMib::Ifstacktable::Ifstackentry
 
-        std::vector<std::shared_ptr<IF_MIB::IfMib::Ifstacktable::Ifstackentry> > ifstackentry;
+        std::vector<std::shared_ptr<IF_MIB::IfMib::Ifstacktable::Ifstackentry> > ifstackentry_;
         
 }; // IfMib::Ifstacktable
 
@@ -232,7 +232,7 @@ class IfMib::Ifrcvaddresstable : public Entity
 
         class Ifrcvaddressentry; //type: IfMib::Ifrcvaddresstable::Ifrcvaddressentry
 
-        std::vector<std::shared_ptr<IF_MIB::IfMib::Ifrcvaddresstable::Ifrcvaddressentry> > ifrcvaddressentry;
+        std::vector<std::shared_ptr<IF_MIB::IfMib::Ifrcvaddresstable::Ifrcvaddressentry> > ifrcvaddressentry_;
         
 }; // IfMib::Ifrcvaddresstable
 
@@ -315,7 +315,7 @@ class IfMib::Ifrcvaddresstable::Ifrcvaddressentry::IfrcvaddresstypeEnum : public
 {
     public:
         static const Enum::YLeaf other;
-        static const Enum::YLeaf volatile;
+        static const Enum::YLeaf volatile_;
         static const Enum::YLeaf nonVolatile;
 
 };

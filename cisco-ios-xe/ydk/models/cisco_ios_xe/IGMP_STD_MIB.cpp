@@ -11,12 +11,12 @@ namespace IGMP_STD_MIB {
 
 IgmpStdMib::IgmpStdMib()
     :
-    igmpcachetable(std::make_shared<IgmpStdMib::Igmpcachetable>())
-	,igmpinterfacetable(std::make_shared<IgmpStdMib::Igmpinterfacetable>())
+    igmpcachetable_(std::make_shared<IgmpStdMib::Igmpcachetable>())
+	,igmpinterfacetable_(std::make_shared<IgmpStdMib::Igmpinterfacetable>())
 {
-    igmpcachetable->parent = this;
+    igmpcachetable_->parent = this;
 
-    igmpinterfacetable->parent = this;
+    igmpinterfacetable_->parent = this;
 
     yang_name = "IGMP-STD-MIB"; yang_parent_name = "IGMP-STD-MIB";
 }
@@ -27,15 +27,15 @@ IgmpStdMib::~IgmpStdMib()
 
 bool IgmpStdMib::has_data() const
 {
-    return (igmpcachetable !=  nullptr && igmpcachetable->has_data())
-	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_data());
+    return (igmpcachetable_ !=  nullptr && igmpcachetable_->has_data())
+	|| (igmpinterfacetable_ !=  nullptr && igmpinterfacetable_->has_data());
 }
 
 bool IgmpStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (igmpcachetable !=  nullptr && igmpcachetable->has_operation())
-	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_operation());
+	|| (igmpcachetable_ !=  nullptr && igmpcachetable_->has_operation())
+	|| (igmpinterfacetable_ !=  nullptr && igmpinterfacetable_->has_operation());
 }
 
 std::string IgmpStdMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> IgmpStdMib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "igmpCacheTable")
     {
-        if(igmpcachetable == nullptr)
+        if(igmpcachetable_ == nullptr)
         {
-            igmpcachetable = std::make_shared<IgmpStdMib::Igmpcachetable>();
+            igmpcachetable_ = std::make_shared<IgmpStdMib::Igmpcachetable>();
         }
-        return igmpcachetable;
+        return igmpcachetable_;
     }
 
     if(child_yang_name == "igmpInterfaceTable")
     {
-        if(igmpinterfacetable == nullptr)
+        if(igmpinterfacetable_ == nullptr)
         {
-            igmpinterfacetable = std::make_shared<IgmpStdMib::Igmpinterfacetable>();
+            igmpinterfacetable_ = std::make_shared<IgmpStdMib::Igmpinterfacetable>();
         }
-        return igmpinterfacetable;
+        return igmpinterfacetable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> IgmpStdMib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(igmpcachetable != nullptr)
+    if(igmpcachetable_ != nullptr)
     {
-        children["igmpCacheTable"] = igmpcachetable;
+        children["igmpCacheTable"] = igmpcachetable_;
     }
 
-    if(igmpinterfacetable != nullptr)
+    if(igmpinterfacetable_ != nullptr)
     {
-        children["igmpInterfaceTable"] = igmpinterfacetable;
+        children["igmpInterfaceTable"] = igmpinterfacetable_;
     }
 
     return children;
@@ -139,9 +139,9 @@ IgmpStdMib::Igmpinterfacetable::~Igmpinterfacetable()
 
 bool IgmpStdMib::Igmpinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<igmpinterfaceentry_.size(); index++)
     {
-        if(igmpinterfaceentry[index]->has_data())
+        if(igmpinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool IgmpStdMib::Igmpinterfacetable::has_data() const
 
 bool IgmpStdMib::Igmpinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<igmpinterfaceentry_.size(); index++)
     {
-        if(igmpinterfaceentry[index]->has_operation())
+        if(igmpinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const 
 {
     if(child_yang_name == "igmpInterfaceEntry")
     {
-        for(auto const & c : igmpinterfaceentry)
+        for(auto const & c : igmpinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const 
         }
         auto c = std::make_shared<IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry>();
         c->parent = this;
-        igmpinterfaceentry.push_back(c);
+        igmpinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : igmpinterfaceentry)
+    for (auto const & c : igmpinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -418,9 +418,9 @@ IgmpStdMib::Igmpcachetable::~Igmpcachetable()
 
 bool IgmpStdMib::Igmpcachetable::has_data() const
 {
-    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
+    for (std::size_t index=0; index<igmpcacheentry_.size(); index++)
     {
-        if(igmpcacheentry[index]->has_data())
+        if(igmpcacheentry_[index]->has_data())
             return true;
     }
     return false;
@@ -428,9 +428,9 @@ bool IgmpStdMib::Igmpcachetable::has_data() const
 
 bool IgmpStdMib::Igmpcachetable::has_operation() const
 {
-    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
+    for (std::size_t index=0; index<igmpcacheentry_.size(); index++)
     {
-        if(igmpcacheentry[index]->has_operation())
+        if(igmpcacheentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -470,7 +470,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpcachetable::get_child_by_name(const std:
 {
     if(child_yang_name == "igmpCacheEntry")
     {
-        for(auto const & c : igmpcacheentry)
+        for(auto const & c : igmpcacheentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -480,7 +480,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpcachetable::get_child_by_name(const std:
         }
         auto c = std::make_shared<IgmpStdMib::Igmpcachetable::Igmpcacheentry>();
         c->parent = this;
-        igmpcacheentry.push_back(c);
+        igmpcacheentry_.push_back(c);
         return c;
     }
 
@@ -490,7 +490,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpcachetable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : igmpcacheentry)
+    for (auto const & c : igmpcacheentry_)
     {
         children[c->get_segment_path()] = c;
     }

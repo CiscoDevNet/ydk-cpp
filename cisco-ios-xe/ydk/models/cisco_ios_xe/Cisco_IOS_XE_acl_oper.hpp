@@ -30,7 +30,7 @@ class AccessLists : public Entity
 
         class AccessList; //type: AccessLists::AccessList
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList> > access_list;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList> > access_list_;
         
 }; // AccessLists
 
@@ -52,7 +52,7 @@ class AccessLists::AccessList : public Entity
         YLeaf access_control_list_name; //type: string
         class AccessListEntries; //type: AccessLists::AccessList::AccessListEntries
 
-        std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries> access_list_entries;
+        std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries> access_list_entries_;
         
 }; // AccessLists::AccessList
 
@@ -73,7 +73,7 @@ class AccessLists::AccessList::AccessListEntries : public Entity
 
         class AccessListEntry; //type: AccessLists::AccessList::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries::AccessListEntry> > access_list_entry;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries::AccessListEntry> > access_list_entry_;
         
 }; // AccessLists::AccessList::AccessListEntries
 
@@ -95,7 +95,7 @@ class AccessLists::AccessList::AccessListEntries::AccessListEntry : public Entit
         YLeaf rule_name; //type: uint32
         class AccessListEntriesOperData; //type: AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData
 
-        std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData> access_list_entries_oper_data;
+        std::shared_ptr<Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData> access_list_entries_oper_data_;
         
 }; // AccessLists::AccessList::AccessListEntries::AccessListEntry
 

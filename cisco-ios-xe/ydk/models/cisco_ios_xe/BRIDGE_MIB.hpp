@@ -38,14 +38,14 @@ class BridgeMib : public Entity
         class Dot1Dtpporttable; //type: BridgeMib::Dot1Dtpporttable
         class Dot1Dstatictable; //type: BridgeMib::Dot1Dstatictable
 
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbase> dot1dbase;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbaseporttable> dot1dbaseporttable;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstatictable> dot1dstatictable;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstp> dot1dstp;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstpporttable> dot1dstpporttable;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtp> dot1dtp;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpfdbtable> dot1dtpfdbtable;
-        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpporttable> dot1dtpporttable;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbase> dot1dbase_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbaseporttable> dot1dbaseporttable_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstatictable> dot1dstatictable_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstp> dot1dstp_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstpporttable> dot1dstpporttable_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtp> dot1dtp_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpfdbtable> dot1dtpfdbtable_;
+        std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpporttable> dot1dtpporttable_;
         
 }; // BridgeMib
 
@@ -141,7 +141,7 @@ class BridgeMib::Dot1Dbaseporttable : public Entity
 
         class Dot1Dbaseportentry; //type: BridgeMib::Dot1Dbaseporttable::Dot1Dbaseportentry
 
-        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbaseporttable::Dot1Dbaseportentry> > dot1dbaseportentry;
+        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dbaseporttable::Dot1Dbaseportentry> > dot1dbaseportentry_;
         
 }; // BridgeMib::Dot1Dbaseporttable
 
@@ -195,7 +195,7 @@ class BridgeMib::Dot1Dstpporttable : public Entity
 
         class Dot1Dstpportentry; //type: BridgeMib::Dot1Dstpporttable::Dot1Dstpportentry
 
-        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstpporttable::Dot1Dstpportentry> > dot1dstpportentry;
+        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstpporttable::Dot1Dstpportentry> > dot1dstpportentry_;
         
 }; // BridgeMib::Dot1Dstpporttable
 
@@ -248,7 +248,7 @@ class BridgeMib::Dot1Dtpfdbtable : public Entity
 
         class Dot1Dtpfdbentry; //type: BridgeMib::Dot1Dtpfdbtable::Dot1Dtpfdbentry
 
-        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpfdbtable::Dot1Dtpfdbentry> > dot1dtpfdbentry;
+        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpfdbtable::Dot1Dtpfdbentry> > dot1dtpfdbentry_;
         
 }; // BridgeMib::Dot1Dtpfdbtable
 
@@ -291,7 +291,7 @@ class BridgeMib::Dot1Dtpporttable : public Entity
 
         class Dot1Dtpportentry; //type: BridgeMib::Dot1Dtpporttable::Dot1Dtpportentry
 
-        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpporttable::Dot1Dtpportentry> > dot1dtpportentry;
+        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dtpporttable::Dot1Dtpportentry> > dot1dtpportentry_;
         
 }; // BridgeMib::Dot1Dtpporttable
 
@@ -335,7 +335,7 @@ class BridgeMib::Dot1Dstatictable : public Entity
 
         class Dot1Dstaticentry; //type: BridgeMib::Dot1Dstatictable::Dot1Dstaticentry
 
-        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstatictable::Dot1Dstaticentry> > dot1dstaticentry;
+        std::vector<std::shared_ptr<BRIDGE_MIB::BridgeMib::Dot1Dstatictable::Dot1Dstaticentry> > dot1dstaticentry_;
         
 }; // BridgeMib::Dot1Dstatictable
 

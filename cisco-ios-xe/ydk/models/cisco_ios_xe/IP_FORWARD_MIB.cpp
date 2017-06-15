@@ -11,15 +11,15 @@ namespace IP_FORWARD_MIB {
 
 IpForwardMib::IpForwardMib()
     :
-    ipcidrroutetable(std::make_shared<IpForwardMib::Ipcidrroutetable>())
-	,ipforward(std::make_shared<IpForwardMib::Ipforward>())
-	,ipforwardtable(std::make_shared<IpForwardMib::Ipforwardtable>())
+    ipcidrroutetable_(std::make_shared<IpForwardMib::Ipcidrroutetable>())
+	,ipforward_(std::make_shared<IpForwardMib::Ipforward>())
+	,ipforwardtable_(std::make_shared<IpForwardMib::Ipforwardtable>())
 {
-    ipcidrroutetable->parent = this;
+    ipcidrroutetable_->parent = this;
 
-    ipforward->parent = this;
+    ipforward_->parent = this;
 
-    ipforwardtable->parent = this;
+    ipforwardtable_->parent = this;
 
     yang_name = "IP-FORWARD-MIB"; yang_parent_name = "IP-FORWARD-MIB";
 }
@@ -30,17 +30,17 @@ IpForwardMib::~IpForwardMib()
 
 bool IpForwardMib::has_data() const
 {
-    return (ipcidrroutetable !=  nullptr && ipcidrroutetable->has_data())
-	|| (ipforward !=  nullptr && ipforward->has_data())
-	|| (ipforwardtable !=  nullptr && ipforwardtable->has_data());
+    return (ipcidrroutetable_ !=  nullptr && ipcidrroutetable_->has_data())
+	|| (ipforward_ !=  nullptr && ipforward_->has_data())
+	|| (ipforwardtable_ !=  nullptr && ipforwardtable_->has_data());
 }
 
 bool IpForwardMib::has_operation() const
 {
     return is_set(operation)
-	|| (ipcidrroutetable !=  nullptr && ipcidrroutetable->has_operation())
-	|| (ipforward !=  nullptr && ipforward->has_operation())
-	|| (ipforwardtable !=  nullptr && ipforwardtable->has_operation());
+	|| (ipcidrroutetable_ !=  nullptr && ipcidrroutetable_->has_operation())
+	|| (ipforward_ !=  nullptr && ipforward_->has_operation())
+	|| (ipforwardtable_ !=  nullptr && ipforwardtable_->has_operation());
 }
 
 std::string IpForwardMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> IpForwardMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "ipCidrRouteTable")
     {
-        if(ipcidrroutetable == nullptr)
+        if(ipcidrroutetable_ == nullptr)
         {
-            ipcidrroutetable = std::make_shared<IpForwardMib::Ipcidrroutetable>();
+            ipcidrroutetable_ = std::make_shared<IpForwardMib::Ipcidrroutetable>();
         }
-        return ipcidrroutetable;
+        return ipcidrroutetable_;
     }
 
     if(child_yang_name == "ipForward")
     {
-        if(ipforward == nullptr)
+        if(ipforward_ == nullptr)
         {
-            ipforward = std::make_shared<IpForwardMib::Ipforward>();
+            ipforward_ = std::make_shared<IpForwardMib::Ipforward>();
         }
-        return ipforward;
+        return ipforward_;
     }
 
     if(child_yang_name == "ipForwardTable")
     {
-        if(ipforwardtable == nullptr)
+        if(ipforwardtable_ == nullptr)
         {
-            ipforwardtable = std::make_shared<IpForwardMib::Ipforwardtable>();
+            ipforwardtable_ = std::make_shared<IpForwardMib::Ipforwardtable>();
         }
-        return ipforwardtable;
+        return ipforwardtable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> IpForwardMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipcidrroutetable != nullptr)
+    if(ipcidrroutetable_ != nullptr)
     {
-        children["ipCidrRouteTable"] = ipcidrroutetable;
+        children["ipCidrRouteTable"] = ipcidrroutetable_;
     }
 
-    if(ipforward != nullptr)
+    if(ipforward_ != nullptr)
     {
-        children["ipForward"] = ipforward;
+        children["ipForward"] = ipforward_;
     }
 
-    if(ipforwardtable != nullptr)
+    if(ipforwardtable_ != nullptr)
     {
-        children["ipForwardTable"] = ipforwardtable;
+        children["ipForwardTable"] = ipforwardtable_;
     }
 
     return children;
@@ -238,9 +238,9 @@ IpForwardMib::Ipforwardtable::~Ipforwardtable()
 
 bool IpForwardMib::Ipforwardtable::has_data() const
 {
-    for (std::size_t index=0; index<ipforwardentry.size(); index++)
+    for (std::size_t index=0; index<ipforwardentry_.size(); index++)
     {
-        if(ipforwardentry[index]->has_data())
+        if(ipforwardentry_[index]->has_data())
             return true;
     }
     return false;
@@ -248,9 +248,9 @@ bool IpForwardMib::Ipforwardtable::has_data() const
 
 bool IpForwardMib::Ipforwardtable::has_operation() const
 {
-    for (std::size_t index=0; index<ipforwardentry.size(); index++)
+    for (std::size_t index=0; index<ipforwardentry_.size(); index++)
     {
-        if(ipforwardentry[index]->has_operation())
+        if(ipforwardentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -290,7 +290,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
 {
     if(child_yang_name == "ipForwardEntry")
     {
-        for(auto const & c : ipforwardentry)
+        for(auto const & c : ipforwardentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -300,7 +300,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
         }
         auto c = std::make_shared<IpForwardMib::Ipforwardtable::Ipforwardentry>();
         c->parent = this;
-        ipforwardentry.push_back(c);
+        ipforwardentry_.push_back(c);
         return c;
     }
 
@@ -310,7 +310,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipforwardtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipforwardentry)
+    for (auto const & c : ipforwardentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -517,9 +517,9 @@ IpForwardMib::Ipcidrroutetable::~Ipcidrroutetable()
 
 bool IpForwardMib::Ipcidrroutetable::has_data() const
 {
-    for (std::size_t index=0; index<ipcidrrouteentry.size(); index++)
+    for (std::size_t index=0; index<ipcidrrouteentry_.size(); index++)
     {
-        if(ipcidrrouteentry[index]->has_data())
+        if(ipcidrrouteentry_[index]->has_data())
             return true;
     }
     return false;
@@ -527,9 +527,9 @@ bool IpForwardMib::Ipcidrroutetable::has_data() const
 
 bool IpForwardMib::Ipcidrroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipcidrrouteentry.size(); index++)
+    for (std::size_t index=0; index<ipcidrrouteentry_.size(); index++)
     {
-        if(ipcidrrouteentry[index]->has_operation())
+        if(ipcidrrouteentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -569,7 +569,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
 {
     if(child_yang_name == "ipCidrRouteEntry")
     {
-        for(auto const & c : ipcidrrouteentry)
+        for(auto const & c : ipcidrrouteentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -579,7 +579,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
         }
         auto c = std::make_shared<IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry>();
         c->parent = this;
-        ipcidrrouteentry.push_back(c);
+        ipcidrrouteentry_.push_back(c);
         return c;
     }
 
@@ -589,7 +589,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipcidrroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipcidrrouteentry)
+    for (auto const & c : ipcidrrouteentry_)
     {
         children[c->get_segment_path()] = c;
     }

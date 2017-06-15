@@ -54,30 +54,30 @@ class CiscoVoiceDialControlMib : public Entity
         class Cvactivecallwmtable; //type: CiscoVoiceDialControlMib::Cvactivecallwmtable
         class Cvsipmsgratewmtable; //type: CiscoVoiceDialControlMib::Cvsipmsgratewmtable
 
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallstatstable> cvactivecallstatstable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallwmtable> cvactivecallwmtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallactivetable> cvcallactivetable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalldurationstatstable> cvcalldurationstatstable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallhistorytable> cvcallhistorytable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratestatstable> cvcalllegratestatstable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratewmtable> cvcalllegratewmtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratemonitor> cvcallratemonitor;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratestatstable> cvcallratestatstable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratewmtable> cvcallratewmtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolconntable> cvcallvolconntable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvoliftable> cvcallvoliftable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolume> cvcallvolume;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolumestatshistory> cvcallvolumestatshistory;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvgatewaycallactive> cvgatewaycallactive;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvgeneralconfiguration> cvgeneralconfiguration;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercfgtable> cvpeercfgtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercommoncfgtable> cvpeercommoncfgtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratestatstable> cvsipmsgratestatstable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratewmtable> cvsipmsgratewmtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoicepeercfgtable> cvvoicepeercfgtable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallactivetable> cvvoipcallactivetable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallhistorytable> cvvoipcallhistorytable;
-        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoippeercfgtable> cvvoippeercfgtable;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallstatstable> cvactivecallstatstable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallwmtable> cvactivecallwmtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallactivetable> cvcallactivetable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalldurationstatstable> cvcalldurationstatstable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallhistorytable> cvcallhistorytable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratestatstable> cvcalllegratestatstable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratewmtable> cvcalllegratewmtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratemonitor> cvcallratemonitor_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratestatstable> cvcallratestatstable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratewmtable> cvcallratewmtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolconntable> cvcallvolconntable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvoliftable> cvcallvoliftable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolume> cvcallvolume_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolumestatshistory> cvcallvolumestatshistory_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvgatewaycallactive> cvgatewaycallactive_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvgeneralconfiguration> cvgeneralconfiguration_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercfgtable> cvpeercfgtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercommoncfgtable> cvpeercommoncfgtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratestatstable> cvsipmsgratestatstable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratewmtable> cvsipmsgratewmtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoicepeercfgtable> cvvoicepeercfgtable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallactivetable> cvvoipcallactivetable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallhistorytable> cvvoipcallhistorytable_;
+        std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoippeercfgtable> cvvoippeercfgtable_;
         
 }; // CiscoVoiceDialControlMib
 
@@ -205,7 +205,7 @@ class CiscoVoiceDialControlMib::Cvpeercfgtable : public Entity
 
         class Cvpeercfgentry; //type: CiscoVoiceDialControlMib::Cvpeercfgtable::Cvpeercfgentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercfgtable::Cvpeercfgentry> > cvpeercfgentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercfgtable::Cvpeercfgentry> > cvpeercfgentry_;
         
 }; // CiscoVoiceDialControlMib::Cvpeercfgtable
 
@@ -253,7 +253,7 @@ class CiscoVoiceDialControlMib::Cvvoicepeercfgtable : public Entity
 
         class Cvvoicepeercfgentry; //type: CiscoVoiceDialControlMib::Cvvoicepeercfgtable::Cvvoicepeercfgentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoicepeercfgtable::Cvvoicepeercfgentry> > cvvoicepeercfgentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoicepeercfgtable::Cvvoicepeercfgentry> > cvvoicepeercfgentry_;
         
 }; // CiscoVoiceDialControlMib::Cvvoicepeercfgtable
 
@@ -302,7 +302,7 @@ class CiscoVoiceDialControlMib::Cvvoippeercfgtable : public Entity
 
         class Cvvoippeercfgentry; //type: CiscoVoiceDialControlMib::Cvvoippeercfgtable::Cvvoippeercfgentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoippeercfgtable::Cvvoippeercfgentry> > cvvoippeercfgentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoippeercfgtable::Cvvoippeercfgentry> > cvvoippeercfgentry_;
         
 }; // CiscoVoiceDialControlMib::Cvvoippeercfgtable
 
@@ -376,7 +376,7 @@ class CiscoVoiceDialControlMib::Cvpeercommoncfgtable : public Entity
 
         class Cvpeercommoncfgentry; //type: CiscoVoiceDialControlMib::Cvpeercommoncfgtable::Cvpeercommoncfgentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercommoncfgtable::Cvpeercommoncfgentry> > cvpeercommoncfgentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvpeercommoncfgtable::Cvpeercommoncfgentry> > cvpeercommoncfgentry_;
         
 }; // CiscoVoiceDialControlMib::Cvpeercommoncfgtable
 
@@ -427,7 +427,7 @@ class CiscoVoiceDialControlMib::Cvcallactivetable : public Entity
 
         class Cvcallactiveentry; //type: CiscoVoiceDialControlMib::Cvcallactivetable::Cvcallactiveentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallactivetable::Cvcallactiveentry> > cvcallactiveentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallactivetable::Cvcallactiveentry> > cvcallactiveentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallactivetable
 
@@ -488,7 +488,7 @@ class CiscoVoiceDialControlMib::Cvvoipcallactivetable : public Entity
 
         class Cvvoipcallactiveentry; //type: CiscoVoiceDialControlMib::Cvvoipcallactivetable::Cvvoipcallactiveentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallactivetable::Cvvoipcallactiveentry> > cvvoipcallactiveentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallactivetable::Cvvoipcallactiveentry> > cvvoipcallactiveentry_;
         
 }; // CiscoVoiceDialControlMib::Cvvoipcallactivetable
 
@@ -577,7 +577,7 @@ class CiscoVoiceDialControlMib::Cvcallvolconntable : public Entity
 
         class Cvcallvolconnentry; //type: CiscoVoiceDialControlMib::Cvcallvolconntable::Cvcallvolconnentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolconntable::Cvcallvolconnentry> > cvcallvolconnentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvolconntable::Cvcallvolconnentry> > cvcallvolconnentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallvolconntable
 
@@ -618,7 +618,7 @@ class CiscoVoiceDialControlMib::Cvcallvoliftable : public Entity
 
         class Cvcallvolifentry; //type: CiscoVoiceDialControlMib::Cvcallvoliftable::Cvcallvolifentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvoliftable::Cvcallvolifentry> > cvcallvolifentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallvoliftable::Cvcallvolifentry> > cvcallvolifentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallvoliftable
 
@@ -661,7 +661,7 @@ class CiscoVoiceDialControlMib::Cvcallhistorytable : public Entity
 
         class Cvcallhistoryentry; //type: CiscoVoiceDialControlMib::Cvcallhistorytable::Cvcallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallhistorytable::Cvcallhistoryentry> > cvcallhistoryentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallhistorytable::Cvcallhistoryentry> > cvcallhistoryentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallhistorytable
 
@@ -715,7 +715,7 @@ class CiscoVoiceDialControlMib::Cvvoipcallhistorytable : public Entity
 
         class Cvvoipcallhistoryentry; //type: CiscoVoiceDialControlMib::Cvvoipcallhistorytable::Cvvoipcallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallhistorytable::Cvvoipcallhistoryentry> > cvvoipcallhistoryentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvvoipcallhistorytable::Cvvoipcallhistoryentry> > cvvoipcallhistoryentry_;
         
 }; // CiscoVoiceDialControlMib::Cvvoipcallhistorytable
 
@@ -804,7 +804,7 @@ class CiscoVoiceDialControlMib::Cvcallratestatstable : public Entity
 
         class Cvcallratestatsentry; //type: CiscoVoiceDialControlMib::Cvcallratestatstable::Cvcallratestatsentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratestatstable::Cvcallratestatsentry> > cvcallratestatsentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratestatstable::Cvcallratestatsentry> > cvcallratestatsentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallratestatstable
 
@@ -847,7 +847,7 @@ class CiscoVoiceDialControlMib::Cvcalllegratestatstable : public Entity
 
         class Cvcalllegratestatsentry; //type: CiscoVoiceDialControlMib::Cvcalllegratestatstable::Cvcalllegratestatsentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratestatstable::Cvcalllegratestatsentry> > cvcalllegratestatsentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratestatstable::Cvcalllegratestatsentry> > cvcalllegratestatsentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcalllegratestatstable
 
@@ -890,7 +890,7 @@ class CiscoVoiceDialControlMib::Cvactivecallstatstable : public Entity
 
         class Cvactivecallstatsentry; //type: CiscoVoiceDialControlMib::Cvactivecallstatstable::Cvactivecallstatsentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallstatstable::Cvactivecallstatsentry> > cvactivecallstatsentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallstatstable::Cvactivecallstatsentry> > cvactivecallstatsentry_;
         
 }; // CiscoVoiceDialControlMib::Cvactivecallstatstable
 
@@ -933,7 +933,7 @@ class CiscoVoiceDialControlMib::Cvcalldurationstatstable : public Entity
 
         class Cvcalldurationstatsentry; //type: CiscoVoiceDialControlMib::Cvcalldurationstatstable::Cvcalldurationstatsentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalldurationstatstable::Cvcalldurationstatsentry> > cvcalldurationstatsentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalldurationstatstable::Cvcalldurationstatsentry> > cvcalldurationstatsentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcalldurationstatstable
 
@@ -976,7 +976,7 @@ class CiscoVoiceDialControlMib::Cvsipmsgratestatstable : public Entity
 
         class Cvsipmsgratestatsentry; //type: CiscoVoiceDialControlMib::Cvsipmsgratestatstable::Cvsipmsgratestatsentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratestatstable::Cvsipmsgratestatsentry> > cvsipmsgratestatsentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratestatstable::Cvsipmsgratestatsentry> > cvsipmsgratestatsentry_;
         
 }; // CiscoVoiceDialControlMib::Cvsipmsgratestatstable
 
@@ -1019,7 +1019,7 @@ class CiscoVoiceDialControlMib::Cvcallratewmtable : public Entity
 
         class Cvcallratewmentry; //type: CiscoVoiceDialControlMib::Cvcallratewmtable::Cvcallratewmentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratewmtable::Cvcallratewmentry> > cvcallratewmentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcallratewmtable::Cvcallratewmentry> > cvcallratewmentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcallratewmtable
 
@@ -1062,7 +1062,7 @@ class CiscoVoiceDialControlMib::Cvcalllegratewmtable : public Entity
 
         class Cvcalllegratewmentry; //type: CiscoVoiceDialControlMib::Cvcalllegratewmtable::Cvcalllegratewmentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratewmtable::Cvcalllegratewmentry> > cvcalllegratewmentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvcalllegratewmtable::Cvcalllegratewmentry> > cvcalllegratewmentry_;
         
 }; // CiscoVoiceDialControlMib::Cvcalllegratewmtable
 
@@ -1105,7 +1105,7 @@ class CiscoVoiceDialControlMib::Cvactivecallwmtable : public Entity
 
         class Cvactivecallwmentry; //type: CiscoVoiceDialControlMib::Cvactivecallwmtable::Cvactivecallwmentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallwmtable::Cvactivecallwmentry> > cvactivecallwmentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvactivecallwmtable::Cvactivecallwmentry> > cvactivecallwmentry_;
         
 }; // CiscoVoiceDialControlMib::Cvactivecallwmtable
 
@@ -1148,7 +1148,7 @@ class CiscoVoiceDialControlMib::Cvsipmsgratewmtable : public Entity
 
         class Cvsipmsgratewmentry; //type: CiscoVoiceDialControlMib::Cvsipmsgratewmtable::Cvsipmsgratewmentry
 
-        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratewmtable::Cvsipmsgratewmentry> > cvsipmsgratewmentry;
+        std::vector<std::shared_ptr<CISCO_VOICE_DIAL_CONTROL_MIB::CiscoVoiceDialControlMib::Cvsipmsgratewmtable::Cvsipmsgratewmentry> > cvsipmsgratewmentry_;
         
 }; // CiscoVoiceDialControlMib::Cvsipmsgratewmtable
 

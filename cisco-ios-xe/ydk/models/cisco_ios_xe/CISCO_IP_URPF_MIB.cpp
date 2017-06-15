@@ -11,21 +11,21 @@ namespace CISCO_IP_URPF_MIB {
 
 CiscoIpUrpfMib::CiscoIpUrpfMib()
     :
-    cipurpfifmontable(std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>())
-	,cipurpfscalar(std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>())
-	,cipurpftable(std::make_shared<CiscoIpUrpfMib::Cipurpftable>())
-	,cipurpfvrfiftable(std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>())
-	,cipurpfvrftable(std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>())
+    cipurpfifmontable_(std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>())
+	,cipurpfscalar_(std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>())
+	,cipurpftable_(std::make_shared<CiscoIpUrpfMib::Cipurpftable>())
+	,cipurpfvrfiftable_(std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>())
+	,cipurpfvrftable_(std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>())
 {
-    cipurpfifmontable->parent = this;
+    cipurpfifmontable_->parent = this;
 
-    cipurpfscalar->parent = this;
+    cipurpfscalar_->parent = this;
 
-    cipurpftable->parent = this;
+    cipurpftable_->parent = this;
 
-    cipurpfvrfiftable->parent = this;
+    cipurpfvrfiftable_->parent = this;
 
-    cipurpfvrftable->parent = this;
+    cipurpfvrftable_->parent = this;
 
     yang_name = "CISCO-IP-URPF-MIB"; yang_parent_name = "CISCO-IP-URPF-MIB";
 }
@@ -36,21 +36,21 @@ CiscoIpUrpfMib::~CiscoIpUrpfMib()
 
 bool CiscoIpUrpfMib::has_data() const
 {
-    return (cipurpfifmontable !=  nullptr && cipurpfifmontable->has_data())
-	|| (cipurpfscalar !=  nullptr && cipurpfscalar->has_data())
-	|| (cipurpftable !=  nullptr && cipurpftable->has_data())
-	|| (cipurpfvrfiftable !=  nullptr && cipurpfvrfiftable->has_data())
-	|| (cipurpfvrftable !=  nullptr && cipurpfvrftable->has_data());
+    return (cipurpfifmontable_ !=  nullptr && cipurpfifmontable_->has_data())
+	|| (cipurpfscalar_ !=  nullptr && cipurpfscalar_->has_data())
+	|| (cipurpftable_ !=  nullptr && cipurpftable_->has_data())
+	|| (cipurpfvrfiftable_ !=  nullptr && cipurpfvrfiftable_->has_data())
+	|| (cipurpfvrftable_ !=  nullptr && cipurpfvrftable_->has_data());
 }
 
 bool CiscoIpUrpfMib::has_operation() const
 {
     return is_set(operation)
-	|| (cipurpfifmontable !=  nullptr && cipurpfifmontable->has_operation())
-	|| (cipurpfscalar !=  nullptr && cipurpfscalar->has_operation())
-	|| (cipurpftable !=  nullptr && cipurpftable->has_operation())
-	|| (cipurpfvrfiftable !=  nullptr && cipurpfvrfiftable->has_operation())
-	|| (cipurpfvrftable !=  nullptr && cipurpfvrftable->has_operation());
+	|| (cipurpfifmontable_ !=  nullptr && cipurpfifmontable_->has_operation())
+	|| (cipurpfscalar_ !=  nullptr && cipurpfscalar_->has_operation())
+	|| (cipurpftable_ !=  nullptr && cipurpftable_->has_operation())
+	|| (cipurpfvrfiftable_ !=  nullptr && cipurpfvrfiftable_->has_operation())
+	|| (cipurpfvrftable_ !=  nullptr && cipurpfvrftable_->has_operation());
 }
 
 std::string CiscoIpUrpfMib::get_segment_path() const
@@ -84,47 +84,47 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "cipUrpfIfMonTable")
     {
-        if(cipurpfifmontable == nullptr)
+        if(cipurpfifmontable_ == nullptr)
         {
-            cipurpfifmontable = std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>();
+            cipurpfifmontable_ = std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>();
         }
-        return cipurpfifmontable;
+        return cipurpfifmontable_;
     }
 
     if(child_yang_name == "cipUrpfScalar")
     {
-        if(cipurpfscalar == nullptr)
+        if(cipurpfscalar_ == nullptr)
         {
-            cipurpfscalar = std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>();
+            cipurpfscalar_ = std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>();
         }
-        return cipurpfscalar;
+        return cipurpfscalar_;
     }
 
     if(child_yang_name == "cipUrpfTable")
     {
-        if(cipurpftable == nullptr)
+        if(cipurpftable_ == nullptr)
         {
-            cipurpftable = std::make_shared<CiscoIpUrpfMib::Cipurpftable>();
+            cipurpftable_ = std::make_shared<CiscoIpUrpfMib::Cipurpftable>();
         }
-        return cipurpftable;
+        return cipurpftable_;
     }
 
     if(child_yang_name == "cipUrpfVrfIfTable")
     {
-        if(cipurpfvrfiftable == nullptr)
+        if(cipurpfvrfiftable_ == nullptr)
         {
-            cipurpfvrfiftable = std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>();
+            cipurpfvrfiftable_ = std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>();
         }
-        return cipurpfvrfiftable;
+        return cipurpfvrfiftable_;
     }
 
     if(child_yang_name == "cipUrpfVrfTable")
     {
-        if(cipurpfvrftable == nullptr)
+        if(cipurpfvrftable_ == nullptr)
         {
-            cipurpfvrftable = std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>();
+            cipurpfvrftable_ = std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>();
         }
-        return cipurpfvrftable;
+        return cipurpfvrftable_;
     }
 
     return nullptr;
@@ -133,29 +133,29 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cipurpfifmontable != nullptr)
+    if(cipurpfifmontable_ != nullptr)
     {
-        children["cipUrpfIfMonTable"] = cipurpfifmontable;
+        children["cipUrpfIfMonTable"] = cipurpfifmontable_;
     }
 
-    if(cipurpfscalar != nullptr)
+    if(cipurpfscalar_ != nullptr)
     {
-        children["cipUrpfScalar"] = cipurpfscalar;
+        children["cipUrpfScalar"] = cipurpfscalar_;
     }
 
-    if(cipurpftable != nullptr)
+    if(cipurpftable_ != nullptr)
     {
-        children["cipUrpfTable"] = cipurpftable;
+        children["cipUrpfTable"] = cipurpftable_;
     }
 
-    if(cipurpfvrfiftable != nullptr)
+    if(cipurpfvrfiftable_ != nullptr)
     {
-        children["cipUrpfVrfIfTable"] = cipurpfvrfiftable;
+        children["cipUrpfVrfIfTable"] = cipurpfvrfiftable_;
     }
 
-    if(cipurpfvrftable != nullptr)
+    if(cipurpfvrftable_ != nullptr)
     {
-        children["cipUrpfVrfTable"] = cipurpfvrftable;
+        children["cipUrpfVrfTable"] = cipurpfvrftable_;
     }
 
     return children;
@@ -284,9 +284,9 @@ CiscoIpUrpfMib::Cipurpftable::~Cipurpftable()
 
 bool CiscoIpUrpfMib::Cipurpftable::has_data() const
 {
-    for (std::size_t index=0; index<cipurpfentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfentry_.size(); index++)
     {
-        if(cipurpfentry[index]->has_data())
+        if(cipurpfentry_[index]->has_data())
             return true;
     }
     return false;
@@ -294,9 +294,9 @@ bool CiscoIpUrpfMib::Cipurpftable::has_data() const
 
 bool CiscoIpUrpfMib::Cipurpftable::has_operation() const
 {
-    for (std::size_t index=0; index<cipurpfentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfentry_.size(); index++)
     {
-        if(cipurpfentry[index]->has_operation())
+        if(cipurpfentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -336,7 +336,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpftable::get_child_by_name(const st
 {
     if(child_yang_name == "cipUrpfEntry")
     {
-        for(auto const & c : cipurpfentry)
+        for(auto const & c : cipurpfentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -346,7 +346,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpftable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoIpUrpfMib::Cipurpftable::Cipurpfentry>();
         c->parent = this;
-        cipurpfentry.push_back(c);
+        cipurpfentry_.push_back(c);
         return c;
     }
 
@@ -356,7 +356,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpftable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipurpfentry)
+    for (auto const & c : cipurpfentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -467,9 +467,9 @@ CiscoIpUrpfMib::Cipurpfifmontable::~Cipurpfifmontable()
 
 bool CiscoIpUrpfMib::Cipurpfifmontable::has_data() const
 {
-    for (std::size_t index=0; index<cipurpfifmonentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfifmonentry_.size(); index++)
     {
-        if(cipurpfifmonentry[index]->has_data())
+        if(cipurpfifmonentry_[index]->has_data())
             return true;
     }
     return false;
@@ -477,9 +477,9 @@ bool CiscoIpUrpfMib::Cipurpfifmontable::has_data() const
 
 bool CiscoIpUrpfMib::Cipurpfifmontable::has_operation() const
 {
-    for (std::size_t index=0; index<cipurpfifmonentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfifmonentry_.size(); index++)
     {
-        if(cipurpfifmonentry[index]->has_operation())
+        if(cipurpfifmonentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -519,7 +519,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(con
 {
     if(child_yang_name == "cipUrpfIfMonEntry")
     {
-        for(auto const & c : cipurpfifmonentry)
+        for(auto const & c : cipurpfifmonentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -529,7 +529,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry>();
         c->parent = this;
-        cipurpfifmonentry.push_back(c);
+        cipurpfifmonentry_.push_back(c);
         return c;
     }
 
@@ -539,7 +539,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfifmontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipurpfifmonentry)
+    for (auto const & c : cipurpfifmonentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -722,9 +722,9 @@ CiscoIpUrpfMib::Cipurpfvrfiftable::~Cipurpfvrfiftable()
 
 bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_data() const
 {
-    for (std::size_t index=0; index<cipurpfvrfifentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfvrfifentry_.size(); index++)
     {
-        if(cipurpfvrfifentry[index]->has_data())
+        if(cipurpfvrfifentry_[index]->has_data())
             return true;
     }
     return false;
@@ -732,9 +732,9 @@ bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_data() const
 
 bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_operation() const
 {
-    for (std::size_t index=0; index<cipurpfvrfifentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfvrfifentry_.size(); index++)
     {
-        if(cipurpfvrfifentry[index]->has_operation())
+        if(cipurpfvrfifentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -774,7 +774,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(con
 {
     if(child_yang_name == "cipUrpfVrfIfEntry")
     {
-        for(auto const & c : cipurpfvrfifentry)
+        for(auto const & c : cipurpfvrfifentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -784,7 +784,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry>();
         c->parent = this;
-        cipurpfvrfifentry.push_back(c);
+        cipurpfvrfifentry_.push_back(c);
         return c;
     }
 
@@ -794,7 +794,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrfiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipurpfvrfifentry)
+    for (auto const & c : cipurpfvrfifentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -913,9 +913,9 @@ CiscoIpUrpfMib::Cipurpfvrftable::~Cipurpfvrftable()
 
 bool CiscoIpUrpfMib::Cipurpfvrftable::has_data() const
 {
-    for (std::size_t index=0; index<cipurpfvrfentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfvrfentry_.size(); index++)
     {
-        if(cipurpfvrfentry[index]->has_data())
+        if(cipurpfvrfentry_[index]->has_data())
             return true;
     }
     return false;
@@ -923,9 +923,9 @@ bool CiscoIpUrpfMib::Cipurpfvrftable::has_data() const
 
 bool CiscoIpUrpfMib::Cipurpfvrftable::has_operation() const
 {
-    for (std::size_t index=0; index<cipurpfvrfentry.size(); index++)
+    for (std::size_t index=0; index<cipurpfvrfentry_.size(); index++)
     {
-        if(cipurpfvrfentry[index]->has_operation())
+        if(cipurpfvrfentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -965,7 +965,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const
 {
     if(child_yang_name == "cipUrpfVrfEntry")
     {
-        for(auto const & c : cipurpfvrfentry)
+        for(auto const & c : cipurpfvrfentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -975,7 +975,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry>();
         c->parent = this;
-        cipurpfvrfentry.push_back(c);
+        cipurpfvrfentry_.push_back(c);
         return c;
     }
 
@@ -985,7 +985,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipurpfvrfentry)
+    for (auto const & c : cipurpfvrfentry_)
     {
         children[c->get_segment_path()] = c;
     }

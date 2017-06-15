@@ -11,9 +11,9 @@ namespace ENTITY_SENSOR_MIB {
 
 EntitySensorMib::EntitySensorMib()
     :
-    entphysensortable(std::make_shared<EntitySensorMib::Entphysensortable>())
+    entphysensortable_(std::make_shared<EntitySensorMib::Entphysensortable>())
 {
-    entphysensortable->parent = this;
+    entphysensortable_->parent = this;
 
     yang_name = "ENTITY-SENSOR-MIB"; yang_parent_name = "ENTITY-SENSOR-MIB";
 }
@@ -24,13 +24,13 @@ EntitySensorMib::~EntitySensorMib()
 
 bool EntitySensorMib::has_data() const
 {
-    return (entphysensortable !=  nullptr && entphysensortable->has_data());
+    return (entphysensortable_ !=  nullptr && entphysensortable_->has_data());
 }
 
 bool EntitySensorMib::has_operation() const
 {
     return is_set(operation)
-	|| (entphysensortable !=  nullptr && entphysensortable->has_operation());
+	|| (entphysensortable_ !=  nullptr && entphysensortable_->has_operation());
 }
 
 std::string EntitySensorMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> EntitySensorMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "entPhySensorTable")
     {
-        if(entphysensortable == nullptr)
+        if(entphysensortable_ == nullptr)
         {
-            entphysensortable = std::make_shared<EntitySensorMib::Entphysensortable>();
+            entphysensortable_ = std::make_shared<EntitySensorMib::Entphysensortable>();
         }
-        return entphysensortable;
+        return entphysensortable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> EntitySensorMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> EntitySensorMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(entphysensortable != nullptr)
+    if(entphysensortable_ != nullptr)
     {
-        children["entPhySensorTable"] = entphysensortable;
+        children["entPhySensorTable"] = entphysensortable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ EntitySensorMib::Entphysensortable::~Entphysensortable()
 
 bool EntitySensorMib::Entphysensortable::has_data() const
 {
-    for (std::size_t index=0; index<entphysensorentry.size(); index++)
+    for (std::size_t index=0; index<entphysensorentry_.size(); index++)
     {
-        if(entphysensorentry[index]->has_data())
+        if(entphysensorentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool EntitySensorMib::Entphysensortable::has_data() const
 
 bool EntitySensorMib::Entphysensortable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysensorentry.size(); index++)
+    for (std::size_t index=0; index<entphysensorentry_.size(); index++)
     {
-        if(entphysensorentry[index]->has_operation())
+        if(entphysensorentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> EntitySensorMib::Entphysensortable::get_child_by_name(co
 {
     if(child_yang_name == "entPhySensorEntry")
     {
-        for(auto const & c : entphysensorentry)
+        for(auto const & c : entphysensorentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> EntitySensorMib::Entphysensortable::get_child_by_name(co
         }
         auto c = std::make_shared<EntitySensorMib::Entphysensortable::Entphysensorentry>();
         c->parent = this;
-        entphysensorentry.push_back(c);
+        entphysensorentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> EntitySensorMib::Entphysensortable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> EntitySensorMib::Entphysensortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entphysensorentry)
+    for (auto const & c : entphysensorentry_)
     {
         children[c->get_segment_path()] = c;
     }

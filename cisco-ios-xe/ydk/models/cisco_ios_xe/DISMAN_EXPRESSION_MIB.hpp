@@ -35,11 +35,11 @@ class DismanExpressionMib : public Entity
         class Expobjecttable; //type: DismanExpressionMib::Expobjecttable
         class Expvaluetable; //type: DismanExpressionMib::Expvaluetable
 
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable> experrortable;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable> expexpressiontable;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable> expobjecttable;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expresource> expresource;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable> expvaluetable;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable> experrortable_;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable> expexpressiontable_;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable> expobjecttable_;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expresource> expresource_;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable> expvaluetable_;
         
 }; // DismanExpressionMib
 
@@ -83,7 +83,7 @@ class DismanExpressionMib::Expexpressiontable : public Entity
 
         class Expexpressionentry; //type: DismanExpressionMib::Expexpressiontable::Expexpressionentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry_;
         
 }; // DismanExpressionMib::Expexpressiontable
 
@@ -132,7 +132,7 @@ class DismanExpressionMib::Experrortable : public Entity
 
         class Experrorentry; //type: DismanExpressionMib::Experrortable::Experrorentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable::Experrorentry> > experrorentry;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable::Experrorentry> > experrorentry_;
         
 }; // DismanExpressionMib::Experrortable
 
@@ -180,7 +180,7 @@ class DismanExpressionMib::Expobjecttable : public Entity
 
         class Expobjectentry; //type: DismanExpressionMib::Expobjecttable::Expobjectentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry_;
         
 }; // DismanExpressionMib::Expobjecttable
 
@@ -235,7 +235,7 @@ class DismanExpressionMib::Expvaluetable : public Entity
 
         class Expvalueentry; //type: DismanExpressionMib::Expvaluetable::Expvalueentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry_;
         
 }; // DismanExpressionMib::Expvaluetable
 

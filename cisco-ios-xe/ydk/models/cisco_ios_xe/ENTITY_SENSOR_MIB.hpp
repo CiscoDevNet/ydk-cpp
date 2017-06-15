@@ -30,7 +30,7 @@ class EntitySensorMib : public Entity
 
         class Entphysensortable; //type: EntitySensorMib::Entphysensortable
 
-        std::shared_ptr<ENTITY_SENSOR_MIB::EntitySensorMib::Entphysensortable> entphysensortable;
+        std::shared_ptr<ENTITY_SENSOR_MIB::EntitySensorMib::Entphysensortable> entphysensortable_;
         
 }; // EntitySensorMib
 
@@ -51,7 +51,7 @@ class EntitySensorMib::Entphysensortable : public Entity
 
         class Entphysensorentry; //type: EntitySensorMib::Entphysensortable::Entphysensorentry
 
-        std::vector<std::shared_ptr<ENTITY_SENSOR_MIB::EntitySensorMib::Entphysensortable::Entphysensorentry> > entphysensorentry;
+        std::vector<std::shared_ptr<ENTITY_SENSOR_MIB::EntitySensorMib::Entphysensortable::Entphysensorentry> > entphysensorentry_;
         
 }; // EntitySensorMib::Entphysensortable
 

@@ -38,14 +38,14 @@ class CiscoEntityAlarmMib : public Entity
         class Cealarmhisttable; //type: CiscoEntityAlarmMib::Cealarmhisttable
         class Cealarmfilterprofiletable; //type: CiscoEntityAlarmMib::Cealarmfilterprofiletable
 
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrmaptable> cealarmdescrmaptable;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrtable> cealarmdescrtable;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfiltering> cealarmfiltering;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfilterprofiletable> cealarmfilterprofiletable;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhistory> cealarmhistory;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhisttable> cealarmhisttable;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmmonitoring> cealarmmonitoring;
-        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmtable> cealarmtable;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrmaptable> cealarmdescrmaptable_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrtable> cealarmdescrtable_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfiltering> cealarmfiltering_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfilterprofiletable> cealarmfilterprofiletable_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhistory> cealarmhistory_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhisttable> cealarmhisttable_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmmonitoring> cealarmmonitoring_;
+        std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmtable> cealarmtable_;
         
 }; // CiscoEntityAlarmMib
 
@@ -129,7 +129,7 @@ class CiscoEntityAlarmMib::Cealarmdescrmaptable : public Entity
 
         class Cealarmdescrmapentry; //type: CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry> > cealarmdescrmapentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrmaptable::Cealarmdescrmapentry> > cealarmdescrmapentry_;
         
 }; // CiscoEntityAlarmMib::Cealarmdescrmaptable
 
@@ -170,7 +170,7 @@ class CiscoEntityAlarmMib::Cealarmdescrtable : public Entity
 
         class Cealarmdescrentry; //type: CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry> > cealarmdescrentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmdescrtable::Cealarmdescrentry> > cealarmdescrentry_;
         
 }; // CiscoEntityAlarmMib::Cealarmdescrtable
 
@@ -214,7 +214,7 @@ class CiscoEntityAlarmMib::Cealarmtable : public Entity
 
         class Cealarmentry; //type: CiscoEntityAlarmMib::Cealarmtable::Cealarmentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmtable::Cealarmentry> > cealarmentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmtable::Cealarmentry> > cealarmentry_;
         
 }; // CiscoEntityAlarmMib::Cealarmtable
 
@@ -258,7 +258,7 @@ class CiscoEntityAlarmMib::Cealarmhisttable : public Entity
 
         class Cealarmhistentry; //type: CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry> > cealarmhistentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmhisttable::Cealarmhistentry> > cealarmhistentry_;
         
 }; // CiscoEntityAlarmMib::Cealarmhisttable
 
@@ -304,7 +304,7 @@ class CiscoEntityAlarmMib::Cealarmfilterprofiletable : public Entity
 
         class Cealarmfilterprofileentry; //type: CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry> > cealarmfilterprofileentry;
+        std::vector<std::shared_ptr<CISCO_ENTITY_ALARM_MIB::CiscoEntityAlarmMib::Cealarmfilterprofiletable::Cealarmfilterprofileentry> > cealarmfilterprofileentry_;
         
 }; // CiscoEntityAlarmMib::Cealarmfilterprofiletable
 

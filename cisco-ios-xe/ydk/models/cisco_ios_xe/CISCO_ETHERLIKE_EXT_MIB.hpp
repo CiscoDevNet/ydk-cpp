@@ -31,8 +31,8 @@ class CiscoEtherlikeExtMib : public Entity
         class Ceedot3Pauseexttable; //type: CiscoEtherlikeExtMib::Ceedot3Pauseexttable
         class Ceesubinterfacetable; //type: CiscoEtherlikeExtMib::Ceesubinterfacetable
 
-        std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceedot3Pauseexttable> ceedot3pauseexttable;
-        std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceesubinterfacetable> ceesubinterfacetable;
+        std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceedot3Pauseexttable> ceedot3pauseexttable_;
+        std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceesubinterfacetable> ceesubinterfacetable_;
         
 }; // CiscoEtherlikeExtMib
 
@@ -53,7 +53,7 @@ class CiscoEtherlikeExtMib::Ceedot3Pauseexttable : public Entity
 
         class Ceedot3Pauseextentry; //type: CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry
 
-        std::vector<std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry> > ceedot3pauseextentry;
+        std::vector<std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry> > ceedot3pauseextentry_;
         
 }; // CiscoEtherlikeExtMib::Ceedot3Pauseexttable
 
@@ -96,7 +96,7 @@ class CiscoEtherlikeExtMib::Ceesubinterfacetable : public Entity
 
         class Ceesubinterfaceentry; //type: CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry> > ceesubinterfaceentry;
+        std::vector<std::shared_ptr<CISCO_ETHERLIKE_EXT_MIB::CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry> > ceesubinterfaceentry_;
         
 }; // CiscoEtherlikeExtMib::Ceesubinterfacetable
 

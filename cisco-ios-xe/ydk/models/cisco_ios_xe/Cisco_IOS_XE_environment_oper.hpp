@@ -30,7 +30,7 @@ class EnvironmentSensors : public Entity
 
         class EnvironmentSensor; //type: EnvironmentSensors::EnvironmentSensor
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_environment_oper::EnvironmentSensors::EnvironmentSensor> > environment_sensor;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_environment_oper::EnvironmentSensors::EnvironmentSensor> > environment_sensor_;
         
 }; // EnvironmentSensors
 

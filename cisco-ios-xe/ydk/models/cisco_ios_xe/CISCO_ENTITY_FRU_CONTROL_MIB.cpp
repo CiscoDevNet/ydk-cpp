@@ -11,60 +11,60 @@ namespace CISCO_ENTITY_FRU_CONTROL_MIB {
 
 CiscoEntityFruControlMib::CiscoEntityFruControlMib()
     :
-    cefcchassiscoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>())
-	,cefcconnectorratingtable(std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>())
-	,cefcfancoolingcaptable(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>())
-	,cefcfancoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>())
-	,cefcfantraystatustable(std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>())
-	,cefcfrupower(std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>())
-	,cefcfrupowerstatustable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>())
-	,cefcfrupowersupplygrouptable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>())
-	,cefcfrupowersupplyvaluetable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>())
-	,cefcintellimoduletable(std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>())
-	,cefcmibnotificationenables(std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>())
-	,cefcmodulecoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>())
-	,cefcmodulelocalswitchingtable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>())
-	,cefcmodulepowerconsumptiontable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>())
-	,cefcmoduletable(std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>())
-	,cefcphysicaltable(std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>())
-	,cefcpowersupplyinputtable(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>())
-	,cefcpowersupplyoutputtable(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>())
+    cefcchassiscoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>())
+	,cefcconnectorratingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>())
+	,cefcfancoolingcaptable_(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>())
+	,cefcfancoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>())
+	,cefcfantraystatustable_(std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>())
+	,cefcfrupower_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>())
+	,cefcfrupowerstatustable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>())
+	,cefcfrupowersupplygrouptable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>())
+	,cefcfrupowersupplyvaluetable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>())
+	,cefcintellimoduletable_(std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>())
+	,cefcmibnotificationenables_(std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>())
+	,cefcmodulecoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>())
+	,cefcmodulelocalswitchingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>())
+	,cefcmodulepowerconsumptiontable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>())
+	,cefcmoduletable_(std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>())
+	,cefcphysicaltable_(std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>())
+	,cefcpowersupplyinputtable_(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>())
+	,cefcpowersupplyoutputtable_(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>())
 {
-    cefcchassiscoolingtable->parent = this;
+    cefcchassiscoolingtable_->parent = this;
 
-    cefcconnectorratingtable->parent = this;
+    cefcconnectorratingtable_->parent = this;
 
-    cefcfancoolingcaptable->parent = this;
+    cefcfancoolingcaptable_->parent = this;
 
-    cefcfancoolingtable->parent = this;
+    cefcfancoolingtable_->parent = this;
 
-    cefcfantraystatustable->parent = this;
+    cefcfantraystatustable_->parent = this;
 
-    cefcfrupower->parent = this;
+    cefcfrupower_->parent = this;
 
-    cefcfrupowerstatustable->parent = this;
+    cefcfrupowerstatustable_->parent = this;
 
-    cefcfrupowersupplygrouptable->parent = this;
+    cefcfrupowersupplygrouptable_->parent = this;
 
-    cefcfrupowersupplyvaluetable->parent = this;
+    cefcfrupowersupplyvaluetable_->parent = this;
 
-    cefcintellimoduletable->parent = this;
+    cefcintellimoduletable_->parent = this;
 
-    cefcmibnotificationenables->parent = this;
+    cefcmibnotificationenables_->parent = this;
 
-    cefcmodulecoolingtable->parent = this;
+    cefcmodulecoolingtable_->parent = this;
 
-    cefcmodulelocalswitchingtable->parent = this;
+    cefcmodulelocalswitchingtable_->parent = this;
 
-    cefcmodulepowerconsumptiontable->parent = this;
+    cefcmodulepowerconsumptiontable_->parent = this;
 
-    cefcmoduletable->parent = this;
+    cefcmoduletable_->parent = this;
 
-    cefcphysicaltable->parent = this;
+    cefcphysicaltable_->parent = this;
 
-    cefcpowersupplyinputtable->parent = this;
+    cefcpowersupplyinputtable_->parent = this;
 
-    cefcpowersupplyoutputtable->parent = this;
+    cefcpowersupplyoutputtable_->parent = this;
 
     yang_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB";
 }
@@ -75,47 +75,47 @@ CiscoEntityFruControlMib::~CiscoEntityFruControlMib()
 
 bool CiscoEntityFruControlMib::has_data() const
 {
-    return (cefcchassiscoolingtable !=  nullptr && cefcchassiscoolingtable->has_data())
-	|| (cefcconnectorratingtable !=  nullptr && cefcconnectorratingtable->has_data())
-	|| (cefcfancoolingcaptable !=  nullptr && cefcfancoolingcaptable->has_data())
-	|| (cefcfancoolingtable !=  nullptr && cefcfancoolingtable->has_data())
-	|| (cefcfantraystatustable !=  nullptr && cefcfantraystatustable->has_data())
-	|| (cefcfrupower !=  nullptr && cefcfrupower->has_data())
-	|| (cefcfrupowerstatustable !=  nullptr && cefcfrupowerstatustable->has_data())
-	|| (cefcfrupowersupplygrouptable !=  nullptr && cefcfrupowersupplygrouptable->has_data())
-	|| (cefcfrupowersupplyvaluetable !=  nullptr && cefcfrupowersupplyvaluetable->has_data())
-	|| (cefcintellimoduletable !=  nullptr && cefcintellimoduletable->has_data())
-	|| (cefcmibnotificationenables !=  nullptr && cefcmibnotificationenables->has_data())
-	|| (cefcmodulecoolingtable !=  nullptr && cefcmodulecoolingtable->has_data())
-	|| (cefcmodulelocalswitchingtable !=  nullptr && cefcmodulelocalswitchingtable->has_data())
-	|| (cefcmodulepowerconsumptiontable !=  nullptr && cefcmodulepowerconsumptiontable->has_data())
-	|| (cefcmoduletable !=  nullptr && cefcmoduletable->has_data())
-	|| (cefcphysicaltable !=  nullptr && cefcphysicaltable->has_data())
-	|| (cefcpowersupplyinputtable !=  nullptr && cefcpowersupplyinputtable->has_data())
-	|| (cefcpowersupplyoutputtable !=  nullptr && cefcpowersupplyoutputtable->has_data());
+    return (cefcchassiscoolingtable_ !=  nullptr && cefcchassiscoolingtable_->has_data())
+	|| (cefcconnectorratingtable_ !=  nullptr && cefcconnectorratingtable_->has_data())
+	|| (cefcfancoolingcaptable_ !=  nullptr && cefcfancoolingcaptable_->has_data())
+	|| (cefcfancoolingtable_ !=  nullptr && cefcfancoolingtable_->has_data())
+	|| (cefcfantraystatustable_ !=  nullptr && cefcfantraystatustable_->has_data())
+	|| (cefcfrupower_ !=  nullptr && cefcfrupower_->has_data())
+	|| (cefcfrupowerstatustable_ !=  nullptr && cefcfrupowerstatustable_->has_data())
+	|| (cefcfrupowersupplygrouptable_ !=  nullptr && cefcfrupowersupplygrouptable_->has_data())
+	|| (cefcfrupowersupplyvaluetable_ !=  nullptr && cefcfrupowersupplyvaluetable_->has_data())
+	|| (cefcintellimoduletable_ !=  nullptr && cefcintellimoduletable_->has_data())
+	|| (cefcmibnotificationenables_ !=  nullptr && cefcmibnotificationenables_->has_data())
+	|| (cefcmodulecoolingtable_ !=  nullptr && cefcmodulecoolingtable_->has_data())
+	|| (cefcmodulelocalswitchingtable_ !=  nullptr && cefcmodulelocalswitchingtable_->has_data())
+	|| (cefcmodulepowerconsumptiontable_ !=  nullptr && cefcmodulepowerconsumptiontable_->has_data())
+	|| (cefcmoduletable_ !=  nullptr && cefcmoduletable_->has_data())
+	|| (cefcphysicaltable_ !=  nullptr && cefcphysicaltable_->has_data())
+	|| (cefcpowersupplyinputtable_ !=  nullptr && cefcpowersupplyinputtable_->has_data())
+	|| (cefcpowersupplyoutputtable_ !=  nullptr && cefcpowersupplyoutputtable_->has_data());
 }
 
 bool CiscoEntityFruControlMib::has_operation() const
 {
     return is_set(operation)
-	|| (cefcchassiscoolingtable !=  nullptr && cefcchassiscoolingtable->has_operation())
-	|| (cefcconnectorratingtable !=  nullptr && cefcconnectorratingtable->has_operation())
-	|| (cefcfancoolingcaptable !=  nullptr && cefcfancoolingcaptable->has_operation())
-	|| (cefcfancoolingtable !=  nullptr && cefcfancoolingtable->has_operation())
-	|| (cefcfantraystatustable !=  nullptr && cefcfantraystatustable->has_operation())
-	|| (cefcfrupower !=  nullptr && cefcfrupower->has_operation())
-	|| (cefcfrupowerstatustable !=  nullptr && cefcfrupowerstatustable->has_operation())
-	|| (cefcfrupowersupplygrouptable !=  nullptr && cefcfrupowersupplygrouptable->has_operation())
-	|| (cefcfrupowersupplyvaluetable !=  nullptr && cefcfrupowersupplyvaluetable->has_operation())
-	|| (cefcintellimoduletable !=  nullptr && cefcintellimoduletable->has_operation())
-	|| (cefcmibnotificationenables !=  nullptr && cefcmibnotificationenables->has_operation())
-	|| (cefcmodulecoolingtable !=  nullptr && cefcmodulecoolingtable->has_operation())
-	|| (cefcmodulelocalswitchingtable !=  nullptr && cefcmodulelocalswitchingtable->has_operation())
-	|| (cefcmodulepowerconsumptiontable !=  nullptr && cefcmodulepowerconsumptiontable->has_operation())
-	|| (cefcmoduletable !=  nullptr && cefcmoduletable->has_operation())
-	|| (cefcphysicaltable !=  nullptr && cefcphysicaltable->has_operation())
-	|| (cefcpowersupplyinputtable !=  nullptr && cefcpowersupplyinputtable->has_operation())
-	|| (cefcpowersupplyoutputtable !=  nullptr && cefcpowersupplyoutputtable->has_operation());
+	|| (cefcchassiscoolingtable_ !=  nullptr && cefcchassiscoolingtable_->has_operation())
+	|| (cefcconnectorratingtable_ !=  nullptr && cefcconnectorratingtable_->has_operation())
+	|| (cefcfancoolingcaptable_ !=  nullptr && cefcfancoolingcaptable_->has_operation())
+	|| (cefcfancoolingtable_ !=  nullptr && cefcfancoolingtable_->has_operation())
+	|| (cefcfantraystatustable_ !=  nullptr && cefcfantraystatustable_->has_operation())
+	|| (cefcfrupower_ !=  nullptr && cefcfrupower_->has_operation())
+	|| (cefcfrupowerstatustable_ !=  nullptr && cefcfrupowerstatustable_->has_operation())
+	|| (cefcfrupowersupplygrouptable_ !=  nullptr && cefcfrupowersupplygrouptable_->has_operation())
+	|| (cefcfrupowersupplyvaluetable_ !=  nullptr && cefcfrupowersupplyvaluetable_->has_operation())
+	|| (cefcintellimoduletable_ !=  nullptr && cefcintellimoduletable_->has_operation())
+	|| (cefcmibnotificationenables_ !=  nullptr && cefcmibnotificationenables_->has_operation())
+	|| (cefcmodulecoolingtable_ !=  nullptr && cefcmodulecoolingtable_->has_operation())
+	|| (cefcmodulelocalswitchingtable_ !=  nullptr && cefcmodulelocalswitchingtable_->has_operation())
+	|| (cefcmodulepowerconsumptiontable_ !=  nullptr && cefcmodulepowerconsumptiontable_->has_operation())
+	|| (cefcmoduletable_ !=  nullptr && cefcmoduletable_->has_operation())
+	|| (cefcphysicaltable_ !=  nullptr && cefcphysicaltable_->has_operation())
+	|| (cefcpowersupplyinputtable_ !=  nullptr && cefcpowersupplyinputtable_->has_operation())
+	|| (cefcpowersupplyoutputtable_ !=  nullptr && cefcpowersupplyoutputtable_->has_operation());
 }
 
 std::string CiscoEntityFruControlMib::get_segment_path() const
@@ -149,164 +149,164 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefcChassisCoolingTable")
     {
-        if(cefcchassiscoolingtable == nullptr)
+        if(cefcchassiscoolingtable_ == nullptr)
         {
-            cefcchassiscoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>();
+            cefcchassiscoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>();
         }
-        return cefcchassiscoolingtable;
+        return cefcchassiscoolingtable_;
     }
 
     if(child_yang_name == "cefcConnectorRatingTable")
     {
-        if(cefcconnectorratingtable == nullptr)
+        if(cefcconnectorratingtable_ == nullptr)
         {
-            cefcconnectorratingtable = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>();
+            cefcconnectorratingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>();
         }
-        return cefcconnectorratingtable;
+        return cefcconnectorratingtable_;
     }
 
     if(child_yang_name == "cefcFanCoolingCapTable")
     {
-        if(cefcfancoolingcaptable == nullptr)
+        if(cefcfancoolingcaptable_ == nullptr)
         {
-            cefcfancoolingcaptable = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>();
+            cefcfancoolingcaptable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>();
         }
-        return cefcfancoolingcaptable;
+        return cefcfancoolingcaptable_;
     }
 
     if(child_yang_name == "cefcFanCoolingTable")
     {
-        if(cefcfancoolingtable == nullptr)
+        if(cefcfancoolingtable_ == nullptr)
         {
-            cefcfancoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>();
+            cefcfancoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>();
         }
-        return cefcfancoolingtable;
+        return cefcfancoolingtable_;
     }
 
     if(child_yang_name == "cefcFanTrayStatusTable")
     {
-        if(cefcfantraystatustable == nullptr)
+        if(cefcfantraystatustable_ == nullptr)
         {
-            cefcfantraystatustable = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>();
+            cefcfantraystatustable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>();
         }
-        return cefcfantraystatustable;
+        return cefcfantraystatustable_;
     }
 
     if(child_yang_name == "cefcFRUPower")
     {
-        if(cefcfrupower == nullptr)
+        if(cefcfrupower_ == nullptr)
         {
-            cefcfrupower = std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>();
+            cefcfrupower_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>();
         }
-        return cefcfrupower;
+        return cefcfrupower_;
     }
 
     if(child_yang_name == "cefcFRUPowerStatusTable")
     {
-        if(cefcfrupowerstatustable == nullptr)
+        if(cefcfrupowerstatustable_ == nullptr)
         {
-            cefcfrupowerstatustable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>();
+            cefcfrupowerstatustable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>();
         }
-        return cefcfrupowerstatustable;
+        return cefcfrupowerstatustable_;
     }
 
     if(child_yang_name == "cefcFRUPowerSupplyGroupTable")
     {
-        if(cefcfrupowersupplygrouptable == nullptr)
+        if(cefcfrupowersupplygrouptable_ == nullptr)
         {
-            cefcfrupowersupplygrouptable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>();
+            cefcfrupowersupplygrouptable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>();
         }
-        return cefcfrupowersupplygrouptable;
+        return cefcfrupowersupplygrouptable_;
     }
 
     if(child_yang_name == "cefcFRUPowerSupplyValueTable")
     {
-        if(cefcfrupowersupplyvaluetable == nullptr)
+        if(cefcfrupowersupplyvaluetable_ == nullptr)
         {
-            cefcfrupowersupplyvaluetable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>();
+            cefcfrupowersupplyvaluetable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>();
         }
-        return cefcfrupowersupplyvaluetable;
+        return cefcfrupowersupplyvaluetable_;
     }
 
     if(child_yang_name == "cefcIntelliModuleTable")
     {
-        if(cefcintellimoduletable == nullptr)
+        if(cefcintellimoduletable_ == nullptr)
         {
-            cefcintellimoduletable = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>();
+            cefcintellimoduletable_ = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>();
         }
-        return cefcintellimoduletable;
+        return cefcintellimoduletable_;
     }
 
     if(child_yang_name == "cefcMIBNotificationEnables")
     {
-        if(cefcmibnotificationenables == nullptr)
+        if(cefcmibnotificationenables_ == nullptr)
         {
-            cefcmibnotificationenables = std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>();
+            cefcmibnotificationenables_ = std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>();
         }
-        return cefcmibnotificationenables;
+        return cefcmibnotificationenables_;
     }
 
     if(child_yang_name == "cefcModuleCoolingTable")
     {
-        if(cefcmodulecoolingtable == nullptr)
+        if(cefcmodulecoolingtable_ == nullptr)
         {
-            cefcmodulecoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>();
+            cefcmodulecoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>();
         }
-        return cefcmodulecoolingtable;
+        return cefcmodulecoolingtable_;
     }
 
     if(child_yang_name == "cefcModuleLocalSwitchingTable")
     {
-        if(cefcmodulelocalswitchingtable == nullptr)
+        if(cefcmodulelocalswitchingtable_ == nullptr)
         {
-            cefcmodulelocalswitchingtable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>();
+            cefcmodulelocalswitchingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>();
         }
-        return cefcmodulelocalswitchingtable;
+        return cefcmodulelocalswitchingtable_;
     }
 
     if(child_yang_name == "cefcModulePowerConsumptionTable")
     {
-        if(cefcmodulepowerconsumptiontable == nullptr)
+        if(cefcmodulepowerconsumptiontable_ == nullptr)
         {
-            cefcmodulepowerconsumptiontable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>();
+            cefcmodulepowerconsumptiontable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>();
         }
-        return cefcmodulepowerconsumptiontable;
+        return cefcmodulepowerconsumptiontable_;
     }
 
     if(child_yang_name == "cefcModuleTable")
     {
-        if(cefcmoduletable == nullptr)
+        if(cefcmoduletable_ == nullptr)
         {
-            cefcmoduletable = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>();
+            cefcmoduletable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>();
         }
-        return cefcmoduletable;
+        return cefcmoduletable_;
     }
 
     if(child_yang_name == "cefcPhysicalTable")
     {
-        if(cefcphysicaltable == nullptr)
+        if(cefcphysicaltable_ == nullptr)
         {
-            cefcphysicaltable = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>();
+            cefcphysicaltable_ = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>();
         }
-        return cefcphysicaltable;
+        return cefcphysicaltable_;
     }
 
     if(child_yang_name == "cefcPowerSupplyInputTable")
     {
-        if(cefcpowersupplyinputtable == nullptr)
+        if(cefcpowersupplyinputtable_ == nullptr)
         {
-            cefcpowersupplyinputtable = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>();
+            cefcpowersupplyinputtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>();
         }
-        return cefcpowersupplyinputtable;
+        return cefcpowersupplyinputtable_;
     }
 
     if(child_yang_name == "cefcPowerSupplyOutputTable")
     {
-        if(cefcpowersupplyoutputtable == nullptr)
+        if(cefcpowersupplyoutputtable_ == nullptr)
         {
-            cefcpowersupplyoutputtable = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>();
+            cefcpowersupplyoutputtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>();
         }
-        return cefcpowersupplyoutputtable;
+        return cefcpowersupplyoutputtable_;
     }
 
     return nullptr;
@@ -315,94 +315,94 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cefcchassiscoolingtable != nullptr)
+    if(cefcchassiscoolingtable_ != nullptr)
     {
-        children["cefcChassisCoolingTable"] = cefcchassiscoolingtable;
+        children["cefcChassisCoolingTable"] = cefcchassiscoolingtable_;
     }
 
-    if(cefcconnectorratingtable != nullptr)
+    if(cefcconnectorratingtable_ != nullptr)
     {
-        children["cefcConnectorRatingTable"] = cefcconnectorratingtable;
+        children["cefcConnectorRatingTable"] = cefcconnectorratingtable_;
     }
 
-    if(cefcfancoolingcaptable != nullptr)
+    if(cefcfancoolingcaptable_ != nullptr)
     {
-        children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable;
+        children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable_;
     }
 
-    if(cefcfancoolingtable != nullptr)
+    if(cefcfancoolingtable_ != nullptr)
     {
-        children["cefcFanCoolingTable"] = cefcfancoolingtable;
+        children["cefcFanCoolingTable"] = cefcfancoolingtable_;
     }
 
-    if(cefcfantraystatustable != nullptr)
+    if(cefcfantraystatustable_ != nullptr)
     {
-        children["cefcFanTrayStatusTable"] = cefcfantraystatustable;
+        children["cefcFanTrayStatusTable"] = cefcfantraystatustable_;
     }
 
-    if(cefcfrupower != nullptr)
+    if(cefcfrupower_ != nullptr)
     {
-        children["cefcFRUPower"] = cefcfrupower;
+        children["cefcFRUPower"] = cefcfrupower_;
     }
 
-    if(cefcfrupowerstatustable != nullptr)
+    if(cefcfrupowerstatustable_ != nullptr)
     {
-        children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable;
+        children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable_;
     }
 
-    if(cefcfrupowersupplygrouptable != nullptr)
+    if(cefcfrupowersupplygrouptable_ != nullptr)
     {
-        children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable;
+        children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable_;
     }
 
-    if(cefcfrupowersupplyvaluetable != nullptr)
+    if(cefcfrupowersupplyvaluetable_ != nullptr)
     {
-        children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable;
+        children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable_;
     }
 
-    if(cefcintellimoduletable != nullptr)
+    if(cefcintellimoduletable_ != nullptr)
     {
-        children["cefcIntelliModuleTable"] = cefcintellimoduletable;
+        children["cefcIntelliModuleTable"] = cefcintellimoduletable_;
     }
 
-    if(cefcmibnotificationenables != nullptr)
+    if(cefcmibnotificationenables_ != nullptr)
     {
-        children["cefcMIBNotificationEnables"] = cefcmibnotificationenables;
+        children["cefcMIBNotificationEnables"] = cefcmibnotificationenables_;
     }
 
-    if(cefcmodulecoolingtable != nullptr)
+    if(cefcmodulecoolingtable_ != nullptr)
     {
-        children["cefcModuleCoolingTable"] = cefcmodulecoolingtable;
+        children["cefcModuleCoolingTable"] = cefcmodulecoolingtable_;
     }
 
-    if(cefcmodulelocalswitchingtable != nullptr)
+    if(cefcmodulelocalswitchingtable_ != nullptr)
     {
-        children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable;
+        children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable_;
     }
 
-    if(cefcmodulepowerconsumptiontable != nullptr)
+    if(cefcmodulepowerconsumptiontable_ != nullptr)
     {
-        children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable;
+        children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable_;
     }
 
-    if(cefcmoduletable != nullptr)
+    if(cefcmoduletable_ != nullptr)
     {
-        children["cefcModuleTable"] = cefcmoduletable;
+        children["cefcModuleTable"] = cefcmoduletable_;
     }
 
-    if(cefcphysicaltable != nullptr)
+    if(cefcphysicaltable_ != nullptr)
     {
-        children["cefcPhysicalTable"] = cefcphysicaltable;
+        children["cefcPhysicalTable"] = cefcphysicaltable_;
     }
 
-    if(cefcpowersupplyinputtable != nullptr)
+    if(cefcpowersupplyinputtable_ != nullptr)
     {
-        children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable;
+        children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable_;
     }
 
-    if(cefcpowersupplyoutputtable != nullptr)
+    if(cefcpowersupplyoutputtable_ != nullptr)
     {
-        children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable;
+        children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable_;
     }
 
     return children;
@@ -603,9 +603,9 @@ CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::~Cefcfrupowersupplygroup
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry_.size(); index++)
     {
-        if(cefcfrupowersupplygroupentry[index]->has_data())
+        if(cefcfrupowersupplygroupentry_[index]->has_data())
             return true;
     }
     return false;
@@ -613,9 +613,9 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry_.size(); index++)
     {
-        if(cefcfrupowersupplygroupentry[index]->has_operation())
+        if(cefcfrupowersupplygroupentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -655,7 +655,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
 {
     if(child_yang_name == "cefcFRUPowerSupplyGroupEntry")
     {
-        for(auto const & c : cefcfrupowersupplygroupentry)
+        for(auto const & c : cefcfrupowersupplygroupentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -665,7 +665,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry>();
         c->parent = this;
-        cefcfrupowersupplygroupentry.push_back(c);
+        cefcfrupowersupplygroupentry_.push_back(c);
         return c;
     }
 
@@ -675,7 +675,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowersupplygroupentry)
+    for (auto const & c : cefcfrupowersupplygroupentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -826,9 +826,9 @@ CiscoEntityFruControlMib::Cefcfrupowerstatustable::~Cefcfrupowerstatustable()
 
 bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowerstatusentry_.size(); index++)
     {
-        if(cefcfrupowerstatusentry[index]->has_data())
+        if(cefcfrupowerstatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -836,9 +836,9 @@ bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowerstatusentry_.size(); index++)
     {
-        if(cefcfrupowerstatusentry[index]->has_operation())
+        if(cefcfrupowerstatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -878,7 +878,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
 {
     if(child_yang_name == "cefcFRUPowerStatusEntry")
     {
-        for(auto const & c : cefcfrupowerstatusentry)
+        for(auto const & c : cefcfrupowerstatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -888,7 +888,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry>();
         c->parent = this;
-        cefcfrupowerstatusentry.push_back(c);
+        cefcfrupowerstatusentry_.push_back(c);
         return c;
     }
 
@@ -898,7 +898,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowerstatusentry)
+    for (auto const & c : cefcfrupowerstatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1033,9 +1033,9 @@ CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::~Cefcfrupowersupplyvalue
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry_.size(); index++)
     {
-        if(cefcfrupowersupplyvalueentry[index]->has_data())
+        if(cefcfrupowersupplyvalueentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1043,9 +1043,9 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry_.size(); index++)
     {
-        if(cefcfrupowersupplyvalueentry[index]->has_operation())
+        if(cefcfrupowersupplyvalueentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1085,7 +1085,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
 {
     if(child_yang_name == "cefcFRUPowerSupplyValueEntry")
     {
-        for(auto const & c : cefcfrupowersupplyvalueentry)
+        for(auto const & c : cefcfrupowersupplyvalueentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1095,7 +1095,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry>();
         c->parent = this;
-        cefcfrupowersupplyvalueentry.push_back(c);
+        cefcfrupowersupplyvalueentry_.push_back(c);
         return c;
     }
 
@@ -1105,7 +1105,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowersupplyvalueentry)
+    for (auto const & c : cefcfrupowersupplyvalueentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1232,9 +1232,9 @@ CiscoEntityFruControlMib::Cefcmoduletable::~Cefcmoduletable()
 
 bool CiscoEntityFruControlMib::Cefcmoduletable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcmoduleentry_.size(); index++)
     {
-        if(cefcmoduleentry[index]->has_data())
+        if(cefcmoduleentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1242,9 +1242,9 @@ bool CiscoEntityFruControlMib::Cefcmoduletable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmoduletable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcmoduleentry_.size(); index++)
     {
-        if(cefcmoduleentry[index]->has_operation())
+        if(cefcmoduleentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1284,7 +1284,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
 {
     if(child_yang_name == "cefcModuleEntry")
     {
-        for(auto const & c : cefcmoduleentry)
+        for(auto const & c : cefcmoduleentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1294,7 +1294,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry>();
         c->parent = this;
-        cefcmoduleentry.push_back(c);
+        cefcmoduleentry_.push_back(c);
         return c;
     }
 
@@ -1304,7 +1304,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmoduletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmoduleentry)
+    for (auto const & c : cefcmoduleentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1463,9 +1463,9 @@ CiscoEntityFruControlMib::Cefcintellimoduletable::~Cefcintellimoduletable()
 
 bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_data() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcintellimoduleentry_.size(); index++)
     {
-        if(cefcintellimoduleentry[index]->has_data())
+        if(cefcintellimoduleentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1473,9 +1473,9 @@ bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcintellimoduleentry_.size(); index++)
     {
-        if(cefcintellimoduleentry[index]->has_operation())
+        if(cefcintellimoduleentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1515,7 +1515,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
 {
     if(child_yang_name == "cefcIntelliModuleEntry")
     {
-        for(auto const & c : cefcintellimoduleentry)
+        for(auto const & c : cefcintellimoduleentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1525,7 +1525,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry>();
         c->parent = this;
-        cefcintellimoduleentry.push_back(c);
+        cefcintellimoduleentry_.push_back(c);
         return c;
     }
 
@@ -1535,7 +1535,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcintellimoduletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcintellimoduleentry)
+    for (auto const & c : cefcintellimoduleentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1646,9 +1646,9 @@ CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::~Cefcmodulelocalswitchi
 
 bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry_.size(); index++)
     {
-        if(cefcmodulelocalswitchingentry[index]->has_data())
+        if(cefcmodulelocalswitchingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1656,9 +1656,9 @@ bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry_.size(); index++)
     {
-        if(cefcmodulelocalswitchingentry[index]->has_operation())
+        if(cefcmodulelocalswitchingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1698,7 +1698,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
 {
     if(child_yang_name == "cefcModuleLocalSwitchingEntry")
     {
-        for(auto const & c : cefcmodulelocalswitchingentry)
+        for(auto const & c : cefcmodulelocalswitchingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1708,7 +1708,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry>();
         c->parent = this;
-        cefcmodulelocalswitchingentry.push_back(c);
+        cefcmodulelocalswitchingentry_.push_back(c);
         return c;
     }
 
@@ -1718,7 +1718,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulelocalswitchingentry)
+    for (auto const & c : cefcmodulelocalswitchingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1821,9 +1821,9 @@ CiscoEntityFruControlMib::Cefcfantraystatustable::~Cefcfantraystatustable()
 
 bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfantraystatusentry_.size(); index++)
     {
-        if(cefcfantraystatusentry[index]->has_data())
+        if(cefcfantraystatusentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1831,9 +1831,9 @@ bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfantraystatusentry_.size(); index++)
     {
-        if(cefcfantraystatusentry[index]->has_operation())
+        if(cefcfantraystatusentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1873,7 +1873,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
 {
     if(child_yang_name == "cefcFanTrayStatusEntry")
     {
-        for(auto const & c : cefcfantraystatusentry)
+        for(auto const & c : cefcfantraystatusentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1883,7 +1883,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry>();
         c->parent = this;
-        cefcfantraystatusentry.push_back(c);
+        cefcfantraystatusentry_.push_back(c);
         return c;
     }
 
@@ -1893,7 +1893,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfantraystatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfantraystatusentry)
+    for (auto const & c : cefcfantraystatusentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1996,9 +1996,9 @@ CiscoEntityFruControlMib::Cefcphysicaltable::~Cefcphysicaltable()
 
 bool CiscoEntityFruControlMib::Cefcphysicaltable::has_data() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
+    for (std::size_t index=0; index<cefcphysicalentry_.size(); index++)
     {
-        if(cefcphysicalentry[index]->has_data())
+        if(cefcphysicalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2006,9 +2006,9 @@ bool CiscoEntityFruControlMib::Cefcphysicaltable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcphysicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
+    for (std::size_t index=0; index<cefcphysicalentry_.size(); index++)
     {
-        if(cefcphysicalentry[index]->has_operation())
+        if(cefcphysicalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2048,7 +2048,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
 {
     if(child_yang_name == "cefcPhysicalEntry")
     {
-        for(auto const & c : cefcphysicalentry)
+        for(auto const & c : cefcphysicalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2058,7 +2058,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry>();
         c->parent = this;
-        cefcphysicalentry.push_back(c);
+        cefcphysicalentry_.push_back(c);
         return c;
     }
 
@@ -2068,7 +2068,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcphysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcphysicalentry)
+    for (auto const & c : cefcphysicalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2171,9 +2171,9 @@ CiscoEntityFruControlMib::Cefcpowersupplyinputtable::~Cefcpowersupplyinputtable(
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyinputentry_.size(); index++)
     {
-        if(cefcpowersupplyinputentry[index]->has_data())
+        if(cefcpowersupplyinputentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2181,9 +2181,9 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyinputentry_.size(); index++)
     {
-        if(cefcpowersupplyinputentry[index]->has_operation())
+        if(cefcpowersupplyinputentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2223,7 +2223,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
 {
     if(child_yang_name == "cefcPowerSupplyInputEntry")
     {
-        for(auto const & c : cefcpowersupplyinputentry)
+        for(auto const & c : cefcpowersupplyinputentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2233,7 +2233,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry>();
         c->parent = this;
-        cefcpowersupplyinputentry.push_back(c);
+        cefcpowersupplyinputentry_.push_back(c);
         return c;
     }
 
@@ -2243,7 +2243,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcpowersupplyinputentry)
+    for (auto const & c : cefcpowersupplyinputentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2354,9 +2354,9 @@ CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::~Cefcpowersupplyoutputtabl
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry_.size(); index++)
     {
-        if(cefcpowersupplyoutputentry[index]->has_data())
+        if(cefcpowersupplyoutputentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2364,9 +2364,9 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry_.size(); index++)
     {
-        if(cefcpowersupplyoutputentry[index]->has_operation())
+        if(cefcpowersupplyoutputentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2406,7 +2406,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
 {
     if(child_yang_name == "cefcPowerSupplyOutputEntry")
     {
-        for(auto const & c : cefcpowersupplyoutputentry)
+        for(auto const & c : cefcpowersupplyoutputentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2416,7 +2416,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry>();
         c->parent = this;
-        cefcpowersupplyoutputentry.push_back(c);
+        cefcpowersupplyoutputentry_.push_back(c);
         return c;
     }
 
@@ -2426,7 +2426,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcpowersupplyoutputentry)
+    for (auto const & c : cefcpowersupplyoutputentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2545,9 +2545,9 @@ CiscoEntityFruControlMib::Cefcchassiscoolingtable::~Cefcchassiscoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcchassiscoolingentry_.size(); index++)
     {
-        if(cefcchassiscoolingentry[index]->has_data())
+        if(cefcchassiscoolingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2555,9 +2555,9 @@ bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcchassiscoolingentry_.size(); index++)
     {
-        if(cefcchassiscoolingentry[index]->has_operation())
+        if(cefcchassiscoolingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2597,7 +2597,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
 {
     if(child_yang_name == "cefcChassisCoolingEntry")
     {
-        for(auto const & c : cefcchassiscoolingentry)
+        for(auto const & c : cefcchassiscoolingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2607,7 +2607,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry>();
         c->parent = this;
-        cefcchassiscoolingentry.push_back(c);
+        cefcchassiscoolingentry_.push_back(c);
         return c;
     }
 
@@ -2617,7 +2617,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcchassiscoolingentry)
+    for (auto const & c : cefcchassiscoolingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2728,9 +2728,9 @@ CiscoEntityFruControlMib::Cefcfancoolingtable::~Cefcfancoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingentry_.size(); index++)
     {
-        if(cefcfancoolingentry[index]->has_data())
+        if(cefcfancoolingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2738,9 +2738,9 @@ bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingentry_.size(); index++)
     {
-        if(cefcfancoolingentry[index]->has_operation())
+        if(cefcfancoolingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2780,7 +2780,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
 {
     if(child_yang_name == "cefcFanCoolingEntry")
     {
-        for(auto const & c : cefcfancoolingentry)
+        for(auto const & c : cefcfancoolingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2790,7 +2790,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry>();
         c->parent = this;
-        cefcfancoolingentry.push_back(c);
+        cefcfancoolingentry_.push_back(c);
         return c;
     }
 
@@ -2800,7 +2800,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfancoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfancoolingentry)
+    for (auto const & c : cefcfancoolingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2911,9 +2911,9 @@ CiscoEntityFruControlMib::Cefcmodulecoolingtable::~Cefcmodulecoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulecoolingentry_.size(); index++)
     {
-        if(cefcmodulecoolingentry[index]->has_data())
+        if(cefcmodulecoolingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2921,9 +2921,9 @@ bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulecoolingentry_.size(); index++)
     {
-        if(cefcmodulecoolingentry[index]->has_operation())
+        if(cefcmodulecoolingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2963,7 +2963,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
 {
     if(child_yang_name == "cefcModuleCoolingEntry")
     {
-        for(auto const & c : cefcmodulecoolingentry)
+        for(auto const & c : cefcmodulecoolingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2973,7 +2973,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry>();
         c->parent = this;
-        cefcmodulecoolingentry.push_back(c);
+        cefcmodulecoolingentry_.push_back(c);
         return c;
     }
 
@@ -2983,7 +2983,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulecoolingentry)
+    for (auto const & c : cefcmodulecoolingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3094,9 +3094,9 @@ CiscoEntityFruControlMib::Cefcfancoolingcaptable::~Cefcfancoolingcaptable()
 
 bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingcapentry_.size(); index++)
     {
-        if(cefcfancoolingcapentry[index]->has_data())
+        if(cefcfancoolingcapentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3104,9 +3104,9 @@ bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingcapentry_.size(); index++)
     {
-        if(cefcfancoolingcapentry[index]->has_operation())
+        if(cefcfancoolingcapentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3146,7 +3146,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
 {
     if(child_yang_name == "cefcFanCoolingCapEntry")
     {
-        for(auto const & c : cefcfancoolingcapentry)
+        for(auto const & c : cefcfancoolingcapentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3156,7 +3156,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry>();
         c->parent = this;
-        cefcfancoolingcapentry.push_back(c);
+        cefcfancoolingcapentry_.push_back(c);
         return c;
     }
 
@@ -3166,7 +3166,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfancoolingcapentry)
+    for (auto const & c : cefcfancoolingcapentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3301,9 +3301,9 @@ CiscoEntityFruControlMib::Cefcconnectorratingtable::~Cefcconnectorratingtable()
 
 bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
+    for (std::size_t index=0; index<cefcconnectorratingentry_.size(); index++)
     {
-        if(cefcconnectorratingentry[index]->has_data())
+        if(cefcconnectorratingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3311,9 +3311,9 @@ bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
+    for (std::size_t index=0; index<cefcconnectorratingentry_.size(); index++)
     {
-        if(cefcconnectorratingentry[index]->has_operation())
+        if(cefcconnectorratingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3353,7 +3353,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
 {
     if(child_yang_name == "cefcConnectorRatingEntry")
     {
-        for(auto const & c : cefcconnectorratingentry)
+        for(auto const & c : cefcconnectorratingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3363,7 +3363,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry>();
         c->parent = this;
-        cefcconnectorratingentry.push_back(c);
+        cefcconnectorratingentry_.push_back(c);
         return c;
     }
 
@@ -3373,7 +3373,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcconnectorratingentry)
+    for (auto const & c : cefcconnectorratingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3476,9 +3476,9 @@ CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::~Cefcmodulepowerconsu
 
 bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry_.size(); index++)
     {
-        if(cefcmodulepowerconsumptionentry[index]->has_data())
+        if(cefcmodulepowerconsumptionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3486,9 +3486,9 @@ bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry_.size(); index++)
     {
-        if(cefcmodulepowerconsumptionentry[index]->has_operation())
+        if(cefcmodulepowerconsumptionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3528,7 +3528,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
 {
     if(child_yang_name == "cefcModulePowerConsumptionEntry")
     {
-        for(auto const & c : cefcmodulepowerconsumptionentry)
+        for(auto const & c : cefcmodulepowerconsumptionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3538,7 +3538,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry>();
         c->parent = this;
-        cefcmodulepowerconsumptionentry.push_back(c);
+        cefcmodulepowerconsumptionentry_.push_back(c);
         return c;
     }
 
@@ -3548,7 +3548,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulepowerconsumptionentry)
+    for (auto const & c : cefcmodulepowerconsumptionentry_)
     {
         children[c->get_segment_path()] = c;
     }

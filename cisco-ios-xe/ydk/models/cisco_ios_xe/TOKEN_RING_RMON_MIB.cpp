@@ -11,36 +11,36 @@ namespace TOKEN_RING_RMON_MIB {
 
 TokenRingRmonMib::TokenRingRmonMib()
     :
-    ringstationconfigcontroltable(std::make_shared<TokenRingRmonMib::Ringstationconfigcontroltable>())
-	,ringstationconfigtable(std::make_shared<TokenRingRmonMib::Ringstationconfigtable>())
-	,ringstationcontroltable(std::make_shared<TokenRingRmonMib::Ringstationcontroltable>())
-	,ringstationordertable(std::make_shared<TokenRingRmonMib::Ringstationordertable>())
-	,ringstationtable(std::make_shared<TokenRingRmonMib::Ringstationtable>())
-	,sourceroutingstatstable(std::make_shared<TokenRingRmonMib::Sourceroutingstatstable>())
-	,tokenringmlhistorytable(std::make_shared<TokenRingRmonMib::Tokenringmlhistorytable>())
-	,tokenringmlstatstable(std::make_shared<TokenRingRmonMib::Tokenringmlstatstable>())
-	,tokenringphistorytable(std::make_shared<TokenRingRmonMib::Tokenringphistorytable>())
-	,tokenringpstatstable(std::make_shared<TokenRingRmonMib::Tokenringpstatstable>())
+    ringstationconfigcontroltable_(std::make_shared<TokenRingRmonMib::Ringstationconfigcontroltable>())
+	,ringstationconfigtable_(std::make_shared<TokenRingRmonMib::Ringstationconfigtable>())
+	,ringstationcontroltable_(std::make_shared<TokenRingRmonMib::Ringstationcontroltable>())
+	,ringstationordertable_(std::make_shared<TokenRingRmonMib::Ringstationordertable>())
+	,ringstationtable_(std::make_shared<TokenRingRmonMib::Ringstationtable>())
+	,sourceroutingstatstable_(std::make_shared<TokenRingRmonMib::Sourceroutingstatstable>())
+	,tokenringmlhistorytable_(std::make_shared<TokenRingRmonMib::Tokenringmlhistorytable>())
+	,tokenringmlstatstable_(std::make_shared<TokenRingRmonMib::Tokenringmlstatstable>())
+	,tokenringphistorytable_(std::make_shared<TokenRingRmonMib::Tokenringphistorytable>())
+	,tokenringpstatstable_(std::make_shared<TokenRingRmonMib::Tokenringpstatstable>())
 {
-    ringstationconfigcontroltable->parent = this;
+    ringstationconfigcontroltable_->parent = this;
 
-    ringstationconfigtable->parent = this;
+    ringstationconfigtable_->parent = this;
 
-    ringstationcontroltable->parent = this;
+    ringstationcontroltable_->parent = this;
 
-    ringstationordertable->parent = this;
+    ringstationordertable_->parent = this;
 
-    ringstationtable->parent = this;
+    ringstationtable_->parent = this;
 
-    sourceroutingstatstable->parent = this;
+    sourceroutingstatstable_->parent = this;
 
-    tokenringmlhistorytable->parent = this;
+    tokenringmlhistorytable_->parent = this;
 
-    tokenringmlstatstable->parent = this;
+    tokenringmlstatstable_->parent = this;
 
-    tokenringphistorytable->parent = this;
+    tokenringphistorytable_->parent = this;
 
-    tokenringpstatstable->parent = this;
+    tokenringpstatstable_->parent = this;
 
     yang_name = "TOKEN-RING-RMON-MIB"; yang_parent_name = "TOKEN-RING-RMON-MIB";
 }
@@ -51,31 +51,31 @@ TokenRingRmonMib::~TokenRingRmonMib()
 
 bool TokenRingRmonMib::has_data() const
 {
-    return (ringstationconfigcontroltable !=  nullptr && ringstationconfigcontroltable->has_data())
-	|| (ringstationconfigtable !=  nullptr && ringstationconfigtable->has_data())
-	|| (ringstationcontroltable !=  nullptr && ringstationcontroltable->has_data())
-	|| (ringstationordertable !=  nullptr && ringstationordertable->has_data())
-	|| (ringstationtable !=  nullptr && ringstationtable->has_data())
-	|| (sourceroutingstatstable !=  nullptr && sourceroutingstatstable->has_data())
-	|| (tokenringmlhistorytable !=  nullptr && tokenringmlhistorytable->has_data())
-	|| (tokenringmlstatstable !=  nullptr && tokenringmlstatstable->has_data())
-	|| (tokenringphistorytable !=  nullptr && tokenringphistorytable->has_data())
-	|| (tokenringpstatstable !=  nullptr && tokenringpstatstable->has_data());
+    return (ringstationconfigcontroltable_ !=  nullptr && ringstationconfigcontroltable_->has_data())
+	|| (ringstationconfigtable_ !=  nullptr && ringstationconfigtable_->has_data())
+	|| (ringstationcontroltable_ !=  nullptr && ringstationcontroltable_->has_data())
+	|| (ringstationordertable_ !=  nullptr && ringstationordertable_->has_data())
+	|| (ringstationtable_ !=  nullptr && ringstationtable_->has_data())
+	|| (sourceroutingstatstable_ !=  nullptr && sourceroutingstatstable_->has_data())
+	|| (tokenringmlhistorytable_ !=  nullptr && tokenringmlhistorytable_->has_data())
+	|| (tokenringmlstatstable_ !=  nullptr && tokenringmlstatstable_->has_data())
+	|| (tokenringphistorytable_ !=  nullptr && tokenringphistorytable_->has_data())
+	|| (tokenringpstatstable_ !=  nullptr && tokenringpstatstable_->has_data());
 }
 
 bool TokenRingRmonMib::has_operation() const
 {
     return is_set(operation)
-	|| (ringstationconfigcontroltable !=  nullptr && ringstationconfigcontroltable->has_operation())
-	|| (ringstationconfigtable !=  nullptr && ringstationconfigtable->has_operation())
-	|| (ringstationcontroltable !=  nullptr && ringstationcontroltable->has_operation())
-	|| (ringstationordertable !=  nullptr && ringstationordertable->has_operation())
-	|| (ringstationtable !=  nullptr && ringstationtable->has_operation())
-	|| (sourceroutingstatstable !=  nullptr && sourceroutingstatstable->has_operation())
-	|| (tokenringmlhistorytable !=  nullptr && tokenringmlhistorytable->has_operation())
-	|| (tokenringmlstatstable !=  nullptr && tokenringmlstatstable->has_operation())
-	|| (tokenringphistorytable !=  nullptr && tokenringphistorytable->has_operation())
-	|| (tokenringpstatstable !=  nullptr && tokenringpstatstable->has_operation());
+	|| (ringstationconfigcontroltable_ !=  nullptr && ringstationconfigcontroltable_->has_operation())
+	|| (ringstationconfigtable_ !=  nullptr && ringstationconfigtable_->has_operation())
+	|| (ringstationcontroltable_ !=  nullptr && ringstationcontroltable_->has_operation())
+	|| (ringstationordertable_ !=  nullptr && ringstationordertable_->has_operation())
+	|| (ringstationtable_ !=  nullptr && ringstationtable_->has_operation())
+	|| (sourceroutingstatstable_ !=  nullptr && sourceroutingstatstable_->has_operation())
+	|| (tokenringmlhistorytable_ !=  nullptr && tokenringmlhistorytable_->has_operation())
+	|| (tokenringmlstatstable_ !=  nullptr && tokenringmlstatstable_->has_operation())
+	|| (tokenringphistorytable_ !=  nullptr && tokenringphistorytable_->has_operation())
+	|| (tokenringpstatstable_ !=  nullptr && tokenringpstatstable_->has_operation());
 }
 
 std::string TokenRingRmonMib::get_segment_path() const
@@ -109,92 +109,92 @@ std::shared_ptr<Entity> TokenRingRmonMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "ringStationConfigControlTable")
     {
-        if(ringstationconfigcontroltable == nullptr)
+        if(ringstationconfigcontroltable_ == nullptr)
         {
-            ringstationconfigcontroltable = std::make_shared<TokenRingRmonMib::Ringstationconfigcontroltable>();
+            ringstationconfigcontroltable_ = std::make_shared<TokenRingRmonMib::Ringstationconfigcontroltable>();
         }
-        return ringstationconfigcontroltable;
+        return ringstationconfigcontroltable_;
     }
 
     if(child_yang_name == "ringStationConfigTable")
     {
-        if(ringstationconfigtable == nullptr)
+        if(ringstationconfigtable_ == nullptr)
         {
-            ringstationconfigtable = std::make_shared<TokenRingRmonMib::Ringstationconfigtable>();
+            ringstationconfigtable_ = std::make_shared<TokenRingRmonMib::Ringstationconfigtable>();
         }
-        return ringstationconfigtable;
+        return ringstationconfigtable_;
     }
 
     if(child_yang_name == "ringStationControlTable")
     {
-        if(ringstationcontroltable == nullptr)
+        if(ringstationcontroltable_ == nullptr)
         {
-            ringstationcontroltable = std::make_shared<TokenRingRmonMib::Ringstationcontroltable>();
+            ringstationcontroltable_ = std::make_shared<TokenRingRmonMib::Ringstationcontroltable>();
         }
-        return ringstationcontroltable;
+        return ringstationcontroltable_;
     }
 
     if(child_yang_name == "ringStationOrderTable")
     {
-        if(ringstationordertable == nullptr)
+        if(ringstationordertable_ == nullptr)
         {
-            ringstationordertable = std::make_shared<TokenRingRmonMib::Ringstationordertable>();
+            ringstationordertable_ = std::make_shared<TokenRingRmonMib::Ringstationordertable>();
         }
-        return ringstationordertable;
+        return ringstationordertable_;
     }
 
     if(child_yang_name == "ringStationTable")
     {
-        if(ringstationtable == nullptr)
+        if(ringstationtable_ == nullptr)
         {
-            ringstationtable = std::make_shared<TokenRingRmonMib::Ringstationtable>();
+            ringstationtable_ = std::make_shared<TokenRingRmonMib::Ringstationtable>();
         }
-        return ringstationtable;
+        return ringstationtable_;
     }
 
     if(child_yang_name == "sourceRoutingStatsTable")
     {
-        if(sourceroutingstatstable == nullptr)
+        if(sourceroutingstatstable_ == nullptr)
         {
-            sourceroutingstatstable = std::make_shared<TokenRingRmonMib::Sourceroutingstatstable>();
+            sourceroutingstatstable_ = std::make_shared<TokenRingRmonMib::Sourceroutingstatstable>();
         }
-        return sourceroutingstatstable;
+        return sourceroutingstatstable_;
     }
 
     if(child_yang_name == "tokenRingMLHistoryTable")
     {
-        if(tokenringmlhistorytable == nullptr)
+        if(tokenringmlhistorytable_ == nullptr)
         {
-            tokenringmlhistorytable = std::make_shared<TokenRingRmonMib::Tokenringmlhistorytable>();
+            tokenringmlhistorytable_ = std::make_shared<TokenRingRmonMib::Tokenringmlhistorytable>();
         }
-        return tokenringmlhistorytable;
+        return tokenringmlhistorytable_;
     }
 
     if(child_yang_name == "tokenRingMLStatsTable")
     {
-        if(tokenringmlstatstable == nullptr)
+        if(tokenringmlstatstable_ == nullptr)
         {
-            tokenringmlstatstable = std::make_shared<TokenRingRmonMib::Tokenringmlstatstable>();
+            tokenringmlstatstable_ = std::make_shared<TokenRingRmonMib::Tokenringmlstatstable>();
         }
-        return tokenringmlstatstable;
+        return tokenringmlstatstable_;
     }
 
     if(child_yang_name == "tokenRingPHistoryTable")
     {
-        if(tokenringphistorytable == nullptr)
+        if(tokenringphistorytable_ == nullptr)
         {
-            tokenringphistorytable = std::make_shared<TokenRingRmonMib::Tokenringphistorytable>();
+            tokenringphistorytable_ = std::make_shared<TokenRingRmonMib::Tokenringphistorytable>();
         }
-        return tokenringphistorytable;
+        return tokenringphistorytable_;
     }
 
     if(child_yang_name == "tokenRingPStatsTable")
     {
-        if(tokenringpstatstable == nullptr)
+        if(tokenringpstatstable_ == nullptr)
         {
-            tokenringpstatstable = std::make_shared<TokenRingRmonMib::Tokenringpstatstable>();
+            tokenringpstatstable_ = std::make_shared<TokenRingRmonMib::Tokenringpstatstable>();
         }
-        return tokenringpstatstable;
+        return tokenringpstatstable_;
     }
 
     return nullptr;
@@ -203,54 +203,54 @@ std::shared_ptr<Entity> TokenRingRmonMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ringstationconfigcontroltable != nullptr)
+    if(ringstationconfigcontroltable_ != nullptr)
     {
-        children["ringStationConfigControlTable"] = ringstationconfigcontroltable;
+        children["ringStationConfigControlTable"] = ringstationconfigcontroltable_;
     }
 
-    if(ringstationconfigtable != nullptr)
+    if(ringstationconfigtable_ != nullptr)
     {
-        children["ringStationConfigTable"] = ringstationconfigtable;
+        children["ringStationConfigTable"] = ringstationconfigtable_;
     }
 
-    if(ringstationcontroltable != nullptr)
+    if(ringstationcontroltable_ != nullptr)
     {
-        children["ringStationControlTable"] = ringstationcontroltable;
+        children["ringStationControlTable"] = ringstationcontroltable_;
     }
 
-    if(ringstationordertable != nullptr)
+    if(ringstationordertable_ != nullptr)
     {
-        children["ringStationOrderTable"] = ringstationordertable;
+        children["ringStationOrderTable"] = ringstationordertable_;
     }
 
-    if(ringstationtable != nullptr)
+    if(ringstationtable_ != nullptr)
     {
-        children["ringStationTable"] = ringstationtable;
+        children["ringStationTable"] = ringstationtable_;
     }
 
-    if(sourceroutingstatstable != nullptr)
+    if(sourceroutingstatstable_ != nullptr)
     {
-        children["sourceRoutingStatsTable"] = sourceroutingstatstable;
+        children["sourceRoutingStatsTable"] = sourceroutingstatstable_;
     }
 
-    if(tokenringmlhistorytable != nullptr)
+    if(tokenringmlhistorytable_ != nullptr)
     {
-        children["tokenRingMLHistoryTable"] = tokenringmlhistorytable;
+        children["tokenRingMLHistoryTable"] = tokenringmlhistorytable_;
     }
 
-    if(tokenringmlstatstable != nullptr)
+    if(tokenringmlstatstable_ != nullptr)
     {
-        children["tokenRingMLStatsTable"] = tokenringmlstatstable;
+        children["tokenRingMLStatsTable"] = tokenringmlstatstable_;
     }
 
-    if(tokenringphistorytable != nullptr)
+    if(tokenringphistorytable_ != nullptr)
     {
-        children["tokenRingPHistoryTable"] = tokenringphistorytable;
+        children["tokenRingPHistoryTable"] = tokenringphistorytable_;
     }
 
-    if(tokenringpstatstable != nullptr)
+    if(tokenringpstatstable_ != nullptr)
     {
-        children["tokenRingPStatsTable"] = tokenringpstatstable;
+        children["tokenRingPStatsTable"] = tokenringpstatstable_;
     }
 
     return children;
@@ -291,9 +291,9 @@ TokenRingRmonMib::Tokenringmlstatstable::~Tokenringmlstatstable()
 
 bool TokenRingRmonMib::Tokenringmlstatstable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringmlstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlstatsentry_.size(); index++)
     {
-        if(tokenringmlstatsentry[index]->has_data())
+        if(tokenringmlstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -301,9 +301,9 @@ bool TokenRingRmonMib::Tokenringmlstatstable::has_data() const
 
 bool TokenRingRmonMib::Tokenringmlstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringmlstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlstatsentry_.size(); index++)
     {
-        if(tokenringmlstatsentry[index]->has_operation())
+        if(tokenringmlstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -343,7 +343,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlstatstable::get_child_by_na
 {
     if(child_yang_name == "tokenRingMLStatsEntry")
     {
-        for(auto const & c : tokenringmlstatsentry)
+        for(auto const & c : tokenringmlstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -353,7 +353,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlstatstable::get_child_by_na
         }
         auto c = std::make_shared<TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry>();
         c->parent = this;
-        tokenringmlstatsentry.push_back(c);
+        tokenringmlstatsentry_.push_back(c);
         return c;
     }
 
@@ -363,7 +363,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlstatstable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Tokenringmlstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tokenringmlstatsentry)
+    for (auto const & c : tokenringmlstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -666,9 +666,9 @@ TokenRingRmonMib::Tokenringpstatstable::~Tokenringpstatstable()
 
 bool TokenRingRmonMib::Tokenringpstatstable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringpstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringpstatsentry_.size(); index++)
     {
-        if(tokenringpstatsentry[index]->has_data())
+        if(tokenringpstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -676,9 +676,9 @@ bool TokenRingRmonMib::Tokenringpstatstable::has_data() const
 
 bool TokenRingRmonMib::Tokenringpstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringpstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringpstatsentry_.size(); index++)
     {
-        if(tokenringpstatsentry[index]->has_operation())
+        if(tokenringpstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -718,7 +718,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringpstatstable::get_child_by_nam
 {
     if(child_yang_name == "tokenRingPStatsEntry")
     {
-        for(auto const & c : tokenringpstatsentry)
+        for(auto const & c : tokenringpstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -728,7 +728,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringpstatstable::get_child_by_nam
         }
         auto c = std::make_shared<TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry>();
         c->parent = this;
-        tokenringpstatsentry.push_back(c);
+        tokenringpstatsentry_.push_back(c);
         return c;
     }
 
@@ -738,7 +738,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringpstatstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Tokenringpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tokenringpstatsentry)
+    for (auto const & c : tokenringpstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -977,9 +977,9 @@ TokenRingRmonMib::Tokenringmlhistorytable::~Tokenringmlhistorytable()
 
 bool TokenRingRmonMib::Tokenringmlhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringmlhistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlhistoryentry_.size(); index++)
     {
-        if(tokenringmlhistoryentry[index]->has_data())
+        if(tokenringmlhistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -987,9 +987,9 @@ bool TokenRingRmonMib::Tokenringmlhistorytable::has_data() const
 
 bool TokenRingRmonMib::Tokenringmlhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringmlhistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlhistoryentry_.size(); index++)
     {
-        if(tokenringmlhistoryentry[index]->has_operation())
+        if(tokenringmlhistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1029,7 +1029,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlhistorytable::get_child_by_
 {
     if(child_yang_name == "tokenRingMLHistoryEntry")
     {
-        for(auto const & c : tokenringmlhistoryentry)
+        for(auto const & c : tokenringmlhistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1039,7 +1039,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlhistorytable::get_child_by_
         }
         auto c = std::make_shared<TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry>();
         c->parent = this;
-        tokenringmlhistoryentry.push_back(c);
+        tokenringmlhistoryentry_.push_back(c);
         return c;
     }
 
@@ -1049,7 +1049,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringmlhistorytable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Tokenringmlhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tokenringmlhistoryentry)
+    for (auto const & c : tokenringmlhistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1352,9 +1352,9 @@ TokenRingRmonMib::Tokenringphistorytable::~Tokenringphistorytable()
 
 bool TokenRingRmonMib::Tokenringphistorytable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringphistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringphistoryentry_.size(); index++)
     {
-        if(tokenringphistoryentry[index]->has_data())
+        if(tokenringphistoryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1362,9 +1362,9 @@ bool TokenRingRmonMib::Tokenringphistorytable::has_data() const
 
 bool TokenRingRmonMib::Tokenringphistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringphistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringphistoryentry_.size(); index++)
     {
-        if(tokenringphistoryentry[index]->has_operation())
+        if(tokenringphistoryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1404,7 +1404,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringphistorytable::get_child_by_n
 {
     if(child_yang_name == "tokenRingPHistoryEntry")
     {
-        for(auto const & c : tokenringphistoryentry)
+        for(auto const & c : tokenringphistoryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1414,7 +1414,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringphistorytable::get_child_by_n
         }
         auto c = std::make_shared<TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry>();
         c->parent = this;
-        tokenringphistoryentry.push_back(c);
+        tokenringphistoryentry_.push_back(c);
         return c;
     }
 
@@ -1424,7 +1424,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Tokenringphistorytable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Tokenringphistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tokenringphistoryentry)
+    for (auto const & c : tokenringphistoryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1655,9 +1655,9 @@ TokenRingRmonMib::Ringstationcontroltable::~Ringstationcontroltable()
 
 bool TokenRingRmonMib::Ringstationcontroltable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationcontrolentry_.size(); index++)
     {
-        if(ringstationcontrolentry[index]->has_data())
+        if(ringstationcontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1665,9 +1665,9 @@ bool TokenRingRmonMib::Ringstationcontroltable::has_data() const
 
 bool TokenRingRmonMib::Ringstationcontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationcontrolentry_.size(); index++)
     {
-        if(ringstationcontrolentry[index]->has_operation())
+        if(ringstationcontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1707,7 +1707,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationcontroltable::get_child_by_
 {
     if(child_yang_name == "ringStationControlEntry")
     {
-        for(auto const & c : ringstationcontrolentry)
+        for(auto const & c : ringstationcontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1717,7 +1717,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationcontroltable::get_child_by_
         }
         auto c = std::make_shared<TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry>();
         c->parent = this;
-        ringstationcontrolentry.push_back(c);
+        ringstationcontrolentry_.push_back(c);
         return c;
     }
 
@@ -1727,7 +1727,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationcontroltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Ringstationcontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ringstationcontrolentry)
+    for (auto const & c : ringstationcontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1894,9 +1894,9 @@ TokenRingRmonMib::Ringstationtable::~Ringstationtable()
 
 bool TokenRingRmonMib::Ringstationtable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationentry.size(); index++)
+    for (std::size_t index=0; index<ringstationentry_.size(); index++)
     {
-        if(ringstationentry[index]->has_data())
+        if(ringstationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1904,9 +1904,9 @@ bool TokenRingRmonMib::Ringstationtable::has_data() const
 
 bool TokenRingRmonMib::Ringstationtable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationentry.size(); index++)
+    for (std::size_t index=0; index<ringstationentry_.size(); index++)
     {
-        if(ringstationentry[index]->has_operation())
+        if(ringstationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1946,7 +1946,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationtable::get_child_by_name(co
 {
     if(child_yang_name == "ringStationEntry")
     {
-        for(auto const & c : ringstationentry)
+        for(auto const & c : ringstationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1956,7 +1956,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationtable::get_child_by_name(co
         }
         auto c = std::make_shared<TokenRingRmonMib::Ringstationtable::Ringstationentry>();
         c->parent = this;
-        ringstationentry.push_back(c);
+        ringstationentry_.push_back(c);
         return c;
     }
 
@@ -1966,7 +1966,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Ringstationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ringstationentry)
+    for (auto const & c : ringstationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2229,9 +2229,9 @@ TokenRingRmonMib::Ringstationordertable::~Ringstationordertable()
 
 bool TokenRingRmonMib::Ringstationordertable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationorderentry.size(); index++)
+    for (std::size_t index=0; index<ringstationorderentry_.size(); index++)
     {
-        if(ringstationorderentry[index]->has_data())
+        if(ringstationorderentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2239,9 +2239,9 @@ bool TokenRingRmonMib::Ringstationordertable::has_data() const
 
 bool TokenRingRmonMib::Ringstationordertable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationorderentry.size(); index++)
+    for (std::size_t index=0; index<ringstationorderentry_.size(); index++)
     {
-        if(ringstationorderentry[index]->has_operation())
+        if(ringstationorderentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2281,7 +2281,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationordertable::get_child_by_na
 {
     if(child_yang_name == "ringStationOrderEntry")
     {
-        for(auto const & c : ringstationorderentry)
+        for(auto const & c : ringstationorderentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2291,7 +2291,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationordertable::get_child_by_na
         }
         auto c = std::make_shared<TokenRingRmonMib::Ringstationordertable::Ringstationorderentry>();
         c->parent = this;
-        ringstationorderentry.push_back(c);
+        ringstationorderentry_.push_back(c);
         return c;
     }
 
@@ -2301,7 +2301,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationordertable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Ringstationordertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ringstationorderentry)
+    for (auto const & c : ringstationorderentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2412,9 +2412,9 @@ TokenRingRmonMib::Ringstationconfigcontroltable::~Ringstationconfigcontroltable(
 
 bool TokenRingRmonMib::Ringstationconfigcontroltable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationconfigcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigcontrolentry_.size(); index++)
     {
-        if(ringstationconfigcontrolentry[index]->has_data())
+        if(ringstationconfigcontrolentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2422,9 +2422,9 @@ bool TokenRingRmonMib::Ringstationconfigcontroltable::has_data() const
 
 bool TokenRingRmonMib::Ringstationconfigcontroltable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationconfigcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigcontrolentry_.size(); index++)
     {
-        if(ringstationconfigcontrolentry[index]->has_operation())
+        if(ringstationconfigcontrolentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2464,7 +2464,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigcontroltable::get_chi
 {
     if(child_yang_name == "ringStationConfigControlEntry")
     {
-        for(auto const & c : ringstationconfigcontrolentry)
+        for(auto const & c : ringstationconfigcontrolentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2474,7 +2474,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigcontroltable::get_chi
         }
         auto c = std::make_shared<TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry>();
         c->parent = this;
-        ringstationconfigcontrolentry.push_back(c);
+        ringstationconfigcontrolentry_.push_back(c);
         return c;
     }
 
@@ -2484,7 +2484,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigcontroltable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Ringstationconfigcontroltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ringstationconfigcontrolentry)
+    for (auto const & c : ringstationconfigcontrolentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2603,9 +2603,9 @@ TokenRingRmonMib::Ringstationconfigtable::~Ringstationconfigtable()
 
 bool TokenRingRmonMib::Ringstationconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationconfigentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigentry_.size(); index++)
     {
-        if(ringstationconfigentry[index]->has_data())
+        if(ringstationconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2613,9 +2613,9 @@ bool TokenRingRmonMib::Ringstationconfigtable::has_data() const
 
 bool TokenRingRmonMib::Ringstationconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationconfigentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigentry_.size(); index++)
     {
-        if(ringstationconfigentry[index]->has_operation())
+        if(ringstationconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2655,7 +2655,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigtable::get_child_by_n
 {
     if(child_yang_name == "ringStationConfigEntry")
     {
-        for(auto const & c : ringstationconfigentry)
+        for(auto const & c : ringstationconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2665,7 +2665,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigtable::get_child_by_n
         }
         auto c = std::make_shared<TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry>();
         c->parent = this;
-        ringstationconfigentry.push_back(c);
+        ringstationconfigentry_.push_back(c);
         return c;
     }
 
@@ -2675,7 +2675,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Ringstationconfigtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Ringstationconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ringstationconfigentry)
+    for (auto const & c : ringstationconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2818,9 +2818,9 @@ TokenRingRmonMib::Sourceroutingstatstable::~Sourceroutingstatstable()
 
 bool TokenRingRmonMib::Sourceroutingstatstable::has_data() const
 {
-    for (std::size_t index=0; index<sourceroutingstatsentry.size(); index++)
+    for (std::size_t index=0; index<sourceroutingstatsentry_.size(); index++)
     {
-        if(sourceroutingstatsentry[index]->has_data())
+        if(sourceroutingstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2828,9 +2828,9 @@ bool TokenRingRmonMib::Sourceroutingstatstable::has_data() const
 
 bool TokenRingRmonMib::Sourceroutingstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<sourceroutingstatsentry.size(); index++)
+    for (std::size_t index=0; index<sourceroutingstatsentry_.size(); index++)
     {
-        if(sourceroutingstatsentry[index]->has_operation())
+        if(sourceroutingstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2870,7 +2870,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Sourceroutingstatstable::get_child_by_
 {
     if(child_yang_name == "sourceRoutingStatsEntry")
     {
-        for(auto const & c : sourceroutingstatsentry)
+        for(auto const & c : sourceroutingstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2880,7 +2880,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Sourceroutingstatstable::get_child_by_
         }
         auto c = std::make_shared<TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry>();
         c->parent = this;
-        sourceroutingstatsentry.push_back(c);
+        sourceroutingstatsentry_.push_back(c);
         return c;
     }
 
@@ -2890,7 +2890,7 @@ std::shared_ptr<Entity> TokenRingRmonMib::Sourceroutingstatstable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> TokenRingRmonMib::Sourceroutingstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sourceroutingstatsentry)
+    for (auto const & c : sourceroutingstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -56,15 +56,15 @@ Dot5TestfullduplexloopbackIdentity::~Dot5TestfullduplexloopbackIdentity()
 
 TokenringMib::TokenringMib()
     :
-    dot5statstable(std::make_shared<TokenringMib::Dot5Statstable>())
-	,dot5table(std::make_shared<TokenringMib::Dot5Table>())
-	,dot5timertable(std::make_shared<TokenringMib::Dot5Timertable>())
+    dot5statstable_(std::make_shared<TokenringMib::Dot5Statstable>())
+	,dot5table_(std::make_shared<TokenringMib::Dot5Table>())
+	,dot5timertable_(std::make_shared<TokenringMib::Dot5Timertable>())
 {
-    dot5statstable->parent = this;
+    dot5statstable_->parent = this;
 
-    dot5table->parent = this;
+    dot5table_->parent = this;
 
-    dot5timertable->parent = this;
+    dot5timertable_->parent = this;
 
     yang_name = "TOKENRING-MIB"; yang_parent_name = "TOKENRING-MIB";
 }
@@ -75,17 +75,17 @@ TokenringMib::~TokenringMib()
 
 bool TokenringMib::has_data() const
 {
-    return (dot5statstable !=  nullptr && dot5statstable->has_data())
-	|| (dot5table !=  nullptr && dot5table->has_data())
-	|| (dot5timertable !=  nullptr && dot5timertable->has_data());
+    return (dot5statstable_ !=  nullptr && dot5statstable_->has_data())
+	|| (dot5table_ !=  nullptr && dot5table_->has_data())
+	|| (dot5timertable_ !=  nullptr && dot5timertable_->has_data());
 }
 
 bool TokenringMib::has_operation() const
 {
     return is_set(operation)
-	|| (dot5statstable !=  nullptr && dot5statstable->has_operation())
-	|| (dot5table !=  nullptr && dot5table->has_operation())
-	|| (dot5timertable !=  nullptr && dot5timertable->has_operation());
+	|| (dot5statstable_ !=  nullptr && dot5statstable_->has_operation())
+	|| (dot5table_ !=  nullptr && dot5table_->has_operation())
+	|| (dot5timertable_ !=  nullptr && dot5timertable_->has_operation());
 }
 
 std::string TokenringMib::get_segment_path() const
@@ -119,29 +119,29 @@ std::shared_ptr<Entity> TokenringMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "dot5StatsTable")
     {
-        if(dot5statstable == nullptr)
+        if(dot5statstable_ == nullptr)
         {
-            dot5statstable = std::make_shared<TokenringMib::Dot5Statstable>();
+            dot5statstable_ = std::make_shared<TokenringMib::Dot5Statstable>();
         }
-        return dot5statstable;
+        return dot5statstable_;
     }
 
     if(child_yang_name == "dot5Table")
     {
-        if(dot5table == nullptr)
+        if(dot5table_ == nullptr)
         {
-            dot5table = std::make_shared<TokenringMib::Dot5Table>();
+            dot5table_ = std::make_shared<TokenringMib::Dot5Table>();
         }
-        return dot5table;
+        return dot5table_;
     }
 
     if(child_yang_name == "dot5TimerTable")
     {
-        if(dot5timertable == nullptr)
+        if(dot5timertable_ == nullptr)
         {
-            dot5timertable = std::make_shared<TokenringMib::Dot5Timertable>();
+            dot5timertable_ = std::make_shared<TokenringMib::Dot5Timertable>();
         }
-        return dot5timertable;
+        return dot5timertable_;
     }
 
     return nullptr;
@@ -150,19 +150,19 @@ std::shared_ptr<Entity> TokenringMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dot5statstable != nullptr)
+    if(dot5statstable_ != nullptr)
     {
-        children["dot5StatsTable"] = dot5statstable;
+        children["dot5StatsTable"] = dot5statstable_;
     }
 
-    if(dot5table != nullptr)
+    if(dot5table_ != nullptr)
     {
-        children["dot5Table"] = dot5table;
+        children["dot5Table"] = dot5table_;
     }
 
-    if(dot5timertable != nullptr)
+    if(dot5timertable_ != nullptr)
     {
-        children["dot5TimerTable"] = dot5timertable;
+        children["dot5TimerTable"] = dot5timertable_;
     }
 
     return children;
@@ -203,9 +203,9 @@ TokenringMib::Dot5Table::~Dot5Table()
 
 bool TokenringMib::Dot5Table::has_data() const
 {
-    for (std::size_t index=0; index<dot5entry.size(); index++)
+    for (std::size_t index=0; index<dot5entry_.size(); index++)
     {
-        if(dot5entry[index]->has_data())
+        if(dot5entry_[index]->has_data())
             return true;
     }
     return false;
@@ -213,9 +213,9 @@ bool TokenringMib::Dot5Table::has_data() const
 
 bool TokenringMib::Dot5Table::has_operation() const
 {
-    for (std::size_t index=0; index<dot5entry.size(); index++)
+    for (std::size_t index=0; index<dot5entry_.size(); index++)
     {
-        if(dot5entry[index]->has_operation())
+        if(dot5entry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -255,7 +255,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
 {
     if(child_yang_name == "dot5Entry")
     {
-        for(auto const & c : dot5entry)
+        for(auto const & c : dot5entry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -265,7 +265,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
         }
         auto c = std::make_shared<TokenringMib::Dot5Table::Dot5Entry>();
         c->parent = this;
-        dot5entry.push_back(c);
+        dot5entry_.push_back(c);
         return c;
     }
 
@@ -275,7 +275,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5entry)
+    for (auto const & c : dot5entry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -442,9 +442,9 @@ TokenringMib::Dot5Statstable::~Dot5Statstable()
 
 bool TokenringMib::Dot5Statstable::has_data() const
 {
-    for (std::size_t index=0; index<dot5statsentry.size(); index++)
+    for (std::size_t index=0; index<dot5statsentry_.size(); index++)
     {
-        if(dot5statsentry[index]->has_data())
+        if(dot5statsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -452,9 +452,9 @@ bool TokenringMib::Dot5Statstable::has_data() const
 
 bool TokenringMib::Dot5Statstable::has_operation() const
 {
-    for (std::size_t index=0; index<dot5statsentry.size(); index++)
+    for (std::size_t index=0; index<dot5statsentry_.size(); index++)
     {
-        if(dot5statsentry[index]->has_operation())
+        if(dot5statsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -494,7 +494,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5StatsEntry")
     {
-        for(auto const & c : dot5statsentry)
+        for(auto const & c : dot5statsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -504,7 +504,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
         }
         auto c = std::make_shared<TokenringMib::Dot5Statstable::Dot5Statsentry>();
         c->parent = this;
-        dot5statsentry.push_back(c);
+        dot5statsentry_.push_back(c);
         return c;
     }
 
@@ -514,7 +514,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5statsentry)
+    for (auto const & c : dot5statsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -753,9 +753,9 @@ TokenringMib::Dot5Timertable::~Dot5Timertable()
 
 bool TokenringMib::Dot5Timertable::has_data() const
 {
-    for (std::size_t index=0; index<dot5timerentry.size(); index++)
+    for (std::size_t index=0; index<dot5timerentry_.size(); index++)
     {
-        if(dot5timerentry[index]->has_data())
+        if(dot5timerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -763,9 +763,9 @@ bool TokenringMib::Dot5Timertable::has_data() const
 
 bool TokenringMib::Dot5Timertable::has_operation() const
 {
-    for (std::size_t index=0; index<dot5timerentry.size(); index++)
+    for (std::size_t index=0; index<dot5timerentry_.size(); index++)
     {
-        if(dot5timerentry[index]->has_operation())
+        if(dot5timerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -805,7 +805,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5TimerEntry")
     {
-        for(auto const & c : dot5timerentry)
+        for(auto const & c : dot5timerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -815,7 +815,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
         }
         auto c = std::make_shared<TokenringMib::Dot5Timertable::Dot5Timerentry>();
         c->parent = this;
-        dot5timerentry.push_back(c);
+        dot5timerentry_.push_back(c);
         return c;
     }
 
@@ -825,7 +825,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Timertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5timerentry)
+    for (auto const & c : dot5timerentry_)
     {
         children[c->get_segment_path()] = c;
     }

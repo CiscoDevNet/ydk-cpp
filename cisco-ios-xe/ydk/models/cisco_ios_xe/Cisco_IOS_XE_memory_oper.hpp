@@ -30,7 +30,7 @@ class MemoryStats : public Entity
 
         class MemoryStat; //type: MemoryStats::MemoryStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_memory_oper::MemoryStats::MemoryStat> > memory_stat;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_memory_oper::MemoryStats::MemoryStat> > memory_stat_;
         
 }; // MemoryStats
 

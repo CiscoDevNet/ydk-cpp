@@ -31,8 +31,8 @@ class Webui : public Entity
         class Schematics; //type: Webui::Schematics
         class DataStores; //type: Webui::DataStores
 
-        std::shared_ptr<tailf_webui::Webui::DataStores> data_stores;
-        std::shared_ptr<tailf_webui::Webui::Schematics> schematics;
+        std::shared_ptr<tailf_webui::Webui::DataStores> data_stores_;
+        std::shared_ptr<tailf_webui::Webui::Schematics> schematics_;
         
 }; // Webui
 
@@ -54,8 +54,8 @@ class Webui::Schematics : public Entity
         class Panels; //type: Webui::Schematics::Panels
         class Assets; //type: Webui::Schematics::Assets
 
-        std::shared_ptr<tailf_webui::Webui::Schematics::Assets> assets;
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels> panels;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Assets> assets_;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels> panels_;
         
 }; // Webui::Schematics
 
@@ -76,7 +76,7 @@ class Webui::Schematics::Panels : public Entity
 
         class Panel; //type: Webui::Schematics::Panels::Panel
 
-        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel> > panel;
+        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel> > panel_;
         
 }; // Webui::Schematics::Panels
 
@@ -99,8 +99,8 @@ class Webui::Schematics::Panels::Panel : public Entity
         class Properties; //type: Webui::Schematics::Panels::Panel::Properties
         class Components; //type: Webui::Schematics::Panels::Panel::Components
 
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components> components;
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Properties> properties;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components> components_;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Properties> properties_;
         
 }; // Webui::Schematics::Panels::Panel
 
@@ -143,7 +143,7 @@ class Webui::Schematics::Panels::Panel::Components : public Entity
 
         class Component; //type: Webui::Schematics::Panels::Panel::Components::Component
 
-        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component> > component;
+        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component> > component_;
         
 }; // Webui::Schematics::Panels::Panel::Components
 
@@ -165,7 +165,7 @@ class Webui::Schematics::Panels::Panel::Components::Component : public Entity
         YLeaf id; //type: string
         class Properties; //type: Webui::Schematics::Panels::Panel::Components::Component::Properties
 
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties> properties;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties> properties_;
         
 }; // Webui::Schematics::Panels::Panel::Components::Component
 
@@ -192,8 +192,8 @@ class Webui::Schematics::Panels::Panel::Components::Component::Properties : publ
         class Image; //type: Webui::Schematics::Panels::Panel::Components::Component::Properties::Image
         class Link; //type: Webui::Schematics::Panels::Panel::Components::Component::Properties::Link
 
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties::Image> image;
-        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties::Link> link;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties::Image> image_;
+        std::shared_ptr<tailf_webui::Webui::Schematics::Panels::Panel::Components::Component::Properties::Link> link_;
         
 }; // Webui::Schematics::Panels::Panel::Components::Component::Properties
 
@@ -254,7 +254,7 @@ class Webui::Schematics::Assets : public Entity
 
         class Asset; //type: Webui::Schematics::Assets::Asset
 
-        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Assets::Asset> > asset;
+        std::vector<std::shared_ptr<tailf_webui::Webui::Schematics::Assets::Asset> > asset_;
         
 }; // Webui::Schematics::Assets
 
@@ -299,9 +299,9 @@ class Webui::DataStores : public Entity
         class DataStore; //type: Webui::DataStores::DataStore
         class SavedQuery; //type: Webui::DataStores::SavedQuery
 
-        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::DataStore> > data_store;
-        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::SavedQuery> > saved_query;
-        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile> > user_profile;
+        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::DataStore> > data_store_;
+        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::SavedQuery> > saved_query_;
+        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile> > user_profile_;
         
 }; // Webui::DataStores
 
@@ -324,8 +324,8 @@ class Webui::DataStores::UserProfile : public Entity
         class Profile; //type: Webui::DataStores::UserProfile::Profile
         class SavedQuery; //type: Webui::DataStores::UserProfile::SavedQuery
 
-        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile::Profile> > profile;
-        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile::SavedQuery> > saved_query;
+        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile::Profile> > profile_;
+        std::vector<std::shared_ptr<tailf_webui::Webui::DataStores::UserProfile::SavedQuery> > saved_query_;
         
 }; // Webui::DataStores::UserProfile
 

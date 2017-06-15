@@ -11,15 +11,15 @@ namespace CISCO_NTP_MIB {
 
 CiscoNtpMib::CiscoNtpMib()
     :
-    cntpfilterregistertable(std::make_shared<CiscoNtpMib::Cntpfilterregistertable>())
-	,cntppeersvartable(std::make_shared<CiscoNtpMib::Cntppeersvartable>())
-	,cntpsystem(std::make_shared<CiscoNtpMib::Cntpsystem>())
+    cntpfilterregistertable_(std::make_shared<CiscoNtpMib::Cntpfilterregistertable>())
+	,cntppeersvartable_(std::make_shared<CiscoNtpMib::Cntppeersvartable>())
+	,cntpsystem_(std::make_shared<CiscoNtpMib::Cntpsystem>())
 {
-    cntpfilterregistertable->parent = this;
+    cntpfilterregistertable_->parent = this;
 
-    cntppeersvartable->parent = this;
+    cntppeersvartable_->parent = this;
 
-    cntpsystem->parent = this;
+    cntpsystem_->parent = this;
 
     yang_name = "CISCO-NTP-MIB"; yang_parent_name = "CISCO-NTP-MIB";
 }
@@ -30,17 +30,17 @@ CiscoNtpMib::~CiscoNtpMib()
 
 bool CiscoNtpMib::has_data() const
 {
-    return (cntpfilterregistertable !=  nullptr && cntpfilterregistertable->has_data())
-	|| (cntppeersvartable !=  nullptr && cntppeersvartable->has_data())
-	|| (cntpsystem !=  nullptr && cntpsystem->has_data());
+    return (cntpfilterregistertable_ !=  nullptr && cntpfilterregistertable_->has_data())
+	|| (cntppeersvartable_ !=  nullptr && cntppeersvartable_->has_data())
+	|| (cntpsystem_ !=  nullptr && cntpsystem_->has_data());
 }
 
 bool CiscoNtpMib::has_operation() const
 {
     return is_set(operation)
-	|| (cntpfilterregistertable !=  nullptr && cntpfilterregistertable->has_operation())
-	|| (cntppeersvartable !=  nullptr && cntppeersvartable->has_operation())
-	|| (cntpsystem !=  nullptr && cntpsystem->has_operation());
+	|| (cntpfilterregistertable_ !=  nullptr && cntpfilterregistertable_->has_operation())
+	|| (cntppeersvartable_ !=  nullptr && cntppeersvartable_->has_operation())
+	|| (cntpsystem_ !=  nullptr && cntpsystem_->has_operation());
 }
 
 std::string CiscoNtpMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoNtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "cntpFilterRegisterTable")
     {
-        if(cntpfilterregistertable == nullptr)
+        if(cntpfilterregistertable_ == nullptr)
         {
-            cntpfilterregistertable = std::make_shared<CiscoNtpMib::Cntpfilterregistertable>();
+            cntpfilterregistertable_ = std::make_shared<CiscoNtpMib::Cntpfilterregistertable>();
         }
-        return cntpfilterregistertable;
+        return cntpfilterregistertable_;
     }
 
     if(child_yang_name == "cntpPeersVarTable")
     {
-        if(cntppeersvartable == nullptr)
+        if(cntppeersvartable_ == nullptr)
         {
-            cntppeersvartable = std::make_shared<CiscoNtpMib::Cntppeersvartable>();
+            cntppeersvartable_ = std::make_shared<CiscoNtpMib::Cntppeersvartable>();
         }
-        return cntppeersvartable;
+        return cntppeersvartable_;
     }
 
     if(child_yang_name == "cntpSystem")
     {
-        if(cntpsystem == nullptr)
+        if(cntpsystem_ == nullptr)
         {
-            cntpsystem = std::make_shared<CiscoNtpMib::Cntpsystem>();
+            cntpsystem_ = std::make_shared<CiscoNtpMib::Cntpsystem>();
         }
-        return cntpsystem;
+        return cntpsystem_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoNtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cntpfilterregistertable != nullptr)
+    if(cntpfilterregistertable_ != nullptr)
     {
-        children["cntpFilterRegisterTable"] = cntpfilterregistertable;
+        children["cntpFilterRegisterTable"] = cntpfilterregistertable_;
     }
 
-    if(cntppeersvartable != nullptr)
+    if(cntppeersvartable_ != nullptr)
     {
-        children["cntpPeersVarTable"] = cntppeersvartable;
+        children["cntpPeersVarTable"] = cntppeersvartable_;
     }
 
-    if(cntpsystem != nullptr)
+    if(cntpsystem_ != nullptr)
     {
-        children["cntpSystem"] = cntpsystem;
+        children["cntpSystem"] = cntpsystem_;
     }
 
     return children;
@@ -310,9 +310,9 @@ CiscoNtpMib::Cntppeersvartable::~Cntppeersvartable()
 
 bool CiscoNtpMib::Cntppeersvartable::has_data() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
+    for (std::size_t index=0; index<cntppeersvarentry_.size(); index++)
     {
-        if(cntppeersvarentry[index]->has_data())
+        if(cntppeersvarentry_[index]->has_data())
             return true;
     }
     return false;
@@ -320,9 +320,9 @@ bool CiscoNtpMib::Cntppeersvartable::has_data() const
 
 bool CiscoNtpMib::Cntppeersvartable::has_operation() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
+    for (std::size_t index=0; index<cntppeersvarentry_.size(); index++)
     {
-        if(cntppeersvarentry[index]->has_operation())
+        if(cntppeersvarentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -362,7 +362,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
 {
     if(child_yang_name == "cntpPeersVarEntry")
     {
-        for(auto const & c : cntppeersvarentry)
+        for(auto const & c : cntppeersvarentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -372,7 +372,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry>();
         c->parent = this;
-        cntppeersvarentry.push_back(c);
+        cntppeersvarentry_.push_back(c);
         return c;
     }
 
@@ -382,7 +382,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntppeersvartable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cntppeersvarentry)
+    for (auto const & c : cntppeersvarentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -717,9 +717,9 @@ CiscoNtpMib::Cntpfilterregistertable::~Cntpfilterregistertable()
 
 bool CiscoNtpMib::Cntpfilterregistertable::has_data() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
+    for (std::size_t index=0; index<cntpfilterregisterentry_.size(); index++)
     {
-        if(cntpfilterregisterentry[index]->has_data())
+        if(cntpfilterregisterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -727,9 +727,9 @@ bool CiscoNtpMib::Cntpfilterregistertable::has_data() const
 
 bool CiscoNtpMib::Cntpfilterregistertable::has_operation() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
+    for (std::size_t index=0; index<cntpfilterregisterentry_.size(); index++)
     {
-        if(cntpfilterregisterentry[index]->has_operation())
+        if(cntpfilterregisterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -769,7 +769,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
 {
     if(child_yang_name == "cntpFilterRegisterEntry")
     {
-        for(auto const & c : cntpfilterregisterentry)
+        for(auto const & c : cntpfilterregisterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -779,7 +779,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry>();
         c->parent = this;
-        cntpfilterregisterentry.push_back(c);
+        cntpfilterregisterentry_.push_back(c);
         return c;
     }
 
@@ -789,7 +789,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntpfilterregistertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cntpfilterregisterentry)
+    for (auto const & c : cntpfilterregisterentry_)
     {
         children[c->get_segment_path()] = c;
     }

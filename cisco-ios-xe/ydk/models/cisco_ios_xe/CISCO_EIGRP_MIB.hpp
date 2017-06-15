@@ -35,11 +35,11 @@ class CiscoEigrpMib : public Entity
         class Ceigrppeertable; //type: CiscoEigrpMib::Ceigrppeertable
         class Ceigrpinterfacetable; //type: CiscoEigrpMib::Ceigrpinterfacetable
 
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable> ceigrpinterfacetable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable> ceigrppeertable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable> ceigrptopotable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable> ceigrptraffstatstable;
-        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable> ceigrpvpntable;
+        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable> ceigrpinterfacetable_;
+        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable> ceigrppeertable_;
+        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable> ceigrptopotable_;
+        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable> ceigrptraffstatstable_;
+        std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable> ceigrpvpntable_;
         
 }; // CiscoEigrpMib
 
@@ -60,7 +60,7 @@ class CiscoEigrpMib::Ceigrpvpntable : public Entity
 
         class Ceigrpvpnentry; //type: CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry> > ceigrpvpnentry;
+        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpvpntable::Ceigrpvpnentry> > ceigrpvpnentry_;
         
 }; // CiscoEigrpMib::Ceigrpvpntable
 
@@ -101,7 +101,7 @@ class CiscoEigrpMib::Ceigrptraffstatstable : public Entity
 
         class Ceigrptraffstatsentry; //type: CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry> > ceigrptraffstatsentry;
+        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptraffstatstable::Ceigrptraffstatsentry> > ceigrptraffstatsentry_;
         
 }; // CiscoEigrpMib::Ceigrptraffstatstable
 
@@ -165,7 +165,7 @@ class CiscoEigrpMib::Ceigrptopotable : public Entity
 
         class Ceigrptopoentry; //type: CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry> > ceigrptopoentry;
+        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrptopotable::Ceigrptopoentry> > ceigrptopoentry_;
         
 }; // CiscoEigrpMib::Ceigrptopotable
 
@@ -223,7 +223,7 @@ class CiscoEigrpMib::Ceigrppeertable : public Entity
 
         class Ceigrppeerentry; //type: CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry> > ceigrppeerentry;
+        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrppeertable::Ceigrppeerentry> > ceigrppeerentry_;
         
 }; // CiscoEigrpMib::Ceigrppeertable
 
@@ -279,7 +279,7 @@ class CiscoEigrpMib::Ceigrpinterfacetable : public Entity
 
         class Ceigrpinterfaceentry; //type: CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry> > ceigrpinterfaceentry;
+        std::vector<std::shared_ptr<CISCO_EIGRP_MIB::CiscoEigrpMib::Ceigrpinterfacetable::Ceigrpinterfaceentry> > ceigrpinterfaceentry_;
         
 }; // CiscoEigrpMib::Ceigrpinterfacetable
 

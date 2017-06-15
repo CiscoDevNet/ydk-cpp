@@ -38,15 +38,15 @@ class Ds3Mib : public Entity
         class Dsx3Farendtotaltable; //type: Ds3Mib::Dsx3Farendtotaltable
         class Dsx3Fractable; //type: Ds3Mib::Dsx3Fractable
 
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Configtable> dsx3configtable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Currenttable> dsx3currenttable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendconfigtable> dsx3farendconfigtable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendcurrenttable> dsx3farendcurrenttable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendintervaltable> dsx3farendintervaltable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendtotaltable> dsx3farendtotaltable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Fractable> dsx3fractable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Intervaltable> dsx3intervaltable;
-        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Totaltable> dsx3totaltable;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Configtable> dsx3configtable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Currenttable> dsx3currenttable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendconfigtable> dsx3farendconfigtable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendcurrenttable> dsx3farendcurrenttable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendintervaltable> dsx3farendintervaltable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendtotaltable> dsx3farendtotaltable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Fractable> dsx3fractable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Intervaltable> dsx3intervaltable_;
+        std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Totaltable> dsx3totaltable_;
         
 }; // Ds3Mib
 
@@ -67,7 +67,7 @@ class Ds3Mib::Dsx3Configtable : public Entity
 
         class Dsx3Configentry; //type: Ds3Mib::Dsx3Configtable::Dsx3Configentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Configtable::Dsx3Configentry> > dsx3configentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Configtable::Dsx3Configentry> > dsx3configentry_;
         
 }; // Ds3Mib::Dsx3Configtable
 
@@ -131,7 +131,7 @@ class Ds3Mib::Dsx3Currenttable : public Entity
 
         class Dsx3Currententry; //type: Ds3Mib::Dsx3Currenttable::Dsx3Currententry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Currenttable::Dsx3Currententry> > dsx3currententry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Currenttable::Dsx3Currententry> > dsx3currententry_;
         
 }; // Ds3Mib::Dsx3Currenttable
 
@@ -181,7 +181,7 @@ class Ds3Mib::Dsx3Intervaltable : public Entity
 
         class Dsx3Intervalentry; //type: Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry> > dsx3intervalentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry> > dsx3intervalentry_;
         
 }; // Ds3Mib::Dsx3Intervaltable
 
@@ -233,7 +233,7 @@ class Ds3Mib::Dsx3Totaltable : public Entity
 
         class Dsx3Totalentry; //type: Ds3Mib::Dsx3Totaltable::Dsx3Totalentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Totaltable::Dsx3Totalentry> > dsx3totalentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Totaltable::Dsx3Totalentry> > dsx3totalentry_;
         
 }; // Ds3Mib::Dsx3Totaltable
 
@@ -283,7 +283,7 @@ class Ds3Mib::Dsx3Farendconfigtable : public Entity
 
         class Dsx3Farendconfigentry; //type: Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry> > dsx3farendconfigentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry> > dsx3farendconfigentry_;
         
 }; // Ds3Mib::Dsx3Farendconfigtable
 
@@ -328,7 +328,7 @@ class Ds3Mib::Dsx3Farendcurrenttable : public Entity
 
         class Dsx3Farendcurrententry; //type: Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry> > dsx3farendcurrententry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry> > dsx3farendcurrententry_;
         
 }; // Ds3Mib::Dsx3Farendcurrenttable
 
@@ -375,7 +375,7 @@ class Ds3Mib::Dsx3Farendintervaltable : public Entity
 
         class Dsx3Farendintervalentry; //type: Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry> > dsx3farendintervalentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry> > dsx3farendintervalentry_;
         
 }; // Ds3Mib::Dsx3Farendintervaltable
 
@@ -421,7 +421,7 @@ class Ds3Mib::Dsx3Farendtotaltable : public Entity
 
         class Dsx3Farendtotalentry; //type: Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry> > dsx3farendtotalentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry> > dsx3farendtotalentry_;
         
 }; // Ds3Mib::Dsx3Farendtotaltable
 
@@ -465,7 +465,7 @@ class Ds3Mib::Dsx3Fractable : public Entity
 
         class Dsx3Fracentry; //type: Ds3Mib::Dsx3Fractable::Dsx3Fracentry
 
-        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Fractable::Dsx3Fracentry> > dsx3fracentry;
+        std::vector<std::shared_ptr<DS3_MIB::Ds3Mib::Dsx3Fractable::Dsx3Fracentry> > dsx3fracentry_;
         
 }; // Ds3Mib::Dsx3Fractable
 

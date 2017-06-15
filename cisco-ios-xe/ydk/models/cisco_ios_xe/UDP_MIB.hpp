@@ -33,9 +33,9 @@ class UdpMib : public Entity
         class Udptable; //type: UdpMib::Udptable
         class Udpendpointtable; //type: UdpMib::Udpendpointtable
 
-        std::shared_ptr<UDP_MIB::UdpMib::Udp> udp;
-        std::shared_ptr<UDP_MIB::UdpMib::Udpendpointtable> udpendpointtable;
-        std::shared_ptr<UDP_MIB::UdpMib::Udptable> udptable;
+        std::shared_ptr<UDP_MIB::UdpMib::Udp> udp_;
+        std::shared_ptr<UDP_MIB::UdpMib::Udpendpointtable> udpendpointtable_;
+        std::shared_ptr<UDP_MIB::UdpMib::Udptable> udptable_;
         
 }; // UdpMib
 
@@ -80,7 +80,7 @@ class UdpMib::Udptable : public Entity
 
         class Udpentry; //type: UdpMib::Udptable::Udpentry
 
-        std::vector<std::shared_ptr<UDP_MIB::UdpMib::Udptable::Udpentry> > udpentry;
+        std::vector<std::shared_ptr<UDP_MIB::UdpMib::Udptable::Udpentry> > udpentry_;
         
 }; // UdpMib::Udptable
 
@@ -121,7 +121,7 @@ class UdpMib::Udpendpointtable : public Entity
 
         class Udpendpointentry; //type: UdpMib::Udpendpointtable::Udpendpointentry
 
-        std::vector<std::shared_ptr<UDP_MIB::UdpMib::Udpendpointtable::Udpendpointentry> > udpendpointentry;
+        std::vector<std::shared_ptr<UDP_MIB::UdpMib::Udpendpointtable::Udpendpointentry> > udpendpointentry_;
         
 }; // UdpMib::Udpendpointtable
 

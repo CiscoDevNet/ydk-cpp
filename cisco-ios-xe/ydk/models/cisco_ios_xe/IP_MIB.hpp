@@ -47,23 +47,23 @@ class IpMib : public Entity
         class Icmpstatstable; //type: IpMib::Icmpstatstable
         class Icmpmsgstatstable; //type: IpMib::Icmpmsgstatstable
 
-        std::shared_ptr<IP_MIB::IpMib::Icmp> icmp;
-        std::shared_ptr<IP_MIB::IpMib::Icmpmsgstatstable> icmpmsgstatstable;
-        std::shared_ptr<IP_MIB::IpMib::Icmpstatstable> icmpstatstable;
-        std::shared_ptr<IP_MIB::IpMib::Ip> ip;
-        std::shared_ptr<IP_MIB::IpMib::Ipaddressprefixtable> ipaddressprefixtable;
-        std::shared_ptr<IP_MIB::IpMib::Ipaddresstable> ipaddresstable;
-        std::shared_ptr<IP_MIB::IpMib::Ipaddrtable> ipaddrtable;
-        std::shared_ptr<IP_MIB::IpMib::Ipdefaultroutertable> ipdefaultroutertable;
-        std::shared_ptr<IP_MIB::IpMib::Ipifstatstable> ipifstatstable;
-        std::shared_ptr<IP_MIB::IpMib::Ipnettomediatable> ipnettomediatable;
-        std::shared_ptr<IP_MIB::IpMib::Ipnettophysicaltable> ipnettophysicaltable;
-        std::shared_ptr<IP_MIB::IpMib::Ipsystemstatstable> ipsystemstatstable;
-        std::shared_ptr<IP_MIB::IpMib::Iptrafficstats> iptrafficstats;
-        std::shared_ptr<IP_MIB::IpMib::Ipv4Interfacetable> ipv4interfacetable;
-        std::shared_ptr<IP_MIB::IpMib::Ipv6Interfacetable> ipv6interfacetable;
-        std::shared_ptr<IP_MIB::IpMib::Ipv6Routeradverttable> ipv6routeradverttable;
-        std::shared_ptr<IP_MIB::IpMib::Ipv6Scopezoneindextable> ipv6scopezoneindextable;
+        std::shared_ptr<IP_MIB::IpMib::Icmp> icmp_;
+        std::shared_ptr<IP_MIB::IpMib::Icmpmsgstatstable> icmpmsgstatstable_;
+        std::shared_ptr<IP_MIB::IpMib::Icmpstatstable> icmpstatstable_;
+        std::shared_ptr<IP_MIB::IpMib::Ip> ip_;
+        std::shared_ptr<IP_MIB::IpMib::Ipaddressprefixtable> ipaddressprefixtable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipaddresstable> ipaddresstable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipaddrtable> ipaddrtable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipdefaultroutertable> ipdefaultroutertable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipifstatstable> ipifstatstable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipnettomediatable> ipnettomediatable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipnettophysicaltable> ipnettophysicaltable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipsystemstatstable> ipsystemstatstable_;
+        std::shared_ptr<IP_MIB::IpMib::Iptrafficstats> iptrafficstats_;
+        std::shared_ptr<IP_MIB::IpMib::Ipv4Interfacetable> ipv4interfacetable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipv6Interfacetable> ipv6interfacetable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipv6Routeradverttable> ipv6routeradverttable_;
+        std::shared_ptr<IP_MIB::IpMib::Ipv6Scopezoneindextable> ipv6scopezoneindextable_;
         
 }; // IpMib
 
@@ -193,7 +193,7 @@ class IpMib::Ipaddrtable : public Entity
 
         class Ipaddrentry; //type: IpMib::Ipaddrtable::Ipaddrentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddrtable::Ipaddrentry> > ipaddrentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddrtable::Ipaddrentry> > ipaddrentry_;
         
 }; // IpMib::Ipaddrtable
 
@@ -237,7 +237,7 @@ class IpMib::Ipnettomediatable : public Entity
 
         class Ipnettomediaentry; //type: IpMib::Ipnettomediatable::Ipnettomediaentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipnettomediatable::Ipnettomediaentry> > ipnettomediaentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipnettomediatable::Ipnettomediaentry> > ipnettomediaentry_;
         
 }; // IpMib::Ipnettomediatable
 
@@ -281,7 +281,7 @@ class IpMib::Ipv4Interfacetable : public Entity
 
         class Ipv4Interfaceentry; //type: IpMib::Ipv4Interfacetable::Ipv4Interfaceentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv4Interfacetable::Ipv4Interfaceentry> > ipv4interfaceentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv4Interfacetable::Ipv4Interfaceentry> > ipv4interfaceentry_;
         
 }; // IpMib::Ipv4Interfacetable
 
@@ -325,7 +325,7 @@ class IpMib::Ipv6Interfacetable : public Entity
 
         class Ipv6Interfaceentry; //type: IpMib::Ipv6Interfacetable::Ipv6Interfaceentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Interfacetable::Ipv6Interfaceentry> > ipv6interfaceentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Interfacetable::Ipv6Interfaceentry> > ipv6interfaceentry_;
         
 }; // IpMib::Ipv6Interfacetable
 
@@ -373,7 +373,7 @@ class IpMib::Ipsystemstatstable : public Entity
 
         class Ipsystemstatsentry; //type: IpMib::Ipsystemstatstable::Ipsystemstatsentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipsystemstatstable::Ipsystemstatsentry> > ipsystemstatsentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipsystemstatstable::Ipsystemstatsentry> > ipsystemstatsentry_;
         
 }; // IpMib::Ipsystemstatstable
 
@@ -458,7 +458,7 @@ class IpMib::Ipifstatstable : public Entity
 
         class Ipifstatsentry; //type: IpMib::Ipifstatstable::Ipifstatsentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipifstatstable::Ipifstatsentry> > ipifstatsentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipifstatstable::Ipifstatsentry> > ipifstatsentry_;
         
 }; // IpMib::Ipifstatstable
 
@@ -543,7 +543,7 @@ class IpMib::Ipaddressprefixtable : public Entity
 
         class Ipaddressprefixentry; //type: IpMib::Ipaddressprefixtable::Ipaddressprefixentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddressprefixtable::Ipaddressprefixentry> > ipaddressprefixentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddressprefixtable::Ipaddressprefixentry> > ipaddressprefixentry_;
         
 }; // IpMib::Ipaddressprefixtable
 
@@ -591,7 +591,7 @@ class IpMib::Ipaddresstable : public Entity
 
         class Ipaddressentry; //type: IpMib::Ipaddresstable::Ipaddressentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddresstable::Ipaddressentry> > ipaddressentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipaddresstable::Ipaddressentry> > ipaddressentry_;
         
 }; // IpMib::Ipaddresstable
 
@@ -642,7 +642,7 @@ class IpMib::Ipnettophysicaltable : public Entity
 
         class Ipnettophysicalentry; //type: IpMib::Ipnettophysicaltable::Ipnettophysicalentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipnettophysicaltable::Ipnettophysicalentry> > ipnettophysicalentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipnettophysicaltable::Ipnettophysicalentry> > ipnettophysicalentry_;
         
 }; // IpMib::Ipnettophysicaltable
 
@@ -691,7 +691,7 @@ class IpMib::Ipv6Scopezoneindextable : public Entity
 
         class Ipv6Scopezoneindexentry; //type: IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry> > ipv6scopezoneindexentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry> > ipv6scopezoneindexentry_;
         
 }; // IpMib::Ipv6Scopezoneindextable
 
@@ -743,7 +743,7 @@ class IpMib::Ipdefaultroutertable : public Entity
 
         class Ipdefaultrouterentry; //type: IpMib::Ipdefaultroutertable::Ipdefaultrouterentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipdefaultroutertable::Ipdefaultrouterentry> > ipdefaultrouterentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipdefaultroutertable::Ipdefaultrouterentry> > ipdefaultrouterentry_;
         
 }; // IpMib::Ipdefaultroutertable
 
@@ -788,7 +788,7 @@ class IpMib::Ipv6Routeradverttable : public Entity
 
         class Ipv6Routeradvertentry; //type: IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry> > ipv6routeradvertentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry> > ipv6routeradvertentry_;
         
 }; // IpMib::Ipv6Routeradverttable
 
@@ -839,7 +839,7 @@ class IpMib::Icmpstatstable : public Entity
 
         class Icmpstatsentry; //type: IpMib::Icmpstatstable::Icmpstatsentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Icmpstatstable::Icmpstatsentry> > icmpstatsentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Icmpstatstable::Icmpstatsentry> > icmpstatsentry_;
         
 }; // IpMib::Icmpstatstable
 
@@ -883,7 +883,7 @@ class IpMib::Icmpmsgstatstable : public Entity
 
         class Icmpmsgstatsentry; //type: IpMib::Icmpmsgstatstable::Icmpmsgstatsentry
 
-        std::vector<std::shared_ptr<IP_MIB::IpMib::Icmpmsgstatstable::Icmpmsgstatsentry> > icmpmsgstatsentry;
+        std::vector<std::shared_ptr<IP_MIB::IpMib::Icmpmsgstatstable::Icmpmsgstatsentry> > icmpmsgstatsentry_;
         
 }; // IpMib::Icmpmsgstatstable
 

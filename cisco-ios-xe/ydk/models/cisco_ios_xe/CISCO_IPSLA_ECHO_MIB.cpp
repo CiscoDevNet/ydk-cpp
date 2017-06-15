@@ -11,15 +11,15 @@ namespace CISCO_IPSLA_ECHO_MIB {
 
 CiscoIpslaEchoMib::CiscoIpslaEchoMib()
     :
-    cipslaicmpechotmpltable(std::make_shared<CiscoIpslaEchoMib::Cipslaicmpechotmpltable>())
-	,cipslatcpconntmpltable(std::make_shared<CiscoIpslaEchoMib::Cipslatcpconntmpltable>())
-	,cipslaudpechotmpltable(std::make_shared<CiscoIpslaEchoMib::Cipslaudpechotmpltable>())
+    cipslaicmpechotmpltable_(std::make_shared<CiscoIpslaEchoMib::Cipslaicmpechotmpltable>())
+	,cipslatcpconntmpltable_(std::make_shared<CiscoIpslaEchoMib::Cipslatcpconntmpltable>())
+	,cipslaudpechotmpltable_(std::make_shared<CiscoIpslaEchoMib::Cipslaudpechotmpltable>())
 {
-    cipslaicmpechotmpltable->parent = this;
+    cipslaicmpechotmpltable_->parent = this;
 
-    cipslatcpconntmpltable->parent = this;
+    cipslatcpconntmpltable_->parent = this;
 
-    cipslaudpechotmpltable->parent = this;
+    cipslaudpechotmpltable_->parent = this;
 
     yang_name = "CISCO-IPSLA-ECHO-MIB"; yang_parent_name = "CISCO-IPSLA-ECHO-MIB";
 }
@@ -30,17 +30,17 @@ CiscoIpslaEchoMib::~CiscoIpslaEchoMib()
 
 bool CiscoIpslaEchoMib::has_data() const
 {
-    return (cipslaicmpechotmpltable !=  nullptr && cipslaicmpechotmpltable->has_data())
-	|| (cipslatcpconntmpltable !=  nullptr && cipslatcpconntmpltable->has_data())
-	|| (cipslaudpechotmpltable !=  nullptr && cipslaudpechotmpltable->has_data());
+    return (cipslaicmpechotmpltable_ !=  nullptr && cipslaicmpechotmpltable_->has_data())
+	|| (cipslatcpconntmpltable_ !=  nullptr && cipslatcpconntmpltable_->has_data())
+	|| (cipslaudpechotmpltable_ !=  nullptr && cipslaudpechotmpltable_->has_data());
 }
 
 bool CiscoIpslaEchoMib::has_operation() const
 {
     return is_set(operation)
-	|| (cipslaicmpechotmpltable !=  nullptr && cipslaicmpechotmpltable->has_operation())
-	|| (cipslatcpconntmpltable !=  nullptr && cipslatcpconntmpltable->has_operation())
-	|| (cipslaudpechotmpltable !=  nullptr && cipslaudpechotmpltable->has_operation());
+	|| (cipslaicmpechotmpltable_ !=  nullptr && cipslaicmpechotmpltable_->has_operation())
+	|| (cipslatcpconntmpltable_ !=  nullptr && cipslatcpconntmpltable_->has_operation())
+	|| (cipslaudpechotmpltable_ !=  nullptr && cipslaudpechotmpltable_->has_operation());
 }
 
 std::string CiscoIpslaEchoMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "cipslaIcmpEchoTmplTable")
     {
-        if(cipslaicmpechotmpltable == nullptr)
+        if(cipslaicmpechotmpltable_ == nullptr)
         {
-            cipslaicmpechotmpltable = std::make_shared<CiscoIpslaEchoMib::Cipslaicmpechotmpltable>();
+            cipslaicmpechotmpltable_ = std::make_shared<CiscoIpslaEchoMib::Cipslaicmpechotmpltable>();
         }
-        return cipslaicmpechotmpltable;
+        return cipslaicmpechotmpltable_;
     }
 
     if(child_yang_name == "cipslaTcpConnTmplTable")
     {
-        if(cipslatcpconntmpltable == nullptr)
+        if(cipslatcpconntmpltable_ == nullptr)
         {
-            cipslatcpconntmpltable = std::make_shared<CiscoIpslaEchoMib::Cipslatcpconntmpltable>();
+            cipslatcpconntmpltable_ = std::make_shared<CiscoIpslaEchoMib::Cipslatcpconntmpltable>();
         }
-        return cipslatcpconntmpltable;
+        return cipslatcpconntmpltable_;
     }
 
     if(child_yang_name == "cipslaUdpEchoTmplTable")
     {
-        if(cipslaudpechotmpltable == nullptr)
+        if(cipslaudpechotmpltable_ == nullptr)
         {
-            cipslaudpechotmpltable = std::make_shared<CiscoIpslaEchoMib::Cipslaudpechotmpltable>();
+            cipslaudpechotmpltable_ = std::make_shared<CiscoIpslaEchoMib::Cipslaudpechotmpltable>();
         }
-        return cipslaudpechotmpltable;
+        return cipslaudpechotmpltable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaEchoMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cipslaicmpechotmpltable != nullptr)
+    if(cipslaicmpechotmpltable_ != nullptr)
     {
-        children["cipslaIcmpEchoTmplTable"] = cipslaicmpechotmpltable;
+        children["cipslaIcmpEchoTmplTable"] = cipslaicmpechotmpltable_;
     }
 
-    if(cipslatcpconntmpltable != nullptr)
+    if(cipslatcpconntmpltable_ != nullptr)
     {
-        children["cipslaTcpConnTmplTable"] = cipslatcpconntmpltable;
+        children["cipslaTcpConnTmplTable"] = cipslatcpconntmpltable_;
     }
 
-    if(cipslaudpechotmpltable != nullptr)
+    if(cipslaudpechotmpltable_ != nullptr)
     {
-        children["cipslaUdpEchoTmplTable"] = cipslaudpechotmpltable;
+        children["cipslaUdpEchoTmplTable"] = cipslaudpechotmpltable_;
     }
 
     return children;
@@ -158,9 +158,9 @@ CiscoIpslaEchoMib::Cipslaicmpechotmpltable::~Cipslaicmpechotmpltable()
 
 bool CiscoIpslaEchoMib::Cipslaicmpechotmpltable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaicmpechotmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaicmpechotmplentry_.size(); index++)
     {
-        if(cipslaicmpechotmplentry[index]->has_data())
+        if(cipslaicmpechotmplentry_[index]->has_data())
             return true;
     }
     return false;
@@ -168,9 +168,9 @@ bool CiscoIpslaEchoMib::Cipslaicmpechotmpltable::has_data() const
 
 bool CiscoIpslaEchoMib::Cipslaicmpechotmpltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaicmpechotmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaicmpechotmplentry_.size(); index++)
     {
-        if(cipslaicmpechotmplentry[index]->has_operation())
+        if(cipslaicmpechotmplentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -210,7 +210,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaicmpechotmpltable::get_child_by
 {
     if(child_yang_name == "cipslaIcmpEchoTmplEntry")
     {
-        for(auto const & c : cipslaicmpechotmplentry)
+        for(auto const & c : cipslaicmpechotmplentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaicmpechotmpltable::get_child_by
         }
         auto c = std::make_shared<CiscoIpslaEchoMib::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry>();
         c->parent = this;
-        cipslaicmpechotmplentry.push_back(c);
+        cipslaicmpechotmplentry_.push_back(c);
         return c;
     }
 
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaicmpechotmpltable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaEchoMib::Cipslaicmpechotmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaicmpechotmplentry)
+    for (auto const & c : cipslaicmpechotmplentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -461,9 +461,9 @@ CiscoIpslaEchoMib::Cipslaudpechotmpltable::~Cipslaudpechotmpltable()
 
 bool CiscoIpslaEchoMib::Cipslaudpechotmpltable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaudpechotmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaudpechotmplentry_.size(); index++)
     {
-        if(cipslaudpechotmplentry[index]->has_data())
+        if(cipslaudpechotmplentry_[index]->has_data())
             return true;
     }
     return false;
@@ -471,9 +471,9 @@ bool CiscoIpslaEchoMib::Cipslaudpechotmpltable::has_data() const
 
 bool CiscoIpslaEchoMib::Cipslaudpechotmpltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaudpechotmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaudpechotmplentry_.size(); index++)
     {
-        if(cipslaudpechotmplentry[index]->has_operation())
+        if(cipslaudpechotmplentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -513,7 +513,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaudpechotmpltable::get_child_by_
 {
     if(child_yang_name == "cipslaUdpEchoTmplEntry")
     {
-        for(auto const & c : cipslaudpechotmplentry)
+        for(auto const & c : cipslaudpechotmplentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -523,7 +523,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaudpechotmpltable::get_child_by_
         }
         auto c = std::make_shared<CiscoIpslaEchoMib::Cipslaudpechotmpltable::Cipslaudpechotmplentry>();
         c->parent = this;
-        cipslaudpechotmplentry.push_back(c);
+        cipslaudpechotmplentry_.push_back(c);
         return c;
     }
 
@@ -533,7 +533,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslaudpechotmpltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaEchoMib::Cipslaudpechotmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaudpechotmplentry)
+    for (auto const & c : cipslaudpechotmplentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -780,9 +780,9 @@ CiscoIpslaEchoMib::Cipslatcpconntmpltable::~Cipslatcpconntmpltable()
 
 bool CiscoIpslaEchoMib::Cipslatcpconntmpltable::has_data() const
 {
-    for (std::size_t index=0; index<cipslatcpconntmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslatcpconntmplentry_.size(); index++)
     {
-        if(cipslatcpconntmplentry[index]->has_data())
+        if(cipslatcpconntmplentry_[index]->has_data())
             return true;
     }
     return false;
@@ -790,9 +790,9 @@ bool CiscoIpslaEchoMib::Cipslatcpconntmpltable::has_data() const
 
 bool CiscoIpslaEchoMib::Cipslatcpconntmpltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslatcpconntmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslatcpconntmplentry_.size(); index++)
     {
-        if(cipslatcpconntmplentry[index]->has_operation())
+        if(cipslatcpconntmplentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -832,7 +832,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslatcpconntmpltable::get_child_by_
 {
     if(child_yang_name == "cipslaTcpConnTmplEntry")
     {
-        for(auto const & c : cipslatcpconntmplentry)
+        for(auto const & c : cipslatcpconntmplentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -842,7 +842,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslatcpconntmpltable::get_child_by_
         }
         auto c = std::make_shared<CiscoIpslaEchoMib::Cipslatcpconntmpltable::Cipslatcpconntmplentry>();
         c->parent = this;
-        cipslatcpconntmplentry.push_back(c);
+        cipslatcpconntmplentry_.push_back(c);
         return c;
     }
 
@@ -852,7 +852,7 @@ std::shared_ptr<Entity> CiscoIpslaEchoMib::Cipslatcpconntmpltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaEchoMib::Cipslatcpconntmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslatcpconntmplentry)
+    for (auto const & c : cipslatcpconntmplentry_)
     {
         children[c->get_segment_path()] = c;
     }

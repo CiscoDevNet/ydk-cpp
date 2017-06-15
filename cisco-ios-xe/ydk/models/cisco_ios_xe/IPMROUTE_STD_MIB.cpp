@@ -11,24 +11,24 @@ namespace IPMROUTE_STD_MIB {
 
 IpmrouteStdMib::IpmrouteStdMib()
     :
-    ipmroute(std::make_shared<IpmrouteStdMib::Ipmroute>())
-	,ipmrouteboundarytable(std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>())
-	,ipmrouteinterfacetable(std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>())
-	,ipmroutenexthoptable(std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>())
-	,ipmroutescopenametable(std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>())
-	,ipmroutetable(std::make_shared<IpmrouteStdMib::Ipmroutetable>())
+    ipmroute_(std::make_shared<IpmrouteStdMib::Ipmroute>())
+	,ipmrouteboundarytable_(std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>())
+	,ipmrouteinterfacetable_(std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>())
+	,ipmroutenexthoptable_(std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>())
+	,ipmroutescopenametable_(std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>())
+	,ipmroutetable_(std::make_shared<IpmrouteStdMib::Ipmroutetable>())
 {
-    ipmroute->parent = this;
+    ipmroute_->parent = this;
 
-    ipmrouteboundarytable->parent = this;
+    ipmrouteboundarytable_->parent = this;
 
-    ipmrouteinterfacetable->parent = this;
+    ipmrouteinterfacetable_->parent = this;
 
-    ipmroutenexthoptable->parent = this;
+    ipmroutenexthoptable_->parent = this;
 
-    ipmroutescopenametable->parent = this;
+    ipmroutescopenametable_->parent = this;
 
-    ipmroutetable->parent = this;
+    ipmroutetable_->parent = this;
 
     yang_name = "IPMROUTE-STD-MIB"; yang_parent_name = "IPMROUTE-STD-MIB";
 }
@@ -39,23 +39,23 @@ IpmrouteStdMib::~IpmrouteStdMib()
 
 bool IpmrouteStdMib::has_data() const
 {
-    return (ipmroute !=  nullptr && ipmroute->has_data())
-	|| (ipmrouteboundarytable !=  nullptr && ipmrouteboundarytable->has_data())
-	|| (ipmrouteinterfacetable !=  nullptr && ipmrouteinterfacetable->has_data())
-	|| (ipmroutenexthoptable !=  nullptr && ipmroutenexthoptable->has_data())
-	|| (ipmroutescopenametable !=  nullptr && ipmroutescopenametable->has_data())
-	|| (ipmroutetable !=  nullptr && ipmroutetable->has_data());
+    return (ipmroute_ !=  nullptr && ipmroute_->has_data())
+	|| (ipmrouteboundarytable_ !=  nullptr && ipmrouteboundarytable_->has_data())
+	|| (ipmrouteinterfacetable_ !=  nullptr && ipmrouteinterfacetable_->has_data())
+	|| (ipmroutenexthoptable_ !=  nullptr && ipmroutenexthoptable_->has_data())
+	|| (ipmroutescopenametable_ !=  nullptr && ipmroutescopenametable_->has_data())
+	|| (ipmroutetable_ !=  nullptr && ipmroutetable_->has_data());
 }
 
 bool IpmrouteStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (ipmroute !=  nullptr && ipmroute->has_operation())
-	|| (ipmrouteboundarytable !=  nullptr && ipmrouteboundarytable->has_operation())
-	|| (ipmrouteinterfacetable !=  nullptr && ipmrouteinterfacetable->has_operation())
-	|| (ipmroutenexthoptable !=  nullptr && ipmroutenexthoptable->has_operation())
-	|| (ipmroutescopenametable !=  nullptr && ipmroutescopenametable->has_operation())
-	|| (ipmroutetable !=  nullptr && ipmroutetable->has_operation());
+	|| (ipmroute_ !=  nullptr && ipmroute_->has_operation())
+	|| (ipmrouteboundarytable_ !=  nullptr && ipmrouteboundarytable_->has_operation())
+	|| (ipmrouteinterfacetable_ !=  nullptr && ipmrouteinterfacetable_->has_operation())
+	|| (ipmroutenexthoptable_ !=  nullptr && ipmroutenexthoptable_->has_operation())
+	|| (ipmroutescopenametable_ !=  nullptr && ipmroutescopenametable_->has_operation())
+	|| (ipmroutetable_ !=  nullptr && ipmroutetable_->has_operation());
 }
 
 std::string IpmrouteStdMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "ipMRoute")
     {
-        if(ipmroute == nullptr)
+        if(ipmroute_ == nullptr)
         {
-            ipmroute = std::make_shared<IpmrouteStdMib::Ipmroute>();
+            ipmroute_ = std::make_shared<IpmrouteStdMib::Ipmroute>();
         }
-        return ipmroute;
+        return ipmroute_;
     }
 
     if(child_yang_name == "ipMRouteBoundaryTable")
     {
-        if(ipmrouteboundarytable == nullptr)
+        if(ipmrouteboundarytable_ == nullptr)
         {
-            ipmrouteboundarytable = std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>();
+            ipmrouteboundarytable_ = std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>();
         }
-        return ipmrouteboundarytable;
+        return ipmrouteboundarytable_;
     }
 
     if(child_yang_name == "ipMRouteInterfaceTable")
     {
-        if(ipmrouteinterfacetable == nullptr)
+        if(ipmrouteinterfacetable_ == nullptr)
         {
-            ipmrouteinterfacetable = std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>();
+            ipmrouteinterfacetable_ = std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>();
         }
-        return ipmrouteinterfacetable;
+        return ipmrouteinterfacetable_;
     }
 
     if(child_yang_name == "ipMRouteNextHopTable")
     {
-        if(ipmroutenexthoptable == nullptr)
+        if(ipmroutenexthoptable_ == nullptr)
         {
-            ipmroutenexthoptable = std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>();
+            ipmroutenexthoptable_ = std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>();
         }
-        return ipmroutenexthoptable;
+        return ipmroutenexthoptable_;
     }
 
     if(child_yang_name == "ipMRouteScopeNameTable")
     {
-        if(ipmroutescopenametable == nullptr)
+        if(ipmroutescopenametable_ == nullptr)
         {
-            ipmroutescopenametable = std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>();
+            ipmroutescopenametable_ = std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>();
         }
-        return ipmroutescopenametable;
+        return ipmroutescopenametable_;
     }
 
     if(child_yang_name == "ipMRouteTable")
     {
-        if(ipmroutetable == nullptr)
+        if(ipmroutetable_ == nullptr)
         {
-            ipmroutetable = std::make_shared<IpmrouteStdMib::Ipmroutetable>();
+            ipmroutetable_ = std::make_shared<IpmrouteStdMib::Ipmroutetable>();
         }
-        return ipmroutetable;
+        return ipmroutetable_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipmroute != nullptr)
+    if(ipmroute_ != nullptr)
     {
-        children["ipMRoute"] = ipmroute;
+        children["ipMRoute"] = ipmroute_;
     }
 
-    if(ipmrouteboundarytable != nullptr)
+    if(ipmrouteboundarytable_ != nullptr)
     {
-        children["ipMRouteBoundaryTable"] = ipmrouteboundarytable;
+        children["ipMRouteBoundaryTable"] = ipmrouteboundarytable_;
     }
 
-    if(ipmrouteinterfacetable != nullptr)
+    if(ipmrouteinterfacetable_ != nullptr)
     {
-        children["ipMRouteInterfaceTable"] = ipmrouteinterfacetable;
+        children["ipMRouteInterfaceTable"] = ipmrouteinterfacetable_;
     }
 
-    if(ipmroutenexthoptable != nullptr)
+    if(ipmroutenexthoptable_ != nullptr)
     {
-        children["ipMRouteNextHopTable"] = ipmroutenexthoptable;
+        children["ipMRouteNextHopTable"] = ipmroutenexthoptable_;
     }
 
-    if(ipmroutescopenametable != nullptr)
+    if(ipmroutescopenametable_ != nullptr)
     {
-        children["ipMRouteScopeNameTable"] = ipmroutescopenametable;
+        children["ipMRouteScopeNameTable"] = ipmroutescopenametable_;
     }
 
-    if(ipmroutetable != nullptr)
+    if(ipmroutetable_ != nullptr)
     {
-        children["ipMRouteTable"] = ipmroutetable;
+        children["ipMRouteTable"] = ipmroutetable_;
     }
 
     return children;
@@ -295,9 +295,9 @@ IpmrouteStdMib::Ipmroutetable::~Ipmroutetable()
 
 bool IpmrouteStdMib::Ipmroutetable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteentry_.size(); index++)
     {
-        if(ipmrouteentry[index]->has_data())
+        if(ipmrouteentry_[index]->has_data())
             return true;
     }
     return false;
@@ -305,9 +305,9 @@ bool IpmrouteStdMib::Ipmroutetable::has_data() const
 
 bool IpmrouteStdMib::Ipmroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteentry_.size(); index++)
     {
-        if(ipmrouteentry[index]->has_operation())
+        if(ipmrouteentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -347,7 +347,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const s
 {
     if(child_yang_name == "ipMRouteEntry")
     {
-        for(auto const & c : ipmrouteentry)
+        for(auto const & c : ipmrouteentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -357,7 +357,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const s
         }
         auto c = std::make_shared<IpmrouteStdMib::Ipmroutetable::Ipmrouteentry>();
         c->parent = this;
-        ipmrouteentry.push_back(c);
+        ipmrouteentry_.push_back(c);
         return c;
     }
 
@@ -367,7 +367,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmrouteentry)
+    for (auto const & c : ipmrouteentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -750,9 +750,9 @@ IpmrouteStdMib::Ipmroutenexthoptable::~Ipmroutenexthoptable()
 
 bool IpmrouteStdMib::Ipmroutenexthoptable::has_data() const
 {
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutenexthopentry_.size(); index++)
     {
-        if(ipmroutenexthopentry[index]->has_data())
+        if(ipmroutenexthopentry_[index]->has_data())
             return true;
     }
     return false;
@@ -760,9 +760,9 @@ bool IpmrouteStdMib::Ipmroutenexthoptable::has_data() const
 
 bool IpmrouteStdMib::Ipmroutenexthoptable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutenexthopentry_.size(); index++)
     {
-        if(ipmroutenexthopentry[index]->has_operation())
+        if(ipmroutenexthopentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -802,7 +802,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutenexthoptable::get_child_by_name(
 {
     if(child_yang_name == "ipMRouteNextHopEntry")
     {
-        for(auto const & c : ipmroutenexthopentry)
+        for(auto const & c : ipmroutenexthopentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -812,7 +812,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutenexthoptable::get_child_by_name(
         }
         auto c = std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry>();
         c->parent = this;
-        ipmroutenexthopentry.push_back(c);
+        ipmroutenexthopentry_.push_back(c);
         return c;
     }
 
@@ -822,7 +822,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutenexthoptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutenexthoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmroutenexthopentry)
+    for (auto const & c : ipmroutenexthopentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1021,9 +1021,9 @@ IpmrouteStdMib::Ipmrouteinterfacetable::~Ipmrouteinterfacetable()
 
 bool IpmrouteStdMib::Ipmrouteinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteinterfaceentry_.size(); index++)
     {
-        if(ipmrouteinterfaceentry[index]->has_data())
+        if(ipmrouteinterfaceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1031,9 +1031,9 @@ bool IpmrouteStdMib::Ipmrouteinterfacetable::has_data() const
 
 bool IpmrouteStdMib::Ipmrouteinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteinterfaceentry_.size(); index++)
     {
-        if(ipmrouteinterfaceentry[index]->has_operation())
+        if(ipmrouteinterfaceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1073,7 +1073,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteinterfacetable::get_child_by_nam
 {
     if(child_yang_name == "ipMRouteInterfaceEntry")
     {
-        for(auto const & c : ipmrouteinterfaceentry)
+        for(auto const & c : ipmrouteinterfaceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1083,7 +1083,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteinterfacetable::get_child_by_nam
         }
         auto c = std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry>();
         c->parent = this;
-        ipmrouteinterfaceentry.push_back(c);
+        ipmrouteinterfaceentry_.push_back(c);
         return c;
     }
 
@@ -1093,7 +1093,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteinterfacetable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmrouteinterfaceentry)
+    for (auto const & c : ipmrouteinterfaceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1292,9 +1292,9 @@ IpmrouteStdMib::Ipmrouteboundarytable::~Ipmrouteboundarytable()
 
 bool IpmrouteStdMib::Ipmrouteboundarytable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteboundaryentry_.size(); index++)
     {
-        if(ipmrouteboundaryentry[index]->has_data())
+        if(ipmrouteboundaryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1302,9 +1302,9 @@ bool IpmrouteStdMib::Ipmrouteboundarytable::has_data() const
 
 bool IpmrouteStdMib::Ipmrouteboundarytable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteboundaryentry_.size(); index++)
     {
-        if(ipmrouteboundaryentry[index]->has_operation())
+        if(ipmrouteboundaryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1344,7 +1344,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteboundarytable::get_child_by_name
 {
     if(child_yang_name == "ipMRouteBoundaryEntry")
     {
-        for(auto const & c : ipmrouteboundaryentry)
+        for(auto const & c : ipmrouteboundaryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1354,7 +1354,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteboundarytable::get_child_by_name
         }
         auto c = std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry>();
         c->parent = this;
-        ipmrouteboundaryentry.push_back(c);
+        ipmrouteboundaryentry_.push_back(c);
         return c;
     }
 
@@ -1364,7 +1364,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteboundarytable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteboundarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmrouteboundaryentry)
+    for (auto const & c : ipmrouteboundaryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1483,9 +1483,9 @@ IpmrouteStdMib::Ipmroutescopenametable::~Ipmroutescopenametable()
 
 bool IpmrouteStdMib::Ipmroutescopenametable::has_data() const
 {
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutescopenameentry_.size(); index++)
     {
-        if(ipmroutescopenameentry[index]->has_data())
+        if(ipmroutescopenameentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1493,9 +1493,9 @@ bool IpmrouteStdMib::Ipmroutescopenametable::has_data() const
 
 bool IpmrouteStdMib::Ipmroutescopenametable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutescopenameentry_.size(); index++)
     {
-        if(ipmroutescopenameentry[index]->has_operation())
+        if(ipmroutescopenameentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1535,7 +1535,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutescopenametable::get_child_by_nam
 {
     if(child_yang_name == "ipMRouteScopeNameEntry")
     {
-        for(auto const & c : ipmroutescopenameentry)
+        for(auto const & c : ipmroutescopenameentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1545,7 +1545,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutescopenametable::get_child_by_nam
         }
         auto c = std::make_shared<IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry>();
         c->parent = this;
-        ipmroutescopenameentry.push_back(c);
+        ipmroutescopenameentry_.push_back(c);
         return c;
     }
 
@@ -1555,7 +1555,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutescopenametable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutescopenametable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmroutescopenameentry)
+    for (auto const & c : ipmroutescopenameentry_)
     {
         children[c->get_segment_path()] = c;
     }

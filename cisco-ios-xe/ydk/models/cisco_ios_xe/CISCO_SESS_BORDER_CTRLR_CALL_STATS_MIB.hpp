@@ -36,13 +36,13 @@ class CiscoSessBorderCtrlrCallStatsMib : public Entity
         class Csbh248Statstable; //type: CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable
         class Csbh248Statsrev1Table; //type: CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table
 
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable> csbcallstatsinstancetable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable> csbcallstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable> csbcurrperiodicstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table> csbh248statsrev1table;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable> csbh248statstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable> csbhistorystatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable> csbperflowstatstable;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable> csbcallstatsinstancetable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable> csbcallstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable> csbcurrperiodicstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table> csbh248statsrev1table_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable> csbh248statstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable> csbhistorystatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable> csbperflowstatstable_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib
 
@@ -63,7 +63,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable : public Entit
 
         class Csbcallstatsinstanceentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::Csbcallstatsinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::Csbcallstatsinstanceentry> > csbcallstatsinstanceentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable::Csbcallstatsinstanceentry> > csbcallstatsinstanceentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbcallstatsinstancetable
 
@@ -104,7 +104,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable : public Entity
 
         class Csbcallstatsentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::Csbcallstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::Csbcallstatsentry> > csbcallstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable::Csbcallstatsentry> > csbcallstatsentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbcallstatstable
 
@@ -171,7 +171,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable : public Entit
 
         class Csbcurrperiodicstatsentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry> > csbcurrperiodicstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry> > csbcurrperiodicstatsentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbcurrperiodicstatstable
 
@@ -260,7 +260,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable : public Entity
 
         class Csbhistorystatsentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::Csbhistorystatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::Csbhistorystatsentry> > csbhistorystatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable::Csbhistorystatsentry> > csbhistorystatsentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbhistorystatstable
 
@@ -348,7 +348,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable : public Entity
 
         class Csbperflowstatsentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::Csbperflowstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::Csbperflowstatsentry> > csbperflowstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable::Csbperflowstatsentry> > csbperflowstatsentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbperflowstatstable
 
@@ -414,7 +414,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable : public Entity
 
         class Csbh248Statsentry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::Csbh248Statsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::Csbh248Statsentry> > csbh248statsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable::Csbh248Statsentry> > csbh248statsentry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbh248Statstable
 
@@ -471,7 +471,7 @@ class CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table : public Entity
 
         class Csbh248Statsrev1Entry; //type: CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::Csbh248Statsrev1Entry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::Csbh248Statsrev1Entry> > csbh248statsrev1entry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table::Csbh248Statsrev1Entry> > csbh248statsrev1entry_;
         
 }; // CiscoSessBorderCtrlrCallStatsMib::Csbh248Statsrev1Table
 

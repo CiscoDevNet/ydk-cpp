@@ -60,36 +60,36 @@ class CiscoStpExtensionsMib : public Entity
         class Stpxsmstinstanceedittable; //type: CiscoStpExtensionsMib::Stpxsmstinstanceedittable
         class Stpxsmstporttable; //type: CiscoStpExtensionsMib::Stpxsmstporttable
 
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbackbonefastobjects> stpxbackbonefastobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingobjects> stpxbpduskewingobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingtable> stpxbpduskewingtable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartobjects> stpxfaststartobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartopermodetable> stpxfaststartopermodetable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartporttable> stpxfaststartporttable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxinconsistencytable> stpxinconsistencytable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardconfigtable> stpxloopguardconfigtable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardobjects> stpxloopguardobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopinconsistencytable> stpxloopinconsistencytable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpinstancetable> stpxmistpinstancetable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpobjects> stpxmistpobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstanceedittable> stpxmstinstanceedittable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstancetable> stpxmstinstancetable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstobjects> stpxmstobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstportroletable> stpxmstportroletable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstporttable> stpxmstporttable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxpvstvlantable> stpxpvstvlantable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootguardconfigtable> stpxrootguardconfigtable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootinconsistencytable> stpxrootinconsistencytable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrpvstporttable> stpxrpvstporttable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpobjects> stpxrstpobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpportroletable> stpxrstpportroletable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpporttable> stpxrstpporttable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstanceedittable> stpxsmstinstanceedittable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstancetable> stpxsmstinstancetable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstobjects> stpxsmstobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstporttable> stpxsmstporttable;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxspanningtreeobjects> stpxspanningtreeobjects;
-        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxuplinkfastobjects> stpxuplinkfastobjects;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbackbonefastobjects> stpxbackbonefastobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingobjects> stpxbpduskewingobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingtable> stpxbpduskewingtable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartobjects> stpxfaststartobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartopermodetable> stpxfaststartopermodetable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartporttable> stpxfaststartporttable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxinconsistencytable> stpxinconsistencytable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardconfigtable> stpxloopguardconfigtable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardobjects> stpxloopguardobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopinconsistencytable> stpxloopinconsistencytable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpinstancetable> stpxmistpinstancetable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpobjects> stpxmistpobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstanceedittable> stpxmstinstanceedittable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstancetable> stpxmstinstancetable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstobjects> stpxmstobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstportroletable> stpxmstportroletable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstporttable> stpxmstporttable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxpvstvlantable> stpxpvstvlantable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootguardconfigtable> stpxrootguardconfigtable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootinconsistencytable> stpxrootinconsistencytable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrpvstporttable> stpxrpvstporttable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpobjects> stpxrstpobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpportroletable> stpxrstpportroletable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpporttable> stpxrstpporttable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstanceedittable> stpxsmstinstanceedittable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstancetable> stpxsmstinstancetable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstobjects> stpxsmstobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstporttable> stpxsmstporttable_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxspanningtreeobjects> stpxspanningtreeobjects_;
+        std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxuplinkfastobjects> stpxuplinkfastobjects_;
         
 }; // CiscoStpExtensionsMib
 
@@ -337,7 +337,7 @@ class CiscoStpExtensionsMib::Stpxpvstvlantable : public Entity
 
         class Stpxpvstvlanentry; //type: CiscoStpExtensionsMib::Stpxpvstvlantable::Stpxpvstvlanentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxpvstvlantable::Stpxpvstvlanentry> > stpxpvstvlanentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxpvstvlantable::Stpxpvstvlanentry> > stpxpvstvlanentry_;
         
 }; // CiscoStpExtensionsMib::Stpxpvstvlantable
 
@@ -379,7 +379,7 @@ class CiscoStpExtensionsMib::Stpxinconsistencytable : public Entity
 
         class Stpxinconsistencyentry; //type: CiscoStpExtensionsMib::Stpxinconsistencytable::Stpxinconsistencyentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxinconsistencytable::Stpxinconsistencyentry> > stpxinconsistencyentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxinconsistencytable::Stpxinconsistencyentry> > stpxinconsistencyentry_;
         
 }; // CiscoStpExtensionsMib::Stpxinconsistencytable
 
@@ -421,7 +421,7 @@ class CiscoStpExtensionsMib::Stpxrootguardconfigtable : public Entity
 
         class Stpxrootguardconfigentry; //type: CiscoStpExtensionsMib::Stpxrootguardconfigtable::Stpxrootguardconfigentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootguardconfigtable::Stpxrootguardconfigentry> > stpxrootguardconfigentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootguardconfigtable::Stpxrootguardconfigentry> > stpxrootguardconfigentry_;
         
 }; // CiscoStpExtensionsMib::Stpxrootguardconfigtable
 
@@ -462,7 +462,7 @@ class CiscoStpExtensionsMib::Stpxrootinconsistencytable : public Entity
 
         class Stpxrootinconsistencyentry; //type: CiscoStpExtensionsMib::Stpxrootinconsistencytable::Stpxrootinconsistencyentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootinconsistencytable::Stpxrootinconsistencyentry> > stpxrootinconsistencyentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrootinconsistencytable::Stpxrootinconsistencyentry> > stpxrootinconsistencyentry_;
         
 }; // CiscoStpExtensionsMib::Stpxrootinconsistencytable
 
@@ -504,7 +504,7 @@ class CiscoStpExtensionsMib::Stpxmistpinstancetable : public Entity
 
         class Stpxmistpinstanceentry; //type: CiscoStpExtensionsMib::Stpxmistpinstancetable::Stpxmistpinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpinstancetable::Stpxmistpinstanceentry> > stpxmistpinstanceentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmistpinstancetable::Stpxmistpinstanceentry> > stpxmistpinstanceentry_;
         
 }; // CiscoStpExtensionsMib::Stpxmistpinstancetable
 
@@ -549,7 +549,7 @@ class CiscoStpExtensionsMib::Stpxloopguardconfigtable : public Entity
 
         class Stpxloopguardconfigentry; //type: CiscoStpExtensionsMib::Stpxloopguardconfigtable::Stpxloopguardconfigentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardconfigtable::Stpxloopguardconfigentry> > stpxloopguardconfigentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopguardconfigtable::Stpxloopguardconfigentry> > stpxloopguardconfigentry_;
         
 }; // CiscoStpExtensionsMib::Stpxloopguardconfigtable
 
@@ -592,7 +592,7 @@ class CiscoStpExtensionsMib::Stpxloopinconsistencytable : public Entity
 
         class Stpxloopinconsistencyentry; //type: CiscoStpExtensionsMib::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopinconsistencytable::Stpxloopinconsistencyentry> > stpxloopinconsistencyentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxloopinconsistencytable::Stpxloopinconsistencyentry> > stpxloopinconsistencyentry_;
         
 }; // CiscoStpExtensionsMib::Stpxloopinconsistencytable
 
@@ -634,7 +634,7 @@ class CiscoStpExtensionsMib::Stpxfaststartporttable : public Entity
 
         class Stpxfaststartportentry; //type: CiscoStpExtensionsMib::Stpxfaststartporttable::Stpxfaststartportentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartporttable::Stpxfaststartportentry> > stpxfaststartportentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartporttable::Stpxfaststartportentry> > stpxfaststartportentry_;
         
 }; // CiscoStpExtensionsMib::Stpxfaststartporttable
 
@@ -681,7 +681,7 @@ class CiscoStpExtensionsMib::Stpxfaststartopermodetable : public Entity
 
         class Stpxfaststartopermodeentry; //type: CiscoStpExtensionsMib::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartopermodetable::Stpxfaststartopermodeentry> > stpxfaststartopermodeentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxfaststartopermodetable::Stpxfaststartopermodeentry> > stpxfaststartopermodeentry_;
         
 }; // CiscoStpExtensionsMib::Stpxfaststartopermodetable
 
@@ -724,7 +724,7 @@ class CiscoStpExtensionsMib::Stpxbpduskewingtable : public Entity
 
         class Stpxbpduskewingentry; //type: CiscoStpExtensionsMib::Stpxbpduskewingtable::Stpxbpduskewingentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingtable::Stpxbpduskewingentry> > stpxbpduskewingentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxbpduskewingtable::Stpxbpduskewingentry> > stpxbpduskewingentry_;
         
 }; // CiscoStpExtensionsMib::Stpxbpduskewingtable
 
@@ -768,7 +768,7 @@ class CiscoStpExtensionsMib::Stpxmstinstancetable : public Entity
 
         class Stpxmstinstanceentry; //type: CiscoStpExtensionsMib::Stpxmstinstancetable::Stpxmstinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstancetable::Stpxmstinstanceentry> > stpxmstinstanceentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstancetable::Stpxmstinstanceentry> > stpxmstinstanceentry_;
         
 }; // CiscoStpExtensionsMib::Stpxmstinstancetable
 
@@ -813,7 +813,7 @@ class CiscoStpExtensionsMib::Stpxmstinstanceedittable : public Entity
 
         class Stpxmstinstanceeditentry; //type: CiscoStpExtensionsMib::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstanceedittable::Stpxmstinstanceeditentry> > stpxmstinstanceeditentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstinstanceedittable::Stpxmstinstanceeditentry> > stpxmstinstanceeditentry_;
         
 }; // CiscoStpExtensionsMib::Stpxmstinstanceedittable
 
@@ -857,7 +857,7 @@ class CiscoStpExtensionsMib::Stpxmstporttable : public Entity
 
         class Stpxmstportentry; //type: CiscoStpExtensionsMib::Stpxmstporttable::Stpxmstportentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstporttable::Stpxmstportentry> > stpxmstportentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstporttable::Stpxmstportentry> > stpxmstportentry_;
         
 }; // CiscoStpExtensionsMib::Stpxmstporttable
 
@@ -903,7 +903,7 @@ class CiscoStpExtensionsMib::Stpxmstportroletable : public Entity
 
         class Stpxmstportroleentry; //type: CiscoStpExtensionsMib::Stpxmstportroletable::Stpxmstportroleentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstportroletable::Stpxmstportroleentry> > stpxmstportroleentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxmstportroletable::Stpxmstportroleentry> > stpxmstportroleentry_;
         
 }; // CiscoStpExtensionsMib::Stpxmstportroletable
 
@@ -946,7 +946,7 @@ class CiscoStpExtensionsMib::Stpxrstpporttable : public Entity
 
         class Stpxrstpportentry; //type: CiscoStpExtensionsMib::Stpxrstpporttable::Stpxrstpportentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpporttable::Stpxrstpportentry> > stpxrstpportentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpporttable::Stpxrstpportentry> > stpxrstpportentry_;
         
 }; // CiscoStpExtensionsMib::Stpxrstpporttable
 
@@ -991,7 +991,7 @@ class CiscoStpExtensionsMib::Stpxrstpportroletable : public Entity
 
         class Stpxrstpportroleentry; //type: CiscoStpExtensionsMib::Stpxrstpportroletable::Stpxrstpportroleentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpportroletable::Stpxrstpportroleentry> > stpxrstpportroleentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrstpportroletable::Stpxrstpportroleentry> > stpxrstpportroleentry_;
         
 }; // CiscoStpExtensionsMib::Stpxrstpportroletable
 
@@ -1034,7 +1034,7 @@ class CiscoStpExtensionsMib::Stpxrpvstporttable : public Entity
 
         class Stpxrpvstportentry; //type: CiscoStpExtensionsMib::Stpxrpvstporttable::Stpxrpvstportentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrpvstporttable::Stpxrpvstportentry> > stpxrpvstportentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxrpvstporttable::Stpxrpvstportentry> > stpxrpvstportentry_;
         
 }; // CiscoStpExtensionsMib::Stpxrpvstporttable
 
@@ -1076,7 +1076,7 @@ class CiscoStpExtensionsMib::Stpxsmstinstancetable : public Entity
 
         class Stpxsmstinstanceentry; //type: CiscoStpExtensionsMib::Stpxsmstinstancetable::Stpxsmstinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstancetable::Stpxsmstinstanceentry> > stpxsmstinstanceentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstancetable::Stpxsmstinstanceentry> > stpxsmstinstanceentry_;
         
 }; // CiscoStpExtensionsMib::Stpxsmstinstancetable
 
@@ -1121,7 +1121,7 @@ class CiscoStpExtensionsMib::Stpxsmstinstanceedittable : public Entity
 
         class Stpxsmstinstanceeditentry; //type: CiscoStpExtensionsMib::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry> > stpxsmstinstanceeditentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry> > stpxsmstinstanceeditentry_;
         
 }; // CiscoStpExtensionsMib::Stpxsmstinstanceedittable
 
@@ -1164,7 +1164,7 @@ class CiscoStpExtensionsMib::Stpxsmstporttable : public Entity
 
         class Stpxsmstportentry; //type: CiscoStpExtensionsMib::Stpxsmstporttable::Stpxsmstportentry
 
-        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstporttable::Stpxsmstportentry> > stpxsmstportentry;
+        std::vector<std::shared_ptr<CISCO_STP_EXTENSIONS_MIB::CiscoStpExtensionsMib::Stpxsmstporttable::Stpxsmstportentry> > stpxsmstportentry_;
         
 }; // CiscoStpExtensionsMib::Stpxsmstporttable
 
@@ -1209,7 +1209,7 @@ class CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreetypeEnum :
 class CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostmodeEnum : public Enum
 {
     public:
-        static const Enum::YLeaf short;
+        static const Enum::YLeaf short_;
         static const Enum::YLeaf long_;
 
 };
@@ -1217,7 +1217,7 @@ class CiscoStpExtensionsMib::Stpxspanningtreeobjects::Stpxspanningtreepathcostmo
 class CiscoStpExtensionsMib::Stpxspanningtreeobjects::StpxspanningtreepathcostopermodeEnum : public Enum
 {
     public:
-        static const Enum::YLeaf short;
+        static const Enum::YLeaf short_;
         static const Enum::YLeaf long_;
 
 };

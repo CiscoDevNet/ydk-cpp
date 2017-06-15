@@ -33,10 +33,10 @@ class EtherWis : public Entity
         class Etherwispathcurrenttable; //type: EtherWis::Etherwispathcurrenttable
         class Etherwisfarendpathcurrenttable; //type: EtherWis::Etherwisfarendpathcurrenttable
 
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable> etherwisdevicetable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable> etherwispathcurrenttable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable> etherwissectioncurrenttable;
+        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable> etherwisdevicetable_;
+        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable_;
+        std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable> etherwispathcurrenttable_;
+        std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable> etherwissectioncurrenttable_;
         
 }; // EtherWis
 
@@ -57,7 +57,7 @@ class EtherWis::Etherwisdevicetable : public Entity
 
         class Etherwisdeviceentry; //type: EtherWis::Etherwisdevicetable::Etherwisdeviceentry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable::Etherwisdeviceentry> > etherwisdeviceentry;
+        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable::Etherwisdeviceentry> > etherwisdeviceentry_;
         
 }; // EtherWis::Etherwisdevicetable
 
@@ -103,7 +103,7 @@ class EtherWis::Etherwissectioncurrenttable : public Entity
 
         class Etherwissectioncurrententry; //type: EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry;
+        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry_;
         
 }; // EtherWis::Etherwissectioncurrenttable
 
@@ -146,7 +146,7 @@ class EtherWis::Etherwispathcurrenttable : public Entity
 
         class Etherwispathcurrententry; //type: EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry> > etherwispathcurrententry;
+        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry> > etherwispathcurrententry_;
         
 }; // EtherWis::Etherwispathcurrenttable
 
@@ -190,7 +190,7 @@ class EtherWis::Etherwisfarendpathcurrenttable : public Entity
 
         class Etherwisfarendpathcurrententry; //type: EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry;
+        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry_;
         
 }; // EtherWis::Etherwisfarendpathcurrenttable
 

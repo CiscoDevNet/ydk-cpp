@@ -35,11 +35,11 @@ class MplsL3VpnStdMib : public Entity
         class Mplsl3Vpnvrfrttable; //type: MplsL3VpnStdMib::Mplsl3Vpnvrfrttable
         class Mplsl3Vpnvrfrtetable; //type: MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable
 
-        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnifconftable> mplsl3vpnifconftable;
-        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnscalars> mplsl3vpnscalars;
-        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable> mplsl3vpnvrfrtetable;
-        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrttable> mplsl3vpnvrfrttable;
-        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrftable> mplsl3vpnvrftable;
+        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnifconftable> mplsl3vpnifconftable_;
+        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnscalars> mplsl3vpnscalars_;
+        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable> mplsl3vpnvrfrtetable_;
+        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrttable> mplsl3vpnvrfrttable_;
+        std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrftable> mplsl3vpnvrftable_;
         
 }; // MplsL3VpnStdMib
 
@@ -85,7 +85,7 @@ class MplsL3VpnStdMib::Mplsl3Vpnifconftable : public Entity
 
         class Mplsl3Vpnifconfentry; //type: MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry
 
-        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry> > mplsl3vpnifconfentry;
+        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnifconftable::Mplsl3Vpnifconfentry> > mplsl3vpnifconfentry_;
         
 }; // MplsL3VpnStdMib::Mplsl3Vpnifconftable
 
@@ -132,7 +132,7 @@ class MplsL3VpnStdMib::Mplsl3Vpnvrftable : public Entity
 
         class Mplsl3Vpnvrfentry; //type: MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry
 
-        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry> > mplsl3vpnvrfentry;
+        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrftable::Mplsl3Vpnvrfentry> > mplsl3vpnvrfentry_;
         
 }; // MplsL3VpnStdMib::Mplsl3Vpnvrftable
 
@@ -195,7 +195,7 @@ class MplsL3VpnStdMib::Mplsl3Vpnvrfrttable : public Entity
 
         class Mplsl3Vpnvrfrtentry; //type: MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry
 
-        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry> > mplsl3vpnvrfrtentry;
+        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrttable::Mplsl3Vpnvrfrtentry> > mplsl3vpnvrfrtentry_;
         
 }; // MplsL3VpnStdMib::Mplsl3Vpnvrfrttable
 
@@ -242,7 +242,7 @@ class MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable : public Entity
 
         class Mplsl3Vpnvrfrteentry; //type: MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry
 
-        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry> > mplsl3vpnvrfrteentry;
+        std::vector<std::shared_ptr<MPLS_L3VPN_STD_MIB::MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable::Mplsl3Vpnvrfrteentry> > mplsl3vpnvrfrteentry_;
         
 }; // MplsL3VpnStdMib::Mplsl3Vpnvrfrtetable
 

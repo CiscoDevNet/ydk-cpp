@@ -11,72 +11,72 @@ namespace CISCO_IETF_ISIS_MIB {
 
 CiscoIetfIsisMib::CiscoIetfIsisMib()
     :
-    ciiareaaddrtable(std::make_shared<CiscoIetfIsisMib::Ciiareaaddrtable>())
-	,ciicirc(std::make_shared<CiscoIetfIsisMib::Ciicirc>())
-	,ciicircleveltable(std::make_shared<CiscoIetfIsisMib::Ciicircleveltable>())
-	,ciicirctable(std::make_shared<CiscoIetfIsisMib::Ciicirctable>())
-	,ciicircuitcountertable(std::make_shared<CiscoIetfIsisMib::Ciicircuitcountertable>())
-	,ciiipratable(std::make_shared<CiscoIetfIsisMib::Ciiipratable>())
-	,ciiisadjareaaddrtable(std::make_shared<CiscoIetfIsisMib::Ciiisadjareaaddrtable>())
-	,ciiisadjipaddrtable(std::make_shared<CiscoIetfIsisMib::Ciiisadjipaddrtable>())
-	,ciiisadjprotsupptable(std::make_shared<CiscoIetfIsisMib::Ciiisadjprotsupptable>())
-	,ciiisadjtable(std::make_shared<CiscoIetfIsisMib::Ciiisadjtable>())
-	,ciilspsummarytable(std::make_shared<CiscoIetfIsisMib::Ciilspsummarytable>())
-	,ciilsptlvtable(std::make_shared<CiscoIetfIsisMib::Ciilsptlvtable>())
-	,ciimanareaaddrtable(std::make_shared<CiscoIetfIsisMib::Ciimanareaaddrtable>())
-	,ciipacketcountertable(std::make_shared<CiscoIetfIsisMib::Ciipacketcountertable>())
-	,ciiratable(std::make_shared<CiscoIetfIsisMib::Ciiratable>())
-	,ciiredistributeaddrtable(std::make_shared<CiscoIetfIsisMib::Ciiredistributeaddrtable>())
-	,ciiroutertable(std::make_shared<CiscoIetfIsisMib::Ciiroutertable>())
-	,ciisummaddrtable(std::make_shared<CiscoIetfIsisMib::Ciisummaddrtable>())
-	,ciisysleveltable(std::make_shared<CiscoIetfIsisMib::Ciisysleveltable>())
-	,ciisysobject(std::make_shared<CiscoIetfIsisMib::Ciisysobject>())
-	,ciisysprotsupptable(std::make_shared<CiscoIetfIsisMib::Ciisysprotsupptable>())
-	,ciisystemcountertable(std::make_shared<CiscoIetfIsisMib::Ciisystemcountertable>())
+    ciiareaaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciiareaaddrtable>())
+	,ciicirc_(std::make_shared<CiscoIetfIsisMib::Ciicirc>())
+	,ciicircleveltable_(std::make_shared<CiscoIetfIsisMib::Ciicircleveltable>())
+	,ciicirctable_(std::make_shared<CiscoIetfIsisMib::Ciicirctable>())
+	,ciicircuitcountertable_(std::make_shared<CiscoIetfIsisMib::Ciicircuitcountertable>())
+	,ciiipratable_(std::make_shared<CiscoIetfIsisMib::Ciiipratable>())
+	,ciiisadjareaaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciiisadjareaaddrtable>())
+	,ciiisadjipaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciiisadjipaddrtable>())
+	,ciiisadjprotsupptable_(std::make_shared<CiscoIetfIsisMib::Ciiisadjprotsupptable>())
+	,ciiisadjtable_(std::make_shared<CiscoIetfIsisMib::Ciiisadjtable>())
+	,ciilspsummarytable_(std::make_shared<CiscoIetfIsisMib::Ciilspsummarytable>())
+	,ciilsptlvtable_(std::make_shared<CiscoIetfIsisMib::Ciilsptlvtable>())
+	,ciimanareaaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciimanareaaddrtable>())
+	,ciipacketcountertable_(std::make_shared<CiscoIetfIsisMib::Ciipacketcountertable>())
+	,ciiratable_(std::make_shared<CiscoIetfIsisMib::Ciiratable>())
+	,ciiredistributeaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciiredistributeaddrtable>())
+	,ciiroutertable_(std::make_shared<CiscoIetfIsisMib::Ciiroutertable>())
+	,ciisummaddrtable_(std::make_shared<CiscoIetfIsisMib::Ciisummaddrtable>())
+	,ciisysleveltable_(std::make_shared<CiscoIetfIsisMib::Ciisysleveltable>())
+	,ciisysobject_(std::make_shared<CiscoIetfIsisMib::Ciisysobject>())
+	,ciisysprotsupptable_(std::make_shared<CiscoIetfIsisMib::Ciisysprotsupptable>())
+	,ciisystemcountertable_(std::make_shared<CiscoIetfIsisMib::Ciisystemcountertable>())
 {
-    ciiareaaddrtable->parent = this;
+    ciiareaaddrtable_->parent = this;
 
-    ciicirc->parent = this;
+    ciicirc_->parent = this;
 
-    ciicircleveltable->parent = this;
+    ciicircleveltable_->parent = this;
 
-    ciicirctable->parent = this;
+    ciicirctable_->parent = this;
 
-    ciicircuitcountertable->parent = this;
+    ciicircuitcountertable_->parent = this;
 
-    ciiipratable->parent = this;
+    ciiipratable_->parent = this;
 
-    ciiisadjareaaddrtable->parent = this;
+    ciiisadjareaaddrtable_->parent = this;
 
-    ciiisadjipaddrtable->parent = this;
+    ciiisadjipaddrtable_->parent = this;
 
-    ciiisadjprotsupptable->parent = this;
+    ciiisadjprotsupptable_->parent = this;
 
-    ciiisadjtable->parent = this;
+    ciiisadjtable_->parent = this;
 
-    ciilspsummarytable->parent = this;
+    ciilspsummarytable_->parent = this;
 
-    ciilsptlvtable->parent = this;
+    ciilsptlvtable_->parent = this;
 
-    ciimanareaaddrtable->parent = this;
+    ciimanareaaddrtable_->parent = this;
 
-    ciipacketcountertable->parent = this;
+    ciipacketcountertable_->parent = this;
 
-    ciiratable->parent = this;
+    ciiratable_->parent = this;
 
-    ciiredistributeaddrtable->parent = this;
+    ciiredistributeaddrtable_->parent = this;
 
-    ciiroutertable->parent = this;
+    ciiroutertable_->parent = this;
 
-    ciisummaddrtable->parent = this;
+    ciisummaddrtable_->parent = this;
 
-    ciisysleveltable->parent = this;
+    ciisysleveltable_->parent = this;
 
-    ciisysobject->parent = this;
+    ciisysobject_->parent = this;
 
-    ciisysprotsupptable->parent = this;
+    ciisysprotsupptable_->parent = this;
 
-    ciisystemcountertable->parent = this;
+    ciisystemcountertable_->parent = this;
 
     yang_name = "CISCO-IETF-ISIS-MIB"; yang_parent_name = "CISCO-IETF-ISIS-MIB";
 }
@@ -87,55 +87,55 @@ CiscoIetfIsisMib::~CiscoIetfIsisMib()
 
 bool CiscoIetfIsisMib::has_data() const
 {
-    return (ciiareaaddrtable !=  nullptr && ciiareaaddrtable->has_data())
-	|| (ciicirc !=  nullptr && ciicirc->has_data())
-	|| (ciicircleveltable !=  nullptr && ciicircleveltable->has_data())
-	|| (ciicirctable !=  nullptr && ciicirctable->has_data())
-	|| (ciicircuitcountertable !=  nullptr && ciicircuitcountertable->has_data())
-	|| (ciiipratable !=  nullptr && ciiipratable->has_data())
-	|| (ciiisadjareaaddrtable !=  nullptr && ciiisadjareaaddrtable->has_data())
-	|| (ciiisadjipaddrtable !=  nullptr && ciiisadjipaddrtable->has_data())
-	|| (ciiisadjprotsupptable !=  nullptr && ciiisadjprotsupptable->has_data())
-	|| (ciiisadjtable !=  nullptr && ciiisadjtable->has_data())
-	|| (ciilspsummarytable !=  nullptr && ciilspsummarytable->has_data())
-	|| (ciilsptlvtable !=  nullptr && ciilsptlvtable->has_data())
-	|| (ciimanareaaddrtable !=  nullptr && ciimanareaaddrtable->has_data())
-	|| (ciipacketcountertable !=  nullptr && ciipacketcountertable->has_data())
-	|| (ciiratable !=  nullptr && ciiratable->has_data())
-	|| (ciiredistributeaddrtable !=  nullptr && ciiredistributeaddrtable->has_data())
-	|| (ciiroutertable !=  nullptr && ciiroutertable->has_data())
-	|| (ciisummaddrtable !=  nullptr && ciisummaddrtable->has_data())
-	|| (ciisysleveltable !=  nullptr && ciisysleveltable->has_data())
-	|| (ciisysobject !=  nullptr && ciisysobject->has_data())
-	|| (ciisysprotsupptable !=  nullptr && ciisysprotsupptable->has_data())
-	|| (ciisystemcountertable !=  nullptr && ciisystemcountertable->has_data());
+    return (ciiareaaddrtable_ !=  nullptr && ciiareaaddrtable_->has_data())
+	|| (ciicirc_ !=  nullptr && ciicirc_->has_data())
+	|| (ciicircleveltable_ !=  nullptr && ciicircleveltable_->has_data())
+	|| (ciicirctable_ !=  nullptr && ciicirctable_->has_data())
+	|| (ciicircuitcountertable_ !=  nullptr && ciicircuitcountertable_->has_data())
+	|| (ciiipratable_ !=  nullptr && ciiipratable_->has_data())
+	|| (ciiisadjareaaddrtable_ !=  nullptr && ciiisadjareaaddrtable_->has_data())
+	|| (ciiisadjipaddrtable_ !=  nullptr && ciiisadjipaddrtable_->has_data())
+	|| (ciiisadjprotsupptable_ !=  nullptr && ciiisadjprotsupptable_->has_data())
+	|| (ciiisadjtable_ !=  nullptr && ciiisadjtable_->has_data())
+	|| (ciilspsummarytable_ !=  nullptr && ciilspsummarytable_->has_data())
+	|| (ciilsptlvtable_ !=  nullptr && ciilsptlvtable_->has_data())
+	|| (ciimanareaaddrtable_ !=  nullptr && ciimanareaaddrtable_->has_data())
+	|| (ciipacketcountertable_ !=  nullptr && ciipacketcountertable_->has_data())
+	|| (ciiratable_ !=  nullptr && ciiratable_->has_data())
+	|| (ciiredistributeaddrtable_ !=  nullptr && ciiredistributeaddrtable_->has_data())
+	|| (ciiroutertable_ !=  nullptr && ciiroutertable_->has_data())
+	|| (ciisummaddrtable_ !=  nullptr && ciisummaddrtable_->has_data())
+	|| (ciisysleveltable_ !=  nullptr && ciisysleveltable_->has_data())
+	|| (ciisysobject_ !=  nullptr && ciisysobject_->has_data())
+	|| (ciisysprotsupptable_ !=  nullptr && ciisysprotsupptable_->has_data())
+	|| (ciisystemcountertable_ !=  nullptr && ciisystemcountertable_->has_data());
 }
 
 bool CiscoIetfIsisMib::has_operation() const
 {
     return is_set(operation)
-	|| (ciiareaaddrtable !=  nullptr && ciiareaaddrtable->has_operation())
-	|| (ciicirc !=  nullptr && ciicirc->has_operation())
-	|| (ciicircleveltable !=  nullptr && ciicircleveltable->has_operation())
-	|| (ciicirctable !=  nullptr && ciicirctable->has_operation())
-	|| (ciicircuitcountertable !=  nullptr && ciicircuitcountertable->has_operation())
-	|| (ciiipratable !=  nullptr && ciiipratable->has_operation())
-	|| (ciiisadjareaaddrtable !=  nullptr && ciiisadjareaaddrtable->has_operation())
-	|| (ciiisadjipaddrtable !=  nullptr && ciiisadjipaddrtable->has_operation())
-	|| (ciiisadjprotsupptable !=  nullptr && ciiisadjprotsupptable->has_operation())
-	|| (ciiisadjtable !=  nullptr && ciiisadjtable->has_operation())
-	|| (ciilspsummarytable !=  nullptr && ciilspsummarytable->has_operation())
-	|| (ciilsptlvtable !=  nullptr && ciilsptlvtable->has_operation())
-	|| (ciimanareaaddrtable !=  nullptr && ciimanareaaddrtable->has_operation())
-	|| (ciipacketcountertable !=  nullptr && ciipacketcountertable->has_operation())
-	|| (ciiratable !=  nullptr && ciiratable->has_operation())
-	|| (ciiredistributeaddrtable !=  nullptr && ciiredistributeaddrtable->has_operation())
-	|| (ciiroutertable !=  nullptr && ciiroutertable->has_operation())
-	|| (ciisummaddrtable !=  nullptr && ciisummaddrtable->has_operation())
-	|| (ciisysleveltable !=  nullptr && ciisysleveltable->has_operation())
-	|| (ciisysobject !=  nullptr && ciisysobject->has_operation())
-	|| (ciisysprotsupptable !=  nullptr && ciisysprotsupptable->has_operation())
-	|| (ciisystemcountertable !=  nullptr && ciisystemcountertable->has_operation());
+	|| (ciiareaaddrtable_ !=  nullptr && ciiareaaddrtable_->has_operation())
+	|| (ciicirc_ !=  nullptr && ciicirc_->has_operation())
+	|| (ciicircleveltable_ !=  nullptr && ciicircleveltable_->has_operation())
+	|| (ciicirctable_ !=  nullptr && ciicirctable_->has_operation())
+	|| (ciicircuitcountertable_ !=  nullptr && ciicircuitcountertable_->has_operation())
+	|| (ciiipratable_ !=  nullptr && ciiipratable_->has_operation())
+	|| (ciiisadjareaaddrtable_ !=  nullptr && ciiisadjareaaddrtable_->has_operation())
+	|| (ciiisadjipaddrtable_ !=  nullptr && ciiisadjipaddrtable_->has_operation())
+	|| (ciiisadjprotsupptable_ !=  nullptr && ciiisadjprotsupptable_->has_operation())
+	|| (ciiisadjtable_ !=  nullptr && ciiisadjtable_->has_operation())
+	|| (ciilspsummarytable_ !=  nullptr && ciilspsummarytable_->has_operation())
+	|| (ciilsptlvtable_ !=  nullptr && ciilsptlvtable_->has_operation())
+	|| (ciimanareaaddrtable_ !=  nullptr && ciimanareaaddrtable_->has_operation())
+	|| (ciipacketcountertable_ !=  nullptr && ciipacketcountertable_->has_operation())
+	|| (ciiratable_ !=  nullptr && ciiratable_->has_operation())
+	|| (ciiredistributeaddrtable_ !=  nullptr && ciiredistributeaddrtable_->has_operation())
+	|| (ciiroutertable_ !=  nullptr && ciiroutertable_->has_operation())
+	|| (ciisummaddrtable_ !=  nullptr && ciisummaddrtable_->has_operation())
+	|| (ciisysleveltable_ !=  nullptr && ciisysleveltable_->has_operation())
+	|| (ciisysobject_ !=  nullptr && ciisysobject_->has_operation())
+	|| (ciisysprotsupptable_ !=  nullptr && ciisysprotsupptable_->has_operation())
+	|| (ciisystemcountertable_ !=  nullptr && ciisystemcountertable_->has_operation());
 }
 
 std::string CiscoIetfIsisMib::get_segment_path() const
@@ -169,200 +169,200 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "ciiAreaAddrTable")
     {
-        if(ciiareaaddrtable == nullptr)
+        if(ciiareaaddrtable_ == nullptr)
         {
-            ciiareaaddrtable = std::make_shared<CiscoIetfIsisMib::Ciiareaaddrtable>();
+            ciiareaaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciiareaaddrtable>();
         }
-        return ciiareaaddrtable;
+        return ciiareaaddrtable_;
     }
 
     if(child_yang_name == "ciiCirc")
     {
-        if(ciicirc == nullptr)
+        if(ciicirc_ == nullptr)
         {
-            ciicirc = std::make_shared<CiscoIetfIsisMib::Ciicirc>();
+            ciicirc_ = std::make_shared<CiscoIetfIsisMib::Ciicirc>();
         }
-        return ciicirc;
+        return ciicirc_;
     }
 
     if(child_yang_name == "ciiCircLevelTable")
     {
-        if(ciicircleveltable == nullptr)
+        if(ciicircleveltable_ == nullptr)
         {
-            ciicircleveltable = std::make_shared<CiscoIetfIsisMib::Ciicircleveltable>();
+            ciicircleveltable_ = std::make_shared<CiscoIetfIsisMib::Ciicircleveltable>();
         }
-        return ciicircleveltable;
+        return ciicircleveltable_;
     }
 
     if(child_yang_name == "ciiCircTable")
     {
-        if(ciicirctable == nullptr)
+        if(ciicirctable_ == nullptr)
         {
-            ciicirctable = std::make_shared<CiscoIetfIsisMib::Ciicirctable>();
+            ciicirctable_ = std::make_shared<CiscoIetfIsisMib::Ciicirctable>();
         }
-        return ciicirctable;
+        return ciicirctable_;
     }
 
     if(child_yang_name == "ciiCircuitCounterTable")
     {
-        if(ciicircuitcountertable == nullptr)
+        if(ciicircuitcountertable_ == nullptr)
         {
-            ciicircuitcountertable = std::make_shared<CiscoIetfIsisMib::Ciicircuitcountertable>();
+            ciicircuitcountertable_ = std::make_shared<CiscoIetfIsisMib::Ciicircuitcountertable>();
         }
-        return ciicircuitcountertable;
+        return ciicircuitcountertable_;
     }
 
     if(child_yang_name == "ciiIPRATable")
     {
-        if(ciiipratable == nullptr)
+        if(ciiipratable_ == nullptr)
         {
-            ciiipratable = std::make_shared<CiscoIetfIsisMib::Ciiipratable>();
+            ciiipratable_ = std::make_shared<CiscoIetfIsisMib::Ciiipratable>();
         }
-        return ciiipratable;
+        return ciiipratable_;
     }
 
     if(child_yang_name == "ciiISAdjAreaAddrTable")
     {
-        if(ciiisadjareaaddrtable == nullptr)
+        if(ciiisadjareaaddrtable_ == nullptr)
         {
-            ciiisadjareaaddrtable = std::make_shared<CiscoIetfIsisMib::Ciiisadjareaaddrtable>();
+            ciiisadjareaaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciiisadjareaaddrtable>();
         }
-        return ciiisadjareaaddrtable;
+        return ciiisadjareaaddrtable_;
     }
 
     if(child_yang_name == "ciiISAdjIPAddrTable")
     {
-        if(ciiisadjipaddrtable == nullptr)
+        if(ciiisadjipaddrtable_ == nullptr)
         {
-            ciiisadjipaddrtable = std::make_shared<CiscoIetfIsisMib::Ciiisadjipaddrtable>();
+            ciiisadjipaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciiisadjipaddrtable>();
         }
-        return ciiisadjipaddrtable;
+        return ciiisadjipaddrtable_;
     }
 
     if(child_yang_name == "ciiISAdjProtSuppTable")
     {
-        if(ciiisadjprotsupptable == nullptr)
+        if(ciiisadjprotsupptable_ == nullptr)
         {
-            ciiisadjprotsupptable = std::make_shared<CiscoIetfIsisMib::Ciiisadjprotsupptable>();
+            ciiisadjprotsupptable_ = std::make_shared<CiscoIetfIsisMib::Ciiisadjprotsupptable>();
         }
-        return ciiisadjprotsupptable;
+        return ciiisadjprotsupptable_;
     }
 
     if(child_yang_name == "ciiISAdjTable")
     {
-        if(ciiisadjtable == nullptr)
+        if(ciiisadjtable_ == nullptr)
         {
-            ciiisadjtable = std::make_shared<CiscoIetfIsisMib::Ciiisadjtable>();
+            ciiisadjtable_ = std::make_shared<CiscoIetfIsisMib::Ciiisadjtable>();
         }
-        return ciiisadjtable;
+        return ciiisadjtable_;
     }
 
     if(child_yang_name == "ciiLSPSummaryTable")
     {
-        if(ciilspsummarytable == nullptr)
+        if(ciilspsummarytable_ == nullptr)
         {
-            ciilspsummarytable = std::make_shared<CiscoIetfIsisMib::Ciilspsummarytable>();
+            ciilspsummarytable_ = std::make_shared<CiscoIetfIsisMib::Ciilspsummarytable>();
         }
-        return ciilspsummarytable;
+        return ciilspsummarytable_;
     }
 
     if(child_yang_name == "ciiLSPTLVTable")
     {
-        if(ciilsptlvtable == nullptr)
+        if(ciilsptlvtable_ == nullptr)
         {
-            ciilsptlvtable = std::make_shared<CiscoIetfIsisMib::Ciilsptlvtable>();
+            ciilsptlvtable_ = std::make_shared<CiscoIetfIsisMib::Ciilsptlvtable>();
         }
-        return ciilsptlvtable;
+        return ciilsptlvtable_;
     }
 
     if(child_yang_name == "ciiManAreaAddrTable")
     {
-        if(ciimanareaaddrtable == nullptr)
+        if(ciimanareaaddrtable_ == nullptr)
         {
-            ciimanareaaddrtable = std::make_shared<CiscoIetfIsisMib::Ciimanareaaddrtable>();
+            ciimanareaaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciimanareaaddrtable>();
         }
-        return ciimanareaaddrtable;
+        return ciimanareaaddrtable_;
     }
 
     if(child_yang_name == "ciiPacketCounterTable")
     {
-        if(ciipacketcountertable == nullptr)
+        if(ciipacketcountertable_ == nullptr)
         {
-            ciipacketcountertable = std::make_shared<CiscoIetfIsisMib::Ciipacketcountertable>();
+            ciipacketcountertable_ = std::make_shared<CiscoIetfIsisMib::Ciipacketcountertable>();
         }
-        return ciipacketcountertable;
+        return ciipacketcountertable_;
     }
 
     if(child_yang_name == "ciiRATable")
     {
-        if(ciiratable == nullptr)
+        if(ciiratable_ == nullptr)
         {
-            ciiratable = std::make_shared<CiscoIetfIsisMib::Ciiratable>();
+            ciiratable_ = std::make_shared<CiscoIetfIsisMib::Ciiratable>();
         }
-        return ciiratable;
+        return ciiratable_;
     }
 
     if(child_yang_name == "ciiRedistributeAddrTable")
     {
-        if(ciiredistributeaddrtable == nullptr)
+        if(ciiredistributeaddrtable_ == nullptr)
         {
-            ciiredistributeaddrtable = std::make_shared<CiscoIetfIsisMib::Ciiredistributeaddrtable>();
+            ciiredistributeaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciiredistributeaddrtable>();
         }
-        return ciiredistributeaddrtable;
+        return ciiredistributeaddrtable_;
     }
 
     if(child_yang_name == "ciiRouterTable")
     {
-        if(ciiroutertable == nullptr)
+        if(ciiroutertable_ == nullptr)
         {
-            ciiroutertable = std::make_shared<CiscoIetfIsisMib::Ciiroutertable>();
+            ciiroutertable_ = std::make_shared<CiscoIetfIsisMib::Ciiroutertable>();
         }
-        return ciiroutertable;
+        return ciiroutertable_;
     }
 
     if(child_yang_name == "ciiSummAddrTable")
     {
-        if(ciisummaddrtable == nullptr)
+        if(ciisummaddrtable_ == nullptr)
         {
-            ciisummaddrtable = std::make_shared<CiscoIetfIsisMib::Ciisummaddrtable>();
+            ciisummaddrtable_ = std::make_shared<CiscoIetfIsisMib::Ciisummaddrtable>();
         }
-        return ciisummaddrtable;
+        return ciisummaddrtable_;
     }
 
     if(child_yang_name == "ciiSysLevelTable")
     {
-        if(ciisysleveltable == nullptr)
+        if(ciisysleveltable_ == nullptr)
         {
-            ciisysleveltable = std::make_shared<CiscoIetfIsisMib::Ciisysleveltable>();
+            ciisysleveltable_ = std::make_shared<CiscoIetfIsisMib::Ciisysleveltable>();
         }
-        return ciisysleveltable;
+        return ciisysleveltable_;
     }
 
     if(child_yang_name == "ciiSysObject")
     {
-        if(ciisysobject == nullptr)
+        if(ciisysobject_ == nullptr)
         {
-            ciisysobject = std::make_shared<CiscoIetfIsisMib::Ciisysobject>();
+            ciisysobject_ = std::make_shared<CiscoIetfIsisMib::Ciisysobject>();
         }
-        return ciisysobject;
+        return ciisysobject_;
     }
 
     if(child_yang_name == "ciiSysProtSuppTable")
     {
-        if(ciisysprotsupptable == nullptr)
+        if(ciisysprotsupptable_ == nullptr)
         {
-            ciisysprotsupptable = std::make_shared<CiscoIetfIsisMib::Ciisysprotsupptable>();
+            ciisysprotsupptable_ = std::make_shared<CiscoIetfIsisMib::Ciisysprotsupptable>();
         }
-        return ciisysprotsupptable;
+        return ciisysprotsupptable_;
     }
 
     if(child_yang_name == "ciiSystemCounterTable")
     {
-        if(ciisystemcountertable == nullptr)
+        if(ciisystemcountertable_ == nullptr)
         {
-            ciisystemcountertable = std::make_shared<CiscoIetfIsisMib::Ciisystemcountertable>();
+            ciisystemcountertable_ = std::make_shared<CiscoIetfIsisMib::Ciisystemcountertable>();
         }
-        return ciisystemcountertable;
+        return ciisystemcountertable_;
     }
 
     return nullptr;
@@ -371,114 +371,114 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciiareaaddrtable != nullptr)
+    if(ciiareaaddrtable_ != nullptr)
     {
-        children["ciiAreaAddrTable"] = ciiareaaddrtable;
+        children["ciiAreaAddrTable"] = ciiareaaddrtable_;
     }
 
-    if(ciicirc != nullptr)
+    if(ciicirc_ != nullptr)
     {
-        children["ciiCirc"] = ciicirc;
+        children["ciiCirc"] = ciicirc_;
     }
 
-    if(ciicircleveltable != nullptr)
+    if(ciicircleveltable_ != nullptr)
     {
-        children["ciiCircLevelTable"] = ciicircleveltable;
+        children["ciiCircLevelTable"] = ciicircleveltable_;
     }
 
-    if(ciicirctable != nullptr)
+    if(ciicirctable_ != nullptr)
     {
-        children["ciiCircTable"] = ciicirctable;
+        children["ciiCircTable"] = ciicirctable_;
     }
 
-    if(ciicircuitcountertable != nullptr)
+    if(ciicircuitcountertable_ != nullptr)
     {
-        children["ciiCircuitCounterTable"] = ciicircuitcountertable;
+        children["ciiCircuitCounterTable"] = ciicircuitcountertable_;
     }
 
-    if(ciiipratable != nullptr)
+    if(ciiipratable_ != nullptr)
     {
-        children["ciiIPRATable"] = ciiipratable;
+        children["ciiIPRATable"] = ciiipratable_;
     }
 
-    if(ciiisadjareaaddrtable != nullptr)
+    if(ciiisadjareaaddrtable_ != nullptr)
     {
-        children["ciiISAdjAreaAddrTable"] = ciiisadjareaaddrtable;
+        children["ciiISAdjAreaAddrTable"] = ciiisadjareaaddrtable_;
     }
 
-    if(ciiisadjipaddrtable != nullptr)
+    if(ciiisadjipaddrtable_ != nullptr)
     {
-        children["ciiISAdjIPAddrTable"] = ciiisadjipaddrtable;
+        children["ciiISAdjIPAddrTable"] = ciiisadjipaddrtable_;
     }
 
-    if(ciiisadjprotsupptable != nullptr)
+    if(ciiisadjprotsupptable_ != nullptr)
     {
-        children["ciiISAdjProtSuppTable"] = ciiisadjprotsupptable;
+        children["ciiISAdjProtSuppTable"] = ciiisadjprotsupptable_;
     }
 
-    if(ciiisadjtable != nullptr)
+    if(ciiisadjtable_ != nullptr)
     {
-        children["ciiISAdjTable"] = ciiisadjtable;
+        children["ciiISAdjTable"] = ciiisadjtable_;
     }
 
-    if(ciilspsummarytable != nullptr)
+    if(ciilspsummarytable_ != nullptr)
     {
-        children["ciiLSPSummaryTable"] = ciilspsummarytable;
+        children["ciiLSPSummaryTable"] = ciilspsummarytable_;
     }
 
-    if(ciilsptlvtable != nullptr)
+    if(ciilsptlvtable_ != nullptr)
     {
-        children["ciiLSPTLVTable"] = ciilsptlvtable;
+        children["ciiLSPTLVTable"] = ciilsptlvtable_;
     }
 
-    if(ciimanareaaddrtable != nullptr)
+    if(ciimanareaaddrtable_ != nullptr)
     {
-        children["ciiManAreaAddrTable"] = ciimanareaaddrtable;
+        children["ciiManAreaAddrTable"] = ciimanareaaddrtable_;
     }
 
-    if(ciipacketcountertable != nullptr)
+    if(ciipacketcountertable_ != nullptr)
     {
-        children["ciiPacketCounterTable"] = ciipacketcountertable;
+        children["ciiPacketCounterTable"] = ciipacketcountertable_;
     }
 
-    if(ciiratable != nullptr)
+    if(ciiratable_ != nullptr)
     {
-        children["ciiRATable"] = ciiratable;
+        children["ciiRATable"] = ciiratable_;
     }
 
-    if(ciiredistributeaddrtable != nullptr)
+    if(ciiredistributeaddrtable_ != nullptr)
     {
-        children["ciiRedistributeAddrTable"] = ciiredistributeaddrtable;
+        children["ciiRedistributeAddrTable"] = ciiredistributeaddrtable_;
     }
 
-    if(ciiroutertable != nullptr)
+    if(ciiroutertable_ != nullptr)
     {
-        children["ciiRouterTable"] = ciiroutertable;
+        children["ciiRouterTable"] = ciiroutertable_;
     }
 
-    if(ciisummaddrtable != nullptr)
+    if(ciisummaddrtable_ != nullptr)
     {
-        children["ciiSummAddrTable"] = ciisummaddrtable;
+        children["ciiSummAddrTable"] = ciisummaddrtable_;
     }
 
-    if(ciisysleveltable != nullptr)
+    if(ciisysleveltable_ != nullptr)
     {
-        children["ciiSysLevelTable"] = ciisysleveltable;
+        children["ciiSysLevelTable"] = ciisysleveltable_;
     }
 
-    if(ciisysobject != nullptr)
+    if(ciisysobject_ != nullptr)
     {
-        children["ciiSysObject"] = ciisysobject;
+        children["ciiSysObject"] = ciisysobject_;
     }
 
-    if(ciisysprotsupptable != nullptr)
+    if(ciisysprotsupptable_ != nullptr)
     {
-        children["ciiSysProtSuppTable"] = ciisysprotsupptable;
+        children["ciiSysProtSuppTable"] = ciisysprotsupptable_;
     }
 
-    if(ciisystemcountertable != nullptr)
+    if(ciisystemcountertable_ != nullptr)
     {
-        children["ciiSystemCounterTable"] = ciisystemcountertable;
+        children["ciiSystemCounterTable"] = ciisystemcountertable_;
     }
 
     return children;
@@ -743,9 +743,9 @@ CiscoIetfIsisMib::Ciimanareaaddrtable::~Ciimanareaaddrtable()
 
 bool CiscoIetfIsisMib::Ciimanareaaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciimanareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciimanareaaddrentry_.size(); index++)
     {
-        if(ciimanareaaddrentry[index]->has_data())
+        if(ciimanareaaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -753,9 +753,9 @@ bool CiscoIetfIsisMib::Ciimanareaaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciimanareaaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciimanareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciimanareaaddrentry_.size(); index++)
     {
-        if(ciimanareaaddrentry[index]->has_operation())
+        if(ciimanareaaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -795,7 +795,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciimanareaaddrtable::get_child_by_name
 {
     if(child_yang_name == "ciiManAreaAddrEntry")
     {
-        for(auto const & c : ciimanareaaddrentry)
+        for(auto const & c : ciimanareaaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -805,7 +805,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciimanareaaddrtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciimanareaaddrtable::Ciimanareaaddrentry>();
         c->parent = this;
-        ciimanareaaddrentry.push_back(c);
+        ciimanareaaddrentry_.push_back(c);
         return c;
     }
 
@@ -815,7 +815,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciimanareaaddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciimanareaaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciimanareaaddrentry)
+    for (auto const & c : ciimanareaaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -918,9 +918,9 @@ CiscoIetfIsisMib::Ciiareaaddrtable::~Ciiareaaddrtable()
 
 bool CiscoIetfIsisMib::Ciiareaaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciiareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiareaaddrentry_.size(); index++)
     {
-        if(ciiareaaddrentry[index]->has_data())
+        if(ciiareaaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -928,9 +928,9 @@ bool CiscoIetfIsisMib::Ciiareaaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiareaaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiareaaddrentry_.size(); index++)
     {
-        if(ciiareaaddrentry[index]->has_operation())
+        if(ciiareaaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -970,7 +970,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiareaaddrtable::get_child_by_name(co
 {
     if(child_yang_name == "ciiAreaAddrEntry")
     {
-        for(auto const & c : ciiareaaddrentry)
+        for(auto const & c : ciiareaaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -980,7 +980,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiareaaddrtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiareaaddrtable::Ciiareaaddrentry>();
         c->parent = this;
-        ciiareaaddrentry.push_back(c);
+        ciiareaaddrentry_.push_back(c);
         return c;
     }
 
@@ -990,7 +990,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiareaaddrtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiareaaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiareaaddrentry)
+    for (auto const & c : ciiareaaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1085,9 +1085,9 @@ CiscoIetfIsisMib::Ciisysprotsupptable::~Ciisysprotsupptable()
 
 bool CiscoIetfIsisMib::Ciisysprotsupptable::has_data() const
 {
-    for (std::size_t index=0; index<ciisysprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciisysprotsuppentry_.size(); index++)
     {
-        if(ciisysprotsuppentry[index]->has_data())
+        if(ciisysprotsuppentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1095,9 +1095,9 @@ bool CiscoIetfIsisMib::Ciisysprotsupptable::has_data() const
 
 bool CiscoIetfIsisMib::Ciisysprotsupptable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisysprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciisysprotsuppentry_.size(); index++)
     {
-        if(ciisysprotsuppentry[index]->has_operation())
+        if(ciisysprotsuppentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1137,7 +1137,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysprotsupptable::get_child_by_name
 {
     if(child_yang_name == "ciiSysProtSuppEntry")
     {
-        for(auto const & c : ciisysprotsuppentry)
+        for(auto const & c : ciisysprotsuppentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1147,7 +1147,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysprotsupptable::get_child_by_name
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciisysprotsupptable::Ciisysprotsuppentry>();
         c->parent = this;
-        ciisysprotsuppentry.push_back(c);
+        ciisysprotsuppentry_.push_back(c);
         return c;
     }
 
@@ -1157,7 +1157,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysprotsupptable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciisysprotsupptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciisysprotsuppentry)
+    for (auto const & c : ciisysprotsuppentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1260,9 +1260,9 @@ CiscoIetfIsisMib::Ciisummaddrtable::~Ciisummaddrtable()
 
 bool CiscoIetfIsisMib::Ciisummaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciisummaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciisummaddrentry_.size(); index++)
     {
-        if(ciisummaddrentry[index]->has_data())
+        if(ciisummaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1270,9 +1270,9 @@ bool CiscoIetfIsisMib::Ciisummaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciisummaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisummaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciisummaddrentry_.size(); index++)
     {
-        if(ciisummaddrentry[index]->has_operation())
+        if(ciisummaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1312,7 +1312,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisummaddrtable::get_child_by_name(co
 {
     if(child_yang_name == "ciiSummAddrEntry")
     {
-        for(auto const & c : ciisummaddrentry)
+        for(auto const & c : ciisummaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1322,7 +1322,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisummaddrtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciisummaddrtable::Ciisummaddrentry>();
         c->parent = this;
-        ciisummaddrentry.push_back(c);
+        ciisummaddrentry_.push_back(c);
         return c;
     }
 
@@ -1332,7 +1332,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisummaddrtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciisummaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciisummaddrentry)
+    for (auto const & c : ciisummaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1467,9 +1467,9 @@ CiscoIetfIsisMib::Ciiredistributeaddrtable::~Ciiredistributeaddrtable()
 
 bool CiscoIetfIsisMib::Ciiredistributeaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciiredistributeaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiredistributeaddrentry_.size(); index++)
     {
-        if(ciiredistributeaddrentry[index]->has_data())
+        if(ciiredistributeaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1477,9 +1477,9 @@ bool CiscoIetfIsisMib::Ciiredistributeaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiredistributeaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiredistributeaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiredistributeaddrentry_.size(); index++)
     {
-        if(ciiredistributeaddrentry[index]->has_operation())
+        if(ciiredistributeaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1519,7 +1519,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiredistributeaddrtable::get_child_by
 {
     if(child_yang_name == "ciiRedistributeAddrEntry")
     {
-        for(auto const & c : ciiredistributeaddrentry)
+        for(auto const & c : ciiredistributeaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1529,7 +1529,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiredistributeaddrtable::get_child_by
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiredistributeaddrtable::Ciiredistributeaddrentry>();
         c->parent = this;
-        ciiredistributeaddrentry.push_back(c);
+        ciiredistributeaddrentry_.push_back(c);
         return c;
     }
 
@@ -1539,7 +1539,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiredistributeaddrtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiredistributeaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiredistributeaddrentry)
+    for (auto const & c : ciiredistributeaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1658,9 +1658,9 @@ CiscoIetfIsisMib::Ciiroutertable::~Ciiroutertable()
 
 bool CiscoIetfIsisMib::Ciiroutertable::has_data() const
 {
-    for (std::size_t index=0; index<ciirouterentry.size(); index++)
+    for (std::size_t index=0; index<ciirouterentry_.size(); index++)
     {
-        if(ciirouterentry[index]->has_data())
+        if(ciirouterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1668,9 +1668,9 @@ bool CiscoIetfIsisMib::Ciiroutertable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiroutertable::has_operation() const
 {
-    for (std::size_t index=0; index<ciirouterentry.size(); index++)
+    for (std::size_t index=0; index<ciirouterentry_.size(); index++)
     {
-        if(ciirouterentry[index]->has_operation())
+        if(ciirouterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1710,7 +1710,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiroutertable::get_child_by_name(cons
 {
     if(child_yang_name == "ciiRouterEntry")
     {
-        for(auto const & c : ciirouterentry)
+        for(auto const & c : ciirouterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1720,7 +1720,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiroutertable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiroutertable::Ciirouterentry>();
         c->parent = this;
-        ciirouterentry.push_back(c);
+        ciirouterentry_.push_back(c);
         return c;
     }
 
@@ -1730,7 +1730,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiroutertable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiroutertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciirouterentry)
+    for (auto const & c : ciirouterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1849,9 +1849,9 @@ CiscoIetfIsisMib::Ciisysleveltable::~Ciisysleveltable()
 
 bool CiscoIetfIsisMib::Ciisysleveltable::has_data() const
 {
-    for (std::size_t index=0; index<ciisyslevelentry.size(); index++)
+    for (std::size_t index=0; index<ciisyslevelentry_.size(); index++)
     {
-        if(ciisyslevelentry[index]->has_data())
+        if(ciisyslevelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1859,9 +1859,9 @@ bool CiscoIetfIsisMib::Ciisysleveltable::has_data() const
 
 bool CiscoIetfIsisMib::Ciisysleveltable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisyslevelentry.size(); index++)
+    for (std::size_t index=0; index<ciisyslevelentry_.size(); index++)
     {
-        if(ciisyslevelentry[index]->has_operation())
+        if(ciisyslevelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1901,7 +1901,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysleveltable::get_child_by_name(co
 {
     if(child_yang_name == "ciiSysLevelEntry")
     {
-        for(auto const & c : ciisyslevelentry)
+        for(auto const & c : ciisyslevelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1911,7 +1911,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysleveltable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciisysleveltable::Ciisyslevelentry>();
         c->parent = this;
-        ciisyslevelentry.push_back(c);
+        ciisyslevelentry_.push_back(c);
         return c;
     }
 
@@ -1921,7 +1921,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisysleveltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciisysleveltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciisyslevelentry)
+    for (auto const & c : ciisyslevelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2080,9 +2080,9 @@ CiscoIetfIsisMib::Ciicirctable::~Ciicirctable()
 
 bool CiscoIetfIsisMib::Ciicirctable::has_data() const
 {
-    for (std::size_t index=0; index<ciicircentry.size(); index++)
+    for (std::size_t index=0; index<ciicircentry_.size(); index++)
     {
-        if(ciicircentry[index]->has_data())
+        if(ciicircentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2090,9 +2090,9 @@ bool CiscoIetfIsisMib::Ciicirctable::has_data() const
 
 bool CiscoIetfIsisMib::Ciicirctable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicircentry.size(); index++)
+    for (std::size_t index=0; index<ciicircentry_.size(); index++)
     {
-        if(ciicircentry[index]->has_operation())
+        if(ciicircentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2132,7 +2132,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicirctable::get_child_by_name(const 
 {
     if(child_yang_name == "ciiCircEntry")
     {
-        for(auto const & c : ciicircentry)
+        for(auto const & c : ciicircentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2142,7 +2142,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicirctable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciicirctable::Ciicircentry>();
         c->parent = this;
-        ciicircentry.push_back(c);
+        ciicircentry_.push_back(c);
         return c;
     }
 
@@ -2152,7 +2152,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicirctable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciicirctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciicircentry)
+    for (auto const & c : ciicircentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2359,9 +2359,9 @@ CiscoIetfIsisMib::Ciicircleveltable::~Ciicircleveltable()
 
 bool CiscoIetfIsisMib::Ciicircleveltable::has_data() const
 {
-    for (std::size_t index=0; index<ciicirclevelentry.size(); index++)
+    for (std::size_t index=0; index<ciicirclevelentry_.size(); index++)
     {
-        if(ciicirclevelentry[index]->has_data())
+        if(ciicirclevelentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2369,9 +2369,9 @@ bool CiscoIetfIsisMib::Ciicircleveltable::has_data() const
 
 bool CiscoIetfIsisMib::Ciicircleveltable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicirclevelentry.size(); index++)
+    for (std::size_t index=0; index<ciicirclevelentry_.size(); index++)
     {
-        if(ciicirclevelentry[index]->has_operation())
+        if(ciicirclevelentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2411,7 +2411,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircleveltable::get_child_by_name(c
 {
     if(child_yang_name == "ciiCircLevelEntry")
     {
-        for(auto const & c : ciicirclevelentry)
+        for(auto const & c : ciicirclevelentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2421,7 +2421,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircleveltable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciicircleveltable::Ciicirclevelentry>();
         c->parent = this;
-        ciicirclevelentry.push_back(c);
+        ciicirclevelentry_.push_back(c);
         return c;
     }
 
@@ -2431,7 +2431,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircleveltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciicircleveltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciicirclevelentry)
+    for (auto const & c : ciicirclevelentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2638,9 +2638,9 @@ CiscoIetfIsisMib::Ciisystemcountertable::~Ciisystemcountertable()
 
 bool CiscoIetfIsisMib::Ciisystemcountertable::has_data() const
 {
-    for (std::size_t index=0; index<ciisystemcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciisystemcounterentry_.size(); index++)
     {
-        if(ciisystemcounterentry[index]->has_data())
+        if(ciisystemcounterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2648,9 +2648,9 @@ bool CiscoIetfIsisMib::Ciisystemcountertable::has_data() const
 
 bool CiscoIetfIsisMib::Ciisystemcountertable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisystemcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciisystemcounterentry_.size(); index++)
     {
-        if(ciisystemcounterentry[index]->has_operation())
+        if(ciisystemcounterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2690,7 +2690,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisystemcountertable::get_child_by_na
 {
     if(child_yang_name == "ciiSystemCounterEntry")
     {
-        for(auto const & c : ciisystemcounterentry)
+        for(auto const & c : ciisystemcounterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2700,7 +2700,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisystemcountertable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciisystemcountertable::Ciisystemcounterentry>();
         c->parent = this;
-        ciisystemcounterentry.push_back(c);
+        ciisystemcounterentry_.push_back(c);
         return c;
     }
 
@@ -2710,7 +2710,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciisystemcountertable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciisystemcountertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciisystemcounterentry)
+    for (auto const & c : ciisystemcounterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2901,9 +2901,9 @@ CiscoIetfIsisMib::Ciicircuitcountertable::~Ciicircuitcountertable()
 
 bool CiscoIetfIsisMib::Ciicircuitcountertable::has_data() const
 {
-    for (std::size_t index=0; index<ciicircuitcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciicircuitcounterentry_.size(); index++)
     {
-        if(ciicircuitcounterentry[index]->has_data())
+        if(ciicircuitcounterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2911,9 +2911,9 @@ bool CiscoIetfIsisMib::Ciicircuitcountertable::has_data() const
 
 bool CiscoIetfIsisMib::Ciicircuitcountertable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicircuitcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciicircuitcounterentry_.size(); index++)
     {
-        if(ciicircuitcounterentry[index]->has_operation())
+        if(ciicircuitcounterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2953,7 +2953,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircuitcountertable::get_child_by_n
 {
     if(child_yang_name == "ciiCircuitCounterEntry")
     {
-        for(auto const & c : ciicircuitcounterentry)
+        for(auto const & c : ciicircuitcounterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2963,7 +2963,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircuitcountertable::get_child_by_n
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciicircuitcountertable::Ciicircuitcounterentry>();
         c->parent = this;
-        ciicircuitcounterentry.push_back(c);
+        ciicircuitcounterentry_.push_back(c);
         return c;
     }
 
@@ -2973,7 +2973,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciicircuitcountertable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciicircuitcountertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciicircuitcounterentry)
+    for (auto const & c : ciicircuitcounterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3148,9 +3148,9 @@ CiscoIetfIsisMib::Ciipacketcountertable::~Ciipacketcountertable()
 
 bool CiscoIetfIsisMib::Ciipacketcountertable::has_data() const
 {
-    for (std::size_t index=0; index<ciipacketcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciipacketcounterentry_.size(); index++)
     {
-        if(ciipacketcounterentry[index]->has_data())
+        if(ciipacketcounterentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3158,9 +3158,9 @@ bool CiscoIetfIsisMib::Ciipacketcountertable::has_data() const
 
 bool CiscoIetfIsisMib::Ciipacketcountertable::has_operation() const
 {
-    for (std::size_t index=0; index<ciipacketcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciipacketcounterentry_.size(); index++)
     {
-        if(ciipacketcounterentry[index]->has_operation())
+        if(ciipacketcounterentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3200,7 +3200,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciipacketcountertable::get_child_by_na
 {
     if(child_yang_name == "ciiPacketCounterEntry")
     {
-        for(auto const & c : ciipacketcounterentry)
+        for(auto const & c : ciipacketcounterentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3210,7 +3210,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciipacketcountertable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciipacketcountertable::Ciipacketcounterentry>();
         c->parent = this;
-        ciipacketcounterentry.push_back(c);
+        ciipacketcounterentry_.push_back(c);
         return c;
     }
 
@@ -3220,7 +3220,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciipacketcountertable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciipacketcountertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciipacketcounterentry)
+    for (auto const & c : ciipacketcounterentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3387,9 +3387,9 @@ CiscoIetfIsisMib::Ciiisadjtable::~Ciiisadjtable()
 
 bool CiscoIetfIsisMib::Ciiisadjtable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjentry_.size(); index++)
     {
-        if(ciiisadjentry[index]->has_data())
+        if(ciiisadjentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3397,9 +3397,9 @@ bool CiscoIetfIsisMib::Ciiisadjtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiisadjtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjentry_.size(); index++)
     {
-        if(ciiisadjentry[index]->has_operation())
+        if(ciiisadjentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3439,7 +3439,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjtable::get_child_by_name(const
 {
     if(child_yang_name == "ciiISAdjEntry")
     {
-        for(auto const & c : ciiisadjentry)
+        for(auto const & c : ciiisadjentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3449,7 +3449,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjtable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiisadjtable::Ciiisadjentry>();
         c->parent = this;
-        ciiisadjentry.push_back(c);
+        ciiisadjentry_.push_back(c);
         return c;
     }
 
@@ -3459,7 +3459,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiisadjtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiisadjentry)
+    for (auto const & c : ciiisadjentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3642,9 +3642,9 @@ CiscoIetfIsisMib::Ciiisadjareaaddrtable::~Ciiisadjareaaddrtable()
 
 bool CiscoIetfIsisMib::Ciiisadjareaaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjareaaddrentry_.size(); index++)
     {
-        if(ciiisadjareaaddrentry[index]->has_data())
+        if(ciiisadjareaaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3652,9 +3652,9 @@ bool CiscoIetfIsisMib::Ciiisadjareaaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiisadjareaaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjareaaddrentry_.size(); index++)
     {
-        if(ciiisadjareaaddrentry[index]->has_operation())
+        if(ciiisadjareaaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3694,7 +3694,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjareaaddrtable::get_child_by_na
 {
     if(child_yang_name == "ciiISAdjAreaAddrEntry")
     {
-        for(auto const & c : ciiisadjareaaddrentry)
+        for(auto const & c : ciiisadjareaaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3704,7 +3704,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjareaaddrtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry>();
         c->parent = this;
-        ciiisadjareaaddrentry.push_back(c);
+        ciiisadjareaaddrentry_.push_back(c);
         return c;
     }
 
@@ -3714,7 +3714,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjareaaddrtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiisadjareaaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiisadjareaaddrentry)
+    for (auto const & c : ciiisadjareaaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3833,9 +3833,9 @@ CiscoIetfIsisMib::Ciiisadjipaddrtable::~Ciiisadjipaddrtable()
 
 bool CiscoIetfIsisMib::Ciiisadjipaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjipaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjipaddrentry_.size(); index++)
     {
-        if(ciiisadjipaddrentry[index]->has_data())
+        if(ciiisadjipaddrentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3843,9 +3843,9 @@ bool CiscoIetfIsisMib::Ciiisadjipaddrtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiisadjipaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjipaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjipaddrentry_.size(); index++)
     {
-        if(ciiisadjipaddrentry[index]->has_operation())
+        if(ciiisadjipaddrentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3885,7 +3885,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjipaddrtable::get_child_by_name
 {
     if(child_yang_name == "ciiISAdjIPAddrEntry")
     {
-        for(auto const & c : ciiisadjipaddrentry)
+        for(auto const & c : ciiisadjipaddrentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3895,7 +3895,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjipaddrtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiisadjipaddrtable::Ciiisadjipaddrentry>();
         c->parent = this;
-        ciiisadjipaddrentry.push_back(c);
+        ciiisadjipaddrentry_.push_back(c);
         return c;
     }
 
@@ -3905,7 +3905,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjipaddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiisadjipaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiisadjipaddrentry)
+    for (auto const & c : ciiisadjipaddrentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4032,9 +4032,9 @@ CiscoIetfIsisMib::Ciiisadjprotsupptable::~Ciiisadjprotsupptable()
 
 bool CiscoIetfIsisMib::Ciiisadjprotsupptable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjprotsuppentry_.size(); index++)
     {
-        if(ciiisadjprotsuppentry[index]->has_data())
+        if(ciiisadjprotsuppentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4042,9 +4042,9 @@ bool CiscoIetfIsisMib::Ciiisadjprotsupptable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiisadjprotsupptable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjprotsuppentry_.size(); index++)
     {
-        if(ciiisadjprotsuppentry[index]->has_operation())
+        if(ciiisadjprotsuppentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4084,7 +4084,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjprotsupptable::get_child_by_na
 {
     if(child_yang_name == "ciiISAdjProtSuppEntry")
     {
-        for(auto const & c : ciiisadjprotsuppentry)
+        for(auto const & c : ciiisadjprotsuppentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4094,7 +4094,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjprotsupptable::get_child_by_na
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiisadjprotsupptable::Ciiisadjprotsuppentry>();
         c->parent = this;
-        ciiisadjprotsuppentry.push_back(c);
+        ciiisadjprotsuppentry_.push_back(c);
         return c;
     }
 
@@ -4104,7 +4104,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiisadjprotsupptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiisadjprotsupptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiisadjprotsuppentry)
+    for (auto const & c : ciiisadjprotsuppentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4215,9 +4215,9 @@ CiscoIetfIsisMib::Ciiratable::~Ciiratable()
 
 bool CiscoIetfIsisMib::Ciiratable::has_data() const
 {
-    for (std::size_t index=0; index<ciiraentry.size(); index++)
+    for (std::size_t index=0; index<ciiraentry_.size(); index++)
     {
-        if(ciiraentry[index]->has_data())
+        if(ciiraentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4225,9 +4225,9 @@ bool CiscoIetfIsisMib::Ciiratable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiratable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiraentry.size(); index++)
+    for (std::size_t index=0; index<ciiraentry_.size(); index++)
     {
-        if(ciiraentry[index]->has_operation())
+        if(ciiraentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4267,7 +4267,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiratable::get_child_by_name(const st
 {
     if(child_yang_name == "ciiRAEntry")
     {
-        for(auto const & c : ciiraentry)
+        for(auto const & c : ciiraentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4277,7 +4277,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiratable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiratable::Ciiraentry>();
         c->parent = this;
-        ciiraentry.push_back(c);
+        ciiraentry_.push_back(c);
         return c;
     }
 
@@ -4287,7 +4287,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiratable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiratable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiraentry)
+    for (auto const & c : ciiraentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4470,9 +4470,9 @@ CiscoIetfIsisMib::Ciiipratable::~Ciiipratable()
 
 bool CiscoIetfIsisMib::Ciiipratable::has_data() const
 {
-    for (std::size_t index=0; index<ciiipraentry.size(); index++)
+    for (std::size_t index=0; index<ciiipraentry_.size(); index++)
     {
-        if(ciiipraentry[index]->has_data())
+        if(ciiipraentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4480,9 +4480,9 @@ bool CiscoIetfIsisMib::Ciiipratable::has_data() const
 
 bool CiscoIetfIsisMib::Ciiipratable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiipraentry.size(); index++)
+    for (std::size_t index=0; index<ciiipraentry_.size(); index++)
     {
-        if(ciiipraentry[index]->has_operation())
+        if(ciiipraentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4522,7 +4522,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiipratable::get_child_by_name(const 
 {
     if(child_yang_name == "ciiIPRAEntry")
     {
-        for(auto const & c : ciiipraentry)
+        for(auto const & c : ciiipraentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4532,7 +4532,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiipratable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciiipratable::Ciiipraentry>();
         c->parent = this;
-        ciiipraentry.push_back(c);
+        ciiipraentry_.push_back(c);
         return c;
     }
 
@@ -4542,7 +4542,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciiipratable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciiipratable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciiipraentry)
+    for (auto const & c : ciiipraentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4741,9 +4741,9 @@ CiscoIetfIsisMib::Ciilspsummarytable::~Ciilspsummarytable()
 
 bool CiscoIetfIsisMib::Ciilspsummarytable::has_data() const
 {
-    for (std::size_t index=0; index<ciilspsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ciilspsummaryentry_.size(); index++)
     {
-        if(ciilspsummaryentry[index]->has_data())
+        if(ciilspsummaryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4751,9 +4751,9 @@ bool CiscoIetfIsisMib::Ciilspsummarytable::has_data() const
 
 bool CiscoIetfIsisMib::Ciilspsummarytable::has_operation() const
 {
-    for (std::size_t index=0; index<ciilspsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ciilspsummaryentry_.size(); index++)
     {
-        if(ciilspsummaryentry[index]->has_operation())
+        if(ciilspsummaryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4793,7 +4793,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilspsummarytable::get_child_by_name(
 {
     if(child_yang_name == "ciiLSPSummaryEntry")
     {
-        for(auto const & c : ciilspsummaryentry)
+        for(auto const & c : ciilspsummaryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4803,7 +4803,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilspsummarytable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciilspsummarytable::Ciilspsummaryentry>();
         c->parent = this;
-        ciilspsummaryentry.push_back(c);
+        ciilspsummaryentry_.push_back(c);
         return c;
     }
 
@@ -4813,7 +4813,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilspsummarytable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciilspsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciilspsummaryentry)
+    for (auto const & c : ciilspsummaryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4964,9 +4964,9 @@ CiscoIetfIsisMib::Ciilsptlvtable::~Ciilsptlvtable()
 
 bool CiscoIetfIsisMib::Ciilsptlvtable::has_data() const
 {
-    for (std::size_t index=0; index<ciilsptlventry.size(); index++)
+    for (std::size_t index=0; index<ciilsptlventry_.size(); index++)
     {
-        if(ciilsptlventry[index]->has_data())
+        if(ciilsptlventry_[index]->has_data())
             return true;
     }
     return false;
@@ -4974,9 +4974,9 @@ bool CiscoIetfIsisMib::Ciilsptlvtable::has_data() const
 
 bool CiscoIetfIsisMib::Ciilsptlvtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciilsptlventry.size(); index++)
+    for (std::size_t index=0; index<ciilsptlventry_.size(); index++)
     {
-        if(ciilsptlventry[index]->has_operation())
+        if(ciilsptlventry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5016,7 +5016,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilsptlvtable::get_child_by_name(cons
 {
     if(child_yang_name == "ciiLSPTLVEntry")
     {
-        for(auto const & c : ciilsptlventry)
+        for(auto const & c : ciilsptlventry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5026,7 +5026,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilsptlvtable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoIetfIsisMib::Ciilsptlvtable::Ciilsptlventry>();
         c->parent = this;
-        ciilsptlventry.push_back(c);
+        ciilsptlventry_.push_back(c);
         return c;
     }
 
@@ -5036,7 +5036,7 @@ std::shared_ptr<Entity> CiscoIetfIsisMib::Ciilsptlvtable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfIsisMib::Ciilsptlvtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciilsptlventry)
+    for (auto const & c : ciilsptlventry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -34,10 +34,10 @@ class CiscoContextMappingMib : public Entity
         class Ccontextmappingbridgeinstancetable; //type: CiscoContextMappingMib::Ccontextmappingbridgeinstancetable
         class Ccontextmappinglicensegrouptable; //type: CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable> ccontextmappingbridgedomaintable;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable> ccontextmappingbridgeinstancetable;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable> ccontextmappinglicensegrouptable;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable> ccontextmappingtable;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable> ccontextmappingbridgedomaintable_;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable> ccontextmappingbridgeinstancetable_;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable> ccontextmappinglicensegrouptable_;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable> ccontextmappingtable_;
         
 }; // CiscoContextMappingMib
 
@@ -58,7 +58,7 @@ class CiscoContextMappingMib::Ccontextmappingtable : public Entity
 
         class Ccontextmappingentry; //type: CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry> > ccontextmappingentry;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry> > ccontextmappingentry_;
         
 }; // CiscoContextMappingMib::Ccontextmappingtable
 
@@ -103,7 +103,7 @@ class CiscoContextMappingMib::Ccontextmappingbridgedomaintable : public Entity
 
         class Ccontextmappingbridgedomainentry; //type: CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry> > ccontextmappingbridgedomainentry;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry> > ccontextmappingbridgedomainentry_;
         
 }; // CiscoContextMappingMib::Ccontextmappingbridgedomaintable
 
@@ -147,7 +147,7 @@ class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable : public Entity
 
         class Ccontextmappingbridgeinstanceentry; //type: CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry> > ccontextmappingbridgeinstanceentry;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry> > ccontextmappingbridgeinstanceentry_;
         
 }; // CiscoContextMappingMib::Ccontextmappingbridgeinstancetable
 
@@ -191,7 +191,7 @@ class CiscoContextMappingMib::Ccontextmappinglicensegrouptable : public Entity
 
         class Ccontextmappinglicensegroupentry; //type: CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry> > ccontextmappinglicensegroupentry;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry> > ccontextmappinglicensegroupentry_;
         
 }; // CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 

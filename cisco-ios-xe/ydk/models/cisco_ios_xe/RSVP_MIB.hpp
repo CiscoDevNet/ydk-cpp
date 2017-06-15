@@ -38,14 +38,14 @@ class RsvpMib : public Entity
         class Rsvpiftable; //type: RsvpMib::Rsvpiftable
         class Rsvpnbrtable; //type: RsvpMib::Rsvpnbrtable
 
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpgenobjects> rsvpgenobjects;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpiftable> rsvpiftable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpnbrtable> rsvpnbrtable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvfwdtable> rsvpresvfwdtable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvtable> rsvpresvtable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsenderoutinterfacetable> rsvpsenderoutinterfacetable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsendertable> rsvpsendertable;
-        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsessiontable> rsvpsessiontable;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpgenobjects> rsvpgenobjects_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpiftable> rsvpiftable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpnbrtable> rsvpnbrtable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvfwdtable> rsvpresvfwdtable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvtable> rsvpresvtable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsenderoutinterfacetable> rsvpsenderoutinterfacetable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsendertable> rsvpsendertable_;
+        std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsessiontable> rsvpsessiontable_;
         
 }; // RsvpMib
 
@@ -89,7 +89,7 @@ class RsvpMib::Rsvpsessiontable : public Entity
 
         class Rsvpsessionentry; //type: RsvpMib::Rsvpsessiontable::Rsvpsessionentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsessiontable::Rsvpsessionentry> > rsvpsessionentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsessiontable::Rsvpsessionentry> > rsvpsessionentry_;
         
 }; // RsvpMib::Rsvpsessiontable
 
@@ -137,7 +137,7 @@ class RsvpMib::Rsvpsendertable : public Entity
 
         class Rsvpsenderentry; //type: RsvpMib::Rsvpsendertable::Rsvpsenderentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsendertable::Rsvpsenderentry> > rsvpsenderentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsendertable::Rsvpsenderentry> > rsvpsenderentry_;
         
 }; // RsvpMib::Rsvpsendertable
 
@@ -223,7 +223,7 @@ class RsvpMib::Rsvpsenderoutinterfacetable : public Entity
 
         class Rsvpsenderoutinterfaceentry; //type: RsvpMib::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry> > rsvpsenderoutinterfaceentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry> > rsvpsenderoutinterfaceentry_;
         
 }; // RsvpMib::Rsvpsenderoutinterfacetable
 
@@ -269,7 +269,7 @@ class RsvpMib::Rsvpresvtable : public Entity
 
         class Rsvpresventry; //type: RsvpMib::Rsvpresvtable::Rsvpresventry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvtable::Rsvpresventry> > rsvpresventry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvtable::Rsvpresventry> > rsvpresventry_;
         
 }; // RsvpMib::Rsvpresvtable
 
@@ -340,7 +340,7 @@ class RsvpMib::Rsvpresvfwdtable : public Entity
 
         class Rsvpresvfwdentry; //type: RsvpMib::Rsvpresvfwdtable::Rsvpresvfwdentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvfwdtable::Rsvpresvfwdentry> > rsvpresvfwdentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpresvfwdtable::Rsvpresvfwdentry> > rsvpresvfwdentry_;
         
 }; // RsvpMib::Rsvpresvfwdtable
 
@@ -411,7 +411,7 @@ class RsvpMib::Rsvpiftable : public Entity
 
         class Rsvpifentry; //type: RsvpMib::Rsvpiftable::Rsvpifentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpiftable::Rsvpifentry> > rsvpifentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpiftable::Rsvpifentry> > rsvpifentry_;
         
 }; // RsvpMib::Rsvpiftable
 
@@ -463,7 +463,7 @@ class RsvpMib::Rsvpnbrtable : public Entity
 
         class Rsvpnbrentry; //type: RsvpMib::Rsvpnbrtable::Rsvpnbrentry
 
-        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpnbrtable::Rsvpnbrentry> > rsvpnbrentry;
+        std::vector<std::shared_ptr<RSVP_MIB::RsvpMib::Rsvpnbrtable::Rsvpnbrentry> > rsvpnbrentry_;
         
 }; // RsvpMib::Rsvpnbrtable
 

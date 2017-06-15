@@ -11,18 +11,18 @@ namespace CISCO_IPSLA_AUTOMEASURE_MIB {
 
 CiscoIpslaAutomeasureMib::CiscoIpslaAutomeasureMib()
     :
-    cipslaautogroupdesttable(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable>())
-	,cipslaautogroupschedtable(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable>())
-	,cipslaautogrouptable(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogrouptable>())
-	,cipslareacttable(std::make_shared<CiscoIpslaAutomeasureMib::Cipslareacttable>())
+    cipslaautogroupdesttable_(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable>())
+	,cipslaautogroupschedtable_(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable>())
+	,cipslaautogrouptable_(std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogrouptable>())
+	,cipslareacttable_(std::make_shared<CiscoIpslaAutomeasureMib::Cipslareacttable>())
 {
-    cipslaautogroupdesttable->parent = this;
+    cipslaautogroupdesttable_->parent = this;
 
-    cipslaautogroupschedtable->parent = this;
+    cipslaautogroupschedtable_->parent = this;
 
-    cipslaautogrouptable->parent = this;
+    cipslaautogrouptable_->parent = this;
 
-    cipslareacttable->parent = this;
+    cipslareacttable_->parent = this;
 
     yang_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB";
 }
@@ -33,19 +33,19 @@ CiscoIpslaAutomeasureMib::~CiscoIpslaAutomeasureMib()
 
 bool CiscoIpslaAutomeasureMib::has_data() const
 {
-    return (cipslaautogroupdesttable !=  nullptr && cipslaautogroupdesttable->has_data())
-	|| (cipslaautogroupschedtable !=  nullptr && cipslaautogroupschedtable->has_data())
-	|| (cipslaautogrouptable !=  nullptr && cipslaautogrouptable->has_data())
-	|| (cipslareacttable !=  nullptr && cipslareacttable->has_data());
+    return (cipslaautogroupdesttable_ !=  nullptr && cipslaautogroupdesttable_->has_data())
+	|| (cipslaautogroupschedtable_ !=  nullptr && cipslaautogroupschedtable_->has_data())
+	|| (cipslaautogrouptable_ !=  nullptr && cipslaautogrouptable_->has_data())
+	|| (cipslareacttable_ !=  nullptr && cipslareacttable_->has_data());
 }
 
 bool CiscoIpslaAutomeasureMib::has_operation() const
 {
     return is_set(operation)
-	|| (cipslaautogroupdesttable !=  nullptr && cipslaautogroupdesttable->has_operation())
-	|| (cipslaautogroupschedtable !=  nullptr && cipslaautogroupschedtable->has_operation())
-	|| (cipslaautogrouptable !=  nullptr && cipslaautogrouptable->has_operation())
-	|| (cipslareacttable !=  nullptr && cipslareacttable->has_operation());
+	|| (cipslaautogroupdesttable_ !=  nullptr && cipslaautogroupdesttable_->has_operation())
+	|| (cipslaautogroupschedtable_ !=  nullptr && cipslaautogroupschedtable_->has_operation())
+	|| (cipslaautogrouptable_ !=  nullptr && cipslaautogrouptable_->has_operation())
+	|| (cipslareacttable_ !=  nullptr && cipslareacttable_->has_operation());
 }
 
 std::string CiscoIpslaAutomeasureMib::get_segment_path() const
@@ -79,38 +79,38 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "cipslaAutoGroupDestTable")
     {
-        if(cipslaautogroupdesttable == nullptr)
+        if(cipslaautogroupdesttable_ == nullptr)
         {
-            cipslaautogroupdesttable = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable>();
+            cipslaautogroupdesttable_ = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable>();
         }
-        return cipslaautogroupdesttable;
+        return cipslaautogroupdesttable_;
     }
 
     if(child_yang_name == "cipslaAutoGroupSchedTable")
     {
-        if(cipslaautogroupschedtable == nullptr)
+        if(cipslaautogroupschedtable_ == nullptr)
         {
-            cipslaautogroupschedtable = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable>();
+            cipslaautogroupschedtable_ = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable>();
         }
-        return cipslaautogroupschedtable;
+        return cipslaautogroupschedtable_;
     }
 
     if(child_yang_name == "cipslaAutoGroupTable")
     {
-        if(cipslaautogrouptable == nullptr)
+        if(cipslaautogrouptable_ == nullptr)
         {
-            cipslaautogrouptable = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogrouptable>();
+            cipslaautogrouptable_ = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogrouptable>();
         }
-        return cipslaautogrouptable;
+        return cipslaautogrouptable_;
     }
 
     if(child_yang_name == "cipslaReactTable")
     {
-        if(cipslareacttable == nullptr)
+        if(cipslareacttable_ == nullptr)
         {
-            cipslareacttable = std::make_shared<CiscoIpslaAutomeasureMib::Cipslareacttable>();
+            cipslareacttable_ = std::make_shared<CiscoIpslaAutomeasureMib::Cipslareacttable>();
         }
-        return cipslareacttable;
+        return cipslareacttable_;
     }
 
     return nullptr;
@@ -119,24 +119,24 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaAutomeasureMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cipslaautogroupdesttable != nullptr)
+    if(cipslaautogroupdesttable_ != nullptr)
     {
-        children["cipslaAutoGroupDestTable"] = cipslaautogroupdesttable;
+        children["cipslaAutoGroupDestTable"] = cipslaautogroupdesttable_;
     }
 
-    if(cipslaautogroupschedtable != nullptr)
+    if(cipslaautogroupschedtable_ != nullptr)
     {
-        children["cipslaAutoGroupSchedTable"] = cipslaautogroupschedtable;
+        children["cipslaAutoGroupSchedTable"] = cipslaautogroupschedtable_;
     }
 
-    if(cipslaautogrouptable != nullptr)
+    if(cipslaautogrouptable_ != nullptr)
     {
-        children["cipslaAutoGroupTable"] = cipslaautogrouptable;
+        children["cipslaAutoGroupTable"] = cipslaautogrouptable_;
     }
 
-    if(cipslareacttable != nullptr)
+    if(cipslareacttable_ != nullptr)
     {
-        children["cipslaReactTable"] = cipslareacttable;
+        children["cipslaReactTable"] = cipslareacttable_;
     }
 
     return children;
@@ -177,9 +177,9 @@ CiscoIpslaAutomeasureMib::Cipslaautogrouptable::~Cipslaautogrouptable()
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogrouptable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupentry_.size(); index++)
     {
-        if(cipslaautogroupentry[index]->has_data())
+        if(cipslaautogroupentry_[index]->has_data())
             return true;
     }
     return false;
@@ -187,9 +187,9 @@ bool CiscoIpslaAutomeasureMib::Cipslaautogrouptable::has_data() const
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogrouptable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupentry_.size(); index++)
     {
-        if(cipslaautogroupentry[index]->has_operation())
+        if(cipslaautogroupentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogrouptable::get_chil
 {
     if(child_yang_name == "cipslaAutoGroupEntry")
     {
-        for(auto const & c : cipslaautogroupentry)
+        for(auto const & c : cipslaautogroupentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogrouptable::get_chil
         }
         auto c = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogrouptable::Cipslaautogroupentry>();
         c->parent = this;
-        cipslaautogroupentry.push_back(c);
+        cipslaautogroupentry_.push_back(c);
         return c;
     }
 
@@ -249,7 +249,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogrouptable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaAutomeasureMib::Cipslaautogrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaautogroupentry)
+    for (auto const & c : cipslaautogroupentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -440,9 +440,9 @@ CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::~Cipslaautogroupdesttable()
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupdestentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupdestentry_.size(); index++)
     {
-        if(cipslaautogroupdestentry[index]->has_data())
+        if(cipslaautogroupdestentry_[index]->has_data())
             return true;
     }
     return false;
@@ -450,9 +450,9 @@ bool CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::has_data() const
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupdestentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupdestentry_.size(); index++)
     {
-        if(cipslaautogroupdestentry[index]->has_operation())
+        if(cipslaautogroupdestentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -492,7 +492,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::get_
 {
     if(child_yang_name == "cipslaAutoGroupDestEntry")
     {
-        for(auto const & c : cipslaautogroupdestentry)
+        for(auto const & c : cipslaautogroupdestentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -502,7 +502,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::get_
         }
         auto c = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::Cipslaautogroupdestentry>();
         c->parent = this;
-        cipslaautogroupdestentry.push_back(c);
+        cipslaautogroupdestentry_.push_back(c);
         return c;
     }
 
@@ -512,7 +512,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaAutomeasureMib::Cipslaautogroupdesttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaautogroupdestentry)
+    for (auto const & c : cipslaautogroupdestentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -647,9 +647,9 @@ CiscoIpslaAutomeasureMib::Cipslareacttable::~Cipslareacttable()
 
 bool CiscoIpslaAutomeasureMib::Cipslareacttable::has_data() const
 {
-    for (std::size_t index=0; index<cipslareactentry.size(); index++)
+    for (std::size_t index=0; index<cipslareactentry_.size(); index++)
     {
-        if(cipslareactentry[index]->has_data())
+        if(cipslareactentry_[index]->has_data())
             return true;
     }
     return false;
@@ -657,9 +657,9 @@ bool CiscoIpslaAutomeasureMib::Cipslareacttable::has_data() const
 
 bool CiscoIpslaAutomeasureMib::Cipslareacttable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslareactentry.size(); index++)
+    for (std::size_t index=0; index<cipslareactentry_.size(); index++)
     {
-        if(cipslareactentry[index]->has_operation())
+        if(cipslareactentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -699,7 +699,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslareacttable::get_child_by
 {
     if(child_yang_name == "cipslaReactEntry")
     {
-        for(auto const & c : cipslareactentry)
+        for(auto const & c : cipslareactentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -709,7 +709,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslareacttable::get_child_by
         }
         auto c = std::make_shared<CiscoIpslaAutomeasureMib::Cipslareacttable::Cipslareactentry>();
         c->parent = this;
-        cipslareactentry.push_back(c);
+        cipslareactentry_.push_back(c);
         return c;
     }
 
@@ -719,7 +719,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslareacttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaAutomeasureMib::Cipslareacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslareactentry)
+    for (auto const & c : cipslareactentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -902,9 +902,9 @@ CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::~Cipslaautogroupschedtable(
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupschedentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupschedentry_.size(); index++)
     {
-        if(cipslaautogroupschedentry[index]->has_data())
+        if(cipslaautogroupschedentry_[index]->has_data())
             return true;
     }
     return false;
@@ -912,9 +912,9 @@ bool CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::has_data() const
 
 bool CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupschedentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupschedentry_.size(); index++)
     {
-        if(cipslaautogroupschedentry[index]->has_operation())
+        if(cipslaautogroupschedentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -954,7 +954,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::get
 {
     if(child_yang_name == "cipslaAutoGroupSchedEntry")
     {
-        for(auto const & c : cipslaautogroupschedentry)
+        for(auto const & c : cipslaautogroupschedentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -964,7 +964,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::get
         }
         auto c = std::make_shared<CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::Cipslaautogroupschedentry>();
         c->parent = this;
-        cipslaautogroupschedentry.push_back(c);
+        cipslaautogroupschedentry_.push_back(c);
         return c;
     }
 
@@ -974,7 +974,7 @@ std::shared_ptr<Entity> CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaAutomeasureMib::Cipslaautogroupschedtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaautogroupschedentry)
+    for (auto const & c : cipslaautogroupschedentry_)
     {
         children[c->get_segment_path()] = c;
     }

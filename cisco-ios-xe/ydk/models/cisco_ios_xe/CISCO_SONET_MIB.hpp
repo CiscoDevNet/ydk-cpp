@@ -42,19 +42,19 @@ class CiscoSonetMib : public Entity
         class Csstatstable; //type: CiscoSonetMib::Csstatstable
         class Csau4Tug3Configtable; //type: CiscoSonetMib::Csau4Tug3Configtable
 
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfig> csapsconfig;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable> csapsconfigtable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable> csau4tug3configtable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable> csconfigtable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable> cslfarendtotaltable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable> csltotaltable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csnotifications> csnotifications;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable> cspfarendtotaltable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable> csptotaltable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable> csptracetable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable> csstatstable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable> csstotaltable;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable> csstracetable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfig> csapsconfig_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable> csapsconfigtable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable> csau4tug3configtable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable> csconfigtable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable> cslfarendtotaltable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable> csltotaltable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csnotifications> csnotifications_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable> cspfarendtotaltable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable> csptotaltable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable> csptracetable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable> csstatstable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable> csstotaltable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable> csstracetable_;
         
 }; // CiscoSonetMib
 
@@ -114,7 +114,7 @@ class CiscoSonetMib::Csconfigtable : public Entity
 
         class Csconfigentry; //type: CiscoSonetMib::Csconfigtable::Csconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable::Csconfigentry> > csconfigentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable::Csconfigentry> > csconfigentry_;
         
 }; // CiscoSonetMib::Csconfigtable
 
@@ -177,7 +177,7 @@ class CiscoSonetMib::Csapsconfigtable : public Entity
 
         class Csapsconfigentry; //type: CiscoSonetMib::Csapsconfigtable::Csapsconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable::Csapsconfigentry> > csapsconfigentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable::Csapsconfigentry> > csapsconfigentry_;
         
 }; // CiscoSonetMib::Csapsconfigtable
 
@@ -241,7 +241,7 @@ class CiscoSonetMib::Csstotaltable : public Entity
 
         class Csstotalentry; //type: CiscoSonetMib::Csstotaltable::Csstotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable::Csstotalentry> > csstotalentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable::Csstotalentry> > csstotalentry_;
         
 }; // CiscoSonetMib::Csstotaltable
 
@@ -286,7 +286,7 @@ class CiscoSonetMib::Csstracetable : public Entity
 
         class Csstraceentry; //type: CiscoSonetMib::Csstracetable::Csstraceentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable::Csstraceentry> > csstraceentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable::Csstraceentry> > csstraceentry_;
         
 }; // CiscoSonetMib::Csstracetable
 
@@ -331,7 +331,7 @@ class CiscoSonetMib::Csltotaltable : public Entity
 
         class Csltotalentry; //type: CiscoSonetMib::Csltotaltable::Csltotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable::Csltotalentry> > csltotalentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable::Csltotalentry> > csltotalentry_;
         
 }; // CiscoSonetMib::Csltotaltable
 
@@ -376,7 +376,7 @@ class CiscoSonetMib::Cslfarendtotaltable : public Entity
 
         class Cslfarendtotalentry; //type: CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry> > cslfarendtotalentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry> > cslfarendtotalentry_;
         
 }; // CiscoSonetMib::Cslfarendtotaltable
 
@@ -421,7 +421,7 @@ class CiscoSonetMib::Csptotaltable : public Entity
 
         class Csptotalentry; //type: CiscoSonetMib::Csptotaltable::Csptotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable::Csptotalentry> > csptotalentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable::Csptotalentry> > csptotalentry_;
         
 }; // CiscoSonetMib::Csptotaltable
 
@@ -466,7 +466,7 @@ class CiscoSonetMib::Cspfarendtotaltable : public Entity
 
         class Cspfarendtotalentry; //type: CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry> > cspfarendtotalentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry> > cspfarendtotalentry_;
         
 }; // CiscoSonetMib::Cspfarendtotaltable
 
@@ -511,7 +511,7 @@ class CiscoSonetMib::Csptracetable : public Entity
 
         class Csptraceentry; //type: CiscoSonetMib::Csptracetable::Csptraceentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable::Csptraceentry> > csptraceentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable::Csptraceentry> > csptraceentry_;
         
 }; // CiscoSonetMib::Csptracetable
 
@@ -556,7 +556,7 @@ class CiscoSonetMib::Csstatstable : public Entity
 
         class Csstatsentry; //type: CiscoSonetMib::Csstatstable::Csstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable::Csstatsentry> > csstatsentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable::Csstatsentry> > csstatsentry_;
         
 }; // CiscoSonetMib::Csstatstable
 
@@ -603,7 +603,7 @@ class CiscoSonetMib::Csau4Tug3Configtable : public Entity
 
         class Csau4Tug3Configentry; //type: CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry> > csau4tug3configentry;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry> > csau4tug3configentry_;
         
 }; // CiscoSonetMib::Csau4Tug3Configtable
 

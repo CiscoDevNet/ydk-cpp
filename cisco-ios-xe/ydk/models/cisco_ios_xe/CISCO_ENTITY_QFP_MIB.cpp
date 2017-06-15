@@ -11,24 +11,24 @@ namespace CISCO_ENTITY_QFP_MIB {
 
 CiscoEntityQfpMib::CiscoEntityQfpMib()
     :
-    ceqfpmemoryresourcetable(std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>())
-	,ceqfpsystemtable(std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>())
-	,ceqfpthroughputtable(std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>())
-	,ceqfputilizationtable(std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>())
-	,ciscoentityqfp(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>())
-	,ciscoentityqfpnotif(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>())
+    ceqfpmemoryresourcetable_(std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>())
+	,ceqfpsystemtable_(std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>())
+	,ceqfpthroughputtable_(std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>())
+	,ceqfputilizationtable_(std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>())
+	,ciscoentityqfp_(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>())
+	,ciscoentityqfpnotif_(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>())
 {
-    ceqfpmemoryresourcetable->parent = this;
+    ceqfpmemoryresourcetable_->parent = this;
 
-    ceqfpsystemtable->parent = this;
+    ceqfpsystemtable_->parent = this;
 
-    ceqfpthroughputtable->parent = this;
+    ceqfpthroughputtable_->parent = this;
 
-    ceqfputilizationtable->parent = this;
+    ceqfputilizationtable_->parent = this;
 
-    ciscoentityqfp->parent = this;
+    ciscoentityqfp_->parent = this;
 
-    ciscoentityqfpnotif->parent = this;
+    ciscoentityqfpnotif_->parent = this;
 
     yang_name = "CISCO-ENTITY-QFP-MIB"; yang_parent_name = "CISCO-ENTITY-QFP-MIB";
 }
@@ -39,23 +39,23 @@ CiscoEntityQfpMib::~CiscoEntityQfpMib()
 
 bool CiscoEntityQfpMib::has_data() const
 {
-    return (ceqfpmemoryresourcetable !=  nullptr && ceqfpmemoryresourcetable->has_data())
-	|| (ceqfpsystemtable !=  nullptr && ceqfpsystemtable->has_data())
-	|| (ceqfpthroughputtable !=  nullptr && ceqfpthroughputtable->has_data())
-	|| (ceqfputilizationtable !=  nullptr && ceqfputilizationtable->has_data())
-	|| (ciscoentityqfp !=  nullptr && ciscoentityqfp->has_data())
-	|| (ciscoentityqfpnotif !=  nullptr && ciscoentityqfpnotif->has_data());
+    return (ceqfpmemoryresourcetable_ !=  nullptr && ceqfpmemoryresourcetable_->has_data())
+	|| (ceqfpsystemtable_ !=  nullptr && ceqfpsystemtable_->has_data())
+	|| (ceqfpthroughputtable_ !=  nullptr && ceqfpthroughputtable_->has_data())
+	|| (ceqfputilizationtable_ !=  nullptr && ceqfputilizationtable_->has_data())
+	|| (ciscoentityqfp_ !=  nullptr && ciscoentityqfp_->has_data())
+	|| (ciscoentityqfpnotif_ !=  nullptr && ciscoentityqfpnotif_->has_data());
 }
 
 bool CiscoEntityQfpMib::has_operation() const
 {
     return is_set(operation)
-	|| (ceqfpmemoryresourcetable !=  nullptr && ceqfpmemoryresourcetable->has_operation())
-	|| (ceqfpsystemtable !=  nullptr && ceqfpsystemtable->has_operation())
-	|| (ceqfpthroughputtable !=  nullptr && ceqfpthroughputtable->has_operation())
-	|| (ceqfputilizationtable !=  nullptr && ceqfputilizationtable->has_operation())
-	|| (ciscoentityqfp !=  nullptr && ciscoentityqfp->has_operation())
-	|| (ciscoentityqfpnotif !=  nullptr && ciscoentityqfpnotif->has_operation());
+	|| (ceqfpmemoryresourcetable_ !=  nullptr && ceqfpmemoryresourcetable_->has_operation())
+	|| (ceqfpsystemtable_ !=  nullptr && ceqfpsystemtable_->has_operation())
+	|| (ceqfpthroughputtable_ !=  nullptr && ceqfpthroughputtable_->has_operation())
+	|| (ceqfputilizationtable_ !=  nullptr && ceqfputilizationtable_->has_operation())
+	|| (ciscoentityqfp_ !=  nullptr && ciscoentityqfp_->has_operation())
+	|| (ciscoentityqfpnotif_ !=  nullptr && ciscoentityqfpnotif_->has_operation());
 }
 
 std::string CiscoEntityQfpMib::get_segment_path() const
@@ -89,56 +89,56 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "ceqfpMemoryResourceTable")
     {
-        if(ceqfpmemoryresourcetable == nullptr)
+        if(ceqfpmemoryresourcetable_ == nullptr)
         {
-            ceqfpmemoryresourcetable = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>();
+            ceqfpmemoryresourcetable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>();
         }
-        return ceqfpmemoryresourcetable;
+        return ceqfpmemoryresourcetable_;
     }
 
     if(child_yang_name == "ceqfpSystemTable")
     {
-        if(ceqfpsystemtable == nullptr)
+        if(ceqfpsystemtable_ == nullptr)
         {
-            ceqfpsystemtable = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>();
+            ceqfpsystemtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>();
         }
-        return ceqfpsystemtable;
+        return ceqfpsystemtable_;
     }
 
     if(child_yang_name == "ceqfpThroughputTable")
     {
-        if(ceqfpthroughputtable == nullptr)
+        if(ceqfpthroughputtable_ == nullptr)
         {
-            ceqfpthroughputtable = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>();
+            ceqfpthroughputtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>();
         }
-        return ceqfpthroughputtable;
+        return ceqfpthroughputtable_;
     }
 
     if(child_yang_name == "ceqfpUtilizationTable")
     {
-        if(ceqfputilizationtable == nullptr)
+        if(ceqfputilizationtable_ == nullptr)
         {
-            ceqfputilizationtable = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>();
+            ceqfputilizationtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>();
         }
-        return ceqfputilizationtable;
+        return ceqfputilizationtable_;
     }
 
     if(child_yang_name == "ciscoEntityQfp")
     {
-        if(ciscoentityqfp == nullptr)
+        if(ciscoentityqfp_ == nullptr)
         {
-            ciscoentityqfp = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>();
+            ciscoentityqfp_ = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>();
         }
-        return ciscoentityqfp;
+        return ciscoentityqfp_;
     }
 
     if(child_yang_name == "ciscoEntityQfpNotif")
     {
-        if(ciscoentityqfpnotif == nullptr)
+        if(ciscoentityqfpnotif_ == nullptr)
         {
-            ciscoentityqfpnotif = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>();
+            ciscoentityqfpnotif_ = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>();
         }
-        return ciscoentityqfpnotif;
+        return ciscoentityqfpnotif_;
     }
 
     return nullptr;
@@ -147,34 +147,34 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceqfpmemoryresourcetable != nullptr)
+    if(ceqfpmemoryresourcetable_ != nullptr)
     {
-        children["ceqfpMemoryResourceTable"] = ceqfpmemoryresourcetable;
+        children["ceqfpMemoryResourceTable"] = ceqfpmemoryresourcetable_;
     }
 
-    if(ceqfpsystemtable != nullptr)
+    if(ceqfpsystemtable_ != nullptr)
     {
-        children["ceqfpSystemTable"] = ceqfpsystemtable;
+        children["ceqfpSystemTable"] = ceqfpsystemtable_;
     }
 
-    if(ceqfpthroughputtable != nullptr)
+    if(ceqfpthroughputtable_ != nullptr)
     {
-        children["ceqfpThroughputTable"] = ceqfpthroughputtable;
+        children["ceqfpThroughputTable"] = ceqfpthroughputtable_;
     }
 
-    if(ceqfputilizationtable != nullptr)
+    if(ceqfputilizationtable_ != nullptr)
     {
-        children["ceqfpUtilizationTable"] = ceqfputilizationtable;
+        children["ceqfpUtilizationTable"] = ceqfputilizationtable_;
     }
 
-    if(ciscoentityqfp != nullptr)
+    if(ciscoentityqfp_ != nullptr)
     {
-        children["ciscoEntityQfp"] = ciscoentityqfp;
+        children["ciscoEntityQfp"] = ciscoentityqfp_;
     }
 
-    if(ciscoentityqfpnotif != nullptr)
+    if(ciscoentityqfpnotif_ != nullptr)
     {
-        children["ciscoEntityQfpNotif"] = ciscoentityqfpnotif;
+        children["ciscoEntityQfpNotif"] = ciscoentityqfpnotif_;
     }
 
     return children;
@@ -391,9 +391,9 @@ CiscoEntityQfpMib::Ceqfpsystemtable::~Ceqfpsystemtable()
 
 bool CiscoEntityQfpMib::Ceqfpsystemtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpsystementry.size(); index++)
+    for (std::size_t index=0; index<ceqfpsystementry_.size(); index++)
     {
-        if(ceqfpsystementry[index]->has_data())
+        if(ceqfpsystementry_[index]->has_data())
             return true;
     }
     return false;
@@ -401,9 +401,9 @@ bool CiscoEntityQfpMib::Ceqfpsystemtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpsystemtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpsystementry.size(); index++)
+    for (std::size_t index=0; index<ceqfpsystementry_.size(); index++)
     {
-        if(ceqfpsystementry[index]->has_operation())
+        if(ceqfpsystementry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -443,7 +443,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
 {
     if(child_yang_name == "ceqfpSystemEntry")
     {
-        for(auto const & c : ceqfpsystementry)
+        for(auto const & c : ceqfpsystementry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -453,7 +453,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry>();
         c->parent = this;
-        ceqfpsystementry.push_back(c);
+        ceqfpsystementry_.push_back(c);
         return c;
     }
 
@@ -463,7 +463,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpsystementry)
+    for (auto const & c : ceqfpsystementry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -590,9 +590,9 @@ CiscoEntityQfpMib::Ceqfputilizationtable::~Ceqfputilizationtable()
 
 bool CiscoEntityQfpMib::Ceqfputilizationtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfputilizationentry.size(); index++)
+    for (std::size_t index=0; index<ceqfputilizationentry_.size(); index++)
     {
-        if(ceqfputilizationentry[index]->has_data())
+        if(ceqfputilizationentry_[index]->has_data())
             return true;
     }
     return false;
@@ -600,9 +600,9 @@ bool CiscoEntityQfpMib::Ceqfputilizationtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfputilizationtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfputilizationentry.size(); index++)
+    for (std::size_t index=0; index<ceqfputilizationentry_.size(); index++)
     {
-        if(ceqfputilizationentry[index]->has_operation())
+        if(ceqfputilizationentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -642,7 +642,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
 {
     if(child_yang_name == "ceqfpUtilizationEntry")
     {
-        for(auto const & c : ceqfputilizationentry)
+        for(auto const & c : ceqfputilizationentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -652,7 +652,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry>();
         c->parent = this;
-        ceqfputilizationentry.push_back(c);
+        ceqfputilizationentry_.push_back(c);
         return c;
     }
 
@@ -662,7 +662,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfputilizationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfputilizationentry)
+    for (auto const & c : ceqfputilizationentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -869,9 +869,9 @@ CiscoEntityQfpMib::Ceqfpmemoryresourcetable::~Ceqfpmemoryresourcetable()
 
 bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpmemoryresourceentry.size(); index++)
+    for (std::size_t index=0; index<ceqfpmemoryresourceentry_.size(); index++)
     {
-        if(ceqfpmemoryresourceentry[index]->has_data())
+        if(ceqfpmemoryresourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -879,9 +879,9 @@ bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpmemoryresourceentry.size(); index++)
+    for (std::size_t index=0; index<ceqfpmemoryresourceentry_.size(); index++)
     {
-        if(ceqfpmemoryresourceentry[index]->has_operation())
+        if(ceqfpmemoryresourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -921,7 +921,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
 {
     if(child_yang_name == "ceqfpMemoryResourceEntry")
     {
-        for(auto const & c : ceqfpmemoryresourceentry)
+        for(auto const & c : ceqfpmemoryresourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -931,7 +931,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry>();
         c->parent = this;
-        ceqfpmemoryresourceentry.push_back(c);
+        ceqfpmemoryresourceentry_.push_back(c);
         return c;
     }
 
@@ -941,7 +941,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpmemoryresourceentry)
+    for (auto const & c : ceqfpmemoryresourceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1156,9 +1156,9 @@ CiscoEntityQfpMib::Ceqfpthroughputtable::~Ceqfpthroughputtable()
 
 bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpthroughputentry.size(); index++)
+    for (std::size_t index=0; index<ceqfpthroughputentry_.size(); index++)
     {
-        if(ceqfpthroughputentry[index]->has_data())
+        if(ceqfpthroughputentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1166,9 +1166,9 @@ bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpthroughputentry.size(); index++)
+    for (std::size_t index=0; index<ceqfpthroughputentry_.size(); index++)
     {
-        if(ceqfpthroughputentry[index]->has_operation())
+        if(ceqfpthroughputentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1208,7 +1208,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
 {
     if(child_yang_name == "ceqfpThroughputEntry")
     {
-        for(auto const & c : ceqfpthroughputentry)
+        for(auto const & c : ceqfpthroughputentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1218,7 +1218,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry>();
         c->parent = this;
-        ceqfpthroughputentry.push_back(c);
+        ceqfpthroughputentry_.push_back(c);
         return c;
     }
 
@@ -1228,7 +1228,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpthroughputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpthroughputentry)
+    for (auto const & c : ceqfpthroughputentry_)
     {
         children[c->get_segment_path()] = c;
     }

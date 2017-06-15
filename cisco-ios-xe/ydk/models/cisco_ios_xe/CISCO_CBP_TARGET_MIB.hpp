@@ -32,8 +32,8 @@ class CiscoCbpTargetMib : public Entity
         class Ccbpttargetattachcfg; //type: CiscoCbpTargetMib::Ccbpttargetattachcfg
         class Ccbpttargettable; //type: CiscoCbpTargetMib::Ccbpttargettable
 
-        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargetattachcfg> ccbpttargetattachcfg;
-        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable> ccbpttargettable;
+        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargetattachcfg> ccbpttargetattachcfg_;
+        std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable> ccbpttargettable_;
         
 }; // CiscoCbpTargetMib
 
@@ -74,7 +74,7 @@ class CiscoCbpTargetMib::Ccbpttargettable : public Entity
 
         class Ccbpttargetentry; //type: CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry
 
-        std::vector<std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry> > ccbpttargetentry;
+        std::vector<std::shared_ptr<CISCO_CBP_TARGET_MIB::CiscoCbpTargetMib::Ccbpttargettable::Ccbpttargetentry> > ccbpttargetentry_;
         
 }; // CiscoCbpTargetMib::Ccbpttargettable
 

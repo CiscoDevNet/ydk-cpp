@@ -11,12 +11,12 @@ namespace cisco_ia {
 
 SyncFromRpc::SyncFromRpc()
     :
-    input(std::make_shared<SyncFromRpc::Input>())
-	,output(std::make_shared<SyncFromRpc::Output>())
+    input_(std::make_shared<SyncFromRpc::Input>())
+	,output_(std::make_shared<SyncFromRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "sync-from"; yang_parent_name = "cisco-ia";
 }
@@ -27,15 +27,15 @@ SyncFromRpc::~SyncFromRpc()
 
 bool SyncFromRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool SyncFromRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string SyncFromRpc::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> SyncFromRpc::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<SyncFromRpc::Input>();
+            input_ = std::make_shared<SyncFromRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<SyncFromRpc::Output>();
+            output_ = std::make_shared<SyncFromRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> SyncFromRpc::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> SyncFromRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -274,9 +274,9 @@ void SyncFromRpc::Output::set_value(const std::string & value_path, std::string 
 
 SaveConfigRpc::SaveConfigRpc()
     :
-    output(std::make_shared<SaveConfigRpc::Output>())
+    output_(std::make_shared<SaveConfigRpc::Output>())
 {
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "save-config"; yang_parent_name = "cisco-ia";
 }
@@ -287,13 +287,13 @@ SaveConfigRpc::~SaveConfigRpc()
 
 bool SaveConfigRpc::has_data() const
 {
-    return (output !=  nullptr && output->has_data());
+    return (output_ !=  nullptr && output_->has_data());
 }
 
 bool SaveConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| (output !=  nullptr && output->has_operation());
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string SaveConfigRpc::get_segment_path() const
@@ -327,11 +327,11 @@ std::shared_ptr<Entity> SaveConfigRpc::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<SaveConfigRpc::Output>();
+            output_ = std::make_shared<SaveConfigRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -340,9 +340,9 @@ std::shared_ptr<Entity> SaveConfigRpc::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SaveConfigRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -446,9 +446,9 @@ void SaveConfigRpc::Output::set_value(const std::string & value_path, std::strin
 
 CheckpointRpc::CheckpointRpc()
     :
-    output(std::make_shared<CheckpointRpc::Output>())
+    output_(std::make_shared<CheckpointRpc::Output>())
 {
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "checkpoint"; yang_parent_name = "cisco-ia";
 }
@@ -459,13 +459,13 @@ CheckpointRpc::~CheckpointRpc()
 
 bool CheckpointRpc::has_data() const
 {
-    return (output !=  nullptr && output->has_data());
+    return (output_ !=  nullptr && output_->has_data());
 }
 
 bool CheckpointRpc::has_operation() const
 {
     return is_set(operation)
-	|| (output !=  nullptr && output->has_operation());
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string CheckpointRpc::get_segment_path() const
@@ -499,11 +499,11 @@ std::shared_ptr<Entity> CheckpointRpc::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<CheckpointRpc::Output>();
+            output_ = std::make_shared<CheckpointRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -512,9 +512,9 @@ std::shared_ptr<Entity> CheckpointRpc::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CheckpointRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -618,12 +618,12 @@ void CheckpointRpc::Output::set_value(const std::string & value_path, std::strin
 
 RevertRpc::RevertRpc()
     :
-    input(std::make_shared<RevertRpc::Input>())
-	,output(std::make_shared<RevertRpc::Output>())
+    input_(std::make_shared<RevertRpc::Input>())
+	,output_(std::make_shared<RevertRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "revert"; yang_parent_name = "cisco-ia";
 }
@@ -634,15 +634,15 @@ RevertRpc::~RevertRpc()
 
 bool RevertRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool RevertRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string RevertRpc::get_segment_path() const
@@ -676,20 +676,20 @@ std::shared_ptr<Entity> RevertRpc::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<RevertRpc::Input>();
+            input_ = std::make_shared<RevertRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<RevertRpc::Output>();
+            output_ = std::make_shared<RevertRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -698,14 +698,14 @@ std::shared_ptr<Entity> RevertRpc::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> RevertRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -897,12 +897,12 @@ void RevertRpc::Output::set_value(const std::string & value_path, std::string va
 
 RollbackRpc::RollbackRpc()
     :
-    input(std::make_shared<RollbackRpc::Input>())
-	,output(std::make_shared<RollbackRpc::Output>())
+    input_(std::make_shared<RollbackRpc::Input>())
+	,output_(std::make_shared<RollbackRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "rollback"; yang_parent_name = "cisco-ia";
 }
@@ -913,15 +913,15 @@ RollbackRpc::~RollbackRpc()
 
 bool RollbackRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool RollbackRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string RollbackRpc::get_segment_path() const
@@ -955,20 +955,20 @@ std::shared_ptr<Entity> RollbackRpc::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<RollbackRpc::Input>();
+            input_ = std::make_shared<RollbackRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<RollbackRpc::Output>();
+            output_ = std::make_shared<RollbackRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -977,14 +977,14 @@ std::shared_ptr<Entity> RollbackRpc::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> RollbackRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;

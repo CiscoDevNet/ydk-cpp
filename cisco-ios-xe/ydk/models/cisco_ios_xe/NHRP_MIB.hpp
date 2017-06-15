@@ -41,17 +41,17 @@ class NhrpMib : public Entity
         class Nhrpservernhctable; //type: NhrpMib::Nhrpservernhctable
         class Nhrpserverstattable; //type: NhrpMib::Nhrpserverstattable
 
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpcachetable> nhrpcachetable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientnhstable> nhrpclientnhstable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientregistrationtable> nhrpclientregistrationtable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientstattable> nhrpclientstattable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclienttable> nhrpclienttable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpgeneralobjects> nhrpgeneralobjects;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrppurgereqtable> nhrppurgereqtable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservercachetable> nhrpservercachetable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservernhctable> nhrpservernhctable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpserverstattable> nhrpserverstattable;
-        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservertable> nhrpservertable;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpcachetable> nhrpcachetable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientnhstable> nhrpclientnhstable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientregistrationtable> nhrpclientregistrationtable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientstattable> nhrpclientstattable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclienttable> nhrpclienttable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpgeneralobjects> nhrpgeneralobjects_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrppurgereqtable> nhrppurgereqtable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservercachetable> nhrpservercachetable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservernhctable> nhrpservernhctable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpserverstattable> nhrpserverstattable_;
+        std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservertable> nhrpservertable_;
         
 }; // NhrpMib
 
@@ -91,7 +91,7 @@ class NhrpMib::Nhrpcachetable : public Entity
 
         class Nhrpcacheentry; //type: NhrpMib::Nhrpcachetable::Nhrpcacheentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpcachetable::Nhrpcacheentry> > nhrpcacheentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpcachetable::Nhrpcacheentry> > nhrpcacheentry_;
         
 }; // NhrpMib::Nhrpcachetable
 
@@ -150,7 +150,7 @@ class NhrpMib::Nhrppurgereqtable : public Entity
 
         class Nhrppurgereqentry; //type: NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry> > nhrppurgereqentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrppurgereqtable::Nhrppurgereqentry> > nhrppurgereqentry_;
         
 }; // NhrpMib::Nhrppurgereqtable
 
@@ -195,7 +195,7 @@ class NhrpMib::Nhrpclienttable : public Entity
 
         class Nhrpcliententry; //type: NhrpMib::Nhrpclienttable::Nhrpcliententry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclienttable::Nhrpcliententry> > nhrpcliententry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclienttable::Nhrpcliententry> > nhrpcliententry_;
         
 }; // NhrpMib::Nhrpclienttable
 
@@ -249,7 +249,7 @@ class NhrpMib::Nhrpclientregistrationtable : public Entity
 
         class Nhrpclientregistrationentry; //type: NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry> > nhrpclientregistrationentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientregistrationtable::Nhrpclientregistrationentry> > nhrpclientregistrationentry_;
         
 }; // NhrpMib::Nhrpclientregistrationtable
 
@@ -296,7 +296,7 @@ class NhrpMib::Nhrpclientnhstable : public Entity
 
         class Nhrpclientnhsentry; //type: NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry> > nhrpclientnhsentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientnhstable::Nhrpclientnhsentry> > nhrpclientnhsentry_;
         
 }; // NhrpMib::Nhrpclientnhstable
 
@@ -345,7 +345,7 @@ class NhrpMib::Nhrpclientstattable : public Entity
 
         class Nhrpclientstatentry; //type: NhrpMib::Nhrpclientstattable::Nhrpclientstatentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientstattable::Nhrpclientstatentry> > nhrpclientstatentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpclientstattable::Nhrpclientstatentry> > nhrpclientstatentry_;
         
 }; // NhrpMib::Nhrpclientstattable
 
@@ -411,7 +411,7 @@ class NhrpMib::Nhrpservertable : public Entity
 
         class Nhrpserverentry; //type: NhrpMib::Nhrpservertable::Nhrpserverentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservertable::Nhrpserverentry> > nhrpserverentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservertable::Nhrpserverentry> > nhrpserverentry_;
         
 }; // NhrpMib::Nhrpservertable
 
@@ -458,7 +458,7 @@ class NhrpMib::Nhrpservercachetable : public Entity
 
         class Nhrpservercacheentry; //type: NhrpMib::Nhrpservercachetable::Nhrpservercacheentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservercachetable::Nhrpservercacheentry> > nhrpservercacheentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservercachetable::Nhrpservercacheentry> > nhrpservercacheentry_;
         
 }; // NhrpMib::Nhrpservercachetable
 
@@ -506,7 +506,7 @@ class NhrpMib::Nhrpservernhctable : public Entity
 
         class Nhrpservernhcentry; //type: NhrpMib::Nhrpservernhctable::Nhrpservernhcentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservernhctable::Nhrpservernhcentry> > nhrpservernhcentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpservernhctable::Nhrpservernhcentry> > nhrpservernhcentry_;
         
 }; // NhrpMib::Nhrpservernhctable
 
@@ -556,7 +556,7 @@ class NhrpMib::Nhrpserverstattable : public Entity
 
         class Nhrpserverstatentry; //type: NhrpMib::Nhrpserverstattable::Nhrpserverstatentry
 
-        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpserverstattable::Nhrpserverstatentry> > nhrpserverstatentry;
+        std::vector<std::shared_ptr<NHRP_MIB::NhrpMib::Nhrpserverstattable::Nhrpserverstatentry> > nhrpserverstatentry_;
         
 }; // NhrpMib::Nhrpserverstattable
 
@@ -624,7 +624,7 @@ class NhrpMib::Nhrpcachetable::Nhrpcacheentry::NhrpcachetypeEnum : public Enum
 {
     public:
         static const Enum::YLeaf other;
-        static const Enum::YLeaf register;
+        static const Enum::YLeaf register_;
         static const Enum::YLeaf resolveAuthoritative;
         static const Enum::YLeaf resoveNonauthoritative;
         static const Enum::YLeaf transit;

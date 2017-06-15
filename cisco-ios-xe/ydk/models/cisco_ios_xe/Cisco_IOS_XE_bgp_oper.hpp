@@ -31,8 +31,8 @@ class BgpState : public Entity
         class Neighbors; //type: BgpState::Neighbors
         class AddressFamilies; //type: BgpState::AddressFamilies
 
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies> address_families;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors> neighbors;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies> address_families_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors> neighbors_;
         
 }; // BgpState
 
@@ -53,7 +53,7 @@ class BgpState::Neighbors : public Entity
 
         class Neighbor; //type: BgpState::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor> > neighbor;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor> > neighbor_;
         
 }; // BgpState::Neighbors
 
@@ -90,11 +90,11 @@ class BgpState::Neighbors::Neighbor : public Entity
         class Transport; //type: BgpState::Neighbors::Neighbor::Transport
         class PrefixActivity; //type: BgpState::Neighbors::Neighbor::PrefixActivity
 
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters> bgp_neighbor_counters;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::Connection> connection;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers> negotiated_keepalive_timers;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity> prefix_activity;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::Transport> transport;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters> bgp_neighbor_counters_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::Connection> connection_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::NegotiatedKeepaliveTimers> negotiated_keepalive_timers_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity> prefix_activity_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::Transport> transport_;
         
 }; // BgpState::Neighbors::Neighbor
 
@@ -138,8 +138,8 @@ class BgpState::Neighbors::Neighbor::BgpNeighborCounters : public Entity
         class Sent; //type: BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent
         class Received; //type: BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received
 
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received> received;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent> sent;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters::Received> received_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::BgpNeighborCounters::Sent> sent_;
         
 }; // BgpState::Neighbors::Neighbor::BgpNeighborCounters
 
@@ -255,8 +255,8 @@ class BgpState::Neighbors::Neighbor::PrefixActivity : public Entity
         class Sent; //type: BgpState::Neighbors::Neighbor::PrefixActivity::Sent
         class Received; //type: BgpState::Neighbors::Neighbor::PrefixActivity::Received
 
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity::Received> received;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity::Sent> sent;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity::Received> received_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::Neighbors::Neighbor::PrefixActivity::Sent> sent_;
         
 }; // BgpState::Neighbors::Neighbor::PrefixActivity
 
@@ -325,7 +325,7 @@ class BgpState::AddressFamilies : public Entity
 
         class AddressFamily; //type: BgpState::AddressFamilies::AddressFamily
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily> > address_family;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily> > address_family_;
         
 }; // BgpState::AddressFamilies
 
@@ -358,13 +358,13 @@ class BgpState::AddressFamilies::AddressFamily : public Entity
         class Activities; //type: BgpState::AddressFamilies::AddressFamily::Activities
         class BgpNeighborSummaries; //type: BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries
 
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Activities> activities;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::AsPath> as_path;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries> bgp_neighbor_summaries;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::FilterList> filter_list;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Path> path;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Prefixes> prefixes;
-        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::RouteMap> route_map;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Activities> activities_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::AsPath> as_path_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries> bgp_neighbor_summaries_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::FilterList> filter_list_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Path> path_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::Prefixes> prefixes_;
+        std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::RouteMap> route_map_;
         
 }; // BgpState::AddressFamilies::AddressFamily
 
@@ -506,7 +506,7 @@ class BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries : public En
 
         class BgpNeighborSummary; //type: BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary> > bgp_neighbor_summary;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_bgp_oper::BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary> > bgp_neighbor_summary_;
         
 }; // BgpState::AddressFamilies::AddressFamily::BgpNeighborSummaries
 

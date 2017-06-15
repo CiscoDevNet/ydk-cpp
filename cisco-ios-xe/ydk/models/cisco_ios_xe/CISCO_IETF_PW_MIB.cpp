@@ -11,27 +11,27 @@ namespace CISCO_IETF_PW_MIB {
 
 CiscoIetfPwMib::CiscoIetfPwMib()
     :
-    cpwvcidmappingtable(std::make_shared<CiscoIetfPwMib::Cpwvcidmappingtable>())
-	,cpwvcobjects(std::make_shared<CiscoIetfPwMib::Cpwvcobjects>())
-	,cpwvcpeermappingtable(std::make_shared<CiscoIetfPwMib::Cpwvcpeermappingtable>())
-	,cpwvcperfcurrenttable(std::make_shared<CiscoIetfPwMib::Cpwvcperfcurrenttable>())
-	,cpwvcperfintervaltable(std::make_shared<CiscoIetfPwMib::Cpwvcperfintervaltable>())
-	,cpwvcperftotaltable(std::make_shared<CiscoIetfPwMib::Cpwvcperftotaltable>())
-	,cpwvctable(std::make_shared<CiscoIetfPwMib::Cpwvctable>())
+    cpwvcidmappingtable_(std::make_shared<CiscoIetfPwMib::Cpwvcidmappingtable>())
+	,cpwvcobjects_(std::make_shared<CiscoIetfPwMib::Cpwvcobjects>())
+	,cpwvcpeermappingtable_(std::make_shared<CiscoIetfPwMib::Cpwvcpeermappingtable>())
+	,cpwvcperfcurrenttable_(std::make_shared<CiscoIetfPwMib::Cpwvcperfcurrenttable>())
+	,cpwvcperfintervaltable_(std::make_shared<CiscoIetfPwMib::Cpwvcperfintervaltable>())
+	,cpwvcperftotaltable_(std::make_shared<CiscoIetfPwMib::Cpwvcperftotaltable>())
+	,cpwvctable_(std::make_shared<CiscoIetfPwMib::Cpwvctable>())
 {
-    cpwvcidmappingtable->parent = this;
+    cpwvcidmappingtable_->parent = this;
 
-    cpwvcobjects->parent = this;
+    cpwvcobjects_->parent = this;
 
-    cpwvcpeermappingtable->parent = this;
+    cpwvcpeermappingtable_->parent = this;
 
-    cpwvcperfcurrenttable->parent = this;
+    cpwvcperfcurrenttable_->parent = this;
 
-    cpwvcperfintervaltable->parent = this;
+    cpwvcperfintervaltable_->parent = this;
 
-    cpwvcperftotaltable->parent = this;
+    cpwvcperftotaltable_->parent = this;
 
-    cpwvctable->parent = this;
+    cpwvctable_->parent = this;
 
     yang_name = "CISCO-IETF-PW-MIB"; yang_parent_name = "CISCO-IETF-PW-MIB";
 }
@@ -42,25 +42,25 @@ CiscoIetfPwMib::~CiscoIetfPwMib()
 
 bool CiscoIetfPwMib::has_data() const
 {
-    return (cpwvcidmappingtable !=  nullptr && cpwvcidmappingtable->has_data())
-	|| (cpwvcobjects !=  nullptr && cpwvcobjects->has_data())
-	|| (cpwvcpeermappingtable !=  nullptr && cpwvcpeermappingtable->has_data())
-	|| (cpwvcperfcurrenttable !=  nullptr && cpwvcperfcurrenttable->has_data())
-	|| (cpwvcperfintervaltable !=  nullptr && cpwvcperfintervaltable->has_data())
-	|| (cpwvcperftotaltable !=  nullptr && cpwvcperftotaltable->has_data())
-	|| (cpwvctable !=  nullptr && cpwvctable->has_data());
+    return (cpwvcidmappingtable_ !=  nullptr && cpwvcidmappingtable_->has_data())
+	|| (cpwvcobjects_ !=  nullptr && cpwvcobjects_->has_data())
+	|| (cpwvcpeermappingtable_ !=  nullptr && cpwvcpeermappingtable_->has_data())
+	|| (cpwvcperfcurrenttable_ !=  nullptr && cpwvcperfcurrenttable_->has_data())
+	|| (cpwvcperfintervaltable_ !=  nullptr && cpwvcperfintervaltable_->has_data())
+	|| (cpwvcperftotaltable_ !=  nullptr && cpwvcperftotaltable_->has_data())
+	|| (cpwvctable_ !=  nullptr && cpwvctable_->has_data());
 }
 
 bool CiscoIetfPwMib::has_operation() const
 {
     return is_set(operation)
-	|| (cpwvcidmappingtable !=  nullptr && cpwvcidmappingtable->has_operation())
-	|| (cpwvcobjects !=  nullptr && cpwvcobjects->has_operation())
-	|| (cpwvcpeermappingtable !=  nullptr && cpwvcpeermappingtable->has_operation())
-	|| (cpwvcperfcurrenttable !=  nullptr && cpwvcperfcurrenttable->has_operation())
-	|| (cpwvcperfintervaltable !=  nullptr && cpwvcperfintervaltable->has_operation())
-	|| (cpwvcperftotaltable !=  nullptr && cpwvcperftotaltable->has_operation())
-	|| (cpwvctable !=  nullptr && cpwvctable->has_operation());
+	|| (cpwvcidmappingtable_ !=  nullptr && cpwvcidmappingtable_->has_operation())
+	|| (cpwvcobjects_ !=  nullptr && cpwvcobjects_->has_operation())
+	|| (cpwvcpeermappingtable_ !=  nullptr && cpwvcpeermappingtable_->has_operation())
+	|| (cpwvcperfcurrenttable_ !=  nullptr && cpwvcperfcurrenttable_->has_operation())
+	|| (cpwvcperfintervaltable_ !=  nullptr && cpwvcperfintervaltable_->has_operation())
+	|| (cpwvcperftotaltable_ !=  nullptr && cpwvcperftotaltable_->has_operation())
+	|| (cpwvctable_ !=  nullptr && cpwvctable_->has_operation());
 }
 
 std::string CiscoIetfPwMib::get_segment_path() const
@@ -94,65 +94,65 @@ std::shared_ptr<Entity> CiscoIetfPwMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "cpwVcIdMappingTable")
     {
-        if(cpwvcidmappingtable == nullptr)
+        if(cpwvcidmappingtable_ == nullptr)
         {
-            cpwvcidmappingtable = std::make_shared<CiscoIetfPwMib::Cpwvcidmappingtable>();
+            cpwvcidmappingtable_ = std::make_shared<CiscoIetfPwMib::Cpwvcidmappingtable>();
         }
-        return cpwvcidmappingtable;
+        return cpwvcidmappingtable_;
     }
 
     if(child_yang_name == "cpwVcObjects")
     {
-        if(cpwvcobjects == nullptr)
+        if(cpwvcobjects_ == nullptr)
         {
-            cpwvcobjects = std::make_shared<CiscoIetfPwMib::Cpwvcobjects>();
+            cpwvcobjects_ = std::make_shared<CiscoIetfPwMib::Cpwvcobjects>();
         }
-        return cpwvcobjects;
+        return cpwvcobjects_;
     }
 
     if(child_yang_name == "cpwVcPeerMappingTable")
     {
-        if(cpwvcpeermappingtable == nullptr)
+        if(cpwvcpeermappingtable_ == nullptr)
         {
-            cpwvcpeermappingtable = std::make_shared<CiscoIetfPwMib::Cpwvcpeermappingtable>();
+            cpwvcpeermappingtable_ = std::make_shared<CiscoIetfPwMib::Cpwvcpeermappingtable>();
         }
-        return cpwvcpeermappingtable;
+        return cpwvcpeermappingtable_;
     }
 
     if(child_yang_name == "cpwVcPerfCurrentTable")
     {
-        if(cpwvcperfcurrenttable == nullptr)
+        if(cpwvcperfcurrenttable_ == nullptr)
         {
-            cpwvcperfcurrenttable = std::make_shared<CiscoIetfPwMib::Cpwvcperfcurrenttable>();
+            cpwvcperfcurrenttable_ = std::make_shared<CiscoIetfPwMib::Cpwvcperfcurrenttable>();
         }
-        return cpwvcperfcurrenttable;
+        return cpwvcperfcurrenttable_;
     }
 
     if(child_yang_name == "cpwVcPerfIntervalTable")
     {
-        if(cpwvcperfintervaltable == nullptr)
+        if(cpwvcperfintervaltable_ == nullptr)
         {
-            cpwvcperfintervaltable = std::make_shared<CiscoIetfPwMib::Cpwvcperfintervaltable>();
+            cpwvcperfintervaltable_ = std::make_shared<CiscoIetfPwMib::Cpwvcperfintervaltable>();
         }
-        return cpwvcperfintervaltable;
+        return cpwvcperfintervaltable_;
     }
 
     if(child_yang_name == "cpwVcPerfTotalTable")
     {
-        if(cpwvcperftotaltable == nullptr)
+        if(cpwvcperftotaltable_ == nullptr)
         {
-            cpwvcperftotaltable = std::make_shared<CiscoIetfPwMib::Cpwvcperftotaltable>();
+            cpwvcperftotaltable_ = std::make_shared<CiscoIetfPwMib::Cpwvcperftotaltable>();
         }
-        return cpwvcperftotaltable;
+        return cpwvcperftotaltable_;
     }
 
     if(child_yang_name == "cpwVcTable")
     {
-        if(cpwvctable == nullptr)
+        if(cpwvctable_ == nullptr)
         {
-            cpwvctable = std::make_shared<CiscoIetfPwMib::Cpwvctable>();
+            cpwvctable_ = std::make_shared<CiscoIetfPwMib::Cpwvctable>();
         }
-        return cpwvctable;
+        return cpwvctable_;
     }
 
     return nullptr;
@@ -161,39 +161,39 @@ std::shared_ptr<Entity> CiscoIetfPwMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cpwvcidmappingtable != nullptr)
+    if(cpwvcidmappingtable_ != nullptr)
     {
-        children["cpwVcIdMappingTable"] = cpwvcidmappingtable;
+        children["cpwVcIdMappingTable"] = cpwvcidmappingtable_;
     }
 
-    if(cpwvcobjects != nullptr)
+    if(cpwvcobjects_ != nullptr)
     {
-        children["cpwVcObjects"] = cpwvcobjects;
+        children["cpwVcObjects"] = cpwvcobjects_;
     }
 
-    if(cpwvcpeermappingtable != nullptr)
+    if(cpwvcpeermappingtable_ != nullptr)
     {
-        children["cpwVcPeerMappingTable"] = cpwvcpeermappingtable;
+        children["cpwVcPeerMappingTable"] = cpwvcpeermappingtable_;
     }
 
-    if(cpwvcperfcurrenttable != nullptr)
+    if(cpwvcperfcurrenttable_ != nullptr)
     {
-        children["cpwVcPerfCurrentTable"] = cpwvcperfcurrenttable;
+        children["cpwVcPerfCurrentTable"] = cpwvcperfcurrenttable_;
     }
 
-    if(cpwvcperfintervaltable != nullptr)
+    if(cpwvcperfintervaltable_ != nullptr)
     {
-        children["cpwVcPerfIntervalTable"] = cpwvcperfintervaltable;
+        children["cpwVcPerfIntervalTable"] = cpwvcperfintervaltable_;
     }
 
-    if(cpwvcperftotaltable != nullptr)
+    if(cpwvcperftotaltable_ != nullptr)
     {
-        children["cpwVcPerfTotalTable"] = cpwvcperftotaltable;
+        children["cpwVcPerfTotalTable"] = cpwvcperftotaltable_;
     }
 
-    if(cpwvctable != nullptr)
+    if(cpwvctable_ != nullptr)
     {
-        children["cpwVcTable"] = cpwvctable;
+        children["cpwVcTable"] = cpwvctable_;
     }
 
     return children;
@@ -330,9 +330,9 @@ CiscoIetfPwMib::Cpwvctable::~Cpwvctable()
 
 bool CiscoIetfPwMib::Cpwvctable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcentry_.size(); index++)
     {
-        if(cpwvcentry[index]->has_data())
+        if(cpwvcentry_[index]->has_data())
             return true;
     }
     return false;
@@ -340,9 +340,9 @@ bool CiscoIetfPwMib::Cpwvctable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvctable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcentry_.size(); index++)
     {
-        if(cpwvcentry[index]->has_operation())
+        if(cpwvcentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -382,7 +382,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvctable::get_child_by_name(const std:
 {
     if(child_yang_name == "cpwVcEntry")
     {
-        for(auto const & c : cpwvcentry)
+        for(auto const & c : cpwvcentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -392,7 +392,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvctable::get_child_by_name(const std:
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvctable::Cpwvcentry>();
         c->parent = this;
-        cpwvcentry.push_back(c);
+        cpwvcentry_.push_back(c);
         return c;
     }
 
@@ -402,7 +402,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvctable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcentry)
+    for (auto const & c : cpwvcentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -745,9 +745,9 @@ CiscoIetfPwMib::Cpwvcperfcurrenttable::~Cpwvcperfcurrenttable()
 
 bool CiscoIetfPwMib::Cpwvcperfcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperfcurrententry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfcurrententry_.size(); index++)
     {
-        if(cpwvcperfcurrententry[index]->has_data())
+        if(cpwvcperfcurrententry_[index]->has_data())
             return true;
     }
     return false;
@@ -755,9 +755,9 @@ bool CiscoIetfPwMib::Cpwvcperfcurrenttable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvcperfcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperfcurrententry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfcurrententry_.size(); index++)
     {
-        if(cpwvcperfcurrententry[index]->has_operation())
+        if(cpwvcperfcurrententry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -797,7 +797,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfcurrenttable::get_child_by_name
 {
     if(child_yang_name == "cpwVcPerfCurrentEntry")
     {
-        for(auto const & c : cpwvcperfcurrententry)
+        for(auto const & c : cpwvcperfcurrententry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -807,7 +807,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfcurrenttable::get_child_by_name
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvcperfcurrenttable::Cpwvcperfcurrententry>();
         c->parent = this;
-        cpwvcperfcurrententry.push_back(c);
+        cpwvcperfcurrententry_.push_back(c);
         return c;
     }
 
@@ -817,7 +817,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfcurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvcperfcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcperfcurrententry)
+    for (auto const & c : cpwvcperfcurrententry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -944,9 +944,9 @@ CiscoIetfPwMib::Cpwvcperfintervaltable::~Cpwvcperfintervaltable()
 
 bool CiscoIetfPwMib::Cpwvcperfintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperfintervalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfintervalentry_.size(); index++)
     {
-        if(cpwvcperfintervalentry[index]->has_data())
+        if(cpwvcperfintervalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -954,9 +954,9 @@ bool CiscoIetfPwMib::Cpwvcperfintervaltable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvcperfintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperfintervalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfintervalentry_.size(); index++)
     {
-        if(cpwvcperfintervalentry[index]->has_operation())
+        if(cpwvcperfintervalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -996,7 +996,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfintervaltable::get_child_by_nam
 {
     if(child_yang_name == "cpwVcPerfIntervalEntry")
     {
-        for(auto const & c : cpwvcperfintervalentry)
+        for(auto const & c : cpwvcperfintervalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1006,7 +1006,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfintervaltable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvcperfintervaltable::Cpwvcperfintervalentry>();
         c->parent = this;
-        cpwvcperfintervalentry.push_back(c);
+        cpwvcperfintervalentry_.push_back(c);
         return c;
     }
 
@@ -1016,7 +1016,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperfintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvcperfintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcperfintervalentry)
+    for (auto const & c : cpwvcperfintervalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1167,9 +1167,9 @@ CiscoIetfPwMib::Cpwvcperftotaltable::~Cpwvcperftotaltable()
 
 bool CiscoIetfPwMib::Cpwvcperftotaltable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperftotalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperftotalentry_.size(); index++)
     {
-        if(cpwvcperftotalentry[index]->has_data())
+        if(cpwvcperftotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1177,9 +1177,9 @@ bool CiscoIetfPwMib::Cpwvcperftotaltable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvcperftotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperftotalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperftotalentry_.size(); index++)
     {
-        if(cpwvcperftotalentry[index]->has_operation())
+        if(cpwvcperftotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1219,7 +1219,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperftotaltable::get_child_by_name(c
 {
     if(child_yang_name == "cpwVcPerfTotalEntry")
     {
-        for(auto const & c : cpwvcperftotalentry)
+        for(auto const & c : cpwvcperftotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1229,7 +1229,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperftotaltable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvcperftotaltable::Cpwvcperftotalentry>();
         c->parent = this;
-        cpwvcperftotalentry.push_back(c);
+        cpwvcperftotalentry_.push_back(c);
         return c;
     }
 
@@ -1239,7 +1239,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcperftotaltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvcperftotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcperftotalentry)
+    for (auto const & c : cpwvcperftotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1374,9 +1374,9 @@ CiscoIetfPwMib::Cpwvcidmappingtable::~Cpwvcidmappingtable()
 
 bool CiscoIetfPwMib::Cpwvcidmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcidmappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcidmappingentry_.size(); index++)
     {
-        if(cpwvcidmappingentry[index]->has_data())
+        if(cpwvcidmappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1384,9 +1384,9 @@ bool CiscoIetfPwMib::Cpwvcidmappingtable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvcidmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcidmappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcidmappingentry_.size(); index++)
     {
-        if(cpwvcidmappingentry[index]->has_operation())
+        if(cpwvcidmappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1426,7 +1426,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcidmappingtable::get_child_by_name(c
 {
     if(child_yang_name == "cpwVcIdMappingEntry")
     {
-        for(auto const & c : cpwvcidmappingentry)
+        for(auto const & c : cpwvcidmappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1436,7 +1436,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcidmappingtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvcidmappingtable::Cpwvcidmappingentry>();
         c->parent = this;
-        cpwvcidmappingentry.push_back(c);
+        cpwvcidmappingentry_.push_back(c);
         return c;
     }
 
@@ -1446,7 +1446,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcidmappingtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvcidmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcidmappingentry)
+    for (auto const & c : cpwvcidmappingentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1573,9 +1573,9 @@ CiscoIetfPwMib::Cpwvcpeermappingtable::~Cpwvcpeermappingtable()
 
 bool CiscoIetfPwMib::Cpwvcpeermappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcpeermappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcpeermappingentry_.size(); index++)
     {
-        if(cpwvcpeermappingentry[index]->has_data())
+        if(cpwvcpeermappingentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1583,9 +1583,9 @@ bool CiscoIetfPwMib::Cpwvcpeermappingtable::has_data() const
 
 bool CiscoIetfPwMib::Cpwvcpeermappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcpeermappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcpeermappingentry_.size(); index++)
     {
-        if(cpwvcpeermappingentry[index]->has_operation())
+        if(cpwvcpeermappingentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1625,7 +1625,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcpeermappingtable::get_child_by_name
 {
     if(child_yang_name == "cpwVcPeerMappingEntry")
     {
-        for(auto const & c : cpwvcpeermappingentry)
+        for(auto const & c : cpwvcpeermappingentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1635,7 +1635,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcpeermappingtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoIetfPwMib::Cpwvcpeermappingtable::Cpwvcpeermappingentry>();
         c->parent = this;
-        cpwvcpeermappingentry.push_back(c);
+        cpwvcpeermappingentry_.push_back(c);
         return c;
     }
 
@@ -1645,7 +1645,7 @@ std::shared_ptr<Entity> CiscoIetfPwMib::Cpwvcpeermappingtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwMib::Cpwvcpeermappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cpwvcpeermappingentry)
+    for (auto const & c : cpwvcpeermappingentry_)
     {
         children[c->get_segment_path()] = c;
     }

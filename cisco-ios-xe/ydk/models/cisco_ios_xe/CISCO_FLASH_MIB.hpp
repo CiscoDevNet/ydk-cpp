@@ -40,16 +40,16 @@ class CiscoFlashMib : public Entity
         class Ciscoflashpartitioningtable; //type: CiscoFlashMib::Ciscoflashpartitioningtable
         class Ciscoflashmiscoptable; //type: CiscoFlashMib::Ciscoflashmiscoptable
 
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcfg> ciscoflashcfg;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashchiptable> ciscoflashchiptable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcopytable> ciscoflashcopytable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevice> ciscoflashdevice;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevicetable> ciscoflashdevicetable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfilebytypetable> ciscoflashfilebytypetable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfiletable> ciscoflashfiletable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashmiscoptable> ciscoflashmiscoptable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitioningtable> ciscoflashpartitioningtable;
-        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitiontable> ciscoflashpartitiontable;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcfg> ciscoflashcfg_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashchiptable> ciscoflashchiptable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcopytable> ciscoflashcopytable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevice> ciscoflashdevice_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevicetable> ciscoflashdevicetable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfilebytypetable> ciscoflashfilebytypetable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfiletable> ciscoflashfiletable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashmiscoptable> ciscoflashmiscoptable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitioningtable> ciscoflashpartitioningtable_;
+        std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitiontable> ciscoflashpartitiontable_;
         
 }; // CiscoFlashMib
 
@@ -110,7 +110,7 @@ class CiscoFlashMib::Ciscoflashdevicetable : public Entity
 
         class Ciscoflashdeviceentry; //type: CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry> > ciscoflashdeviceentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry> > ciscoflashdeviceentry_;
         
 }; // CiscoFlashMib::Ciscoflashdevicetable
 
@@ -167,7 +167,7 @@ class CiscoFlashMib::Ciscoflashchiptable : public Entity
 
         class Ciscoflashchipentry; //type: CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry> > ciscoflashchipentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry> > ciscoflashchipentry_;
         
 }; // CiscoFlashMib::Ciscoflashchiptable
 
@@ -215,7 +215,7 @@ class CiscoFlashMib::Ciscoflashpartitiontable : public Entity
 
         class Ciscoflashpartitionentry; //type: CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry> > ciscoflashpartitionentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry> > ciscoflashpartitionentry_;
         
 }; // CiscoFlashMib::Ciscoflashpartitiontable
 
@@ -274,7 +274,7 @@ class CiscoFlashMib::Ciscoflashfiletable : public Entity
 
         class Ciscoflashfileentry; //type: CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry> > ciscoflashfileentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry> > ciscoflashfileentry_;
         
 }; // CiscoFlashMib::Ciscoflashfiletable
 
@@ -325,7 +325,7 @@ class CiscoFlashMib::Ciscoflashfilebytypetable : public Entity
 
         class Ciscoflashfilebytypeentry; //type: CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry> > ciscoflashfilebytypeentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry> > ciscoflashfilebytypeentry_;
         
 }; // CiscoFlashMib::Ciscoflashfilebytypetable
 
@@ -377,7 +377,7 @@ class CiscoFlashMib::Ciscoflashcopytable : public Entity
 
         class Ciscoflashcopyentry; //type: CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry> > ciscoflashcopyentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry> > ciscoflashcopyentry_;
         
 }; // CiscoFlashMib::Ciscoflashcopytable
 
@@ -434,7 +434,7 @@ class CiscoFlashMib::Ciscoflashpartitioningtable : public Entity
 
         class Ciscoflashpartitioningentry; //type: CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry> > ciscoflashpartitioningentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry> > ciscoflashpartitioningentry_;
         
 }; // CiscoFlashMib::Ciscoflashpartitioningtable
 
@@ -484,7 +484,7 @@ class CiscoFlashMib::Ciscoflashmiscoptable : public Entity
 
         class Ciscoflashmiscopentry; //type: CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry
 
-        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry> > ciscoflashmiscopentry;
+        std::vector<std::shared_ptr<CISCO_FLASH_MIB::CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry> > ciscoflashmiscopentry_;
         
 }; // CiscoFlashMib::Ciscoflashmiscoptable
 

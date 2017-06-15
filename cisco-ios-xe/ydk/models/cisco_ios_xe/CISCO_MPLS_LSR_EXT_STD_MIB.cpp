@@ -11,9 +11,9 @@ namespace CISCO_MPLS_LSR_EXT_STD_MIB {
 
 CiscoMplsLsrExtStdMib::CiscoMplsLsrExtStdMib()
     :
-    cmplsxcexttable(std::make_shared<CiscoMplsLsrExtStdMib::Cmplsxcexttable>())
+    cmplsxcexttable_(std::make_shared<CiscoMplsLsrExtStdMib::Cmplsxcexttable>())
 {
-    cmplsxcexttable->parent = this;
+    cmplsxcexttable_->parent = this;
 
     yang_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; yang_parent_name = "CISCO-MPLS-LSR-EXT-STD-MIB";
 }
@@ -24,13 +24,13 @@ CiscoMplsLsrExtStdMib::~CiscoMplsLsrExtStdMib()
 
 bool CiscoMplsLsrExtStdMib::has_data() const
 {
-    return (cmplsxcexttable !=  nullptr && cmplsxcexttable->has_data());
+    return (cmplsxcexttable_ !=  nullptr && cmplsxcexttable_->has_data());
 }
 
 bool CiscoMplsLsrExtStdMib::has_operation() const
 {
     return is_set(operation)
-	|| (cmplsxcexttable !=  nullptr && cmplsxcexttable->has_operation());
+	|| (cmplsxcexttable_ !=  nullptr && cmplsxcexttable_->has_operation());
 }
 
 std::string CiscoMplsLsrExtStdMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoMplsLsrExtStdMib::get_child_by_name(const std::stri
 {
     if(child_yang_name == "cmplsXCExtTable")
     {
-        if(cmplsxcexttable == nullptr)
+        if(cmplsxcexttable_ == nullptr)
         {
-            cmplsxcexttable = std::make_shared<CiscoMplsLsrExtStdMib::Cmplsxcexttable>();
+            cmplsxcexttable_ = std::make_shared<CiscoMplsLsrExtStdMib::Cmplsxcexttable>();
         }
-        return cmplsxcexttable;
+        return cmplsxcexttable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoMplsLsrExtStdMib::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CiscoMplsLsrExtStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmplsxcexttable != nullptr)
+    if(cmplsxcexttable_ != nullptr)
     {
-        children["cmplsXCExtTable"] = cmplsxcexttable;
+        children["cmplsXCExtTable"] = cmplsxcexttable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoMplsLsrExtStdMib::Cmplsxcexttable::~Cmplsxcexttable()
 
 bool CiscoMplsLsrExtStdMib::Cmplsxcexttable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsxcextentry.size(); index++)
+    for (std::size_t index=0; index<cmplsxcextentry_.size(); index++)
     {
-        if(cmplsxcextentry[index]->has_data())
+        if(cmplsxcextentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoMplsLsrExtStdMib::Cmplsxcexttable::has_data() const
 
 bool CiscoMplsLsrExtStdMib::Cmplsxcexttable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsxcextentry.size(); index++)
+    for (std::size_t index=0; index<cmplsxcextentry_.size(); index++)
     {
-        if(cmplsxcextentry[index]->has_operation())
+        if(cmplsxcextentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoMplsLsrExtStdMib::Cmplsxcexttable::get_child_by_nam
 {
     if(child_yang_name == "cmplsXCExtEntry")
     {
-        for(auto const & c : cmplsxcextentry)
+        for(auto const & c : cmplsxcextentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoMplsLsrExtStdMib::Cmplsxcexttable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoMplsLsrExtStdMib::Cmplsxcexttable::Cmplsxcextentry>();
         c->parent = this;
-        cmplsxcextentry.push_back(c);
+        cmplsxcextentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoMplsLsrExtStdMib::Cmplsxcexttable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoMplsLsrExtStdMib::Cmplsxcexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmplsxcextentry)
+    for (auto const & c : cmplsxcextentry_)
     {
         children[c->get_segment_path()] = c;
     }

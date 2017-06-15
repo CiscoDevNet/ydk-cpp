@@ -38,14 +38,14 @@ class CiscoNbarProtocolDiscoveryMib : public Entity
         class Cnpdthresholdhistorytable; //type: CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable
         class Cnpdsupportedprotocolstable; //type: CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable
 
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable> cnpdallstatstable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig> cnpdnotificationsconfig;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdstatustable> cnpdstatustable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable> cnpdsupportedprotocolstable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable> cnpdthresholdconfigtable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable> cnpdthresholdhistorytable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable> cnpdtopnconfigtable;
-        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable> cnpdtopnstatstable;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable> cnpdallstatstable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdnotificationsconfig> cnpdnotificationsconfig_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdstatustable> cnpdstatustable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable> cnpdsupportedprotocolstable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable> cnpdthresholdconfigtable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable> cnpdthresholdhistorytable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable> cnpdtopnconfigtable_;
+        std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable> cnpdtopnstatstable_;
         
 }; // CiscoNbarProtocolDiscoveryMib
 
@@ -85,7 +85,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdstatustable : public Entity
 
         class Cnpdstatusentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::Cnpdstatusentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::Cnpdstatusentry> > cnpdstatusentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdstatustable::Cnpdstatusentry> > cnpdstatusentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdstatustable
 
@@ -128,7 +128,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable : public Entity
 
         class Cnpdallstatsentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::Cnpdallstatsentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::Cnpdallstatsentry> > cnpdallstatsentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable::Cnpdallstatsentry> > cnpdallstatsentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdallstatstable
 
@@ -181,7 +181,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable : public Entity
 
         class Cnpdtopnconfigentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::Cnpdtopnconfigentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::Cnpdtopnconfigentry> > cnpdtopnconfigentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable::Cnpdtopnconfigentry> > cnpdtopnconfigentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdtopnconfigtable
 
@@ -228,7 +228,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable : public Entity
 
         class Cnpdtopnstatsentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::Cnpdtopnstatsentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::Cnpdtopnstatsentry> > cnpdtopnstatsentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable::Cnpdtopnstatsentry> > cnpdtopnstatsentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdtopnstatstable
 
@@ -273,7 +273,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable : public Entity
 
         class Cnpdthresholdconfigentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry> > cnpdthresholdconfigentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry> > cnpdthresholdconfigentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdthresholdconfigtable
 
@@ -325,7 +325,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable : public Entity
 
         class Cnpdthresholdhistoryentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry> > cnpdthresholdhistoryentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry> > cnpdthresholdhistoryentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdthresholdhistorytable
 
@@ -372,7 +372,7 @@ class CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable : public Entity
 
         class Cnpdsupportedprotocolsentry; //type: CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry
 
-        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry> > cnpdsupportedprotocolsentry;
+        std::vector<std::shared_ptr<CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry> > cnpdsupportedprotocolsentry_;
         
 }; // CiscoNbarProtocolDiscoveryMib::Cnpdsupportedprotocolstable
 

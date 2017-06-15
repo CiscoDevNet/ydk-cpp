@@ -35,12 +35,12 @@ class CiscoDot3OamMib : public Entity
         class Cdot3Oameventconfigtable; //type: CiscoDot3OamMib::Cdot3Oameventconfigtable
         class Cdot3Oameventlogtable; //type: CiscoDot3OamMib::Cdot3Oameventlogtable
 
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventconfigtable> cdot3oameventconfigtable;
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventlogtable> cdot3oameventlogtable;
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamloopbacktable> cdot3oamloopbacktable;
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oampeertable> cdot3oampeertable;
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamstatstable> cdot3oamstatstable;
-        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamtable> cdot3oamtable;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventconfigtable> cdot3oameventconfigtable_;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventlogtable> cdot3oameventlogtable_;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamloopbacktable> cdot3oamloopbacktable_;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oampeertable> cdot3oampeertable_;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamstatstable> cdot3oamstatstable_;
+        std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamtable> cdot3oamtable_;
         
 }; // CiscoDot3OamMib
 
@@ -61,7 +61,7 @@ class CiscoDot3OamMib::Cdot3Oamtable : public Entity
 
         class Cdot3Oamentry; //type: CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry> > cdot3oamentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry> > cdot3oamentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oamtable
 
@@ -111,7 +111,7 @@ class CiscoDot3OamMib::Cdot3Oampeertable : public Entity
 
         class Cdot3Oampeerentry; //type: CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry> > cdot3oampeerentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry> > cdot3oampeerentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oampeertable
 
@@ -160,7 +160,7 @@ class CiscoDot3OamMib::Cdot3Oamloopbacktable : public Entity
 
         class Cdot3Oamloopbackentry; //type: CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry> > cdot3oamloopbackentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry> > cdot3oamloopbackentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oamloopbacktable
 
@@ -205,7 +205,7 @@ class CiscoDot3OamMib::Cdot3Oamstatstable : public Entity
 
         class Cdot3Oamstatsentry; //type: CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry> > cdot3oamstatsentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry> > cdot3oamstatsentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oamstatstable
 
@@ -263,7 +263,7 @@ class CiscoDot3OamMib::Cdot3Oameventconfigtable : public Entity
 
         class Cdot3Oameventconfigentry; //type: CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry> > cdot3oameventconfigentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry> > cdot3oameventconfigentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oameventconfigtable
 
@@ -320,7 +320,7 @@ class CiscoDot3OamMib::Cdot3Oameventlogtable : public Entity
 
         class Cdot3Oameventlogentry; //type: CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry
 
-        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry> > cdot3oameventlogentry;
+        std::vector<std::shared_ptr<CISCO_DOT3_OAM_MIB::CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry> > cdot3oameventlogentry_;
         
 }; // CiscoDot3OamMib::Cdot3Oameventlogtable
 

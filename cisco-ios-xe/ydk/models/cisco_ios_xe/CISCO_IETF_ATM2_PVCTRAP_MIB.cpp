@@ -11,9 +11,9 @@ namespace CISCO_IETF_ATM2_PVCTRAP_MIB {
 
 CiscoIetfAtm2PvctrapMib::CiscoIetfAtm2PvctrapMib()
     :
-    atmcurrentlyfailingpvcltable(std::make_shared<CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable>())
+    atmcurrentlyfailingpvcltable_(std::make_shared<CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable>())
 {
-    atmcurrentlyfailingpvcltable->parent = this;
+    atmcurrentlyfailingpvcltable_->parent = this;
 
     yang_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB";
 }
@@ -24,13 +24,13 @@ CiscoIetfAtm2PvctrapMib::~CiscoIetfAtm2PvctrapMib()
 
 bool CiscoIetfAtm2PvctrapMib::has_data() const
 {
-    return (atmcurrentlyfailingpvcltable !=  nullptr && atmcurrentlyfailingpvcltable->has_data());
+    return (atmcurrentlyfailingpvcltable_ !=  nullptr && atmcurrentlyfailingpvcltable_->has_data());
 }
 
 bool CiscoIetfAtm2PvctrapMib::has_operation() const
 {
     return is_set(operation)
-	|| (atmcurrentlyfailingpvcltable !=  nullptr && atmcurrentlyfailingpvcltable->has_operation());
+	|| (atmcurrentlyfailingpvcltable_ !=  nullptr && atmcurrentlyfailingpvcltable_->has_operation());
 }
 
 std::string CiscoIetfAtm2PvctrapMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMib::get_child_by_name(const std::st
 {
     if(child_yang_name == "atmCurrentlyFailingPVclTable")
     {
-        if(atmcurrentlyfailingpvcltable == nullptr)
+        if(atmcurrentlyfailingpvcltable_ == nullptr)
         {
-            atmcurrentlyfailingpvcltable = std::make_shared<CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable>();
+            atmcurrentlyfailingpvcltable_ = std::make_shared<CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable>();
         }
-        return atmcurrentlyfailingpvcltable;
+        return atmcurrentlyfailingpvcltable_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMib::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(atmcurrentlyfailingpvcltable != nullptr)
+    if(atmcurrentlyfailingpvcltable_ != nullptr)
     {
-        children["atmCurrentlyFailingPVclTable"] = atmcurrentlyfailingpvcltable;
+        children["atmCurrentlyFailingPVclTable"] = atmcurrentlyfailingpvcltable_;
     }
 
     return children;
@@ -120,9 +120,9 @@ CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::~Atmcurrentlyfailingpvclt
 
 bool CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::has_data() const
 {
-    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.size(); index++)
+    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry_.size(); index++)
     {
-        if(atmcurrentlyfailingpvclentry[index]->has_data())
+        if(atmcurrentlyfailingpvclentry_[index]->has_data())
             return true;
     }
     return false;
@@ -130,9 +130,9 @@ bool CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::has_data() const
 
 bool CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::has_operation() const
 {
-    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.size(); index++)
+    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry_.size(); index++)
     {
-        if(atmcurrentlyfailingpvclentry[index]->has_operation())
+        if(atmcurrentlyfailingpvclentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -172,7 +172,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::g
 {
     if(child_yang_name == "atmCurrentlyFailingPVclEntry")
     {
-        for(auto const & c : atmcurrentlyfailingpvclentry)
+        for(auto const & c : atmcurrentlyfailingpvclentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +182,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::g
         }
         auto c = std::make_shared<CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry>();
         c->parent = this;
-        atmcurrentlyfailingpvclentry.push_back(c);
+        atmcurrentlyfailingpvclentry_.push_back(c);
         return c;
     }
 
@@ -192,7 +192,7 @@ std::shared_ptr<Entity> CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::g
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : atmcurrentlyfailingpvclentry)
+    for (auto const & c : atmcurrentlyfailingpvclentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -30,7 +30,7 @@ class CiscoMplsLsrExtStdMib : public Entity
 
         class Cmplsxcexttable; //type: CiscoMplsLsrExtStdMib::Cmplsxcexttable
 
-        std::shared_ptr<CISCO_MPLS_LSR_EXT_STD_MIB::CiscoMplsLsrExtStdMib::Cmplsxcexttable> cmplsxcexttable;
+        std::shared_ptr<CISCO_MPLS_LSR_EXT_STD_MIB::CiscoMplsLsrExtStdMib::Cmplsxcexttable> cmplsxcexttable_;
         
 }; // CiscoMplsLsrExtStdMib
 
@@ -51,7 +51,7 @@ class CiscoMplsLsrExtStdMib::Cmplsxcexttable : public Entity
 
         class Cmplsxcextentry; //type: CiscoMplsLsrExtStdMib::Cmplsxcexttable::Cmplsxcextentry
 
-        std::vector<std::shared_ptr<CISCO_MPLS_LSR_EXT_STD_MIB::CiscoMplsLsrExtStdMib::Cmplsxcexttable::Cmplsxcextentry> > cmplsxcextentry;
+        std::vector<std::shared_ptr<CISCO_MPLS_LSR_EXT_STD_MIB::CiscoMplsLsrExtStdMib::Cmplsxcexttable::Cmplsxcextentry> > cmplsxcextentry_;
         
 }; // CiscoMplsLsrExtStdMib::Cmplsxcexttable
 

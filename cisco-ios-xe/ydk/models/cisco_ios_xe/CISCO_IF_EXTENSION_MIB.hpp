@@ -40,16 +40,16 @@ class CiscoIfExtensionMib : public Entity
         class Cieifdot1Dbasemappingtable; //type: CiscoIfExtensionMib::Cieifdot1Dbasemappingtable
         class Cieifnamemappingtable; //type: CiscoIfExtensionMib::Cieifnamemappingtable
 
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Dbasemappingtable> cieifdot1dbasemappingtable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable> cieifdot1qcustomethertypetable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifindexpersistencetable> cieifindexpersistencetable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifinterfacetable> cieifinterfacetable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifnamemappingtable> cieifnamemappingtable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifpacketstatstable> cieifpacketstatstable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifstatuslisttable> cieifstatuslisttable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifutiltable> cieifutiltable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifvlstatstable> cieifvlstatstable;
-        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Ciscoifextsystemconfig> ciscoifextsystemconfig;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Dbasemappingtable> cieifdot1dbasemappingtable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable> cieifdot1qcustomethertypetable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifindexpersistencetable> cieifindexpersistencetable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifinterfacetable> cieifinterfacetable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifnamemappingtable> cieifnamemappingtable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifpacketstatstable> cieifpacketstatstable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifstatuslisttable> cieifstatuslisttable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifutiltable> cieifutiltable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifvlstatstable> cieifvlstatstable_;
+        std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Ciscoifextsystemconfig> ciscoifextsystemconfig_;
         
 }; // CiscoIfExtensionMib
 
@@ -97,7 +97,7 @@ class CiscoIfExtensionMib::Cieifpacketstatstable : public Entity
 
         class Cieifpacketstatsentry; //type: CiscoIfExtensionMib::Cieifpacketstatstable::Cieifpacketstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifpacketstatstable::Cieifpacketstatsentry> > cieifpacketstatsentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifpacketstatstable::Cieifpacketstatsentry> > cieifpacketstatsentry_;
         
 }; // CiscoIfExtensionMib::Cieifpacketstatstable
 
@@ -150,7 +150,7 @@ class CiscoIfExtensionMib::Cieifinterfacetable : public Entity
 
         class Cieifinterfaceentry; //type: CiscoIfExtensionMib::Cieifinterfacetable::Cieifinterfaceentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifinterfacetable::Cieifinterfaceentry> > cieifinterfaceentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifinterfacetable::Cieifinterfaceentry> > cieifinterfaceentry_;
         
 }; // CiscoIfExtensionMib::Cieifinterfacetable
 
@@ -214,7 +214,7 @@ class CiscoIfExtensionMib::Cieifstatuslisttable : public Entity
 
         class Cieifstatuslistentry; //type: CiscoIfExtensionMib::Cieifstatuslisttable::Cieifstatuslistentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifstatuslisttable::Cieifstatuslistentry> > cieifstatuslistentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifstatuslisttable::Cieifstatuslistentry> > cieifstatuslistentry_;
         
 }; // CiscoIfExtensionMib::Cieifstatuslisttable
 
@@ -260,7 +260,7 @@ class CiscoIfExtensionMib::Cieifvlstatstable : public Entity
 
         class Cieifvlstatsentry; //type: CiscoIfExtensionMib::Cieifvlstatstable::Cieifvlstatsentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifvlstatstable::Cieifvlstatsentry> > cieifvlstatsentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifvlstatstable::Cieifvlstatsentry> > cieifvlstatsentry_;
         
 }; // CiscoIfExtensionMib::Cieifvlstatstable
 
@@ -309,7 +309,7 @@ class CiscoIfExtensionMib::Cieifindexpersistencetable : public Entity
 
         class Cieifindexpersistenceentry; //type: CiscoIfExtensionMib::Cieifindexpersistencetable::Cieifindexpersistenceentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifindexpersistencetable::Cieifindexpersistenceentry> > cieifindexpersistenceentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifindexpersistencetable::Cieifindexpersistenceentry> > cieifindexpersistenceentry_;
         
 }; // CiscoIfExtensionMib::Cieifindexpersistencetable
 
@@ -352,7 +352,7 @@ class CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable : public Entity
 
         class Cieifdot1Qcustomethertypeentry; //type: CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry> > cieifdot1qcustomethertypeentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry> > cieifdot1qcustomethertypeentry_;
         
 }; // CiscoIfExtensionMib::Cieifdot1Qcustomethertypetable
 
@@ -395,7 +395,7 @@ class CiscoIfExtensionMib::Cieifutiltable : public Entity
 
         class Cieifutilentry; //type: CiscoIfExtensionMib::Cieifutiltable::Cieifutilentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifutiltable::Cieifutilentry> > cieifutilentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifutiltable::Cieifutilentry> > cieifutilentry_;
         
 }; // CiscoIfExtensionMib::Cieifutiltable
 
@@ -441,7 +441,7 @@ class CiscoIfExtensionMib::Cieifdot1Dbasemappingtable : public Entity
 
         class Cieifdot1Dbasemappingentry; //type: CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry> > cieifdot1dbasemappingentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry> > cieifdot1dbasemappingentry_;
         
 }; // CiscoIfExtensionMib::Cieifdot1Dbasemappingtable
 
@@ -483,7 +483,7 @@ class CiscoIfExtensionMib::Cieifnamemappingtable : public Entity
 
         class Cieifnamemappingentry; //type: CiscoIfExtensionMib::Cieifnamemappingtable::Cieifnamemappingentry
 
-        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifnamemappingtable::Cieifnamemappingentry> > cieifnamemappingentry;
+        std::vector<std::shared_ptr<CISCO_IF_EXTENSION_MIB::CiscoIfExtensionMib::Cieifnamemappingtable::Cieifnamemappingentry> > cieifnamemappingentry_;
         
 }; // CiscoIfExtensionMib::Cieifnamemappingtable
 

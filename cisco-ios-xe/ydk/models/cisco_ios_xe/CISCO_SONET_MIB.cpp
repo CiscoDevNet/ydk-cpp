@@ -11,45 +11,45 @@ namespace CISCO_SONET_MIB {
 
 CiscoSonetMib::CiscoSonetMib()
     :
-    csapsconfig(std::make_shared<CiscoSonetMib::Csapsconfig>())
-	,csapsconfigtable(std::make_shared<CiscoSonetMib::Csapsconfigtable>())
-	,csau4tug3configtable(std::make_shared<CiscoSonetMib::Csau4Tug3Configtable>())
-	,csconfigtable(std::make_shared<CiscoSonetMib::Csconfigtable>())
-	,cslfarendtotaltable(std::make_shared<CiscoSonetMib::Cslfarendtotaltable>())
-	,csltotaltable(std::make_shared<CiscoSonetMib::Csltotaltable>())
-	,csnotifications(std::make_shared<CiscoSonetMib::Csnotifications>())
-	,cspfarendtotaltable(std::make_shared<CiscoSonetMib::Cspfarendtotaltable>())
-	,csptotaltable(std::make_shared<CiscoSonetMib::Csptotaltable>())
-	,csptracetable(std::make_shared<CiscoSonetMib::Csptracetable>())
-	,csstatstable(std::make_shared<CiscoSonetMib::Csstatstable>())
-	,csstotaltable(std::make_shared<CiscoSonetMib::Csstotaltable>())
-	,csstracetable(std::make_shared<CiscoSonetMib::Csstracetable>())
+    csapsconfig_(std::make_shared<CiscoSonetMib::Csapsconfig>())
+	,csapsconfigtable_(std::make_shared<CiscoSonetMib::Csapsconfigtable>())
+	,csau4tug3configtable_(std::make_shared<CiscoSonetMib::Csau4Tug3Configtable>())
+	,csconfigtable_(std::make_shared<CiscoSonetMib::Csconfigtable>())
+	,cslfarendtotaltable_(std::make_shared<CiscoSonetMib::Cslfarendtotaltable>())
+	,csltotaltable_(std::make_shared<CiscoSonetMib::Csltotaltable>())
+	,csnotifications_(std::make_shared<CiscoSonetMib::Csnotifications>())
+	,cspfarendtotaltable_(std::make_shared<CiscoSonetMib::Cspfarendtotaltable>())
+	,csptotaltable_(std::make_shared<CiscoSonetMib::Csptotaltable>())
+	,csptracetable_(std::make_shared<CiscoSonetMib::Csptracetable>())
+	,csstatstable_(std::make_shared<CiscoSonetMib::Csstatstable>())
+	,csstotaltable_(std::make_shared<CiscoSonetMib::Csstotaltable>())
+	,csstracetable_(std::make_shared<CiscoSonetMib::Csstracetable>())
 {
-    csapsconfig->parent = this;
+    csapsconfig_->parent = this;
 
-    csapsconfigtable->parent = this;
+    csapsconfigtable_->parent = this;
 
-    csau4tug3configtable->parent = this;
+    csau4tug3configtable_->parent = this;
 
-    csconfigtable->parent = this;
+    csconfigtable_->parent = this;
 
-    cslfarendtotaltable->parent = this;
+    cslfarendtotaltable_->parent = this;
 
-    csltotaltable->parent = this;
+    csltotaltable_->parent = this;
 
-    csnotifications->parent = this;
+    csnotifications_->parent = this;
 
-    cspfarendtotaltable->parent = this;
+    cspfarendtotaltable_->parent = this;
 
-    csptotaltable->parent = this;
+    csptotaltable_->parent = this;
 
-    csptracetable->parent = this;
+    csptracetable_->parent = this;
 
-    csstatstable->parent = this;
+    csstatstable_->parent = this;
 
-    csstotaltable->parent = this;
+    csstotaltable_->parent = this;
 
-    csstracetable->parent = this;
+    csstracetable_->parent = this;
 
     yang_name = "CISCO-SONET-MIB"; yang_parent_name = "CISCO-SONET-MIB";
 }
@@ -60,37 +60,37 @@ CiscoSonetMib::~CiscoSonetMib()
 
 bool CiscoSonetMib::has_data() const
 {
-    return (csapsconfig !=  nullptr && csapsconfig->has_data())
-	|| (csapsconfigtable !=  nullptr && csapsconfigtable->has_data())
-	|| (csau4tug3configtable !=  nullptr && csau4tug3configtable->has_data())
-	|| (csconfigtable !=  nullptr && csconfigtable->has_data())
-	|| (cslfarendtotaltable !=  nullptr && cslfarendtotaltable->has_data())
-	|| (csltotaltable !=  nullptr && csltotaltable->has_data())
-	|| (csnotifications !=  nullptr && csnotifications->has_data())
-	|| (cspfarendtotaltable !=  nullptr && cspfarendtotaltable->has_data())
-	|| (csptotaltable !=  nullptr && csptotaltable->has_data())
-	|| (csptracetable !=  nullptr && csptracetable->has_data())
-	|| (csstatstable !=  nullptr && csstatstable->has_data())
-	|| (csstotaltable !=  nullptr && csstotaltable->has_data())
-	|| (csstracetable !=  nullptr && csstracetable->has_data());
+    return (csapsconfig_ !=  nullptr && csapsconfig_->has_data())
+	|| (csapsconfigtable_ !=  nullptr && csapsconfigtable_->has_data())
+	|| (csau4tug3configtable_ !=  nullptr && csau4tug3configtable_->has_data())
+	|| (csconfigtable_ !=  nullptr && csconfigtable_->has_data())
+	|| (cslfarendtotaltable_ !=  nullptr && cslfarendtotaltable_->has_data())
+	|| (csltotaltable_ !=  nullptr && csltotaltable_->has_data())
+	|| (csnotifications_ !=  nullptr && csnotifications_->has_data())
+	|| (cspfarendtotaltable_ !=  nullptr && cspfarendtotaltable_->has_data())
+	|| (csptotaltable_ !=  nullptr && csptotaltable_->has_data())
+	|| (csptracetable_ !=  nullptr && csptracetable_->has_data())
+	|| (csstatstable_ !=  nullptr && csstatstable_->has_data())
+	|| (csstotaltable_ !=  nullptr && csstotaltable_->has_data())
+	|| (csstracetable_ !=  nullptr && csstracetable_->has_data());
 }
 
 bool CiscoSonetMib::has_operation() const
 {
     return is_set(operation)
-	|| (csapsconfig !=  nullptr && csapsconfig->has_operation())
-	|| (csapsconfigtable !=  nullptr && csapsconfigtable->has_operation())
-	|| (csau4tug3configtable !=  nullptr && csau4tug3configtable->has_operation())
-	|| (csconfigtable !=  nullptr && csconfigtable->has_operation())
-	|| (cslfarendtotaltable !=  nullptr && cslfarendtotaltable->has_operation())
-	|| (csltotaltable !=  nullptr && csltotaltable->has_operation())
-	|| (csnotifications !=  nullptr && csnotifications->has_operation())
-	|| (cspfarendtotaltable !=  nullptr && cspfarendtotaltable->has_operation())
-	|| (csptotaltable !=  nullptr && csptotaltable->has_operation())
-	|| (csptracetable !=  nullptr && csptracetable->has_operation())
-	|| (csstatstable !=  nullptr && csstatstable->has_operation())
-	|| (csstotaltable !=  nullptr && csstotaltable->has_operation())
-	|| (csstracetable !=  nullptr && csstracetable->has_operation());
+	|| (csapsconfig_ !=  nullptr && csapsconfig_->has_operation())
+	|| (csapsconfigtable_ !=  nullptr && csapsconfigtable_->has_operation())
+	|| (csau4tug3configtable_ !=  nullptr && csau4tug3configtable_->has_operation())
+	|| (csconfigtable_ !=  nullptr && csconfigtable_->has_operation())
+	|| (cslfarendtotaltable_ !=  nullptr && cslfarendtotaltable_->has_operation())
+	|| (csltotaltable_ !=  nullptr && csltotaltable_->has_operation())
+	|| (csnotifications_ !=  nullptr && csnotifications_->has_operation())
+	|| (cspfarendtotaltable_ !=  nullptr && cspfarendtotaltable_->has_operation())
+	|| (csptotaltable_ !=  nullptr && csptotaltable_->has_operation())
+	|| (csptracetable_ !=  nullptr && csptracetable_->has_operation())
+	|| (csstatstable_ !=  nullptr && csstatstable_->has_operation())
+	|| (csstotaltable_ !=  nullptr && csstotaltable_->has_operation())
+	|| (csstracetable_ !=  nullptr && csstracetable_->has_operation());
 }
 
 std::string CiscoSonetMib::get_segment_path() const
@@ -124,119 +124,119 @@ std::shared_ptr<Entity> CiscoSonetMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "csApsConfig")
     {
-        if(csapsconfig == nullptr)
+        if(csapsconfig_ == nullptr)
         {
-            csapsconfig = std::make_shared<CiscoSonetMib::Csapsconfig>();
+            csapsconfig_ = std::make_shared<CiscoSonetMib::Csapsconfig>();
         }
-        return csapsconfig;
+        return csapsconfig_;
     }
 
     if(child_yang_name == "csApsConfigTable")
     {
-        if(csapsconfigtable == nullptr)
+        if(csapsconfigtable_ == nullptr)
         {
-            csapsconfigtable = std::make_shared<CiscoSonetMib::Csapsconfigtable>();
+            csapsconfigtable_ = std::make_shared<CiscoSonetMib::Csapsconfigtable>();
         }
-        return csapsconfigtable;
+        return csapsconfigtable_;
     }
 
     if(child_yang_name == "csAu4Tug3ConfigTable")
     {
-        if(csau4tug3configtable == nullptr)
+        if(csau4tug3configtable_ == nullptr)
         {
-            csau4tug3configtable = std::make_shared<CiscoSonetMib::Csau4Tug3Configtable>();
+            csau4tug3configtable_ = std::make_shared<CiscoSonetMib::Csau4Tug3Configtable>();
         }
-        return csau4tug3configtable;
+        return csau4tug3configtable_;
     }
 
     if(child_yang_name == "csConfigTable")
     {
-        if(csconfigtable == nullptr)
+        if(csconfigtable_ == nullptr)
         {
-            csconfigtable = std::make_shared<CiscoSonetMib::Csconfigtable>();
+            csconfigtable_ = std::make_shared<CiscoSonetMib::Csconfigtable>();
         }
-        return csconfigtable;
+        return csconfigtable_;
     }
 
     if(child_yang_name == "cslFarEndTotalTable")
     {
-        if(cslfarendtotaltable == nullptr)
+        if(cslfarendtotaltable_ == nullptr)
         {
-            cslfarendtotaltable = std::make_shared<CiscoSonetMib::Cslfarendtotaltable>();
+            cslfarendtotaltable_ = std::make_shared<CiscoSonetMib::Cslfarendtotaltable>();
         }
-        return cslfarendtotaltable;
+        return cslfarendtotaltable_;
     }
 
     if(child_yang_name == "cslTotalTable")
     {
-        if(csltotaltable == nullptr)
+        if(csltotaltable_ == nullptr)
         {
-            csltotaltable = std::make_shared<CiscoSonetMib::Csltotaltable>();
+            csltotaltable_ = std::make_shared<CiscoSonetMib::Csltotaltable>();
         }
-        return csltotaltable;
+        return csltotaltable_;
     }
 
     if(child_yang_name == "csNotifications")
     {
-        if(csnotifications == nullptr)
+        if(csnotifications_ == nullptr)
         {
-            csnotifications = std::make_shared<CiscoSonetMib::Csnotifications>();
+            csnotifications_ = std::make_shared<CiscoSonetMib::Csnotifications>();
         }
-        return csnotifications;
+        return csnotifications_;
     }
 
     if(child_yang_name == "cspFarEndTotalTable")
     {
-        if(cspfarendtotaltable == nullptr)
+        if(cspfarendtotaltable_ == nullptr)
         {
-            cspfarendtotaltable = std::make_shared<CiscoSonetMib::Cspfarendtotaltable>();
+            cspfarendtotaltable_ = std::make_shared<CiscoSonetMib::Cspfarendtotaltable>();
         }
-        return cspfarendtotaltable;
+        return cspfarendtotaltable_;
     }
 
     if(child_yang_name == "cspTotalTable")
     {
-        if(csptotaltable == nullptr)
+        if(csptotaltable_ == nullptr)
         {
-            csptotaltable = std::make_shared<CiscoSonetMib::Csptotaltable>();
+            csptotaltable_ = std::make_shared<CiscoSonetMib::Csptotaltable>();
         }
-        return csptotaltable;
+        return csptotaltable_;
     }
 
     if(child_yang_name == "cspTraceTable")
     {
-        if(csptracetable == nullptr)
+        if(csptracetable_ == nullptr)
         {
-            csptracetable = std::make_shared<CiscoSonetMib::Csptracetable>();
+            csptracetable_ = std::make_shared<CiscoSonetMib::Csptracetable>();
         }
-        return csptracetable;
+        return csptracetable_;
     }
 
     if(child_yang_name == "csStatsTable")
     {
-        if(csstatstable == nullptr)
+        if(csstatstable_ == nullptr)
         {
-            csstatstable = std::make_shared<CiscoSonetMib::Csstatstable>();
+            csstatstable_ = std::make_shared<CiscoSonetMib::Csstatstable>();
         }
-        return csstatstable;
+        return csstatstable_;
     }
 
     if(child_yang_name == "cssTotalTable")
     {
-        if(csstotaltable == nullptr)
+        if(csstotaltable_ == nullptr)
         {
-            csstotaltable = std::make_shared<CiscoSonetMib::Csstotaltable>();
+            csstotaltable_ = std::make_shared<CiscoSonetMib::Csstotaltable>();
         }
-        return csstotaltable;
+        return csstotaltable_;
     }
 
     if(child_yang_name == "cssTraceTable")
     {
-        if(csstracetable == nullptr)
+        if(csstracetable_ == nullptr)
         {
-            csstracetable = std::make_shared<CiscoSonetMib::Csstracetable>();
+            csstracetable_ = std::make_shared<CiscoSonetMib::Csstracetable>();
         }
-        return csstracetable;
+        return csstracetable_;
     }
 
     return nullptr;
@@ -245,69 +245,69 @@ std::shared_ptr<Entity> CiscoSonetMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(csapsconfig != nullptr)
+    if(csapsconfig_ != nullptr)
     {
-        children["csApsConfig"] = csapsconfig;
+        children["csApsConfig"] = csapsconfig_;
     }
 
-    if(csapsconfigtable != nullptr)
+    if(csapsconfigtable_ != nullptr)
     {
-        children["csApsConfigTable"] = csapsconfigtable;
+        children["csApsConfigTable"] = csapsconfigtable_;
     }
 
-    if(csau4tug3configtable != nullptr)
+    if(csau4tug3configtable_ != nullptr)
     {
-        children["csAu4Tug3ConfigTable"] = csau4tug3configtable;
+        children["csAu4Tug3ConfigTable"] = csau4tug3configtable_;
     }
 
-    if(csconfigtable != nullptr)
+    if(csconfigtable_ != nullptr)
     {
-        children["csConfigTable"] = csconfigtable;
+        children["csConfigTable"] = csconfigtable_;
     }
 
-    if(cslfarendtotaltable != nullptr)
+    if(cslfarendtotaltable_ != nullptr)
     {
-        children["cslFarEndTotalTable"] = cslfarendtotaltable;
+        children["cslFarEndTotalTable"] = cslfarendtotaltable_;
     }
 
-    if(csltotaltable != nullptr)
+    if(csltotaltable_ != nullptr)
     {
-        children["cslTotalTable"] = csltotaltable;
+        children["cslTotalTable"] = csltotaltable_;
     }
 
-    if(csnotifications != nullptr)
+    if(csnotifications_ != nullptr)
     {
-        children["csNotifications"] = csnotifications;
+        children["csNotifications"] = csnotifications_;
     }
 
-    if(cspfarendtotaltable != nullptr)
+    if(cspfarendtotaltable_ != nullptr)
     {
-        children["cspFarEndTotalTable"] = cspfarendtotaltable;
+        children["cspFarEndTotalTable"] = cspfarendtotaltable_;
     }
 
-    if(csptotaltable != nullptr)
+    if(csptotaltable_ != nullptr)
     {
-        children["cspTotalTable"] = csptotaltable;
+        children["cspTotalTable"] = csptotaltable_;
     }
 
-    if(csptracetable != nullptr)
+    if(csptracetable_ != nullptr)
     {
-        children["cspTraceTable"] = csptracetable;
+        children["cspTraceTable"] = csptracetable_;
     }
 
-    if(csstatstable != nullptr)
+    if(csstatstable_ != nullptr)
     {
-        children["csStatsTable"] = csstatstable;
+        children["csStatsTable"] = csstatstable_;
     }
 
-    if(csstotaltable != nullptr)
+    if(csstotaltable_ != nullptr)
     {
-        children["cssTotalTable"] = csstotaltable;
+        children["cssTotalTable"] = csstotaltable_;
     }
 
-    if(csstracetable != nullptr)
+    if(csstracetable_ != nullptr)
     {
-        children["cssTraceTable"] = csstracetable;
+        children["cssTraceTable"] = csstracetable_;
     }
 
     return children;
@@ -500,9 +500,9 @@ CiscoSonetMib::Csconfigtable::~Csconfigtable()
 
 bool CiscoSonetMib::Csconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<csconfigentry.size(); index++)
+    for (std::size_t index=0; index<csconfigentry_.size(); index++)
     {
-        if(csconfigentry[index]->has_data())
+        if(csconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -510,9 +510,9 @@ bool CiscoSonetMib::Csconfigtable::has_data() const
 
 bool CiscoSonetMib::Csconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<csconfigentry.size(); index++)
+    for (std::size_t index=0; index<csconfigentry_.size(); index++)
     {
-        if(csconfigentry[index]->has_operation())
+        if(csconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -552,7 +552,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csconfigtable::get_child_by_name(const st
 {
     if(child_yang_name == "csConfigEntry")
     {
-        for(auto const & c : csconfigentry)
+        for(auto const & c : csconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -562,7 +562,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csconfigtable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csconfigtable::Csconfigentry>();
         c->parent = this;
-        csconfigentry.push_back(c);
+        csconfigentry_.push_back(c);
         return c;
     }
 
@@ -572,7 +572,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csconfigtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csconfigentry)
+    for (auto const & c : csconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -755,9 +755,9 @@ CiscoSonetMib::Csapsconfigtable::~Csapsconfigtable()
 
 bool CiscoSonetMib::Csapsconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<csapsconfigentry.size(); index++)
+    for (std::size_t index=0; index<csapsconfigentry_.size(); index++)
     {
-        if(csapsconfigentry[index]->has_data())
+        if(csapsconfigentry_[index]->has_data())
             return true;
     }
     return false;
@@ -765,9 +765,9 @@ bool CiscoSonetMib::Csapsconfigtable::has_data() const
 
 bool CiscoSonetMib::Csapsconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<csapsconfigentry.size(); index++)
+    for (std::size_t index=0; index<csapsconfigentry_.size(); index++)
     {
-        if(csapsconfigentry[index]->has_operation())
+        if(csapsconfigentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -807,7 +807,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csapsconfigtable::get_child_by_name(const
 {
     if(child_yang_name == "csApsConfigEntry")
     {
-        for(auto const & c : csapsconfigentry)
+        for(auto const & c : csapsconfigentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -817,7 +817,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csapsconfigtable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoSonetMib::Csapsconfigtable::Csapsconfigentry>();
         c->parent = this;
-        csapsconfigentry.push_back(c);
+        csapsconfigentry_.push_back(c);
         return c;
     }
 
@@ -827,7 +827,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csapsconfigtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csapsconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csapsconfigentry)
+    for (auto const & c : csapsconfigentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1042,9 +1042,9 @@ CiscoSonetMib::Csstotaltable::~Csstotaltable()
 
 bool CiscoSonetMib::Csstotaltable::has_data() const
 {
-    for (std::size_t index=0; index<csstotalentry.size(); index++)
+    for (std::size_t index=0; index<csstotalentry_.size(); index++)
     {
-        if(csstotalentry[index]->has_data())
+        if(csstotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1052,9 +1052,9 @@ bool CiscoSonetMib::Csstotaltable::has_data() const
 
 bool CiscoSonetMib::Csstotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<csstotalentry.size(); index++)
+    for (std::size_t index=0; index<csstotalentry_.size(); index++)
     {
-        if(csstotalentry[index]->has_operation())
+        if(csstotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1094,7 +1094,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cssTotalEntry")
     {
-        for(auto const & c : csstotalentry)
+        for(auto const & c : csstotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1104,7 +1104,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstotaltable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csstotaltable::Csstotalentry>();
         c->parent = this;
-        csstotalentry.push_back(c);
+        csstotalentry_.push_back(c);
         return c;
     }
 
@@ -1114,7 +1114,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csstotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csstotalentry)
+    for (auto const & c : csstotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1241,9 +1241,9 @@ CiscoSonetMib::Csstracetable::~Csstracetable()
 
 bool CiscoSonetMib::Csstracetable::has_data() const
 {
-    for (std::size_t index=0; index<csstraceentry.size(); index++)
+    for (std::size_t index=0; index<csstraceentry_.size(); index++)
     {
-        if(csstraceentry[index]->has_data())
+        if(csstraceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1251,9 +1251,9 @@ bool CiscoSonetMib::Csstracetable::has_data() const
 
 bool CiscoSonetMib::Csstracetable::has_operation() const
 {
-    for (std::size_t index=0; index<csstraceentry.size(); index++)
+    for (std::size_t index=0; index<csstraceentry_.size(); index++)
     {
-        if(csstraceentry[index]->has_operation())
+        if(csstraceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1293,7 +1293,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstracetable::get_child_by_name(const st
 {
     if(child_yang_name == "cssTraceEntry")
     {
-        for(auto const & c : csstraceentry)
+        for(auto const & c : csstraceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1303,7 +1303,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstracetable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csstracetable::Csstraceentry>();
         c->parent = this;
-        csstraceentry.push_back(c);
+        csstraceentry_.push_back(c);
         return c;
     }
 
@@ -1313,7 +1313,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstracetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csstracetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csstraceentry)
+    for (auto const & c : csstraceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1440,9 +1440,9 @@ CiscoSonetMib::Csltotaltable::~Csltotaltable()
 
 bool CiscoSonetMib::Csltotaltable::has_data() const
 {
-    for (std::size_t index=0; index<csltotalentry.size(); index++)
+    for (std::size_t index=0; index<csltotalentry_.size(); index++)
     {
-        if(csltotalentry[index]->has_data())
+        if(csltotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1450,9 +1450,9 @@ bool CiscoSonetMib::Csltotaltable::has_data() const
 
 bool CiscoSonetMib::Csltotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<csltotalentry.size(); index++)
+    for (std::size_t index=0; index<csltotalentry_.size(); index++)
     {
-        if(csltotalentry[index]->has_operation())
+        if(csltotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1492,7 +1492,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csltotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cslTotalEntry")
     {
-        for(auto const & c : csltotalentry)
+        for(auto const & c : csltotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1502,7 +1502,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csltotaltable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csltotaltable::Csltotalentry>();
         c->parent = this;
-        csltotalentry.push_back(c);
+        csltotalentry_.push_back(c);
         return c;
     }
 
@@ -1512,7 +1512,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csltotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csltotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csltotalentry)
+    for (auto const & c : csltotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1639,9 +1639,9 @@ CiscoSonetMib::Cslfarendtotaltable::~Cslfarendtotaltable()
 
 bool CiscoSonetMib::Cslfarendtotaltable::has_data() const
 {
-    for (std::size_t index=0; index<cslfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cslfarendtotalentry_.size(); index++)
     {
-        if(cslfarendtotalentry[index]->has_data())
+        if(cslfarendtotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1649,9 +1649,9 @@ bool CiscoSonetMib::Cslfarendtotaltable::has_data() const
 
 bool CiscoSonetMib::Cslfarendtotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cslfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cslfarendtotalentry_.size(); index++)
     {
-        if(cslfarendtotalentry[index]->has_operation())
+        if(cslfarendtotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1691,7 +1691,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cslfarendtotaltable::get_child_by_name(co
 {
     if(child_yang_name == "cslFarEndTotalEntry")
     {
-        for(auto const & c : cslfarendtotalentry)
+        for(auto const & c : cslfarendtotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1701,7 +1701,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cslfarendtotaltable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry>();
         c->parent = this;
-        cslfarendtotalentry.push_back(c);
+        cslfarendtotalentry_.push_back(c);
         return c;
     }
 
@@ -1711,7 +1711,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cslfarendtotaltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Cslfarendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cslfarendtotalentry)
+    for (auto const & c : cslfarendtotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1838,9 +1838,9 @@ CiscoSonetMib::Csptotaltable::~Csptotaltable()
 
 bool CiscoSonetMib::Csptotaltable::has_data() const
 {
-    for (std::size_t index=0; index<csptotalentry.size(); index++)
+    for (std::size_t index=0; index<csptotalentry_.size(); index++)
     {
-        if(csptotalentry[index]->has_data())
+        if(csptotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1848,9 +1848,9 @@ bool CiscoSonetMib::Csptotaltable::has_data() const
 
 bool CiscoSonetMib::Csptotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<csptotalentry.size(); index++)
+    for (std::size_t index=0; index<csptotalentry_.size(); index++)
     {
-        if(csptotalentry[index]->has_operation())
+        if(csptotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1890,7 +1890,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cspTotalEntry")
     {
-        for(auto const & c : csptotalentry)
+        for(auto const & c : csptotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1900,7 +1900,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptotaltable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csptotaltable::Csptotalentry>();
         c->parent = this;
-        csptotalentry.push_back(c);
+        csptotalentry_.push_back(c);
         return c;
     }
 
@@ -1910,7 +1910,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csptotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csptotalentry)
+    for (auto const & c : csptotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2037,9 +2037,9 @@ CiscoSonetMib::Cspfarendtotaltable::~Cspfarendtotaltable()
 
 bool CiscoSonetMib::Cspfarendtotaltable::has_data() const
 {
-    for (std::size_t index=0; index<cspfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cspfarendtotalentry_.size(); index++)
     {
-        if(cspfarendtotalentry[index]->has_data())
+        if(cspfarendtotalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2047,9 +2047,9 @@ bool CiscoSonetMib::Cspfarendtotaltable::has_data() const
 
 bool CiscoSonetMib::Cspfarendtotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cspfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cspfarendtotalentry_.size(); index++)
     {
-        if(cspfarendtotalentry[index]->has_operation())
+        if(cspfarendtotalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2089,7 +2089,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cspfarendtotaltable::get_child_by_name(co
 {
     if(child_yang_name == "cspFarEndTotalEntry")
     {
-        for(auto const & c : cspfarendtotalentry)
+        for(auto const & c : cspfarendtotalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2099,7 +2099,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cspfarendtotaltable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry>();
         c->parent = this;
-        cspfarendtotalentry.push_back(c);
+        cspfarendtotalentry_.push_back(c);
         return c;
     }
 
@@ -2109,7 +2109,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Cspfarendtotaltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Cspfarendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cspfarendtotalentry)
+    for (auto const & c : cspfarendtotalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2236,9 +2236,9 @@ CiscoSonetMib::Csptracetable::~Csptracetable()
 
 bool CiscoSonetMib::Csptracetable::has_data() const
 {
-    for (std::size_t index=0; index<csptraceentry.size(); index++)
+    for (std::size_t index=0; index<csptraceentry_.size(); index++)
     {
-        if(csptraceentry[index]->has_data())
+        if(csptraceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2246,9 +2246,9 @@ bool CiscoSonetMib::Csptracetable::has_data() const
 
 bool CiscoSonetMib::Csptracetable::has_operation() const
 {
-    for (std::size_t index=0; index<csptraceentry.size(); index++)
+    for (std::size_t index=0; index<csptraceentry_.size(); index++)
     {
-        if(csptraceentry[index]->has_operation())
+        if(csptraceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2288,7 +2288,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptracetable::get_child_by_name(const st
 {
     if(child_yang_name == "cspTraceEntry")
     {
-        for(auto const & c : csptraceentry)
+        for(auto const & c : csptraceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2298,7 +2298,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptracetable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoSonetMib::Csptracetable::Csptraceentry>();
         c->parent = this;
-        csptraceentry.push_back(c);
+        csptraceentry_.push_back(c);
         return c;
     }
 
@@ -2308,7 +2308,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csptracetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csptracetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csptraceentry)
+    for (auto const & c : csptraceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2435,9 +2435,9 @@ CiscoSonetMib::Csstatstable::~Csstatstable()
 
 bool CiscoSonetMib::Csstatstable::has_data() const
 {
-    for (std::size_t index=0; index<csstatsentry.size(); index++)
+    for (std::size_t index=0; index<csstatsentry_.size(); index++)
     {
-        if(csstatsentry[index]->has_data())
+        if(csstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2445,9 +2445,9 @@ bool CiscoSonetMib::Csstatstable::has_data() const
 
 bool CiscoSonetMib::Csstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<csstatsentry.size(); index++)
+    for (std::size_t index=0; index<csstatsentry_.size(); index++)
     {
-        if(csstatsentry[index]->has_operation())
+        if(csstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2487,7 +2487,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstatstable::get_child_by_name(const std
 {
     if(child_yang_name == "csStatsEntry")
     {
-        for(auto const & c : csstatsentry)
+        for(auto const & c : csstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2497,7 +2497,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstatstable::get_child_by_name(const std
         }
         auto c = std::make_shared<CiscoSonetMib::Csstatstable::Csstatsentry>();
         c->parent = this;
-        csstatsentry.push_back(c);
+        csstatsentry_.push_back(c);
         return c;
     }
 
@@ -2507,7 +2507,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csstatstable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csstatsentry)
+    for (auto const & c : csstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2650,9 +2650,9 @@ CiscoSonetMib::Csau4Tug3Configtable::~Csau4Tug3Configtable()
 
 bool CiscoSonetMib::Csau4Tug3Configtable::has_data() const
 {
-    for (std::size_t index=0; index<csau4tug3configentry.size(); index++)
+    for (std::size_t index=0; index<csau4tug3configentry_.size(); index++)
     {
-        if(csau4tug3configentry[index]->has_data())
+        if(csau4tug3configentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2660,9 +2660,9 @@ bool CiscoSonetMib::Csau4Tug3Configtable::has_data() const
 
 bool CiscoSonetMib::Csau4Tug3Configtable::has_operation() const
 {
-    for (std::size_t index=0; index<csau4tug3configentry.size(); index++)
+    for (std::size_t index=0; index<csau4tug3configentry_.size(); index++)
     {
-        if(csau4tug3configentry[index]->has_operation())
+        if(csau4tug3configentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2702,7 +2702,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csau4Tug3Configtable::get_child_by_name(c
 {
     if(child_yang_name == "csAu4Tug3ConfigEntry")
     {
-        for(auto const & c : csau4tug3configentry)
+        for(auto const & c : csau4tug3configentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2712,7 +2712,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csau4Tug3Configtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry>();
         c->parent = this;
-        csau4tug3configentry.push_back(c);
+        csau4tug3configentry_.push_back(c);
         return c;
     }
 
@@ -2722,7 +2722,7 @@ std::shared_ptr<Entity> CiscoSonetMib::Csau4Tug3Configtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoSonetMib::Csau4Tug3Configtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : csau4tug3configentry)
+    for (auto const & c : csau4tug3configentry_)
     {
         children[c->get_segment_path()] = c;
     }

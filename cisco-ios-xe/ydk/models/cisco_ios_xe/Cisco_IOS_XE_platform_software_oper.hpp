@@ -31,8 +31,8 @@ class CiscoPlatformSoftware : public Entity
         class PlatformSoftwareStatusControlProcesses; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses
         class PlatformSoftwareInterfaceRpActiveBriefForwarding; //type: CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding> platform_software_interface_rp_active_brief_forwarding;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses> platform_software_status_control_processes;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding> platform_software_interface_rp_active_brief_forwarding_;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses> platform_software_status_control_processes_;
         
 }; // CiscoPlatformSoftware
 
@@ -53,7 +53,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses : public Ent
 
         class ControlProcesses; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses> control_processes;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses> control_processes_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses
 
@@ -74,7 +74,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
 
         class ControlProcess; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess> > control_process;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess> > control_process_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses
 
@@ -101,10 +101,10 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
         class MemoryStats; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats
         class PerCoreStats; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats> load_average_stats;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes> load_avg_minutes;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats> memory_stats;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats> per_core_stats;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats> load_average_stats_;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes> load_avg_minutes_;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats> memory_stats_;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats> per_core_stats_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess
 
@@ -144,7 +144,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
 
         class LoadAvgMinute; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute> > load_avg_minute;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute> > load_avg_minute_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes
 
@@ -167,7 +167,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
         YLeaf average; //type: string
         class Status; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status> status;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status> status_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute
 
@@ -219,7 +219,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
         YLeaf committed_percent; //type: uint8
         class Status; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status> status;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status> status_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats
 
@@ -261,7 +261,7 @@ class CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProc
 
         class PerCoreStat; //type: CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat> > per_core_stat;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat> > per_core_stat_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats
 
@@ -308,7 +308,7 @@ class CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding : 
 
         class XosInterfaces; //type: CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces> xos_interfaces;
+        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces> xos_interfaces_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding
 
@@ -329,7 +329,7 @@ class CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::X
 
         class XosInterface; //type: CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface> > xos_interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface> > xos_interface_;
         
 }; // CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces
 

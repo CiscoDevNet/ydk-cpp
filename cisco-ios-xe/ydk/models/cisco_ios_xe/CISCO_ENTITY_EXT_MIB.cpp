@@ -11,15 +11,15 @@ namespace CISCO_ENTITY_EXT_MIB {
 
 CiscoEntityExtMib::CiscoEntityExtMib()
     :
-    ceextconfigregtable(std::make_shared<CiscoEntityExtMib::Ceextconfigregtable>())
-	,ceextentityledtable(std::make_shared<CiscoEntityExtMib::Ceextentityledtable>())
-	,ceextphysicalprocessortable(std::make_shared<CiscoEntityExtMib::Ceextphysicalprocessortable>())
+    ceextconfigregtable_(std::make_shared<CiscoEntityExtMib::Ceextconfigregtable>())
+	,ceextentityledtable_(std::make_shared<CiscoEntityExtMib::Ceextentityledtable>())
+	,ceextphysicalprocessortable_(std::make_shared<CiscoEntityExtMib::Ceextphysicalprocessortable>())
 {
-    ceextconfigregtable->parent = this;
+    ceextconfigregtable_->parent = this;
 
-    ceextentityledtable->parent = this;
+    ceextentityledtable_->parent = this;
 
-    ceextphysicalprocessortable->parent = this;
+    ceextphysicalprocessortable_->parent = this;
 
     yang_name = "CISCO-ENTITY-EXT-MIB"; yang_parent_name = "CISCO-ENTITY-EXT-MIB";
 }
@@ -30,17 +30,17 @@ CiscoEntityExtMib::~CiscoEntityExtMib()
 
 bool CiscoEntityExtMib::has_data() const
 {
-    return (ceextconfigregtable !=  nullptr && ceextconfigregtable->has_data())
-	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_data())
-	|| (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_data());
+    return (ceextconfigregtable_ !=  nullptr && ceextconfigregtable_->has_data())
+	|| (ceextentityledtable_ !=  nullptr && ceextentityledtable_->has_data())
+	|| (ceextphysicalprocessortable_ !=  nullptr && ceextphysicalprocessortable_->has_data());
 }
 
 bool CiscoEntityExtMib::has_operation() const
 {
     return is_set(operation)
-	|| (ceextconfigregtable !=  nullptr && ceextconfigregtable->has_operation())
-	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_operation())
-	|| (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_operation());
+	|| (ceextconfigregtable_ !=  nullptr && ceextconfigregtable_->has_operation())
+	|| (ceextentityledtable_ !=  nullptr && ceextentityledtable_->has_operation())
+	|| (ceextphysicalprocessortable_ !=  nullptr && ceextphysicalprocessortable_->has_operation());
 }
 
 std::string CiscoEntityExtMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoEntityExtMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "ceExtConfigRegTable")
     {
-        if(ceextconfigregtable == nullptr)
+        if(ceextconfigregtable_ == nullptr)
         {
-            ceextconfigregtable = std::make_shared<CiscoEntityExtMib::Ceextconfigregtable>();
+            ceextconfigregtable_ = std::make_shared<CiscoEntityExtMib::Ceextconfigregtable>();
         }
-        return ceextconfigregtable;
+        return ceextconfigregtable_;
     }
 
     if(child_yang_name == "ceExtEntityLEDTable")
     {
-        if(ceextentityledtable == nullptr)
+        if(ceextentityledtable_ == nullptr)
         {
-            ceextentityledtable = std::make_shared<CiscoEntityExtMib::Ceextentityledtable>();
+            ceextentityledtable_ = std::make_shared<CiscoEntityExtMib::Ceextentityledtable>();
         }
-        return ceextentityledtable;
+        return ceextentityledtable_;
     }
 
     if(child_yang_name == "ceExtPhysicalProcessorTable")
     {
-        if(ceextphysicalprocessortable == nullptr)
+        if(ceextphysicalprocessortable_ == nullptr)
         {
-            ceextphysicalprocessortable = std::make_shared<CiscoEntityExtMib::Ceextphysicalprocessortable>();
+            ceextphysicalprocessortable_ = std::make_shared<CiscoEntityExtMib::Ceextphysicalprocessortable>();
         }
-        return ceextphysicalprocessortable;
+        return ceextphysicalprocessortable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoEntityExtMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityExtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceextconfigregtable != nullptr)
+    if(ceextconfigregtable_ != nullptr)
     {
-        children["ceExtConfigRegTable"] = ceextconfigregtable;
+        children["ceExtConfigRegTable"] = ceextconfigregtable_;
     }
 
-    if(ceextentityledtable != nullptr)
+    if(ceextentityledtable_ != nullptr)
     {
-        children["ceExtEntityLEDTable"] = ceextentityledtable;
+        children["ceExtEntityLEDTable"] = ceextentityledtable_;
     }
 
-    if(ceextphysicalprocessortable != nullptr)
+    if(ceextphysicalprocessortable_ != nullptr)
     {
-        children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
+        children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable_;
     }
 
     return children;
@@ -158,9 +158,9 @@ CiscoEntityExtMib::Ceextphysicalprocessortable::~Ceextphysicalprocessortable()
 
 bool CiscoEntityExtMib::Ceextphysicalprocessortable::has_data() const
 {
-    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
+    for (std::size_t index=0; index<ceextphysicalprocessorentry_.size(); index++)
     {
-        if(ceextphysicalprocessorentry[index]->has_data())
+        if(ceextphysicalprocessorentry_[index]->has_data())
             return true;
     }
     return false;
@@ -168,9 +168,9 @@ bool CiscoEntityExtMib::Ceextphysicalprocessortable::has_data() const
 
 bool CiscoEntityExtMib::Ceextphysicalprocessortable::has_operation() const
 {
-    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
+    for (std::size_t index=0; index<ceextphysicalprocessorentry_.size(); index++)
     {
-        if(ceextphysicalprocessorentry[index]->has_operation())
+        if(ceextphysicalprocessorentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -210,7 +210,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextphysicalprocessortable::get_chil
 {
     if(child_yang_name == "ceExtPhysicalProcessorEntry")
     {
-        for(auto const & c : ceextphysicalprocessorentry)
+        for(auto const & c : ceextphysicalprocessorentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextphysicalprocessortable::get_chil
         }
         auto c = std::make_shared<CiscoEntityExtMib::Ceextphysicalprocessortable::Ceextphysicalprocessorentry>();
         c->parent = this;
-        ceextphysicalprocessorentry.push_back(c);
+        ceextphysicalprocessorentry_.push_back(c);
         return c;
     }
 
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextphysicalprocessortable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityExtMib::Ceextphysicalprocessortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceextphysicalprocessorentry)
+    for (auto const & c : ceextphysicalprocessorentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -365,9 +365,9 @@ CiscoEntityExtMib::Ceextconfigregtable::~Ceextconfigregtable()
 
 bool CiscoEntityExtMib::Ceextconfigregtable::has_data() const
 {
-    for (std::size_t index=0; index<ceextconfigregentry.size(); index++)
+    for (std::size_t index=0; index<ceextconfigregentry_.size(); index++)
     {
-        if(ceextconfigregentry[index]->has_data())
+        if(ceextconfigregentry_[index]->has_data())
             return true;
     }
     return false;
@@ -375,9 +375,9 @@ bool CiscoEntityExtMib::Ceextconfigregtable::has_data() const
 
 bool CiscoEntityExtMib::Ceextconfigregtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceextconfigregentry.size(); index++)
+    for (std::size_t index=0; index<ceextconfigregentry_.size(); index++)
     {
-        if(ceextconfigregentry[index]->has_operation())
+        if(ceextconfigregentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -417,7 +417,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextconfigregtable::get_child_by_nam
 {
     if(child_yang_name == "ceExtConfigRegEntry")
     {
-        for(auto const & c : ceextconfigregentry)
+        for(auto const & c : ceextconfigregentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -427,7 +427,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextconfigregtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoEntityExtMib::Ceextconfigregtable::Ceextconfigregentry>();
         c->parent = this;
-        ceextconfigregentry.push_back(c);
+        ceextconfigregentry_.push_back(c);
         return c;
     }
 
@@ -437,7 +437,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextconfigregtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityExtMib::Ceextconfigregtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceextconfigregentry)
+    for (auto const & c : ceextconfigregentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -564,9 +564,9 @@ CiscoEntityExtMib::Ceextentityledtable::~Ceextentityledtable()
 
 bool CiscoEntityExtMib::Ceextentityledtable::has_data() const
 {
-    for (std::size_t index=0; index<ceextentityledentry.size(); index++)
+    for (std::size_t index=0; index<ceextentityledentry_.size(); index++)
     {
-        if(ceextentityledentry[index]->has_data())
+        if(ceextentityledentry_[index]->has_data())
             return true;
     }
     return false;
@@ -574,9 +574,9 @@ bool CiscoEntityExtMib::Ceextentityledtable::has_data() const
 
 bool CiscoEntityExtMib::Ceextentityledtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceextentityledentry.size(); index++)
+    for (std::size_t index=0; index<ceextentityledentry_.size(); index++)
     {
-        if(ceextentityledentry[index]->has_operation())
+        if(ceextentityledentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -616,7 +616,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextentityledtable::get_child_by_nam
 {
     if(child_yang_name == "ceExtEntityLEDEntry")
     {
-        for(auto const & c : ceextentityledentry)
+        for(auto const & c : ceextentityledentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -626,7 +626,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextentityledtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoEntityExtMib::Ceextentityledtable::Ceextentityledentry>();
         c->parent = this;
-        ceextentityledentry.push_back(c);
+        ceextentityledentry_.push_back(c);
         return c;
     }
 
@@ -636,7 +636,7 @@ std::shared_ptr<Entity> CiscoEntityExtMib::Ceextentityledtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityExtMib::Ceextentityledtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceextentityledentry)
+    for (auto const & c : ceextentityledentry_)
     {
         children[c->get_segment_path()] = c;
     }

@@ -11,9 +11,9 @@ namespace CISCO_OSPF_TRAP_MIB {
 
 CiscoOspfTrapMib::CiscoOspfTrapMib()
     :
-    cospftrapcontrol(std::make_shared<CiscoOspfTrapMib::Cospftrapcontrol>())
+    cospftrapcontrol_(std::make_shared<CiscoOspfTrapMib::Cospftrapcontrol>())
 {
-    cospftrapcontrol->parent = this;
+    cospftrapcontrol_->parent = this;
 
     yang_name = "CISCO-OSPF-TRAP-MIB"; yang_parent_name = "CISCO-OSPF-TRAP-MIB";
 }
@@ -24,13 +24,13 @@ CiscoOspfTrapMib::~CiscoOspfTrapMib()
 
 bool CiscoOspfTrapMib::has_data() const
 {
-    return (cospftrapcontrol !=  nullptr && cospftrapcontrol->has_data());
+    return (cospftrapcontrol_ !=  nullptr && cospftrapcontrol_->has_data());
 }
 
 bool CiscoOspfTrapMib::has_operation() const
 {
     return is_set(operation)
-	|| (cospftrapcontrol !=  nullptr && cospftrapcontrol->has_operation());
+	|| (cospftrapcontrol_ !=  nullptr && cospftrapcontrol_->has_operation());
 }
 
 std::string CiscoOspfTrapMib::get_segment_path() const
@@ -64,11 +64,11 @@ std::shared_ptr<Entity> CiscoOspfTrapMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "cospfTrapControl")
     {
-        if(cospftrapcontrol == nullptr)
+        if(cospftrapcontrol_ == nullptr)
         {
-            cospftrapcontrol = std::make_shared<CiscoOspfTrapMib::Cospftrapcontrol>();
+            cospftrapcontrol_ = std::make_shared<CiscoOspfTrapMib::Cospftrapcontrol>();
         }
-        return cospftrapcontrol;
+        return cospftrapcontrol_;
     }
 
     return nullptr;
@@ -77,9 +77,9 @@ std::shared_ptr<Entity> CiscoOspfTrapMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CiscoOspfTrapMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cospftrapcontrol != nullptr)
+    if(cospftrapcontrol_ != nullptr)
     {
-        children["cospfTrapControl"] = cospftrapcontrol;
+        children["cospfTrapControl"] = cospftrapcontrol_;
     }
 
     return children;

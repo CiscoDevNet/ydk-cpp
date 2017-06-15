@@ -110,12 +110,12 @@ NsrSyncNackRsnIdentity::~NsrSyncNackRsnIdentity()
 
 MplsLdp::MplsLdp()
     :
-    mpls_ldp_config(std::make_shared<MplsLdp::MplsLdpConfig>())
-	,mpls_ldp_state(std::make_shared<MplsLdp::MplsLdpState>())
+    mpls_ldp_config_(std::make_shared<MplsLdp::MplsLdpConfig>())
+	,mpls_ldp_state_(std::make_shared<MplsLdp::MplsLdpState>())
 {
-    mpls_ldp_config->parent = this;
+    mpls_ldp_config_->parent = this;
 
-    mpls_ldp_state->parent = this;
+    mpls_ldp_state_->parent = this;
 
     yang_name = "mpls-ldp"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp";
 }
@@ -126,15 +126,15 @@ MplsLdp::~MplsLdp()
 
 bool MplsLdp::has_data() const
 {
-    return (mpls_ldp_config !=  nullptr && mpls_ldp_config->has_data())
-	|| (mpls_ldp_state !=  nullptr && mpls_ldp_state->has_data());
+    return (mpls_ldp_config_ !=  nullptr && mpls_ldp_config_->has_data())
+	|| (mpls_ldp_state_ !=  nullptr && mpls_ldp_state_->has_data());
 }
 
 bool MplsLdp::has_operation() const
 {
     return is_set(operation)
-	|| (mpls_ldp_config !=  nullptr && mpls_ldp_config->has_operation())
-	|| (mpls_ldp_state !=  nullptr && mpls_ldp_state->has_operation());
+	|| (mpls_ldp_config_ !=  nullptr && mpls_ldp_config_->has_operation())
+	|| (mpls_ldp_state_ !=  nullptr && mpls_ldp_state_->has_operation());
 }
 
 std::string MplsLdp::get_segment_path() const
@@ -168,20 +168,20 @@ std::shared_ptr<Entity> MplsLdp::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "mpls-ldp-config")
     {
-        if(mpls_ldp_config == nullptr)
+        if(mpls_ldp_config_ == nullptr)
         {
-            mpls_ldp_config = std::make_shared<MplsLdp::MplsLdpConfig>();
+            mpls_ldp_config_ = std::make_shared<MplsLdp::MplsLdpConfig>();
         }
-        return mpls_ldp_config;
+        return mpls_ldp_config_;
     }
 
     if(child_yang_name == "mpls-ldp-state")
     {
-        if(mpls_ldp_state == nullptr)
+        if(mpls_ldp_state_ == nullptr)
         {
-            mpls_ldp_state = std::make_shared<MplsLdp::MplsLdpState>();
+            mpls_ldp_state_ = std::make_shared<MplsLdp::MplsLdpState>();
         }
-        return mpls_ldp_state;
+        return mpls_ldp_state_;
     }
 
     return nullptr;
@@ -190,14 +190,14 @@ std::shared_ptr<Entity> MplsLdp::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls_ldp_config != nullptr)
+    if(mpls_ldp_config_ != nullptr)
     {
-        children["mpls-ldp-config"] = mpls_ldp_config;
+        children["mpls-ldp-config"] = mpls_ldp_config_;
     }
 
-    if(mpls_ldp_state != nullptr)
+    if(mpls_ldp_state_ != nullptr)
     {
-        children["mpls-ldp-state"] = mpls_ldp_state;
+        children["mpls-ldp-state"] = mpls_ldp_state_;
     }
 
     return children;
@@ -229,51 +229,51 @@ augment_capabilities_function MplsLdp::get_augment_capabilities_function() const
 
 MplsLdp::MplsLdpState::MplsLdpState()
     :
-    backoff_parameters(std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>())
-	,bindings(std::make_shared<MplsLdp::MplsLdpState::Bindings>())
-	,bindings_summary(std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>())
-	,capabilities(std::make_shared<MplsLdp::MplsLdpState::Capabilities>())
-	,discovery(std::make_shared<MplsLdp::MplsLdpState::Discovery>())
-	,forwarding(std::make_shared<MplsLdp::MplsLdpState::Forwarding>())
-	,forwarding_summary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>())
-	,graceful_restart(std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>())
-	,icpm_summary_all(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>())
-	,label_ranges(std::make_shared<MplsLdp::MplsLdpState::LabelRanges>())
-	,neighbors(std::make_shared<MplsLdp::MplsLdpState::Neighbors>())
-	,nsr_summary_all(std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>())
-	,oper_summary(std::make_shared<MplsLdp::MplsLdpState::OperSummary>())
-	,parameters(std::make_shared<MplsLdp::MplsLdpState::Parameters>())
-	,vrfs(std::make_shared<MplsLdp::MplsLdpState::Vrfs>())
+    backoff_parameters_(std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>())
+	,bindings_(std::make_shared<MplsLdp::MplsLdpState::Bindings>())
+	,bindings_summary_(std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>())
+	,capabilities_(std::make_shared<MplsLdp::MplsLdpState::Capabilities>())
+	,discovery_(std::make_shared<MplsLdp::MplsLdpState::Discovery>())
+	,forwarding_(std::make_shared<MplsLdp::MplsLdpState::Forwarding>())
+	,forwarding_summary_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>())
+	,graceful_restart_(std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>())
+	,icpm_summary_all_(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>())
+	,label_ranges_(std::make_shared<MplsLdp::MplsLdpState::LabelRanges>())
+	,neighbors_(std::make_shared<MplsLdp::MplsLdpState::Neighbors>())
+	,nsr_summary_all_(std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>())
+	,oper_summary_(std::make_shared<MplsLdp::MplsLdpState::OperSummary>())
+	,parameters_(std::make_shared<MplsLdp::MplsLdpState::Parameters>())
+	,vrfs_(std::make_shared<MplsLdp::MplsLdpState::Vrfs>())
 {
-    backoff_parameters->parent = this;
+    backoff_parameters_->parent = this;
 
-    bindings->parent = this;
+    bindings_->parent = this;
 
-    bindings_summary->parent = this;
+    bindings_summary_->parent = this;
 
-    capabilities->parent = this;
+    capabilities_->parent = this;
 
-    discovery->parent = this;
+    discovery_->parent = this;
 
-    forwarding->parent = this;
+    forwarding_->parent = this;
 
-    forwarding_summary->parent = this;
+    forwarding_summary_->parent = this;
 
-    graceful_restart->parent = this;
+    graceful_restart_->parent = this;
 
-    icpm_summary_all->parent = this;
+    icpm_summary_all_->parent = this;
 
-    label_ranges->parent = this;
+    label_ranges_->parent = this;
 
-    neighbors->parent = this;
+    neighbors_->parent = this;
 
-    nsr_summary_all->parent = this;
+    nsr_summary_all_->parent = this;
 
-    oper_summary->parent = this;
+    oper_summary_->parent = this;
 
-    parameters->parent = this;
+    parameters_->parent = this;
 
-    vrfs->parent = this;
+    vrfs_->parent = this;
 
     yang_name = "mpls-ldp-state"; yang_parent_name = "mpls-ldp";
 }
@@ -284,41 +284,41 @@ MplsLdp::MplsLdpState::~MplsLdpState()
 
 bool MplsLdp::MplsLdpState::has_data() const
 {
-    return (backoff_parameters !=  nullptr && backoff_parameters->has_data())
-	|| (bindings !=  nullptr && bindings->has_data())
-	|| (bindings_summary !=  nullptr && bindings_summary->has_data())
-	|| (capabilities !=  nullptr && capabilities->has_data())
-	|| (discovery !=  nullptr && discovery->has_data())
-	|| (forwarding !=  nullptr && forwarding->has_data())
-	|| (forwarding_summary !=  nullptr && forwarding_summary->has_data())
-	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
-	|| (icpm_summary_all !=  nullptr && icpm_summary_all->has_data())
-	|| (label_ranges !=  nullptr && label_ranges->has_data())
-	|| (neighbors !=  nullptr && neighbors->has_data())
-	|| (nsr_summary_all !=  nullptr && nsr_summary_all->has_data())
-	|| (oper_summary !=  nullptr && oper_summary->has_data())
-	|| (parameters !=  nullptr && parameters->has_data())
-	|| (vrfs !=  nullptr && vrfs->has_data());
+    return (backoff_parameters_ !=  nullptr && backoff_parameters_->has_data())
+	|| (bindings_ !=  nullptr && bindings_->has_data())
+	|| (bindings_summary_ !=  nullptr && bindings_summary_->has_data())
+	|| (capabilities_ !=  nullptr && capabilities_->has_data())
+	|| (discovery_ !=  nullptr && discovery_->has_data())
+	|| (forwarding_ !=  nullptr && forwarding_->has_data())
+	|| (forwarding_summary_ !=  nullptr && forwarding_summary_->has_data())
+	|| (graceful_restart_ !=  nullptr && graceful_restart_->has_data())
+	|| (icpm_summary_all_ !=  nullptr && icpm_summary_all_->has_data())
+	|| (label_ranges_ !=  nullptr && label_ranges_->has_data())
+	|| (neighbors_ !=  nullptr && neighbors_->has_data())
+	|| (nsr_summary_all_ !=  nullptr && nsr_summary_all_->has_data())
+	|| (oper_summary_ !=  nullptr && oper_summary_->has_data())
+	|| (parameters_ !=  nullptr && parameters_->has_data())
+	|| (vrfs_ !=  nullptr && vrfs_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::has_operation() const
 {
     return is_set(operation)
-	|| (backoff_parameters !=  nullptr && backoff_parameters->has_operation())
-	|| (bindings !=  nullptr && bindings->has_operation())
-	|| (bindings_summary !=  nullptr && bindings_summary->has_operation())
-	|| (capabilities !=  nullptr && capabilities->has_operation())
-	|| (discovery !=  nullptr && discovery->has_operation())
-	|| (forwarding !=  nullptr && forwarding->has_operation())
-	|| (forwarding_summary !=  nullptr && forwarding_summary->has_operation())
-	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
-	|| (icpm_summary_all !=  nullptr && icpm_summary_all->has_operation())
-	|| (label_ranges !=  nullptr && label_ranges->has_operation())
-	|| (neighbors !=  nullptr && neighbors->has_operation())
-	|| (nsr_summary_all !=  nullptr && nsr_summary_all->has_operation())
-	|| (oper_summary !=  nullptr && oper_summary->has_operation())
-	|| (parameters !=  nullptr && parameters->has_operation())
-	|| (vrfs !=  nullptr && vrfs->has_operation());
+	|| (backoff_parameters_ !=  nullptr && backoff_parameters_->has_operation())
+	|| (bindings_ !=  nullptr && bindings_->has_operation())
+	|| (bindings_summary_ !=  nullptr && bindings_summary_->has_operation())
+	|| (capabilities_ !=  nullptr && capabilities_->has_operation())
+	|| (discovery_ !=  nullptr && discovery_->has_operation())
+	|| (forwarding_ !=  nullptr && forwarding_->has_operation())
+	|| (forwarding_summary_ !=  nullptr && forwarding_summary_->has_operation())
+	|| (graceful_restart_ !=  nullptr && graceful_restart_->has_operation())
+	|| (icpm_summary_all_ !=  nullptr && icpm_summary_all_->has_operation())
+	|| (label_ranges_ !=  nullptr && label_ranges_->has_operation())
+	|| (neighbors_ !=  nullptr && neighbors_->has_operation())
+	|| (nsr_summary_all_ !=  nullptr && nsr_summary_all_->has_operation())
+	|| (oper_summary_ !=  nullptr && oper_summary_->has_operation())
+	|| (parameters_ !=  nullptr && parameters_->has_operation())
+	|| (vrfs_ !=  nullptr && vrfs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::get_segment_path() const
@@ -355,137 +355,137 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::get_child_by_name(const std::stri
 {
     if(child_yang_name == "backoff-parameters")
     {
-        if(backoff_parameters == nullptr)
+        if(backoff_parameters_ == nullptr)
         {
-            backoff_parameters = std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>();
+            backoff_parameters_ = std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>();
         }
-        return backoff_parameters;
+        return backoff_parameters_;
     }
 
     if(child_yang_name == "bindings")
     {
-        if(bindings == nullptr)
+        if(bindings_ == nullptr)
         {
-            bindings = std::make_shared<MplsLdp::MplsLdpState::Bindings>();
+            bindings_ = std::make_shared<MplsLdp::MplsLdpState::Bindings>();
         }
-        return bindings;
+        return bindings_;
     }
 
     if(child_yang_name == "bindings-summary")
     {
-        if(bindings_summary == nullptr)
+        if(bindings_summary_ == nullptr)
         {
-            bindings_summary = std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>();
+            bindings_summary_ = std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>();
         }
-        return bindings_summary;
+        return bindings_summary_;
     }
 
     if(child_yang_name == "capabilities")
     {
-        if(capabilities == nullptr)
+        if(capabilities_ == nullptr)
         {
-            capabilities = std::make_shared<MplsLdp::MplsLdpState::Capabilities>();
+            capabilities_ = std::make_shared<MplsLdp::MplsLdpState::Capabilities>();
         }
-        return capabilities;
+        return capabilities_;
     }
 
     if(child_yang_name == "discovery")
     {
-        if(discovery == nullptr)
+        if(discovery_ == nullptr)
         {
-            discovery = std::make_shared<MplsLdp::MplsLdpState::Discovery>();
+            discovery_ = std::make_shared<MplsLdp::MplsLdpState::Discovery>();
         }
-        return discovery;
+        return discovery_;
     }
 
     if(child_yang_name == "forwarding")
     {
-        if(forwarding == nullptr)
+        if(forwarding_ == nullptr)
         {
-            forwarding = std::make_shared<MplsLdp::MplsLdpState::Forwarding>();
+            forwarding_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding>();
         }
-        return forwarding;
+        return forwarding_;
     }
 
     if(child_yang_name == "forwarding-summary")
     {
-        if(forwarding_summary == nullptr)
+        if(forwarding_summary_ == nullptr)
         {
-            forwarding_summary = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>();
+            forwarding_summary_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>();
         }
-        return forwarding_summary;
+        return forwarding_summary_;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart == nullptr)
+        if(graceful_restart_ == nullptr)
         {
-            graceful_restart = std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>();
+            graceful_restart_ = std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>();
         }
-        return graceful_restart;
+        return graceful_restart_;
     }
 
     if(child_yang_name == "icpm-summary-all")
     {
-        if(icpm_summary_all == nullptr)
+        if(icpm_summary_all_ == nullptr)
         {
-            icpm_summary_all = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>();
+            icpm_summary_all_ = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>();
         }
-        return icpm_summary_all;
+        return icpm_summary_all_;
     }
 
     if(child_yang_name == "label-ranges")
     {
-        if(label_ranges == nullptr)
+        if(label_ranges_ == nullptr)
         {
-            label_ranges = std::make_shared<MplsLdp::MplsLdpState::LabelRanges>();
+            label_ranges_ = std::make_shared<MplsLdp::MplsLdpState::LabelRanges>();
         }
-        return label_ranges;
+        return label_ranges_;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors == nullptr)
+        if(neighbors_ == nullptr)
         {
-            neighbors = std::make_shared<MplsLdp::MplsLdpState::Neighbors>();
+            neighbors_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors>();
         }
-        return neighbors;
+        return neighbors_;
     }
 
     if(child_yang_name == "nsr-summary-all")
     {
-        if(nsr_summary_all == nullptr)
+        if(nsr_summary_all_ == nullptr)
         {
-            nsr_summary_all = std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>();
+            nsr_summary_all_ = std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>();
         }
-        return nsr_summary_all;
+        return nsr_summary_all_;
     }
 
     if(child_yang_name == "oper-summary")
     {
-        if(oper_summary == nullptr)
+        if(oper_summary_ == nullptr)
         {
-            oper_summary = std::make_shared<MplsLdp::MplsLdpState::OperSummary>();
+            oper_summary_ = std::make_shared<MplsLdp::MplsLdpState::OperSummary>();
         }
-        return oper_summary;
+        return oper_summary_;
     }
 
     if(child_yang_name == "parameters")
     {
-        if(parameters == nullptr)
+        if(parameters_ == nullptr)
         {
-            parameters = std::make_shared<MplsLdp::MplsLdpState::Parameters>();
+            parameters_ = std::make_shared<MplsLdp::MplsLdpState::Parameters>();
         }
-        return parameters;
+        return parameters_;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs == nullptr)
+        if(vrfs_ == nullptr)
         {
-            vrfs = std::make_shared<MplsLdp::MplsLdpState::Vrfs>();
+            vrfs_ = std::make_shared<MplsLdp::MplsLdpState::Vrfs>();
         }
-        return vrfs;
+        return vrfs_;
     }
 
     return nullptr;
@@ -494,79 +494,79 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(backoff_parameters != nullptr)
+    if(backoff_parameters_ != nullptr)
     {
-        children["backoff-parameters"] = backoff_parameters;
+        children["backoff-parameters"] = backoff_parameters_;
     }
 
-    if(bindings != nullptr)
+    if(bindings_ != nullptr)
     {
-        children["bindings"] = bindings;
+        children["bindings"] = bindings_;
     }
 
-    if(bindings_summary != nullptr)
+    if(bindings_summary_ != nullptr)
     {
-        children["bindings-summary"] = bindings_summary;
+        children["bindings-summary"] = bindings_summary_;
     }
 
-    if(capabilities != nullptr)
+    if(capabilities_ != nullptr)
     {
-        children["capabilities"] = capabilities;
+        children["capabilities"] = capabilities_;
     }
 
-    if(discovery != nullptr)
+    if(discovery_ != nullptr)
     {
-        children["discovery"] = discovery;
+        children["discovery"] = discovery_;
     }
 
-    if(forwarding != nullptr)
+    if(forwarding_ != nullptr)
     {
-        children["forwarding"] = forwarding;
+        children["forwarding"] = forwarding_;
     }
 
-    if(forwarding_summary != nullptr)
+    if(forwarding_summary_ != nullptr)
     {
-        children["forwarding-summary"] = forwarding_summary;
+        children["forwarding-summary"] = forwarding_summary_;
     }
 
-    if(graceful_restart != nullptr)
+    if(graceful_restart_ != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        children["graceful-restart"] = graceful_restart_;
     }
 
-    if(icpm_summary_all != nullptr)
+    if(icpm_summary_all_ != nullptr)
     {
-        children["icpm-summary-all"] = icpm_summary_all;
+        children["icpm-summary-all"] = icpm_summary_all_;
     }
 
-    if(label_ranges != nullptr)
+    if(label_ranges_ != nullptr)
     {
-        children["label-ranges"] = label_ranges;
+        children["label-ranges"] = label_ranges_;
     }
 
-    if(neighbors != nullptr)
+    if(neighbors_ != nullptr)
     {
-        children["neighbors"] = neighbors;
+        children["neighbors"] = neighbors_;
     }
 
-    if(nsr_summary_all != nullptr)
+    if(nsr_summary_all_ != nullptr)
     {
-        children["nsr-summary-all"] = nsr_summary_all;
+        children["nsr-summary-all"] = nsr_summary_all_;
     }
 
-    if(oper_summary != nullptr)
+    if(oper_summary_ != nullptr)
     {
-        children["oper-summary"] = oper_summary;
+        children["oper-summary"] = oper_summary_;
     }
 
-    if(parameters != nullptr)
+    if(parameters_ != nullptr)
     {
-        children["parameters"] = parameters;
+        children["parameters"] = parameters_;
     }
 
-    if(vrfs != nullptr)
+    if(vrfs_ != nullptr)
     {
-        children["vrfs"] = vrfs;
+        children["vrfs"] = vrfs_;
     }
 
     return children;
@@ -586,9 +586,9 @@ MplsLdp::MplsLdpState::OperSummary::OperSummary()
     number_of_vrf{YType::uint32, "number-of-vrf"},
     number_of_vrf_oper{YType::uint32, "number-of-vrf-oper"}
     	,
-    common(std::make_shared<MplsLdp::MplsLdpState::OperSummary::Common>())
+    common_(std::make_shared<MplsLdp::MplsLdpState::OperSummary::Common>())
 {
-    common->parent = this;
+    common_->parent = this;
 
     yang_name = "oper-summary"; yang_parent_name = "mpls-ldp-state";
 }
@@ -606,7 +606,7 @@ bool MplsLdp::MplsLdpState::OperSummary::has_data() const
 	|| number_of_interfaces.is_set
 	|| number_of_vrf.is_set
 	|| number_of_vrf_oper.is_set
-	|| (common !=  nullptr && common->has_data());
+	|| (common_ !=  nullptr && common_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::OperSummary::has_operation() const
@@ -619,7 +619,7 @@ bool MplsLdp::MplsLdpState::OperSummary::has_operation() const
 	|| is_set(number_of_interfaces.operation)
 	|| is_set(number_of_vrf.operation)
 	|| is_set(number_of_vrf_oper.operation)
-	|| (common !=  nullptr && common->has_operation());
+	|| (common_ !=  nullptr && common_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::OperSummary::get_segment_path() const
@@ -663,11 +663,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::OperSummary::get_child_by_name(co
 {
     if(child_yang_name == "common")
     {
-        if(common == nullptr)
+        if(common_ == nullptr)
         {
-            common = std::make_shared<MplsLdp::MplsLdpState::OperSummary::Common>();
+            common_ = std::make_shared<MplsLdp::MplsLdpState::OperSummary::Common>();
         }
-        return common;
+        return common_;
     }
 
     return nullptr;
@@ -676,9 +676,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::OperSummary::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::OperSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(common != nullptr)
+    if(common_ != nullptr)
     {
-        children["common"] = common;
+        children["common"] = common_;
     }
 
     return children;
@@ -857,12 +857,12 @@ MplsLdp::MplsLdpState::ForwardingSummary::ForwardingSummary()
     intfs_fwd_count{YType::uint16, "intfs-fwd-count"},
     local_lbls{YType::uint16, "local-lbls"}
     	,
-    nhs(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>())
-	,pfxs(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs>())
+    nhs_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>())
+	,pfxs_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs>())
 {
-    nhs->parent = this;
+    nhs_->parent = this;
 
-    pfxs->parent = this;
+    pfxs_->parent = this;
 
     yang_name = "forwarding-summary"; yang_parent_name = "mpls-ldp-state";
 }
@@ -875,8 +875,8 @@ bool MplsLdp::MplsLdpState::ForwardingSummary::has_data() const
 {
     return intfs_fwd_count.is_set
 	|| local_lbls.is_set
-	|| (nhs !=  nullptr && nhs->has_data())
-	|| (pfxs !=  nullptr && pfxs->has_data());
+	|| (nhs_ !=  nullptr && nhs_->has_data())
+	|| (pfxs_ !=  nullptr && pfxs_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::has_operation() const
@@ -884,8 +884,8 @@ bool MplsLdp::MplsLdpState::ForwardingSummary::has_operation() const
     return is_set(operation)
 	|| is_set(intfs_fwd_count.operation)
 	|| is_set(local_lbls.operation)
-	|| (nhs !=  nullptr && nhs->has_operation())
-	|| (pfxs !=  nullptr && pfxs->has_operation());
+	|| (nhs_ !=  nullptr && nhs_->has_operation())
+	|| (pfxs_ !=  nullptr && pfxs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::ForwardingSummary::get_segment_path() const
@@ -924,20 +924,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::ForwardingSummary::get_child_by_n
 {
     if(child_yang_name == "nhs")
     {
-        if(nhs == nullptr)
+        if(nhs_ == nullptr)
         {
-            nhs = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>();
+            nhs_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>();
         }
-        return nhs;
+        return nhs_;
     }
 
     if(child_yang_name == "pfxs")
     {
-        if(pfxs == nullptr)
+        if(pfxs_ == nullptr)
         {
-            pfxs = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs>();
+            pfxs_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs>();
         }
-        return pfxs;
+        return pfxs_;
     }
 
     return nullptr;
@@ -946,14 +946,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::ForwardingSummary::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::ForwardingSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nhs != nullptr)
+    if(nhs_ != nullptr)
     {
-        children["nhs"] = nhs;
+        children["nhs"] = nhs_;
     }
 
-    if(pfxs != nullptr)
+    if(pfxs_ != nullptr)
     {
-        children["pfxs"] = pfxs;
+        children["pfxs"] = pfxs_;
     }
 
     return children;
@@ -977,15 +977,15 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::Pfxs()
     protected_pfxs{YType::uint16, "protected-pfxs"},
     total_pfxs{YType::uint16, "total-pfxs"}
     	,
-    labeled_pfxs_aggr(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>())
+    labeled_pfxs_aggr_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr>())
+	,labeled_pfxs_backup_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>())
+	,labeled_pfxs_primary_(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>())
 {
-    labeled_pfxs_aggr->parent = this;
+    labeled_pfxs_aggr_->parent = this;
 
-    labeled_pfxs_backup->parent = this;
+    labeled_pfxs_backup_->parent = this;
 
-    labeled_pfxs_primary->parent = this;
+    labeled_pfxs_primary_->parent = this;
 
     yang_name = "pfxs"; yang_parent_name = "forwarding-summary";
 }
@@ -999,9 +999,9 @@ bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::has_data() const
     return ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
 	|| total_pfxs.is_set
-	|| (labeled_pfxs_aggr !=  nullptr && labeled_pfxs_aggr->has_data())
-	|| (labeled_pfxs_backup !=  nullptr && labeled_pfxs_backup->has_data())
-	|| (labeled_pfxs_primary !=  nullptr && labeled_pfxs_primary->has_data());
+	|| (labeled_pfxs_aggr_ !=  nullptr && labeled_pfxs_aggr_->has_data())
+	|| (labeled_pfxs_backup_ !=  nullptr && labeled_pfxs_backup_->has_data())
+	|| (labeled_pfxs_primary_ !=  nullptr && labeled_pfxs_primary_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::has_operation() const
@@ -1010,9 +1010,9 @@ bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::has_operation() const
 	|| is_set(ecmp_pfxs.operation)
 	|| is_set(protected_pfxs.operation)
 	|| is_set(total_pfxs.operation)
-	|| (labeled_pfxs_aggr !=  nullptr && labeled_pfxs_aggr->has_operation())
-	|| (labeled_pfxs_backup !=  nullptr && labeled_pfxs_backup->has_operation())
-	|| (labeled_pfxs_primary !=  nullptr && labeled_pfxs_primary->has_operation());
+	|| (labeled_pfxs_aggr_ !=  nullptr && labeled_pfxs_aggr_->has_operation())
+	|| (labeled_pfxs_backup_ !=  nullptr && labeled_pfxs_backup_->has_operation())
+	|| (labeled_pfxs_primary_ !=  nullptr && labeled_pfxs_primary_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::get_segment_path() const
@@ -1052,29 +1052,29 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::get_chil
 {
     if(child_yang_name == "labeled-pfxs-aggr")
     {
-        if(labeled_pfxs_aggr == nullptr)
+        if(labeled_pfxs_aggr_ == nullptr)
         {
-            labeled_pfxs_aggr = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr>();
+            labeled_pfxs_aggr_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr>();
         }
-        return labeled_pfxs_aggr;
+        return labeled_pfxs_aggr_;
     }
 
     if(child_yang_name == "labeled-pfxs-backup")
     {
-        if(labeled_pfxs_backup == nullptr)
+        if(labeled_pfxs_backup_ == nullptr)
         {
-            labeled_pfxs_backup = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>();
+            labeled_pfxs_backup_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>();
         }
-        return labeled_pfxs_backup;
+        return labeled_pfxs_backup_;
     }
 
     if(child_yang_name == "labeled-pfxs-primary")
     {
-        if(labeled_pfxs_primary == nullptr)
+        if(labeled_pfxs_primary_ == nullptr)
         {
-            labeled_pfxs_primary = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>();
+            labeled_pfxs_primary_ = std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>();
         }
-        return labeled_pfxs_primary;
+        return labeled_pfxs_primary_;
     }
 
     return nullptr;
@@ -1083,19 +1083,19 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(labeled_pfxs_aggr != nullptr)
+    if(labeled_pfxs_aggr_ != nullptr)
     {
-        children["labeled-pfxs-aggr"] = labeled_pfxs_aggr;
+        children["labeled-pfxs-aggr"] = labeled_pfxs_aggr_;
     }
 
-    if(labeled_pfxs_backup != nullptr)
+    if(labeled_pfxs_backup_ != nullptr)
     {
-        children["labeled-pfxs-backup"] = labeled_pfxs_backup;
+        children["labeled-pfxs-backup"] = labeled_pfxs_backup_;
     }
 
-    if(labeled_pfxs_primary != nullptr)
+    if(labeled_pfxs_primary_ != nullptr)
     {
-        children["labeled-pfxs-primary"] = labeled_pfxs_primary;
+        children["labeled-pfxs-primary"] = labeled_pfxs_primary_;
     }
 
     return children;
@@ -1772,12 +1772,12 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSummaryAll()
     iccp_rg_disconn_count{YType::uint32, "iccp-rg-disconn-count"},
     iccp_rg_notif_count{YType::uint32, "iccp-rg-notif-count"}
     	,
-    icpm_rgid_table_info(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo>())
-	,icpm_session_table(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>())
+    icpm_rgid_table_info_(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo>())
+	,icpm_session_table_(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>())
 {
-    icpm_rgid_table_info->parent = this;
+    icpm_rgid_table_info_->parent = this;
 
-    icpm_session_table->parent = this;
+    icpm_session_table_->parent = this;
 
     yang_name = "icpm-summary-all"; yang_parent_name = "mpls-ldp-state";
 }
@@ -1792,8 +1792,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::has_data() const
 	|| iccp_rg_conn_count.is_set
 	|| iccp_rg_disconn_count.is_set
 	|| iccp_rg_notif_count.is_set
-	|| (icpm_rgid_table_info !=  nullptr && icpm_rgid_table_info->has_data())
-	|| (icpm_session_table !=  nullptr && icpm_session_table->has_data());
+	|| (icpm_rgid_table_info_ !=  nullptr && icpm_rgid_table_info_->has_data())
+	|| (icpm_session_table_ !=  nullptr && icpm_session_table_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::has_operation() const
@@ -1803,8 +1803,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::has_operation() const
 	|| is_set(iccp_rg_conn_count.operation)
 	|| is_set(iccp_rg_disconn_count.operation)
 	|| is_set(iccp_rg_notif_count.operation)
-	|| (icpm_rgid_table_info !=  nullptr && icpm_rgid_table_info->has_operation())
-	|| (icpm_session_table !=  nullptr && icpm_session_table->has_operation());
+	|| (icpm_rgid_table_info_ !=  nullptr && icpm_rgid_table_info_->has_operation())
+	|| (icpm_session_table_ !=  nullptr && icpm_session_table_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::get_segment_path() const
@@ -1845,20 +1845,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::get_child_by_name
 {
     if(child_yang_name == "icpm-rgid-table-info")
     {
-        if(icpm_rgid_table_info == nullptr)
+        if(icpm_rgid_table_info_ == nullptr)
         {
-            icpm_rgid_table_info = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo>();
+            icpm_rgid_table_info_ = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo>();
         }
-        return icpm_rgid_table_info;
+        return icpm_rgid_table_info_;
     }
 
     if(child_yang_name == "icpm-session-table")
     {
-        if(icpm_session_table == nullptr)
+        if(icpm_session_table_ == nullptr)
         {
-            icpm_session_table = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>();
+            icpm_session_table_ = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>();
         }
-        return icpm_session_table;
+        return icpm_session_table_;
     }
 
     return nullptr;
@@ -1867,14 +1867,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(icpm_rgid_table_info != nullptr)
+    if(icpm_rgid_table_info_ != nullptr)
     {
-        children["icpm-rgid-table-info"] = icpm_rgid_table_info;
+        children["icpm-rgid-table-info"] = icpm_rgid_table_info_;
     }
 
-    if(icpm_session_table != nullptr)
+    if(icpm_session_table_ != nullptr)
     {
-        children["icpm-session-table"] = icpm_session_table;
+        children["icpm-session-table"] = icpm_session_table_;
     }
 
     return children;
@@ -1911,9 +1911,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::~IcpmRgidTableInfo()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_data() const
 {
-    for (std::size_t index=0; index<red_group.size(); index++)
+    for (std::size_t index=0; index<red_group_.size(); index++)
     {
-        if(red_group[index]->has_data())
+        if(red_group_[index]->has_data())
             return true;
     }
     return false;
@@ -1921,9 +1921,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_data() const
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_operation() const
 {
-    for (std::size_t index=0; index<red_group.size(); index++)
+    for (std::size_t index=0; index<red_group_.size(); index++)
     {
-        if(red_group[index]->has_operation())
+        if(red_group_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1963,7 +1963,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 {
     if(child_yang_name == "red-group")
     {
-        for(auto const & c : red_group)
+        for(auto const & c : red_group_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1973,7 +1973,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup>();
         c->parent = this;
-        red_group.push_back(c);
+        red_group_.push_back(c);
         return c;
     }
 
@@ -1983,7 +1983,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : red_group)
+    for (auto const & c : red_group_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2008,9 +2008,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::~RedGroup()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_data() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols_.size(); index++)
     {
-        if(icpm_protocols[index]->has_data())
+        if(icpm_protocols_[index]->has_data())
             return true;
     }
     return rg_id.is_set;
@@ -2018,9 +2018,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_dat
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_operation() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols_.size(); index++)
     {
-        if(icpm_protocols[index]->has_operation())
+        if(icpm_protocols_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2062,7 +2062,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 {
     if(child_yang_name == "icpm-protocols")
     {
-        for(auto const & c : icpm_protocols)
+        for(auto const & c : icpm_protocols_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2072,7 +2072,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols>();
         c->parent = this;
-        icpm_protocols.push_back(c);
+        icpm_protocols_.push_back(c);
         return c;
     }
 
@@ -2082,7 +2082,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : icpm_protocols)
+    for (auto const & c : icpm_protocols_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2111,9 +2111,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::has_data() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups_.size(); index++)
     {
-        if(redun_groups[index]->has_data())
+        if(redun_groups_[index]->has_data())
             return true;
     }
     return icpm_type.is_set;
@@ -2121,9 +2121,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups_.size(); index++)
     {
-        if(redun_groups[index]->has_operation())
+        if(redun_groups_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2165,7 +2165,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 {
     if(child_yang_name == "redun-groups")
     {
-        for(auto const & c : redun_groups)
+        for(auto const & c : redun_groups_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2175,7 +2175,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups>();
         c->parent = this;
-        redun_groups.push_back(c);
+        redun_groups_.push_back(c);
         return c;
     }
 
@@ -2185,7 +2185,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : redun_groups)
+    for (auto const & c : redun_groups_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2217,9 +2217,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps_.size(); index++)
     {
-        if(iccp_apps[index]->has_data())
+        if(iccp_apps_[index]->has_data())
             return true;
     }
     return rg_id.is_set
@@ -2230,9 +2230,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps_.size(); index++)
     {
-        if(iccp_apps[index]->has_operation())
+        if(iccp_apps_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2280,7 +2280,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 {
     if(child_yang_name == "iccp-apps")
     {
-        for(auto const & c : iccp_apps)
+        for(auto const & c : iccp_apps_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2290,7 +2290,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps>();
         c->parent = this;
-        iccp_apps.push_back(c);
+        iccp_apps_.push_back(c);
         return c;
     }
 
@@ -2300,7 +2300,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : iccp_apps)
+    for (auto const & c : iccp_apps_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2427,9 +2427,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::~IcpmSessionTable()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_data() const
 {
-    for (std::size_t index=0; index<session_table.size(); index++)
+    for (std::size_t index=0; index<session_table_.size(); index++)
     {
-        if(session_table[index]->has_data())
+        if(session_table_[index]->has_data())
             return true;
     }
     return false;
@@ -2437,9 +2437,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_data() const
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<session_table.size(); index++)
+    for (std::size_t index=0; index<session_table_.size(); index++)
     {
-        if(session_table[index]->has_operation())
+        if(session_table_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2479,7 +2479,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 {
     if(child_yang_name == "session-table")
     {
-        for(auto const & c : session_table)
+        for(auto const & c : session_table_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2489,7 +2489,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable>();
         c->parent = this;
-        session_table.push_back(c);
+        session_table_.push_back(c);
         return c;
     }
 
@@ -2499,7 +2499,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : session_table)
+    for (auto const & c : session_table_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2524,9 +2524,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::~SessionT
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_data() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols_.size(); index++)
     {
-        if(icpm_protocols[index]->has_data())
+        if(icpm_protocols_[index]->has_data())
             return true;
     }
     return session_id.is_set;
@@ -2534,9 +2534,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols_.size(); index++)
     {
-        if(icpm_protocols[index]->has_operation())
+        if(icpm_protocols_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2578,7 +2578,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 {
     if(child_yang_name == "icpm-protocols")
     {
-        for(auto const & c : icpm_protocols)
+        for(auto const & c : icpm_protocols_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2588,7 +2588,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols>();
         c->parent = this;
-        icpm_protocols.push_back(c);
+        icpm_protocols_.push_back(c);
         return c;
     }
 
@@ -2598,7 +2598,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : icpm_protocols)
+    for (auto const & c : icpm_protocols_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2627,9 +2627,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::has_data() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups_.size(); index++)
     {
-        if(redun_groups[index]->has_data())
+        if(redun_groups_[index]->has_data())
             return true;
     }
     return icpm_type.is_set;
@@ -2637,9 +2637,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups_.size(); index++)
     {
-        if(redun_groups[index]->has_operation())
+        if(redun_groups_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2681,7 +2681,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 {
     if(child_yang_name == "redun-groups")
     {
-        for(auto const & c : redun_groups)
+        for(auto const & c : redun_groups_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2691,7 +2691,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups>();
         c->parent = this;
-        redun_groups.push_back(c);
+        redun_groups_.push_back(c);
         return c;
     }
 
@@ -2701,7 +2701,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : redun_groups)
+    for (auto const & c : redun_groups_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2733,9 +2733,9 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps_.size(); index++)
     {
-        if(iccp_apps[index]->has_data())
+        if(iccp_apps_[index]->has_data())
             return true;
     }
     return rg_id.is_set
@@ -2746,9 +2746,9 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps_.size(); index++)
     {
-        if(iccp_apps[index]->has_operation())
+        if(iccp_apps_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -2796,7 +2796,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 {
     if(child_yang_name == "iccp-apps")
     {
-        for(auto const & c : iccp_apps)
+        for(auto const & c : iccp_apps_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2806,7 +2806,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps>();
         c->parent = this;
-        iccp_apps.push_back(c);
+        iccp_apps_.push_back(c);
         return c;
     }
 
@@ -2816,7 +2816,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : iccp_apps)
+    for (auto const & c : iccp_apps_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2958,9 +2958,9 @@ MplsLdp::MplsLdpState::Parameters::~Parameters()
 
 bool MplsLdp::MplsLdpState::Parameters::has_data() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    for (std::size_t index=0; index<address_family_parameter_.size(); index++)
     {
-        if(address_family_parameter[index]->has_data())
+        if(address_family_parameter_[index]->has_data())
             return true;
     }
     for (auto const & leaf : feature.getYLeafs())
@@ -2985,9 +2985,9 @@ bool MplsLdp::MplsLdpState::Parameters::has_data() const
 
 bool MplsLdp::MplsLdpState::Parameters::has_operation() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    for (std::size_t index=0; index<address_family_parameter_.size(); index++)
     {
-        if(address_family_parameter[index]->has_operation())
+        if(address_family_parameter_[index]->has_operation())
             return true;
     }
     for (auto const & leaf : feature.getYLeafs())
@@ -3061,7 +3061,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Parameters::get_child_by_name(con
 {
     if(child_yang_name == "address-family-parameter")
     {
-        for(auto const & c : address_family_parameter)
+        for(auto const & c : address_family_parameter_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3071,7 +3071,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Parameters::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter>();
         c->parent = this;
-        address_family_parameter.push_back(c);
+        address_family_parameter_.push_back(c);
         return c;
     }
 
@@ -3081,7 +3081,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Parameters::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Parameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address_family_parameter)
+    for (auto const & c : address_family_parameter_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3256,9 +3256,9 @@ MplsLdp::MplsLdpState::Capabilities::~Capabilities()
 
 bool MplsLdp::MplsLdpState::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    for (std::size_t index=0; index<capability_.size(); index++)
     {
-        if(capability[index]->has_data())
+        if(capability_[index]->has_data())
             return true;
     }
     return false;
@@ -3266,9 +3266,9 @@ bool MplsLdp::MplsLdpState::Capabilities::has_data() const
 
 bool MplsLdp::MplsLdpState::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    for (std::size_t index=0; index<capability_.size(); index++)
     {
-        if(capability[index]->has_operation())
+        if(capability_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3308,7 +3308,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Capabilities::get_child_by_name(c
 {
     if(child_yang_name == "capability")
     {
-        for(auto const & c : capability)
+        for(auto const & c : capability_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3318,7 +3318,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Capabilities::get_child_by_name(c
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Capabilities::Capability>();
         c->parent = this;
-        capability.push_back(c);
+        capability_.push_back(c);
         return c;
     }
 
@@ -3328,7 +3328,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Capabilities::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : capability)
+    for (auto const & c : capability_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3655,9 +3655,9 @@ MplsLdp::MplsLdpState::Vrfs::~Vrfs()
 
 bool MplsLdp::MplsLdpState::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf_.size(); index++)
     {
-        if(vrf[index]->has_data())
+        if(vrf_[index]->has_data())
             return true;
     }
     return false;
@@ -3665,9 +3665,9 @@ bool MplsLdp::MplsLdpState::Vrfs::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf_.size(); index++)
     {
-        if(vrf[index]->has_operation())
+        if(vrf_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3707,7 +3707,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::get_child_by_name(const std
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
+        for(auto const & c : vrf_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3717,7 +3717,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::get_child_by_name(const std
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf_.push_back(c);
         return c;
     }
 
@@ -3727,7 +3727,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf)
+    for (auto const & c : vrf_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3743,12 +3743,12 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
     	,
-    afs(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>())
-	,vrf_summary(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary>())
+    afs_(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>())
+	,vrf_summary_(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary>())
 {
-    afs->parent = this;
+    afs_->parent = this;
 
-    vrf_summary->parent = this;
+    vrf_summary_->parent = this;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -3760,16 +3760,16 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::~Vrf()
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::has_data() const
 {
     return vrf_name.is_set
-	|| (afs !=  nullptr && afs->has_data())
-	|| (vrf_summary !=  nullptr && vrf_summary->has_data());
+	|| (afs_ !=  nullptr && afs_->has_data())
+	|| (vrf_summary_ !=  nullptr && vrf_summary_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (afs !=  nullptr && afs->has_operation())
-	|| (vrf_summary !=  nullptr && vrf_summary->has_operation());
+	|| (afs_ !=  nullptr && afs_->has_operation())
+	|| (vrf_summary_ !=  nullptr && vrf_summary_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Vrfs::Vrf::get_segment_path() const
@@ -3807,20 +3807,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::get_child_by_name(cons
 {
     if(child_yang_name == "afs")
     {
-        if(afs == nullptr)
+        if(afs_ == nullptr)
         {
-            afs = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>();
+            afs_ = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>();
         }
-        return afs;
+        return afs_;
     }
 
     if(child_yang_name == "vrf-summary")
     {
-        if(vrf_summary == nullptr)
+        if(vrf_summary_ == nullptr)
         {
-            vrf_summary = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary>();
+            vrf_summary_ = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary>();
         }
-        return vrf_summary;
+        return vrf_summary_;
     }
 
     return nullptr;
@@ -3829,14 +3829,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(afs != nullptr)
+    if(afs_ != nullptr)
     {
-        children["afs"] = afs;
+        children["afs"] = afs_;
     }
 
-    if(vrf_summary != nullptr)
+    if(vrf_summary_ != nullptr)
     {
-        children["vrf-summary"] = vrf_summary;
+        children["vrf-summary"] = vrf_summary_;
     }
 
     return children;
@@ -3997,9 +3997,9 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::~Afs()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af_.size(); index++)
     {
-        if(af[index]->has_data())
+        if(af_[index]->has_data())
             return true;
     }
     return false;
@@ -4007,9 +4007,9 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af_.size(); index++)
     {
-        if(af[index]->has_operation())
+        if(af_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4049,7 +4049,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::get_child_by_name
 {
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
+        for(auto const & c : af_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4059,7 +4059,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::get_child_by_name
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af_.push_back(c);
         return c;
     }
 
@@ -4069,7 +4069,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : af)
+    for (auto const & c : af_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4085,12 +4085,12 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"}
     	,
-    igp(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>())
-	,interface_summary(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary>())
+    igp_(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>())
+	,interface_summary_(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary>())
 {
-    igp->parent = this;
+    igp_->parent = this;
 
-    interface_summary->parent = this;
+    interface_summary_->parent = this;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -4102,16 +4102,16 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::~Af()
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::has_data() const
 {
     return af_name.is_set
-	|| (igp !=  nullptr && igp->has_data())
-	|| (interface_summary !=  nullptr && interface_summary->has_data());
+	|| (igp_ !=  nullptr && igp_->has_data())
+	|| (interface_summary_ !=  nullptr && interface_summary_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::has_operation() const
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (igp !=  nullptr && igp->has_operation())
-	|| (interface_summary !=  nullptr && interface_summary->has_operation());
+	|| (igp_ !=  nullptr && igp_->has_operation())
+	|| (interface_summary_ !=  nullptr && interface_summary_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -4149,20 +4149,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::get_child_by_
 {
     if(child_yang_name == "igp")
     {
-        if(igp == nullptr)
+        if(igp_ == nullptr)
         {
-            igp = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>();
+            igp_ = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>();
         }
-        return igp;
+        return igp_;
     }
 
     if(child_yang_name == "interface-summary")
     {
-        if(interface_summary == nullptr)
+        if(interface_summary_ == nullptr)
         {
-            interface_summary = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary>();
+            interface_summary_ = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary>();
         }
-        return interface_summary;
+        return interface_summary_;
     }
 
     return nullptr;
@@ -4171,14 +4171,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(igp != nullptr)
+    if(igp_ != nullptr)
     {
-        children["igp"] = igp;
+        children["igp"] = igp_;
     }
 
-    if(interface_summary != nullptr)
+    if(interface_summary_ != nullptr)
     {
-        children["interface-summary"] = interface_summary;
+        children["interface-summary"] = interface_summary_;
     }
 
     return children;
@@ -4331,9 +4331,9 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::~Igp()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_data() const
 {
-    for (std::size_t index=0; index<sync.size(); index++)
+    for (std::size_t index=0; index<sync_.size(); index++)
     {
-        if(sync[index]->has_data())
+        if(sync_[index]->has_data())
             return true;
     }
     return false;
@@ -4341,9 +4341,9 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_operation() const
 {
-    for (std::size_t index=0; index<sync.size(); index++)
+    for (std::size_t index=0; index<sync_.size(); index++)
     {
-        if(sync[index]->has_operation())
+        if(sync_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4383,7 +4383,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::get_chil
 {
     if(child_yang_name == "sync")
     {
-        for(auto const & c : sync)
+        for(auto const & c : sync_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4393,7 +4393,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::get_chil
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync>();
         c->parent = this;
-        sync.push_back(c);
+        sync_.push_back(c);
         return c;
     }
 
@@ -4403,7 +4403,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sync)
+    for (auto const & c : sync_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4432,9 +4432,9 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::~Sync()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_data() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers_.size(); index++)
     {
-        if(peers[index]->has_data())
+        if(peers_[index]->has_data())
             return true;
     }
     return interface.is_set
@@ -4446,9 +4446,9 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_operation() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers_.size(); index++)
     {
-        if(peers[index]->has_operation())
+        if(peers_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -4498,7 +4498,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::ge
 {
     if(child_yang_name == "peers")
     {
-        for(auto const & c : peers)
+        for(auto const & c : peers_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4508,7 +4508,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::ge
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers>();
         c->parent = this;
-        peers.push_back(c);
+        peers_.push_back(c);
         return c;
     }
 
@@ -4518,7 +4518,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : peers)
+    for (auto const & c : peers_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4640,15 +4640,15 @@ void MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::set_value(cons
 
 MplsLdp::MplsLdpState::Discovery::Discovery()
     :
-    discovery_stats(std::make_shared<MplsLdp::MplsLdpState::Discovery::DiscoveryStats>())
-	,link_hello_state(std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>())
-	,targeted_hellos(std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>())
+    discovery_stats_(std::make_shared<MplsLdp::MplsLdpState::Discovery::DiscoveryStats>())
+	,link_hello_state_(std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>())
+	,targeted_hellos_(std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>())
 {
-    discovery_stats->parent = this;
+    discovery_stats_->parent = this;
 
-    link_hello_state->parent = this;
+    link_hello_state_->parent = this;
 
-    targeted_hellos->parent = this;
+    targeted_hellos_->parent = this;
 
     yang_name = "discovery"; yang_parent_name = "mpls-ldp-state";
 }
@@ -4659,17 +4659,17 @@ MplsLdp::MplsLdpState::Discovery::~Discovery()
 
 bool MplsLdp::MplsLdpState::Discovery::has_data() const
 {
-    return (discovery_stats !=  nullptr && discovery_stats->has_data())
-	|| (link_hello_state !=  nullptr && link_hello_state->has_data())
-	|| (targeted_hellos !=  nullptr && targeted_hellos->has_data());
+    return (discovery_stats_ !=  nullptr && discovery_stats_->has_data())
+	|| (link_hello_state_ !=  nullptr && link_hello_state_->has_data())
+	|| (targeted_hellos_ !=  nullptr && targeted_hellos_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Discovery::has_operation() const
 {
     return is_set(operation)
-	|| (discovery_stats !=  nullptr && discovery_stats->has_operation())
-	|| (link_hello_state !=  nullptr && link_hello_state->has_operation())
-	|| (targeted_hellos !=  nullptr && targeted_hellos->has_operation());
+	|| (discovery_stats_ !=  nullptr && discovery_stats_->has_operation())
+	|| (link_hello_state_ !=  nullptr && link_hello_state_->has_operation())
+	|| (targeted_hellos_ !=  nullptr && targeted_hellos_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Discovery::get_segment_path() const
@@ -4706,29 +4706,29 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::get_child_by_name(cons
 {
     if(child_yang_name == "discovery-stats")
     {
-        if(discovery_stats == nullptr)
+        if(discovery_stats_ == nullptr)
         {
-            discovery_stats = std::make_shared<MplsLdp::MplsLdpState::Discovery::DiscoveryStats>();
+            discovery_stats_ = std::make_shared<MplsLdp::MplsLdpState::Discovery::DiscoveryStats>();
         }
-        return discovery_stats;
+        return discovery_stats_;
     }
 
     if(child_yang_name == "link-hello-state")
     {
-        if(link_hello_state == nullptr)
+        if(link_hello_state_ == nullptr)
         {
-            link_hello_state = std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>();
+            link_hello_state_ = std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>();
         }
-        return link_hello_state;
+        return link_hello_state_;
     }
 
     if(child_yang_name == "targeted-hellos")
     {
-        if(targeted_hellos == nullptr)
+        if(targeted_hellos_ == nullptr)
         {
-            targeted_hellos = std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>();
+            targeted_hellos_ = std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>();
         }
-        return targeted_hellos;
+        return targeted_hellos_;
     }
 
     return nullptr;
@@ -4737,19 +4737,19 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Discovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(discovery_stats != nullptr)
+    if(discovery_stats_ != nullptr)
     {
-        children["discovery-stats"] = discovery_stats;
+        children["discovery-stats"] = discovery_stats_;
     }
 
-    if(link_hello_state != nullptr)
+    if(link_hello_state_ != nullptr)
     {
-        children["link-hello-state"] = link_hello_state;
+        children["link-hello-state"] = link_hello_state_;
     }
 
-    if(targeted_hellos != nullptr)
+    if(targeted_hellos_ != nullptr)
     {
-        children["targeted-hellos"] = targeted_hellos;
+        children["targeted-hellos"] = targeted_hellos_;
     }
 
     return children;
@@ -4882,9 +4882,9 @@ MplsLdp::MplsLdpState::Discovery::LinkHelloState::~LinkHelloState()
 
 bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_data() const
 {
-    for (std::size_t index=0; index<link_hellos.size(); index++)
+    for (std::size_t index=0; index<link_hellos_.size(); index++)
     {
-        if(link_hellos[index]->has_data())
+        if(link_hellos_[index]->has_data())
             return true;
     }
     return false;
@@ -4892,9 +4892,9 @@ bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_data() const
 
 bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_operation() const
 {
-    for (std::size_t index=0; index<link_hellos.size(); index++)
+    for (std::size_t index=0; index<link_hellos_.size(); index++)
     {
-        if(link_hellos[index]->has_operation())
+        if(link_hellos_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4934,7 +4934,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::LinkHelloState::get_ch
 {
     if(child_yang_name == "link-hellos")
     {
-        for(auto const & c : link_hellos)
+        for(auto const & c : link_hellos_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4944,7 +4944,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::LinkHelloState::get_ch
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos>();
         c->parent = this;
-        link_hellos.push_back(c);
+        link_hellos_.push_back(c);
         return c;
     }
 
@@ -4954,7 +4954,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::LinkHelloState::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Discovery::LinkHelloState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : link_hellos)
+    for (auto const & c : link_hellos_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5132,9 +5132,9 @@ MplsLdp::MplsLdpState::Discovery::TargetedHellos::~TargetedHellos()
 
 bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_data() const
 {
-    for (std::size_t index=0; index<targeted_hello.size(); index++)
+    for (std::size_t index=0; index<targeted_hello_.size(); index++)
     {
-        if(targeted_hello[index]->has_data())
+        if(targeted_hello_[index]->has_data())
             return true;
     }
     return targeted_hello_hold_time.is_set
@@ -5143,9 +5143,9 @@ bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_data() const
 
 bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_operation() const
 {
-    for (std::size_t index=0; index<targeted_hello.size(); index++)
+    for (std::size_t index=0; index<targeted_hello_.size(); index++)
     {
-        if(targeted_hello[index]->has_operation())
+        if(targeted_hello_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -5189,7 +5189,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::TargetedHellos::get_ch
 {
     if(child_yang_name == "targeted-hello")
     {
-        for(auto const & c : targeted_hello)
+        for(auto const & c : targeted_hello_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5199,7 +5199,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::TargetedHellos::get_ch
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello>();
         c->parent = this;
-        targeted_hello.push_back(c);
+        targeted_hello_.push_back(c);
         return c;
     }
 
@@ -5209,7 +5209,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::TargetedHellos::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Discovery::TargetedHellos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : targeted_hello)
+    for (auto const & c : targeted_hello_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5359,9 +5359,9 @@ void MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::set_value(
 
 MplsLdp::MplsLdpState::Forwarding::Forwarding()
     :
-    forwarding_vrf_summs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms>())
+    forwarding_vrf_summs_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms>())
 {
-    forwarding_vrf_summs->parent = this;
+    forwarding_vrf_summs_->parent = this;
 
     yang_name = "forwarding"; yang_parent_name = "mpls-ldp-state";
 }
@@ -5372,23 +5372,23 @@ MplsLdp::MplsLdpState::Forwarding::~Forwarding()
 
 bool MplsLdp::MplsLdpState::Forwarding::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_detail.size(); index++)
+    for (std::size_t index=0; index<forwarding_detail_.size(); index++)
     {
-        if(forwarding_detail[index]->has_data())
+        if(forwarding_detail_[index]->has_data())
             return true;
     }
-    return (forwarding_vrf_summs !=  nullptr && forwarding_vrf_summs->has_data());
+    return (forwarding_vrf_summs_ !=  nullptr && forwarding_vrf_summs_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_detail.size(); index++)
+    for (std::size_t index=0; index<forwarding_detail_.size(); index++)
     {
-        if(forwarding_detail[index]->has_operation())
+        if(forwarding_detail_[index]->has_operation())
             return true;
     }
     return is_set(operation)
-	|| (forwarding_vrf_summs !=  nullptr && forwarding_vrf_summs->has_operation());
+	|| (forwarding_vrf_summs_ !=  nullptr && forwarding_vrf_summs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::get_segment_path() const
@@ -5425,7 +5425,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::get_child_by_name(con
 {
     if(child_yang_name == "forwarding-detail")
     {
-        for(auto const & c : forwarding_detail)
+        for(auto const & c : forwarding_detail_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5435,17 +5435,17 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail>();
         c->parent = this;
-        forwarding_detail.push_back(c);
+        forwarding_detail_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "forwarding-vrf-summs")
     {
-        if(forwarding_vrf_summs == nullptr)
+        if(forwarding_vrf_summs_ == nullptr)
         {
-            forwarding_vrf_summs = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms>();
+            forwarding_vrf_summs_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms>();
         }
-        return forwarding_vrf_summs;
+        return forwarding_vrf_summs_;
     }
 
     return nullptr;
@@ -5454,14 +5454,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : forwarding_detail)
+    for (auto const & c : forwarding_detail_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(forwarding_vrf_summs != nullptr)
+    if(forwarding_vrf_summs_ != nullptr)
     {
-        children["forwarding-vrf-summs"] = forwarding_vrf_summs;
+        children["forwarding-vrf-summs"] = forwarding_vrf_summs_;
     }
 
     return children;
@@ -5482,9 +5482,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::~ForwardingVrfSumms()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_vrf_summ.size(); index++)
+    for (std::size_t index=0; index<forwarding_vrf_summ_.size(); index++)
     {
-        if(forwarding_vrf_summ[index]->has_data())
+        if(forwarding_vrf_summ_[index]->has_data())
             return true;
     }
     return false;
@@ -5492,9 +5492,9 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_data() const
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_vrf_summ.size(); index++)
+    for (std::size_t index=0; index<forwarding_vrf_summ_.size(); index++)
     {
-        if(forwarding_vrf_summ[index]->has_operation())
+        if(forwarding_vrf_summ_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -5534,7 +5534,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::g
 {
     if(child_yang_name == "forwarding-vrf-summ")
     {
-        for(auto const & c : forwarding_vrf_summ)
+        for(auto const & c : forwarding_vrf_summ_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5544,7 +5544,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::g
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm>();
         c->parent = this;
-        forwarding_vrf_summ.push_back(c);
+        forwarding_vrf_summ_.push_back(c);
         return c;
     }
 
@@ -5554,7 +5554,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::g
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : forwarding_vrf_summ)
+    for (auto const & c : forwarding_vrf_summ_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5572,12 +5572,12 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Forwar
     intfs_fwd_count{YType::uint16, "intfs-fwd-count"},
     local_lbls{YType::uint16, "local-lbls"}
     	,
-    nhs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>())
-	,pfxs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs>())
+    nhs_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>())
+	,pfxs_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs>())
 {
-    nhs->parent = this;
+    nhs_->parent = this;
 
-    pfxs->parent = this;
+    pfxs_->parent = this;
 
     yang_name = "forwarding-vrf-summ"; yang_parent_name = "forwarding-vrf-summs";
 }
@@ -5591,8 +5591,8 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::h
     return vrf_name.is_set
 	|| intfs_fwd_count.is_set
 	|| local_lbls.is_set
-	|| (nhs !=  nullptr && nhs->has_data())
-	|| (pfxs !=  nullptr && pfxs->has_data());
+	|| (nhs_ !=  nullptr && nhs_->has_data())
+	|| (pfxs_ !=  nullptr && pfxs_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::has_operation() const
@@ -5601,8 +5601,8 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::h
 	|| is_set(vrf_name.operation)
 	|| is_set(intfs_fwd_count.operation)
 	|| is_set(local_lbls.operation)
-	|| (nhs !=  nullptr && nhs->has_operation())
-	|| (pfxs !=  nullptr && pfxs->has_operation());
+	|| (nhs_ !=  nullptr && nhs_->has_operation())
+	|| (pfxs_ !=  nullptr && pfxs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::get_segment_path() const
@@ -5642,20 +5642,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::F
 {
     if(child_yang_name == "nhs")
     {
-        if(nhs == nullptr)
+        if(nhs_ == nullptr)
         {
-            nhs = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>();
+            nhs_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>();
         }
-        return nhs;
+        return nhs_;
     }
 
     if(child_yang_name == "pfxs")
     {
-        if(pfxs == nullptr)
+        if(pfxs_ == nullptr)
         {
-            pfxs = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs>();
+            pfxs_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs>();
         }
-        return pfxs;
+        return pfxs_;
     }
 
     return nullptr;
@@ -5664,14 +5664,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nhs != nullptr)
+    if(nhs_ != nullptr)
     {
-        children["nhs"] = nhs;
+        children["nhs"] = nhs_;
     }
 
-    if(pfxs != nullptr)
+    if(pfxs_ != nullptr)
     {
-        children["pfxs"] = pfxs;
+        children["pfxs"] = pfxs_;
     }
 
     return children;
@@ -5699,15 +5699,15 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
     protected_pfxs{YType::uint16, "protected-pfxs"},
     total_pfxs{YType::uint16, "total-pfxs"}
     	,
-    labeled_pfxs_aggr(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>())
+    labeled_pfxs_aggr_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr>())
+	,labeled_pfxs_backup_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>())
+	,labeled_pfxs_primary_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>())
 {
-    labeled_pfxs_aggr->parent = this;
+    labeled_pfxs_aggr_->parent = this;
 
-    labeled_pfxs_backup->parent = this;
+    labeled_pfxs_backup_->parent = this;
 
-    labeled_pfxs_primary->parent = this;
+    labeled_pfxs_primary_->parent = this;
 
     yang_name = "pfxs"; yang_parent_name = "forwarding-vrf-summ";
 }
@@ -5721,9 +5721,9 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::P
     return ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
 	|| total_pfxs.is_set
-	|| (labeled_pfxs_aggr !=  nullptr && labeled_pfxs_aggr->has_data())
-	|| (labeled_pfxs_backup !=  nullptr && labeled_pfxs_backup->has_data())
-	|| (labeled_pfxs_primary !=  nullptr && labeled_pfxs_primary->has_data());
+	|| (labeled_pfxs_aggr_ !=  nullptr && labeled_pfxs_aggr_->has_data())
+	|| (labeled_pfxs_backup_ !=  nullptr && labeled_pfxs_backup_->has_data())
+	|| (labeled_pfxs_primary_ !=  nullptr && labeled_pfxs_primary_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::has_operation() const
@@ -5732,9 +5732,9 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::P
 	|| is_set(ecmp_pfxs.operation)
 	|| is_set(protected_pfxs.operation)
 	|| is_set(total_pfxs.operation)
-	|| (labeled_pfxs_aggr !=  nullptr && labeled_pfxs_aggr->has_operation())
-	|| (labeled_pfxs_backup !=  nullptr && labeled_pfxs_backup->has_operation())
-	|| (labeled_pfxs_primary !=  nullptr && labeled_pfxs_primary->has_operation());
+	|| (labeled_pfxs_aggr_ !=  nullptr && labeled_pfxs_aggr_->has_operation())
+	|| (labeled_pfxs_backup_ !=  nullptr && labeled_pfxs_backup_->has_operation())
+	|| (labeled_pfxs_primary_ !=  nullptr && labeled_pfxs_primary_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::get_segment_path() const
@@ -5774,29 +5774,29 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::F
 {
     if(child_yang_name == "labeled-pfxs-aggr")
     {
-        if(labeled_pfxs_aggr == nullptr)
+        if(labeled_pfxs_aggr_ == nullptr)
         {
-            labeled_pfxs_aggr = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr>();
+            labeled_pfxs_aggr_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr>();
         }
-        return labeled_pfxs_aggr;
+        return labeled_pfxs_aggr_;
     }
 
     if(child_yang_name == "labeled-pfxs-backup")
     {
-        if(labeled_pfxs_backup == nullptr)
+        if(labeled_pfxs_backup_ == nullptr)
         {
-            labeled_pfxs_backup = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>();
+            labeled_pfxs_backup_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>();
         }
-        return labeled_pfxs_backup;
+        return labeled_pfxs_backup_;
     }
 
     if(child_yang_name == "labeled-pfxs-primary")
     {
-        if(labeled_pfxs_primary == nullptr)
+        if(labeled_pfxs_primary_ == nullptr)
         {
-            labeled_pfxs_primary = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>();
+            labeled_pfxs_primary_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>();
         }
-        return labeled_pfxs_primary;
+        return labeled_pfxs_primary_;
     }
 
     return nullptr;
@@ -5805,19 +5805,19 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(labeled_pfxs_aggr != nullptr)
+    if(labeled_pfxs_aggr_ != nullptr)
     {
-        children["labeled-pfxs-aggr"] = labeled_pfxs_aggr;
+        children["labeled-pfxs-aggr"] = labeled_pfxs_aggr_;
     }
 
-    if(labeled_pfxs_backup != nullptr)
+    if(labeled_pfxs_backup_ != nullptr)
     {
-        children["labeled-pfxs-backup"] = labeled_pfxs_backup;
+        children["labeled-pfxs-backup"] = labeled_pfxs_backup_;
     }
 
-    if(labeled_pfxs_primary != nullptr)
+    if(labeled_pfxs_primary_ != nullptr)
     {
-        children["labeled-pfxs-primary"] = labeled_pfxs_primary;
+        children["labeled-pfxs-primary"] = labeled_pfxs_primary_;
     }
 
     return children;
@@ -6223,9 +6223,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::ForwardingDetail()
     prefix_length{YType::uint8, "prefix-length"},
     table_id{YType::uint32, "table-id"}
     	,
-    route(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route>())
+    route_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route>())
 {
-    route->parent = this;
+    route_->parent = this;
 
     yang_name = "forwarding-detail"; yang_parent_name = "forwarding";
 }
@@ -6236,9 +6236,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::~ForwardingDetail()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths_.size(); index++)
     {
-        if(paths[index]->has_data())
+        if(paths_[index]->has_data())
             return true;
     }
     return vrf_name.is_set
@@ -6246,14 +6246,14 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_data() const
 	|| fwd_prefix.is_set
 	|| prefix_length.is_set
 	|| table_id.is_set
-	|| (route !=  nullptr && route->has_data());
+	|| (route_ !=  nullptr && route_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths_.size(); index++)
     {
-        if(paths[index]->has_operation())
+        if(paths_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -6262,7 +6262,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_operation() const
 	|| is_set(fwd_prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(table_id.operation)
-	|| (route !=  nullptr && route->has_operation());
+	|| (route_ !=  nullptr && route_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get_segment_path() const
@@ -6304,7 +6304,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get
 {
     if(child_yang_name == "paths")
     {
-        for(auto const & c : paths)
+        for(auto const & c : paths_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -6314,17 +6314,17 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "route")
     {
-        if(route == nullptr)
+        if(route_ == nullptr)
         {
-            route = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route>();
+            route_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route>();
         }
-        return route;
+        return route_;
     }
 
     return nullptr;
@@ -6333,14 +6333,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : paths)
+    for (auto const & c : paths_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(route != nullptr)
+    if(route_ != nullptr)
     {
-        children["route"] = route;
+        children["route"] = route_;
     }
 
     return children;
@@ -6540,12 +6540,12 @@ void MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::set_value(const
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Paths()
     :
-    mpls(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>())
-	,routing(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing>())
+    mpls_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>())
+	,routing_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing>())
 {
-    mpls->parent = this;
+    mpls_->parent = this;
 
-    routing->parent = this;
+    routing_->parent = this;
 
     yang_name = "paths"; yang_parent_name = "forwarding-detail";
 }
@@ -6556,15 +6556,15 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::~Paths()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::has_data() const
 {
-    return (mpls !=  nullptr && mpls->has_data())
-	|| (routing !=  nullptr && routing->has_data());
+    return (mpls_ !=  nullptr && mpls_->has_data())
+	|| (routing_ !=  nullptr && routing_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::has_operation() const
 {
     return is_set(operation)
-	|| (mpls !=  nullptr && mpls->has_operation())
-	|| (routing !=  nullptr && routing->has_operation());
+	|| (mpls_ !=  nullptr && mpls_->has_operation())
+	|| (routing_ !=  nullptr && routing_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::get_segment_path() const
@@ -6601,20 +6601,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 {
     if(child_yang_name == "mpls")
     {
-        if(mpls == nullptr)
+        if(mpls_ == nullptr)
         {
-            mpls = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>();
+            mpls_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>();
         }
-        return mpls;
+        return mpls_;
     }
 
     if(child_yang_name == "routing")
     {
-        if(routing == nullptr)
+        if(routing_ == nullptr)
         {
-            routing = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing>();
+            routing_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing>();
         }
-        return routing;
+        return routing_;
     }
 
     return nullptr;
@@ -6623,14 +6623,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls != nullptr)
+    if(mpls_ != nullptr)
     {
-        children["mpls"] = mpls;
+        children["mpls"] = mpls_;
     }
 
-    if(routing != nullptr)
+    if(routing_ != nullptr)
     {
-        children["routing"] = routing;
+        children["routing"] = routing_;
     }
 
     return children;
@@ -6794,12 +6794,12 @@ void MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::set_va
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::Mpls()
     :
-    mpls_outgoing_info(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo>())
-	,remote_lfa(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>())
+    mpls_outgoing_info_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo>())
+	,remote_lfa_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>())
 {
-    mpls_outgoing_info->parent = this;
+    mpls_outgoing_info_->parent = this;
 
-    remote_lfa->parent = this;
+    remote_lfa_->parent = this;
 
     yang_name = "mpls"; yang_parent_name = "paths";
 }
@@ -6810,15 +6810,15 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::~Mpls()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::has_data() const
 {
-    return (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data())
-	|| (remote_lfa !=  nullptr && remote_lfa->has_data());
+    return (mpls_outgoing_info_ !=  nullptr && mpls_outgoing_info_->has_data())
+	|| (remote_lfa_ !=  nullptr && remote_lfa_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::has_operation() const
 {
     return is_set(operation)
-	|| (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_operation())
-	|| (remote_lfa !=  nullptr && remote_lfa->has_operation());
+	|| (mpls_outgoing_info_ !=  nullptr && mpls_outgoing_info_->has_operation())
+	|| (remote_lfa_ !=  nullptr && remote_lfa_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::get_segment_path() const
@@ -6855,20 +6855,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 {
     if(child_yang_name == "mpls-outgoing-info")
     {
-        if(mpls_outgoing_info == nullptr)
+        if(mpls_outgoing_info_ == nullptr)
         {
-            mpls_outgoing_info = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo>();
+            mpls_outgoing_info_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo>();
         }
-        return mpls_outgoing_info;
+        return mpls_outgoing_info_;
     }
 
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa == nullptr)
+        if(remote_lfa_ == nullptr)
         {
-            remote_lfa = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>();
+            remote_lfa_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>();
         }
-        return remote_lfa;
+        return remote_lfa_;
     }
 
     return nullptr;
@@ -6877,14 +6877,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls_outgoing_info != nullptr)
+    if(mpls_outgoing_info_ != nullptr)
     {
-        children["mpls-outgoing-info"] = mpls_outgoing_info;
+        children["mpls-outgoing-info"] = mpls_outgoing_info_;
     }
 
-    if(remote_lfa != nullptr)
+    if(remote_lfa_ != nullptr)
     {
-        children["remote-lfa"] = remote_lfa;
+        children["remote-lfa"] = remote_lfa_;
     }
 
     return children;
@@ -6902,9 +6902,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingIn
     out_label_owner{YType::identityref, "out-label-owner"},
     out_label_type{YType::identityref, "out-label-type"}
     	,
-    nexthop_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>())
+    nexthop_peer_ldp_ident_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>())
 {
-    nexthop_peer_ldp_ident->parent = this;
+    nexthop_peer_ldp_ident_->parent = this;
 
     yang_name = "mpls-outgoing-info"; yang_parent_name = "mpls";
 }
@@ -6920,7 +6920,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgo
 	|| out_label.is_set
 	|| out_label_owner.is_set
 	|| out_label_type.is_set
-	|| (nexthop_peer_ldp_ident !=  nullptr && nexthop_peer_ldp_ident->has_data());
+	|| (nexthop_peer_ldp_ident_ !=  nullptr && nexthop_peer_ldp_ident_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::has_operation() const
@@ -6931,7 +6931,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgo
 	|| is_set(out_label.operation)
 	|| is_set(out_label_owner.operation)
 	|| is_set(out_label_type.operation)
-	|| (nexthop_peer_ldp_ident !=  nullptr && nexthop_peer_ldp_ident->has_operation());
+	|| (nexthop_peer_ldp_ident_ !=  nullptr && nexthop_peer_ldp_ident_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::get_segment_path() const
@@ -6973,11 +6973,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 {
     if(child_yang_name == "nexthop-peer-ldp-ident")
     {
-        if(nexthop_peer_ldp_ident == nullptr)
+        if(nexthop_peer_ldp_ident_ == nullptr)
         {
-            nexthop_peer_ldp_ident = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>();
+            nexthop_peer_ldp_ident_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>();
         }
-        return nexthop_peer_ldp_ident;
+        return nexthop_peer_ldp_ident_;
     }
 
     return nullptr;
@@ -6986,9 +6986,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nexthop_peer_ldp_ident != nullptr)
+    if(nexthop_peer_ldp_ident_ != nullptr)
     {
-        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
+        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident_;
     }
 
     return children;
@@ -7102,9 +7102,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Rem
     :
     has_remote_lfa_bkup{YType::boolean, "has-remote-lfa-bkup"}
     	,
-    mpls_outgoing_info(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>())
+    mpls_outgoing_info_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>())
 {
-    mpls_outgoing_info->parent = this;
+    mpls_outgoing_info_->parent = this;
 
     yang_name = "remote-lfa"; yang_parent_name = "mpls";
 }
@@ -7116,14 +7116,14 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::~Re
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::has_data() const
 {
     return has_remote_lfa_bkup.is_set
-	|| (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data());
+	|| (mpls_outgoing_info_ !=  nullptr && mpls_outgoing_info_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::has_operation() const
 {
     return is_set(operation)
 	|| is_set(has_remote_lfa_bkup.operation)
-	|| (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_operation());
+	|| (mpls_outgoing_info_ !=  nullptr && mpls_outgoing_info_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::get_segment_path() const
@@ -7161,11 +7161,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 {
     if(child_yang_name == "mpls-outgoing-info")
     {
-        if(mpls_outgoing_info == nullptr)
+        if(mpls_outgoing_info_ == nullptr)
         {
-            mpls_outgoing_info = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>();
+            mpls_outgoing_info_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>();
         }
-        return mpls_outgoing_info;
+        return mpls_outgoing_info_;
     }
 
     return nullptr;
@@ -7174,9 +7174,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls_outgoing_info != nullptr)
+    if(mpls_outgoing_info_ != nullptr)
     {
-        children["mpls-outgoing-info"] = mpls_outgoing_info;
+        children["mpls-outgoing-info"] = mpls_outgoing_info_;
     }
 
     return children;
@@ -7198,9 +7198,9 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Mpl
     out_label_owner{YType::identityref, "out-label-owner"},
     out_label_type{YType::identityref, "out-label-type"}
     	,
-    nexthop_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent>())
+    nexthop_peer_ldp_ident_(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent>())
 {
-    nexthop_peer_ldp_ident->parent = this;
+    nexthop_peer_ldp_ident_->parent = this;
 
     yang_name = "mpls-outgoing-info"; yang_parent_name = "remote-lfa";
 }
@@ -7216,7 +7216,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 	|| out_label.is_set
 	|| out_label_owner.is_set
 	|| out_label_type.is_set
-	|| (nexthop_peer_ldp_ident !=  nullptr && nexthop_peer_ldp_ident->has_data());
+	|| (nexthop_peer_ldp_ident_ !=  nullptr && nexthop_peer_ldp_ident_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::has_operation() const
@@ -7227,7 +7227,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 	|| is_set(out_label.operation)
 	|| is_set(out_label_owner.operation)
 	|| is_set(out_label_type.operation)
-	|| (nexthop_peer_ldp_ident !=  nullptr && nexthop_peer_ldp_ident->has_operation());
+	|| (nexthop_peer_ldp_ident_ !=  nullptr && nexthop_peer_ldp_ident_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_segment_path() const
@@ -7269,11 +7269,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 {
     if(child_yang_name == "nexthop-peer-ldp-ident")
     {
-        if(nexthop_peer_ldp_ident == nullptr)
+        if(nexthop_peer_ldp_ident_ == nullptr)
         {
-            nexthop_peer_ldp_ident = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent>();
+            nexthop_peer_ldp_ident_ = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent>();
         }
-        return nexthop_peer_ldp_ident;
+        return nexthop_peer_ldp_ident_;
     }
 
     return nullptr;
@@ -7282,9 +7282,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Pat
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nexthop_peer_ldp_ident != nullptr)
+    if(nexthop_peer_ldp_ident_ != nullptr)
     {
-        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
+        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident_;
     }
 
     return children;
@@ -7396,9 +7396,9 @@ void MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 
 MplsLdp::MplsLdpState::Bindings::Bindings()
     :
-    bindings_sum_afs(std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs>())
+    bindings_sum_afs_(std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs>())
 {
-    bindings_sum_afs->parent = this;
+    bindings_sum_afs_->parent = this;
 
     yang_name = "bindings"; yang_parent_name = "mpls-ldp-state";
 }
@@ -7409,23 +7409,23 @@ MplsLdp::MplsLdpState::Bindings::~Bindings()
 
 bool MplsLdp::MplsLdpState::Bindings::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding_.size(); index++)
     {
-        if(binding[index]->has_data())
+        if(binding_[index]->has_data())
             return true;
     }
-    return (bindings_sum_afs !=  nullptr && bindings_sum_afs->has_data());
+    return (bindings_sum_afs_ !=  nullptr && bindings_sum_afs_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Bindings::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding_.size(); index++)
     {
-        if(binding[index]->has_operation())
+        if(binding_[index]->has_operation())
             return true;
     }
     return is_set(operation)
-	|| (bindings_sum_afs !=  nullptr && bindings_sum_afs->has_operation());
+	|| (bindings_sum_afs_ !=  nullptr && bindings_sum_afs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Bindings::get_segment_path() const
@@ -7462,7 +7462,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::get_child_by_name(const
 {
     if(child_yang_name == "binding")
     {
-        for(auto const & c : binding)
+        for(auto const & c : binding_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7472,17 +7472,17 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::get_child_by_name(const
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "bindings-sum-afs")
     {
-        if(bindings_sum_afs == nullptr)
+        if(bindings_sum_afs_ == nullptr)
         {
-            bindings_sum_afs = std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs>();
+            bindings_sum_afs_ = std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs>();
         }
-        return bindings_sum_afs;
+        return bindings_sum_afs_;
     }
 
     return nullptr;
@@ -7491,14 +7491,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : binding)
+    for (auto const & c : binding_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(bindings_sum_afs != nullptr)
+    if(bindings_sum_afs_ != nullptr)
     {
-        children["bindings-sum-afs"] = bindings_sum_afs;
+        children["bindings-sum-afs"] = bindings_sum_afs_;
     }
 
     return children;
@@ -7519,9 +7519,9 @@ MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::~BindingsSumAfs()
 
 bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_data() const
 {
-    for (std::size_t index=0; index<binding_sum_af.size(); index++)
+    for (std::size_t index=0; index<binding_sum_af_.size(); index++)
     {
-        if(binding_sum_af[index]->has_data())
+        if(binding_sum_af_[index]->has_data())
             return true;
     }
     return false;
@@ -7529,9 +7529,9 @@ bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_data() const
 
 bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_operation() const
 {
-    for (std::size_t index=0; index<binding_sum_af.size(); index++)
+    for (std::size_t index=0; index<binding_sum_af_.size(); index++)
     {
-        if(binding_sum_af[index]->has_operation())
+        if(binding_sum_af_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -7571,7 +7571,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::get_chi
 {
     if(child_yang_name == "binding-sum-af")
     {
-        for(auto const & c : binding_sum_af)
+        for(auto const & c : binding_sum_af_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7581,7 +7581,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::get_chi
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf>();
         c->parent = this;
-        binding_sum_af.push_back(c);
+        binding_sum_af_.push_back(c);
         return c;
     }
 
@@ -7591,7 +7591,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : binding_sum_af)
+    for (auto const & c : binding_sum_af_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7803,14 +7803,14 @@ MplsLdp::MplsLdpState::Bindings::Binding::~Binding()
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::has_data() const
 {
-    for (std::size_t index=0; index<peers_advertised_to.size(); index++)
+    for (std::size_t index=0; index<peers_advertised_to_.size(); index++)
     {
-        if(peers_advertised_to[index]->has_data())
+        if(peers_advertised_to_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_binding.size(); index++)
+    for (std::size_t index=0; index<remote_binding_.size(); index++)
     {
-        if(remote_binding[index]->has_data())
+        if(remote_binding_[index]->has_data())
             return true;
     }
     return vrf_name.is_set
@@ -7829,14 +7829,14 @@ bool MplsLdp::MplsLdpState::Bindings::Binding::has_data() const
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::has_operation() const
 {
-    for (std::size_t index=0; index<peers_advertised_to.size(); index++)
+    for (std::size_t index=0; index<peers_advertised_to_.size(); index++)
     {
-        if(peers_advertised_to[index]->has_operation())
+        if(peers_advertised_to_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_binding.size(); index++)
+    for (std::size_t index=0; index<remote_binding_.size(); index++)
     {
-        if(remote_binding[index]->has_operation())
+        if(remote_binding_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -7900,7 +7900,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
 {
     if(child_yang_name == "peers-advertised-to")
     {
-        for(auto const & c : peers_advertised_to)
+        for(auto const & c : peers_advertised_to_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7910,13 +7910,13 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo>();
         c->parent = this;
-        peers_advertised_to.push_back(c);
+        peers_advertised_to_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "remote-binding")
     {
-        for(auto const & c : remote_binding)
+        for(auto const & c : remote_binding_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7926,7 +7926,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding>();
         c->parent = this;
-        remote_binding.push_back(c);
+        remote_binding_.push_back(c);
         return c;
     }
 
@@ -7936,12 +7936,12 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : peers_advertised_to)
+    for (auto const & c : peers_advertised_to_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : remote_binding)
+    for (auto const & c : remote_binding_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -8006,9 +8006,9 @@ MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::RemoteBinding()
     is_stale{YType::boolean, "is-stale"},
     remote_label{YType::uint32, "remote-label"}
     	,
-    assigning_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>())
+    assigning_peer_ldp_ident_(std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>())
 {
-    assigning_peer_ldp_ident->parent = this;
+    assigning_peer_ldp_ident_->parent = this;
 
     yang_name = "remote-binding"; yang_parent_name = "binding";
 }
@@ -8021,7 +8021,7 @@ bool MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::has_data() const
 {
     return is_stale.is_set
 	|| remote_label.is_set
-	|| (assigning_peer_ldp_ident !=  nullptr && assigning_peer_ldp_ident->has_data());
+	|| (assigning_peer_ldp_ident_ !=  nullptr && assigning_peer_ldp_ident_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::has_operation() const
@@ -8029,7 +8029,7 @@ bool MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::has_operation() co
     return is_set(operation)
 	|| is_set(is_stale.operation)
 	|| is_set(remote_label.operation)
-	|| (assigning_peer_ldp_ident !=  nullptr && assigning_peer_ldp_ident->has_operation());
+	|| (assigning_peer_ldp_ident_ !=  nullptr && assigning_peer_ldp_ident_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::get_segment_path() const
@@ -8068,11 +8068,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding:
 {
     if(child_yang_name == "assigning-peer-ldp-ident")
     {
-        if(assigning_peer_ldp_ident == nullptr)
+        if(assigning_peer_ldp_ident_ == nullptr)
         {
-            assigning_peer_ldp_ident = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>();
+            assigning_peer_ldp_ident_ = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>();
         }
-        return assigning_peer_ldp_ident;
+        return assigning_peer_ldp_ident_;
     }
 
     return nullptr;
@@ -8081,9 +8081,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding:
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(assigning_peer_ldp_ident != nullptr)
+    if(assigning_peer_ldp_ident_ != nullptr)
     {
-        children["assigning-peer-ldp-ident"] = assigning_peer_ldp_ident;
+        children["assigning-peer-ldp-ident"] = assigning_peer_ldp_ident_;
     }
 
     return children;
@@ -8263,15 +8263,15 @@ void MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::set_value(cons
 
 MplsLdp::MplsLdpState::Neighbors::Neighbors()
     :
-    backoffs(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>())
-	,nsr_nbr_detail(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>())
-	,stats_info(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>())
+    backoffs_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>())
+	,nsr_nbr_detail_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>())
+	,stats_info_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>())
 {
-    backoffs->parent = this;
+    backoffs_->parent = this;
 
-    nsr_nbr_detail->parent = this;
+    nsr_nbr_detail_->parent = this;
 
-    stats_info->parent = this;
+    stats_info_->parent = this;
 
     yang_name = "neighbors"; yang_parent_name = "mpls-ldp-state";
 }
@@ -8282,37 +8282,37 @@ MplsLdp::MplsLdpState::Neighbors::~Neighbors()
 
 bool MplsLdp::MplsLdpState::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<nbr_adjs.size(); index++)
+    for (std::size_t index=0; index<nbr_adjs_.size(); index++)
     {
-        if(nbr_adjs[index]->has_data())
+        if(nbr_adjs_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor_.size(); index++)
     {
-        if(neighbor[index]->has_data())
+        if(neighbor_[index]->has_data())
             return true;
     }
-    return (backoffs !=  nullptr && backoffs->has_data())
-	|| (nsr_nbr_detail !=  nullptr && nsr_nbr_detail->has_data())
-	|| (stats_info !=  nullptr && stats_info->has_data());
+    return (backoffs_ !=  nullptr && backoffs_->has_data())
+	|| (nsr_nbr_detail_ !=  nullptr && nsr_nbr_detail_->has_data())
+	|| (stats_info_ !=  nullptr && stats_info_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<nbr_adjs.size(); index++)
+    for (std::size_t index=0; index<nbr_adjs_.size(); index++)
     {
-        if(nbr_adjs[index]->has_operation())
+        if(nbr_adjs_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor_.size(); index++)
     {
-        if(neighbor[index]->has_operation())
+        if(neighbor_[index]->has_operation())
             return true;
     }
     return is_set(operation)
-	|| (backoffs !=  nullptr && backoffs->has_operation())
-	|| (nsr_nbr_detail !=  nullptr && nsr_nbr_detail->has_operation())
-	|| (stats_info !=  nullptr && stats_info->has_operation());
+	|| (backoffs_ !=  nullptr && backoffs_->has_operation())
+	|| (nsr_nbr_detail_ !=  nullptr && nsr_nbr_detail_->has_operation())
+	|| (stats_info_ !=  nullptr && stats_info_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Neighbors::get_segment_path() const
@@ -8349,16 +8349,16 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
 {
     if(child_yang_name == "backoffs")
     {
-        if(backoffs == nullptr)
+        if(backoffs_ == nullptr)
         {
-            backoffs = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>();
+            backoffs_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>();
         }
-        return backoffs;
+        return backoffs_;
     }
 
     if(child_yang_name == "nbr-adjs")
     {
-        for(auto const & c : nbr_adjs)
+        for(auto const & c : nbr_adjs_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -8368,13 +8368,13 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NbrAdjs>();
         c->parent = this;
-        nbr_adjs.push_back(c);
+        nbr_adjs_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
+        for(auto const & c : neighbor_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -8384,26 +8384,26 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "nsr-nbr-detail")
     {
-        if(nsr_nbr_detail == nullptr)
+        if(nsr_nbr_detail_ == nullptr)
         {
-            nsr_nbr_detail = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>();
+            nsr_nbr_detail_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>();
         }
-        return nsr_nbr_detail;
+        return nsr_nbr_detail_;
     }
 
     if(child_yang_name == "stats-info")
     {
-        if(stats_info == nullptr)
+        if(stats_info_ == nullptr)
         {
-            stats_info = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>();
+            stats_info_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>();
         }
-        return stats_info;
+        return stats_info_;
     }
 
     return nullptr;
@@ -8412,29 +8412,29 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(backoffs != nullptr)
+    if(backoffs_ != nullptr)
     {
-        children["backoffs"] = backoffs;
+        children["backoffs"] = backoffs_;
     }
 
-    for (auto const & c : nbr_adjs)
+    for (auto const & c : nbr_adjs_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : neighbor)
+    for (auto const & c : neighbor_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(nsr_nbr_detail != nullptr)
+    if(nsr_nbr_detail_ != nullptr)
     {
-        children["nsr-nbr-detail"] = nsr_nbr_detail;
+        children["nsr-nbr-detail"] = nsr_nbr_detail_;
     }
 
-    if(stats_info != nullptr)
+    if(stats_info_ != nullptr)
     {
-        children["stats-info"] = stats_info;
+        children["stats-info"] = stats_info_;
     }
 
     return children;
@@ -8474,18 +8474,18 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Neighbor()
     spht_running{YType::boolean, "spht-running"},
     up_time_seconds{YType::uint32, "up-time-seconds"}
     	,
-    capabilities(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>())
-	,graceful_restart_adjacency(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>())
-	,nbr_stats(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats>())
-	,tcp_information(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>())
+    capabilities_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>())
+	,graceful_restart_adjacency_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>())
+	,nbr_stats_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats>())
+	,tcp_information_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>())
 {
-    capabilities->parent = this;
+    capabilities_->parent = this;
 
-    graceful_restart_adjacency->parent = this;
+    graceful_restart_adjacency_->parent = this;
 
-    nbr_stats->parent = this;
+    nbr_stats_->parent = this;
 
-    tcp_information->parent = this;
+    tcp_information_->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -8535,10 +8535,10 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::has_data() const
 	|| spht_remaining.is_set
 	|| spht_running.is_set
 	|| up_time_seconds.is_set
-	|| (capabilities !=  nullptr && capabilities->has_data())
-	|| (graceful_restart_adjacency !=  nullptr && graceful_restart_adjacency->has_data())
-	|| (nbr_stats !=  nullptr && nbr_stats->has_data())
-	|| (tcp_information !=  nullptr && tcp_information->has_data());
+	|| (capabilities_ !=  nullptr && capabilities_->has_data())
+	|| (graceful_restart_adjacency_ !=  nullptr && graceful_restart_adjacency_->has_data())
+	|| (nbr_stats_ !=  nullptr && nbr_stats_->has_data())
+	|| (tcp_information_ !=  nullptr && tcp_information_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::has_operation() const
@@ -8586,10 +8586,10 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::has_operation() const
 	|| is_set(spht_remaining.operation)
 	|| is_set(spht_running.operation)
 	|| is_set(up_time_seconds.operation)
-	|| (capabilities !=  nullptr && capabilities->has_operation())
-	|| (graceful_restart_adjacency !=  nullptr && graceful_restart_adjacency->has_operation())
-	|| (nbr_stats !=  nullptr && nbr_stats->has_operation())
-	|| (tcp_information !=  nullptr && tcp_information->has_operation());
+	|| (capabilities_ !=  nullptr && capabilities_->has_operation())
+	|| (graceful_restart_adjacency_ !=  nullptr && graceful_restart_adjacency_->has_operation())
+	|| (nbr_stats_ !=  nullptr && nbr_stats_->has_operation())
+	|| (tcp_information_ !=  nullptr && tcp_information_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Neighbors::Neighbor::get_segment_path() const
@@ -8656,38 +8656,38 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::get_child_by
 {
     if(child_yang_name == "capabilities")
     {
-        if(capabilities == nullptr)
+        if(capabilities_ == nullptr)
         {
-            capabilities = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>();
+            capabilities_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>();
         }
-        return capabilities;
+        return capabilities_;
     }
 
     if(child_yang_name == "graceful-restart-adjacency")
     {
-        if(graceful_restart_adjacency == nullptr)
+        if(graceful_restart_adjacency_ == nullptr)
         {
-            graceful_restart_adjacency = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>();
+            graceful_restart_adjacency_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>();
         }
-        return graceful_restart_adjacency;
+        return graceful_restart_adjacency_;
     }
 
     if(child_yang_name == "nbr-stats")
     {
-        if(nbr_stats == nullptr)
+        if(nbr_stats_ == nullptr)
         {
-            nbr_stats = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats>();
+            nbr_stats_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats>();
         }
-        return nbr_stats;
+        return nbr_stats_;
     }
 
     if(child_yang_name == "tcp-information")
     {
-        if(tcp_information == nullptr)
+        if(tcp_information_ == nullptr)
         {
-            tcp_information = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>();
+            tcp_information_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>();
         }
-        return tcp_information;
+        return tcp_information_;
     }
 
     return nullptr;
@@ -8696,24 +8696,24 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(capabilities != nullptr)
+    if(capabilities_ != nullptr)
     {
-        children["capabilities"] = capabilities;
+        children["capabilities"] = capabilities_;
     }
 
-    if(graceful_restart_adjacency != nullptr)
+    if(graceful_restart_adjacency_ != nullptr)
     {
-        children["graceful-restart-adjacency"] = graceful_restart_adjacency;
+        children["graceful-restart-adjacency"] = graceful_restart_adjacency_;
     }
 
-    if(nbr_stats != nullptr)
+    if(nbr_stats_ != nullptr)
     {
-        children["nbr-stats"] = nbr_stats;
+        children["nbr-stats"] = nbr_stats_;
     }
 
-    if(tcp_information != nullptr)
+    if(tcp_information_ != nullptr)
     {
-        children["tcp-information"] = tcp_information;
+        children["tcp-information"] = tcp_information_;
     }
 
     return children;
@@ -9218,14 +9218,14 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::~Capabilities()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<received_caps.size(); index++)
+    for (std::size_t index=0; index<received_caps_.size(); index++)
     {
-        if(received_caps[index]->has_data())
+        if(received_caps_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sent_caps.size(); index++)
+    for (std::size_t index=0; index<sent_caps_.size(); index++)
     {
-        if(sent_caps[index]->has_data())
+        if(sent_caps_[index]->has_data())
             return true;
     }
     return false;
@@ -9233,14 +9233,14 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_data() const
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<received_caps.size(); index++)
+    for (std::size_t index=0; index<received_caps_.size(); index++)
     {
-        if(received_caps[index]->has_operation())
+        if(received_caps_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sent_caps.size(); index++)
+    for (std::size_t index=0; index<sent_caps_.size(); index++)
     {
-        if(sent_caps[index]->has_operation())
+        if(sent_caps_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -9280,7 +9280,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
 {
     if(child_yang_name == "received-caps")
     {
-        for(auto const & c : received_caps)
+        for(auto const & c : received_caps_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -9290,13 +9290,13 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps>();
         c->parent = this;
-        received_caps.push_back(c);
+        received_caps_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "sent-caps")
     {
-        for(auto const & c : sent_caps)
+        for(auto const & c : sent_caps_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -9306,7 +9306,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps>();
         c->parent = this;
-        sent_caps.push_back(c);
+        sent_caps_.push_back(c);
         return c;
     }
 
@@ -9316,12 +9316,12 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : received_caps)
+    for (auto const & c : received_caps_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : sent_caps)
+    for (auto const & c : sent_caps_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -9638,12 +9638,12 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::StatsInfo()
     shutdow_notif_sent{YType::uint32, "shutdow-notif-sent"},
     shutdown_notif_rec{YType::uint32, "shutdown-notif-rec"}
     	,
-    message_in(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>())
-	,message_out(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut>())
+    message_in_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>())
+	,message_out_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut>())
 {
-    message_in->parent = this;
+    message_in_->parent = this;
 
-    message_out->parent = this;
+    message_out_->parent = this;
 
     yang_name = "stats-info"; yang_parent_name = "neighbors";
 }
@@ -9668,8 +9668,8 @@ bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::has_data() const
 	|| session_attempts.is_set
 	|| shutdow_notif_sent.is_set
 	|| shutdown_notif_rec.is_set
-	|| (message_in !=  nullptr && message_in->has_data())
-	|| (message_out !=  nullptr && message_out->has_data());
+	|| (message_in_ !=  nullptr && message_in_->has_data())
+	|| (message_out_ !=  nullptr && message_out_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::has_operation() const
@@ -9689,8 +9689,8 @@ bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::has_operation() const
 	|| is_set(session_attempts.operation)
 	|| is_set(shutdow_notif_sent.operation)
 	|| is_set(shutdown_notif_rec.operation)
-	|| (message_in !=  nullptr && message_in->has_operation())
-	|| (message_out !=  nullptr && message_out->has_operation());
+	|| (message_in_ !=  nullptr && message_in_->has_operation())
+	|| (message_out_ !=  nullptr && message_out_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Neighbors::StatsInfo::get_segment_path() const
@@ -9741,20 +9741,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::StatsInfo::get_child_b
 {
     if(child_yang_name == "message-in")
     {
-        if(message_in == nullptr)
+        if(message_in_ == nullptr)
         {
-            message_in = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>();
+            message_in_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>();
         }
-        return message_in;
+        return message_in_;
     }
 
     if(child_yang_name == "message-out")
     {
-        if(message_out == nullptr)
+        if(message_out_ == nullptr)
         {
-            message_out = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut>();
+            message_out_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut>();
         }
-        return message_out;
+        return message_out_;
     }
 
     return nullptr;
@@ -9763,14 +9763,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::StatsInfo::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors::StatsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(message_in != nullptr)
+    if(message_in_ != nullptr)
     {
-        children["message-in"] = message_in;
+        children["message-in"] = message_in_;
     }
 
-    if(message_out != nullptr)
+    if(message_out_ != nullptr)
     {
-        children["message-out"] = message_out;
+        children["message-out"] = message_out_;
     }
 
     return children;
@@ -10303,9 +10303,9 @@ MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NsrNbrDetail()
     nsr_state{YType::identityref, "nsr-state"},
     path_vector_limit{YType::int32, "path-vector-limit"}
     	,
-    nbr_sess(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess>())
+    nbr_sess_(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess>())
 {
-    nbr_sess->parent = this;
+    nbr_sess_->parent = this;
 
     yang_name = "nsr-nbr-detail"; yang_parent_name = "neighbors";
 }
@@ -10332,7 +10332,7 @@ bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::has_data() const
 	|| nsr_nbr_xmit_ctxt_enq.is_set
 	|| nsr_state.is_set
 	|| path_vector_limit.is_set
-	|| (nbr_sess !=  nullptr && nbr_sess->has_data());
+	|| (nbr_sess_ !=  nullptr && nbr_sess_->has_data());
 }
 
 bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::has_operation() const
@@ -10354,7 +10354,7 @@ bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::has_operation() const
 	|| is_set(nsr_nbr_xmit_ctxt_enq.operation)
 	|| is_set(nsr_state.operation)
 	|| is_set(path_vector_limit.operation)
-	|| (nbr_sess !=  nullptr && nbr_sess->has_operation());
+	|| (nbr_sess_ !=  nullptr && nbr_sess_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::get_segment_path() const
@@ -10407,11 +10407,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::get_chil
 {
     if(child_yang_name == "nbr-sess")
     {
-        if(nbr_sess == nullptr)
+        if(nbr_sess_ == nullptr)
         {
-            nbr_sess = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess>();
+            nbr_sess_ = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess>();
         }
-        return nbr_sess;
+        return nbr_sess_;
     }
 
     return nullptr;
@@ -10420,9 +10420,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nbr_sess != nullptr)
+    if(nbr_sess_ != nullptr)
     {
-        children["nbr-sess"] = nbr_sess;
+        children["nbr-sess"] = nbr_sess_;
     }
 
     return children;
@@ -10635,9 +10635,9 @@ MplsLdp::MplsLdpState::LabelRanges::~LabelRanges()
 
 bool MplsLdp::MplsLdpState::LabelRanges::has_data() const
 {
-    for (std::size_t index=0; index<label_range.size(); index++)
+    for (std::size_t index=0; index<label_range_.size(); index++)
     {
-        if(label_range[index]->has_data())
+        if(label_range_[index]->has_data())
             return true;
     }
     return false;
@@ -10645,9 +10645,9 @@ bool MplsLdp::MplsLdpState::LabelRanges::has_data() const
 
 bool MplsLdp::MplsLdpState::LabelRanges::has_operation() const
 {
-    for (std::size_t index=0; index<label_range.size(); index++)
+    for (std::size_t index=0; index<label_range_.size(); index++)
     {
-        if(label_range[index]->has_operation())
+        if(label_range_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -10687,7 +10687,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::LabelRanges::get_child_by_name(co
 {
     if(child_yang_name == "label-range")
     {
-        for(auto const & c : label_range)
+        for(auto const & c : label_range_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -10697,7 +10697,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::LabelRanges::get_child_by_name(co
         }
         auto c = std::make_shared<MplsLdp::MplsLdpState::LabelRanges::LabelRange>();
         c->parent = this;
-        label_range.push_back(c);
+        label_range_.push_back(c);
         return c;
     }
 
@@ -10707,7 +10707,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::LabelRanges::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::LabelRanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : label_range)
+    for (auto const & c : label_range_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -10801,39 +10801,39 @@ void MplsLdp::MplsLdpState::LabelRanges::LabelRange::set_value(const std::string
 
 MplsLdp::MplsLdpConfig::MplsLdpConfig()
     :
-    discovery(std::make_shared<MplsLdp::MplsLdpConfig::Discovery>())
-	,dual_stack(std::make_shared<MplsLdp::MplsLdpConfig::DualStack>())
-	,global_cfg(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg>())
-	,graceful_restart(std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>())
-	,interfaces(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>())
-	,label_cfg(std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>())
-	,logging(std::make_shared<MplsLdp::MplsLdpConfig::Logging>())
-	,nbr_table(std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>())
-	,passwords(std::make_shared<MplsLdp::MplsLdpConfig::Passwords>())
-	,routing(std::make_shared<MplsLdp::MplsLdpConfig::Routing>())
-	,session(std::make_shared<MplsLdp::MplsLdpConfig::Session>())
+    discovery_(std::make_shared<MplsLdp::MplsLdpConfig::Discovery>())
+	,dual_stack_(std::make_shared<MplsLdp::MplsLdpConfig::DualStack>())
+	,global_cfg_(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg>())
+	,graceful_restart_(std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>())
+	,interfaces_(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>())
+	,label_cfg_(std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>())
+	,logging_(std::make_shared<MplsLdp::MplsLdpConfig::Logging>())
+	,nbr_table_(std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>())
+	,passwords_(std::make_shared<MplsLdp::MplsLdpConfig::Passwords>())
+	,routing_(std::make_shared<MplsLdp::MplsLdpConfig::Routing>())
+	,session_(std::make_shared<MplsLdp::MplsLdpConfig::Session>())
 {
-    discovery->parent = this;
+    discovery_->parent = this;
 
-    dual_stack->parent = this;
+    dual_stack_->parent = this;
 
-    global_cfg->parent = this;
+    global_cfg_->parent = this;
 
-    graceful_restart->parent = this;
+    graceful_restart_->parent = this;
 
-    interfaces->parent = this;
+    interfaces_->parent = this;
 
-    label_cfg->parent = this;
+    label_cfg_->parent = this;
 
-    logging->parent = this;
+    logging_->parent = this;
 
-    nbr_table->parent = this;
+    nbr_table_->parent = this;
 
-    passwords->parent = this;
+    passwords_->parent = this;
 
-    routing->parent = this;
+    routing_->parent = this;
 
-    session->parent = this;
+    session_->parent = this;
 
     yang_name = "mpls-ldp-config"; yang_parent_name = "mpls-ldp";
 }
@@ -10844,33 +10844,33 @@ MplsLdp::MplsLdpConfig::~MplsLdpConfig()
 
 bool MplsLdp::MplsLdpConfig::has_data() const
 {
-    return (discovery !=  nullptr && discovery->has_data())
-	|| (dual_stack !=  nullptr && dual_stack->has_data())
-	|| (global_cfg !=  nullptr && global_cfg->has_data())
-	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
-	|| (interfaces !=  nullptr && interfaces->has_data())
-	|| (label_cfg !=  nullptr && label_cfg->has_data())
-	|| (logging !=  nullptr && logging->has_data())
-	|| (nbr_table !=  nullptr && nbr_table->has_data())
-	|| (passwords !=  nullptr && passwords->has_data())
-	|| (routing !=  nullptr && routing->has_data())
-	|| (session !=  nullptr && session->has_data());
+    return (discovery_ !=  nullptr && discovery_->has_data())
+	|| (dual_stack_ !=  nullptr && dual_stack_->has_data())
+	|| (global_cfg_ !=  nullptr && global_cfg_->has_data())
+	|| (graceful_restart_ !=  nullptr && graceful_restart_->has_data())
+	|| (interfaces_ !=  nullptr && interfaces_->has_data())
+	|| (label_cfg_ !=  nullptr && label_cfg_->has_data())
+	|| (logging_ !=  nullptr && logging_->has_data())
+	|| (nbr_table_ !=  nullptr && nbr_table_->has_data())
+	|| (passwords_ !=  nullptr && passwords_->has_data())
+	|| (routing_ !=  nullptr && routing_->has_data())
+	|| (session_ !=  nullptr && session_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::has_operation() const
 {
     return is_set(operation)
-	|| (discovery !=  nullptr && discovery->has_operation())
-	|| (dual_stack !=  nullptr && dual_stack->has_operation())
-	|| (global_cfg !=  nullptr && global_cfg->has_operation())
-	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
-	|| (interfaces !=  nullptr && interfaces->has_operation())
-	|| (label_cfg !=  nullptr && label_cfg->has_operation())
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (nbr_table !=  nullptr && nbr_table->has_operation())
-	|| (passwords !=  nullptr && passwords->has_operation())
-	|| (routing !=  nullptr && routing->has_operation())
-	|| (session !=  nullptr && session->has_operation());
+	|| (discovery_ !=  nullptr && discovery_->has_operation())
+	|| (dual_stack_ !=  nullptr && dual_stack_->has_operation())
+	|| (global_cfg_ !=  nullptr && global_cfg_->has_operation())
+	|| (graceful_restart_ !=  nullptr && graceful_restart_->has_operation())
+	|| (interfaces_ !=  nullptr && interfaces_->has_operation())
+	|| (label_cfg_ !=  nullptr && label_cfg_->has_operation())
+	|| (logging_ !=  nullptr && logging_->has_operation())
+	|| (nbr_table_ !=  nullptr && nbr_table_->has_operation())
+	|| (passwords_ !=  nullptr && passwords_->has_operation())
+	|| (routing_ !=  nullptr && routing_->has_operation())
+	|| (session_ !=  nullptr && session_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::get_segment_path() const
@@ -10907,101 +10907,101 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::get_child_by_name(const std::str
 {
     if(child_yang_name == "discovery")
     {
-        if(discovery == nullptr)
+        if(discovery_ == nullptr)
         {
-            discovery = std::make_shared<MplsLdp::MplsLdpConfig::Discovery>();
+            discovery_ = std::make_shared<MplsLdp::MplsLdpConfig::Discovery>();
         }
-        return discovery;
+        return discovery_;
     }
 
     if(child_yang_name == "dual-stack")
     {
-        if(dual_stack == nullptr)
+        if(dual_stack_ == nullptr)
         {
-            dual_stack = std::make_shared<MplsLdp::MplsLdpConfig::DualStack>();
+            dual_stack_ = std::make_shared<MplsLdp::MplsLdpConfig::DualStack>();
         }
-        return dual_stack;
+        return dual_stack_;
     }
 
     if(child_yang_name == "global-cfg")
     {
-        if(global_cfg == nullptr)
+        if(global_cfg_ == nullptr)
         {
-            global_cfg = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg>();
+            global_cfg_ = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg>();
         }
-        return global_cfg;
+        return global_cfg_;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart == nullptr)
+        if(graceful_restart_ == nullptr)
         {
-            graceful_restart = std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>();
+            graceful_restart_ = std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>();
         }
-        return graceful_restart;
+        return graceful_restart_;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces == nullptr)
+        if(interfaces_ == nullptr)
         {
-            interfaces = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>();
+            interfaces_ = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>();
         }
-        return interfaces;
+        return interfaces_;
     }
 
     if(child_yang_name == "label-cfg")
     {
-        if(label_cfg == nullptr)
+        if(label_cfg_ == nullptr)
         {
-            label_cfg = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>();
+            label_cfg_ = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>();
         }
-        return label_cfg;
+        return label_cfg_;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging == nullptr)
+        if(logging_ == nullptr)
         {
-            logging = std::make_shared<MplsLdp::MplsLdpConfig::Logging>();
+            logging_ = std::make_shared<MplsLdp::MplsLdpConfig::Logging>();
         }
-        return logging;
+        return logging_;
     }
 
     if(child_yang_name == "nbr-table")
     {
-        if(nbr_table == nullptr)
+        if(nbr_table_ == nullptr)
         {
-            nbr_table = std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>();
+            nbr_table_ = std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>();
         }
-        return nbr_table;
+        return nbr_table_;
     }
 
     if(child_yang_name == "passwords")
     {
-        if(passwords == nullptr)
+        if(passwords_ == nullptr)
         {
-            passwords = std::make_shared<MplsLdp::MplsLdpConfig::Passwords>();
+            passwords_ = std::make_shared<MplsLdp::MplsLdpConfig::Passwords>();
         }
-        return passwords;
+        return passwords_;
     }
 
     if(child_yang_name == "routing")
     {
-        if(routing == nullptr)
+        if(routing_ == nullptr)
         {
-            routing = std::make_shared<MplsLdp::MplsLdpConfig::Routing>();
+            routing_ = std::make_shared<MplsLdp::MplsLdpConfig::Routing>();
         }
-        return routing;
+        return routing_;
     }
 
     if(child_yang_name == "session")
     {
-        if(session == nullptr)
+        if(session_ == nullptr)
         {
-            session = std::make_shared<MplsLdp::MplsLdpConfig::Session>();
+            session_ = std::make_shared<MplsLdp::MplsLdpConfig::Session>();
         }
-        return session;
+        return session_;
     }
 
     return nullptr;
@@ -11010,59 +11010,59 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(discovery != nullptr)
+    if(discovery_ != nullptr)
     {
-        children["discovery"] = discovery;
+        children["discovery"] = discovery_;
     }
 
-    if(dual_stack != nullptr)
+    if(dual_stack_ != nullptr)
     {
-        children["dual-stack"] = dual_stack;
+        children["dual-stack"] = dual_stack_;
     }
 
-    if(global_cfg != nullptr)
+    if(global_cfg_ != nullptr)
     {
-        children["global-cfg"] = global_cfg;
+        children["global-cfg"] = global_cfg_;
     }
 
-    if(graceful_restart != nullptr)
+    if(graceful_restart_ != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        children["graceful-restart"] = graceful_restart_;
     }
 
-    if(interfaces != nullptr)
+    if(interfaces_ != nullptr)
     {
-        children["interfaces"] = interfaces;
+        children["interfaces"] = interfaces_;
     }
 
-    if(label_cfg != nullptr)
+    if(label_cfg_ != nullptr)
     {
-        children["label-cfg"] = label_cfg;
+        children["label-cfg"] = label_cfg_;
     }
 
-    if(logging != nullptr)
+    if(logging_ != nullptr)
     {
-        children["logging"] = logging;
+        children["logging"] = logging_;
     }
 
-    if(nbr_table != nullptr)
+    if(nbr_table_ != nullptr)
     {
-        children["nbr-table"] = nbr_table;
+        children["nbr-table"] = nbr_table_;
     }
 
-    if(passwords != nullptr)
+    if(passwords_ != nullptr)
     {
-        children["passwords"] = passwords;
+        children["passwords"] = passwords_;
     }
 
-    if(routing != nullptr)
+    if(routing_ != nullptr)
     {
-        children["routing"] = routing;
+        children["routing"] = routing_;
     }
 
-    if(session != nullptr)
+    if(session_ != nullptr)
     {
-        children["session"] = session;
+        children["session"] = session_;
     }
 
     return children;
@@ -11088,12 +11088,12 @@ MplsLdp::MplsLdpConfig::GlobalCfg::GlobalCfg()
     seconds_delay_proc{YType::uint32, "seconds-delay-proc"},
     shutdown{YType::empty, "shutdown"}
     	,
-    per_af(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>())
-	,session(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>())
+    per_af_(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>())
+	,session_(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>())
 {
-    per_af->parent = this;
+    per_af_->parent = this;
 
-    session->parent = this;
+    session_->parent = this;
 
     yang_name = "global-cfg"; yang_parent_name = "mpls-ldp-config";
 }
@@ -11104,9 +11104,9 @@ MplsLdp::MplsLdpConfig::GlobalCfg::~GlobalCfg()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::has_data() const
 {
-    for (std::size_t index=0; index<router_id.size(); index++)
+    for (std::size_t index=0; index<router_id_.size(); index++)
     {
-        if(router_id[index]->has_data())
+        if(router_id_[index]->has_data())
             return true;
     }
     return admin_status.is_set
@@ -11122,15 +11122,15 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::has_data() const
 	|| seconds.is_set
 	|| seconds_delay_proc.is_set
 	|| shutdown.is_set
-	|| (per_af !=  nullptr && per_af->has_data())
-	|| (session !=  nullptr && session->has_data());
+	|| (per_af_ !=  nullptr && per_af_->has_data())
+	|| (session_ !=  nullptr && session_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::has_operation() const
 {
-    for (std::size_t index=0; index<router_id.size(); index++)
+    for (std::size_t index=0; index<router_id_.size(); index++)
     {
-        if(router_id[index]->has_operation())
+        if(router_id_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -11147,8 +11147,8 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::has_operation() const
 	|| is_set(seconds.operation)
 	|| is_set(seconds_delay_proc.operation)
 	|| is_set(shutdown.operation)
-	|| (per_af !=  nullptr && per_af->has_operation())
-	|| (session !=  nullptr && session->has_operation());
+	|| (per_af_ !=  nullptr && per_af_->has_operation())
+	|| (session_ !=  nullptr && session_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::GlobalCfg::get_segment_path() const
@@ -11198,16 +11198,16 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::get_child_by_name(con
 {
     if(child_yang_name == "per-af")
     {
-        if(per_af == nullptr)
+        if(per_af_ == nullptr)
         {
-            per_af = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>();
+            per_af_ = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>();
         }
-        return per_af;
+        return per_af_;
     }
 
     if(child_yang_name == "router-id")
     {
-        for(auto const & c : router_id)
+        for(auto const & c : router_id_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11217,17 +11217,17 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::RouterId>();
         c->parent = this;
-        router_id.push_back(c);
+        router_id_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "session")
     {
-        if(session == nullptr)
+        if(session_ == nullptr)
         {
-            session = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>();
+            session_ = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>();
         }
-        return session;
+        return session_;
     }
 
     return nullptr;
@@ -11236,19 +11236,19 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(per_af != nullptr)
+    if(per_af_ != nullptr)
     {
-        children["per-af"] = per_af;
+        children["per-af"] = per_af_;
     }
 
-    for (auto const & c : router_id)
+    for (auto const & c : router_id_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(session != nullptr)
+    if(session_ != nullptr)
     {
-        children["session"] = session;
+        children["session"] = session_;
     }
 
     return children;
@@ -11413,9 +11413,9 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::Session()
     infinite{YType::boolean, "infinite"},
     seconds{YType::uint16, "seconds"}
     	,
-    protection(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>())
+    protection_(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>())
 {
-    protection->parent = this;
+    protection_->parent = this;
 
     yang_name = "session"; yang_parent_name = "global-cfg";
 }
@@ -11426,23 +11426,23 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::~Session()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_data() const
 {
-    for (std::size_t index=0; index<downstream_on_demand.size(); index++)
+    for (std::size_t index=0; index<downstream_on_demand_.size(); index++)
     {
-        if(downstream_on_demand[index]->has_data())
+        if(downstream_on_demand_[index]->has_data())
             return true;
     }
     return backoff_init.is_set
 	|| backoff_max.is_set
 	|| infinite.is_set
 	|| seconds.is_set
-	|| (protection !=  nullptr && protection->has_data());
+	|| (protection_ !=  nullptr && protection_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_operation() const
 {
-    for (std::size_t index=0; index<downstream_on_demand.size(); index++)
+    for (std::size_t index=0; index<downstream_on_demand_.size(); index++)
     {
-        if(downstream_on_demand[index]->has_operation())
+        if(downstream_on_demand_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -11450,7 +11450,7 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_operation() const
 	|| is_set(backoff_max.operation)
 	|| is_set(infinite.operation)
 	|| is_set(seconds.operation)
-	|| (protection !=  nullptr && protection->has_operation());
+	|| (protection_ !=  nullptr && protection_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_segment_path() const
@@ -11491,7 +11491,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_child_by
 {
     if(child_yang_name == "downstream-on-demand")
     {
-        for(auto const & c : downstream_on_demand)
+        for(auto const & c : downstream_on_demand_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11501,17 +11501,17 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_child_by
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand>();
         c->parent = this;
-        downstream_on_demand.push_back(c);
+        downstream_on_demand_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "protection")
     {
-        if(protection == nullptr)
+        if(protection_ == nullptr)
         {
-            protection = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>();
+            protection_ = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>();
         }
-        return protection;
+        return protection_;
     }
 
     return nullptr;
@@ -11520,14 +11520,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : downstream_on_demand)
+    for (auto const & c : downstream_on_demand_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(protection != nullptr)
+    if(protection_ != nullptr)
     {
-        children["protection"] = protection;
+        children["protection"] = protection_;
     }
 
     return children;
@@ -11748,9 +11748,9 @@ MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::~PerAf()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_data() const
 {
-    for (std::size_t index=0; index<af_cfg.size(); index++)
+    for (std::size_t index=0; index<af_cfg_.size(); index++)
     {
-        if(af_cfg[index]->has_data())
+        if(af_cfg_[index]->has_data())
             return true;
     }
     return false;
@@ -11758,9 +11758,9 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_operation() const
 {
-    for (std::size_t index=0; index<af_cfg.size(); index++)
+    for (std::size_t index=0; index<af_cfg_.size(); index++)
     {
-        if(af_cfg[index]->has_operation())
+        if(af_cfg_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -11800,7 +11800,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::get_child_by_n
 {
     if(child_yang_name == "af-cfg")
     {
-        for(auto const & c : af_cfg)
+        for(auto const & c : af_cfg_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11810,7 +11810,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::get_child_by_n
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg>();
         c->parent = this;
-        af_cfg.push_back(c);
+        af_cfg_.push_back(c);
         return c;
     }
 
@@ -11820,7 +11820,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : af_cfg)
+    for (auto const & c : af_cfg_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11955,9 +11955,9 @@ MplsLdp::MplsLdpConfig::NbrTable::~NbrTable()
 
 bool MplsLdp::MplsLdpConfig::NbrTable::has_data() const
 {
-    for (std::size_t index=0; index<nbr_cfg.size(); index++)
+    for (std::size_t index=0; index<nbr_cfg_.size(); index++)
     {
-        if(nbr_cfg[index]->has_data())
+        if(nbr_cfg_[index]->has_data())
             return true;
     }
     return false;
@@ -11965,9 +11965,9 @@ bool MplsLdp::MplsLdpConfig::NbrTable::has_data() const
 
 bool MplsLdp::MplsLdpConfig::NbrTable::has_operation() const
 {
-    for (std::size_t index=0; index<nbr_cfg.size(); index++)
+    for (std::size_t index=0; index<nbr_cfg_.size(); index++)
     {
-        if(nbr_cfg[index]->has_operation())
+        if(nbr_cfg_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -12007,7 +12007,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::NbrTable::get_child_by_name(cons
 {
     if(child_yang_name == "nbr-cfg")
     {
-        for(auto const & c : nbr_cfg)
+        for(auto const & c : nbr_cfg_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -12017,7 +12017,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::NbrTable::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::NbrTable::NbrCfg>();
         c->parent = this;
-        nbr_cfg.push_back(c);
+        nbr_cfg_.push_back(c);
         return c;
     }
 
@@ -12027,7 +12027,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::NbrTable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::NbrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nbr_cfg)
+    for (auto const & c : nbr_cfg_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -12178,9 +12178,9 @@ MplsLdp::MplsLdpConfig::Passwords::~Passwords()
 
 bool MplsLdp::MplsLdpConfig::Passwords::has_data() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    for (std::size_t index=0; index<password_.size(); index++)
     {
-        if(password[index]->has_data())
+        if(password_[index]->has_data())
             return true;
     }
     return false;
@@ -12188,9 +12188,9 @@ bool MplsLdp::MplsLdpConfig::Passwords::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Passwords::has_operation() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    for (std::size_t index=0; index<password_.size(); index++)
     {
-        if(password[index]->has_operation())
+        if(password_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -12230,7 +12230,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Passwords::get_child_by_name(con
 {
     if(child_yang_name == "password")
     {
-        for(auto const & c : password)
+        for(auto const & c : password_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -12240,7 +12240,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Passwords::get_child_by_name(con
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Passwords::Password>();
         c->parent = this;
-        password.push_back(c);
+        password_.push_back(c);
         return c;
     }
 
@@ -12250,7 +12250,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Passwords::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Passwords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : password)
+    for (auto const & c : password_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -12481,9 +12481,9 @@ MplsLdp::MplsLdpConfig::LabelCfg::~LabelCfg()
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::has_data() const
 {
-    for (std::size_t index=0; index<label_af_cfg.size(); index++)
+    for (std::size_t index=0; index<label_af_cfg_.size(); index++)
     {
-        if(label_af_cfg[index]->has_data())
+        if(label_af_cfg_[index]->has_data())
             return true;
     }
     return false;
@@ -12491,9 +12491,9 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::has_data() const
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::has_operation() const
 {
-    for (std::size_t index=0; index<label_af_cfg.size(); index++)
+    for (std::size_t index=0; index<label_af_cfg_.size(); index++)
     {
-        if(label_af_cfg[index]->has_operation())
+        if(label_af_cfg_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -12533,7 +12533,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::get_child_by_name(cons
 {
     if(child_yang_name == "label-af-cfg")
     {
-        for(auto const & c : label_af_cfg)
+        for(auto const & c : label_af_cfg_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -12543,7 +12543,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg>();
         c->parent = this;
-        label_af_cfg.push_back(c);
+        label_af_cfg_.push_back(c);
         return c;
     }
 
@@ -12553,7 +12553,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::LabelCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : label_af_cfg)
+    for (auto const & c : label_af_cfg_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -12581,9 +12581,9 @@ MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::~LabelAfCfg()
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_data() const
 {
-    for (std::size_t index=0; index<advt_filter.size(); index++)
+    for (std::size_t index=0; index<advt_filter_.size(); index++)
     {
-        if(advt_filter[index]->has_data())
+        if(advt_filter_[index]->has_data())
             return true;
     }
     return vrf_name.is_set
@@ -12594,9 +12594,9 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_data() const
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_operation() const
 {
-    for (std::size_t index=0; index<advt_filter.size(); index++)
+    for (std::size_t index=0; index<advt_filter_.size(); index++)
     {
-        if(advt_filter[index]->has_operation())
+        if(advt_filter_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -12644,7 +12644,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_child_
 {
     if(child_yang_name == "advt-filter")
     {
-        for(auto const & c : advt_filter)
+        for(auto const & c : advt_filter_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -12654,7 +12654,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_child_
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter>();
         c->parent = this;
-        advt_filter.push_back(c);
+        advt_filter_.push_back(c);
         return c;
     }
 
@@ -12664,7 +12664,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_child_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : advt_filter)
+    for (auto const & c : advt_filter_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -12792,15 +12792,15 @@ MplsLdp::MplsLdpConfig::Discovery::Discovery()
     :
     instance_tlv{YType::boolean, "instance-tlv"}
     	,
-    int_trans_addrs(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>())
-	,link_hello(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::LinkHello>())
-	,targeted_hello(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>())
+    int_trans_addrs_(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>())
+	,link_hello_(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::LinkHello>())
+	,targeted_hello_(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>())
 {
-    int_trans_addrs->parent = this;
+    int_trans_addrs_->parent = this;
 
-    link_hello->parent = this;
+    link_hello_->parent = this;
 
-    targeted_hello->parent = this;
+    targeted_hello_->parent = this;
 
     yang_name = "discovery"; yang_parent_name = "mpls-ldp-config";
 }
@@ -12812,18 +12812,18 @@ MplsLdp::MplsLdpConfig::Discovery::~Discovery()
 bool MplsLdp::MplsLdpConfig::Discovery::has_data() const
 {
     return instance_tlv.is_set
-	|| (int_trans_addrs !=  nullptr && int_trans_addrs->has_data())
-	|| (link_hello !=  nullptr && link_hello->has_data())
-	|| (targeted_hello !=  nullptr && targeted_hello->has_data());
+	|| (int_trans_addrs_ !=  nullptr && int_trans_addrs_->has_data())
+	|| (link_hello_ !=  nullptr && link_hello_->has_data())
+	|| (targeted_hello_ !=  nullptr && targeted_hello_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Discovery::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_tlv.operation)
-	|| (int_trans_addrs !=  nullptr && int_trans_addrs->has_operation())
-	|| (link_hello !=  nullptr && link_hello->has_operation())
-	|| (targeted_hello !=  nullptr && targeted_hello->has_operation());
+	|| (int_trans_addrs_ !=  nullptr && int_trans_addrs_->has_operation())
+	|| (link_hello_ !=  nullptr && link_hello_->has_operation())
+	|| (targeted_hello_ !=  nullptr && targeted_hello_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Discovery::get_segment_path() const
@@ -12861,29 +12861,29 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::get_child_by_name(con
 {
     if(child_yang_name == "int-trans-addrs")
     {
-        if(int_trans_addrs == nullptr)
+        if(int_trans_addrs_ == nullptr)
         {
-            int_trans_addrs = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>();
+            int_trans_addrs_ = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>();
         }
-        return int_trans_addrs;
+        return int_trans_addrs_;
     }
 
     if(child_yang_name == "link-hello")
     {
-        if(link_hello == nullptr)
+        if(link_hello_ == nullptr)
         {
-            link_hello = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::LinkHello>();
+            link_hello_ = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::LinkHello>();
         }
-        return link_hello;
+        return link_hello_;
     }
 
     if(child_yang_name == "targeted-hello")
     {
-        if(targeted_hello == nullptr)
+        if(targeted_hello_ == nullptr)
         {
-            targeted_hello = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>();
+            targeted_hello_ = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>();
         }
-        return targeted_hello;
+        return targeted_hello_;
     }
 
     return nullptr;
@@ -12892,19 +12892,19 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Discovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(int_trans_addrs != nullptr)
+    if(int_trans_addrs_ != nullptr)
     {
-        children["int-trans-addrs"] = int_trans_addrs;
+        children["int-trans-addrs"] = int_trans_addrs_;
     }
 
-    if(link_hello != nullptr)
+    if(link_hello_ != nullptr)
     {
-        children["link-hello"] = link_hello;
+        children["link-hello"] = link_hello_;
     }
 
-    if(targeted_hello != nullptr)
+    if(targeted_hello_ != nullptr)
     {
-        children["targeted-hello"] = targeted_hello;
+        children["targeted-hello"] = targeted_hello_;
     }
 
     return children;
@@ -13004,9 +13004,9 @@ MplsLdp::MplsLdpConfig::Discovery::TargetedHello::TargetedHello()
     holdtime{YType::uint16, "holdtime"},
     interval{YType::uint16, "interval"}
     	,
-    accept(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept>())
+    accept_(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept>())
 {
-    accept->parent = this;
+    accept_->parent = this;
 
     yang_name = "targeted-hello"; yang_parent_name = "discovery";
 }
@@ -13020,7 +13020,7 @@ bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::has_data() const
     return enable.is_set
 	|| holdtime.is_set
 	|| interval.is_set
-	|| (accept !=  nullptr && accept->has_data());
+	|| (accept_ !=  nullptr && accept_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::has_operation() const
@@ -13029,7 +13029,7 @@ bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::has_operation() const
 	|| is_set(enable.operation)
 	|| is_set(holdtime.operation)
 	|| is_set(interval.operation)
-	|| (accept !=  nullptr && accept->has_operation());
+	|| (accept_ !=  nullptr && accept_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Discovery::TargetedHello::get_segment_path() const
@@ -13069,11 +13069,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::TargetedHello::get_ch
 {
     if(child_yang_name == "accept")
     {
-        if(accept == nullptr)
+        if(accept_ == nullptr)
         {
-            accept = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept>();
+            accept_ = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept>();
         }
-        return accept;
+        return accept_;
     }
 
     return nullptr;
@@ -13082,9 +13082,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::TargetedHello::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Discovery::TargetedHello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(accept != nullptr)
+    if(accept_ != nullptr)
     {
-        children["accept"] = accept;
+        children["accept"] = accept_;
     }
 
     return children;
@@ -13197,9 +13197,9 @@ MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::~IntTransAddrs()
 
 bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_data() const
 {
-    for (std::size_t index=0; index<int_trans_addr.size(); index++)
+    for (std::size_t index=0; index<int_trans_addr_.size(); index++)
     {
-        if(int_trans_addr[index]->has_data())
+        if(int_trans_addr_[index]->has_data())
             return true;
     }
     return false;
@@ -13207,9 +13207,9 @@ bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_operation() const
 {
-    for (std::size_t index=0; index<int_trans_addr.size(); index++)
+    for (std::size_t index=0; index<int_trans_addr_.size(); index++)
     {
-        if(int_trans_addr[index]->has_operation())
+        if(int_trans_addr_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -13249,7 +13249,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::get_ch
 {
     if(child_yang_name == "int-trans-addr")
     {
-        for(auto const & c : int_trans_addr)
+        for(auto const & c : int_trans_addr_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -13259,7 +13259,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::get_ch
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr>();
         c->parent = this;
-        int_trans_addr.push_back(c);
+        int_trans_addr_.push_back(c);
         return c;
     }
 
@@ -13269,7 +13269,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : int_trans_addr)
+    for (auto const & c : int_trans_addr_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -13393,9 +13393,9 @@ MplsLdp::MplsLdpConfig::GracefulRestart::~GracefulRestart()
 
 bool MplsLdp::MplsLdpConfig::GracefulRestart::has_data() const
 {
-    for (std::size_t index=0; index<helper.size(); index++)
+    for (std::size_t index=0; index<helper_.size(); index++)
     {
-        if(helper[index]->has_data())
+        if(helper_[index]->has_data())
             return true;
     }
     return forwarding_holding.is_set
@@ -13406,9 +13406,9 @@ bool MplsLdp::MplsLdpConfig::GracefulRestart::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GracefulRestart::has_operation() const
 {
-    for (std::size_t index=0; index<helper.size(); index++)
+    for (std::size_t index=0; index<helper_.size(); index++)
     {
-        if(helper[index]->has_operation())
+        if(helper_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -13456,7 +13456,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GracefulRestart::get_child_by_na
 {
     if(child_yang_name == "helper")
     {
-        for(auto const & c : helper)
+        for(auto const & c : helper_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -13466,7 +13466,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GracefulRestart::get_child_by_na
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart::Helper>();
         c->parent = this;
-        helper.push_back(c);
+        helper_.push_back(c);
         return c;
     }
 
@@ -13476,7 +13476,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GracefulRestart::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : helper)
+    for (auto const & c : helper_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -13592,9 +13592,9 @@ MplsLdp::MplsLdpConfig::Logging::Logging()
     nsr{YType::boolean, "nsr"},
     session_protection{YType::boolean, "session-protection"}
     	,
-    password(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password>())
+    password_(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password>())
 {
-    password->parent = this;
+    password_->parent = this;
 
     yang_name = "logging"; yang_parent_name = "mpls-ldp-config";
 }
@@ -13610,7 +13610,7 @@ bool MplsLdp::MplsLdpConfig::Logging::has_data() const
 	|| neighbor.is_set
 	|| nsr.is_set
 	|| session_protection.is_set
-	|| (password !=  nullptr && password->has_data());
+	|| (password_ !=  nullptr && password_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Logging::has_operation() const
@@ -13621,7 +13621,7 @@ bool MplsLdp::MplsLdpConfig::Logging::has_operation() const
 	|| is_set(neighbor.operation)
 	|| is_set(nsr.operation)
 	|| is_set(session_protection.operation)
-	|| (password !=  nullptr && password->has_operation());
+	|| (password_ !=  nullptr && password_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Logging::get_segment_path() const
@@ -13663,11 +13663,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Logging::get_child_by_name(const
 {
     if(child_yang_name == "password")
     {
-        if(password == nullptr)
+        if(password_ == nullptr)
         {
-            password = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password>();
+            password_ = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password>();
         }
-        return password;
+        return password_;
     }
 
     return nullptr;
@@ -13676,9 +13676,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Logging::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(password != nullptr)
+    if(password_ != nullptr)
     {
-        children["password"] = password;
+        children["password"] = password_;
     }
 
     return children;
@@ -13710,12 +13710,12 @@ void MplsLdp::MplsLdpConfig::Logging::set_value(const std::string & value_path, 
 
 MplsLdp::MplsLdpConfig::Logging::Password::Password()
     :
-    config_msg(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg>())
-	,rollover_msg(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>())
+    config_msg_(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg>())
+	,rollover_msg_(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>())
 {
-    config_msg->parent = this;
+    config_msg_->parent = this;
 
-    rollover_msg->parent = this;
+    rollover_msg_->parent = this;
 
     yang_name = "password"; yang_parent_name = "logging";
 }
@@ -13726,15 +13726,15 @@ MplsLdp::MplsLdpConfig::Logging::Password::~Password()
 
 bool MplsLdp::MplsLdpConfig::Logging::Password::has_data() const
 {
-    return (config_msg !=  nullptr && config_msg->has_data())
-	|| (rollover_msg !=  nullptr && rollover_msg->has_data());
+    return (config_msg_ !=  nullptr && config_msg_->has_data())
+	|| (rollover_msg_ !=  nullptr && rollover_msg_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Logging::Password::has_operation() const
 {
     return is_set(operation)
-	|| (config_msg !=  nullptr && config_msg->has_operation())
-	|| (rollover_msg !=  nullptr && rollover_msg->has_operation());
+	|| (config_msg_ !=  nullptr && config_msg_->has_operation())
+	|| (rollover_msg_ !=  nullptr && rollover_msg_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Logging::Password::get_segment_path() const
@@ -13771,20 +13771,20 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Logging::Password::get_child_by_
 {
     if(child_yang_name == "config-msg")
     {
-        if(config_msg == nullptr)
+        if(config_msg_ == nullptr)
         {
-            config_msg = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg>();
+            config_msg_ = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg>();
         }
-        return config_msg;
+        return config_msg_;
     }
 
     if(child_yang_name == "rollover-msg")
     {
-        if(rollover_msg == nullptr)
+        if(rollover_msg_ == nullptr)
         {
-            rollover_msg = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>();
+            rollover_msg_ = std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>();
         }
-        return rollover_msg;
+        return rollover_msg_;
     }
 
     return nullptr;
@@ -13793,14 +13793,14 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Logging::Password::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Logging::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config_msg != nullptr)
+    if(config_msg_ != nullptr)
     {
-        children["config-msg"] = config_msg;
+        children["config-msg"] = config_msg_;
     }
 
-    if(rollover_msg != nullptr)
+    if(rollover_msg_ != nullptr)
     {
-        children["rollover-msg"] = rollover_msg;
+        children["rollover-msg"] = rollover_msg_;
     }
 
     return children;
@@ -13981,9 +13981,9 @@ MplsLdp::MplsLdpConfig::Interfaces::~Interfaces()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_.size(); index++)
     {
-        if(interface[index]->has_data())
+        if(interface_[index]->has_data())
             return true;
     }
     return false;
@@ -13991,9 +13991,9 @@ bool MplsLdp::MplsLdpConfig::Interfaces::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_.size(); index++)
     {
-        if(interface[index]->has_operation())
+        if(interface_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -14033,7 +14033,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::get_child_by_name(co
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
+        for(auto const & c : interface_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -14043,7 +14043,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::get_child_by_name(co
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface_.push_back(c);
         return c;
     }
 
@@ -14053,7 +14053,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
+    for (auto const & c : interface_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -14075,9 +14075,9 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Interface()
     link_hello_int{YType::uint32, "link-hello-int"},
     seconds{YType::uint32, "seconds"}
     	,
-    afs(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs>())
+    afs_(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs>())
 {
-    afs->parent = this;
+    afs_->parent = this;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -14095,7 +14095,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::has_data() const
 	|| link_hello_hold.is_set
 	|| link_hello_int.is_set
 	|| seconds.is_set
-	|| (afs !=  nullptr && afs->has_data());
+	|| (afs_ !=  nullptr && afs_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::has_operation() const
@@ -14108,7 +14108,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::has_operation() const
 	|| is_set(link_hello_hold.operation)
 	|| is_set(link_hello_int.operation)
 	|| is_set(seconds.operation)
-	|| (afs !=  nullptr && afs->has_operation());
+	|| (afs_ !=  nullptr && afs_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Interfaces::Interface::get_segment_path() const
@@ -14152,11 +14152,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::get_child
 {
     if(child_yang_name == "afs")
     {
-        if(afs == nullptr)
+        if(afs_ == nullptr)
         {
-            afs = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs>();
+            afs_ = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs>();
         }
-        return afs;
+        return afs_;
     }
 
     return nullptr;
@@ -14165,9 +14165,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(afs != nullptr)
+    if(afs_ != nullptr)
     {
-        children["afs"] = afs;
+        children["afs"] = afs_;
     }
 
     return children;
@@ -14216,9 +14216,9 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::~Afs()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af_.size(); index++)
     {
-        if(af[index]->has_data())
+        if(af_[index]->has_data())
             return true;
     }
     return false;
@@ -14226,9 +14226,9 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af_.size(); index++)
     {
-        if(af[index]->has_operation())
+        if(af_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -14268,7 +14268,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::get_
 {
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
+        for(auto const & c : af_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -14278,7 +14278,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::get_
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af_.push_back(c);
         return c;
     }
 
@@ -14288,7 +14288,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : af)
+    for (auto const & c : af_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -14306,9 +14306,9 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::Af()
     autoconfig_disable{YType::boolean, "autoconfig-disable"},
     enable{YType::boolean, "enable"}
     	,
-    bgp_redist(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist>())
+    bgp_redist_(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist>())
 {
-    bgp_redist->parent = this;
+    bgp_redist_->parent = this;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -14322,7 +14322,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::has_data() const
     return af_name.is_set
 	|| autoconfig_disable.is_set
 	|| enable.is_set
-	|| (bgp_redist !=  nullptr && bgp_redist->has_data());
+	|| (bgp_redist_ !=  nullptr && bgp_redist_->has_data());
 }
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::has_operation() const
@@ -14331,7 +14331,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::has_operation() con
 	|| is_set(af_name.operation)
 	|| is_set(autoconfig_disable.operation)
 	|| is_set(enable.operation)
-	|| (bgp_redist !=  nullptr && bgp_redist->has_operation());
+	|| (bgp_redist_ !=  nullptr && bgp_redist_->has_operation());
 }
 
 std::string MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::get_segment_path() const
@@ -14371,11 +14371,11 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::
 {
     if(child_yang_name == "bgp-redist")
     {
-        if(bgp_redist == nullptr)
+        if(bgp_redist_ == nullptr)
         {
-            bgp_redist = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist>();
+            bgp_redist_ = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist>();
         }
-        return bgp_redist;
+        return bgp_redist_;
     }
 
     return nullptr;
@@ -14384,9 +14384,9 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bgp_redist != nullptr)
+    if(bgp_redist_ != nullptr)
     {
-        children["bgp-redist"] = bgp_redist;
+        children["bgp-redist"] = bgp_redist_;
     }
 
     return children;
@@ -14515,9 +14515,9 @@ MplsLdp::MplsLdpConfig::Routing::~Routing()
 
 bool MplsLdp::MplsLdpConfig::Routing::has_data() const
 {
-    for (std::size_t index=0; index<routing_inst.size(); index++)
+    for (std::size_t index=0; index<routing_inst_.size(); index++)
     {
-        if(routing_inst[index]->has_data())
+        if(routing_inst_[index]->has_data())
             return true;
     }
     return false;
@@ -14525,9 +14525,9 @@ bool MplsLdp::MplsLdpConfig::Routing::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Routing::has_operation() const
 {
-    for (std::size_t index=0; index<routing_inst.size(); index++)
+    for (std::size_t index=0; index<routing_inst_.size(); index++)
     {
-        if(routing_inst[index]->has_operation())
+        if(routing_inst_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -14567,7 +14567,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Routing::get_child_by_name(const
 {
     if(child_yang_name == "routing-inst")
     {
-        for(auto const & c : routing_inst)
+        for(auto const & c : routing_inst_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -14577,7 +14577,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Routing::get_child_by_name(const
         }
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Routing::RoutingInst>();
         c->parent = this;
-        routing_inst.push_back(c);
+        routing_inst_.push_back(c);
         return c;
     }
 
@@ -14587,7 +14587,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Routing::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Routing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : routing_inst)
+    for (auto const & c : routing_inst_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -14785,12 +14785,12 @@ void MplsLdp::MplsLdpConfig::DualStack::set_value(const std::string & value_path
 
 ClearMsgCountersRpc::ClearMsgCountersRpc()
     :
-    input(std::make_shared<ClearMsgCountersRpc::Input>())
-	,output(std::make_shared<ClearMsgCountersRpc::Output>())
+    input_(std::make_shared<ClearMsgCountersRpc::Input>())
+	,output_(std::make_shared<ClearMsgCountersRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "clear-msg-counters"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp";
 }
@@ -14801,15 +14801,15 @@ ClearMsgCountersRpc::~ClearMsgCountersRpc()
 
 bool ClearMsgCountersRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool ClearMsgCountersRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string ClearMsgCountersRpc::get_segment_path() const
@@ -14843,20 +14843,20 @@ std::shared_ptr<Entity> ClearMsgCountersRpc::get_child_by_name(const std::string
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<ClearMsgCountersRpc::Input>();
+            input_ = std::make_shared<ClearMsgCountersRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<ClearMsgCountersRpc::Output>();
+            output_ = std::make_shared<ClearMsgCountersRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -14865,14 +14865,14 @@ std::shared_ptr<Entity> ClearMsgCountersRpc::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> ClearMsgCountersRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -15064,12 +15064,12 @@ void ClearMsgCountersRpc::Output::set_value(const std::string & value_path, std:
 
 RestartNeighborRpc::RestartNeighborRpc()
     :
-    input(std::make_shared<RestartNeighborRpc::Input>())
-	,output(std::make_shared<RestartNeighborRpc::Output>())
+    input_(std::make_shared<RestartNeighborRpc::Input>())
+	,output_(std::make_shared<RestartNeighborRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "restart-neighbor"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp";
 }
@@ -15080,15 +15080,15 @@ RestartNeighborRpc::~RestartNeighborRpc()
 
 bool RestartNeighborRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool RestartNeighborRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string RestartNeighborRpc::get_segment_path() const
@@ -15122,20 +15122,20 @@ std::shared_ptr<Entity> RestartNeighborRpc::get_child_by_name(const std::string 
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<RestartNeighborRpc::Input>();
+            input_ = std::make_shared<RestartNeighborRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<RestartNeighborRpc::Output>();
+            output_ = std::make_shared<RestartNeighborRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -15144,14 +15144,14 @@ std::shared_ptr<Entity> RestartNeighborRpc::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> RestartNeighborRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;
@@ -15343,12 +15343,12 @@ void RestartNeighborRpc::Output::set_value(const std::string & value_path, std::
 
 ClearForwardingRpc::ClearForwardingRpc()
     :
-    input(std::make_shared<ClearForwardingRpc::Input>())
-	,output(std::make_shared<ClearForwardingRpc::Output>())
+    input_(std::make_shared<ClearForwardingRpc::Input>())
+	,output_(std::make_shared<ClearForwardingRpc::Output>())
 {
-    input->parent = this;
+    input_->parent = this;
 
-    output->parent = this;
+    output_->parent = this;
 
     yang_name = "clear-forwarding"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp";
 }
@@ -15359,15 +15359,15 @@ ClearForwardingRpc::~ClearForwardingRpc()
 
 bool ClearForwardingRpc::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return (input_ !=  nullptr && input_->has_data())
+	|| (output_ !=  nullptr && output_->has_data());
 }
 
 bool ClearForwardingRpc::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| (input_ !=  nullptr && input_->has_operation())
+	|| (output_ !=  nullptr && output_->has_operation());
 }
 
 std::string ClearForwardingRpc::get_segment_path() const
@@ -15401,20 +15401,20 @@ std::shared_ptr<Entity> ClearForwardingRpc::get_child_by_name(const std::string 
 {
     if(child_yang_name == "input")
     {
-        if(input == nullptr)
+        if(input_ == nullptr)
         {
-            input = std::make_shared<ClearForwardingRpc::Input>();
+            input_ = std::make_shared<ClearForwardingRpc::Input>();
         }
-        return input;
+        return input_;
     }
 
     if(child_yang_name == "output")
     {
-        if(output == nullptr)
+        if(output_ == nullptr)
         {
-            output = std::make_shared<ClearForwardingRpc::Output>();
+            output_ = std::make_shared<ClearForwardingRpc::Output>();
         }
-        return output;
+        return output_;
     }
 
     return nullptr;
@@ -15423,14 +15423,14 @@ std::shared_ptr<Entity> ClearForwardingRpc::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ClearForwardingRpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
+    if(input_ != nullptr)
     {
-        children["input"] = input;
+        children["input"] = input_;
     }
 
-    if(output != nullptr)
+    if(output_ != nullptr)
     {
-        children["output"] = output;
+        children["output"] = output_;
     }
 
     return children;

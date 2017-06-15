@@ -34,10 +34,10 @@ class DraftMsdpMib : public Entity
         class Msdppeertable; //type: DraftMsdpMib::Msdppeertable
         class Msdpsacachetable; //type: DraftMsdpMib::Msdpsacachetable
 
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdp> msdp;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable> msdppeertable;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable> msdprequeststable;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable> msdpsacachetable;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdp> msdp_;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable> msdppeertable_;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable> msdprequeststable_;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable> msdpsacachetable_;
         
 }; // DraftMsdpMib
 
@@ -80,7 +80,7 @@ class DraftMsdpMib::Msdprequeststable : public Entity
 
         class Msdprequestsentry; //type: DraftMsdpMib::Msdprequeststable::Msdprequestsentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable::Msdprequestsentry> > msdprequestsentry;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable::Msdprequestsentry> > msdprequestsentry_;
         
 }; // DraftMsdpMib::Msdprequeststable
 
@@ -123,7 +123,7 @@ class DraftMsdpMib::Msdppeertable : public Entity
 
         class Msdppeerentry; //type: DraftMsdpMib::Msdppeertable::Msdppeerentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable::Msdppeerentry> > msdppeerentry;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable::Msdppeerentry> > msdppeerentry_;
         
 }; // DraftMsdpMib::Msdppeertable
 
@@ -197,7 +197,7 @@ class DraftMsdpMib::Msdpsacachetable : public Entity
 
         class Msdpsacacheentry; //type: DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry> > msdpsacacheentry;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry> > msdpsacacheentry_;
         
 }; // DraftMsdpMib::Msdpsacachetable
 

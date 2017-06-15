@@ -33,10 +33,10 @@ class CiscoImageLicenseMgmtMib : public Entity
         class Cilmbootimageleveltable; //type: CiscoImageLicenseMgmtMib::Cilmbootimageleveltable
         class Cilmimageleveltolicensemaptable; //type: CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable
 
-        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmbootimageleveltable> cilmbootimageleveltable;
-        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable> cilmimageleveltolicensemaptable;
-        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmnotifcntl> cilmnotifcntl;
-        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Ciscoimagelicensemgmtmibobjects> ciscoimagelicensemgmtmibobjects;
+        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmbootimageleveltable> cilmbootimageleveltable_;
+        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable> cilmimageleveltolicensemaptable_;
+        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmnotifcntl> cilmnotifcntl_;
+        std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Ciscoimagelicensemgmtmibobjects> ciscoimagelicensemgmtmibobjects_;
         
 }; // CiscoImageLicenseMgmtMib
 
@@ -95,7 +95,7 @@ class CiscoImageLicenseMgmtMib::Cilmbootimageleveltable : public Entity
 
         class Cilmbootimagelevelentry; //type: CiscoImageLicenseMgmtMib::Cilmbootimageleveltable::Cilmbootimagelevelentry
 
-        std::vector<std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmbootimageleveltable::Cilmbootimagelevelentry> > cilmbootimagelevelentry;
+        std::vector<std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmbootimageleveltable::Cilmbootimagelevelentry> > cilmbootimagelevelentry_;
         
 }; // CiscoImageLicenseMgmtMib::Cilmbootimageleveltable
 
@@ -144,7 +144,7 @@ class CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable : public Entity
 
         class Cilmimageleveltolicensemapentry; //type: CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry
 
-        std::vector<std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry> > cilmimageleveltolicensemapentry;
+        std::vector<std::shared_ptr<CISCO_IMAGE_LICENSE_MGMT_MIB::CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry> > cilmimageleveltolicensemapentry_;
         
 }; // CiscoImageLicenseMgmtMib::Cilmimageleveltolicensemaptable
 

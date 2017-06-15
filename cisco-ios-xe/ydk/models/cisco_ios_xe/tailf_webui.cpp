@@ -11,12 +11,12 @@ namespace tailf_webui {
 
 Webui::Webui()
     :
-    data_stores(std::make_shared<Webui::DataStores>())
-	,schematics(std::make_shared<Webui::Schematics>())
+    data_stores_(std::make_shared<Webui::DataStores>())
+	,schematics_(std::make_shared<Webui::Schematics>())
 {
-    data_stores->parent = this;
+    data_stores_->parent = this;
 
-    schematics->parent = this;
+    schematics_->parent = this;
 
     yang_name = "webui"; yang_parent_name = "tailf-webui";
 }
@@ -27,15 +27,15 @@ Webui::~Webui()
 
 bool Webui::has_data() const
 {
-    return (data_stores !=  nullptr && data_stores->has_data())
-	|| (schematics !=  nullptr && schematics->has_data());
+    return (data_stores_ !=  nullptr && data_stores_->has_data())
+	|| (schematics_ !=  nullptr && schematics_->has_data());
 }
 
 bool Webui::has_operation() const
 {
     return is_set(operation)
-	|| (data_stores !=  nullptr && data_stores->has_operation())
-	|| (schematics !=  nullptr && schematics->has_operation());
+	|| (data_stores_ !=  nullptr && data_stores_->has_operation())
+	|| (schematics_ !=  nullptr && schematics_->has_operation());
 }
 
 std::string Webui::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> Webui::get_child_by_name(const std::string & child_yang_
 {
     if(child_yang_name == "data-stores")
     {
-        if(data_stores == nullptr)
+        if(data_stores_ == nullptr)
         {
-            data_stores = std::make_shared<Webui::DataStores>();
+            data_stores_ = std::make_shared<Webui::DataStores>();
         }
-        return data_stores;
+        return data_stores_;
     }
 
     if(child_yang_name == "schematics")
     {
-        if(schematics == nullptr)
+        if(schematics_ == nullptr)
         {
-            schematics = std::make_shared<Webui::Schematics>();
+            schematics_ = std::make_shared<Webui::Schematics>();
         }
-        return schematics;
+        return schematics_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> Webui::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> Webui::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(data_stores != nullptr)
+    if(data_stores_ != nullptr)
     {
-        children["data-stores"] = data_stores;
+        children["data-stores"] = data_stores_;
     }
 
-    if(schematics != nullptr)
+    if(schematics_ != nullptr)
     {
-        children["schematics"] = schematics;
+        children["schematics"] = schematics_;
     }
 
     return children;
@@ -130,12 +130,12 @@ augment_capabilities_function Webui::get_augment_capabilities_function() const
 
 Webui::Schematics::Schematics()
     :
-    assets(std::make_shared<Webui::Schematics::Assets>())
-	,panels(std::make_shared<Webui::Schematics::Panels>())
+    assets_(std::make_shared<Webui::Schematics::Assets>())
+	,panels_(std::make_shared<Webui::Schematics::Panels>())
 {
-    assets->parent = this;
+    assets_->parent = this;
 
-    panels->parent = this;
+    panels_->parent = this;
 
     yang_name = "schematics"; yang_parent_name = "webui";
 }
@@ -146,15 +146,15 @@ Webui::Schematics::~Schematics()
 
 bool Webui::Schematics::has_data() const
 {
-    return (assets !=  nullptr && assets->has_data())
-	|| (panels !=  nullptr && panels->has_data());
+    return (assets_ !=  nullptr && assets_->has_data())
+	|| (panels_ !=  nullptr && panels_->has_data());
 }
 
 bool Webui::Schematics::has_operation() const
 {
     return is_set(operation)
-	|| (assets !=  nullptr && assets->has_operation())
-	|| (panels !=  nullptr && panels->has_operation());
+	|| (assets_ !=  nullptr && assets_->has_operation())
+	|| (panels_ !=  nullptr && panels_->has_operation());
 }
 
 std::string Webui::Schematics::get_segment_path() const
@@ -191,20 +191,20 @@ std::shared_ptr<Entity> Webui::Schematics::get_child_by_name(const std::string &
 {
     if(child_yang_name == "assets")
     {
-        if(assets == nullptr)
+        if(assets_ == nullptr)
         {
-            assets = std::make_shared<Webui::Schematics::Assets>();
+            assets_ = std::make_shared<Webui::Schematics::Assets>();
         }
-        return assets;
+        return assets_;
     }
 
     if(child_yang_name == "panels")
     {
-        if(panels == nullptr)
+        if(panels_ == nullptr)
         {
-            panels = std::make_shared<Webui::Schematics::Panels>();
+            panels_ = std::make_shared<Webui::Schematics::Panels>();
         }
-        return panels;
+        return panels_;
     }
 
     return nullptr;
@@ -213,14 +213,14 @@ std::shared_ptr<Entity> Webui::Schematics::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(assets != nullptr)
+    if(assets_ != nullptr)
     {
-        children["assets"] = assets;
+        children["assets"] = assets_;
     }
 
-    if(panels != nullptr)
+    if(panels_ != nullptr)
     {
-        children["panels"] = panels;
+        children["panels"] = panels_;
     }
 
     return children;
@@ -241,9 +241,9 @@ Webui::Schematics::Panels::~Panels()
 
 bool Webui::Schematics::Panels::has_data() const
 {
-    for (std::size_t index=0; index<panel.size(); index++)
+    for (std::size_t index=0; index<panel_.size(); index++)
     {
-        if(panel[index]->has_data())
+        if(panel_[index]->has_data())
             return true;
     }
     return false;
@@ -251,9 +251,9 @@ bool Webui::Schematics::Panels::has_data() const
 
 bool Webui::Schematics::Panels::has_operation() const
 {
-    for (std::size_t index=0; index<panel.size(); index++)
+    for (std::size_t index=0; index<panel_.size(); index++)
     {
-        if(panel[index]->has_operation())
+        if(panel_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -293,7 +293,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::get_child_by_name(const std::
 {
     if(child_yang_name == "panel")
     {
-        for(auto const & c : panel)
+        for(auto const & c : panel_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -303,7 +303,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::get_child_by_name(const std::
         }
         auto c = std::make_shared<Webui::Schematics::Panels::Panel>();
         c->parent = this;
-        panel.push_back(c);
+        panel_.push_back(c);
         return c;
     }
 
@@ -313,7 +313,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Panels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : panel)
+    for (auto const & c : panel_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -329,12 +329,12 @@ Webui::Schematics::Panels::Panel::Panel()
     :
     name{YType::str, "name"}
     	,
-    components(std::make_shared<Webui::Schematics::Panels::Panel::Components>())
-	,properties(std::make_shared<Webui::Schematics::Panels::Panel::Properties>())
+    components_(std::make_shared<Webui::Schematics::Panels::Panel::Components>())
+	,properties_(std::make_shared<Webui::Schematics::Panels::Panel::Properties>())
 {
-    components->parent = this;
+    components_->parent = this;
 
-    properties->parent = this;
+    properties_->parent = this;
 
     yang_name = "panel"; yang_parent_name = "panels";
 }
@@ -346,16 +346,16 @@ Webui::Schematics::Panels::Panel::~Panel()
 bool Webui::Schematics::Panels::Panel::has_data() const
 {
     return name.is_set
-	|| (components !=  nullptr && components->has_data())
-	|| (properties !=  nullptr && properties->has_data());
+	|| (components_ !=  nullptr && components_->has_data())
+	|| (properties_ !=  nullptr && properties_->has_data());
 }
 
 bool Webui::Schematics::Panels::Panel::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (components !=  nullptr && components->has_operation())
-	|| (properties !=  nullptr && properties->has_operation());
+	|| (components_ !=  nullptr && components_->has_operation())
+	|| (properties_ !=  nullptr && properties_->has_operation());
 }
 
 std::string Webui::Schematics::Panels::Panel::get_segment_path() const
@@ -393,20 +393,20 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::get_child_by_name(cons
 {
     if(child_yang_name == "components")
     {
-        if(components == nullptr)
+        if(components_ == nullptr)
         {
-            components = std::make_shared<Webui::Schematics::Panels::Panel::Components>();
+            components_ = std::make_shared<Webui::Schematics::Panels::Panel::Components>();
         }
-        return components;
+        return components_;
     }
 
     if(child_yang_name == "properties")
     {
-        if(properties == nullptr)
+        if(properties_ == nullptr)
         {
-            properties = std::make_shared<Webui::Schematics::Panels::Panel::Properties>();
+            properties_ = std::make_shared<Webui::Schematics::Panels::Panel::Properties>();
         }
-        return properties;
+        return properties_;
     }
 
     return nullptr;
@@ -415,14 +415,14 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Panels::Panel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(components != nullptr)
+    if(components_ != nullptr)
     {
-        children["components"] = components;
+        children["components"] = components_;
     }
 
-    if(properties != nullptr)
+    if(properties_ != nullptr)
     {
-        children["properties"] = properties;
+        children["properties"] = properties_;
     }
 
     return children;
@@ -543,9 +543,9 @@ Webui::Schematics::Panels::Panel::Components::~Components()
 
 bool Webui::Schematics::Panels::Panel::Components::has_data() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    for (std::size_t index=0; index<component_.size(); index++)
     {
-        if(component[index]->has_data())
+        if(component_[index]->has_data())
             return true;
     }
     return false;
@@ -553,9 +553,9 @@ bool Webui::Schematics::Panels::Panel::Components::has_data() const
 
 bool Webui::Schematics::Panels::Panel::Components::has_operation() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    for (std::size_t index=0; index<component_.size(); index++)
     {
-        if(component[index]->has_operation())
+        if(component_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -595,7 +595,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::get_child_
 {
     if(child_yang_name == "component")
     {
-        for(auto const & c : component)
+        for(auto const & c : component_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -605,7 +605,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::get_child_
         }
         auto c = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component>();
         c->parent = this;
-        component.push_back(c);
+        component_.push_back(c);
         return c;
     }
 
@@ -615,7 +615,7 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Panels::Panel::Components::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : component)
+    for (auto const & c : component_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -631,9 +631,9 @@ Webui::Schematics::Panels::Panel::Components::Component::Component()
     :
     id{YType::str, "id"}
     	,
-    properties(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties>())
+    properties_(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties>())
 {
-    properties->parent = this;
+    properties_->parent = this;
 
     yang_name = "component"; yang_parent_name = "components";
 }
@@ -645,14 +645,14 @@ Webui::Schematics::Panels::Panel::Components::Component::~Component()
 bool Webui::Schematics::Panels::Panel::Components::Component::has_data() const
 {
     return id.is_set
-	|| (properties !=  nullptr && properties->has_data());
+	|| (properties_ !=  nullptr && properties_->has_data());
 }
 
 bool Webui::Schematics::Panels::Panel::Components::Component::has_operation() const
 {
     return is_set(operation)
 	|| is_set(id.operation)
-	|| (properties !=  nullptr && properties->has_operation());
+	|| (properties_ !=  nullptr && properties_->has_operation());
 }
 
 std::string Webui::Schematics::Panels::Panel::Components::Component::get_segment_path() const
@@ -690,11 +690,11 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::Component:
 {
     if(child_yang_name == "properties")
     {
-        if(properties == nullptr)
+        if(properties_ == nullptr)
         {
-            properties = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties>();
+            properties_ = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties>();
         }
-        return properties;
+        return properties_;
     }
 
     return nullptr;
@@ -703,9 +703,9 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::Component:
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Panels::Panel::Components::Component::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(properties != nullptr)
+    if(properties_ != nullptr)
     {
-        children["properties"] = properties;
+        children["properties"] = properties_;
     }
 
     return children;
@@ -727,12 +727,12 @@ Webui::Schematics::Panels::Panel::Components::Component::Properties::Properties(
     width{YType::uint16, "width"},
     z_index{YType::int16, "z-index"}
     	,
-    image(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Image>())
-	,link(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Link>())
+    image_(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Image>())
+	,link_(std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Link>())
 {
-    image->parent = this;
+    image_->parent = this;
 
-    link->parent = this;
+    link_->parent = this;
 
     yang_name = "properties"; yang_parent_name = "component";
 }
@@ -748,8 +748,8 @@ bool Webui::Schematics::Panels::Panel::Components::Component::Properties::has_da
 	|| top.is_set
 	|| width.is_set
 	|| z_index.is_set
-	|| (image !=  nullptr && image->has_data())
-	|| (link !=  nullptr && link->has_data());
+	|| (image_ !=  nullptr && image_->has_data())
+	|| (link_ !=  nullptr && link_->has_data());
 }
 
 bool Webui::Schematics::Panels::Panel::Components::Component::Properties::has_operation() const
@@ -760,8 +760,8 @@ bool Webui::Schematics::Panels::Panel::Components::Component::Properties::has_op
 	|| is_set(top.operation)
 	|| is_set(width.operation)
 	|| is_set(z_index.operation)
-	|| (image !=  nullptr && image->has_operation())
-	|| (link !=  nullptr && link->has_operation());
+	|| (image_ !=  nullptr && image_->has_operation())
+	|| (link_ !=  nullptr && link_->has_operation());
 }
 
 std::string Webui::Schematics::Panels::Panel::Components::Component::Properties::get_segment_path() const
@@ -803,20 +803,20 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::Component:
 {
     if(child_yang_name == "image")
     {
-        if(image == nullptr)
+        if(image_ == nullptr)
         {
-            image = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Image>();
+            image_ = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Image>();
         }
-        return image;
+        return image_;
     }
 
     if(child_yang_name == "link")
     {
-        if(link == nullptr)
+        if(link_ == nullptr)
         {
-            link = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Link>();
+            link_ = std::make_shared<Webui::Schematics::Panels::Panel::Components::Component::Properties::Link>();
         }
-        return link;
+        return link_;
     }
 
     return nullptr;
@@ -825,14 +825,14 @@ std::shared_ptr<Entity> Webui::Schematics::Panels::Panel::Components::Component:
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Panels::Panel::Components::Component::Properties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(image != nullptr)
+    if(image_ != nullptr)
     {
-        children["image"] = image;
+        children["image"] = image_;
     }
 
-    if(link != nullptr)
+    if(link_ != nullptr)
     {
-        children["link"] = link;
+        children["link"] = link_;
     }
 
     return children;
@@ -1025,9 +1025,9 @@ Webui::Schematics::Assets::~Assets()
 
 bool Webui::Schematics::Assets::has_data() const
 {
-    for (std::size_t index=0; index<asset.size(); index++)
+    for (std::size_t index=0; index<asset_.size(); index++)
     {
-        if(asset[index]->has_data())
+        if(asset_[index]->has_data())
             return true;
     }
     return false;
@@ -1035,9 +1035,9 @@ bool Webui::Schematics::Assets::has_data() const
 
 bool Webui::Schematics::Assets::has_operation() const
 {
-    for (std::size_t index=0; index<asset.size(); index++)
+    for (std::size_t index=0; index<asset_.size(); index++)
     {
-        if(asset[index]->has_operation())
+        if(asset_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1077,7 +1077,7 @@ std::shared_ptr<Entity> Webui::Schematics::Assets::get_child_by_name(const std::
 {
     if(child_yang_name == "asset")
     {
-        for(auto const & c : asset)
+        for(auto const & c : asset_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1087,7 +1087,7 @@ std::shared_ptr<Entity> Webui::Schematics::Assets::get_child_by_name(const std::
         }
         auto c = std::make_shared<Webui::Schematics::Assets::Asset>();
         c->parent = this;
-        asset.push_back(c);
+        asset_.push_back(c);
         return c;
     }
 
@@ -1097,7 +1097,7 @@ std::shared_ptr<Entity> Webui::Schematics::Assets::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Webui::Schematics::Assets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : asset)
+    for (auto const & c : asset_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1208,19 +1208,19 @@ Webui::DataStores::~DataStores()
 
 bool Webui::DataStores::has_data() const
 {
-    for (std::size_t index=0; index<data_store.size(); index++)
+    for (std::size_t index=0; index<data_store_.size(); index++)
     {
-        if(data_store[index]->has_data())
+        if(data_store_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<saved_query.size(); index++)
+    for (std::size_t index=0; index<saved_query_.size(); index++)
     {
-        if(saved_query[index]->has_data())
+        if(saved_query_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<user_profile.size(); index++)
+    for (std::size_t index=0; index<user_profile_.size(); index++)
     {
-        if(user_profile[index]->has_data())
+        if(user_profile_[index]->has_data())
             return true;
     }
     return false;
@@ -1228,19 +1228,19 @@ bool Webui::DataStores::has_data() const
 
 bool Webui::DataStores::has_operation() const
 {
-    for (std::size_t index=0; index<data_store.size(); index++)
+    for (std::size_t index=0; index<data_store_.size(); index++)
     {
-        if(data_store[index]->has_operation())
+        if(data_store_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<saved_query.size(); index++)
+    for (std::size_t index=0; index<saved_query_.size(); index++)
     {
-        if(saved_query[index]->has_operation())
+        if(saved_query_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<user_profile.size(); index++)
+    for (std::size_t index=0; index<user_profile_.size(); index++)
     {
-        if(user_profile[index]->has_operation())
+        if(user_profile_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1280,7 +1280,7 @@ std::shared_ptr<Entity> Webui::DataStores::get_child_by_name(const std::string &
 {
     if(child_yang_name == "data-store")
     {
-        for(auto const & c : data_store)
+        for(auto const & c : data_store_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1290,13 +1290,13 @@ std::shared_ptr<Entity> Webui::DataStores::get_child_by_name(const std::string &
         }
         auto c = std::make_shared<Webui::DataStores::DataStore>();
         c->parent = this;
-        data_store.push_back(c);
+        data_store_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "saved-query")
     {
-        for(auto const & c : saved_query)
+        for(auto const & c : saved_query_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1306,13 +1306,13 @@ std::shared_ptr<Entity> Webui::DataStores::get_child_by_name(const std::string &
         }
         auto c = std::make_shared<Webui::DataStores::SavedQuery>();
         c->parent = this;
-        saved_query.push_back(c);
+        saved_query_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "user-profile")
     {
-        for(auto const & c : user_profile)
+        for(auto const & c : user_profile_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1322,7 +1322,7 @@ std::shared_ptr<Entity> Webui::DataStores::get_child_by_name(const std::string &
         }
         auto c = std::make_shared<Webui::DataStores::UserProfile>();
         c->parent = this;
-        user_profile.push_back(c);
+        user_profile_.push_back(c);
         return c;
     }
 
@@ -1332,17 +1332,17 @@ std::shared_ptr<Entity> Webui::DataStores::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Webui::DataStores::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : data_store)
+    for (auto const & c : data_store_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : saved_query)
+    for (auto const & c : saved_query_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : user_profile)
+    for (auto const & c : user_profile_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1367,14 +1367,14 @@ Webui::DataStores::UserProfile::~UserProfile()
 
 bool Webui::DataStores::UserProfile::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile_.size(); index++)
     {
-        if(profile[index]->has_data())
+        if(profile_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<saved_query.size(); index++)
+    for (std::size_t index=0; index<saved_query_.size(); index++)
     {
-        if(saved_query[index]->has_data())
+        if(saved_query_[index]->has_data())
             return true;
     }
     return username.is_set;
@@ -1382,14 +1382,14 @@ bool Webui::DataStores::UserProfile::has_data() const
 
 bool Webui::DataStores::UserProfile::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile_.size(); index++)
     {
-        if(profile[index]->has_operation())
+        if(profile_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<saved_query.size(); index++)
+    for (std::size_t index=0; index<saved_query_.size(); index++)
     {
-        if(saved_query[index]->has_operation())
+        if(saved_query_[index]->has_operation())
             return true;
     }
     return is_set(operation)
@@ -1431,7 +1431,7 @@ std::shared_ptr<Entity> Webui::DataStores::UserProfile::get_child_by_name(const 
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
+        for(auto const & c : profile_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1441,13 +1441,13 @@ std::shared_ptr<Entity> Webui::DataStores::UserProfile::get_child_by_name(const 
         }
         auto c = std::make_shared<Webui::DataStores::UserProfile::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile_.push_back(c);
         return c;
     }
 
     if(child_yang_name == "saved-query")
     {
-        for(auto const & c : saved_query)
+        for(auto const & c : saved_query_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1457,7 +1457,7 @@ std::shared_ptr<Entity> Webui::DataStores::UserProfile::get_child_by_name(const 
         }
         auto c = std::make_shared<Webui::DataStores::UserProfile::SavedQuery>();
         c->parent = this;
-        saved_query.push_back(c);
+        saved_query_.push_back(c);
         return c;
     }
 
@@ -1467,12 +1467,12 @@ std::shared_ptr<Entity> Webui::DataStores::UserProfile::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Webui::DataStores::UserProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : profile)
+    for (auto const & c : profile_)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : saved_query)
+    for (auto const & c : saved_query_)
     {
         children[c->get_segment_path()] = c;
     }

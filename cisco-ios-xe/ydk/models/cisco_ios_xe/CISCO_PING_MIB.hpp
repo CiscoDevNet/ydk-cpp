@@ -31,7 +31,7 @@ class CiscoPingMib : public Entity
 
         class Ciscopingtable; //type: CiscoPingMib::Ciscopingtable
 
-        std::shared_ptr<CISCO_PING_MIB::CiscoPingMib::Ciscopingtable> ciscopingtable;
+        std::shared_ptr<CISCO_PING_MIB::CiscoPingMib::Ciscopingtable> ciscopingtable_;
         
 }; // CiscoPingMib
 
@@ -52,7 +52,7 @@ class CiscoPingMib::Ciscopingtable : public Entity
 
         class Ciscopingentry; //type: CiscoPingMib::Ciscopingtable::Ciscopingentry
 
-        std::vector<std::shared_ptr<CISCO_PING_MIB::CiscoPingMib::Ciscopingtable::Ciscopingentry> > ciscopingentry;
+        std::vector<std::shared_ptr<CISCO_PING_MIB::CiscoPingMib::Ciscopingtable::Ciscopingentry> > ciscopingentry_;
         
 }; // CiscoPingMib::Ciscopingtable
 

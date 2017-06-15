@@ -50,8 +50,8 @@ class MplsStatic : public Entity
         class MplsStaticCfg; //type: MplsStatic::MplsStaticCfg
         class MplsStaticState; //type: MplsStatic::MplsStaticState
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg> mpls_static_cfg;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState> mpls_static_state;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg> mpls_static_cfg_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState> mpls_static_state_;
         
 }; // MplsStatic
 
@@ -70,19 +70,349 @@ class MplsStatic::MplsStaticCfg : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Interfaces; //type: MplsStatic::MplsStaticCfg::Interfaces
-        class NamedLsps; //type: MplsStatic::MplsStaticCfg::NamedLsps
-        class Ipv6IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps
         class Ipv4IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps
+        class Interfaces; //type: MplsStatic::MplsStaticCfg::Interfaces
+        class Ipv6IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps
+        class NamedLsps; //type: MplsStatic::MplsStaticCfg::NamedLsps
         class InLabelLsps; //type: MplsStatic::MplsStaticCfg::InLabelLsps
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps> in_label_lsps;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces> interfaces;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps> ipv4_ingress_lsps;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps> ipv6_ingress_lsps;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps> named_lsps;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps> in_label_lsps_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces> interfaces_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps> ipv4_ingress_lsps_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps> ipv6_ingress_lsps_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps> named_lsps_;
         
 }; // MplsStatic::MplsStaticCfg
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps : public Entity
+{
+    public:
+        Ipv4IngressLsps();
+        ~Ipv4IngressLsps();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Ipv4IngressLsp; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp
+
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp> > ipv4_ingress_lsp_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp : public Entity
+{
+    public:
+        Ipv4IngressLsp();
+        ~Ipv4IngressLsp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf vrf_name; //type: string
+        YLeaf prefix; //type: string
+        YLeaf name; //type: string
+        YLeaf in_label; //type: one of uint32, enumeration
+        class Path; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path> path_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path : public Entity
+{
+    public:
+        Path();
+        ~Path();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf auto_protect; //type: boolean
+        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations
+        class NextHop; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop
+
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop> > next_hop_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations> operations_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations : public Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf preserve; //type: empty
+        YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap> swap_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap : public Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack> stack_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack : public Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeafList label_stack; //type: list of  one of uint32, enumeration
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push : public Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack> stack_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack : public Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeafList label_stack; //type: list of  one of uint32, enumeration
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop : public Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf index_; //type: uint32
+        YLeaf type; //type: HoptypeEnum
+        YLeaf protected_by; //type: uint32
+        class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType> next_hop_type_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations> operations_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType : public Entity
+{
+    public:
+        NextHopType();
+        ~NextHopType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf if_index; //type: uint32
+        YLeaf ipv6_address; //type: string
+        YLeaf mac_address; //type: string
+        YLeaf ipv4_address; //type: string
+        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
+        YLeaf out_interface_name;
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations : public Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf pop_and_forward; //type: empty
+        YLeaf preserve; //type: empty
+        class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap> swap_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push : public Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack> stack_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack : public Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeafList label_stack; //type: list of  one of uint32, enumeration
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap : public Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack
+
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack> stack_;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack : public Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeafList label_stack; //type: list of  one of uint32, enumeration
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack
 
 
 class MplsStatic::MplsStaticCfg::Interfaces : public Entity
@@ -101,7 +431,7 @@ class MplsStatic::MplsStaticCfg::Interfaces : public Entity
 
         class Interface; //type: MplsStatic::MplsStaticCfg::Interfaces::Interface
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces::Interface> > interface_;
         
 }; // MplsStatic::MplsStaticCfg::Interfaces
 
@@ -127,338 +457,6 @@ class MplsStatic::MplsStaticCfg::Interfaces::Interface : public Entity
 }; // MplsStatic::MplsStaticCfg::Interfaces::Interface
 
 
-class MplsStatic::MplsStaticCfg::NamedLsps : public Entity
-{
-    public:
-        NamedLsps();
-        ~NamedLsps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class NamedLsp; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
-
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp> > named_lsp;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp : public Entity
-{
-    public:
-        NamedLsp();
-        ~NamedLsp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf vrf_name; //type: string
-        YLeaf name; //type: string
-        YLeaf lsp_type; //type: LspTypeIdentity
-        YLeaf in_label; //type: one of uint32, enumeration
-        YLeaf ipv4_prefix; //type: string
-        YLeaf ipv6_prefix; //type: string
-        class Path; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path> path;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path : public Entity
-{
-    public:
-        Path();
-        ~Path();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf auto_protect; //type: boolean
-        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
-        class NextHop; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
-
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations> operations;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations : public Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf preserve; //type: empty
-        YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap : public Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack : public Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeafList label_stack; //type: list of  one of uint32, enumeration
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push : public Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack : public Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeafList label_stack; //type: list of  one of uint32, enumeration
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop : public Entity
-{
-    public:
-        NextHop();
-        ~NextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf index_; //type: uint32
-        YLeaf type; //type: HoptypeEnum
-        YLeaf protected_by; //type: uint32
-        class NextHopType; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
-        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations> operations;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType : public Entity
-{
-    public:
-        NextHopType();
-        ~NextHopType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf if_index; //type: uint32
-        YLeaf ipv4_address; //type: string
-        YLeaf ipv6_address; //type: string
-        YLeaf mac_address; //type: string
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf out_interface_name;
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations : public Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf preserve; //type: empty
-        YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap : public Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack : public Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeafList label_stack; //type: list of  one of uint32, enumeration
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push : public Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
-
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack : public Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeafList label_stack; //type: list of  one of uint32, enumeration
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
-
-
 class MplsStatic::MplsStaticCfg::Ipv6IngressLsps : public Entity
 {
     public:
@@ -475,7 +473,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps : public Entity
 
         class Ipv6IngressLsp; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp> > ipv6_ingress_lsp;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp> > ipv6_ingress_lsp_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps
 
@@ -500,7 +498,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp : public Entity
         YLeaf in_label; //type: one of uint32, enumeration
         class Path; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path> path;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path> path_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
 
@@ -523,8 +521,8 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path : public 
         class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
         class NextHop; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop> > next_hop_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations> operations_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
 
@@ -548,8 +546,8 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operatio
         class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
 
@@ -570,7 +568,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operatio
 
         class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
 
@@ -610,7 +608,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operatio
 
         class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
 
@@ -654,8 +652,8 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop 
         class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType
         class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations> operations;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType> next_hop_type_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations> operations_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
 
@@ -703,8 +701,8 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
         class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
 
@@ -725,7 +723,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
 
         class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
 
@@ -765,7 +763,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
 
         class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
 
@@ -789,11 +787,11 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
 }; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps : public Entity
 {
     public:
-        Ipv4IngressLsps();
-        ~Ipv4IngressLsps();
+        NamedLsps();
+        ~NamedLsps();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -803,18 +801,18 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Ipv4IngressLsp; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp
+        class NamedLsp; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp> > ipv4_ingress_lsp;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp> > named_lsp_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps
+}; // MplsStatic::MplsStaticCfg::NamedLsps
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp : public Entity
 {
     public:
-        Ipv4IngressLsp();
-        ~Ipv4IngressLsp();
+        NamedLsp();
+        ~NamedLsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -825,17 +823,19 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp : public Entity
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-        YLeaf prefix; //type: string
         YLeaf name; //type: string
+        YLeaf lsp_type; //type: LspTypeIdentity
         YLeaf in_label; //type: one of uint32, enumeration
-        class Path; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path
+        YLeaf ipv4_prefix; //type: string
+        YLeaf ipv6_prefix; //type: string
+        class Path; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path> path;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path> path_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path : public Entity
 {
     public:
         Path();
@@ -850,16 +850,16 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path : public 
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf auto_protect; //type: boolean
-        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations
-        class NextHop; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop
+        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
+        class NextHop; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop> > next_hop_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations> operations_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations : public Entity
 {
     public:
         Operations();
@@ -875,16 +875,16 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
 
         YLeaf preserve; //type: empty
         YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap> swap_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap : public Entity
 {
     public:
         Swap();
@@ -898,14 +898,14 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack> stack_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack : public Entity
 {
     public:
         Stack();
@@ -921,10 +921,10 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
 
         YLeafList label_stack; //type: list of  one of uint32, enumeration
 
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push : public Entity
 {
     public:
         Push();
@@ -938,14 +938,14 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack> stack_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack : public Entity
 {
     public:
         Stack();
@@ -961,10 +961,10 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
 
         YLeafList label_stack; //type: list of  one of uint32, enumeration
 
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop : public Entity
 {
     public:
         NextHop();
@@ -981,16 +981,40 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop 
         YLeaf index_; //type: uint32
         YLeaf type; //type: HoptypeEnum
         YLeaf protected_by; //type: uint32
-        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
-        class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
+        class NextHopType; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations> operations;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType> next_hop_type_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations> operations_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType : public Entity
+{
+    public:
+        NextHopType();
+        ~NextHopType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf if_index; //type: uint32
+        YLeaf ipv4_address; //type: string
+        YLeaf ipv6_address; //type: string
+        YLeaf mac_address; //type: string
+        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
+        YLeaf out_interface_name;
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations : public Entity
 {
     public:
         Operations();
@@ -1006,16 +1030,16 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
 
         YLeaf preserve; //type: empty
         YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap> swap_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap : public Entity
 {
     public:
         Swap();
@@ -1029,14 +1053,14 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack> stack_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack : public Entity
 {
     public:
         Stack();
@@ -1052,10 +1076,10 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
 
         YLeafList label_stack; //type: list of  one of uint32, enumeration
 
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push : public Entity
 {
     public:
         Push();
@@ -1069,14 +1093,14 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack> stack_;
         
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
 
 
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack : public Entity
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack : public Entity
 {
     public:
         Stack();
@@ -1092,31 +1116,7 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
 
         YLeafList label_stack; //type: list of  one of uint32, enumeration
 
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType : public Entity
-{
-    public:
-        NextHopType();
-        ~NextHopType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf if_index; //type: uint32
-        YLeaf ipv6_address; //type: string
-        YLeaf ipv4_address; //type: string
-        YLeaf mac_address; //type: string
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf out_interface_name;
-
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticCfg::InLabelLsps : public Entity
@@ -1135,7 +1135,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps : public Entity
 
         class InLabelLsp; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp> > in_label_lsp;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp> > in_label_lsp_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps
 
@@ -1158,7 +1158,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp : public Entity
         YLeaf in_label; //type: one of uint32, enumeration
         class Path; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path> path;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path> path_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
 
@@ -1181,8 +1181,8 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path : public Entity
         class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
         class NextHop; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop> > next_hop_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations> operations_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 
@@ -1206,8 +1206,8 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations : pub
         class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
 
@@ -1228,7 +1228,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
 
         class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
 
@@ -1268,7 +1268,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
 
         class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
 
@@ -1312,8 +1312,8 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop : public
         class NextHopType; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType
         class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations> operations;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType> next_hop_type_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations> operations_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
 
@@ -1361,8 +1361,8 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
         class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
 
@@ -1383,7 +1383,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
 
         class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
 
@@ -1423,7 +1423,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
 
         class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
 
@@ -1463,7 +1463,7 @@ class MplsStatic::MplsStaticState : public Entity
 
         class LabelSwitchedPaths; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths> label_switched_paths;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths> label_switched_paths_;
         
 }; // MplsStatic::MplsStaticState
 
@@ -1484,7 +1484,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths : public Entity
 
         class LabelSwitchedPath; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath> > label_switched_path;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath> > label_switched_path_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths
 
@@ -1511,9 +1511,9 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath : publi
         class EgressStats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats
         class Path; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats> egress_stats;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats> ingress_stats;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path> path;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats> egress_stats_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats> ingress_stats_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path> path_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath
 
@@ -1534,7 +1534,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Ingres
 
         class Stats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats> stats;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats> stats_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats
 
@@ -1577,7 +1577,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Egress
 
         class Stats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats> stats;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats> stats_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats
 
@@ -1622,8 +1622,8 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path :
         class Operations; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations
         class NextHop; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop
 
-        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop> > next_hop;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations> operations;
+        std::vector<std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop> > next_hop_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations> operations_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path
 
@@ -1647,8 +1647,8 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
         class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations
 
@@ -1669,7 +1669,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
         class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
 
@@ -1709,7 +1709,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
         class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
 
@@ -1755,9 +1755,9 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
         class Operations; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations
         class NexthopStats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats> nexthop_stats;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations> operations;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType> next_hop_type_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats> nexthop_stats_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations> operations_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop
 
@@ -1805,8 +1805,8 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
         class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push> push_;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap> swap_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations
 
@@ -1827,7 +1827,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
         class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack> stack_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
 
@@ -1867,7 +1867,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
         class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack> stack;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack> stack_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
 
@@ -1907,7 +1907,7 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
         class Stats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats
 
-        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats> stats;
+        std::shared_ptr<common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats> stats_;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats
 

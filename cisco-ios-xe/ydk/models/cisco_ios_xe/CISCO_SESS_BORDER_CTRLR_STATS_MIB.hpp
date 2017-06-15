@@ -36,12 +36,12 @@ class CiscoSessBorderCtrlrStatsMib : public Entity
         class Csbsipmthdrccurrentstatstable; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable
         class Csbsipmthdrchistorystatstable; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable
 
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable> csbradiusstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable> csbrfbillrealmstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable> csbsipmthdcurrentstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable> csbsipmthdhistorystatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable> csbsipmthdrccurrentstatstable;
-        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable> csbsipmthdrchistorystatstable;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable> csbradiusstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable> csbrfbillrealmstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable> csbsipmthdcurrentstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable> csbsipmthdhistorystatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable> csbsipmthdrccurrentstatstable_;
+        std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable> csbsipmthdrchistorystatstable_;
         
 }; // CiscoSessBorderCtrlrStatsMib
 
@@ -62,7 +62,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable : public Entity
 
         class Csbradiusstatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable::Csbradiusstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable::Csbradiusstatsentry> > csbradiusstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable::Csbradiusstatsentry> > csbradiusstatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbradiusstatstable
 
@@ -123,7 +123,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable : public Entity
 
         class Csbrfbillrealmstatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry> > csbrfbillrealmstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry> > csbrfbillrealmstatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbrfbillrealmstatstable
 
@@ -180,7 +180,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable : public Entity
 
         class Csbsipmthdcurrentstatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry> > csbsipmthdcurrentstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry> > csbsipmthdcurrentstatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbsipmthdcurrentstatstable
 
@@ -241,7 +241,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable : public Entity
 
         class Csbsipmthdhistorystatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry> > csbsipmthdhistorystatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry> > csbsipmthdhistorystatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbsipmthdhistorystatstable
 
@@ -302,7 +302,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable : public Entit
 
         class Csbsipmthdrccurrentstatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry> > csbsipmthdrccurrentstatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry> > csbsipmthdrccurrentstatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbsipmthdrccurrentstatstable
 
@@ -352,7 +352,7 @@ class CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable : public Entit
 
         class Csbsipmthdrchistorystatsentry; //type: CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry
 
-        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry> > csbsipmthdrchistorystatsentry;
+        std::vector<std::shared_ptr<CISCO_SESS_BORDER_CTRLR_STATS_MIB::CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry> > csbsipmthdrchistorystatsentry_;
         
 }; // CiscoSessBorderCtrlrStatsMib::Csbsipmthdrchistorystatstable
 
@@ -399,7 +399,7 @@ class CiscosbcsipmethodEnum : public Enum
         static const Enum::YLeaf options;
         static const Enum::YLeaf prack;
         static const Enum::YLeaf refer;
-        static const Enum::YLeaf register;
+        static const Enum::YLeaf register_;
         static const Enum::YLeaf subscribe;
         static const Enum::YLeaf update;
 

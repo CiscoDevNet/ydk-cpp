@@ -30,7 +30,7 @@ class MplsForwardingTable : public Entity
 
         class LocalLabelEntry; //type: MplsForwardingTable::LocalLabelEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry> > local_label_entry;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry> > local_label_entry_;
         
 }; // MplsForwardingTable
 
@@ -52,7 +52,7 @@ class MplsForwardingTable::LocalLabelEntry : public Entity
         YLeaf local_label; //type: uint32
         class ForwardingInfo; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo> > forwarding_info;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo> > forwarding_info_;
         
 }; // MplsForwardingTable::LocalLabelEntry
 
@@ -77,7 +77,7 @@ class MplsForwardingTable::LocalLabelEntry::ForwardingInfo : public Entity
         YLeaf next_hop; //type: one of union, string, enumeration
         class ConnectionInfo; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo> connection_info;
+        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo> connection_info_;
                 class OutgoingInterfaceEnum;
         class OutgoingLabelEnum;
         class NextHopEnum;
@@ -108,7 +108,7 @@ class MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo : pub
         YLeaf l2ckt_id; //type: uint32
         class TunnelTp; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp> tunnel_tp;
+        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp> tunnel_tp_;
                 class TypeEnum;
 
 }; // MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
@@ -132,8 +132,8 @@ class MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Tunn
         class SrcId; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId
         class DstId; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId
 
-        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId> dst_id;
-        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId> src_id;
+        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId> dst_id_;
+        std::shared_ptr<Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId> src_id_;
         
 }; // MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp
 

@@ -11,12 +11,12 @@ namespace CISCO_IPSLA_JITTER_MIB {
 
 CiscoIpslaJitterMib::CiscoIpslaJitterMib()
     :
-    cipslaicmpjittertmpltable(std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>())
-	,cipslaudpjittertmpltable(std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>())
+    cipslaicmpjittertmpltable_(std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>())
+	,cipslaudpjittertmpltable_(std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>())
 {
-    cipslaicmpjittertmpltable->parent = this;
+    cipslaicmpjittertmpltable_->parent = this;
 
-    cipslaudpjittertmpltable->parent = this;
+    cipslaudpjittertmpltable_->parent = this;
 
     yang_name = "CISCO-IPSLA-JITTER-MIB"; yang_parent_name = "CISCO-IPSLA-JITTER-MIB";
 }
@@ -27,15 +27,15 @@ CiscoIpslaJitterMib::~CiscoIpslaJitterMib()
 
 bool CiscoIpslaJitterMib::has_data() const
 {
-    return (cipslaicmpjittertmpltable !=  nullptr && cipslaicmpjittertmpltable->has_data())
-	|| (cipslaudpjittertmpltable !=  nullptr && cipslaudpjittertmpltable->has_data());
+    return (cipslaicmpjittertmpltable_ !=  nullptr && cipslaicmpjittertmpltable_->has_data())
+	|| (cipslaudpjittertmpltable_ !=  nullptr && cipslaudpjittertmpltable_->has_data());
 }
 
 bool CiscoIpslaJitterMib::has_operation() const
 {
     return is_set(operation)
-	|| (cipslaicmpjittertmpltable !=  nullptr && cipslaicmpjittertmpltable->has_operation())
-	|| (cipslaudpjittertmpltable !=  nullptr && cipslaudpjittertmpltable->has_operation());
+	|| (cipslaicmpjittertmpltable_ !=  nullptr && cipslaicmpjittertmpltable_->has_operation())
+	|| (cipslaudpjittertmpltable_ !=  nullptr && cipslaudpjittertmpltable_->has_operation());
 }
 
 std::string CiscoIpslaJitterMib::get_segment_path() const
@@ -69,20 +69,20 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::get_child_by_name(const std::string
 {
     if(child_yang_name == "cipslaIcmpJitterTmplTable")
     {
-        if(cipslaicmpjittertmpltable == nullptr)
+        if(cipslaicmpjittertmpltable_ == nullptr)
         {
-            cipslaicmpjittertmpltable = std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>();
+            cipslaicmpjittertmpltable_ = std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable>();
         }
-        return cipslaicmpjittertmpltable;
+        return cipslaicmpjittertmpltable_;
     }
 
     if(child_yang_name == "cipslaUdpJitterTmplTable")
     {
-        if(cipslaudpjittertmpltable == nullptr)
+        if(cipslaudpjittertmpltable_ == nullptr)
         {
-            cipslaudpjittertmpltable = std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>();
+            cipslaudpjittertmpltable_ = std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable>();
         }
-        return cipslaudpjittertmpltable;
+        return cipslaudpjittertmpltable_;
     }
 
     return nullptr;
@@ -91,14 +91,14 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cipslaicmpjittertmpltable != nullptr)
+    if(cipslaicmpjittertmpltable_ != nullptr)
     {
-        children["cipslaIcmpJitterTmplTable"] = cipslaicmpjittertmpltable;
+        children["cipslaIcmpJitterTmplTable"] = cipslaicmpjittertmpltable_;
     }
 
-    if(cipslaudpjittertmpltable != nullptr)
+    if(cipslaudpjittertmpltable_ != nullptr)
     {
-        children["cipslaUdpJitterTmplTable"] = cipslaudpjittertmpltable;
+        children["cipslaUdpJitterTmplTable"] = cipslaudpjittertmpltable_;
     }
 
     return children;
@@ -139,9 +139,9 @@ CiscoIpslaJitterMib::Cipslaudpjittertmpltable::~Cipslaudpjittertmpltable()
 
 bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaudpjittertmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaudpjittertmplentry_.size(); index++)
     {
-        if(cipslaudpjittertmplentry[index]->has_data())
+        if(cipslaudpjittertmplentry_[index]->has_data())
             return true;
     }
     return false;
@@ -149,9 +149,9 @@ bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_data() const
 
 bool CiscoIpslaJitterMib::Cipslaudpjittertmpltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaudpjittertmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaudpjittertmplentry_.size(); index++)
     {
-        if(cipslaudpjittertmplentry[index]->has_operation())
+        if(cipslaudpjittertmplentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -191,7 +191,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child
 {
     if(child_yang_name == "cipslaUdpJitterTmplEntry")
     {
-        for(auto const & c : cipslaudpjittertmplentry)
+        for(auto const & c : cipslaudpjittertmplentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +201,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child
         }
         auto c = std::make_shared<CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry>();
         c->parent = this;
-        cipslaudpjittertmplentry.push_back(c);
+        cipslaudpjittertmplentry_.push_back(c);
         return c;
     }
 
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaudpjittertmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaudpjittertmplentry)
+    for (auto const & c : cipslaudpjittertmplentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -530,9 +530,9 @@ CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::~Cipslaicmpjittertmpltable()
 
 bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaicmpjittertmplentry_.size(); index++)
     {
-        if(cipslaicmpjittertmplentry[index]->has_data())
+        if(cipslaicmpjittertmplentry_[index]->has_data())
             return true;
     }
     return false;
@@ -540,9 +540,9 @@ bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_data() const
 
 bool CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaicmpjittertmplentry.size(); index++)
+    for (std::size_t index=0; index<cipslaicmpjittertmplentry_.size(); index++)
     {
-        if(cipslaicmpjittertmplentry[index]->has_operation())
+        if(cipslaicmpjittertmplentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -582,7 +582,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_chil
 {
     if(child_yang_name == "cipslaIcmpJitterTmplEntry")
     {
-        for(auto const & c : cipslaicmpjittertmplentry)
+        for(auto const & c : cipslaicmpjittertmplentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -592,7 +592,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_chil
         }
         auto c = std::make_shared<CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry>();
         c->parent = this;
-        cipslaicmpjittertmplentry.push_back(c);
+        cipslaicmpjittertmplentry_.push_back(c);
         return c;
     }
 
@@ -602,7 +602,7 @@ std::shared_ptr<Entity> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipslaicmpjittertmplentry)
+    for (auto const & c : cipslaicmpjittertmplentry_)
     {
         children[c->get_segment_path()] = c;
     }

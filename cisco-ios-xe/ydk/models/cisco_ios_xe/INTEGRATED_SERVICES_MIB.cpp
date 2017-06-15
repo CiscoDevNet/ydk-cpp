@@ -11,15 +11,15 @@ namespace INTEGRATED_SERVICES_MIB {
 
 IntegratedServicesMib::IntegratedServicesMib()
     :
-    intsrvflowtable(std::make_shared<IntegratedServicesMib::Intsrvflowtable>())
-	,intsrvgenobjects(std::make_shared<IntegratedServicesMib::Intsrvgenobjects>())
-	,intsrvifattribtable(std::make_shared<IntegratedServicesMib::Intsrvifattribtable>())
+    intsrvflowtable_(std::make_shared<IntegratedServicesMib::Intsrvflowtable>())
+	,intsrvgenobjects_(std::make_shared<IntegratedServicesMib::Intsrvgenobjects>())
+	,intsrvifattribtable_(std::make_shared<IntegratedServicesMib::Intsrvifattribtable>())
 {
-    intsrvflowtable->parent = this;
+    intsrvflowtable_->parent = this;
 
-    intsrvgenobjects->parent = this;
+    intsrvgenobjects_->parent = this;
 
-    intsrvifattribtable->parent = this;
+    intsrvifattribtable_->parent = this;
 
     yang_name = "INTEGRATED-SERVICES-MIB"; yang_parent_name = "INTEGRATED-SERVICES-MIB";
 }
@@ -30,17 +30,17 @@ IntegratedServicesMib::~IntegratedServicesMib()
 
 bool IntegratedServicesMib::has_data() const
 {
-    return (intsrvflowtable !=  nullptr && intsrvflowtable->has_data())
-	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data());
+    return (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_data())
+	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_data())
+	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_data());
 }
 
 bool IntegratedServicesMib::has_operation() const
 {
     return is_set(operation)
-	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_operation())
-	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_operation())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_operation());
+	|| (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_operation())
+	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_operation())
+	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_operation());
 }
 
 std::string IntegratedServicesMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> IntegratedServicesMib::get_child_by_name(const std::stri
 {
     if(child_yang_name == "intSrvFlowTable")
     {
-        if(intsrvflowtable == nullptr)
+        if(intsrvflowtable_ == nullptr)
         {
-            intsrvflowtable = std::make_shared<IntegratedServicesMib::Intsrvflowtable>();
+            intsrvflowtable_ = std::make_shared<IntegratedServicesMib::Intsrvflowtable>();
         }
-        return intsrvflowtable;
+        return intsrvflowtable_;
     }
 
     if(child_yang_name == "intSrvGenObjects")
     {
-        if(intsrvgenobjects == nullptr)
+        if(intsrvgenobjects_ == nullptr)
         {
-            intsrvgenobjects = std::make_shared<IntegratedServicesMib::Intsrvgenobjects>();
+            intsrvgenobjects_ = std::make_shared<IntegratedServicesMib::Intsrvgenobjects>();
         }
-        return intsrvgenobjects;
+        return intsrvgenobjects_;
     }
 
     if(child_yang_name == "intSrvIfAttribTable")
     {
-        if(intsrvifattribtable == nullptr)
+        if(intsrvifattribtable_ == nullptr)
         {
-            intsrvifattribtable = std::make_shared<IntegratedServicesMib::Intsrvifattribtable>();
+            intsrvifattribtable_ = std::make_shared<IntegratedServicesMib::Intsrvifattribtable>();
         }
-        return intsrvifattribtable;
+        return intsrvifattribtable_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> IntegratedServicesMib::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(intsrvflowtable != nullptr)
+    if(intsrvflowtable_ != nullptr)
     {
-        children["intSrvFlowTable"] = intsrvflowtable;
+        children["intSrvFlowTable"] = intsrvflowtable_;
     }
 
-    if(intsrvgenobjects != nullptr)
+    if(intsrvgenobjects_ != nullptr)
     {
-        children["intSrvGenObjects"] = intsrvgenobjects;
+        children["intSrvGenObjects"] = intsrvgenobjects_;
     }
 
-    if(intsrvifattribtable != nullptr)
+    if(intsrvifattribtable_ != nullptr)
     {
-        children["intSrvIfAttribTable"] = intsrvifattribtable;
+        children["intSrvIfAttribTable"] = intsrvifattribtable_;
     }
 
     return children;
@@ -230,9 +230,9 @@ IntegratedServicesMib::Intsrvifattribtable::~Intsrvifattribtable()
 
 bool IntegratedServicesMib::Intsrvifattribtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
     {
-        if(intsrvifattribentry[index]->has_data())
+        if(intsrvifattribentry_[index]->has_data())
             return true;
     }
     return false;
@@ -240,9 +240,9 @@ bool IntegratedServicesMib::Intsrvifattribtable::has_data() const
 
 bool IntegratedServicesMib::Intsrvifattribtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
     {
-        if(intsrvifattribentry[index]->has_operation())
+        if(intsrvifattribentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -282,7 +282,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        for(auto const & c : intsrvifattribentry)
+        for(auto const & c : intsrvifattribentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -292,7 +292,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
         }
         auto c = std::make_shared<IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry>();
         c->parent = this;
-        intsrvifattribentry.push_back(c);
+        intsrvifattribentry_.push_back(c);
         return c;
     }
 
@@ -302,7 +302,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvifattribtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvifattribentry)
+    for (auto const & c : intsrvifattribentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -445,9 +445,9 @@ IntegratedServicesMib::Intsrvflowtable::~Intsrvflowtable()
 
 bool IntegratedServicesMib::Intsrvflowtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
     {
-        if(intsrvflowentry[index]->has_data())
+        if(intsrvflowentry_[index]->has_data())
             return true;
     }
     return false;
@@ -455,9 +455,9 @@ bool IntegratedServicesMib::Intsrvflowtable::has_data() const
 
 bool IntegratedServicesMib::Intsrvflowtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
     {
-        if(intsrvflowentry[index]->has_operation())
+        if(intsrvflowentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -497,7 +497,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        for(auto const & c : intsrvflowentry)
+        for(auto const & c : intsrvflowentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -507,7 +507,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
         }
         auto c = std::make_shared<IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry>();
         c->parent = this;
-        intsrvflowentry.push_back(c);
+        intsrvflowentry_.push_back(c);
         return c;
     }
 
@@ -517,7 +517,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvflowtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvflowentry)
+    for (auto const & c : intsrvflowentry_)
     {
         children[c->get_segment_path()] = c;
     }

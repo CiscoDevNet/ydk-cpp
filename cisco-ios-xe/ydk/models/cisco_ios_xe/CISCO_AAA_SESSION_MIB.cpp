@@ -11,15 +11,15 @@ namespace CISCO_AAA_SESSION_MIB {
 
 CiscoAaaSessionMib::CiscoAaaSessionMib()
     :
-    casnactive(std::make_shared<CiscoAaaSessionMib::Casnactive>())
-	,casnactivetable(std::make_shared<CiscoAaaSessionMib::Casnactivetable>())
-	,casngeneral(std::make_shared<CiscoAaaSessionMib::Casngeneral>())
+    casnactive_(std::make_shared<CiscoAaaSessionMib::Casnactive>())
+	,casnactivetable_(std::make_shared<CiscoAaaSessionMib::Casnactivetable>())
+	,casngeneral_(std::make_shared<CiscoAaaSessionMib::Casngeneral>())
 {
-    casnactive->parent = this;
+    casnactive_->parent = this;
 
-    casnactivetable->parent = this;
+    casnactivetable_->parent = this;
 
-    casngeneral->parent = this;
+    casngeneral_->parent = this;
 
     yang_name = "CISCO-AAA-SESSION-MIB"; yang_parent_name = "CISCO-AAA-SESSION-MIB";
 }
@@ -30,17 +30,17 @@ CiscoAaaSessionMib::~CiscoAaaSessionMib()
 
 bool CiscoAaaSessionMib::has_data() const
 {
-    return (casnactive !=  nullptr && casnactive->has_data())
-	|| (casnactivetable !=  nullptr && casnactivetable->has_data())
-	|| (casngeneral !=  nullptr && casngeneral->has_data());
+    return (casnactive_ !=  nullptr && casnactive_->has_data())
+	|| (casnactivetable_ !=  nullptr && casnactivetable_->has_data())
+	|| (casngeneral_ !=  nullptr && casngeneral_->has_data());
 }
 
 bool CiscoAaaSessionMib::has_operation() const
 {
     return is_set(operation)
-	|| (casnactive !=  nullptr && casnactive->has_operation())
-	|| (casnactivetable !=  nullptr && casnactivetable->has_operation())
-	|| (casngeneral !=  nullptr && casngeneral->has_operation());
+	|| (casnactive_ !=  nullptr && casnactive_->has_operation())
+	|| (casnactivetable_ !=  nullptr && casnactivetable_->has_operation())
+	|| (casngeneral_ !=  nullptr && casngeneral_->has_operation());
 }
 
 std::string CiscoAaaSessionMib::get_segment_path() const
@@ -74,29 +74,29 @@ std::shared_ptr<Entity> CiscoAaaSessionMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "casnActive")
     {
-        if(casnactive == nullptr)
+        if(casnactive_ == nullptr)
         {
-            casnactive = std::make_shared<CiscoAaaSessionMib::Casnactive>();
+            casnactive_ = std::make_shared<CiscoAaaSessionMib::Casnactive>();
         }
-        return casnactive;
+        return casnactive_;
     }
 
     if(child_yang_name == "casnActiveTable")
     {
-        if(casnactivetable == nullptr)
+        if(casnactivetable_ == nullptr)
         {
-            casnactivetable = std::make_shared<CiscoAaaSessionMib::Casnactivetable>();
+            casnactivetable_ = std::make_shared<CiscoAaaSessionMib::Casnactivetable>();
         }
-        return casnactivetable;
+        return casnactivetable_;
     }
 
     if(child_yang_name == "casnGeneral")
     {
-        if(casngeneral == nullptr)
+        if(casngeneral_ == nullptr)
         {
-            casngeneral = std::make_shared<CiscoAaaSessionMib::Casngeneral>();
+            casngeneral_ = std::make_shared<CiscoAaaSessionMib::Casngeneral>();
         }
-        return casngeneral;
+        return casngeneral_;
     }
 
     return nullptr;
@@ -105,19 +105,19 @@ std::shared_ptr<Entity> CiscoAaaSessionMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CiscoAaaSessionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(casnactive != nullptr)
+    if(casnactive_ != nullptr)
     {
-        children["casnActive"] = casnactive;
+        children["casnActive"] = casnactive_;
     }
 
-    if(casnactivetable != nullptr)
+    if(casnactivetable_ != nullptr)
     {
-        children["casnActiveTable"] = casnactivetable;
+        children["casnActiveTable"] = casnactivetable_;
     }
 
-    if(casngeneral != nullptr)
+    if(casngeneral_ != nullptr)
     {
-        children["casnGeneral"] = casngeneral;
+        children["casnGeneral"] = casngeneral_;
     }
 
     return children;
@@ -318,9 +318,9 @@ CiscoAaaSessionMib::Casnactivetable::~Casnactivetable()
 
 bool CiscoAaaSessionMib::Casnactivetable::has_data() const
 {
-    for (std::size_t index=0; index<casnactiveentry.size(); index++)
+    for (std::size_t index=0; index<casnactiveentry_.size(); index++)
     {
-        if(casnactiveentry[index]->has_data())
+        if(casnactiveentry_[index]->has_data())
             return true;
     }
     return false;
@@ -328,9 +328,9 @@ bool CiscoAaaSessionMib::Casnactivetable::has_data() const
 
 bool CiscoAaaSessionMib::Casnactivetable::has_operation() const
 {
-    for (std::size_t index=0; index<casnactiveentry.size(); index++)
+    for (std::size_t index=0; index<casnactiveentry_.size(); index++)
     {
-        if(casnactiveentry[index]->has_operation())
+        if(casnactiveentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -370,7 +370,7 @@ std::shared_ptr<Entity> CiscoAaaSessionMib::Casnactivetable::get_child_by_name(c
 {
     if(child_yang_name == "casnActiveEntry")
     {
-        for(auto const & c : casnactiveentry)
+        for(auto const & c : casnactiveentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -380,7 +380,7 @@ std::shared_ptr<Entity> CiscoAaaSessionMib::Casnactivetable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoAaaSessionMib::Casnactivetable::Casnactiveentry>();
         c->parent = this;
-        casnactiveentry.push_back(c);
+        casnactiveentry_.push_back(c);
         return c;
     }
 
@@ -390,7 +390,7 @@ std::shared_ptr<Entity> CiscoAaaSessionMib::Casnactivetable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoAaaSessionMib::Casnactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : casnactiveentry)
+    for (auto const & c : casnactiveentry_)
     {
         children[c->get_segment_path()] = c;
     }

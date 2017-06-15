@@ -11,66 +11,66 @@ namespace CISCO_CEF_MIB {
 
 CiscoCefMib::CiscoCefMib()
     :
-    cefadjsummarytable(std::make_shared<CiscoCefMib::Cefadjsummarytable>())
-	,cefadjtable(std::make_shared<CiscoCefMib::Cefadjtable>())
-	,cefcc(std::make_shared<CiscoCefMib::Cefcc>())
-	,cefccglobaltable(std::make_shared<CiscoCefMib::Cefccglobaltable>())
-	,cefcctypetable(std::make_shared<CiscoCefMib::Cefcctypetable>())
-	,cefcfgtable(std::make_shared<CiscoCefMib::Cefcfgtable>())
-	,ceffeselectiontable(std::make_shared<CiscoCefMib::Ceffeselectiontable>())
-	,ceffib(std::make_shared<CiscoCefMib::Ceffib>())
-	,ceffibsummarytable(std::make_shared<CiscoCefMib::Ceffibsummarytable>())
-	,cefinconsistencyrecordtable(std::make_shared<CiscoCefMib::Cefinconsistencyrecordtable>())
-	,cefinttable(std::make_shared<CiscoCefMib::Cefinttable>())
-	,ceflmprefixtable(std::make_shared<CiscoCefMib::Ceflmprefixtable>())
-	,cefnotifcntl(std::make_shared<CiscoCefMib::Cefnotifcntl>())
-	,cefpathtable(std::make_shared<CiscoCefMib::Cefpathtable>())
-	,cefpeerfibtable(std::make_shared<CiscoCefMib::Cefpeerfibtable>())
-	,cefpeertable(std::make_shared<CiscoCefMib::Cefpeertable>())
-	,cefprefixtable(std::make_shared<CiscoCefMib::Cefprefixtable>())
-	,cefresourcetable(std::make_shared<CiscoCefMib::Cefresourcetable>())
-	,cefstatsprefixlentable(std::make_shared<CiscoCefMib::Cefstatsprefixlentable>())
-	,cefswitchingstatstable(std::make_shared<CiscoCefMib::Cefswitchingstatstable>())
+    cefadjsummarytable_(std::make_shared<CiscoCefMib::Cefadjsummarytable>())
+	,cefadjtable_(std::make_shared<CiscoCefMib::Cefadjtable>())
+	,cefcc_(std::make_shared<CiscoCefMib::Cefcc>())
+	,cefccglobaltable_(std::make_shared<CiscoCefMib::Cefccglobaltable>())
+	,cefcctypetable_(std::make_shared<CiscoCefMib::Cefcctypetable>())
+	,cefcfgtable_(std::make_shared<CiscoCefMib::Cefcfgtable>())
+	,ceffeselectiontable_(std::make_shared<CiscoCefMib::Ceffeselectiontable>())
+	,ceffib_(std::make_shared<CiscoCefMib::Ceffib>())
+	,ceffibsummarytable_(std::make_shared<CiscoCefMib::Ceffibsummarytable>())
+	,cefinconsistencyrecordtable_(std::make_shared<CiscoCefMib::Cefinconsistencyrecordtable>())
+	,cefinttable_(std::make_shared<CiscoCefMib::Cefinttable>())
+	,ceflmprefixtable_(std::make_shared<CiscoCefMib::Ceflmprefixtable>())
+	,cefnotifcntl_(std::make_shared<CiscoCefMib::Cefnotifcntl>())
+	,cefpathtable_(std::make_shared<CiscoCefMib::Cefpathtable>())
+	,cefpeerfibtable_(std::make_shared<CiscoCefMib::Cefpeerfibtable>())
+	,cefpeertable_(std::make_shared<CiscoCefMib::Cefpeertable>())
+	,cefprefixtable_(std::make_shared<CiscoCefMib::Cefprefixtable>())
+	,cefresourcetable_(std::make_shared<CiscoCefMib::Cefresourcetable>())
+	,cefstatsprefixlentable_(std::make_shared<CiscoCefMib::Cefstatsprefixlentable>())
+	,cefswitchingstatstable_(std::make_shared<CiscoCefMib::Cefswitchingstatstable>())
 {
-    cefadjsummarytable->parent = this;
+    cefadjsummarytable_->parent = this;
 
-    cefadjtable->parent = this;
+    cefadjtable_->parent = this;
 
-    cefcc->parent = this;
+    cefcc_->parent = this;
 
-    cefccglobaltable->parent = this;
+    cefccglobaltable_->parent = this;
 
-    cefcctypetable->parent = this;
+    cefcctypetable_->parent = this;
 
-    cefcfgtable->parent = this;
+    cefcfgtable_->parent = this;
 
-    ceffeselectiontable->parent = this;
+    ceffeselectiontable_->parent = this;
 
-    ceffib->parent = this;
+    ceffib_->parent = this;
 
-    ceffibsummarytable->parent = this;
+    ceffibsummarytable_->parent = this;
 
-    cefinconsistencyrecordtable->parent = this;
+    cefinconsistencyrecordtable_->parent = this;
 
-    cefinttable->parent = this;
+    cefinttable_->parent = this;
 
-    ceflmprefixtable->parent = this;
+    ceflmprefixtable_->parent = this;
 
-    cefnotifcntl->parent = this;
+    cefnotifcntl_->parent = this;
 
-    cefpathtable->parent = this;
+    cefpathtable_->parent = this;
 
-    cefpeerfibtable->parent = this;
+    cefpeerfibtable_->parent = this;
 
-    cefpeertable->parent = this;
+    cefpeertable_->parent = this;
 
-    cefprefixtable->parent = this;
+    cefprefixtable_->parent = this;
 
-    cefresourcetable->parent = this;
+    cefresourcetable_->parent = this;
 
-    cefstatsprefixlentable->parent = this;
+    cefstatsprefixlentable_->parent = this;
 
-    cefswitchingstatstable->parent = this;
+    cefswitchingstatstable_->parent = this;
 
     yang_name = "CISCO-CEF-MIB"; yang_parent_name = "CISCO-CEF-MIB";
 }
@@ -81,51 +81,51 @@ CiscoCefMib::~CiscoCefMib()
 
 bool CiscoCefMib::has_data() const
 {
-    return (cefadjsummarytable !=  nullptr && cefadjsummarytable->has_data())
-	|| (cefadjtable !=  nullptr && cefadjtable->has_data())
-	|| (cefcc !=  nullptr && cefcc->has_data())
-	|| (cefccglobaltable !=  nullptr && cefccglobaltable->has_data())
-	|| (cefcctypetable !=  nullptr && cefcctypetable->has_data())
-	|| (cefcfgtable !=  nullptr && cefcfgtable->has_data())
-	|| (ceffeselectiontable !=  nullptr && ceffeselectiontable->has_data())
-	|| (ceffib !=  nullptr && ceffib->has_data())
-	|| (ceffibsummarytable !=  nullptr && ceffibsummarytable->has_data())
-	|| (cefinconsistencyrecordtable !=  nullptr && cefinconsistencyrecordtable->has_data())
-	|| (cefinttable !=  nullptr && cefinttable->has_data())
-	|| (ceflmprefixtable !=  nullptr && ceflmprefixtable->has_data())
-	|| (cefnotifcntl !=  nullptr && cefnotifcntl->has_data())
-	|| (cefpathtable !=  nullptr && cefpathtable->has_data())
-	|| (cefpeerfibtable !=  nullptr && cefpeerfibtable->has_data())
-	|| (cefpeertable !=  nullptr && cefpeertable->has_data())
-	|| (cefprefixtable !=  nullptr && cefprefixtable->has_data())
-	|| (cefresourcetable !=  nullptr && cefresourcetable->has_data())
-	|| (cefstatsprefixlentable !=  nullptr && cefstatsprefixlentable->has_data())
-	|| (cefswitchingstatstable !=  nullptr && cefswitchingstatstable->has_data());
+    return (cefadjsummarytable_ !=  nullptr && cefadjsummarytable_->has_data())
+	|| (cefadjtable_ !=  nullptr && cefadjtable_->has_data())
+	|| (cefcc_ !=  nullptr && cefcc_->has_data())
+	|| (cefccglobaltable_ !=  nullptr && cefccglobaltable_->has_data())
+	|| (cefcctypetable_ !=  nullptr && cefcctypetable_->has_data())
+	|| (cefcfgtable_ !=  nullptr && cefcfgtable_->has_data())
+	|| (ceffeselectiontable_ !=  nullptr && ceffeselectiontable_->has_data())
+	|| (ceffib_ !=  nullptr && ceffib_->has_data())
+	|| (ceffibsummarytable_ !=  nullptr && ceffibsummarytable_->has_data())
+	|| (cefinconsistencyrecordtable_ !=  nullptr && cefinconsistencyrecordtable_->has_data())
+	|| (cefinttable_ !=  nullptr && cefinttable_->has_data())
+	|| (ceflmprefixtable_ !=  nullptr && ceflmprefixtable_->has_data())
+	|| (cefnotifcntl_ !=  nullptr && cefnotifcntl_->has_data())
+	|| (cefpathtable_ !=  nullptr && cefpathtable_->has_data())
+	|| (cefpeerfibtable_ !=  nullptr && cefpeerfibtable_->has_data())
+	|| (cefpeertable_ !=  nullptr && cefpeertable_->has_data())
+	|| (cefprefixtable_ !=  nullptr && cefprefixtable_->has_data())
+	|| (cefresourcetable_ !=  nullptr && cefresourcetable_->has_data())
+	|| (cefstatsprefixlentable_ !=  nullptr && cefstatsprefixlentable_->has_data())
+	|| (cefswitchingstatstable_ !=  nullptr && cefswitchingstatstable_->has_data());
 }
 
 bool CiscoCefMib::has_operation() const
 {
     return is_set(operation)
-	|| (cefadjsummarytable !=  nullptr && cefadjsummarytable->has_operation())
-	|| (cefadjtable !=  nullptr && cefadjtable->has_operation())
-	|| (cefcc !=  nullptr && cefcc->has_operation())
-	|| (cefccglobaltable !=  nullptr && cefccglobaltable->has_operation())
-	|| (cefcctypetable !=  nullptr && cefcctypetable->has_operation())
-	|| (cefcfgtable !=  nullptr && cefcfgtable->has_operation())
-	|| (ceffeselectiontable !=  nullptr && ceffeselectiontable->has_operation())
-	|| (ceffib !=  nullptr && ceffib->has_operation())
-	|| (ceffibsummarytable !=  nullptr && ceffibsummarytable->has_operation())
-	|| (cefinconsistencyrecordtable !=  nullptr && cefinconsistencyrecordtable->has_operation())
-	|| (cefinttable !=  nullptr && cefinttable->has_operation())
-	|| (ceflmprefixtable !=  nullptr && ceflmprefixtable->has_operation())
-	|| (cefnotifcntl !=  nullptr && cefnotifcntl->has_operation())
-	|| (cefpathtable !=  nullptr && cefpathtable->has_operation())
-	|| (cefpeerfibtable !=  nullptr && cefpeerfibtable->has_operation())
-	|| (cefpeertable !=  nullptr && cefpeertable->has_operation())
-	|| (cefprefixtable !=  nullptr && cefprefixtable->has_operation())
-	|| (cefresourcetable !=  nullptr && cefresourcetable->has_operation())
-	|| (cefstatsprefixlentable !=  nullptr && cefstatsprefixlentable->has_operation())
-	|| (cefswitchingstatstable !=  nullptr && cefswitchingstatstable->has_operation());
+	|| (cefadjsummarytable_ !=  nullptr && cefadjsummarytable_->has_operation())
+	|| (cefadjtable_ !=  nullptr && cefadjtable_->has_operation())
+	|| (cefcc_ !=  nullptr && cefcc_->has_operation())
+	|| (cefccglobaltable_ !=  nullptr && cefccglobaltable_->has_operation())
+	|| (cefcctypetable_ !=  nullptr && cefcctypetable_->has_operation())
+	|| (cefcfgtable_ !=  nullptr && cefcfgtable_->has_operation())
+	|| (ceffeselectiontable_ !=  nullptr && ceffeselectiontable_->has_operation())
+	|| (ceffib_ !=  nullptr && ceffib_->has_operation())
+	|| (ceffibsummarytable_ !=  nullptr && ceffibsummarytable_->has_operation())
+	|| (cefinconsistencyrecordtable_ !=  nullptr && cefinconsistencyrecordtable_->has_operation())
+	|| (cefinttable_ !=  nullptr && cefinttable_->has_operation())
+	|| (ceflmprefixtable_ !=  nullptr && ceflmprefixtable_->has_operation())
+	|| (cefnotifcntl_ !=  nullptr && cefnotifcntl_->has_operation())
+	|| (cefpathtable_ !=  nullptr && cefpathtable_->has_operation())
+	|| (cefpeerfibtable_ !=  nullptr && cefpeerfibtable_->has_operation())
+	|| (cefpeertable_ !=  nullptr && cefpeertable_->has_operation())
+	|| (cefprefixtable_ !=  nullptr && cefprefixtable_->has_operation())
+	|| (cefresourcetable_ !=  nullptr && cefresourcetable_->has_operation())
+	|| (cefstatsprefixlentable_ !=  nullptr && cefstatsprefixlentable_->has_operation())
+	|| (cefswitchingstatstable_ !=  nullptr && cefswitchingstatstable_->has_operation());
 }
 
 std::string CiscoCefMib::get_segment_path() const
@@ -159,182 +159,182 @@ std::shared_ptr<Entity> CiscoCefMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "cefAdjSummaryTable")
     {
-        if(cefadjsummarytable == nullptr)
+        if(cefadjsummarytable_ == nullptr)
         {
-            cefadjsummarytable = std::make_shared<CiscoCefMib::Cefadjsummarytable>();
+            cefadjsummarytable_ = std::make_shared<CiscoCefMib::Cefadjsummarytable>();
         }
-        return cefadjsummarytable;
+        return cefadjsummarytable_;
     }
 
     if(child_yang_name == "cefAdjTable")
     {
-        if(cefadjtable == nullptr)
+        if(cefadjtable_ == nullptr)
         {
-            cefadjtable = std::make_shared<CiscoCefMib::Cefadjtable>();
+            cefadjtable_ = std::make_shared<CiscoCefMib::Cefadjtable>();
         }
-        return cefadjtable;
+        return cefadjtable_;
     }
 
     if(child_yang_name == "cefCC")
     {
-        if(cefcc == nullptr)
+        if(cefcc_ == nullptr)
         {
-            cefcc = std::make_shared<CiscoCefMib::Cefcc>();
+            cefcc_ = std::make_shared<CiscoCefMib::Cefcc>();
         }
-        return cefcc;
+        return cefcc_;
     }
 
     if(child_yang_name == "cefCCGlobalTable")
     {
-        if(cefccglobaltable == nullptr)
+        if(cefccglobaltable_ == nullptr)
         {
-            cefccglobaltable = std::make_shared<CiscoCefMib::Cefccglobaltable>();
+            cefccglobaltable_ = std::make_shared<CiscoCefMib::Cefccglobaltable>();
         }
-        return cefccglobaltable;
+        return cefccglobaltable_;
     }
 
     if(child_yang_name == "cefCCTypeTable")
     {
-        if(cefcctypetable == nullptr)
+        if(cefcctypetable_ == nullptr)
         {
-            cefcctypetable = std::make_shared<CiscoCefMib::Cefcctypetable>();
+            cefcctypetable_ = std::make_shared<CiscoCefMib::Cefcctypetable>();
         }
-        return cefcctypetable;
+        return cefcctypetable_;
     }
 
     if(child_yang_name == "cefCfgTable")
     {
-        if(cefcfgtable == nullptr)
+        if(cefcfgtable_ == nullptr)
         {
-            cefcfgtable = std::make_shared<CiscoCefMib::Cefcfgtable>();
+            cefcfgtable_ = std::make_shared<CiscoCefMib::Cefcfgtable>();
         }
-        return cefcfgtable;
+        return cefcfgtable_;
     }
 
     if(child_yang_name == "cefFESelectionTable")
     {
-        if(ceffeselectiontable == nullptr)
+        if(ceffeselectiontable_ == nullptr)
         {
-            ceffeselectiontable = std::make_shared<CiscoCefMib::Ceffeselectiontable>();
+            ceffeselectiontable_ = std::make_shared<CiscoCefMib::Ceffeselectiontable>();
         }
-        return ceffeselectiontable;
+        return ceffeselectiontable_;
     }
 
     if(child_yang_name == "cefFIB")
     {
-        if(ceffib == nullptr)
+        if(ceffib_ == nullptr)
         {
-            ceffib = std::make_shared<CiscoCefMib::Ceffib>();
+            ceffib_ = std::make_shared<CiscoCefMib::Ceffib>();
         }
-        return ceffib;
+        return ceffib_;
     }
 
     if(child_yang_name == "cefFIBSummaryTable")
     {
-        if(ceffibsummarytable == nullptr)
+        if(ceffibsummarytable_ == nullptr)
         {
-            ceffibsummarytable = std::make_shared<CiscoCefMib::Ceffibsummarytable>();
+            ceffibsummarytable_ = std::make_shared<CiscoCefMib::Ceffibsummarytable>();
         }
-        return ceffibsummarytable;
+        return ceffibsummarytable_;
     }
 
     if(child_yang_name == "cefInconsistencyRecordTable")
     {
-        if(cefinconsistencyrecordtable == nullptr)
+        if(cefinconsistencyrecordtable_ == nullptr)
         {
-            cefinconsistencyrecordtable = std::make_shared<CiscoCefMib::Cefinconsistencyrecordtable>();
+            cefinconsistencyrecordtable_ = std::make_shared<CiscoCefMib::Cefinconsistencyrecordtable>();
         }
-        return cefinconsistencyrecordtable;
+        return cefinconsistencyrecordtable_;
     }
 
     if(child_yang_name == "cefIntTable")
     {
-        if(cefinttable == nullptr)
+        if(cefinttable_ == nullptr)
         {
-            cefinttable = std::make_shared<CiscoCefMib::Cefinttable>();
+            cefinttable_ = std::make_shared<CiscoCefMib::Cefinttable>();
         }
-        return cefinttable;
+        return cefinttable_;
     }
 
     if(child_yang_name == "cefLMPrefixTable")
     {
-        if(ceflmprefixtable == nullptr)
+        if(ceflmprefixtable_ == nullptr)
         {
-            ceflmprefixtable = std::make_shared<CiscoCefMib::Ceflmprefixtable>();
+            ceflmprefixtable_ = std::make_shared<CiscoCefMib::Ceflmprefixtable>();
         }
-        return ceflmprefixtable;
+        return ceflmprefixtable_;
     }
 
     if(child_yang_name == "cefNotifCntl")
     {
-        if(cefnotifcntl == nullptr)
+        if(cefnotifcntl_ == nullptr)
         {
-            cefnotifcntl = std::make_shared<CiscoCefMib::Cefnotifcntl>();
+            cefnotifcntl_ = std::make_shared<CiscoCefMib::Cefnotifcntl>();
         }
-        return cefnotifcntl;
+        return cefnotifcntl_;
     }
 
     if(child_yang_name == "cefPathTable")
     {
-        if(cefpathtable == nullptr)
+        if(cefpathtable_ == nullptr)
         {
-            cefpathtable = std::make_shared<CiscoCefMib::Cefpathtable>();
+            cefpathtable_ = std::make_shared<CiscoCefMib::Cefpathtable>();
         }
-        return cefpathtable;
+        return cefpathtable_;
     }
 
     if(child_yang_name == "cefPeerFIBTable")
     {
-        if(cefpeerfibtable == nullptr)
+        if(cefpeerfibtable_ == nullptr)
         {
-            cefpeerfibtable = std::make_shared<CiscoCefMib::Cefpeerfibtable>();
+            cefpeerfibtable_ = std::make_shared<CiscoCefMib::Cefpeerfibtable>();
         }
-        return cefpeerfibtable;
+        return cefpeerfibtable_;
     }
 
     if(child_yang_name == "cefPeerTable")
     {
-        if(cefpeertable == nullptr)
+        if(cefpeertable_ == nullptr)
         {
-            cefpeertable = std::make_shared<CiscoCefMib::Cefpeertable>();
+            cefpeertable_ = std::make_shared<CiscoCefMib::Cefpeertable>();
         }
-        return cefpeertable;
+        return cefpeertable_;
     }
 
     if(child_yang_name == "cefPrefixTable")
     {
-        if(cefprefixtable == nullptr)
+        if(cefprefixtable_ == nullptr)
         {
-            cefprefixtable = std::make_shared<CiscoCefMib::Cefprefixtable>();
+            cefprefixtable_ = std::make_shared<CiscoCefMib::Cefprefixtable>();
         }
-        return cefprefixtable;
+        return cefprefixtable_;
     }
 
     if(child_yang_name == "cefResourceTable")
     {
-        if(cefresourcetable == nullptr)
+        if(cefresourcetable_ == nullptr)
         {
-            cefresourcetable = std::make_shared<CiscoCefMib::Cefresourcetable>();
+            cefresourcetable_ = std::make_shared<CiscoCefMib::Cefresourcetable>();
         }
-        return cefresourcetable;
+        return cefresourcetable_;
     }
 
     if(child_yang_name == "cefStatsPrefixLenTable")
     {
-        if(cefstatsprefixlentable == nullptr)
+        if(cefstatsprefixlentable_ == nullptr)
         {
-            cefstatsprefixlentable = std::make_shared<CiscoCefMib::Cefstatsprefixlentable>();
+            cefstatsprefixlentable_ = std::make_shared<CiscoCefMib::Cefstatsprefixlentable>();
         }
-        return cefstatsprefixlentable;
+        return cefstatsprefixlentable_;
     }
 
     if(child_yang_name == "cefSwitchingStatsTable")
     {
-        if(cefswitchingstatstable == nullptr)
+        if(cefswitchingstatstable_ == nullptr)
         {
-            cefswitchingstatstable = std::make_shared<CiscoCefMib::Cefswitchingstatstable>();
+            cefswitchingstatstable_ = std::make_shared<CiscoCefMib::Cefswitchingstatstable>();
         }
-        return cefswitchingstatstable;
+        return cefswitchingstatstable_;
     }
 
     return nullptr;
@@ -343,104 +343,104 @@ std::shared_ptr<Entity> CiscoCefMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cefadjsummarytable != nullptr)
+    if(cefadjsummarytable_ != nullptr)
     {
-        children["cefAdjSummaryTable"] = cefadjsummarytable;
+        children["cefAdjSummaryTable"] = cefadjsummarytable_;
     }
 
-    if(cefadjtable != nullptr)
+    if(cefadjtable_ != nullptr)
     {
-        children["cefAdjTable"] = cefadjtable;
+        children["cefAdjTable"] = cefadjtable_;
     }
 
-    if(cefcc != nullptr)
+    if(cefcc_ != nullptr)
     {
-        children["cefCC"] = cefcc;
+        children["cefCC"] = cefcc_;
     }
 
-    if(cefccglobaltable != nullptr)
+    if(cefccglobaltable_ != nullptr)
     {
-        children["cefCCGlobalTable"] = cefccglobaltable;
+        children["cefCCGlobalTable"] = cefccglobaltable_;
     }
 
-    if(cefcctypetable != nullptr)
+    if(cefcctypetable_ != nullptr)
     {
-        children["cefCCTypeTable"] = cefcctypetable;
+        children["cefCCTypeTable"] = cefcctypetable_;
     }
 
-    if(cefcfgtable != nullptr)
+    if(cefcfgtable_ != nullptr)
     {
-        children["cefCfgTable"] = cefcfgtable;
+        children["cefCfgTable"] = cefcfgtable_;
     }
 
-    if(ceffeselectiontable != nullptr)
+    if(ceffeselectiontable_ != nullptr)
     {
-        children["cefFESelectionTable"] = ceffeselectiontable;
+        children["cefFESelectionTable"] = ceffeselectiontable_;
     }
 
-    if(ceffib != nullptr)
+    if(ceffib_ != nullptr)
     {
-        children["cefFIB"] = ceffib;
+        children["cefFIB"] = ceffib_;
     }
 
-    if(ceffibsummarytable != nullptr)
+    if(ceffibsummarytable_ != nullptr)
     {
-        children["cefFIBSummaryTable"] = ceffibsummarytable;
+        children["cefFIBSummaryTable"] = ceffibsummarytable_;
     }
 
-    if(cefinconsistencyrecordtable != nullptr)
+    if(cefinconsistencyrecordtable_ != nullptr)
     {
-        children["cefInconsistencyRecordTable"] = cefinconsistencyrecordtable;
+        children["cefInconsistencyRecordTable"] = cefinconsistencyrecordtable_;
     }
 
-    if(cefinttable != nullptr)
+    if(cefinttable_ != nullptr)
     {
-        children["cefIntTable"] = cefinttable;
+        children["cefIntTable"] = cefinttable_;
     }
 
-    if(ceflmprefixtable != nullptr)
+    if(ceflmprefixtable_ != nullptr)
     {
-        children["cefLMPrefixTable"] = ceflmprefixtable;
+        children["cefLMPrefixTable"] = ceflmprefixtable_;
     }
 
-    if(cefnotifcntl != nullptr)
+    if(cefnotifcntl_ != nullptr)
     {
-        children["cefNotifCntl"] = cefnotifcntl;
+        children["cefNotifCntl"] = cefnotifcntl_;
     }
 
-    if(cefpathtable != nullptr)
+    if(cefpathtable_ != nullptr)
     {
-        children["cefPathTable"] = cefpathtable;
+        children["cefPathTable"] = cefpathtable_;
     }
 
-    if(cefpeerfibtable != nullptr)
+    if(cefpeerfibtable_ != nullptr)
     {
-        children["cefPeerFIBTable"] = cefpeerfibtable;
+        children["cefPeerFIBTable"] = cefpeerfibtable_;
     }
 
-    if(cefpeertable != nullptr)
+    if(cefpeertable_ != nullptr)
     {
-        children["cefPeerTable"] = cefpeertable;
+        children["cefPeerTable"] = cefpeertable_;
     }
 
-    if(cefprefixtable != nullptr)
+    if(cefprefixtable_ != nullptr)
     {
-        children["cefPrefixTable"] = cefprefixtable;
+        children["cefPrefixTable"] = cefprefixtable_;
     }
 
-    if(cefresourcetable != nullptr)
+    if(cefresourcetable_ != nullptr)
     {
-        children["cefResourceTable"] = cefresourcetable;
+        children["cefResourceTable"] = cefresourcetable_;
     }
 
-    if(cefstatsprefixlentable != nullptr)
+    if(cefstatsprefixlentable_ != nullptr)
     {
-        children["cefStatsPrefixLenTable"] = cefstatsprefixlentable;
+        children["cefStatsPrefixLenTable"] = cefstatsprefixlentable_;
     }
 
-    if(cefswitchingstatstable != nullptr)
+    if(cefswitchingstatstable_ != nullptr)
     {
-        children["cefSwitchingStatsTable"] = cefswitchingstatstable;
+        children["cefSwitchingStatsTable"] = cefswitchingstatstable_;
     }
 
     return children;
@@ -745,9 +745,9 @@ CiscoCefMib::Ceffibsummarytable::~Ceffibsummarytable()
 
 bool CiscoCefMib::Ceffibsummarytable::has_data() const
 {
-    for (std::size_t index=0; index<ceffibsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ceffibsummaryentry_.size(); index++)
     {
-        if(ceffibsummaryentry[index]->has_data())
+        if(ceffibsummaryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -755,9 +755,9 @@ bool CiscoCefMib::Ceffibsummarytable::has_data() const
 
 bool CiscoCefMib::Ceffibsummarytable::has_operation() const
 {
-    for (std::size_t index=0; index<ceffibsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ceffibsummaryentry_.size(); index++)
     {
-        if(ceffibsummaryentry[index]->has_operation())
+        if(ceffibsummaryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -797,7 +797,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffibsummarytable::get_child_by_name(const
 {
     if(child_yang_name == "cefFIBSummaryEntry")
     {
-        for(auto const & c : ceffibsummaryentry)
+        for(auto const & c : ceffibsummaryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -807,7 +807,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffibsummarytable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoCefMib::Ceffibsummarytable::Ceffibsummaryentry>();
         c->parent = this;
-        ceffibsummaryentry.push_back(c);
+        ceffibsummaryentry_.push_back(c);
         return c;
     }
 
@@ -817,7 +817,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffibsummarytable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Ceffibsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceffibsummaryentry)
+    for (auto const & c : ceffibsummaryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -928,9 +928,9 @@ CiscoCefMib::Cefprefixtable::~Cefprefixtable()
 
 bool CiscoCefMib::Cefprefixtable::has_data() const
 {
-    for (std::size_t index=0; index<cefprefixentry.size(); index++)
+    for (std::size_t index=0; index<cefprefixentry_.size(); index++)
     {
-        if(cefprefixentry[index]->has_data())
+        if(cefprefixentry_[index]->has_data())
             return true;
     }
     return false;
@@ -938,9 +938,9 @@ bool CiscoCefMib::Cefprefixtable::has_data() const
 
 bool CiscoCefMib::Cefprefixtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefprefixentry.size(); index++)
+    for (std::size_t index=0; index<cefprefixentry_.size(); index++)
     {
-        if(cefprefixentry[index]->has_operation())
+        if(cefprefixentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -980,7 +980,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefprefixtable::get_child_by_name(const std
 {
     if(child_yang_name == "cefPrefixEntry")
     {
-        for(auto const & c : cefprefixentry)
+        for(auto const & c : cefprefixentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -990,7 +990,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefprefixtable::get_child_by_name(const std
         }
         auto c = std::make_shared<CiscoCefMib::Cefprefixtable::Cefprefixentry>();
         c->parent = this;
-        cefprefixentry.push_back(c);
+        cefprefixentry_.push_back(c);
         return c;
     }
 
@@ -1000,7 +1000,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefprefixtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefprefixentry)
+    for (auto const & c : cefprefixentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1223,9 +1223,9 @@ CiscoCefMib::Ceflmprefixtable::~Ceflmprefixtable()
 
 bool CiscoCefMib::Ceflmprefixtable::has_data() const
 {
-    for (std::size_t index=0; index<ceflmprefixentry.size(); index++)
+    for (std::size_t index=0; index<ceflmprefixentry_.size(); index++)
     {
-        if(ceflmprefixentry[index]->has_data())
+        if(ceflmprefixentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1233,9 +1233,9 @@ bool CiscoCefMib::Ceflmprefixtable::has_data() const
 
 bool CiscoCefMib::Ceflmprefixtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceflmprefixentry.size(); index++)
+    for (std::size_t index=0; index<ceflmprefixentry_.size(); index++)
     {
-        if(ceflmprefixentry[index]->has_operation())
+        if(ceflmprefixentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1275,7 +1275,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceflmprefixtable::get_child_by_name(const s
 {
     if(child_yang_name == "cefLMPrefixEntry")
     {
-        for(auto const & c : ceflmprefixentry)
+        for(auto const & c : ceflmprefixentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1285,7 +1285,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceflmprefixtable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoCefMib::Ceflmprefixtable::Ceflmprefixentry>();
         c->parent = this;
-        ceflmprefixentry.push_back(c);
+        ceflmprefixentry_.push_back(c);
         return c;
     }
 
@@ -1295,7 +1295,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceflmprefixtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Ceflmprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceflmprefixentry)
+    for (auto const & c : ceflmprefixentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1438,9 +1438,9 @@ CiscoCefMib::Cefpathtable::~Cefpathtable()
 
 bool CiscoCefMib::Cefpathtable::has_data() const
 {
-    for (std::size_t index=0; index<cefpathentry.size(); index++)
+    for (std::size_t index=0; index<cefpathentry_.size(); index++)
     {
-        if(cefpathentry[index]->has_data())
+        if(cefpathentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1448,9 +1448,9 @@ bool CiscoCefMib::Cefpathtable::has_data() const
 
 bool CiscoCefMib::Cefpathtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpathentry.size(); index++)
+    for (std::size_t index=0; index<cefpathentry_.size(); index++)
     {
-        if(cefpathentry[index]->has_operation())
+        if(cefpathentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1490,7 +1490,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpathtable::get_child_by_name(const std::
 {
     if(child_yang_name == "cefPathEntry")
     {
-        for(auto const & c : cefpathentry)
+        for(auto const & c : cefpathentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1500,7 +1500,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpathtable::get_child_by_name(const std::
         }
         auto c = std::make_shared<CiscoCefMib::Cefpathtable::Cefpathentry>();
         c->parent = this;
-        cefpathentry.push_back(c);
+        cefpathentry_.push_back(c);
         return c;
     }
 
@@ -1510,7 +1510,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpathtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefpathtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefpathentry)
+    for (auto const & c : cefpathentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1669,9 +1669,9 @@ CiscoCefMib::Cefadjsummarytable::~Cefadjsummarytable()
 
 bool CiscoCefMib::Cefadjsummarytable::has_data() const
 {
-    for (std::size_t index=0; index<cefadjsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cefadjsummaryentry_.size(); index++)
     {
-        if(cefadjsummaryentry[index]->has_data())
+        if(cefadjsummaryentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1679,9 +1679,9 @@ bool CiscoCefMib::Cefadjsummarytable::has_data() const
 
 bool CiscoCefMib::Cefadjsummarytable::has_operation() const
 {
-    for (std::size_t index=0; index<cefadjsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cefadjsummaryentry_.size(); index++)
     {
-        if(cefadjsummaryentry[index]->has_operation())
+        if(cefadjsummaryentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1721,7 +1721,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjsummarytable::get_child_by_name(const
 {
     if(child_yang_name == "cefAdjSummaryEntry")
     {
-        for(auto const & c : cefadjsummaryentry)
+        for(auto const & c : cefadjsummaryentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1731,7 +1731,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjsummarytable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoCefMib::Cefadjsummarytable::Cefadjsummaryentry>();
         c->parent = this;
-        cefadjsummaryentry.push_back(c);
+        cefadjsummaryentry_.push_back(c);
         return c;
     }
 
@@ -1741,7 +1741,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjsummarytable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefadjsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefadjsummaryentry)
+    for (auto const & c : cefadjsummaryentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1876,9 +1876,9 @@ CiscoCefMib::Cefadjtable::~Cefadjtable()
 
 bool CiscoCefMib::Cefadjtable::has_data() const
 {
-    for (std::size_t index=0; index<cefadjentry.size(); index++)
+    for (std::size_t index=0; index<cefadjentry_.size(); index++)
     {
-        if(cefadjentry[index]->has_data())
+        if(cefadjentry_[index]->has_data())
             return true;
     }
     return false;
@@ -1886,9 +1886,9 @@ bool CiscoCefMib::Cefadjtable::has_data() const
 
 bool CiscoCefMib::Cefadjtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefadjentry.size(); index++)
+    for (std::size_t index=0; index<cefadjentry_.size(); index++)
     {
-        if(cefadjentry[index]->has_operation())
+        if(cefadjentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -1928,7 +1928,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefAdjEntry")
     {
-        for(auto const & c : cefadjentry)
+        for(auto const & c : cefadjentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1938,7 +1938,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjtable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<CiscoCefMib::Cefadjtable::Cefadjentry>();
         c->parent = this;
-        cefadjentry.push_back(c);
+        cefadjentry_.push_back(c);
         return c;
     }
 
@@ -1948,7 +1948,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefadjtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefadjtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefadjentry)
+    for (auto const & c : cefadjentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2155,9 +2155,9 @@ CiscoCefMib::Ceffeselectiontable::~Ceffeselectiontable()
 
 bool CiscoCefMib::Ceffeselectiontable::has_data() const
 {
-    for (std::size_t index=0; index<ceffeselectionentry.size(); index++)
+    for (std::size_t index=0; index<ceffeselectionentry_.size(); index++)
     {
-        if(ceffeselectionentry[index]->has_data())
+        if(ceffeselectionentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2165,9 +2165,9 @@ bool CiscoCefMib::Ceffeselectiontable::has_data() const
 
 bool CiscoCefMib::Ceffeselectiontable::has_operation() const
 {
-    for (std::size_t index=0; index<ceffeselectionentry.size(); index++)
+    for (std::size_t index=0; index<ceffeselectionentry_.size(); index++)
     {
-        if(ceffeselectionentry[index]->has_operation())
+        if(ceffeselectionentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2207,7 +2207,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffeselectiontable::get_child_by_name(cons
 {
     if(child_yang_name == "cefFESelectionEntry")
     {
-        for(auto const & c : ceffeselectionentry)
+        for(auto const & c : ceffeselectionentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2217,7 +2217,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffeselectiontable::get_child_by_name(cons
         }
         auto c = std::make_shared<CiscoCefMib::Ceffeselectiontable::Ceffeselectionentry>();
         c->parent = this;
-        ceffeselectionentry.push_back(c);
+        ceffeselectionentry_.push_back(c);
         return c;
     }
 
@@ -2227,7 +2227,7 @@ std::shared_ptr<Entity> CiscoCefMib::Ceffeselectiontable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Ceffeselectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceffeselectionentry)
+    for (auto const & c : ceffeselectionentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2410,9 +2410,9 @@ CiscoCefMib::Cefcfgtable::~Cefcfgtable()
 
 bool CiscoCefMib::Cefcfgtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfgentry.size(); index++)
+    for (std::size_t index=0; index<cefcfgentry_.size(); index++)
     {
-        if(cefcfgentry[index]->has_data())
+        if(cefcfgentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2420,9 +2420,9 @@ bool CiscoCefMib::Cefcfgtable::has_data() const
 
 bool CiscoCefMib::Cefcfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfgentry.size(); index++)
+    for (std::size_t index=0; index<cefcfgentry_.size(); index++)
     {
-        if(cefcfgentry[index]->has_operation())
+        if(cefcfgentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2462,7 +2462,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcfgtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefCfgEntry")
     {
-        for(auto const & c : cefcfgentry)
+        for(auto const & c : cefcfgentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2472,7 +2472,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcfgtable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<CiscoCefMib::Cefcfgtable::Cefcfgentry>();
         c->parent = this;
-        cefcfgentry.push_back(c);
+        cefcfgentry_.push_back(c);
         return c;
     }
 
@@ -2482,7 +2482,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcfgtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefcfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfgentry)
+    for (auto const & c : cefcfgentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2657,9 +2657,9 @@ CiscoCefMib::Cefresourcetable::~Cefresourcetable()
 
 bool CiscoCefMib::Cefresourcetable::has_data() const
 {
-    for (std::size_t index=0; index<cefresourceentry.size(); index++)
+    for (std::size_t index=0; index<cefresourceentry_.size(); index++)
     {
-        if(cefresourceentry[index]->has_data())
+        if(cefresourceentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2667,9 +2667,9 @@ bool CiscoCefMib::Cefresourcetable::has_data() const
 
 bool CiscoCefMib::Cefresourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<cefresourceentry.size(); index++)
+    for (std::size_t index=0; index<cefresourceentry_.size(); index++)
     {
-        if(cefresourceentry[index]->has_operation())
+        if(cefresourceentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2709,7 +2709,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefresourcetable::get_child_by_name(const s
 {
     if(child_yang_name == "cefResourceEntry")
     {
-        for(auto const & c : cefresourceentry)
+        for(auto const & c : cefresourceentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2719,7 +2719,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefresourcetable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoCefMib::Cefresourcetable::Cefresourceentry>();
         c->parent = this;
-        cefresourceentry.push_back(c);
+        cefresourceentry_.push_back(c);
         return c;
     }
 
@@ -2729,7 +2729,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefresourcetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefresourceentry)
+    for (auto const & c : cefresourceentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2840,9 +2840,9 @@ CiscoCefMib::Cefinttable::~Cefinttable()
 
 bool CiscoCefMib::Cefinttable::has_data() const
 {
-    for (std::size_t index=0; index<cefintentry.size(); index++)
+    for (std::size_t index=0; index<cefintentry_.size(); index++)
     {
-        if(cefintentry[index]->has_data())
+        if(cefintentry_[index]->has_data())
             return true;
     }
     return false;
@@ -2850,9 +2850,9 @@ bool CiscoCefMib::Cefinttable::has_data() const
 
 bool CiscoCefMib::Cefinttable::has_operation() const
 {
-    for (std::size_t index=0; index<cefintentry.size(); index++)
+    for (std::size_t index=0; index<cefintentry_.size(); index++)
     {
-        if(cefintentry[index]->has_operation())
+        if(cefintentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -2892,7 +2892,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefIntEntry")
     {
-        for(auto const & c : cefintentry)
+        for(auto const & c : cefintentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2902,7 +2902,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinttable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<CiscoCefMib::Cefinttable::Cefintentry>();
         c->parent = this;
-        cefintentry.push_back(c);
+        cefintentry_.push_back(c);
         return c;
     }
 
@@ -2912,7 +2912,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefinttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefintentry)
+    for (auto const & c : cefintentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3047,9 +3047,9 @@ CiscoCefMib::Cefpeertable::~Cefpeertable()
 
 bool CiscoCefMib::Cefpeertable::has_data() const
 {
-    for (std::size_t index=0; index<cefpeerentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerentry_.size(); index++)
     {
-        if(cefpeerentry[index]->has_data())
+        if(cefpeerentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3057,9 +3057,9 @@ bool CiscoCefMib::Cefpeertable::has_data() const
 
 bool CiscoCefMib::Cefpeertable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpeerentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerentry_.size(); index++)
     {
-        if(cefpeerentry[index]->has_operation())
+        if(cefpeerentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3099,7 +3099,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeertable::get_child_by_name(const std::
 {
     if(child_yang_name == "cefPeerEntry")
     {
-        for(auto const & c : cefpeerentry)
+        for(auto const & c : cefpeerentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3109,7 +3109,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeertable::get_child_by_name(const std::
         }
         auto c = std::make_shared<CiscoCefMib::Cefpeertable::Cefpeerentry>();
         c->parent = this;
-        cefpeerentry.push_back(c);
+        cefpeerentry_.push_back(c);
         return c;
     }
 
@@ -3119,7 +3119,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeertable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefpeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefpeerentry)
+    for (auto const & c : cefpeerentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3238,9 +3238,9 @@ CiscoCefMib::Cefpeerfibtable::~Cefpeerfibtable()
 
 bool CiscoCefMib::Cefpeerfibtable::has_data() const
 {
-    for (std::size_t index=0; index<cefpeerfibentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerfibentry_.size(); index++)
     {
-        if(cefpeerfibentry[index]->has_data())
+        if(cefpeerfibentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3248,9 +3248,9 @@ bool CiscoCefMib::Cefpeerfibtable::has_data() const
 
 bool CiscoCefMib::Cefpeerfibtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpeerfibentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerfibentry_.size(); index++)
     {
-        if(cefpeerfibentry[index]->has_operation())
+        if(cefpeerfibentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3290,7 +3290,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeerfibtable::get_child_by_name(const st
 {
     if(child_yang_name == "cefPeerFIBEntry")
     {
-        for(auto const & c : cefpeerfibentry)
+        for(auto const & c : cefpeerfibentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3300,7 +3300,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeerfibtable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoCefMib::Cefpeerfibtable::Cefpeerfibentry>();
         c->parent = this;
-        cefpeerfibentry.push_back(c);
+        cefpeerfibentry_.push_back(c);
         return c;
     }
 
@@ -3310,7 +3310,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefpeerfibtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefpeerfibtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefpeerfibentry)
+    for (auto const & c : cefpeerfibentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3429,9 +3429,9 @@ CiscoCefMib::Cefccglobaltable::~Cefccglobaltable()
 
 bool CiscoCefMib::Cefccglobaltable::has_data() const
 {
-    for (std::size_t index=0; index<cefccglobalentry.size(); index++)
+    for (std::size_t index=0; index<cefccglobalentry_.size(); index++)
     {
-        if(cefccglobalentry[index]->has_data())
+        if(cefccglobalentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3439,9 +3439,9 @@ bool CiscoCefMib::Cefccglobaltable::has_data() const
 
 bool CiscoCefMib::Cefccglobaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cefccglobalentry.size(); index++)
+    for (std::size_t index=0; index<cefccglobalentry_.size(); index++)
     {
-        if(cefccglobalentry[index]->has_operation())
+        if(cefccglobalentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3481,7 +3481,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefccglobaltable::get_child_by_name(const s
 {
     if(child_yang_name == "cefCCGlobalEntry")
     {
-        for(auto const & c : cefccglobalentry)
+        for(auto const & c : cefccglobalentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3491,7 +3491,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefccglobaltable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoCefMib::Cefccglobaltable::Cefccglobalentry>();
         c->parent = this;
-        cefccglobalentry.push_back(c);
+        cefccglobalentry_.push_back(c);
         return c;
     }
 
@@ -3501,7 +3501,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefccglobaltable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefccglobaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefccglobalentry)
+    for (auto const & c : cefccglobalentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3644,9 +3644,9 @@ CiscoCefMib::Cefcctypetable::~Cefcctypetable()
 
 bool CiscoCefMib::Cefcctypetable::has_data() const
 {
-    for (std::size_t index=0; index<cefcctypeentry.size(); index++)
+    for (std::size_t index=0; index<cefcctypeentry_.size(); index++)
     {
-        if(cefcctypeentry[index]->has_data())
+        if(cefcctypeentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3654,9 +3654,9 @@ bool CiscoCefMib::Cefcctypetable::has_data() const
 
 bool CiscoCefMib::Cefcctypetable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcctypeentry.size(); index++)
+    for (std::size_t index=0; index<cefcctypeentry_.size(); index++)
     {
-        if(cefcctypeentry[index]->has_operation())
+        if(cefcctypeentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3696,7 +3696,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcctypetable::get_child_by_name(const std
 {
     if(child_yang_name == "cefCCTypeEntry")
     {
-        for(auto const & c : cefcctypeentry)
+        for(auto const & c : cefcctypeentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3706,7 +3706,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcctypetable::get_child_by_name(const std
         }
         auto c = std::make_shared<CiscoCefMib::Cefcctypetable::Cefcctypeentry>();
         c->parent = this;
-        cefcctypeentry.push_back(c);
+        cefcctypeentry_.push_back(c);
         return c;
     }
 
@@ -3716,7 +3716,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefcctypetable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefcctypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcctypeentry)
+    for (auto const & c : cefcctypeentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3875,9 +3875,9 @@ CiscoCefMib::Cefinconsistencyrecordtable::~Cefinconsistencyrecordtable()
 
 bool CiscoCefMib::Cefinconsistencyrecordtable::has_data() const
 {
-    for (std::size_t index=0; index<cefinconsistencyrecordentry.size(); index++)
+    for (std::size_t index=0; index<cefinconsistencyrecordentry_.size(); index++)
     {
-        if(cefinconsistencyrecordentry[index]->has_data())
+        if(cefinconsistencyrecordentry_[index]->has_data())
             return true;
     }
     return false;
@@ -3885,9 +3885,9 @@ bool CiscoCefMib::Cefinconsistencyrecordtable::has_data() const
 
 bool CiscoCefMib::Cefinconsistencyrecordtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefinconsistencyrecordentry.size(); index++)
+    for (std::size_t index=0; index<cefinconsistencyrecordentry_.size(); index++)
     {
-        if(cefinconsistencyrecordentry[index]->has_operation())
+        if(cefinconsistencyrecordentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -3927,7 +3927,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinconsistencyrecordtable::get_child_by_n
 {
     if(child_yang_name == "cefInconsistencyRecordEntry")
     {
-        for(auto const & c : cefinconsistencyrecordentry)
+        for(auto const & c : cefinconsistencyrecordentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3937,7 +3937,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinconsistencyrecordtable::get_child_by_n
         }
         auto c = std::make_shared<CiscoCefMib::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry>();
         c->parent = this;
-        cefinconsistencyrecordentry.push_back(c);
+        cefinconsistencyrecordentry_.push_back(c);
         return c;
     }
 
@@ -3947,7 +3947,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefinconsistencyrecordtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefinconsistencyrecordtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefinconsistencyrecordentry)
+    for (auto const & c : cefinconsistencyrecordentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4106,9 +4106,9 @@ CiscoCefMib::Cefstatsprefixlentable::~Cefstatsprefixlentable()
 
 bool CiscoCefMib::Cefstatsprefixlentable::has_data() const
 {
-    for (std::size_t index=0; index<cefstatsprefixlenentry.size(); index++)
+    for (std::size_t index=0; index<cefstatsprefixlenentry_.size(); index++)
     {
-        if(cefstatsprefixlenentry[index]->has_data())
+        if(cefstatsprefixlenentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4116,9 +4116,9 @@ bool CiscoCefMib::Cefstatsprefixlentable::has_data() const
 
 bool CiscoCefMib::Cefstatsprefixlentable::has_operation() const
 {
-    for (std::size_t index=0; index<cefstatsprefixlenentry.size(); index++)
+    for (std::size_t index=0; index<cefstatsprefixlenentry_.size(); index++)
     {
-        if(cefstatsprefixlenentry[index]->has_operation())
+        if(cefstatsprefixlenentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4158,7 +4158,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefstatsprefixlentable::get_child_by_name(c
 {
     if(child_yang_name == "cefStatsPrefixLenEntry")
     {
-        for(auto const & c : cefstatsprefixlenentry)
+        for(auto const & c : cefstatsprefixlenentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4168,7 +4168,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefstatsprefixlentable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoCefMib::Cefstatsprefixlentable::Cefstatsprefixlenentry>();
         c->parent = this;
-        cefstatsprefixlenentry.push_back(c);
+        cefstatsprefixlenentry_.push_back(c);
         return c;
     }
 
@@ -4178,7 +4178,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefstatsprefixlentable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefstatsprefixlentable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefstatsprefixlenentry)
+    for (auto const & c : cefstatsprefixlenentry_)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4353,9 +4353,9 @@ CiscoCefMib::Cefswitchingstatstable::~Cefswitchingstatstable()
 
 bool CiscoCefMib::Cefswitchingstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cefswitchingstatsentry.size(); index++)
+    for (std::size_t index=0; index<cefswitchingstatsentry_.size(); index++)
     {
-        if(cefswitchingstatsentry[index]->has_data())
+        if(cefswitchingstatsentry_[index]->has_data())
             return true;
     }
     return false;
@@ -4363,9 +4363,9 @@ bool CiscoCefMib::Cefswitchingstatstable::has_data() const
 
 bool CiscoCefMib::Cefswitchingstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cefswitchingstatsentry.size(); index++)
+    for (std::size_t index=0; index<cefswitchingstatsentry_.size(); index++)
     {
-        if(cefswitchingstatsentry[index]->has_operation())
+        if(cefswitchingstatsentry_[index]->has_operation())
             return true;
     }
     return is_set(operation);
@@ -4405,7 +4405,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefswitchingstatstable::get_child_by_name(c
 {
     if(child_yang_name == "cefSwitchingStatsEntry")
     {
-        for(auto const & c : cefswitchingstatsentry)
+        for(auto const & c : cefswitchingstatsentry_)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4415,7 +4415,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefswitchingstatstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoCefMib::Cefswitchingstatstable::Cefswitchingstatsentry>();
         c->parent = this;
-        cefswitchingstatsentry.push_back(c);
+        cefswitchingstatsentry_.push_back(c);
         return c;
     }
 
@@ -4425,7 +4425,7 @@ std::shared_ptr<Entity> CiscoCefMib::Cefswitchingstatstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoCefMib::Cefswitchingstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefswitchingstatsentry)
+    for (auto const & c : cefswitchingstatsentry_)
     {
         children[c->get_segment_path()] = c;
     }

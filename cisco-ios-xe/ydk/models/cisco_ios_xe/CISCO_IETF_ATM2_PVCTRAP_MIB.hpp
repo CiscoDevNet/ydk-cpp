@@ -30,7 +30,7 @@ class CiscoIetfAtm2PvctrapMib : public Entity
 
         class Atmcurrentlyfailingpvcltable; //type: CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable
 
-        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB::CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable> atmcurrentlyfailingpvcltable;
+        std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB::CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable> atmcurrentlyfailingpvcltable_;
         
 }; // CiscoIetfAtm2PvctrapMib
 
@@ -51,7 +51,7 @@ class CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable : public Entity
 
         class Atmcurrentlyfailingpvclentry; //type: CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB::CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry> > atmcurrentlyfailingpvclentry;
+        std::vector<std::shared_ptr<CISCO_IETF_ATM2_PVCTRAP_MIB::CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry> > atmcurrentlyfailingpvclentry_;
         
 }; // CiscoIetfAtm2PvctrapMib::Atmcurrentlyfailingpvcltable
 
